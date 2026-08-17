@@ -1,4 +1,4 @@
-name: Web build
+name: Construção do site
 
 on:
   push:
@@ -40,18 +40,28 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Install frontend dependencies
+      - name: Instalar dependências do site
         run: npm install --no-audit --no-fund
-      - name: Build Vercel frontend
+      - name: Construir site para a Vercel
         run: npm run build
-      - name: Verify generated datasets
+      - name: Verificar dados gerados
         run: |
           test -s public/data/dashboard.json
           test -s public/data/acquisitions.json
           test -s public/data/finance.json
           test -s public/data/camara.json
-          node -e "const d=require('./public/data/meta.json'); if(d.acquisitions!==2306) process.exit(1); console.log(d)"
-      - name: Record successful build
+          test -s public/data/agents.json
+          test -s public/data/search.json
+          node - <<'NODE'
+          const d = require('./public/data/meta.json');
+          if (d.acquisitions !== 2306) throw new Error(`aquisições geradas: ${d.acquisitions}`);
+          if (d.officials !== 43) throw new Error(`vereadores gerados: ${d.officials}`);
+          if (d.executiveAgents !== 6) throw new Error(`agentes do Executivo gerados: ${d.executiveAgents}`);
+          if (d.publicAgents !== 49) throw new Error(`agentes públicos gerados: ${d.publicAgents}`);
+          if (!(d.searchItems > 2306)) throw new Error(`itens de consulta insuficientes: ${d.searchItems}`);
+          console.log(d);
+          NODE
+      - name: Registrar construção bem-sucedida
         if: github.event_name == 'push'
         env:
           TESTED_SHA: ${{ github.sha }}
@@ -67,7 +77,10 @@ jobs:
             next: require('./node_modules/next/package.json').version,
             react: require('./node_modules/react/package.json').version,
             acquisitions_generated: meta.acquisitions,
-            officials_generated: meta.officials,
+            councilors_generated: meta.officials,
+            executive_agents_generated: meta.executiveAgents,
+            public_agents_generated: meta.publicAgents,
+            search_items_generated: meta.searchItems,
             as_of: meta.asOf,
           };
           fs.writeFileSync('cities/salvador/data/validation/web_build.json', JSON.stringify(payload, null, 2) + '\n');
@@ -76,6 +89,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add cities/salvador/data/validation/web_build.json
           if ! git diff --cached --quiet; then
-            git commit -m "ci(web): record successful frontend build [skip ci]"
+            git commit -m "ci(web): registrar construção bem-sucedida [skip ci]"
             git push
           fi
