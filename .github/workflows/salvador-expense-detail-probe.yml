@@ -1,0 +1,83 @@
+name: salvador-expense-detail-probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-expense-detail-probe.yml
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx
+      - name: Probe grouping contract for detailed expenses
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          import httpx
+
+          BASE='https://apitmptransparencia.salvador.ba.gov.br/api'
+          OUT=Path('cities/salvador/data/snapshots/2026-08-17/prefeitura_api')
+          OUT.mkdir(parents=True, exist_ok=True)
+          headers={'accept':'application/json, text/plain, */*','origin':'https://transparencia.salvador.ba.gov.br','referer':'https://transparencia.salvador.ba.gov.br/','user-agent':'municipal-transparency-research/0.1 (+public-data-audit)'}
+          base={'dataInicio':'2026-01-01','dataFim':'2026-08-17','filtros':[]}
+          candidates={
+            'string_credor':['CDCREDOR'],
+            'object_credor':[{'atributo':'CDCREDOR'}],
+            'full_credor':[{'atributo':'CDCREDOR','descricao':'Credor','nomeTabela':'CREDOR','temAnoReferencia':False}],
+            'string_empenho':['NUNOTAEMPENHO'],
+            'object_empenho':[{'atributo':'NUNOTAEMPENHO'}],
+            'full_empenho':[{'atributo':'NUNOTAEMPENHO','descricao':'Empenho','nomeTabela':'EMPENHOS','temAnoReferencia':False}],
+            'string_orgao':['CDORGAO'],
+            'object_orgao':[{'atributo':'CDORGAO'}],
+            'full_orgao':[{'atributo':'CDORGAO','descricao':'Órgão','nomeTabela':'ORGAO','temAnoReferencia':True}],
+          }
+          out={}
+          with httpx.Client(headers=headers,follow_redirects=True,timeout=30) as client:
+            for name, grouping in candidates.items():
+              payload={**base,'agrupamentos':grouping}
+              try:
+                r=client.post(BASE+'/despesa/gridDetalhada',json=payload)
+                raw=r.content
+                item={'status':r.status_code,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),'payload':payload}
+                try:
+                  j=r.json()
+                  item['top_level_keys']=sorted(j.keys()) if isinstance(j,dict) else None
+                  if isinstance(j,dict):
+                    dados=j.get('dados')
+                    item['dados_count']=len(dados) if isinstance(dados,list) else None
+                    item['first_rows']=dados[:3] if isinstance(dados,list) else None
+                    item['paginacao']=j.get('paginacao')
+                    item['totalizadores']=j.get('totalizadores')
+                  item['json_preview']=json.dumps(j,ensure_ascii=False)[:10000]
+                except Exception:
+                  item['text_preview']=r.text[:10000]
+                out[name]=item
+              except Exception as exc:
+                out[name]={'error':f'{type(exc).__name__}: {exc}','payload':payload}
+          (OUT/'expense_detail_probe.json').write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True))
+          PY
+      - name: Commit probe evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/snapshots/2026-08-17/prefeitura_api/expense_detail_probe.json
+          if git diff --cached --quiet; then echo "No changes"; else
+            git commit -m "data(salvador): probe detailed expense grouping"
+            git push origin HEAD:city/salvador
+          fi
