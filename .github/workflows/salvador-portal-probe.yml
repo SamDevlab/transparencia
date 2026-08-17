@@ -1,0 +1,130 @@
+name: salvador-portal-probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-portal-probe.yml
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -e .
+      - name: Probe official Salvador transparency API
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+
+          import hashlib
+          import json
+          from pathlib import Path
+
+          import httpx
+
+          BASE = "https://apitmptransparencia.salvador.ba.gov.br/api"
+          OUT = Path("cities/salvador/data/snapshots/2026-08-17/prefeitura_api")
+          OUT.mkdir(parents=True, exist_ok=True)
+          report = {"base_url": BASE, "gets": {}, "posts": {}}
+          headers = {
+              "accept": "application/json, text/plain, */*",
+              "origin": "https://transparencia.salvador.ba.gov.br",
+              "referer": "https://transparencia.salvador.ba.gov.br/",
+              "user-agent": "municipal-transparency-research/0.1 (+public-data-audit)",
+          }
+
+          def body_meta(resp: httpx.Response):
+              raw = resp.content
+              item = {
+                  "status": resp.status_code,
+                  "url": str(resp.url),
+                  "content_type": resp.headers.get("content-type"),
+                  "bytes": len(raw),
+                  "sha256": hashlib.sha256(raw).hexdigest(),
+              }
+              try:
+                  payload = resp.json()
+              except Exception:
+                  payload = None
+              if payload is not None:
+                  text = json.dumps(payload, ensure_ascii=False)
+                  item["json"] = payload if len(text) <= 100_000 else None
+                  item["json_preview"] = text[:20_000]
+                  if isinstance(payload, dict):
+                      item["top_level_keys"] = sorted(str(k) for k in payload.keys())
+                  elif isinstance(payload, list):
+                      item["list_length"] = len(payload)
+                      if payload and isinstance(payload[0], dict):
+                          item["first_item_keys"] = sorted(str(k) for k in payload[0].keys())
+              else:
+                  item["text_preview"] = resp.text[:20_000]
+              return item
+
+          get_paths = [
+              "/filtro/receita/filtros",
+              "/filtro/receita/agrupar",
+              "/filtro/despesa/filtros",
+              "/filtro/despesa/agrupar",
+              "/filtro/contratos/filtros",
+              "/filtro/aquisicoes/filtros",
+          ]
+
+          post_paths = [
+              "/receita/totalizador",
+              "/receita/gridResumida/",
+              "/receita/gridDetalhada",
+              "/despesa/totalizador",
+              "/despesa/gridresumida",
+              "/despesa/gridDetalhada",
+              "/contratos/totalizador",
+              "/contratos/gridresumida",
+          ]
+
+          payloads = {
+              "empty": {},
+              "null_filters": {"dataInicio": None, "dataFim": None, "agrupamentos": [], "filtros": []},
+              "iso_2026": {"dataInicio": "2026-01-01", "dataFim": "2026-08-17", "agrupamentos": [], "filtros": []},
+              "br_2026": {"dataInicio": "01/01/2026", "dataFim": "17/08/2026", "agrupamentos": [], "filtros": []},
+              "iso_datetime_2026": {"dataInicio": "2026-01-01T00:00:00", "dataFim": "2026-08-17T23:59:59", "agrupamentos": [], "filtros": []},
+          }
+
+          with httpx.Client(headers=headers, follow_redirects=True, timeout=35) as client:
+              for path in get_paths:
+                  try:
+                      report["gets"][path] = body_meta(client.get(BASE + path))
+                  except Exception as exc:
+                      report["gets"][path] = {"error": f"{type(exc).__name__}: {exc}"}
+              for path in post_paths:
+                  report["posts"][path] = {}
+                  for name, payload in payloads.items():
+                      try:
+                          report["posts"][path][name] = body_meta(client.post(BASE + path, json=payload))
+                      except Exception as exc:
+                          report["posts"][path][name] = {"error": f"{type(exc).__name__}: {exc}"}
+
+          (OUT / "probe.json").write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True)[:60_000])
+          PY
+      - name: Commit probe evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/snapshots/2026-08-17/prefeitura_api/probe.json
+          if git diff --cached --quiet; then
+            echo "No probe changes"
+          else
+            git commit -m "data(salvador): probe official transparency API"
+            git push origin HEAD:city/salvador
+          fi
