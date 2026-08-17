@@ -1,0 +1,35 @@
+name: salvador-contract-route-compact
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - scripts/compact_salvador_contract_routes.py
+      - .github/workflows/salvador-contract-route-compact.yml
+
+permissions:
+  contents: write
+
+jobs:
+  compact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/compact_salvador_contract_routes.py
+      - name: Commit compact route map
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/lazy_chunks/contract_supplier_routes.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(salvador): compact contract supplier route map"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
