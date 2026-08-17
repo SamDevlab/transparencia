@@ -1,0 +1,78 @@
+name: salvador-cms-pagination-compact
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-cms-pagination-compact.yml
+
+permissions:
+  contents: write
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx beautifulsoup4
+      - name: Capture exact navigation implementation
+        run: |
+          python - <<'PY'
+          import hashlib, json, re
+          from pathlib import Path
+          import httpx
+          from bs4 import BeautifulSoup
+
+          apps={
+            'commitments':'https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/',
+            'expenses':'https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/',
+            'payments':'https://cmsalvador.sys.inf.br/ca/trans_pagamento/',
+            'contracts':'https://cmsalvador.sys.inf.br/ca/contrato/',
+          }
+          headers={'user-agent':'municipal-transparency-research/0.3 (+public-data-audit)','accept':'text/html,application/xhtml+xml','accept-language':'pt-BR,pt;q=0.9'}
+          out={}
+          with httpx.Client(headers=headers,follow_redirects=True,timeout=60) as client:
+            for name,url in apps.items():
+              r=client.get(url); text=r.text; soup=BeautifulSoup(text,'html.parser')
+              nav=[]
+              for tag in soup.find_all(True):
+                onclick=tag.get('onclick') or ''
+                href=tag.get('href') or ''
+                combined=onclick+' '+href
+                if 'nm_gp_move' in combined or 'ajax_navigate' in combined:
+                  nav.append({'tag':tag.name,'text':' '.join(tag.get_text(' ',strip=True).split())[:200],'onclick':onclick[:3000],'href':href[:3000]})
+              idx=text.find('function nm_gp_move(')
+              move=text[idx:idx+9000] if idx>=0 else None
+              idx2=text.find('function ajax_navigate(')
+              ajax=text[idx2:idx2+14000] if idx2>=0 else None
+              forms={}
+              for form_name in ('F3','F6'):
+                form=soup.find('form',attrs={'name':form_name})
+                if form:
+                  fields={}
+                  for inp in form.find_all('input'):
+                    if inp.get('name'): fields[inp.get('name')]=inp.get('value') or ''
+                  forms[form_name]={'action':form.get('action'),'method':form.get('method'),'fields':fields}
+              out[name]={'url':url,'status':r.status_code,'bytes':len(r.content),'sha256':hashlib.sha256(r.content).hexdigest(),'navigation_elements':nav[:30],'nm_gp_move_function':move,'ajax_navigate_function':ajax,'forms':forms}
+          p=Path('cities/salvador/data/snapshots/2026-08-17/cms_pagination_compact.json')
+          p.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)[:60000])
+          PY
+      - name: Commit compact map
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/snapshots/2026-08-17/cms_pagination_compact.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(salvador): capture Câmara navigation calls"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
