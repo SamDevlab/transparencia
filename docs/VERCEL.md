@@ -6,14 +6,17 @@ O frontend Next.js fica na **raiz do repositório**. Ele foi estruturado assim p
 
 1. Abra a Vercel e escolha **Add New → Project**.
 2. Importe o repositório `SamDevlab/transparencia`.
-3. Em **Branch**, selecione `city/salvador` para o projeto de Salvador.
-4. Mantenha **Root Directory** vazio / na raiz do repositório.
-5. Framework Preset: **Next.js**.
-6. Install Command: deixe automático (`npm install`).
-7. Build Command: deixe automático (`npm run build`).
-8. Output Directory: deixe automático (`.next`).
-9. Não é necessária nenhuma variável de ambiente para a versão atual.
-10. Clique em **Deploy**.
+3. Mantenha **Root Directory** vazio / na raiz do repositório.
+4. Framework Preset: **Next.js**.
+5. Install Command: deixe automático (`npm install`).
+6. Build Command: deixe automático (`npm run build`).
+7. Output Directory: deixe automático (`.next`).
+8. Não é necessária nenhuma variável de ambiente para a versão atual.
+9. Crie/conecte o projeto. Como o GitHub usa `main` como branch padrão, a Vercel poderá assumir `main` como produção inicialmente; o frontend de Salvador está em outra branch.
+10. No projeto, abra **Settings → Environments → Production → Branch Tracking** e altere a Production Branch para `city/salvador`. Salve.
+11. Abra **Deployments → Create Deployment**, informe a branch `city/salvador` e crie o deployment. Depois disso, novos pushes nessa branch poderão gerar deployments de produção automaticamente.
+
+> Não altere o Root Directory para `cities/salvador`: o frontend está na raiz e o `prebuild` precisa acessar os snapshots dentro dessa pasta.
 
 ## O que acontece no build
 
