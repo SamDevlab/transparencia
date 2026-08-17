@@ -7,9 +7,9 @@ pms_compras,Prefeitura Municipal de Salvador,executivo_contratacoes,primary,http
 sefaz_licitacoes,SEFAZ Salvador,executivo_contratacoes,primary,https://www2.sefaz.salvador.ba.gov.br/transparencia/licitacoes,Licitações da Secretaria Municipal da Fazenda; não representa sozinha toda a Prefeitura.
 cms_vereadores,Câmara Municipal de Salvador,legislativo_politicos,primary,https://www.cms.ba.gov.br/vereadores,Vereadores da 20ª Legislatura (2025-2028).
 cms_execucao_orcamentaria,Câmara Municipal de Salvador,legislativo_despesas,primary,https://www.cms.ba.gov.br/transparencia/exec-orcamentaria-financeira,Células e execução orçamentária/financeira.
-cms_prestacao_contas,Câmara Municipal de Salvador,legislativo_despesas,primary,https://www.cms.ba.gov.br/transparencia/prestacao-de-contas,"Relações de pagamentos, despesa orçamentária, razão SIGA e comprovantes."
+cms_prestacao_contas,Câmara Municipal de Salvador,legislativo_despesas,primary,https://www.cms.ba.gov.br/transparencia/prestacao-contas,"Relações de pagamentos, despesa orçamentária, razão SIGA e comprovantes."
 cms_ordem_dia,Câmara Municipal de Salvador,legislativo_atividade,primary,https://www.cms.ba.gov.br/transparencia/ordem-do-dia,Sessões e matérias pautadas.
-cms_processos_licitatorios,Câmara Municipal de Salvador,legislativo_contratacoes,primary,https://www.cms.ba.gov.br/processos-licitatorios,Processos licitatórios do Legislativo.
+cms_processos_licitatorios,Câmara Municipal de Salvador,legislativo_contratacoes,primary,https://cmsalvador.sys.inf.br/ca/licitacao/,Sistema de consulta de certames indicado pelo portal oficial da Câmara.
 pncp_dados_abertos,Ministério da Gestão e da Inovação / PNCP,contratacoes,primary,https://www.gov.br/pncp/pt-br/acesso-a-informacao/dados-abertos,"Consulta pública, sem cadastro/login; usado para reconciliação das contratações municipais."
 transparencia_brasil_projetos,Transparência Brasil,metodologia,secondary,https://www.transparencia.org.br/projetos/,"ONG; referência metodológica e projetos, não banco primário completo das contas municipais de Salvador."
 transparencia_brasil_qualidade_gasto,Transparência Brasil,metodologia,secondary,https://www.transparencia.org.br/areas-tematicas/qualidade-do-gasto-publico,"Análises de orçamento, emendas e contratos como referência de abordagem."
