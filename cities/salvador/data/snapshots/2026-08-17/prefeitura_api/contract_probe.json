@@ -1,0 +1,111 @@
+{
+  "0_GET_/contratos/gridDetalhada?pagina=1": {
+    "bytes": 0,
+    "content_type": null,
+    "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/gridDetalhada",
+    "request": {
+      "method": "GET",
+      "path": "/contratos/gridDetalhada?pagina=1",
+      "payload": {}
+    },
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": 405,
+    "text_preview": ""
+  },
+  "1_GET_/contratos/gridDetalhada?pagina=1": {
+    "bytes": 0,
+    "content_type": null,
+    "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/gridDetalhada?dataInicio=2026-01-01&dataFim=2026-08-17",
+    "request": {
+      "method": "GET",
+      "path": "/contratos/gridDetalhada?pagina=1",
+      "payload": {
+        "dataFim": "2026-08-17",
+        "dataInicio": "2026-01-01"
+      }
+    },
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": 405,
+    "text_preview": ""
+  },
+  "2_GET_/contratos/gridDetalhadaDocumento?pagina=1": {
+    "bytes": 0,
+    "content_type": null,
+    "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/gridDetalhadaDocumento?dataInicio=2026-01-01&dataFim=2026-08-17",
+    "request": {
+      "method": "GET",
+      "path": "/contratos/gridDetalhadaDocumento?pagina=1",
+      "payload": {
+        "dataFim": "2026-08-17",
+        "dataInicio": "2026-01-01"
+      }
+    },
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": 405,
+    "text_preview": ""
+  },
+  "3_GET_/filtro/contratos/filtros?funcao=fornecedores": {
+    "bytes": 1026,
+    "content_type": "application/json; charset=utf-8",
+    "count": 6,
+    "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/filtro/contratos/filtros",
+    "first_rows": [
+      {
+        "atributo": "NUCONTRATOORIGINAL",
+        "descricao": "Contrato Original",
+        "nomeTabela": "CONTRATOS",
+        "observacao": null,
+        "temAnoReferencia": true
+      },
+      {
+        "atributo": "CDFORMACONTRATACAO",
+        "descricao": "Forma de Contratação",
+        "nomeTabela": "FORMACONTRATACAO",
+        "observacao": null,
+        "temAnoReferencia": false
+      },
+      {
+        "atributo": "CDORGAO",
+        "descricao": "Órgão",
+        "nomeTabela": "ORGAO",
+        "observacao": "É a denominação dada às unidades administrativas responsáveis pelo desempenho das funções de governo.",
+        "temAnoReferencia": true
+      }
+    ],
+    "json_preview": "[{\"descricao\": \"Contrato Original\", \"observacao\": null, \"nomeTabela\": \"CONTRATOS\", \"temAnoReferencia\": true, \"atributo\": \"NUCONTRATOORIGINAL\"}, {\"descricao\": \"Forma de Contratação\", \"observacao\": null, \"nomeTabela\": \"FORMACONTRATACAO\", \"temAnoReferencia\": false, \"atributo\": \"CDFORMACONTRATACAO\"}, {\"descricao\": \"Órgão\", \"observacao\": \"É a denominação dada às unidades administrativas responsáveis pelo desempenho das funções de governo.\", \"nomeTabela\": \"ORGAO\", \"temAnoReferencia\": true, \"atributo\": \"CDORGAO\"}, {\"descricao\": \"Tipo de Contrato\", \"observacao\": null, \"nomeTabela\": \"TIPOCONTRATO\", \"temAnoReferencia\": false, \"atributo\": \"CDTIPOCONTRATO\"}, {\"descricao\": \"Tipo de Objeto de Contrato\", \"observacao\": null, \"nomeTabela\": \"TIPOOBJETOCONTRATO\", \"temAnoReferencia\": false, \"atributo\": \"CDTIPOOBJETOCONTRATO\"}, {\"descricao\": \"Unidade Gestora\", \"observacao\": \"É uma unidade investida do poder de gerir recursos orçamentários e financeiros para a realização de despesas.\", \"nomeTabela\": \"UNIDADEGESTORA\", \"temAnoReferencia\": true, \"atributo\": \"CDUNIDADEGESTORA\"}]",
+    "request": {
+      "method": "GET",
+      "path": "/filtro/contratos/filtros?funcao=fornecedores",
+      "payload": {}
+    },
+    "sha256": "9fc33144cb84670fdabf144cc4e5fe57154eb3efc4579641936ad9105be8be19",
+    "status": 200,
+    "type": "list"
+  },
+  "4_POST_/contratos/gridDetalhada?pagina=1": {
+    "error": "ReadTimeout: The read operation timed out",
+    "request": {
+      "method": "POST",
+      "path": "/contratos/gridDetalhada?pagina=1",
+      "payload": {
+        "agrupamentos": [],
+        "dataFim": "2026-08-17",
+        "dataInicio": "2026-01-01",
+        "filtros": []
+      }
+    }
+  },
+  "5_POST_/contratos/gridDetalhadaDocumento?pagina=1": {
+    "error": "ReadTimeout: The read operation timed out",
+    "request": {
+      "method": "POST",
+      "path": "/contratos/gridDetalhadaDocumento?pagina=1",
+      "payload": {
+        "agrupamentos": [],
+        "dataFim": "2026-08-17",
+        "dataInicio": "2026-01-01",
+        "filtros": []
+      }
+    }
+  }
+}
