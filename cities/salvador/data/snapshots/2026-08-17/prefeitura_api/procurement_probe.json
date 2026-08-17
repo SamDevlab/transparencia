@@ -1,0 +1,424 @@
+{
+  "page1_empty": {
+    "bytes": 126,
+    "count": 0,
+    "first_rows": [],
+    "json_preview": "{\"dados\": [], \"totalizadores\": {\"Valor\": \"0,00\"}, \"paginacao\": {\"tamanho\": 10, \"paginaAtual\": 1, \"totalPagina\": 0, \"paginas\": 0, \"total\": 0}}",
+    "list_key": "dados",
+    "paginacao": {
+      "paginaAtual": 1,
+      "paginas": 0,
+      "tamanho": 10,
+      "total": 0,
+      "totalPagina": 0
+    },
+    "payload": {},
+    "sha256": "b2c582757b890fb29e7eecb8796845f2d54a1f23d1543b279af735c5c4f5329d",
+    "status": 200,
+    "top_level_keys": [
+      "dados",
+      "paginacao",
+      "totalizadores"
+    ],
+    "totalizadores": {
+      "Valor": "0,00"
+    },
+    "type": "dict"
+  },
+  "page1_iso": {
+    "bytes": 8017,
+    "count": 10,
+    "first_rows": [
+      {
+        "cdModalidadeLicitacao": "44",
+        "cdOrgao": "24000",
+        "cdUnidadeGestora": "246002",
+        "dsFundamentacaoCompraDireta": null,
+        "dsModalidadeLicitacao": "Concorrência Lei 14.133/21",
+        "dsObjeto": "Aquisição de maquina fragmentadora de papel mínimo 24 folhas.",
+        "dsOrgao": "Casa Civil",
+        "dsTipoAquisica": "LICITAÇÂO",
+        "dsUnidadeGestora": "ARSAL",
+        "dtAquisicao": "12/06/2026",
+        "dtPublicacao": "17/06/2026",
+        "id": "0e51e084-aaab-4a76-9add-e3ee09a26873",
+        "nuAquisicao": "0001722025",
+        "nuDom": "9280",
+        "nuModalidadeSigef": "2026ML000002",
+        "nuProcesso": "0393522026",
+        "sgOrgao": "CASA CIVIL",
+        "vlAquisicao": "2.079,00"
+      },
+      {
+        "cdModalidadeLicitacao": "50",
+        "cdOrgao": "24000",
+        "cdUnidadeGestora": "240002",
+        "dsFundamentacaoCompraDireta": null,
+        "dsModalidadeLicitacao": "Recursos de Organismos Internacionais Lei 14.133",
+        "dsObjeto": "Contratação de empresa especializada para ministrar cursos voltados ao aprimoramento profissional dos servidores que atuam no Sistema de Controle Interno da Prefeitura Municipal do Salvador. Projeto Salvador Social Fase II BIRD 9162-BR.",
+        "dsOrgao": "Casa Civil",
+        "dsTipoAquisica": "LICITAÇÂO",
+        "dsUnidadeGestora": "CASA CIVIL",
+        "dtAquisicao": "15/01/2026",
+        "dtPublicacao": "16/01/2026",
+        "id": "458e443b-2b7d-40a1-9ff4-0fa3532ba118",
+        "nuAquisicao": "0000022025",
+        "nuDom": "9159",
+        "nuModalidadeSigef": "2026ML000001",
+        "nuProcesso": "1138782024",
+        "sgOrgao": "CASA CIVIL",
+        "vlAquisicao": "245.500,00"
+      },
+      {
+        "cdModalidadeLicitacao": "50",
+        "cdOrgao": "24000",
+        "cdUnidadeGestora": "240002",
+        "dsFundamentacaoCompraDireta": null,
+        "dsModalidadeLicitacao": "Recursos de Organismos Internacionais Lei 14.133",
+        "dsObjeto": "Aquisição de mobiliários para ampliação, requalificação e modernização da sala de situação da Secretaria Municipal da Saúde do Salvador. Projeto Salvador Social Fase II, Contrato de Emprestimo BIRD 9162-BR.  PE 05/2025 - Edital SDO 05/2025 por lote. PR 151260/2025.",
+        "dsOrgao": "Casa Civil",
+        "dsTipoAquisica": "LICITAÇÂO",
+        "dsUnidadeGestora": "CASA CIVIL",
+        "dtAquisicao": "12/02/2026",
+        "dtPublicacao": "06/02/2026",
+        "id": "ad619a48-9f37-4016-bd4c-064da000de1c",
+        "nuAquisicao": "0000052025",
+        "nuDom": "9189",
+        "nuModalidadeSigef": "2026ML000002",
+        "nuProcesso": "1512602025",
+        "sgOrgao": "CASA CIVIL",
+        "vlAquisicao": "3.308.599,90"
+      }
+    ],
+    "json_preview": "{\"dados\": [{\"id\": \"0e51e084-aaab-4a76-9add-e3ee09a26873\", \"nuModalidadeSigef\": \"2026ML000002\", \"cdUnidadeGestora\": \"246002\", \"dsUnidadeGestora\": \"ARSAL\", \"nuAquisicao\": \"0001722025\", \"cdModalidadeLicitacao\": \"44\", \"dsModalidadeLicitacao\": \"Concorrência Lei 14.133/21\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"0393522026\", \"nuDom\": \"9280\", \"dtPublicacao\": \"17/06/2026\", \"dtAquisicao\": \"12/06/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Aquisição de maquina fragmentadora de papel mínimo 24 folhas.\", \"vlAquisicao\": \"2.079,00\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"458e443b-2b7d-40a1-9ff4-0fa3532ba118\", \"nuModalidadeSigef\": \"2026ML000001\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000022025\", \"cdModalidadeLicitacao\": \"50\", \"dsModalidadeLicitacao\": \"Recursos de Organismos Internacionais Lei 14.133\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"1138782024\", \"nuDom\": \"9159\", \"dtPublicacao\": \"16/01/2026\", \"dtAquisicao\": \"15/01/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Contratação de empresa especializada para ministrar cursos voltados ao aprimoramento profissional dos servidores que atuam no Sistema de Controle Interno da Prefeitura Municipal do Salvador. Projeto Salvador Social Fase II BIRD 9162-BR.\", \"vlAquisicao\": \"245.500,00\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"ad619a48-9f37-4016-bd4c-064da000de1c\", \"nuModalidadeSigef\": \"2026ML000002\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000052025\", \"cdModalidadeLicitacao\": \"50\", \"dsModalidadeLicitacao\": \"Recursos de Organismos Internacionais Lei 14.133\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"1512602025\", \"nuDom\": \"9189\", \"dtPublicacao\": \"06/02/2026\", \"dtAquisicao\": \"12/02/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Aquisição de mobiliários para ampliação, requalificação e modernização da sala de situação da Secretaria Municipal da Saúde do Salvador. Projeto Salvador Social Fase II, Contrato de Emprestimo BIRD 9162-BR.  PE 05/2025 - Edital SDO 05/2025 por lote. PR 151260/2025.\", \"vlAquisicao\": \"3.308.599,90\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"324ba2b7-3a5a-4377-8857-60075b0e1dae\", \"nuModalidadeSigef\": \"2026ML000005\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000022026\", \"cdModalidadeLicitacao\": \"50\", \"dsModalidadeLicitacao\": \"Recursos de Organismos Internacionais Lei 14.133\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"1512542025\", \"nuDom\": \"9217-9218\", \"dtPublicacao\": \"13/03/2026\", \"dtAquisicao\": \"13/03/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Aquisição de microcomputadores, notebooks, servidores e equipamentos de informática para compor e centro de controle de inteligencia situacional da Secretaria Municipal da Saúde do Salvador. Projeto Salvador Social Fase II, Contrato de Emprestimo BIRD 9162-BR.  PE 02/2026 - Edital SDO 02/2026 por lote. PR 151254/2025.\", \"vlAquisicao\": \"8.304.996,67\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"a302af60-7854-49d3-85c2-b1a94a98698b\", \"nuModalidadeSigef\": \"2026ML000006\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000012026\", \"cdModalidadeLicitacao\": \"50\", \"dsModalidadeLicitacao\": \"Recursos de Organismos Internacionais Lei 14.133\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"1034562025\", \"nuDom\": \"9215-9220-9221\", \"dtPublicacao\": \"18/03/2026\", \"dtAquisicao\": \"18/03/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Aquisição de equipamentos para modernização tecnologica da Secretaria Municipal de Promoção Social, Combate à Pobreza, Esportes e Lazer - SEMPRRE. Projeto Salvador Social Fase II, Contrato de Emprestimo BIRD 9162-BR.  PE 01/2026 - Edital SDO 01/2026 por lote. PR 103456/2025.\", \"vlAquisicao\": \"399.104,98\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"02ebcdf8-c146-4975-b3e5-7aac1d3155b6\", \"nuModalidadeSigef\": \"2026ML000007\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000012026\", \"cdModalidadeLicitacao\": \"50\", \"dsModalidadeLicitacao\": \"Recursos de Organismos Internacionais Lei 14.133\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"2382292025\", \"nuDom\": \"9231\", \"dtPublicacao\": \"18/03/2026\", \"dtAquisicao\": \"19/03/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Aquisições de equipamentos de informática para modernização tecnológica da UGP e da Casa Civil - Prefeitura Municipal do Salvador. Projeto Salvador Social Fase II, Contrato de Emprestimo BIRD 9162-BR. Edital SDO 01/2026 - PR 238229/2025.\", \"vlAquisicao\": \"433.059,99\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"b882a745-5e31-4ec3-867a-c470352310c6\", \"nuModalidadeSigef\": \"2026ML000010\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000012025\", \"cdModalidadeLicitacao\": \"52\", \"dsModalidadeLicitacao\": \"PREGÃO PRESENCIAL Lei14.133/21\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"1268922025\", \"nuDom\": \"9187\", \"dtPublicacao\": \"03/04/2026\", \"dtAquisicao\": \"13/04/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Contratação de empresa especializada na prestação de serviços de auditoria externa independente com o foco na documentação, nos registros e relatórios do Programa de Inclusão Social e Territorial de Salvador-Ba apresentando 3 (três) Relatórios contendo parecer profissional dos auditores independentes no que se refere às informações financeiras e operacionais exercícios 2025, 2026 e 2027.\", \"vlAquisicao\": \"33.000,00\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"8256887e-c064-40b3-ab11-bf9d718f901d\", \"nuModalidadeSigef\": \"2026ML000011\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000012026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"0330912026\", \"nuDom\": \"9245\", \"dtPublicacao\": \"09/04/2026\", \"dtAquisicao\": \"09/04/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Aquisição de mobiliário, visando atender às necessidades administrativas da Casa Civil da Prefeitura Municipal de Salvador, conforme especificação técnica.\\r\\nPR 33091-2026 - Dispensa 01/2026\", \"vlAquisicao\": \"18.090,86\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"6cfb13a8-c4a0-4371-867b-46590cb93a8b\", \"nuModalidadeSigef\": \"2026ML000012\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000012026\", \"cdModalidadeLicitacao\": \"6\", \"dsModalidadeLicitacao\": \"Licitação Inexigível\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"0780042026\", \"nuDom\": \"9255\", \"dtPublicacao\": \"27/04/2026\", \"dtAquisicao\": \"05/05/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso III f)\", \"dsObjeto\": \"Valor para atender inscrição dos servidores Moysés de Oliveira Andrade Júnior, Subchefe desta Casa Civil, matrícula nº 3117405, e Renata Guimarães Camelyer, Gerente de Projetos Estratégicos III, matrícula nº 3117863, no curso ¿IA Aplicada aos Negócios¿, a ser realizado no período de 25 a 28 de maio de 2026, promovido pelo Insper Educação Executiva. PR 788004/2026 - Inexigibilidade 01/2026.\", \"vlAquisicao\": \"14.850,00\", \"dsTipoAquisica\": \"INEXIGIBILIDADE\"}, {\"id\": \"bcd7d960-c1c2-4879-b04c-2d66ab72d7c1\", \"nuModalidadeSigef\": \"2026ML000014\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000032026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"0894482026\", \"nuDom\": \"9301\", \"dtPublicacao\": \"07/07/2026\", \"dtAquisicao\": \"07/07/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Serviço de aquisição de peças com reposição para a central de condicionador de ar do tipo VRF, para atender está Casa Civil.\", \"vlAquisicao\": \"42.969,27\", \"dsTipoAquisica\": \"DISPENSA\"}], \"totalizadores\": {\"Valor\": \"3.566.352.927,80\"}, \"paginacao\": {\"tamanho\": 10, \"paginaAtual\": 1, \"totalPagina\": 10, \"paginas\": 231, \"total\": 2306}}",
+    "list_key": "dados",
+    "paginacao": {
+      "paginaAtual": 1,
+      "paginas": 231,
+      "tamanho": 10,
+      "total": 2306,
+      "totalPagina": 10
+    },
+    "payload": {
+      "agrupamentos": [],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "sha256": "78fe47bfd520b803d17add0f6b554ad59b9c82e1780973332b9f1e2eb4eff20b",
+    "status": 200,
+    "top_level_keys": [
+      "dados",
+      "paginacao",
+      "totalizadores"
+    ],
+    "totalizadores": {
+      "Valor": "3.566.352.927,80"
+    },
+    "type": "dict"
+  },
+  "page1_iso_order": {
+    "bytes": 8017,
+    "count": 10,
+    "first_rows": [
+      {
+        "cdModalidadeLicitacao": "44",
+        "cdOrgao": "24000",
+        "cdUnidadeGestora": "246002",
+        "dsFundamentacaoCompraDireta": null,
+        "dsModalidadeLicitacao": "Concorrência Lei 14.133/21",
+        "dsObjeto": "Aquisição de maquina fragmentadora de papel mínimo 24 folhas.",
+        "dsOrgao": "Casa Civil",
+        "dsTipoAquisica": "LICITAÇÂO",
+        "dsUnidadeGestora": "ARSAL",
+        "dtAquisicao": "12/06/2026",
+        "dtPublicacao": "17/06/2026",
+        "id": "317ec2ef-cd48-42b6-9053-f32b599d6a88",
+        "nuAquisicao": "0001722025",
+        "nuDom": "9280",
+        "nuModalidadeSigef": "2026ML000002",
+        "nuProcesso": "0393522026",
+        "sgOrgao": "CASA CIVIL",
+        "vlAquisicao": "2.079,00"
+      },
+      {
+        "cdModalidadeLicitacao": "50",
+        "cdOrgao": "24000",
+        "cdUnidadeGestora": "240002",
+        "dsFundamentacaoCompraDireta": null,
+        "dsModalidadeLicitacao": "Recursos de Organismos Internacionais Lei 14.133",
+        "dsObjeto": "Contratação de empresa especializada para ministrar cursos voltados ao aprimoramento profissional dos servidores que atuam no Sistema de Controle Interno da Prefeitura Municipal do Salvador. Projeto Salvador Social Fase II BIRD 9162-BR.",
+        "dsOrgao": "Casa Civil",
+        "dsTipoAquisica": "LICITAÇÂO",
+        "dsUnidadeGestora": "CASA CIVIL",
+        "dtAquisicao": "15/01/2026",
+        "dtPublicacao": "16/01/2026",
+        "id": "a6831767-325c-4571-a5a0-317ad9ef09da",
+        "nuAquisicao": "0000022025",
+        "nuDom": "9159",
+        "nuModalidadeSigef": "2026ML000001",
+        "nuProcesso": "1138782024",
+        "sgOrgao": "CASA CIVIL",
+        "vlAquisicao": "245.500,00"
+      },
+      {
+        "cdModalidadeLicitacao": "50",
+        "cdOrgao": "24000",
+        "cdUnidadeGestora": "240002",
+        "dsFundamentacaoCompraDireta": null,
+        "dsModalidadeLicitacao": "Recursos de Organismos Internacionais Lei 14.133",
+        "dsObjeto": "Aquisição de mobiliários para ampliação, requalificação e modernização da sala de situação da Secretaria Municipal da Saúde do Salvador. Projeto Salvador Social Fase II, Contrato de Emprestimo BIRD 9162-BR.  PE 05/2025 - Edital SDO 05/2025 por lote. PR 151260/2025.",
+        "dsOrgao": "Casa Civil",
+        "dsTipoAquisica": "LICITAÇÂO",
+        "dsUnidadeGestora": "CASA CIVIL",
+        "dtAquisicao": "12/02/2026",
+        "dtPublicacao": "06/02/2026",
+        "id": "ea02b47b-f003-47e3-bd57-cc96800928c4",
+        "nuAquisicao": "0000052025",
+        "nuDom": "9189",
+        "nuModalidadeSigef": "2026ML000002",
+        "nuProcesso": "1512602025",
+        "sgOrgao": "CASA CIVIL",
+        "vlAquisicao": "3.308.599,90"
+      }
+    ],
+    "json_preview": "{\"dados\": [{\"id\": \"317ec2ef-cd48-42b6-9053-f32b599d6a88\", \"nuModalidadeSigef\": \"2026ML000002\", \"cdUnidadeGestora\": \"246002\", \"dsUnidadeGestora\": \"ARSAL\", \"nuAquisicao\": \"0001722025\", \"cdModalidadeLicitacao\": \"44\", \"dsModalidadeLicitacao\": \"Concorrência Lei 14.133/21\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"0393522026\", \"nuDom\": \"9280\", \"dtPublicacao\": \"17/06/2026\", \"dtAquisicao\": \"12/06/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Aquisição de maquina fragmentadora de papel mínimo 24 folhas.\", \"vlAquisicao\": \"2.079,00\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"a6831767-325c-4571-a5a0-317ad9ef09da\", \"nuModalidadeSigef\": \"2026ML000001\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000022025\", \"cdModalidadeLicitacao\": \"50\", \"dsModalidadeLicitacao\": \"Recursos de Organismos Internacionais Lei 14.133\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"1138782024\", \"nuDom\": \"9159\", \"dtPublicacao\": \"16/01/2026\", \"dtAquisicao\": \"15/01/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Contratação de empresa especializada para ministrar cursos voltados ao aprimoramento profissional dos servidores que atuam no Sistema de Controle Interno da Prefeitura Municipal do Salvador. Projeto Salvador Social Fase II BIRD 9162-BR.\", \"vlAquisicao\": \"245.500,00\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"ea02b47b-f003-47e3-bd57-cc96800928c4\", \"nuModalidadeSigef\": \"2026ML000002\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000052025\", \"cdModalidadeLicitacao\": \"50\", \"dsModalidadeLicitacao\": \"Recursos de Organismos Internacionais Lei 14.133\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"1512602025\", \"nuDom\": \"9189\", \"dtPublicacao\": \"06/02/2026\", \"dtAquisicao\": \"12/02/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Aquisição de mobiliários para ampliação, requalificação e modernização da sala de situação da Secretaria Municipal da Saúde do Salvador. Projeto Salvador Social Fase II, Contrato de Emprestimo BIRD 9162-BR.  PE 05/2025 - Edital SDO 05/2025 por lote. PR 151260/2025.\", \"vlAquisicao\": \"3.308.599,90\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"1d9c12e3-b7a4-43be-bb54-e668374e55e9\", \"nuModalidadeSigef\": \"2026ML000005\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000022026\", \"cdModalidadeLicitacao\": \"50\", \"dsModalidadeLicitacao\": \"Recursos de Organismos Internacionais Lei 14.133\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"1512542025\", \"nuDom\": \"9217-9218\", \"dtPublicacao\": \"13/03/2026\", \"dtAquisicao\": \"13/03/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Aquisição de microcomputadores, notebooks, servidores e equipamentos de informática para compor e centro de controle de inteligencia situacional da Secretaria Municipal da Saúde do Salvador. Projeto Salvador Social Fase II, Contrato de Emprestimo BIRD 9162-BR.  PE 02/2026 - Edital SDO 02/2026 por lote. PR 151254/2025.\", \"vlAquisicao\": \"8.304.996,67\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"7c86b449-8506-4518-a6c2-338f1f75cc3a\", \"nuModalidadeSigef\": \"2026ML000006\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000012026\", \"cdModalidadeLicitacao\": \"50\", \"dsModalidadeLicitacao\": \"Recursos de Organismos Internacionais Lei 14.133\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"1034562025\", \"nuDom\": \"9215-9220-9221\", \"dtPublicacao\": \"18/03/2026\", \"dtAquisicao\": \"18/03/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Aquisição de equipamentos para modernização tecnologica da Secretaria Municipal de Promoção Social, Combate à Pobreza, Esportes e Lazer - SEMPRRE. Projeto Salvador Social Fase II, Contrato de Emprestimo BIRD 9162-BR.  PE 01/2026 - Edital SDO 01/2026 por lote. PR 103456/2025.\", \"vlAquisicao\": \"399.104,98\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"7b0e9281-72b7-4fc6-b4a9-9d9de3379d45\", \"nuModalidadeSigef\": \"2026ML000007\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000012026\", \"cdModalidadeLicitacao\": \"50\", \"dsModalidadeLicitacao\": \"Recursos de Organismos Internacionais Lei 14.133\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"2382292025\", \"nuDom\": \"9231\", \"dtPublicacao\": \"18/03/2026\", \"dtAquisicao\": \"19/03/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Aquisições de equipamentos de informática para modernização tecnológica da UGP e da Casa Civil - Prefeitura Municipal do Salvador. Projeto Salvador Social Fase II, Contrato de Emprestimo BIRD 9162-BR. Edital SDO 01/2026 - PR 238229/2025.\", \"vlAquisicao\": \"433.059,99\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"3ec42551-e4dc-49c2-81bf-b141a2b1e106\", \"nuModalidadeSigef\": \"2026ML000010\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000012025\", \"cdModalidadeLicitacao\": \"52\", \"dsModalidadeLicitacao\": \"PREGÃO PRESENCIAL Lei14.133/21\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"1268922025\", \"nuDom\": \"9187\", \"dtPublicacao\": \"03/04/2026\", \"dtAquisicao\": \"13/04/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Contratação de empresa especializada na prestação de serviços de auditoria externa independente com o foco na documentação, nos registros e relatórios do Programa de Inclusão Social e Territorial de Salvador-Ba apresentando 3 (três) Relatórios contendo parecer profissional dos auditores independentes no que se refere às informações financeiras e operacionais exercícios 2025, 2026 e 2027.\", \"vlAquisicao\": \"33.000,00\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"0f3327a3-86c9-4f24-9648-24e3be003c3d\", \"nuModalidadeSigef\": \"2026ML000011\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000012026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"0330912026\", \"nuDom\": \"9245\", \"dtPublicacao\": \"09/04/2026\", \"dtAquisicao\": \"09/04/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Aquisição de mobiliário, visando atender às necessidades administrativas da Casa Civil da Prefeitura Municipal de Salvador, conforme especificação técnica.\\r\\nPR 33091-2026 - Dispensa 01/2026\", \"vlAquisicao\": \"18.090,86\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"6060c90d-7418-4c9b-aac3-8711820dd2a3\", \"nuModalidadeSigef\": \"2026ML000012\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000012026\", \"cdModalidadeLicitacao\": \"6\", \"dsModalidadeLicitacao\": \"Licitação Inexigível\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"0780042026\", \"nuDom\": \"9255\", \"dtPublicacao\": \"27/04/2026\", \"dtAquisicao\": \"05/05/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso III f)\", \"dsObjeto\": \"Valor para atender inscrição dos servidores Moysés de Oliveira Andrade Júnior, Subchefe desta Casa Civil, matrícula nº 3117405, e Renata Guimarães Camelyer, Gerente de Projetos Estratégicos III, matrícula nº 3117863, no curso ¿IA Aplicada aos Negócios¿, a ser realizado no período de 25 a 28 de maio de 2026, promovido pelo Insper Educação Executiva. PR 788004/2026 - Inexigibilidade 01/2026.\", \"vlAquisicao\": \"14.850,00\", \"dsTipoAquisica\": \"INEXIGIBILIDADE\"}, {\"id\": \"ea644708-0baf-489c-9c0b-4cfd8255c463\", \"nuModalidadeSigef\": \"2026ML000014\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000032026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"0894482026\", \"nuDom\": \"9301\", \"dtPublicacao\": \"07/07/2026\", \"dtAquisicao\": \"07/07/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Serviço de aquisição de peças com reposição para a central de condicionador de ar do tipo VRF, para atender está Casa Civil.\", \"vlAquisicao\": \"42.969,27\", \"dsTipoAquisica\": \"DISPENSA\"}], \"totalizadores\": {\"Valor\": \"3.566.352.927,80\"}, \"paginacao\": {\"tamanho\": 10, \"paginaAtual\": 1, \"totalPagina\": 10, \"paginas\": 231, \"total\": 2306}}",
+    "list_key": "dados",
+    "paginacao": {
+      "paginaAtual": 1,
+      "paginas": 231,
+      "tamanho": 10,
+      "total": 2306,
+      "totalPagina": 10
+    },
+    "payload": {
+      "agrupamentos": [],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": [],
+      "ordenarPor": ""
+    },
+    "sha256": "6b120f3b6d87a396bdcea5f8e2fc68a8b3405ea45ebc668706363c02f7876aef",
+    "status": 200,
+    "top_level_keys": [
+      "dados",
+      "paginacao",
+      "totalizadores"
+    ],
+    "totalizadores": {
+      "Valor": "3.566.352.927,80"
+    },
+    "type": "dict"
+  },
+  "page2_empty": {
+    "bytes": 126,
+    "count": 0,
+    "first_rows": [],
+    "json_preview": "{\"dados\": [], \"totalizadores\": {\"Valor\": \"0,00\"}, \"paginacao\": {\"tamanho\": 10, \"paginaAtual\": 2, \"totalPagina\": 0, \"paginas\": 0, \"total\": 0}}",
+    "list_key": "dados",
+    "paginacao": {
+      "paginaAtual": 2,
+      "paginas": 0,
+      "tamanho": 10,
+      "total": 0,
+      "totalPagina": 0
+    },
+    "payload": {},
+    "sha256": "00029b22e6d5f7ba9a246cab5d17c0141ef58eb855fffd289c2b431c49af1959",
+    "status": 200,
+    "top_level_keys": [
+      "dados",
+      "paginacao",
+      "totalizadores"
+    ],
+    "totalizadores": {
+      "Valor": "0,00"
+    },
+    "type": "dict"
+  },
+  "page2_iso": {
+    "bytes": 7719,
+    "count": 10,
+    "first_rows": [
+      {
+        "cdModalidadeLicitacao": "5",
+        "cdOrgao": "24000",
+        "cdUnidadeGestora": "240002",
+        "dsFundamentacaoCompraDireta": "Inciso II",
+        "dsModalidadeLicitacao": "Dispensa de Licitação",
+        "dsObjeto": "Contratação de empresa especializada em serviço de manutenção preventiva e corretiva em aparelhos, condicionadores de ar 31 e condensadoras 04 VRF, para atender a Casa Civil pelo período de 12 meses.",
+        "dsOrgao": "Casa Civil",
+        "dsTipoAquisica": "DISPENSA",
+        "dsUnidadeGestora": "CASA CIVIL",
+        "dtAquisicao": "03/08/2026",
+        "dtPublicacao": "03/08/2026",
+        "id": "f62baaac-b780-41b9-886b-25177ba6a133",
+        "nuAquisicao": "0000042026",
+        "nuDom": "9320",
+        "nuModalidadeSigef": "2026ML000015",
+        "nuProcesso": "1330612026",
+        "sgOrgao": "CASA CIVIL",
+        "vlAquisicao": "52.692,00"
+      },
+      {
+        "cdModalidadeLicitacao": "53",
+        "cdOrgao": "62000",
+        "cdUnidadeGestora": "620002",
+        "dsFundamentacaoCompraDireta": null,
+        "dsModalidadeLicitacao": "PREGÃO ELETRONICO Lei14.133/21",
+        "dsObjeto": "Prestação de Serviço Especializado em Tecnologia da Informação para a Realização de Planejamento, Execução (em linguagem de código aberto) e Implantação de Sistema Informatizado para ações de  onitoramento, avaliação e controle da Prefeitura Municipal de Salvador (Portal de Controle), em Regime deFábrica de Software, mediante ordens de serviço dimensionadas em Pontos de Função - PF.",
+        "dsOrgao": "Controladoria Geral do Município de Salvador",
+        "dsTipoAquisica": "LICITAÇÂO",
+        "dsUnidadeGestora": "CGM",
+        "dtAquisicao": "13/01/2026",
+        "dtPublicacao": "13/01/2026",
+        "id": "b44a64d6-3c1f-4bee-8c70-4ae732addaa5",
+        "nuAquisicao": "0000032024",
+        "nuDom": "123",
+        "nuModalidadeSigef": "2026ML000002",
+        "nuProcesso": "2219492025",
+        "sgOrgao": "CGM",
+        "vlAquisicao": "504.378,00"
+      },
+      {
+        "cdModalidadeLicitacao": "5",
+        "cdOrgao": "62000",
+        "cdUnidadeGestora": "620002",
+        "dsFundamentacaoCompraDireta": "Inciso II",
+        "dsModalidadeLicitacao": "Dispensa de Licitação",
+        "dsObjeto": "ADESÃO A ATA 187/2025 - AQUISIÇÃO DE TV DE 32 E 65 POLEGADAS",
+        "dsOrgao": "Controladoria Geral do Município de Salvador",
+        "dsTipoAquisica": "DISPENSA",
+        "dsUnidadeGestora": "CGM",
+        "dtAquisicao": "24/02/2026",
+        "dtPublicacao": "24/02/2026",
+        "id": "8b27a55d-db9b-4508-8bea-cb5faf3648a8",
+        "nuAquisicao": "0000022026",
+        "nuDom": "123",
+        "nuModalidadeSigef": "2026ML000003",
+        "nuProcesso": "0031622026",
+        "sgOrgao": "CGM",
+        "vlAquisicao": "4.492,00"
+      }
+    ],
+    "json_preview": "{\"dados\": [{\"id\": \"f62baaac-b780-41b9-886b-25177ba6a133\", \"nuModalidadeSigef\": \"2026ML000015\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000042026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"1330612026\", \"nuDom\": \"9320\", \"dtPublicacao\": \"03/08/2026\", \"dtAquisicao\": \"03/08/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Contratação de empresa especializada em serviço de manutenção preventiva e corretiva em aparelhos, condicionadores de ar 31 e condensadoras 04 VRF, para atender a Casa Civil pelo período de 12 meses.\", \"vlAquisicao\": \"52.692,00\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"b44a64d6-3c1f-4bee-8c70-4ae732addaa5\", \"nuModalidadeSigef\": \"2026ML000002\", \"cdUnidadeGestora\": \"620002\", \"dsUnidadeGestora\": \"CGM\", \"nuAquisicao\": \"0000032024\", \"cdModalidadeLicitacao\": \"53\", \"dsModalidadeLicitacao\": \"PREGÃO ELETRONICO Lei14.133/21\", \"cdOrgao\": \"62000\", \"dsOrgao\": \"Controladoria Geral do Município de Salvador\", \"sgOrgao\": \"CGM\", \"nuProcesso\": \"2219492025\", \"nuDom\": \"123\", \"dtPublicacao\": \"13/01/2026\", \"dtAquisicao\": \"13/01/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Prestação de Serviço Especializado em Tecnologia da Informação para a Realização de Planejamento, Execução (em linguagem de código aberto) e Implantação de Sistema Informatizado para ações de  onitoramento, avaliação e controle da Prefeitura Municipal de Salvador (Portal de Controle), em Regime deFábrica de Software, mediante ordens de serviço dimensionadas em Pontos de Função - PF.\", \"vlAquisicao\": \"504.378,00\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"8b27a55d-db9b-4508-8bea-cb5faf3648a8\", \"nuModalidadeSigef\": \"2026ML000003\", \"cdUnidadeGestora\": \"620002\", \"dsUnidadeGestora\": \"CGM\", \"nuAquisicao\": \"0000022026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"62000\", \"dsOrgao\": \"Controladoria Geral do Município de Salvador\", \"sgOrgao\": \"CGM\", \"nuProcesso\": \"0031622026\", \"nuDom\": \"123\", \"dtPublicacao\": \"24/02/2026\", \"dtAquisicao\": \"24/02/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"ADESÃO A ATA 187/2025 - AQUISIÇÃO DE TV DE 32 E 65 POLEGADAS\", \"vlAquisicao\": \"4.492,00\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"1b32c6b6-3bd6-4347-a0d7-df4b83d03735\", \"nuModalidadeSigef\": \"2026ML000004\", \"cdUnidadeGestora\": \"620002\", \"dsUnidadeGestora\": \"CGM\", \"nuAquisicao\": \"0010052026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"62000\", \"dsOrgao\": \"Controladoria Geral do Município de Salvador\", \"sgOrgao\": \"CGM\", \"nuProcesso\": \"0573932026\", \"nuDom\": \"123\", \"dtPublicacao\": \"26/03/2026\", \"dtAquisicao\": \"26/03/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"PAGAMENTO ANUIDADE 2026 CONACI\", \"vlAquisicao\": \"30.000,00\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"d493e419-943a-4e86-b589-922d31c5cf99\", \"nuModalidadeSigef\": \"2026ML000006\", \"cdUnidadeGestora\": \"620002\", \"dsUnidadeGestora\": \"CGM\", \"nuAquisicao\": \"0000012026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"62000\", \"dsOrgao\": \"Controladoria Geral do Município de Salvador\", \"sgOrgao\": \"CGM\", \"nuProcesso\": \"2205872025\", \"nuDom\": \"9233\", \"dtPublicacao\": \"20/03/2026\", \"dtAquisicao\": \"20/03/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Aquisição de eletrodomésticos, rádios comunicadores e carrinho tipo compras objetivando atender às necessidades operacionais da Controladoria Geral do Município de Salvador ¿ CGM, conforme condições, quantidades e exigências estabelecidas no Aviso de Contratação Direta nº 001/2026 e seus anexos.\", \"vlAquisicao\": \"22.209,21\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"caefb56e-c141-4096-8d93-18ef8330824e\", \"nuModalidadeSigef\": \"2026ML000007\", \"cdUnidadeGestora\": \"620002\", \"dsUnidadeGestora\": \"CGM\", \"nuAquisicao\": \"0000032026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"62000\", \"dsOrgao\": \"Controladoria Geral do Município de Salvador\", \"sgOrgao\": \"CGM\", \"nuProcesso\": \"0555162026\", \"nuDom\": \"9281\", \"dtPublicacao\": \"01/06/2026\", \"dtAquisicao\": \"01/06/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Escolha da proposta mais vantajosa para a contratação, por dispensa de licitação, visando o fornecimento e instalação de cortinas persianas horizontais em alumínio, conforme condições, quantidades e exigências estabelecidas no Aviso de Contratação Direta e seus anexos.\", \"vlAquisicao\": \"49.206,00\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"3f5b1eda-175f-4018-9803-59357f6a86cc\", \"nuModalidadeSigef\": \"2026ML000001\", \"cdUnidadeGestora\": \"430003\", \"dsUnidadeGestora\": \"CODESAL\", \"nuAquisicao\": \"0000032026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"43000\", \"dsOrgao\": \"Secretaria Municipal de Sustentabilidade, Resiliência e Bem-Estar e Proteção Animal\", \"sgOrgao\": \"SECIS\", \"nuProcesso\": \"0328942026\", \"nuDom\": \"9227\", \"dtPublicacao\": \"12/03/2026\", \"dtAquisicao\": \"11/03/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Aquisição de 6.000 ripões de madeira tipo agreste ou de pinus, conforme especificações e quantidades contidas no Termo de Referência, de acordo como o consumo realizado entre julho de 2024 a junho de 2025.\", \"vlAquisicao\": \"38.640,00\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"6677b75b-fbc7-4364-859f-2d33403bc1a5\", \"nuModalidadeSigef\": \"2026ML000002\", \"cdUnidadeGestora\": \"430003\", \"dsUnidadeGestora\": \"CODESAL\", \"nuAquisicao\": \"0000022026\", \"cdModalidadeLicitacao\": \"6\", \"dsModalidadeLicitacao\": \"Licitação Inexigível\", \"cdOrgao\": \"43000\", \"dsOrgao\": \"Secretaria Municipal de Sustentabilidade, Resiliência e Bem-Estar e Proteção Animal\", \"sgOrgao\": \"SECIS\", \"nuProcesso\": \"0666622026\", \"nuDom\": \"9245\", \"dtPublicacao\": \"09/04/2026\", \"dtAquisicao\": \"08/04/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso III f)\", \"dsObjeto\": \"Inscrição do servidor Mateus Franco Batista, matrícula nº 3153149, no Curso de Gestão Tributária de Contratos e Convênios Presencial, que será realizado nos dias 20 a 22/05/2026, na cidade de Salvador-BA.\", \"vlAquisicao\": \"3.970,00\", \"dsTipoAquisica\": \"INEXIGIBILIDADE\"}, {\"id\": \"f58b1928-99b2-4171-8712-b49ce0df80af\", \"nuModalidadeSigef\": \"2026ML000003\", \"cdUnidadeGestora\": \"430003\", \"dsUnidadeGestora\": \"CODESAL\", \"nuAquisicao\": \"0000052026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"43000\", \"dsOrgao\": \"Secretaria Municipal de Sustentabilidade, Resiliência e Bem-Estar e Proteção Animal\", \"sgOrgao\": \"SECIS\", \"nuProcesso\": \"0826742026\", \"nuDom\": \"9270\", \"dtPublicacao\": \"19/05/2026\", \"dtAquisicao\": \"14/05/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Aquisição de 27 BANNERS e 5.000 LIVROS PARA COLORIR, conforme especificações e quantidades contidas neste Termo de Referência.\", \"vlAquisicao\": \"29.710,00\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"6337b376-ff06-488d-9e7b-09cacffb17aa\", \"nuModalidadeSigef\": \"2026ML000004\", \"cdUnidadeGestora\": \"430003\", \"dsUnidadeGestora\": \"CODESAL\", \"nuAquisicao\": \"0000062026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"43000\", \"dsOrgao\": \"Secretaria Municipal de Sustentabilidade, Resiliência e Bem-Estar e Proteção Animal\", \"sgOrgao\": \"SECIS\", \"nuProcesso\": \"0936402026\", \"nuDom\": \"9300\", \"dtPublicacao\": \"04/07/2026\", \"dtAquisicao\": \"01/07/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Aquisição de 01 (um) conjunto de equipamentos de georreferenciamento de alta precisdo (GNSS RTK), destinado a realização de levantamentos topogréficos e geoespaciais em campo.\", \"vlAquisicao\": \"48.045,99\", \"dsTipoAquisica\": \"DISPENSA\"}], \"totalizadores\": {\"Valor\": \"3.566.352.927,80\"}, \"paginacao\": {\"tamanho\": 10, \"paginaAtual\": 2, \"totalPagina\": 10, \"paginas\": 231, \"total\": 2306}}",
+    "list_key": "dados",
+    "paginacao": {
+      "paginaAtual": 2,
+      "paginas": 231,
+      "tamanho": 10,
+      "total": 2306,
+      "totalPagina": 10
+    },
+    "payload": {
+      "agrupamentos": [],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "sha256": "afd71306d68c54d240c7e1ba2db736b0df3b03a4da664e4a8d031614258401ec",
+    "status": 200,
+    "top_level_keys": [
+      "dados",
+      "paginacao",
+      "totalizadores"
+    ],
+    "totalizadores": {
+      "Valor": "3.566.352.927,80"
+    },
+    "type": "dict"
+  },
+  "page2_iso_order": {
+    "bytes": 7719,
+    "count": 10,
+    "first_rows": [
+      {
+        "cdModalidadeLicitacao": "5",
+        "cdOrgao": "24000",
+        "cdUnidadeGestora": "240002",
+        "dsFundamentacaoCompraDireta": "Inciso II",
+        "dsModalidadeLicitacao": "Dispensa de Licitação",
+        "dsObjeto": "Contratação de empresa especializada em serviço de manutenção preventiva e corretiva em aparelhos, condicionadores de ar 31 e condensadoras 04 VRF, para atender a Casa Civil pelo período de 12 meses.",
+        "dsOrgao": "Casa Civil",
+        "dsTipoAquisica": "DISPENSA",
+        "dsUnidadeGestora": "CASA CIVIL",
+        "dtAquisicao": "03/08/2026",
+        "dtPublicacao": "03/08/2026",
+        "id": "71ff24c1-5ae1-4d8a-bd1e-e9060ee0bf76",
+        "nuAquisicao": "0000042026",
+        "nuDom": "9320",
+        "nuModalidadeSigef": "2026ML000015",
+        "nuProcesso": "1330612026",
+        "sgOrgao": "CASA CIVIL",
+        "vlAquisicao": "52.692,00"
+      },
+      {
+        "cdModalidadeLicitacao": "53",
+        "cdOrgao": "62000",
+        "cdUnidadeGestora": "620002",
+        "dsFundamentacaoCompraDireta": null,
+        "dsModalidadeLicitacao": "PREGÃO ELETRONICO Lei14.133/21",
+        "dsObjeto": "Prestação de Serviço Especializado em Tecnologia da Informação para a Realização de Planejamento, Execução (em linguagem de código aberto) e Implantação de Sistema Informatizado para ações de  onitoramento, avaliação e controle da Prefeitura Municipal de Salvador (Portal de Controle), em Regime deFábrica de Software, mediante ordens de serviço dimensionadas em Pontos de Função - PF.",
+        "dsOrgao": "Controladoria Geral do Município de Salvador",
+        "dsTipoAquisica": "LICITAÇÂO",
+        "dsUnidadeGestora": "CGM",
+        "dtAquisicao": "13/01/2026",
+        "dtPublicacao": "13/01/2026",
+        "id": "e595c94c-a976-42c0-9aec-f9f68bdc18a3",
+        "nuAquisicao": "0000032024",
+        "nuDom": "123",
+        "nuModalidadeSigef": "2026ML000002",
+        "nuProcesso": "2219492025",
+        "sgOrgao": "CGM",
+        "vlAquisicao": "504.378,00"
+      },
+      {
+        "cdModalidadeLicitacao": "5",
+        "cdOrgao": "62000",
+        "cdUnidadeGestora": "620002",
+        "dsFundamentacaoCompraDireta": "Inciso II",
+        "dsModalidadeLicitacao": "Dispensa de Licitação",
+        "dsObjeto": "ADESÃO A ATA 187/2025 - AQUISIÇÃO DE TV DE 32 E 65 POLEGADAS",
+        "dsOrgao": "Controladoria Geral do Município de Salvador",
+        "dsTipoAquisica": "DISPENSA",
+        "dsUnidadeGestora": "CGM",
+        "dtAquisicao": "24/02/2026",
+        "dtPublicacao": "24/02/2026",
+        "id": "11ce4085-7837-4d6d-a8b1-8f123920ee49",
+        "nuAquisicao": "0000022026",
+        "nuDom": "123",
+        "nuModalidadeSigef": "2026ML000003",
+        "nuProcesso": "0031622026",
+        "sgOrgao": "CGM",
+        "vlAquisicao": "4.492,00"
+      }
+    ],
+    "json_preview": "{\"dados\": [{\"id\": \"71ff24c1-5ae1-4d8a-bd1e-e9060ee0bf76\", \"nuModalidadeSigef\": \"2026ML000015\", \"cdUnidadeGestora\": \"240002\", \"dsUnidadeGestora\": \"CASA CIVIL\", \"nuAquisicao\": \"0000042026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"24000\", \"dsOrgao\": \"Casa Civil\", \"sgOrgao\": \"CASA CIVIL\", \"nuProcesso\": \"1330612026\", \"nuDom\": \"9320\", \"dtPublicacao\": \"03/08/2026\", \"dtAquisicao\": \"03/08/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Contratação de empresa especializada em serviço de manutenção preventiva e corretiva em aparelhos, condicionadores de ar 31 e condensadoras 04 VRF, para atender a Casa Civil pelo período de 12 meses.\", \"vlAquisicao\": \"52.692,00\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"e595c94c-a976-42c0-9aec-f9f68bdc18a3\", \"nuModalidadeSigef\": \"2026ML000002\", \"cdUnidadeGestora\": \"620002\", \"dsUnidadeGestora\": \"CGM\", \"nuAquisicao\": \"0000032024\", \"cdModalidadeLicitacao\": \"53\", \"dsModalidadeLicitacao\": \"PREGÃO ELETRONICO Lei14.133/21\", \"cdOrgao\": \"62000\", \"dsOrgao\": \"Controladoria Geral do Município de Salvador\", \"sgOrgao\": \"CGM\", \"nuProcesso\": \"2219492025\", \"nuDom\": \"123\", \"dtPublicacao\": \"13/01/2026\", \"dtAquisicao\": \"13/01/2026\", \"dsFundamentacaoCompraDireta\": null, \"dsObjeto\": \"Prestação de Serviço Especializado em Tecnologia da Informação para a Realização de Planejamento, Execução (em linguagem de código aberto) e Implantação de Sistema Informatizado para ações de  onitoramento, avaliação e controle da Prefeitura Municipal de Salvador (Portal de Controle), em Regime deFábrica de Software, mediante ordens de serviço dimensionadas em Pontos de Função - PF.\", \"vlAquisicao\": \"504.378,00\", \"dsTipoAquisica\": \"LICITAÇÂO\"}, {\"id\": \"11ce4085-7837-4d6d-a8b1-8f123920ee49\", \"nuModalidadeSigef\": \"2026ML000003\", \"cdUnidadeGestora\": \"620002\", \"dsUnidadeGestora\": \"CGM\", \"nuAquisicao\": \"0000022026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"62000\", \"dsOrgao\": \"Controladoria Geral do Município de Salvador\", \"sgOrgao\": \"CGM\", \"nuProcesso\": \"0031622026\", \"nuDom\": \"123\", \"dtPublicacao\": \"24/02/2026\", \"dtAquisicao\": \"24/02/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"ADESÃO A ATA 187/2025 - AQUISIÇÃO DE TV DE 32 E 65 POLEGADAS\", \"vlAquisicao\": \"4.492,00\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"5bf7832f-8917-46fa-a011-6b40e4458aa3\", \"nuModalidadeSigef\": \"2026ML000004\", \"cdUnidadeGestora\": \"620002\", \"dsUnidadeGestora\": \"CGM\", \"nuAquisicao\": \"0010052026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"62000\", \"dsOrgao\": \"Controladoria Geral do Município de Salvador\", \"sgOrgao\": \"CGM\", \"nuProcesso\": \"0573932026\", \"nuDom\": \"123\", \"dtPublicacao\": \"26/03/2026\", \"dtAquisicao\": \"26/03/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"PAGAMENTO ANUIDADE 2026 CONACI\", \"vlAquisicao\": \"30.000,00\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"27df3152-5626-47dc-acc2-364485b9ad4b\", \"nuModalidadeSigef\": \"2026ML000006\", \"cdUnidadeGestora\": \"620002\", \"dsUnidadeGestora\": \"CGM\", \"nuAquisicao\": \"0000012026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"62000\", \"dsOrgao\": \"Controladoria Geral do Município de Salvador\", \"sgOrgao\": \"CGM\", \"nuProcesso\": \"2205872025\", \"nuDom\": \"9233\", \"dtPublicacao\": \"20/03/2026\", \"dtAquisicao\": \"20/03/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Aquisição de eletrodomésticos, rádios comunicadores e carrinho tipo compras objetivando atender às necessidades operacionais da Controladoria Geral do Município de Salvador ¿ CGM, conforme condições, quantidades e exigências estabelecidas no Aviso de Contratação Direta nº 001/2026 e seus anexos.\", \"vlAquisicao\": \"22.209,21\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"8050811a-a5a9-4c51-9048-ff484fc32865\", \"nuModalidadeSigef\": \"2026ML000007\", \"cdUnidadeGestora\": \"620002\", \"dsUnidadeGestora\": \"CGM\", \"nuAquisicao\": \"0000032026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"62000\", \"dsOrgao\": \"Controladoria Geral do Município de Salvador\", \"sgOrgao\": \"CGM\", \"nuProcesso\": \"0555162026\", \"nuDom\": \"9281\", \"dtPublicacao\": \"01/06/2026\", \"dtAquisicao\": \"01/06/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Escolha da proposta mais vantajosa para a contratação, por dispensa de licitação, visando o fornecimento e instalação de cortinas persianas horizontais em alumínio, conforme condições, quantidades e exigências estabelecidas no Aviso de Contratação Direta e seus anexos.\", \"vlAquisicao\": \"49.206,00\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"a00fce2c-13e3-4ee4-a9c8-20c31cedccab\", \"nuModalidadeSigef\": \"2026ML000001\", \"cdUnidadeGestora\": \"430003\", \"dsUnidadeGestora\": \"CODESAL\", \"nuAquisicao\": \"0000032026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"43000\", \"dsOrgao\": \"Secretaria Municipal de Sustentabilidade, Resiliência e Bem-Estar e Proteção Animal\", \"sgOrgao\": \"SECIS\", \"nuProcesso\": \"0328942026\", \"nuDom\": \"9227\", \"dtPublicacao\": \"12/03/2026\", \"dtAquisicao\": \"11/03/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Aquisição de 6.000 ripões de madeira tipo agreste ou de pinus, conforme especificações e quantidades contidas no Termo de Referência, de acordo como o consumo realizado entre julho de 2024 a junho de 2025.\", \"vlAquisicao\": \"38.640,00\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"4875d20e-5446-4d4e-9ec0-36cd255aef09\", \"nuModalidadeSigef\": \"2026ML000002\", \"cdUnidadeGestora\": \"430003\", \"dsUnidadeGestora\": \"CODESAL\", \"nuAquisicao\": \"0000022026\", \"cdModalidadeLicitacao\": \"6\", \"dsModalidadeLicitacao\": \"Licitação Inexigível\", \"cdOrgao\": \"43000\", \"dsOrgao\": \"Secretaria Municipal de Sustentabilidade, Resiliência e Bem-Estar e Proteção Animal\", \"sgOrgao\": \"SECIS\", \"nuProcesso\": \"0666622026\", \"nuDom\": \"9245\", \"dtPublicacao\": \"09/04/2026\", \"dtAquisicao\": \"08/04/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso III f)\", \"dsObjeto\": \"Inscrição do servidor Mateus Franco Batista, matrícula nº 3153149, no Curso de Gestão Tributária de Contratos e Convênios Presencial, que será realizado nos dias 20 a 22/05/2026, na cidade de Salvador-BA.\", \"vlAquisicao\": \"3.970,00\", \"dsTipoAquisica\": \"INEXIGIBILIDADE\"}, {\"id\": \"a1e2a16e-23ac-4c90-91a9-b306ad8b824e\", \"nuModalidadeSigef\": \"2026ML000003\", \"cdUnidadeGestora\": \"430003\", \"dsUnidadeGestora\": \"CODESAL\", \"nuAquisicao\": \"0000052026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"43000\", \"dsOrgao\": \"Secretaria Municipal de Sustentabilidade, Resiliência e Bem-Estar e Proteção Animal\", \"sgOrgao\": \"SECIS\", \"nuProcesso\": \"0826742026\", \"nuDom\": \"9270\", \"dtPublicacao\": \"19/05/2026\", \"dtAquisicao\": \"14/05/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Aquisição de 27 BANNERS e 5.000 LIVROS PARA COLORIR, conforme especificações e quantidades contidas neste Termo de Referência.\", \"vlAquisicao\": \"29.710,00\", \"dsTipoAquisica\": \"DISPENSA\"}, {\"id\": \"ba98fa10-9d89-4113-955f-a2c13874d5cb\", \"nuModalidadeSigef\": \"2026ML000004\", \"cdUnidadeGestora\": \"430003\", \"dsUnidadeGestora\": \"CODESAL\", \"nuAquisicao\": \"0000062026\", \"cdModalidadeLicitacao\": \"5\", \"dsModalidadeLicitacao\": \"Dispensa de Licitação\", \"cdOrgao\": \"43000\", \"dsOrgao\": \"Secretaria Municipal de Sustentabilidade, Resiliência e Bem-Estar e Proteção Animal\", \"sgOrgao\": \"SECIS\", \"nuProcesso\": \"0936402026\", \"nuDom\": \"9300\", \"dtPublicacao\": \"04/07/2026\", \"dtAquisicao\": \"01/07/2026\", \"dsFundamentacaoCompraDireta\": \"Inciso II\", \"dsObjeto\": \"Aquisição de 01 (um) conjunto de equipamentos de georreferenciamento de alta precisdo (GNSS RTK), destinado a realização de levantamentos topogréficos e geoespaciais em campo.\", \"vlAquisicao\": \"48.045,99\", \"dsTipoAquisica\": \"DISPENSA\"}], \"totalizadores\": {\"Valor\": \"3.566.352.927,80\"}, \"paginacao\": {\"tamanho\": 10, \"paginaAtual\": 2, \"totalPagina\": 10, \"paginas\": 231, \"total\": 2306}}",
+    "list_key": "dados",
+    "paginacao": {
+      "paginaAtual": 2,
+      "paginas": 231,
+      "tamanho": 10,
+      "total": 2306,
+      "totalPagina": 10
+    },
+    "payload": {
+      "agrupamentos": [],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": [],
+      "ordenarPor": ""
+    },
+    "sha256": "b7ca3ca8400fb0aa944ab2e83e48c7f6adf3d10046e3b6eff215d1c9d01ea100",
+    "status": 200,
+    "top_level_keys": [
+      "dados",
+      "paginacao",
+      "totalizadores"
+    ],
+    "totalizadores": {
+      "Valor": "3.566.352.927,80"
+    },
+    "type": "dict"
+  }
+}
