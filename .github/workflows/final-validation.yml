@@ -1,0 +1,81 @@
+name: final-validation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/final-validation.yml
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e '.[dev]'
+      - name: Validate code tests CLI and live CMS first-page parser
+        run: |
+          set +e
+          pytest -q > /tmp/pytest.txt 2>&1
+          PYTEST_RC=$?
+          python -m compileall -q src > /tmp/compile.txt 2>&1
+          COMPILE_RC=$?
+          transparencia --repo-root . --city salvador collect-salvador --help > /tmp/cli.txt 2>&1
+          CLI_RC=$?
+          python - <<'PY' > /tmp/live.txt 2>&1
+          import json
+          import httpx
+          from transparencia.collectors.cms import visible_text
+          from transparencia.collectors.cms_commitments import NOTE_RE, URL, parse_visible_commitments
+          r=httpx.get(URL,follow_redirects=True,timeout=60,headers={'user-agent':'municipal-transparency-research/0.3 (+public-data-audit)'})
+          r.raise_for_status()
+          text=visible_text(r.text)
+          visible={x.upper() for x in NOTE_RE.findall(text)}
+          rows=parse_visible_commitments(text,source_url=str(r.url),observed_at='validation',snapshot_sha256='validation')
+          parsed={row['commitment_number'] for row in rows}
+          result={'status':r.status_code,'visible':len(visible),'parsed':len(parsed),'missing':sorted(visible-parsed),'extra':sorted(parsed-visible)}
+          print(json.dumps(result,ensure_ascii=False,sort_keys=True))
+          if visible != parsed:
+              raise SystemExit(1)
+          PY
+          LIVE_RC=$?
+          export PYTEST_RC COMPILE_RC CLI_RC LIVE_RC
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+          def tail(path):
+              text=Path(path).read_text(encoding='utf-8',errors='replace')
+              return text[-12000:]
+          report={
+            'generated_at':datetime.now(timezone.utc).isoformat(),
+            'pytest':{'exit_code':int(os.environ['PYTEST_RC']),'output_tail':tail('/tmp/pytest.txt')},
+            'compileall':{'exit_code':int(os.environ['COMPILE_RC']),'output_tail':tail('/tmp/compile.txt')},
+            'cli':{'exit_code':int(os.environ['CLI_RC']),'output_tail':tail('/tmp/cli.txt')},
+            'cms_live_parser':{'exit_code':int(os.environ['LIVE_RC']),'output_tail':tail('/tmp/live.txt')},
+          }
+          report['passed']=all(item['exit_code']==0 for key,item in report.items() if isinstance(item,dict) and 'exit_code' in item)
+          p=Path('cities/salvador/data/validation/final_validation.json')
+          p.parent.mkdir(parents=True,exist_ok=True)
+          p.write_text(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True))
+          PY
+      - name: Commit validation report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/validation/final_validation.json
+          git commit -m "test(salvador): record final validation" || exit 0
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
