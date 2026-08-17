@@ -1,10 +1,13 @@
 {
   "passed": true,
-  "tested_commit": "2ad0ae8a2710d8ff01209afdb3ac01df13598d7b",
+  "tested_commit": "ce7ac5a91ff0a51b781276e96b3cea2bf570de99",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
   "acquisitions_generated": 2306,
-  "officials_generated": 43,
+  "councilors_generated": 43,
+  "executive_agents_generated": 6,
+  "public_agents_generated": 49,
+  "search_items_generated": 3455,
   "as_of": "2026-08-17"
 }
