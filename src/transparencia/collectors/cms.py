@@ -164,17 +164,34 @@ def parse_certames(html: str, *, source_url: str, observed_at: str, snapshot_sha
     return rows
 
 
-def collect_travel(out_dir: Path, *, max_pages: int = 100, sleep_seconds: float = 0.15) -> Path:
+def _headers() -> dict[str, str]:
+    return {
+        "User-Agent": "transparencia-municipal/0.2 (+public-data-audit)",
+        "Accept": "text/html,application/xhtml+xml",
+        "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.5",
+    }
+
+
+def _write_coverage(path: Path, **data: object) -> None:
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def collect_travel(out_dir: Path, *, max_pages: int = 100, sleep_seconds: float = 0.8) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
     output = out_dir / "cms_travel_expenses.jsonl"
-    headers = {"User-Agent": "transparencia-municipal/0.2", "Accept": "text/html"}
     seen: set[str] = set()
     empty_pages = 0
-    with httpx.Client(headers=headers, follow_redirects=True, timeout=60.0) as client, output.open("w", encoding="utf-8") as sink:
+    pages_ok = 0
+    stopped_status: int | None = None
+    with httpx.Client(headers=_headers(), follow_redirects=True, timeout=60.0) as client, output.open("w", encoding="utf-8") as sink:
         for page in range(max_pages):
             url = TRAVEL_URL if page == 0 else f"{TRAVEL_URL}?page={page}"
-            response = client.get(url)
+            response = client.get(url, headers={"Referer": TRAVEL_URL})
+            if response.status_code in {403, 429}:
+                stopped_status = response.status_code
+                break
             response.raise_for_status()
+            pages_ok += 1
             meta = persist_snapshot(out_dir=out_dir / "snapshots", source_id="cms_viagens", requested_url=url,
                                     final_url=str(response.url), status_code=response.status_code,
                                     content_type=response.headers.get("content-type", "text/html"), body=response.content)
@@ -193,21 +210,30 @@ def collect_travel(out_dir: Path, *, max_pages: int = 100, sleep_seconds: float 
             else:
                 empty_pages = 0
             time.sleep(sleep_seconds)
+    _write_coverage(out_dir / "cms_travel_expenses.coverage.json", records=len(seen), pages_collected=pages_ok,
+                    complete=stopped_status is None, stopped_status=stopped_status,
+                    note="complete=false means pagination was stopped by the source; collected rows remain valid snapshots.")
     return output
 
 
-def collect_document_catalog(out_dir: Path, *, max_pages: int = 100, sleep_seconds: float = 0.15) -> Path:
+def collect_document_catalog(out_dir: Path, *, max_pages: int = 100, sleep_seconds: float = 0.8) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
     output = out_dir / "cms_documents.jsonl"
     seen: set[str] = set()
-    headers = {"User-Agent": "transparencia-municipal/0.2", "Accept": "text/html"}
-    with httpx.Client(headers=headers, follow_redirects=True, timeout=60.0) as client, output.open("w", encoding="utf-8") as sink:
+    coverage: dict[str, dict] = {}
+    with httpx.Client(headers=_headers(), follow_redirects=True, timeout=60.0) as client, output.open("w", encoding="utf-8") as sink:
         for section, base_url in DOCUMENT_SECTIONS.items():
             empty_pages = 0
+            pages_ok = 0
+            stopped_status: int | None = None
             for page in range(max_pages):
                 url = base_url if page == 0 else f"{base_url}?page={page}"
-                response = client.get(url)
+                response = client.get(url, headers={"Referer": base_url})
+                if response.status_code in {403, 429}:
+                    stopped_status = response.status_code
+                    break
                 response.raise_for_status()
+                pages_ok += 1
                 meta = persist_snapshot(out_dir=out_dir / "snapshots", source_id=f"cms_{section}", requested_url=url,
                                         final_url=str(response.url), status_code=response.status_code,
                                         content_type=response.headers.get("content-type", "text/html"), body=response.content)
@@ -227,6 +253,9 @@ def collect_document_catalog(out_dir: Path, *, max_pages: int = 100, sleep_secon
                 else:
                     empty_pages = 0
                 time.sleep(sleep_seconds)
+            coverage[section] = {"pages_collected": pages_ok, "complete": stopped_status is None, "stopped_status": stopped_status}
+    _write_coverage(out_dir / "cms_documents.coverage.json", records=len(seen), sections=coverage,
+                    note="complete=false means pagination was stopped by the source; collected document links remain valid.")
     return output
 
 
@@ -234,8 +263,7 @@ def collect_certames_visible(out_dir: Path) -> Path:
     """Collect only the server-visible certame page; never claim full catalogue coverage."""
     out_dir.mkdir(parents=True, exist_ok=True)
     output = out_dir / "cms_certames_visible.jsonl"
-    headers = {"User-Agent": "transparencia-municipal/0.2", "Accept": "text/html"}
-    with httpx.Client(headers=headers, follow_redirects=True, timeout=60.0) as client:
+    with httpx.Client(headers=_headers(), follow_redirects=True, timeout=60.0) as client:
         response = client.get(CERTAMES_URL)
         response.raise_for_status()
         meta = persist_snapshot(out_dir=out_dir / "snapshots", source_id="cms_certames", requested_url=CERTAMES_URL,
