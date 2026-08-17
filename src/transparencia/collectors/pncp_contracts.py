@@ -19,7 +19,7 @@ PNCP_CONTRACTS_ENDPOINT = "https://pncp.gov.br/api/consulta/v1/contratos"
 def agency_cnpjs_from_procurements(paths: Iterable[Path]) -> tuple[str, ...]:
     values: set[str] = set()
     for path in paths:
-        if not path.exists():
+        if not path or not path.exists():
             continue
         for line in path.read_text(encoding="utf-8").splitlines():
             if not line.strip():
@@ -107,6 +107,12 @@ def normalize_record(r: dict, city: CityConfig, observed_at: str, snapshot_sha25
     }
 
 
+def _json_payload_or_empty(response: httpx.Response) -> dict:
+    if response.status_code == 204 or not response.content.strip():
+        return {}
+    return response.json()
+
+
 def collect(
     city: CityConfig,
     start: date,
@@ -154,7 +160,7 @@ def collect(
                         content_type=response.headers.get("content-type", "application/json"),
                         body=response.content,
                     )
-                    payload = response.json()
+                    payload = _json_payload_or_empty(response)
                     records = payload.get("data") or payload.get("content") or []
                     for raw in records:
                         if not in_scope(raw, city, scope):
