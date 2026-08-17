@@ -1,0 +1,16 @@
+id,publisher,scope,authority,url,notes
+pms_transparencia_novo,Prefeitura Municipal de Salvador,executivo,primary,https://transparencia.salvador.ba.gov.br/,Portal atual; aplicação JavaScript.
+pms_receitas_legacy,Prefeitura Municipal de Salvador,executivo_receitas,primary,https://antigotransparencia.salvador.ba.gov.br/Modulos/Receitas.aspx,"Portal legado, consulta de receitas."
+pms_despesas_legacy,Prefeitura Municipal de Salvador,executivo_despesas,primary,https://antigotransparencia.salvador.ba.gov.br/Modulos/Despesas.aspx,"Empenho, liquidação, pagamento, gastos diretos e diárias."
+pms_licitacoes_legacy,Prefeitura Municipal de Salvador,executivo_contratacoes,primary,https://antigotransparencia.salvador.ba.gov.br/Modulos/LicitacaoContratos.aspx,"Licitações, dispensas, inexigibilidades, contratos e obras; aponta para Portal de Compras."
+pms_compras,Prefeitura Municipal de Salvador,executivo_contratacoes,primary,https://compras.salvador.ba.gov.br/,Portal municipal indicado pela própria Transparência para andamento de processos licitatórios.
+sefaz_licitacoes,SEFAZ Salvador,executivo_contratacoes,primary,https://www2.sefaz.salvador.ba.gov.br/transparencia/licitacoes,Licitações da Secretaria Municipal da Fazenda; não representa sozinha toda a Prefeitura.
+cms_vereadores,Câmara Municipal de Salvador,legislativo_politicos,primary,https://www.cms.ba.gov.br/vereadores,Vereadores da 20ª Legislatura (2025-2028).
+cms_execucao_orcamentaria,Câmara Municipal de Salvador,legislativo_despesas,primary,https://www.cms.ba.gov.br/transparencia/exec-orcamentaria-financeira,Células e execução orçamentária/financeira.
+cms_prestacao_contas,Câmara Municipal de Salvador,legislativo_despesas,primary,https://www.cms.ba.gov.br/transparencia/prestacao-de-contas,"Relações de pagamentos, despesa orçamentária, razão SIGA e comprovantes."
+cms_ordem_dia,Câmara Municipal de Salvador,legislativo_atividade,primary,https://www.cms.ba.gov.br/transparencia/ordem-do-dia,Sessões e matérias pautadas.
+cms_processos_licitatorios,Câmara Municipal de Salvador,legislativo_contratacoes,primary,https://www.cms.ba.gov.br/processos-licitatorios,Processos licitatórios do Legislativo.
+pncp_dados_abertos,Ministério da Gestão e da Inovação / PNCP,contratacoes,primary,https://www.gov.br/pncp/pt-br/acesso-a-informacao/dados-abertos,"Consulta pública, sem cadastro/login; usado para reconciliação das contratações municipais."
+transparencia_brasil_projetos,Transparência Brasil,metodologia,secondary,https://www.transparencia.org.br/projetos/,"ONG; referência metodológica e projetos, não banco primário completo das contas municipais de Salvador."
+transparencia_brasil_qualidade_gasto,Transparência Brasil,metodologia,secondary,https://www.transparencia.org.br/areas-tematicas/qualidade-do-gasto-publico,"Análises de orçamento, emendas e contratos como referência de abordagem."
+portal_transparencia_federal_municipio,Controladoria-Geral da União,transferencias_federais,primary_federal,https://portaldatransparencia.gov.br/pessoa-juridica/13927801000149,Relações do Município de Salvador com o Governo Federal; não representa a contabilidade municipal total.

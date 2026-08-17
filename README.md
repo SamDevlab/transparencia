@@ -7,7 +7,7 @@ Framework aberto e replicável para coletar, preservar e analisar **receitas, de
 - `main`: engine genérica, sem dados de uma cidade específica.
 - `city/<slug>`: configuração, fontes, evidências e seeds daquele município.
 
-A primeira implantação é Salvador/BA na branch `city/salvador`.
+Esta branch contém a primeira implantação: **Salvador/BA**. O núcleo reutilizável permanece em `main`.
 
 ## Objetivos
 

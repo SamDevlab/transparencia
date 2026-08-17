@@ -1,0 +1,61 @@
+name: salvador-evidence
+
+on:
+  push:
+    branches:
+      - city/salvador
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  preserve:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+      - name: Preserve official Câmara evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir='cities/salvador/data/evidence'
+          mkdir -p "$dir"
+
+          fetch_verified() {
+            local url="$1" file="$2" expected_bytes="$3" expected_sha="$4"
+            if [ -f "$file" ] && [ "$(wc -c < "$file")" = "$expected_bytes" ] && printf '%s  %s\n' "$expected_sha" "$file" | sha256sum -c -; then
+              return 0
+            fi
+            rm -f "$file"
+            curl --fail --location --retry 4 --retry-all-errors --connect-timeout 20 --max-time 120 "$url" --output "$file"
+            test "$(wc -c < "$file")" = "$expected_bytes"
+            printf '%s  %s\n' "$expected_sha" "$file" | sha256sum -c -
+          }
+
+          fetch_verified \
+            'https://www.cms.ba.gov.br/transparencia/uploads/prestacao-contas/0159da3047870d346f6999757220e95e_1767886104.pdf' \
+            "$dir/cms_despesa_orcamentaria_2025-11.pdf" \
+            '51889' \
+            'd9b882a7ab20733d8d020eff7185dc81158b41bfe6fecd8b6dd6a77d2792a92a'
+
+          fetch_verified \
+            'https://www.cms.ba.gov.br/uploads/exec-orcamentaria/a81d0525b1bf67680570fa60790b8e07_1786371766.pdf' \
+            "$dir/cms_celula_orcamentaria_2026-08-10.pdf" \
+            '87592' \
+            'fd0dc01fa03e8af1c555800394b7c2f557f4529f4067bf6612e7f454b6b46ace'
+
+      - name: Commit verified evidence when absent
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add cities/salvador/data/evidence/*.pdf
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'data(salvador): preserve official evidence snapshots'
+          git push origin HEAD:city/salvador

@@ -1,0 +1,6 @@
+item,kind,status,role_in_project,source_url,observed_at
+Projetos da Transparência Brasil,catalog,current,"Mapear projetos, bases e metodologias relevantes; fonte secundária/complementar.",https://www.transparencia.org.br/projetos/,2026-08-17
+Qualidade do gasto público,theme,current,"Referência metodológica para análise de orçamento, emendas e contratos públicos.",https://www.transparencia.org.br/areas-tematicas/qualidade-do-gasto-publico,2026-08-17
+Excelências,historical_project,ended_2017,Referência histórica sobre perfis parlamentares; não usar como retrato atual da Câmara de Salvador.,https://www.transparencia.org.br/projetos/excelencias/,2026-08-17
+Achados e Pedidos - página do projeto,historical_project,date_conflict,A página do projeto informa vigência jul/2016 a dez/2023; há fonte da própria TB com outra data de encerramento. Não assumir uma data única sem explicar a divergência.,https://www.transparencia.org.br/projetos/achados-e-pedidos/,2026-08-17
+Achados e Pedidos - notícia de encerramento,institutional_news,date_conflict,Notícia da própria TB de 02/02/2026 afirma que as atividades terminaram em 31/01/2026; diverge da página do projeto.,https://www.transparencia.org.br/noticias/tb-e-abraji-encerram-o-maior-repositorio-de-dados-da-lei-de-acesso-a-informacao,2026-08-17
