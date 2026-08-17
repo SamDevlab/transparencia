@@ -8,7 +8,6 @@ export const metadata = {
   },
   description:
     "Dados públicos de Salvador/BA organizados com fonte, cobertura e metodologia auditável.",
-  metadataBase: new URL("https://example.com"),
   openGraph: {
     title: "Transparência Salvador",
     description: "Receita, despesa, licitações, contratos e Câmara com rastreabilidade de fonte.",
