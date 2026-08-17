@@ -1,0 +1,31 @@
+name: collect
+on:
+  workflow_dispatch:
+    inputs:
+      city:
+        description: slug em cities/<slug>
+        required: true
+      start:
+        description: YYYY-MM-DD
+        required: true
+      end:
+        description: YYYY-MM-DD
+        required: true
+      scope:
+        description: executivo, legislativo ou municipal
+        required: true
+        default: executivo
+jobs:
+  pncp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -e .
+      - run: python -m transparencia --city '${{ inputs.city }}' collect-pncp --start '${{ inputs.start }}' --end '${{ inputs.end }}' --scope '${{ inputs.scope }}'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pncp-${{ inputs.city }}-${{ inputs.start }}-${{ inputs.end }}
+          path: cities/${{ inputs.city }}/data/raw/pncp
