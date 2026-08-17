@@ -43,6 +43,7 @@ jobs:
           out = Path('cities/salvador/data/snapshots/2026-08-17/prefeitura_finance')
           outputs = collect(ws.config, date(2026,1,1), date(2026,8,17), out)
 
+          # SQLite is derived/rebuildable and intentionally remains ignored by Git.
           db = Path('cities/salvador/data/derived/salvador-2026-08-17.sqlite')
           build(db, ws)
           ingest_events(db, revenue_jsonl=[outputs['revenue_events']])
@@ -81,9 +82,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            cities/salvador/data/snapshots/2026-08-17/prefeitura_finance \
-            cities/salvador/data/derived/salvador-2026-08-17.sqlite
+          git add cities/salvador/data/snapshots/2026-08-17/prefeitura_finance
           if git diff --cached --quiet; then echo 'No snapshot changes'; exit 0; fi
           git commit -m "data(salvador): preserve 2026 municipal finance snapshot"
           git fetch origin city/salvador
