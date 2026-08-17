@@ -1,0 +1,103 @@
+name: salvador-cms-pagination-discovery
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-cms-pagination-discovery.yml
+
+permissions:
+  contents: write
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx beautifulsoup4
+      - name: Map public ScriptCase pagination controls
+        run: |
+          python - <<'PY'
+          import hashlib, json, re
+          from pathlib import Path
+          import httpx
+          from bs4 import BeautifulSoup
+
+          apps={
+            'commitments':'https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/',
+            'expenses':'https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/',
+            'payments':'https://cmsalvador.sys.inf.br/ca/trans_pagamento/',
+            'contracts':'https://cmsalvador.sys.inf.br/ca/contrato/',
+            'procurements':'https://cmsalvador.sys.inf.br/ca/licitacao/',
+          }
+          needles=['nmgp_opcao','ajax_navigate','nm_move','SC_nav','nmgp_pag','script_case_init','nm_page','navpage','total_pages','scAjaxDetail','ajax_nav']
+          headers={'user-agent':'municipal-transparency-research/0.3 (+public-data-audit)','accept':'text/html,application/xhtml+xml','accept-language':'pt-BR,pt;q=0.9'}
+          out={}
+          with httpx.Client(headers=headers,follow_redirects=True,timeout=60) as client:
+            for name,url in apps.items():
+              try:
+                r=client.get(url)
+                soup=BeautifulSoup(r.text,'html.parser')
+                forms=[]
+                for form in soup.find_all('form'):
+                  hidden={}
+                  for inp in form.find_all('input'):
+                    typ=(inp.get('type') or '').lower()
+                    nm=inp.get('name')
+                    if typ=='hidden' and nm:
+                      val=inp.get('value') or ''
+                      if any(k.lower() in nm.lower() for k in ['script_case','nmgp','nm_page','nav','ajax','sc_']):
+                        hidden[nm]=val[:500]
+                  if hidden:
+                    forms.append({'action':form.get('action'),'method':form.get('method'),'hidden':hidden})
+                contexts=[]
+                text=r.text
+                for needle in needles:
+                  start=0
+                  while True:
+                    idx=text.find(needle,start)
+                    if idx<0: break
+                    contexts.append({'needle':needle,'offset':idx,'context':text[max(0,idx-1200):min(len(text),idx+2500)]})
+                    start=idx+len(needle)
+                    if sum(1 for x in contexts if x['needle']==needle)>=8: break
+                scripts=[]
+                for tag in soup.find_all('script',src=True):
+                  src=httpx.URL(url).join(tag['src'])
+                  if any(x in str(src).lower() for x in ['ajax','gridregistro','trans_pagamento','contrato','licitacao']):
+                    try:
+                      sr=client.get(str(src)); st=sr.text
+                      matches=[]
+                      for needle in needles:
+                        idx=st.find(needle)
+                        if idx>=0: matches.append({'needle':needle,'offset':idx,'context':st[max(0,idx-1000):min(len(st),idx+2500)]})
+                      if matches:
+                        scripts.append({'url':str(sr.url),'status':sr.status_code,'bytes':len(sr.content),'sha256':hashlib.sha256(sr.content).hexdigest(),'matches':matches[:30]})
+                    except Exception as exc:
+                      scripts.append({'url':str(src),'error':f'{type(exc).__name__}: {exc}'})
+                out[name]={'url':url,'status':r.status_code,'bytes':len(r.content),'sha256':hashlib.sha256(r.content).hexdigest(),'forms':forms[:20],'contexts':contexts[:80],'scripts':scripts[:20]}
+              except Exception as exc:
+                out[name]={'url':url,'error':f'{type(exc).__name__}: {exc}'}
+          p=Path('cities/salvador/data/snapshots/2026-08-17/cms_pagination_discovery.json')
+          p.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          for name,data in out.items():
+            print('\n###',name)
+            print(json.dumps(data,ensure_ascii=False,indent=2,sort_keys=True)[:30000])
+          PY
+      - name: Commit discovery
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/snapshots/2026-08-17/cms_pagination_discovery.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(salvador): map Câmara pagination controls"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
