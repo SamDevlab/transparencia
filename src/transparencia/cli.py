@@ -10,6 +10,7 @@ from .collectors.pncp import collect as collect_pncp
 from .collectors.pncp_contracts import agency_cnpjs_from_procurements, collect as collect_pncp_contracts
 from .config import load_city
 from .db import build
+from .salvador_project import run_salvador_project
 
 
 def parse_date(value: str) -> date:
@@ -40,6 +41,14 @@ def main() -> None:
     p_db.add_argument("--db", type=Path)
     p_db.add_argument("--pncp", type=Path, action="append", default=[])
     p_db.add_argument("--contracts", type=Path, action="append", default=[])
+
+    p_salvador = sub.add_parser("collect-salvador", help="pipeline de produção auditável de Salvador")
+    p_salvador.add_argument("--start", type=parse_date, required=True)
+    p_salvador.add_argument("--end", type=parse_date, required=True)
+    p_salvador.add_argument("--out", type=Path)
+    p_salvador.add_argument("--skip-pncp", action="store_true", help="não consulta o PNCP nesta execução")
+    p_salvador.add_argument("--skip-cms-auxiliary", action="store_true", help="não coleta viagens/documentos/certames auxiliares da CMS")
+
     args = parser.parse_args()
     ws = load_city(args.repo_root, args.city)
     if args.command == "sources":
@@ -58,3 +67,16 @@ def main() -> None:
         target = args.db or ws.data_dir / f"{ws.config.slug}.db"
         build(target, ws, args.pncp, args.contracts)
         print(target)
+    elif args.command == "collect-salvador":
+        if args.city != "salvador":
+            parser.error("collect-salvador requires --city salvador")
+        target = args.out or ws.data_dir / "runs" / args.end.isoformat()
+        report = run_salvador_project(
+            args.repo_root,
+            start=args.start,
+            end=args.end,
+            out_dir=target,
+            include_pncp=not args.skip_pncp,
+            include_cms_auxiliary=not args.skip_cms_auxiliary,
+        )
+        print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
