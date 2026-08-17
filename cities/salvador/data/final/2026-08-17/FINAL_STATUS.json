@@ -1,0 +1,78 @@
+{
+  "as_of": "2026-08-17",
+  "city": "Salvador",
+  "uf": "BA",
+  "project_status": "TECHNICALLY_COMPLETE_WITH_SOURCE_SCOPED_PARTIAL_DATA",
+  "technical_completion": {
+    "complete": true,
+    "meaning": "The repository has a production orchestrator, explicit coverage manifest, source-specific collectors, exact-only reconciliation, rebuildable SQLite model, CI workflows, documentation and validation gates. External source failure never becomes an inferred zero or a false completeness claim."
+  },
+  "validation": {
+    "passed": true,
+    "pytest": "33 passed",
+    "compileall": "PASS",
+    "production_cli": "PASS",
+    "cms_live_first_page": {
+      "http_status": 200,
+      "visible_commitment_identifiers": 10,
+      "parsed_commitment_identifiers": 10,
+      "missing": 0,
+      "extra": 0
+    },
+    "evidence": "cities/salvador/data/validation/final_validation.json"
+  },
+  "datasets": {
+    "prefeitura_finance_2026_to_2026_08_17": {
+      "status": "collected",
+      "source": "official Salvador transparency API",
+      "note": "Revenue and expense-stage aggregates are source-linked. Creditor totals are aggregates and are not individual payments."
+    },
+    "prefeitura_acquisitions_2026_to_2026_08_17": {
+      "status": "complete_for_filter",
+      "records_received": 2306,
+      "api_reported_records": 2306,
+      "pages_collected": 231,
+      "api_reported_pages": 231,
+      "duplicate_internal_stable_keys": 0,
+      "api_reported_total_value_brl_text": "3.566.352.927,80",
+      "evidence": "cities/salvador/data/snapshots/2026-08-17/prefeitura_acquisitions/summary.json"
+    },
+    "prefeitura_detailed_contract_grid": {
+      "status": "partial_source_availability",
+      "source_call_verified": "POST /contratos/gridDetalhada?pagina=N with the frontend filter object as JSON body",
+      "observed_limitation": "detailed-grid probes timed out; GET /FiscaisContratos/downloadcsv returned HTTP 405",
+      "production_behavior": "adaptive date-window collector preserves successful responses and marks failed windows partial; it never infers zero contracts from timeout",
+      "collector": "src/transparencia/collectors/salvador_contracts.py"
+    },
+    "pncp_contracts": {
+      "status": "source_scoped_collector_complete",
+      "coverage_rule": "complete_for_filter only when every query for the explicitly supplied/discovered agency CNPJs reaches a normal PNCP source end and the upstream procurement discovery for the same scope is complete",
+      "collector": "src/transparencia/collectors/pncp_contracts.py"
+    },
+    "cms_commitments": {
+      "status": "collector_verified_old_normalization_invalidated",
+      "pagination_protocol_verified": true,
+      "pagination": "persistent ScriptCase session, POST F3, nmgp_opcao=avanca",
+      "current_completion_rule": "source exhaustion AND parsed identifiers equal every visible commitment identifier on every page",
+      "old_snapshot": "explicitly superseded; old normalized commitments file removed; raw source snapshots retained",
+      "collector": "src/transparencia/collectors/cms_commitments.py"
+    },
+    "cms_identity_matching": {
+      "status": "implemented",
+      "rule": "exact normalized official name or documented official alias only; name similarity alone never creates a political identity link",
+      "privacy": "individual CPF is masked in normalized output; CNPJ is retained"
+    },
+    "reconciliation": {
+      "status": "implemented",
+      "rule": "exact normalized identifiers only; ambiguous hits remain multiple_candidates; no fuzzy object/vendor matching is promoted to fact"
+    }
+  },
+  "accounting_safety": {
+    "commitment_liquidation_payment_kept_distinct": true,
+    "aggregate_spending_never_attributed_to_person_without_nominal_source": true,
+    "high_value_or_concentration_is_not_irregularity": true
+  },
+  "primary_operator_command": "transparencia --repo-root . --city salvador collect-salvador --start 2026-01-01 --end 2026-08-17 --out cities/salvador/data/snapshots/2026-08-17/production",
+  "coverage_file_per_run": "project_coverage.json",
+  "report_file_per_run": "project_report.json"
+}
