@@ -5,9 +5,32 @@ Framework aberto e replicável para coletar, preservar e analisar **receitas, de
 ## Estrutura por branch
 
 - `main`: engine genérica, sem dados de uma cidade específica.
-- `city/<slug>`: configuração, fontes, evidências e seeds daquele município.
+- `city/<slug>`: configuração, fontes, evidências, seeds e publicação daquele município.
 
 Esta branch contém a primeira implantação: **Salvador/BA**. O núcleo reutilizável permanece em `main`.
+
+## Frontend público
+
+A branch `city/salvador` contém um frontend **Next.js pronto para Vercel** na raiz do repositório.
+
+```bash
+npm install
+npm run build
+npm run dev
+```
+
+O `prebuild` lê os snapshots auditados em `cities/salvador/data/` e gera datasets compactos em `public/data/`. Nenhuma API Python, banco externo ou variável de ambiente é necessária para publicar a versão atual.
+
+Rotas:
+
+- `/` — visão geral;
+- `/licitacoes` — pesquisa e filtros sobre as 2.306 aquisições do recorte publicado;
+- `/financas` — receita, despesa, funções e credores agregados;
+- `/contratos` — totalizadores e execução por unidade, com cobertura da grade detalhada explicitada;
+- `/camara` — composição observada, produção legislativa e prestação de contas institucional;
+- `/metodologia` — regras editoriais, cobertura e fontes.
+
+Guia de deploy: [`docs/VERCEL.md`](docs/VERCEL.md).
 
 ## Objetivos
 
@@ -16,7 +39,8 @@ Esta branch contém a primeira implantação: **Salvador/BA**. O núcleo reutili
 - acompanhar Legislativo sem confundir gasto institucional com gasto individual;
 - reconciliar contratações municipais com PNCP;
 - preservar evidência bruta e SHA-256;
-- tornar cada afirmação reproduzível e citável.
+- tornar cada afirmação reproduzível e citável;
+- publicar uma interface acessível sem esconder as limitações de cobertura.
 
 ## Criando uma nova cidade
 
