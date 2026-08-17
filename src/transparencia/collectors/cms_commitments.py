@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import csv
-import hashlib
 import json
 import re
 import unicodedata
 from datetime import datetime
+from html import unescape
 from pathlib import Path
 
 import httpx
@@ -15,6 +15,7 @@ from .cms import visible_text
 
 URL = "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/"
 SOURCE_SYSTEM = "CMS_EMPENHOS"
+NOTE_RE = re.compile(r"\bEmpenho:\s*(\d{4}NE\d+)", re.I)
 
 
 def _norm_name(value: str) -> str:
@@ -36,44 +37,58 @@ def _mask_document(value: str) -> tuple[str | None, str | None]:
     return None, None
 
 
+def _field(block: str, label: str, next_labels: tuple[str, ...]) -> str:
+    stops = "|".join(re.escape(item) for item in next_labels)
+    pattern = rf"{re.escape(label)}\s*(.*?)(?=\s+(?:{stops})\s*|\Z)"
+    match = re.search(pattern, block, re.I | re.S)
+    return " ".join(match.group(1).split()) if match else ""
+
+
 def parse_visible_commitments(text: str, *, source_url: str, observed_at: str, snapshot_sha256: str) -> list[dict]:
-    pattern = re.compile(
-        r"Empenho:\s*(?P<note>\d{4}NE\d+)\s+"
-        r"Modalidade:\s*(?P<modality>.*?)\s+"
-        r"Tipo:\s*(?P<type>.*?)\s+"
-        r"Data de Emiss[aã]o:\s*(?P<date>\d{2}/\d{2}/\d{4})\s+"
-        r"Valor R\$:\s*(?P<value>[\d.,]+)\s+"
-        r"CNPJCPF:\s*(?P<document>.*?)\s+"
-        r"Credor:\s*(?P<creditor>.*?)\s+"
-        r"Fonte de Recurso:\s*(?P<funding>.*?)\s+"
-        r"Poder:\s*(?P<power>.*?)\s+Org[aã]o:\s*(?P<agency>.*?)\s+Unidade:\s*(?P<unit>.*?)\s+"
-        r"Funç[aã]o:\s*(?P<function>.*?)\s+Sub Funç[aã]o:\s*(?P<subfunction>.*?)\s+Programa:\s*(?P<program>.*?)\s+Projeto Atividade:\s*(?P<action>.*?)\s+"
-        r"Categoria Econ[oô]mica:\s*(?P<category>.*?)\s+Grupo de Despesa:\s*(?P<group>.*?)\s+Modelo de Aplicaç[aã]o:\s*(?P<application>.*?)\s+Elemento de Despesa:\s*(?P<element>.*?)\s+"
-        r"(?P<object>.*?)"
-        r"(?=\s+Empenho:\s*\d{4}NE\d+|\Z)",
-        re.S | re.I,
-    )
+    """Parse each visible ScriptCase commitment as an independent block.
+
+    Block splitting is deliberate: a single malformed field cannot make one commitment consume the
+    following commitments. Collection-level coverage separately verifies parsed count == visible count.
+    """
+    blocks = re.split(r"(?=\bEmpenho:\s*\d{4}NE\d+)", unescape(text), flags=re.I)
     rows: list[dict] = []
     seen: set[str] = set()
-    for match in pattern.finditer(text):
-        note = match.group("note").strip()
+    for block in blocks:
+        note_match = NOTE_RE.search(block)
+        if not note_match:
+            continue
+        note = note_match.group(1).upper()
         if note in seen:
             continue
         seen.add(note)
-        document, document_type = _mask_document(match.group("document"))
-        obj = " ".join(match.group("object").split())
+
+        modality = _field(block, "Modalidade:", ("Tipo:",))
+        record_type = _field(block, "Tipo:", ("Data de Emissão:", "Data de Emissao:"))
+        date_match = re.search(r"Data de Emiss[aã]o:\s*(\d{2}/\d{2}/\d{4})", block, re.I)
+        value_match = re.search(r"Valor R\$:\s*([\d.,]+)", block, re.I)
+        document_text = _field(block, "CNPJCPF:", ("Credor:",))
+        creditor = _field(block, "Credor:", ("Fonte de Recurso:",))
+        funding = _field(block, "Fonte de Recurso:", ("Poder:",))
+        object_match = re.search(r"Elemento de Despesa:\s*(.*)\Z", block, re.I | re.S)
+        obj = " ".join(object_match.group(1).split()) if object_match else ""
+
+        if not date_match or not value_match or not creditor:
+            # The caller compares parsed IDs against every visible ID and will mark coverage partial.
+            continue
+
+        document, document_type = _mask_document(document_text)
         process = re.search(r"PROCESSO\s*(?:N[º°.]*)?\s*[:\-]?\s*(\d+/\d{4})", obj, re.I)
         rows.append({
             "source_system": SOURCE_SYSTEM,
             "commitment_number": note,
-            "modality": " ".join(match.group("modality").split()),
-            "record_type": " ".join(match.group("type").split()),
-            "issue_date": datetime.strptime(match.group("date"), "%d/%m/%Y").date().isoformat(),
-            "committed_value": _money(match.group("value")),
+            "modality": modality,
+            "record_type": record_type,
+            "issue_date": datetime.strptime(date_match.group(1), "%d/%m/%Y").date().isoformat(),
+            "committed_value": _money(value_match.group(1)),
             "creditor_document": document,
             "creditor_document_type": document_type,
-            "creditor_name": " ".join(match.group("creditor").split()),
-            "funding_source": " ".join(match.group("funding").split()),
+            "creditor_name": creditor,
+            "funding_source": funding,
             "object": obj,
             "process_number": process.group(1) if process else None,
             "is_parliamentary_compensatory_allowance": "VERBA COMPENSATÓRIA DE ATIVIDADE PARLAMENTAR" in obj.upper(),
@@ -133,8 +148,7 @@ def _headers() -> dict[str, str]:
 
 
 def _f3_fields(html: str) -> dict[str, str]:
-    """Extract only the hidden F3 fields needed by ScriptCase navigation."""
-    form = re.search(r'<form\s+name=["\']F3["\'].*?</form>', html, re.I | re.S)
+    form = re.search(r'<form\b(?=[^>]*\bname=["\']F3["\'])[^>]*>.*?</form>', html, re.I | re.S)
     if not form:
         raise ValueError("CMS ScriptCase F3 navigation form not found")
     fields: dict[str, str] = {}
@@ -159,24 +173,20 @@ def _navigation_payload(html: str, opcode: str) -> dict[str, str]:
 
 
 def collect(root: Path, out_dir: Path, *, max_pages: int = 1000) -> dict:
-    """Collect the complete default public ScriptCase commitment view when navigation can be exhausted.
-
-    `complete=True` means repeated/empty `avanca` navigation proved exhaustion of the default server
-    view in this session. It does not claim completeness for hidden historical filters or other CMS
-    accounting systems.
-    """
+    """Exhaust the default public commitment ledger and prove both navigation and parser coverage."""
     out_dir.mkdir(parents=True, exist_ok=True)
     all_rows: dict[str, dict] = {}
     page_meta: list[dict] = []
     termination_reason: str | None = None
     stopped_error: str | None = None
+    parse_gaps: list[dict] = []
 
     with httpx.Client(headers=_headers(), follow_redirects=True, timeout=60.0) as client:
         response = client.get(URL)
         response.raise_for_status()
         html = response.text
         page = 1
-        previous_notes: tuple[str, ...] | None = None
+        previous_visible_notes: tuple[str, ...] | None = None
 
         while page <= max_pages:
             meta = persist_snapshot(
@@ -188,13 +198,26 @@ def collect(root: Path, out_dir: Path, *, max_pages: int = 1000) -> dict:
                 content_type=response.headers.get("content-type", "text/html"),
                 body=response.content,
             )
+            text = visible_text(html)
+            visible_notes = tuple(note.upper() for note in NOTE_RE.findall(text))
             rows = parse_visible_commitments(
-                visible_text(html), source_url=str(response.url), observed_at=meta.collected_at, snapshot_sha256=meta.sha256
+                text, source_url=str(response.url), observed_at=meta.collected_at, snapshot_sha256=meta.sha256
             )
-            notes = tuple(row["commitment_number"] for row in rows)
-            if previous_notes is not None and notes == previous_notes:
+            parsed_notes = tuple(row["commitment_number"] for row in rows)
+
+            if previous_visible_notes is not None and visible_notes == previous_visible_notes:
                 termination_reason = "source_repeated_page_after_avanca"
                 break
+
+            missing = sorted(set(visible_notes) - set(parsed_notes))
+            if missing or len(parsed_notes) != len(set(visible_notes)):
+                parse_gaps.append({
+                    "page": page,
+                    "visible_records": len(set(visible_notes)),
+                    "parsed_records": len(parsed_notes),
+                    "missing_commitments": missing,
+                })
+
             new_count = 0
             for row in rows:
                 if row["commitment_number"] not in all_rows:
@@ -202,20 +225,19 @@ def collect(root: Path, out_dir: Path, *, max_pages: int = 1000) -> dict:
                     new_count += 1
             page_meta.append({
                 "page": page,
+                "visible_records": len(set(visible_notes)),
                 "records_parsed": len(rows),
                 "new_records": new_count,
-                "first_commitment": notes[0] if notes else None,
-                "last_commitment": notes[-1] if notes else None,
+                "first_commitment": visible_notes[0] if visible_notes else None,
+                "last_commitment": visible_notes[-1] if visible_notes else None,
                 "sha256": meta.sha256,
-                "status_code": meta.status_code,
+                "status_code": response.status_code,
             })
-            if not rows:
+
+            if not visible_notes:
                 termination_reason = "source_returned_empty_page"
                 break
-            if new_count == 0:
-                termination_reason = "source_returned_no_new_records"
-                break
-            previous_notes = notes
+            previous_visible_notes = visible_notes
             try:
                 payload = _navigation_payload(html, "avanca")
                 response = client.post(URL, data=payload)
@@ -236,23 +258,24 @@ def collect(root: Path, out_dir: Path, *, max_pages: int = 1000) -> dict:
         for row in rows:
             handle.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
 
-    complete = termination_reason in {
-        "source_repeated_page_after_avanca",
-        "source_returned_empty_page",
-        "source_returned_no_new_records",
-    }
+    source_exhausted = termination_reason in {"source_repeated_page_after_avanca", "source_returned_empty_page"}
+    parser_complete = not parse_gaps
+    complete = source_exhausted and parser_complete
     coverage = {
         "source_url": URL,
         "records_parsed": len(rows),
-        "pages_with_new_records": len(page_meta),
+        "pages_with_records": sum(1 for item in page_meta if item["visible_records"]),
+        "source_exhausted": source_exhausted,
+        "parser_complete_for_visible_records": parser_complete,
         "complete": complete,
         "coverage_scope": "default public ScriptCase commitment ledger view in the observed session",
         "termination_reason": termination_reason,
         "stopped_error": stopped_error,
+        "parse_gaps": parse_gaps,
         "coverage_note": (
-            "Complete for the default public ScriptCase commitment view: repeated/empty/no-new navigation proved source exhaustion. This does not assert completeness for hidden historical filters or other CMS accounting systems."
+            "Complete for the default public ScriptCase commitment view: navigation reached source exhaustion and every visible commitment identifier on every collected page was normalized. This does not assert completeness for hidden historical filters or other CMS accounting systems."
             if complete else
-            "Pagination did not reach a source-proven end; collected commitment records remain valid snapshots but coverage is partial."
+            "Coverage is partial unless both source_exhausted=true and parser_complete_for_visible_records=true. Collected records remain valid snapshots."
         ),
         "privacy_note": "Individual CPF values displayed by the source are masked in normalized output; CNPJ values are retained.",
         "pages": page_meta,
