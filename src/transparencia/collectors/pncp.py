@@ -15,6 +15,25 @@ from ..provenance import persist_snapshot
 
 PNCP_ENDPOINT = "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao"
 PNCP_MODALITIES_ENDPOINT = "https://pncp.gov.br/api/pncp/v1/modalidades"
+RETRYABLE = {429, 500, 502, 503, 504}
+
+
+def _get_with_backoff(client: httpx.Client, url: str, *, params: dict | None = None, max_retries: int = 4) -> httpx.Response:
+    response: httpx.Response | None = None
+    for attempt in range(max_retries + 1):
+        response = client.get(url, params=params)
+        if response.status_code not in RETRYABLE:
+            return response
+        if attempt >= max_retries:
+            return response
+        retry_after = response.headers.get("retry-after")
+        try:
+            delay = float(retry_after) if retry_after else min(2 ** (attempt + 1), 20)
+        except ValueError:
+            delay = min(2 ** (attempt + 1), 20)
+        time.sleep(max(0.5, min(delay, 30)))
+    assert response is not None
+    return response
 
 
 def parse_active_modality_ids(payload: object) -> tuple[int, ...]:
@@ -39,7 +58,7 @@ def parse_active_modality_ids(payload: object) -> tuple[int, ...]:
 
 
 def discover_modality_ids(client: httpx.Client, out_dir: Path) -> tuple[int, ...]:
-    response = client.get(PNCP_MODALITIES_ENDPOINT, params={"statusAtivo": "true"})
+    response = _get_with_backoff(client, PNCP_MODALITIES_ENDPOINT, params={"statusAtivo": "true"})
     response.raise_for_status()
     persist_snapshot(out_dir=out_dir / "snapshots", source_id="pncp_modalidades",
                      requested_url=str(response.request.url), final_url=str(response.url),
@@ -122,14 +141,18 @@ def normalize_record(r: dict, city: CityConfig, observed_at: str, snapshot_sha25
     }
 
 
-def _json_payload_or_empty(response: httpx.Response) -> dict:
-    if response.status_code == 204 or not response.content.strip():
-        return {}
-    return response.json()
+def _write_coverage(out_dir: Path, *, complete: bool, records: int, stopped_url: str | None = None, stopped_status: int | None = None) -> None:
+    (out_dir / "coverage.json").write_text(json.dumps({
+        "complete": complete,
+        "records": records,
+        "stopped_url": stopped_url,
+        "stopped_status": stopped_status,
+        "note": "complete=false means the public source stopped the collection; persisted records remain valid but coverage is partial.",
+    }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, scope: str = "executivo",
-            page_size: int = 50, sleep_seconds: float = 0.25) -> Path:
+            page_size: int = 50, sleep_seconds: float = 0.5) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
     output = out_dir / f"contratacoes_{scope}_{start.isoformat()}_{end.isoformat()}.jsonl"
     seen: set[str] = set()
@@ -150,17 +173,20 @@ def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, scope: s
                         "tamanhoPagina": page_size,
                     }
                     url = PNCP_ENDPOINT + "?" + urlencode(params)
-                    response = client.get(PNCP_ENDPOINT, params=params)
-                    if response.status_code in {429, 500, 502, 503, 504}:
-                        time.sleep(min(2 ** min(page, 5), 30))
-                        response = client.get(PNCP_ENDPOINT, params=params)
+                    response = _get_with_backoff(client, PNCP_ENDPOINT, params=params)
+                    if response.status_code in RETRYABLE:
+                        persist_snapshot(out_dir=out_dir / "snapshots", source_id="pncp_consulta_limitada",
+                                         requested_url=url, final_url=str(response.url), status_code=response.status_code,
+                                         content_type=response.headers.get("content-type", ""), body=response.content)
+                        _write_coverage(out_dir, complete=False, records=len(seen), stopped_url=url, stopped_status=response.status_code)
+                        return output
                     response.raise_for_status()
                     meta = persist_snapshot(out_dir=out_dir / "snapshots", source_id="pncp_consulta",
                                             requested_url=url, final_url=str(response.url),
                                             status_code=response.status_code,
                                             content_type=response.headers.get("content-type", "application/json"),
                                             body=response.content)
-                    payload = _json_payload_or_empty(response)
+                    payload = {} if response.status_code == 204 or not response.content.strip() else response.json()
                     records = payload.get("data") or payload.get("content") or []
                     for raw in records:
                         if not in_scope(raw, city, scope):
@@ -177,4 +203,5 @@ def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, scope: s
                         break
                     page += 1
                     time.sleep(sleep_seconds)
+    _write_coverage(out_dir, complete=True, records=len(seen))
     return output

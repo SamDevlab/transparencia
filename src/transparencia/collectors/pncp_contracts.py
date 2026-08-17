@@ -107,12 +107,6 @@ def normalize_record(r: dict, city: CityConfig, observed_at: str, snapshot_sha25
     }
 
 
-def _json_payload_or_empty(response: httpx.Response) -> dict:
-    if response.status_code == 204 or not response.content.strip():
-        return {}
-    return response.json()
-
-
 def collect(
     city: CityConfig,
     start: date,
@@ -160,7 +154,7 @@ def collect(
                         content_type=response.headers.get("content-type", "application/json"),
                         body=response.content,
                     )
-                    payload = _json_payload_or_empty(response)
+                    payload = {} if response.status_code == 204 or not response.content.strip() else response.json()
                     records = payload.get("data") or payload.get("content") or []
                     for raw in records:
                         if not in_scope(raw, city, scope):
