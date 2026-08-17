@@ -1,0 +1,418 @@
+{
+  "https://cmsalvador.sys.inf.br/ca/contrato/": {
+    "ajax_candidates": [
+      "https://cmsalvador.sys.inf.br/ca/_lib/img/scriptcase__NM__ajax_load.gif",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_ajax.js",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_config_pdf.php?export_ajax=S&nm_opc=pdf&nm_target=&nm_cor=cor&papel=1&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&password=n&summary_export_columns=N&origem=cons&language=pt_br&conf_socor=N&nm_label_group=S&nm_all_cab=N&nm_all_label=N&&pdf_zip=Nnm_orient_grid=2&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_config_word.php?script_case_init=4087&summary_export_columns=N&export_ajax=S&nm_opc=doc_word&nm_cor=AM&nm_res_cons=n&nm_ini_word_res=grid&nm_all_modules=grid&password=n&origem=cons&language=pt_br&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_pesq.class.php"
+    ],
+    "bytes": 306414,
+    "content_type": "text/html; charset=UTF-8",
+    "error": null,
+    "export_candidates": [
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_config_pdf.php?export_ajax=S&nm_opc=pdf&nm_target=&nm_cor=cor&papel=1&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&password=n&summary_export_columns=N&origem=cons&language=pt_br&conf_socor=N&nm_label_group=S&nm_all_cab=N&nm_all_label=N&&pdf_zip=Nnm_orient_grid=2&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=1&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=S&nm_all_cab=N&nm_all_label=N&nm_orient_grid=2&password=n&summary_export_columns=N&pdf_zip=N&origem=cons&language=pt_br&conf_socor=N&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_config_word.php?script_case_init=4087&summary_export_columns=N&export_ajax=S&nm_opc=doc_word&nm_cor=AM&nm_res_cons=n&nm_ini_word_res=grid&nm_all_modules=grid&password=n&origem=cons&language=pt_br&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_config_word.php?script_case_init=4087&summary_export_columns=N&nm_cor=AM&nm_res_cons=n&nm_ini_word_res=grid&nm_all_modules=grid&password=n&origem=cons&language=pt_br&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=csv&sAdd=&nm_opc=csv&nm_target=0&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=json&sAdd=&nm_opc=json&nm_target=0&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=rtf&sAdd=&nm_opc=rtf&nm_target=0&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=xls&sAdd=&nm_opc=xls&nm_target=0&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=xml&sAdd=&nm_opc=xml&nm_target=0&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "javascript: nm_gp_json_conf("
+    ],
+    "final_url": "https://cmsalvador.sys.inf.br/ca/contrato/",
+    "forms": [
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/contrato_pesq.class.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/contrato_iframe_prt.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      }
+    ],
+    "sha256": "3b3876292d653bfac6e0a6dce4743bab0a5f1206a7ca12e547a430be4bfa41bd",
+    "status": 200,
+    "title": "Consulta de Contratos"
+  },
+  "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa": {
+    "ajax_candidates": [
+      "https://cmsalvador.sys.inf.br/ca/_lib/img/scriptcase__NM__ajax_load.gif",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_ajax.js",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_pesq.class.php"
+    ],
+    "bytes": 267442,
+    "content_type": "text/html; charset=UTF-8",
+    "error": null,
+    "export_candidates": [
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=8&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=N&nm_all_cab=S&nm_all_label=S&nm_orient_grid=2&password=n&summary_export_columns=S&pdf_zip=N&origem=cons&language=pt_br&conf_socor=N&script_case_init=5490&app_name=gridRegistroDespesa&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_config_print.php?script_case_init=5490&summary_export_columns=S&nm_opc=RC&nm_cor=CO&password=n&language=pt_br&nm_page=5490&nm_res_cons=n&nm_ini_prt_res=grid&nm_all_modules=grid&origem=cons&KeepThis=true&TB_iframe=true&modal=true"
+    ],
+    "final_url": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+    "forms": [
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_pesq.class.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_iframe_prt.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "GET"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      }
+    ],
+    "sha256": "ef32e9755d38732a02a2c5c4b92bf3dc2fa771ea700ed7c177c026df51034987",
+    "status": 200,
+    "title": "CÂMARA MUNICIPAL DE SALVADOR - Registro de Despesa"
+  },
+  "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/": {
+    "ajax_candidates": [
+      "https://cmsalvador.sys.inf.br/ca/_lib/img/scriptcase__NM__ajax_load.gif",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_ajax.js",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_pesq.class.php"
+    ],
+    "bytes": 227543,
+    "content_type": "text/html; charset=UTF-8",
+    "error": null,
+    "export_candidates": [
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=8&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=N&nm_all_cab=S&nm_all_label=S&nm_orient_grid=2&password=n&summary_export_columns=S&pdf_zip=N&origem=cons&language=pt_br&conf_socor=N&script_case_init=254&app_name=gridRegistroEmpenho&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_config_print.php?script_case_init=254&summary_export_columns=S&nm_opc=RC&nm_cor=CO&password=n&language=pt_br&nm_page=254&nm_res_cons=n&nm_ini_prt_res=grid&nm_all_modules=grid&origem=cons&KeepThis=true&TB_iframe=true&modal=true"
+    ],
+    "final_url": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+    "forms": [
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_pesq.class.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_iframe_prt.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "GET"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      }
+    ],
+    "sha256": "29c66f9fae5b16ab9948d8937b042ab4fd9f0f38cbd5fbfc2ad145389321a7f1",
+    "status": 200,
+    "title": "CÂMARA MUNICIPAL DE SALVADOR - Relação de Empenho"
+  },
+  "https://cmsalvador.sys.inf.br/ca/licitacao/": {
+    "ajax_candidates": [
+      "https://cmsalvador.sys.inf.br/ca/_lib/img/scriptcase__NM__ajax_load.gif",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_ajax.js",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_config_pdf.php?export_ajax=S&nm_opc=pdf&nm_target=&nm_cor=cor&papel=1&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&password=n&summary_export_columns=N&origem=cons&language=pt_br&conf_socor=N&nm_label_group=S&nm_all_cab=N&nm_all_label=N&&pdf_zip=Nnm_orient_grid=2&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_config_word.php?script_case_init=4827&summary_export_columns=N&export_ajax=S&nm_opc=doc_word&nm_cor=AM&nm_res_cons=n&nm_ini_word_res=grid&nm_all_modules=grid&password=n&origem=cons&language=pt_br&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_pesq.class.php"
+    ],
+    "bytes": 352198,
+    "content_type": "text/html; charset=UTF-8",
+    "error": null,
+    "export_candidates": [
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_config_pdf.php?export_ajax=S&nm_opc=pdf&nm_target=&nm_cor=cor&papel=1&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&password=n&summary_export_columns=N&origem=cons&language=pt_br&conf_socor=N&nm_label_group=S&nm_all_cab=N&nm_all_label=N&&pdf_zip=Nnm_orient_grid=2&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=1&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=S&nm_all_cab=N&nm_all_label=N&nm_orient_grid=2&password=n&summary_export_columns=N&pdf_zip=N&origem=cons&language=pt_br&conf_socor=N&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_config_word.php?script_case_init=4827&summary_export_columns=N&export_ajax=S&nm_opc=doc_word&nm_cor=AM&nm_res_cons=n&nm_ini_word_res=grid&nm_all_modules=grid&password=n&origem=cons&language=pt_br&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_config_word.php?script_case_init=4827&summary_export_columns=N&nm_cor=AM&nm_res_cons=n&nm_ini_word_res=grid&nm_all_modules=grid&password=n&origem=cons&language=pt_br&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=csv&sAdd=&nm_opc=csv&nm_target=0&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=json&sAdd=&nm_opc=json&nm_target=0&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=rtf&sAdd=&nm_opc=rtf&nm_target=0&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=xls&sAdd=&nm_opc=xls&nm_target=0&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=xml&sAdd=&nm_opc=xml&nm_target=0&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "javascript: nm_gp_json_conf("
+    ],
+    "final_url": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+    "forms": [
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_pesq.class.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_iframe_prt.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      }
+    ],
+    "sha256": "b5041182b3ead0c800795afb7be45933a1678a46ff9f54402bb54d871a74a695",
+    "status": 200,
+    "title": "Consulta de Certames"
+  },
+  "https://cmsalvador.sys.inf.br/ca/trans_pagamento/": {
+    "ajax_candidates": [
+      "https://cmsalvador.sys.inf.br/ca/_lib/img/scriptcase__NM__ajax_load.gif",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_ajax.js",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_pesq.class.php"
+    ],
+    "bytes": 165374,
+    "content_type": "text/html; charset=UTF-8",
+    "error": null,
+    "export_candidates": [
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=8&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=N&nm_all_cab=S&nm_all_label=S&nm_orient_grid=2&password=n&summary_export_columns=S&pdf_zip=N&origem=cons&language=pt_br&conf_socor=N&script_case_init=1195&app_name=trans_pagamento&KeepThis=true&TB_iframe=true&modal=true"
+    ],
+    "final_url": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+    "forms": [
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_pesq.class.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_iframe_prt.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      }
+    ],
+    "sha256": "8343118cddc99fdcac9861b7bbc163baa3aab578b5f6cfe047e502efad6cedef",
+    "status": 200,
+    "title": "PAGAMENTOS"
+  },
+  "https://cmsalvador.sys.inf.br/consulta.html": {
+    "ajax_candidates": [],
+    "bytes": 3337,
+    "content_type": "text/html",
+    "error": null,
+    "export_candidates": [],
+    "final_url": "https://cmsalvador.sys.inf.br/consulta.html",
+    "forms": [],
+    "sha256": "a837d5e5644cbbd051d911e6320e36e7ebd7df9b1b34bb8b656f90b82026f6de",
+    "status": 200,
+    "title": "Consultas"
+  },
+  "https://www.cms.ba.gov.br/transparencia/despesas-viagem": {
+    "ajax_candidates": [],
+    "bytes": 52428,
+    "content_type": "text/html; charset=UTF-8",
+    "error": null,
+    "export_candidates": [],
+    "final_url": "https://www.cms.ba.gov.br/transparencia/despesas-viagem",
+    "forms": [
+      {
+        "action": "https://www.cms.ba.gov.br/home/search",
+        "method": "GET"
+      },
+      {
+        "action": "https://www.cms.ba.gov.br/transparencia/despesas-viagem/search",
+        "method": "POST"
+      }
+    ],
+    "sha256": "98f357e2e81ccdf593fdfcf94e3d182942934c788b7aa1375d141373106303bf",
+    "status": 200,
+    "title": "Despesas de Viagem - Câmara Municipal de Salvador"
+  }
+}
