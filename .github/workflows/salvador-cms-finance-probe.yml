@@ -1,0 +1,83 @@
+name: salvador-cms-finance-probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-cms-finance-probe.yml
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx
+      - name: Probe Câmara finance applications
+        run: |
+          python - <<'PY'
+          import hashlib, json, re
+          from pathlib import Path
+          from urllib.parse import urljoin
+          import httpx
+
+          urls=[
+            'https://cmsalvador.sys.inf.br/consulta.html',
+            'https://cmsalvador.sys.inf.br/ca/contrato/',
+            'https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa',
+            'https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/',
+            'https://cmsalvador.sys.inf.br/ca/trans_pagamento/',
+            'https://cmsalvador.sys.inf.br/ca/licitacao/',
+            'https://www.cms.ba.gov.br/transparencia/despesas-viagem',
+          ]
+          headers={'user-agent':'municipal-transparency-research/0.2 (+public-data-audit)','accept':'text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8','accept-language':'pt-BR,pt;q=0.9'}
+          out={}
+          with httpx.Client(headers=headers,follow_redirects=True,timeout=40) as client:
+            for url in urls:
+              try:
+                r=client.get(url)
+                text=r.text
+                candidates=set()
+                for pattern in [r'https?://[^\"\'<>\s]+', r'(?:href|src|action)=[\"\']([^\"\']+)', r'url\s*[:=]\s*[\"\']([^\"\']+)']:
+                  for m in re.finditer(pattern,text,re.I):
+                    value=m.group(1) if m.lastindex else m.group(0)
+                    if any(k in value.lower() for k in ['grid','contrat','desp','empen','pagamento','viagem','licit','ajax','php','json','api']):
+                      candidates.add(urljoin(str(r.url),value))
+                forms=[]
+                for m in re.finditer(r'<form\b([^>]*)>',text,re.I):
+                  attrs=m.group(1)
+                  action=re.search(r'action=[\"\']([^\"\']*)',attrs,re.I)
+                  method=re.search(r'method=[\"\']([^\"\']*)',attrs,re.I)
+                  forms.append({'action':urljoin(str(r.url),action.group(1)) if action else str(r.url),'method':method.group(1).upper() if method else 'GET'})
+                out[url]={
+                  'status':r.status_code,'final_url':str(r.url),'content_type':r.headers.get('content-type'),
+                  'bytes':len(r.content),'sha256':hashlib.sha256(r.content).hexdigest(),
+                  'title':(re.search(r'<title[^>]*>(.*?)</title>',text,re.I|re.S).group(1).strip() if re.search(r'<title[^>]*>(.*?)</title>',text,re.I|re.S) else None),
+                  'forms':forms[:30],'candidates':sorted(candidates)[:200],'text_preview':' '.join(re.sub(r'<[^>]+>',' ',text).split())[:5000]
+                }
+              except Exception as exc:
+                out[url]={'error':f'{type(exc).__name__}: {exc}'}
+          p=Path('cities/salvador/data/snapshots/2026-08-17/cms_finance_probe.json'); p.parent.mkdir(parents=True,exist_ok=True)
+          p.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)[:60000])
+          PY
+      - name: Commit probe
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/snapshots/2026-08-17/cms_finance_probe.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(salvador): probe Câmara financial systems"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
