@@ -1,0 +1,72 @@
+name: salvador-procurement-probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-procurement-probe.yml
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx
+      - name: Probe acquisition catalogue
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          import httpx
+          base='https://apitmptransparencia.salvador.ba.gov.br/api'
+          headers={'accept':'application/json, text/plain, */*','origin':'https://transparencia.salvador.ba.gov.br','referer':'https://transparencia.salvador.ba.gov.br/','user-agent':'municipal-transparency-research/0.2 (+public-data-audit)'}
+          payloads={
+            'empty':{},
+            'iso':{'dataInicio':'2026-01-01','dataFim':'2026-08-17','agrupamentos':[],'filtros':[]},
+            'iso_order':{'dataInicio':'2026-01-01','dataFim':'2026-08-17','agrupamentos':[],'filtros':[],'ordenarPor':''},
+          }
+          out={}
+          with httpx.Client(headers=headers,follow_redirects=True,timeout=35) as client:
+            for page in [1,2]:
+              for name,payload in payloads.items():
+                key=f'page{page}_{name}'
+                try:
+                  r=client.post(base+f'/aquisicao/gridDetalhada?pagina={page}',json=payload)
+                  raw=r.content; item={'status':r.status_code,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),'payload':payload}
+                  try:
+                    j=r.json(); item['type']=type(j).__name__; item['top_level_keys']=sorted(j.keys()) if isinstance(j,dict) else None
+                    if isinstance(j,dict):
+                      for candidate in ['dados','valor','items','registros']:
+                        if isinstance(j.get(candidate),list):
+                          item['list_key']=candidate; item['count']=len(j[candidate]); item['first_rows']=j[candidate][:3]; break
+                      item['paginacao']=j.get('paginacao'); item['totalizadores']=j.get('totalizadores')
+                    elif isinstance(j,list): item['count']=len(j); item['first_rows']=j[:3]
+                    item['json_preview']=json.dumps(j,ensure_ascii=False)[:12000]
+                  except Exception: item['text_preview']=r.text[:12000]
+                  out[key]=item
+                except Exception as exc: out[key]={'error':f'{type(exc).__name__}: {exc}','payload':payload}
+          p=Path('cities/salvador/data/snapshots/2026-08-17/prefeitura_api/procurement_probe.json'); p.parent.mkdir(parents=True,exist_ok=True)
+          p.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True))
+          PY
+      - name: Commit probe
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/snapshots/2026-08-17/prefeitura_api/procurement_probe.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(salvador): probe acquisition catalogue API"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
