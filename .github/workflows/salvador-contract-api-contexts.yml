@@ -1,0 +1,52 @@
+name: salvador-contract-api-contexts
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-contract-api-contexts.yml
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Extract contract supplier acquisition call signatures
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/lazy_chunks')
+          report=json.loads((root/'report.json').read_text(encoding='utf-8'))
+          terms=('contrat','fornec','aquis','licit','aditivo','fiscal')
+          rows=[]
+          for chunk in report.get('relevant_chunks',[]):
+            for call in chunk.get('http_calls',[]):
+              strings=call.get('strings_after_call') or []
+              text=' '.join(strings).casefold()
+              if not any(t in text for t in terms): continue
+              rows.append({'method':call.get('method'),'strings':strings[:80],'chunk_url':chunk.get('url'),'chunk_sha256':chunk.get('sha256'),'offset':call.get('offset')})
+          out=root/'contract_supplier_api_contexts.json'
+          out.write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(rows,ensure_ascii=False,indent=2)[:60000])
+          PY
+      - name: Commit contexts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/lazy_chunks/contract_supplier_api_contexts.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(salvador): extract contract and supplier API contexts"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
