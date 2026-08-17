@@ -1,0 +1,2581 @@
+{
+  "base_url": "https://apitmptransparencia.salvador.ba.gov.br/api",
+  "gets": {
+    "/filtro/aquisicoes/filtros": {
+      "bytes": 1537,
+      "content_type": "application/json; charset=utf-8",
+      "first_item_keys": [
+        "atributo",
+        "descricao",
+        "nomeTabela",
+        "observacao",
+        "temAnoReferencia"
+      ],
+      "json": [
+        {
+          "atributo": "NUDOM",
+          "descricao": "DOM",
+          "nomeTabela": "AQUISICAO",
+          "observacao": "Diário Oficial do Município",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDMODALIDADELICITACAO",
+          "descricao": "Modalidade Licitação",
+          "nomeTabela": "MODALIDADELICITACAO",
+          "observacao": "A modalidade indica o procedimento que irá reger a licitação. Exemplo: concorrência, convite, tomada de preços, etc.",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "NUAQUISICAO",
+          "descricao": "Número da Aquisição",
+          "nomeTabela": "AQUISICAO",
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDORGAO",
+          "descricao": "Órgão",
+          "nomeTabela": "ORGAO",
+          "observacao": "É a denominação dada às unidades administrativas responsáveis pelo desempenho das funções de governo.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "NUPROCESSO",
+          "descricao": "Processo",
+          "nomeTabela": "AQUISICAO",
+          "observacao": null,
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDSITUACAOAQUISICAO",
+          "descricao": "Situação de Aquisição",
+          "nomeTabela": "SITUACAOAQUISICAO",
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDSITUACAOEDITAL",
+          "descricao": "Situação de Edital",
+          "nomeTabela": "SITUACAOEDITAL",
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "DSTIPOAQUISICAO",
+          "descricao": "Tipo da Aquisição",
+          "nomeTabela": "AQUISICAO",
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDUNIDADEGESTORA",
+          "descricao": "Unidade Gestora",
+          "nomeTabela": "UNIDADEGESTORA",
+          "observacao": "É uma unidade investida do poder de gerir recursos orçamentários e financeiros para a realização de despesas.",
+          "temAnoReferencia": true
+        }
+      ],
+      "json_preview": "[{\"descricao\": \"DOM\", \"observacao\": \"Diário Oficial do Município\", \"nomeTabela\": \"AQUISICAO\", \"temAnoReferencia\": true, \"atributo\": \"NUDOM\"}, {\"descricao\": \"Modalidade Licitação\", \"observacao\": \"A modalidade indica o procedimento que irá reger a licitação. Exemplo: concorrência, convite, tomada de preços, etc.\", \"nomeTabela\": \"MODALIDADELICITACAO\", \"temAnoReferencia\": false, \"atributo\": \"CDMODALIDADELICITACAO\"}, {\"descricao\": \"Número da Aquisição\", \"observacao\": null, \"nomeTabela\": \"AQUISICAO\", \"temAnoReferencia\": false, \"atributo\": \"NUAQUISICAO\"}, {\"descricao\": \"Órgão\", \"observacao\": \"É a denominação dada às unidades administrativas responsáveis pelo desempenho das funções de governo.\", \"nomeTabela\": \"ORGAO\", \"temAnoReferencia\": true, \"atributo\": \"CDORGAO\"}, {\"descricao\": \"Processo\", \"observacao\": null, \"nomeTabela\": \"AQUISICAO\", \"temAnoReferencia\": true, \"atributo\": \"NUPROCESSO\"}, {\"descricao\": \"Situação de Aquisição\", \"observacao\": null, \"nomeTabela\": \"SITUACAOAQUISICAO\", \"temAnoReferencia\": false, \"atributo\": \"CDSITUACAOAQUISICAO\"}, {\"descricao\": \"Situação de Edital\", \"observacao\": null, \"nomeTabela\": \"SITUACAOEDITAL\", \"temAnoReferencia\": false, \"atributo\": \"CDSITUACAOEDITAL\"}, {\"descricao\": \"Tipo da Aquisição\", \"observacao\": null, \"nomeTabela\": \"AQUISICAO\", \"temAnoReferencia\": false, \"atributo\": \"DSTIPOAQUISICAO\"}, {\"descricao\": \"Unidade Gestora\", \"observacao\": \"É uma unidade investida do poder de gerir recursos orçamentários e financeiros para a realização de despesas.\", \"nomeTabela\": \"UNIDADEGESTORA\", \"temAnoReferencia\": true, \"atributo\": \"CDUNIDADEGESTORA\"}]",
+      "list_length": 9,
+      "sha256": "0ab9ed7539de41a82c84cfb90d22b25a3c8a92e29e105ef0885337177efed328",
+      "status": 200,
+      "url": "https://apitmptransparencia.salvador.ba.gov.br/api/filtro/aquisicoes/filtros"
+    },
+    "/filtro/contratos/filtros": {
+      "bytes": 1026,
+      "content_type": "application/json; charset=utf-8",
+      "first_item_keys": [
+        "atributo",
+        "descricao",
+        "nomeTabela",
+        "observacao",
+        "temAnoReferencia"
+      ],
+      "json": [
+        {
+          "atributo": "NUCONTRATOORIGINAL",
+          "descricao": "Contrato Original",
+          "nomeTabela": "CONTRATOS",
+          "observacao": null,
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDFORMACONTRATACAO",
+          "descricao": "Forma de Contratação",
+          "nomeTabela": "FORMACONTRATACAO",
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDORGAO",
+          "descricao": "Órgão",
+          "nomeTabela": "ORGAO",
+          "observacao": "É a denominação dada às unidades administrativas responsáveis pelo desempenho das funções de governo.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDTIPOCONTRATO",
+          "descricao": "Tipo de Contrato",
+          "nomeTabela": "TIPOCONTRATO",
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDTIPOOBJETOCONTRATO",
+          "descricao": "Tipo de Objeto de Contrato",
+          "nomeTabela": "TIPOOBJETOCONTRATO",
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDUNIDADEGESTORA",
+          "descricao": "Unidade Gestora",
+          "nomeTabela": "UNIDADEGESTORA",
+          "observacao": "É uma unidade investida do poder de gerir recursos orçamentários e financeiros para a realização de despesas.",
+          "temAnoReferencia": true
+        }
+      ],
+      "json_preview": "[{\"descricao\": \"Contrato Original\", \"observacao\": null, \"nomeTabela\": \"CONTRATOS\", \"temAnoReferencia\": true, \"atributo\": \"NUCONTRATOORIGINAL\"}, {\"descricao\": \"Forma de Contratação\", \"observacao\": null, \"nomeTabela\": \"FORMACONTRATACAO\", \"temAnoReferencia\": false, \"atributo\": \"CDFORMACONTRATACAO\"}, {\"descricao\": \"Órgão\", \"observacao\": \"É a denominação dada às unidades administrativas responsáveis pelo desempenho das funções de governo.\", \"nomeTabela\": \"ORGAO\", \"temAnoReferencia\": true, \"atributo\": \"CDORGAO\"}, {\"descricao\": \"Tipo de Contrato\", \"observacao\": null, \"nomeTabela\": \"TIPOCONTRATO\", \"temAnoReferencia\": false, \"atributo\": \"CDTIPOCONTRATO\"}, {\"descricao\": \"Tipo de Objeto de Contrato\", \"observacao\": null, \"nomeTabela\": \"TIPOOBJETOCONTRATO\", \"temAnoReferencia\": false, \"atributo\": \"CDTIPOOBJETOCONTRATO\"}, {\"descricao\": \"Unidade Gestora\", \"observacao\": \"É uma unidade investida do poder de gerir recursos orçamentários e financeiros para a realização de despesas.\", \"nomeTabela\": \"UNIDADEGESTORA\", \"temAnoReferencia\": true, \"atributo\": \"CDUNIDADEGESTORA\"}]",
+      "list_length": 6,
+      "sha256": "9fc33144cb84670fdabf144cc4e5fe57154eb3efc4579641936ad9105be8be19",
+      "status": 200,
+      "url": "https://apitmptransparencia.salvador.ba.gov.br/api/filtro/contratos/filtros"
+    },
+    "/filtro/despesa/agrupar": {
+      "bytes": 4211,
+      "content_type": "application/json; charset=utf-8",
+      "first_item_keys": [
+        "atributo",
+        "descricao",
+        "nomeTabela",
+        "observacao",
+        "temAnoReferencia"
+      ],
+      "json": [
+        {
+          "atributo": "CDACAO",
+          "descricao": "Ação",
+          "nomeTabela": "ACAO",
+          "observacao": "Representa no âmbito do Plano Plurianual, o conjunto de operações cujos produtos contribuem para os objetivos de um programa.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "AAREFERENCIA",
+          "descricao": "Ano",
+          "nomeTabela": null,
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "NUBIMESTRE",
+          "descricao": "Bimestre",
+          "nomeTabela": null,
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDCATEGORIAECONOMICA",
+          "descricao": "Categoria Econômica",
+          "nomeTabela": "CATEGORIAECONOMICA",
+          "observacao": "É uma classificação da receita da despesa, com a finalidade de identificar o fato econômico que ocasionou o ingresso e a saída de recursos nos cofres públicos.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDCREDOR",
+          "descricao": "Credor",
+          "nomeTabela": "CREDOR",
+          "observacao": "É aquele que recebe recursos públicos.",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDELEMENTODESPESA",
+          "descricao": "Elemento",
+          "nomeTabela": "ELEMENTODESPESA",
+          "observacao": "É a classificação detalhada da despesa, que tem a finalidade de identificar os objetos de gastos do governo.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDFONTERECURSO",
+          "descricao": "Fonte Recurso",
+          "nomeTabela": "FONTERECURSO",
+          "observacao": "É o código utilizado para controlar a origem do dinheiro arrecadado e a sua destinação.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDFUNCAO",
+          "descricao": "Função",
+          "nomeTabela": "FUNCAO",
+          "observacao": "Representa a área de atuação do governo, com a finalidade de atingir os seus objetivos.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDGRUPODESPESA",
+          "descricao": "Grupo Natureza Despesa",
+          "nomeTabela": "GRUPODESPESA",
+          "observacao": "É uma forma de classificação da despesa orçamentária, conforme as suas características mais comuns, composta de seis subdivisões",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDMODALIDADEAPLICACAO",
+          "descricao": "Modalidade Aplicação",
+          "nomeTabela": "MODALIDADEAPLICACAO",
+          "observacao": "É o código utilizado na classificação da despesa para indicar se os recursos são aplicados diretamente por órgãos ou entidades no âmbito da mesma esfera do governo ou por outro ente da Federação e suas respectivas entidades. Objetiva, também, possibilitar a eliminação da dupla contagem de recursos transferidos dentro de uma mesma esfera de governo.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDORGAO",
+          "descricao": "Órgão",
+          "nomeTabela": "ORGAO",
+          "observacao": "É a denominação dada às unidades administrativas responsáveis pelo desempenho das funções de governo.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDPROGRAMA",
+          "descricao": "Programa",
+          "nomeTabela": "PROGRAMA",
+          "observacao": "É um instrumento que o governo utiliza para otimizar os recursos entre os setores e que articula um conjunto de ações suficientes para resolver um problema.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "NUQUADRIMESTRE",
+          "descricao": "Quadrimestre",
+          "nomeTabela": null,
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "NUSEMESTRE",
+          "descricao": "Semestre",
+          "nomeTabela": null,
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDSUBACAO",
+          "descricao": "Subação",
+          "nomeTabela": "SUBACAO",
+          "observacao": "Consiste no desdobramento da ação com o objetivo de discriminar a execução de um programa.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDSUBELEMENTODESPESA",
+          "descricao": "Subelemento",
+          "nomeTabela": "SUBELEMENTODESPESA",
+          "observacao": "É o nível mais detalhado de informação da despesa pública e identifica o objeto de gasto.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDSUBFUNCAO",
+          "descricao": "Subfunção",
+          "nomeTabela": "SUBFUNCAO",
+          "observacao": "É um nível de detalhe da função que evidencia com mais detalhes cada área da atuação do governo.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "TIPO",
+          "descricao": "Tipo de Pagamento",
+          "nomeTabela": "TIPOPAGAMENTO",
+          "observacao": "Tipo de Pagamento",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "NUTRIMESTRE",
+          "descricao": "Trimestre",
+          "nomeTabela": null,
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDUNIDADEGESTORA",
+          "descricao": "Unidade Gestora",
+          "nomeTabela": "UNIDADEGESTORA",
+          "observacao": "É uma unidade investida do poder de gerir recursos orçamentários e financeiros para a realização de despesas.",
+          "temAnoReferencia": true
+        }
+      ],
+      "json_preview": "[{\"descricao\": \"Ação\", \"observacao\": \"Representa no âmbito do Plano Plurianual, o conjunto de operações cujos produtos contribuem para os objetivos de um programa.\", \"nomeTabela\": \"ACAO\", \"temAnoReferencia\": true, \"atributo\": \"CDACAO\"}, {\"descricao\": \"Ano\", \"observacao\": null, \"nomeTabela\": null, \"temAnoReferencia\": false, \"atributo\": \"AAREFERENCIA\"}, {\"descricao\": \"Bimestre\", \"observacao\": null, \"nomeTabela\": null, \"temAnoReferencia\": false, \"atributo\": \"NUBIMESTRE\"}, {\"descricao\": \"Categoria Econômica\", \"observacao\": \"É uma classificação da receita da despesa, com a finalidade de identificar o fato econômico que ocasionou o ingresso e a saída de recursos nos cofres públicos.\", \"nomeTabela\": \"CATEGORIAECONOMICA\", \"temAnoReferencia\": true, \"atributo\": \"CDCATEGORIAECONOMICA\"}, {\"descricao\": \"Credor\", \"observacao\": \"É aquele que recebe recursos públicos.\", \"nomeTabela\": \"CREDOR\", \"temAnoReferencia\": false, \"atributo\": \"CDCREDOR\"}, {\"descricao\": \"Elemento\", \"observacao\": \"É a classificação detalhada da despesa, que tem a finalidade de identificar os objetos de gastos do governo.\", \"nomeTabela\": \"ELEMENTODESPESA\", \"temAnoReferencia\": true, \"atributo\": \"CDELEMENTODESPESA\"}, {\"descricao\": \"Fonte Recurso\", \"observacao\": \"É o código utilizado para controlar a origem do dinheiro arrecadado e a sua destinação.\", \"nomeTabela\": \"FONTERECURSO\", \"temAnoReferencia\": true, \"atributo\": \"CDFONTERECURSO\"}, {\"descricao\": \"Função\", \"observacao\": \"Representa a área de atuação do governo, com a finalidade de atingir os seus objetivos.\", \"nomeTabela\": \"FUNCAO\", \"temAnoReferencia\": true, \"atributo\": \"CDFUNCAO\"}, {\"descricao\": \"Grupo Natureza Despesa\", \"observacao\": \"É uma forma de classificação da despesa orçamentária, conforme as suas características mais comuns, composta de seis subdivisões\", \"nomeTabela\": \"GRUPODESPESA\", \"temAnoReferencia\": true, \"atributo\": \"CDGRUPODESPESA\"}, {\"descricao\": \"Modalidade Aplicação\", \"observacao\": \"É o código utilizado na classificação da despesa para indicar se os recursos são aplicados diretamente por órgãos ou entidades no âmbito da mesma esfera do governo ou por outro ente da Federação e suas respectivas entidades. Objetiva, também, possibilitar a eliminação da dupla contagem de recursos transferidos dentro de uma mesma esfera de governo.\", \"nomeTabela\": \"MODALIDADEAPLICACAO\", \"temAnoReferencia\": true, \"atributo\": \"CDMODALIDADEAPLICACAO\"}, {\"descricao\": \"Órgão\", \"observacao\": \"É a denominação dada às unidades administrativas responsáveis pelo desempenho das funções de governo.\", \"nomeTabela\": \"ORGAO\", \"temAnoReferencia\": true, \"atributo\": \"CDORGAO\"}, {\"descricao\": \"Programa\", \"observacao\": \"É um instrumento que o governo utiliza para otimizar os recursos entre os setores e que articula um conjunto de ações suficientes para resolver um problema.\", \"nomeTabela\": \"PROGRAMA\", \"temAnoReferencia\": true, \"atributo\": \"CDPROGRAMA\"}, {\"descricao\": \"Quadrimestre\", \"observacao\": null, \"nomeTabela\": null, \"temAnoReferencia\": false, \"atributo\": \"NUQUADRIMESTRE\"}, {\"descricao\": \"Semestre\", \"observacao\": null, \"nomeTabela\": null, \"temAnoReferencia\": false, \"atributo\": \"NUSEMESTRE\"}, {\"descricao\": \"Subação\", \"observacao\": \"Consiste no desdobramento da ação com o objetivo de discriminar a execução de um programa.\", \"nomeTabela\": \"SUBACAO\", \"temAnoReferencia\": true, \"atributo\": \"CDSUBACAO\"}, {\"descricao\": \"Subelemento\", \"observacao\": \"É o nível mais detalhado de informação da despesa pública e identifica o objeto de gasto.\", \"nomeTabela\": \"SUBELEMENTODESPESA\", \"temAnoReferencia\": true, \"atributo\": \"CDSUBELEMENTODESPESA\"}, {\"descricao\": \"Subfunção\", \"observacao\": \"É um nível de detalhe da função que evidencia com mais detalhes cada área da atuação do governo.\", \"nomeTabela\": \"SUBFUNCAO\", \"temAnoReferencia\": true, \"atributo\": \"CDSUBFUNCAO\"}, {\"descricao\": \"Tipo de Pagamento\", \"observacao\": \"Tipo de Pagamento\", \"nomeTabela\": \"TIPOPAGAMENTO\", \"temAnoReferencia\": false, \"atributo\": \"TIPO\"}, {\"descricao\": \"Trimestre\", \"observacao\": null, \"nomeTabela\": null, \"temAnoReferencia\": false, \"atributo\": \"NUTRIMESTRE\"}, {\"descricao\": \"Unidade Gestora\", \"observacao\": \"É uma unidade investida do poder de gerir recursos orçamentários e financeiros para a realização de despesas.\", \"nomeTabela\": \"UNIDADEGESTORA\", \"temAnoReferencia\": true, \"atributo\": \"CDUNIDADEGESTORA\"}]",
+      "list_length": 20,
+      "sha256": "45ad303fa95dd7156494aa082fd84cae46325e509e425c45d80dc4ed867b3461",
+      "status": 200,
+      "url": "https://apitmptransparencia.salvador.ba.gov.br/api/filtro/despesa/agrupar"
+    },
+    "/filtro/despesa/filtros": {
+      "bytes": 3933,
+      "content_type": "application/json; charset=utf-8",
+      "first_item_keys": [
+        "atributo",
+        "descricao",
+        "nomeTabela",
+        "observacao",
+        "temAnoReferencia"
+      ],
+      "json": [
+        {
+          "atributo": "CDACAO",
+          "descricao": "Ação",
+          "nomeTabela": "ACAO",
+          "observacao": "Representa no âmbito do Plano Plurianual, o conjunto de operações cujos produtos contribuem para os objetivos de um programa.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDCATEGORIAECONOMICA",
+          "descricao": "Categoria Econômica",
+          "nomeTabela": "CATEGORIAECONOMICA",
+          "observacao": "É uma classificação da receita da despesa, com a finalidade de identificar o fato econômico que ocasionou o ingresso e a saída de recursos nos cofres públicos.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDCREDOR",
+          "descricao": "Credor",
+          "nomeTabela": "CREDOR",
+          "observacao": "É aquele que recebe recursos públicos.",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDELEMENTODESPESA",
+          "descricao": "Elemento",
+          "nomeTabela": "ELEMENTODESPESA",
+          "observacao": "É a classificação detalhada da despesa, que tem a finalidade de identificar os objetos de gastos do governo.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "NUNOTAEMPENHO",
+          "descricao": "Empenho",
+          "nomeTabela": "EMPENHOS",
+          "observacao": "Numero do Empenho",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDFONTERECURSO",
+          "descricao": "Fonte Recurso",
+          "nomeTabela": "FONTERECURSO",
+          "observacao": "É o código utilizado para controlar a origem do dinheiro arrecadado e a sua destinação.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDFUNCAO",
+          "descricao": "Função",
+          "nomeTabela": "FUNCAO",
+          "observacao": "Representa a área de atuação do governo, com a finalidade de atingir os seus objetivos.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDGRUPODESPESA",
+          "descricao": "Grupo Natureza Despesa",
+          "nomeTabela": "GRUPODESPESA",
+          "observacao": "É uma forma de classificação da despesa orçamentária, conforme as suas características mais comuns, composta de seis subdivisões",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDMODALIDADEAPLICACAO",
+          "descricao": "Modalidade Aplicação",
+          "nomeTabela": "MODALIDADEAPLICACAO",
+          "observacao": "É o código utilizado na classificação da despesa para indicar se os recursos são aplicados diretamente por órgãos ou entidades no âmbito da mesma esfera do governo ou por outro ente da Federação e suas respectivas entidades. Objetiva, também, possibilitar a eliminação da dupla contagem de recursos transferidos dentro de uma mesma esfera de governo.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDORGAO",
+          "descricao": "Órgão",
+          "nomeTabela": "ORGAO",
+          "observacao": "É a denominação dada às unidades administrativas responsáveis pelo desempenho das funções de governo.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "NUPROC",
+          "descricao": "Processo de pagamento",
+          "nomeTabela": "LIQUIDACOES",
+          "observacao": "Processo de pagamento",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDPROGRAMA",
+          "descricao": "Programa",
+          "nomeTabela": "PROGRAMA",
+          "observacao": "É um instrumento que o governo utiliza para otimizar os recursos entre os setores e que articula um conjunto de ações suficientes para resolver um problema.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDSUBACAO",
+          "descricao": "Subação",
+          "nomeTabela": "SUBACAO",
+          "observacao": "Consiste no desdobramento da ação com o objetivo de discriminar a execução de um programa.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDSUBELEMENTODESPESA",
+          "descricao": "Subelemento",
+          "nomeTabela": "SUBELEMENTODESPESA",
+          "observacao": "É o nível mais detalhado de informação da despesa pública e identifica o objeto de gasto.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDSUBFUNCAO",
+          "descricao": "Subfunção",
+          "nomeTabela": "SUBFUNCAO",
+          "observacao": "É um nível de detalhe da função que evidencia com mais detalhes cada área da atuação do governo.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "TIPO",
+          "descricao": "Tipo de Pagamento",
+          "nomeTabela": "TIPOPAGAMENTO",
+          "observacao": "Tipo de Pagamento",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDUNIDADEGESTORA",
+          "descricao": "Unidade Gestora",
+          "nomeTabela": "UNIDADEGESTORA",
+          "observacao": "É uma unidade investida do poder de gerir recursos orçamentários e financeiros para a realização de despesas.",
+          "temAnoReferencia": true
+        }
+      ],
+      "json_preview": "[{\"descricao\": \"Ação\", \"observacao\": \"Representa no âmbito do Plano Plurianual, o conjunto de operações cujos produtos contribuem para os objetivos de um programa.\", \"nomeTabela\": \"ACAO\", \"temAnoReferencia\": true, \"atributo\": \"CDACAO\"}, {\"descricao\": \"Categoria Econômica\", \"observacao\": \"É uma classificação da receita da despesa, com a finalidade de identificar o fato econômico que ocasionou o ingresso e a saída de recursos nos cofres públicos.\", \"nomeTabela\": \"CATEGORIAECONOMICA\", \"temAnoReferencia\": true, \"atributo\": \"CDCATEGORIAECONOMICA\"}, {\"descricao\": \"Credor\", \"observacao\": \"É aquele que recebe recursos públicos.\", \"nomeTabela\": \"CREDOR\", \"temAnoReferencia\": false, \"atributo\": \"CDCREDOR\"}, {\"descricao\": \"Elemento\", \"observacao\": \"É a classificação detalhada da despesa, que tem a finalidade de identificar os objetos de gastos do governo.\", \"nomeTabela\": \"ELEMENTODESPESA\", \"temAnoReferencia\": true, \"atributo\": \"CDELEMENTODESPESA\"}, {\"descricao\": \"Empenho\", \"observacao\": \"Numero do Empenho\", \"nomeTabela\": \"EMPENHOS\", \"temAnoReferencia\": false, \"atributo\": \"NUNOTAEMPENHO\"}, {\"descricao\": \"Fonte Recurso\", \"observacao\": \"É o código utilizado para controlar a origem do dinheiro arrecadado e a sua destinação.\", \"nomeTabela\": \"FONTERECURSO\", \"temAnoReferencia\": true, \"atributo\": \"CDFONTERECURSO\"}, {\"descricao\": \"Função\", \"observacao\": \"Representa a área de atuação do governo, com a finalidade de atingir os seus objetivos.\", \"nomeTabela\": \"FUNCAO\", \"temAnoReferencia\": true, \"atributo\": \"CDFUNCAO\"}, {\"descricao\": \"Grupo Natureza Despesa\", \"observacao\": \"É uma forma de classificação da despesa orçamentária, conforme as suas características mais comuns, composta de seis subdivisões\", \"nomeTabela\": \"GRUPODESPESA\", \"temAnoReferencia\": true, \"atributo\": \"CDGRUPODESPESA\"}, {\"descricao\": \"Modalidade Aplicação\", \"observacao\": \"É o código utilizado na classificação da despesa para indicar se os recursos são aplicados diretamente por órgãos ou entidades no âmbito da mesma esfera do governo ou por outro ente da Federação e suas respectivas entidades. Objetiva, também, possibilitar a eliminação da dupla contagem de recursos transferidos dentro de uma mesma esfera de governo.\", \"nomeTabela\": \"MODALIDADEAPLICACAO\", \"temAnoReferencia\": true, \"atributo\": \"CDMODALIDADEAPLICACAO\"}, {\"descricao\": \"Órgão\", \"observacao\": \"É a denominação dada às unidades administrativas responsáveis pelo desempenho das funções de governo.\", \"nomeTabela\": \"ORGAO\", \"temAnoReferencia\": true, \"atributo\": \"CDORGAO\"}, {\"descricao\": \"Processo de pagamento\", \"observacao\": \"Processo de pagamento\", \"nomeTabela\": \"LIQUIDACOES\", \"temAnoReferencia\": true, \"atributo\": \"NUPROC\"}, {\"descricao\": \"Programa\", \"observacao\": \"É um instrumento que o governo utiliza para otimizar os recursos entre os setores e que articula um conjunto de ações suficientes para resolver um problema.\", \"nomeTabela\": \"PROGRAMA\", \"temAnoReferencia\": true, \"atributo\": \"CDPROGRAMA\"}, {\"descricao\": \"Subação\", \"observacao\": \"Consiste no desdobramento da ação com o objetivo de discriminar a execução de um programa.\", \"nomeTabela\": \"SUBACAO\", \"temAnoReferencia\": true, \"atributo\": \"CDSUBACAO\"}, {\"descricao\": \"Subelemento\", \"observacao\": \"É o nível mais detalhado de informação da despesa pública e identifica o objeto de gasto.\", \"nomeTabela\": \"SUBELEMENTODESPESA\", \"temAnoReferencia\": true, \"atributo\": \"CDSUBELEMENTODESPESA\"}, {\"descricao\": \"Subfunção\", \"observacao\": \"É um nível de detalhe da função que evidencia com mais detalhes cada área da atuação do governo.\", \"nomeTabela\": \"SUBFUNCAO\", \"temAnoReferencia\": true, \"atributo\": \"CDSUBFUNCAO\"}, {\"descricao\": \"Tipo de Pagamento\", \"observacao\": \"Tipo de Pagamento\", \"nomeTabela\": \"TIPOPAGAMENTO\", \"temAnoReferencia\": false, \"atributo\": \"TIPO\"}, {\"descricao\": \"Unidade Gestora\", \"observacao\": \"É uma unidade investida do poder de gerir recursos orçamentários e financeiros para a realização de despesas.\", \"nomeTabela\": \"UNIDADEGESTORA\", \"temAnoReferencia\": true, \"atributo\": \"CDUNIDADEGESTORA\"}]",
+      "list_length": 17,
+      "sha256": "e955d15b61cd75a2c1aff248025422b1468996dcff8b6a6f40cb7396b4094156",
+      "status": 200,
+      "url": "https://apitmptransparencia.salvador.ba.gov.br/api/filtro/despesa/filtros"
+    },
+    "/filtro/receita/agrupar": {
+      "bytes": 2656,
+      "content_type": "application/json; charset=utf-8",
+      "first_item_keys": [
+        "atributo",
+        "descricao",
+        "nomeTabela",
+        "observacao",
+        "temAnoReferencia"
+      ],
+      "json": [
+        {
+          "atributo": "AAREFERENCIA",
+          "descricao": "Ano",
+          "nomeTabela": null,
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "NUBIMESTRE",
+          "descricao": "Bimestre",
+          "nomeTabela": null,
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDCATEGORIAECONOMICA",
+          "descricao": "Categoria Econômica",
+          "nomeTabela": "CATEGORIAECONOMICA",
+          "observacao": "É uma classificação da receita da despesa, com a finalidade de identificar o fato econômico que ocasionou o ingresso e a saída de recursos nos cofres públicos.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDDESDOBRAMENTO1",
+          "descricao": "Desdobramento1",
+          "nomeTabela": "DESDOBRAMENTO1",
+          "observacao": "Corresponde aos dígitos quarto a sétimo da nova estrutura de codificação da Receita cujo objetivo é identificar as particularidades de cada receita, caso seja necessário.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDDESDOBRAMENTO2",
+          "descricao": "Desdobramento2",
+          "nomeTabela": "DESDOBRAMENTO2",
+          "observacao": "Corresponde aos dígitos quarto a sétimo da nova estrutura de codificação da Receita cujo objetivo é identificar as particularidades de cada receita, caso seja necessário.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDDESDOBRAMENTO3",
+          "descricao": "Desdobramento3",
+          "nomeTabela": "DESDOBRAMENTO3",
+          "observacao": "Corresponde aos dígitos quarto a sétimo da nova estrutura de codificação da Receita cujo objetivo é identificar as particularidades de cada receita, caso seja necessário.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDESPECIE",
+          "descricao": "Espécie",
+          "nomeTabela": "ESPECIE",
+          "observacao": "A espécie é o terceiro dígito da classificação da receita pública e possui um grau de detalhamento superior ao da origem.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "NUMES",
+          "descricao": "Mes",
+          "nomeTabela": null,
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDORIGEM",
+          "descricao": "Origem",
+          "nomeTabela": "ORIGEM",
+          "observacao": "É o segundo dígito da  classificação da receita pública possui um grau de detalhamento superior ao da categoria economica.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "NUQUADRIMESTRE",
+          "descricao": "Quadrimestre",
+          "nomeTabela": null,
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "NUSEMESTRE",
+          "descricao": "Semestre",
+          "nomeTabela": null,
+          "observacao": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDTIPORECEITA",
+          "descricao": "Tipo de Receita",
+          "nomeTabela": "TIPORECEITA",
+          "observacao": "Corresponde ao último dígito na natureza de receita padronizada nacionalmente e tem a finalidade de identificar o tipo de arrecadação a que se refere aquela natureza",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "NUTRIMESTRE",
+          "descricao": "Trimestre",
+          "nomeTabela": null,
+          "observacao": null,
+          "temAnoReferencia": false
+        }
+      ],
+      "json_preview": "[{\"descricao\": \"Ano\", \"observacao\": null, \"nomeTabela\": null, \"temAnoReferencia\": false, \"atributo\": \"AAREFERENCIA\"}, {\"descricao\": \"Bimestre\", \"observacao\": null, \"nomeTabela\": null, \"temAnoReferencia\": false, \"atributo\": \"NUBIMESTRE\"}, {\"descricao\": \"Categoria Econômica\", \"observacao\": \"É uma classificação da receita da despesa, com a finalidade de identificar o fato econômico que ocasionou o ingresso e a saída de recursos nos cofres públicos.\", \"nomeTabela\": \"CATEGORIAECONOMICA\", \"temAnoReferencia\": true, \"atributo\": \"CDCATEGORIAECONOMICA\"}, {\"descricao\": \"Desdobramento1\", \"observacao\": \"Corresponde aos dígitos quarto a sétimo da nova estrutura de codificação da Receita cujo objetivo é identificar as particularidades de cada receita, caso seja necessário.\", \"nomeTabela\": \"DESDOBRAMENTO1\", \"temAnoReferencia\": true, \"atributo\": \"CDDESDOBRAMENTO1\"}, {\"descricao\": \"Desdobramento2\", \"observacao\": \"Corresponde aos dígitos quarto a sétimo da nova estrutura de codificação da Receita cujo objetivo é identificar as particularidades de cada receita, caso seja necessário.\", \"nomeTabela\": \"DESDOBRAMENTO2\", \"temAnoReferencia\": true, \"atributo\": \"CDDESDOBRAMENTO2\"}, {\"descricao\": \"Desdobramento3\", \"observacao\": \"Corresponde aos dígitos quarto a sétimo da nova estrutura de codificação da Receita cujo objetivo é identificar as particularidades de cada receita, caso seja necessário.\", \"nomeTabela\": \"DESDOBRAMENTO3\", \"temAnoReferencia\": true, \"atributo\": \"CDDESDOBRAMENTO3\"}, {\"descricao\": \"Espécie\", \"observacao\": \"A espécie é o terceiro dígito da classificação da receita pública e possui um grau de detalhamento superior ao da origem.\", \"nomeTabela\": \"ESPECIE\", \"temAnoReferencia\": true, \"atributo\": \"CDESPECIE\"}, {\"descricao\": \"Mes\", \"observacao\": null, \"nomeTabela\": null, \"temAnoReferencia\": false, \"atributo\": \"NUMES\"}, {\"descricao\": \"Origem\", \"observacao\": \"É o segundo dígito da  classificação da receita pública possui um grau de detalhamento superior ao da categoria economica.\", \"nomeTabela\": \"ORIGEM\", \"temAnoReferencia\": true, \"atributo\": \"CDORIGEM\"}, {\"descricao\": \"Quadrimestre\", \"observacao\": null, \"nomeTabela\": null, \"temAnoReferencia\": false, \"atributo\": \"NUQUADRIMESTRE\"}, {\"descricao\": \"Semestre\", \"observacao\": null, \"nomeTabela\": null, \"temAnoReferencia\": false, \"atributo\": \"NUSEMESTRE\"}, {\"descricao\": \"Tipo de Receita\", \"observacao\": \"Corresponde ao último dígito na natureza de receita padronizada nacionalmente e tem a finalidade de identificar o tipo de arrecadação a que se refere aquela natureza\", \"nomeTabela\": \"TIPORECEITA\", \"temAnoReferencia\": true, \"atributo\": \"CDTIPORECEITA\"}, {\"descricao\": \"Trimestre\", \"observacao\": null, \"nomeTabela\": null, \"temAnoReferencia\": false, \"atributo\": \"NUTRIMESTRE\"}]",
+      "list_length": 13,
+      "sha256": "e70ac1bec98fcbd1a62bd6c87647bb1dd981212d2af05a73250519c83040721e",
+      "status": 200,
+      "url": "https://apitmptransparencia.salvador.ba.gov.br/api/filtro/receita/agrupar"
+    },
+    "/filtro/receita/filtros": {
+      "bytes": 2459,
+      "content_type": "application/json; charset=utf-8",
+      "first_item_keys": [
+        "atributo",
+        "descricao",
+        "nomeTabela",
+        "observacao",
+        "temAnoReferencia"
+      ],
+      "json": [
+        {
+          "atributo": "CDCATEGORIAECONOMICA",
+          "descricao": "Categoria Econômica",
+          "nomeTabela": "CATEGORIAECONOMICA",
+          "observacao": "É uma classificação da receita da despesa, com a finalidade de identificar o fato econômico que ocasionou o ingresso e a saída de recursos nos cofres públicos.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDDESDOBRAMENTO1",
+          "descricao": "Desdobramento1",
+          "nomeTabela": "DESDOBRAMENTO1",
+          "observacao": "Corresponde aos dígitos quarto a sétimo da nova estrutura de codificação da Receita cujo objetivo é identificar as particularidades de cada receita, caso seja necessário.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDDESDOBRAMENTO2",
+          "descricao": "Desdobramento2",
+          "nomeTabela": "DESDOBRAMENTO2",
+          "observacao": "Corresponde aos dígitos quarto a sétimo da nova estrutura de codificação da Receita cujo objetivo é identificar as particularidades de cada receita, caso seja necessário.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDDESDOBRAMENTO3",
+          "descricao": "Desdobramento3",
+          "nomeTabela": "DESDOBRAMENTO3",
+          "observacao": "Corresponde aos dígitos quarto a sétimo da nova estrutura de codificação da Receita cujo objetivo é identificar as particularidades de cada receita, caso seja necessário.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDESPECIE",
+          "descricao": "Espécie",
+          "nomeTabela": "ESPECIE",
+          "observacao": "A espécie é o terceiro dígito da classificação da receita pública e possui um grau de detalhamento superior ao da origem.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDORGAO",
+          "descricao": "Órgão",
+          "nomeTabela": "ORGAO",
+          "observacao": "É a denominação dada às unidades administrativas responsáveis pelo desempenho das funções de governo.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDORIGEM",
+          "descricao": "Origem",
+          "nomeTabela": "ORIGEM",
+          "observacao": "É o segundo dígito da  classificação da receita pública possui um grau de detalhamento superior ao da categoria economica.",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDTIPORECEITA",
+          "descricao": "Tipo de Receita",
+          "nomeTabela": "TIPORECEITA",
+          "observacao": "Corresponde ao último dígito na natureza de receita padronizada nacionalmente e tem a finalidade de identificar o tipo de arrecadação a que se refere aquela natureza",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDUNIDADEGESTORA",
+          "descricao": "Unidade Gestora",
+          "nomeTabela": "UNIDADEGESTORA",
+          "observacao": "É uma unidade investida do poder de gerir recursos orçamentários e financeiros para a realização de despesas.",
+          "temAnoReferencia": true
+        }
+      ],
+      "json_preview": "[{\"descricao\": \"Categoria Econômica\", \"observacao\": \"É uma classificação da receita da despesa, com a finalidade de identificar o fato econômico que ocasionou o ingresso e a saída de recursos nos cofres públicos.\", \"nomeTabela\": \"CATEGORIAECONOMICA\", \"temAnoReferencia\": true, \"atributo\": \"CDCATEGORIAECONOMICA\"}, {\"descricao\": \"Desdobramento1\", \"observacao\": \"Corresponde aos dígitos quarto a sétimo da nova estrutura de codificação da Receita cujo objetivo é identificar as particularidades de cada receita, caso seja necessário.\", \"nomeTabela\": \"DESDOBRAMENTO1\", \"temAnoReferencia\": true, \"atributo\": \"CDDESDOBRAMENTO1\"}, {\"descricao\": \"Desdobramento2\", \"observacao\": \"Corresponde aos dígitos quarto a sétimo da nova estrutura de codificação da Receita cujo objetivo é identificar as particularidades de cada receita, caso seja necessário.\", \"nomeTabela\": \"DESDOBRAMENTO2\", \"temAnoReferencia\": true, \"atributo\": \"CDDESDOBRAMENTO2\"}, {\"descricao\": \"Desdobramento3\", \"observacao\": \"Corresponde aos dígitos quarto a sétimo da nova estrutura de codificação da Receita cujo objetivo é identificar as particularidades de cada receita, caso seja necessário.\", \"nomeTabela\": \"DESDOBRAMENTO3\", \"temAnoReferencia\": true, \"atributo\": \"CDDESDOBRAMENTO3\"}, {\"descricao\": \"Espécie\", \"observacao\": \"A espécie é o terceiro dígito da classificação da receita pública e possui um grau de detalhamento superior ao da origem.\", \"nomeTabela\": \"ESPECIE\", \"temAnoReferencia\": true, \"atributo\": \"CDESPECIE\"}, {\"descricao\": \"Órgão\", \"observacao\": \"É a denominação dada às unidades administrativas responsáveis pelo desempenho das funções de governo.\", \"nomeTabela\": \"ORGAO\", \"temAnoReferencia\": true, \"atributo\": \"CDORGAO\"}, {\"descricao\": \"Origem\", \"observacao\": \"É o segundo dígito da  classificação da receita pública possui um grau de detalhamento superior ao da categoria economica.\", \"nomeTabela\": \"ORIGEM\", \"temAnoReferencia\": true, \"atributo\": \"CDORIGEM\"}, {\"descricao\": \"Tipo de Receita\", \"observacao\": \"Corresponde ao último dígito na natureza de receita padronizada nacionalmente e tem a finalidade de identificar o tipo de arrecadação a que se refere aquela natureza\", \"nomeTabela\": \"TIPORECEITA\", \"temAnoReferencia\": true, \"atributo\": \"CDTIPORECEITA\"}, {\"descricao\": \"Unidade Gestora\", \"observacao\": \"É uma unidade investida do poder de gerir recursos orçamentários e financeiros para a realização de despesas.\", \"nomeTabela\": \"UNIDADEGESTORA\", \"temAnoReferencia\": true, \"atributo\": \"CDUNIDADEGESTORA\"}]",
+      "list_length": 9,
+      "sha256": "90f88c56312206034d0e158a715d8e163321205993f206ce2091f7963df87cd5",
+      "status": 200,
+      "url": "https://apitmptransparencia.salvador.ba.gov.br/api/filtro/receita/filtros"
+    }
+  },
+  "posts": {
+    "/contratos/gridresumida": {
+      "br_2026": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b20ab-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b20ab-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26.\"]}}",
+        "sha256": "644621f59884ddde2dca5a7253925b8960fd743f71b95f2400a747b3fb9ff6c3",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/gridresumida"
+      },
+      "empty": {
+        "bytes": 2,
+        "content_type": "application/json; charset=utf-8",
+        "json": [],
+        "json_preview": "[]",
+        "list_length": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "status": 200,
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/gridresumida"
+      },
+      "iso_2026": {
+        "bytes": 7809,
+        "content_type": "application/json; charset=utf-8",
+        "first_item_keys": [
+          "codigo",
+          "contratado",
+          "descricao",
+          "empenhado",
+          "liquidado",
+          "pago"
+        ],
+        "json": [
+          {
+            "codigo": "246002",
+            "contratado": 1886079,
+            "descricao": "UG ARSAL - Agência Reguladora e Fiscalizadora dos Serviços Publicos de Salvador",
+            "empenhado": 2079,
+            "liquidado": 313567,
+            "pago": 313567
+          },
+          {
+            "codigo": "240002",
+            "contratado": 25063854.51,
+            "descricao": "UG CASA CIVIL - Casa Civil",
+            "empenhado": 12696435.08,
+            "liquidado": 14585714.74,
+            "pago": 14463325.12
+          },
+          {
+            "codigo": "620002",
+            "contratado": 670620.36,
+            "descricao": "UG CGM - Controladoria Geral do Municipio de Salvador",
+            "empenhado": 524651.16,
+            "liquidado": 425237.95,
+            "pago": 425237.95
+          },
+          {
+            "codigo": "430003",
+            "contratado": 12761273.46,
+            "descricao": "UG CODESAL - Defesa Civil de Salvador",
+            "empenhado": 3779151.73,
+            "liquidado": 2258353.59,
+            "pago": 2309824.69
+          },
+          {
+            "codigo": "637002",
+            "contratado": 4900796.92,
+            "descricao": "UG COGEL - Companhia de Governança Eletrônica do Salvador",
+            "empenhado": 738747.38,
+            "liquidado": 700303.59,
+            "pago": 694561.47
+          },
+          {
+            "codigo": "567002",
+            "contratado": 290594687.11,
+            "descricao": "UG DESAL - Companhia de Desenvolvimento Urbano de Salvador",
+            "empenhado": 68509474.86,
+            "liquidado": 62870389.68,
+            "pago": 66210950.17
+          },
+          {
+            "codigo": "800003",
+            "contratado": 46651596.36,
+            "descricao": "UG EGM-SEFAZ - Encargos Gerais do Municipio",
+            "empenhado": 3341322.29,
+            "liquidado": 3768234.1,
+            "pago": 3286102.71
+          },
+          {
+            "codigo": "800004",
+            "contratado": 195937007.15,
+            "descricao": "UG EGM-SEMGE - Encargos Gerais do Municipio",
+            "empenhado": 495792.04,
+            "liquidado": 595797.23,
+            "pago": 595797.23
+          },
+          {
+            "codigo": "591110",
+            "contratado": 1044000,
+            "descricao": "UG FCE - Fundo de Crédito Emergencial",
+            "empenhado": 0,
+            "liquidado": 0,
+            "pago": 0
+          },
+          {
+            "codigo": "583002",
+            "contratado": 31147.2,
+            "descricao": "UG FCM - Fundação Cidade Mãe",
+            "empenhado": 0,
+            "liquidado": 7900.2,
+            "pago": 7900.2
+          },
+          {
+            "codigo": "543002",
+            "contratado": 20325380.27,
+            "descricao": "UG FGM - Fundação Gregório de Matos",
+            "empenhado": 11026326.09,
+            "liquidado": 9095827.53,
+            "pago": 8711597.53
+          },
+          {
+            "codigo": "521010",
+            "contratado": 50402165.32,
+            "descricao": "UG FMAS - Fundo Municipal de Assistência Social",
+            "empenhado": 7936954.32,
+            "liquidado": 8426398.49,
+            "pago": 8188300.16
+          },
+          {
+            "codigo": "441010",
+            "contratado": 2216197173.77,
+            "descricao": "UG FME - Fundo Municipal de Educação",
+            "empenhado": 270534500.25,
+            "liquidado": 226318489.92,
+            "pago": 237089236.8
+          },
+          {
+            "codigo": "603002",
+            "contratado": 53196451.3,
+            "descricao": "UG FMLF - Fundação Mário Leal Ferreira",
+            "empenhado": 7888897.7,
+            "liquidado": 4106744.83,
+            "pago": 3671656.54
+          },
+          {
+            "codigo": "531010",
+            "contratado": 4522254.05,
+            "descricao": "UG FMMU- Fundo Municipal de Mobilidade Urbana",
+            "empenhado": 423038.38,
+            "liquidado": 65000,
+            "pago": 65000
+          },
+          {
+            "codigo": "301110",
+            "contratado": 9597839847.22,
+            "descricao": "UG FMS - Fundo Municipal de Saúde",
+            "empenhado": 1017241481.79,
+            "liquidado": 1035926175.14,
+            "pago": 1017909569.59
+          },
+          {
+            "codigo": "591010",
+            "contratado": 239036.52,
+            "descricao": "UG FMT/SALVADOR - Fundo Municipal do Trabalho",
+            "empenhado": 0,
+            "liquidado": 239036.52,
+            "pago": 239036.52
+          },
+          {
+            "codigo": "451010",
+            "contratado": 843637236.44,
+            "descricao": "UG FUNCIP - Fundo de Custeio da Iluminação Pública",
+            "empenhado": 94600002.53,
+            "liquidado": 76054336.13,
+            "pago": 73353355.15
+          },
+          {
+            "codigo": "411110",
+            "contratado": 1727062.5,
+            "descricao": "UG FUNFIN - Fundo Financeiro do RPPS",
+            "empenhado": 423816.67,
+            "liquidado": 323403,
+            "pago": 318403
+          },
+          {
+            "codigo": "456002",
+            "contratado": 5125761.85,
+            "descricao": "UG GCM - Guarda Civil Municipal",
+            "empenhado": 1115746.88,
+            "liquidado": 1158063.47,
+            "pago": 1140961.77
+          },
+          {
+            "codigo": "457002",
+            "contratado": 10541108.96,
+            "descricao": "UG LIMPURB - Empresa de Limpeza Urbana do Salvador",
+            "empenhado": 1822786.74,
+            "liquidado": 1770738.42,
+            "pago": 1668964.45
+          },
+          {
+            "codigo": "230002",
+            "contratado": 1167979.2,
+            "descricao": "UG PGMS - Procuradoria Geral do Município",
+            "empenhado": 270197.88,
+            "liquidado": 140962.91,
+            "pago": 140962.91
+          },
+          {
+            "codigo": "640002",
+            "contratado": 134282.21,
+            "descricao": "UG SACPB - Secretaria Municipal de Articulação Comunitária e Prefeituras-Bairro",
+            "empenhado": 30795.04,
+            "liquidado": 27274,
+            "pago": 25114
+          },
+          {
+            "codigo": "547002",
+            "contratado": 886394526.77,
+            "descricao": "UG SALTUR - Empresa Salvador Turismo",
+            "empenhado": 226186251.87,
+            "liquidado": 217631971.76,
+            "pago": 216322023.98
+          },
+          {
+            "codigo": "430002",
+            "contratado": 5849645.28,
+            "descricao": "UG SECIS - Secretaria Cidade Sustentável",
+            "empenhado": 496585.24,
+            "liquidado": 398416.57,
+            "pago": 340770.26
+          },
+          {
+            "codigo": "430002",
+            "contratado": 32062860,
+            "descricao": "UG SECIS - Secretaria Municipal de Sustentabilidade e Resiliência",
+            "empenhado": 4030019.46,
+            "liquidado": 3747366.8,
+            "pago": 3918900.25
+          },
+          {
+            "codigo": "430002",
+            "contratado": 113060966.06,
+            "descricao": "UG SECIS-Secretaria Municipal de Sustentabilidade Resiliência Bem-Estar Proteção Animal",
+            "empenhado": 23206507.5,
+            "liquidado": 22169232.74,
+            "pago": 22929219.36
+          },
+          {
+            "codigo": "570002",
+            "contratado": 240000000,
+            "descricao": "UG SECOM - Secretaria Municipal de Comunicação",
+            "empenhado": 87919000.93,
+            "liquidado": 85977262.84,
+            "pago": 82925966.51
+          },
+          {
+            "codigo": "540002",
+            "contratado": 110712265.04,
+            "descricao": "UG SECULT - Secretaria Municipal de Cultura e Turismo",
+            "empenhado": 20874623.2,
+            "liquidado": 21666234.72,
+            "pago": 20955871.31
+          },
+          {
+            "codigo": "600002",
+            "contratado": 17638400,
+            "descricao": "UG SEDUR - Secretaria Municipal de Desenvolvimento e  Urbanismo",
+            "empenhado": 0,
+            "liquidado": 0,
+            "pago": 0
+          },
+          {
+            "codigo": "600002",
+            "contratado": 103411845.8,
+            "descricao": "UG SEDUR - Secretaria Municipal de Desenvolvimento Urbano",
+            "empenhado": 12682789.08,
+            "liquidado": 13676683.66,
+            "pago": 13194382.69
+          },
+          {
+            "codigo": "270002",
+            "contratado": 193190142.03,
+            "descricao": "UG SEFAZ - Secretaria Municipal da Fazenda",
+            "empenhado": 35060432.1,
+            "liquidado": 31955098.78,
+            "pago": 30934079.32
+          },
+          {
+            "codigo": "210002",
+            "contratado": 6964989.58,
+            "descricao": "UG SEGOV - Secretaria de Governo",
+            "empenhado": 224886.76,
+            "liquidado": 178451.62,
+            "pago": 178451.62
+          },
+          {
+            "codigo": "610002",
+            "contratado": 1311780676.89,
+            "descricao": "UG SEINFRA - Secretaria Municipal de Infraestrutura e Obras Públicas",
+            "empenhado": 121605612.25,
+            "liquidado": 78429232.21,
+            "pago": 74576861.82
+          },
+          {
+            "codigo": "560002",
+            "contratado": 1126155921.56,
+            "descricao": "UG SEMAN - Secretaria Municipal de Manutenção da Cidade",
+            "empenhado": 201440989.76,
+            "liquidado": 126653590.98,
+            "pago": 129921542.11
+          },
+          {
+            "codigo": "590002",
+            "contratado": 54972675.13,
+            "descricao": "UG SEMDEC - Secretaria Municipal de Desenvolvimento Econômico, Emprego e Renda",
+            "empenhado": 8928545.12,
+            "liquidado": 6583407.68,
+            "pago": 6327023.62
+          },
+          {
+            "codigo": "410002",
+            "contratado": 6207141765.11,
+            "descricao": "UG SEMGE - Secretaria Municipal de Gestão",
+            "empenhado": 15689446.63,
+            "liquidado": 15777800.64,
+            "pago": 16454887.89
+          },
+          {
+            "codigo": "630002",
+            "contratado": 913470604.87,
+            "descricao": "UG SEMIT-Secretaria Municipal de Inovação e Tecnologia",
+            "empenhado": 92705176.85,
+            "liquidado": 75343336.5,
+            "pago": 77155628.99
+          },
+          {
+            "codigo": "530002",
+            "contratado": 307199687.57,
+            "descricao": "UG SEMOB - Secretaria Municipal de Mobilidade",
+            "empenhado": 196403279.18,
+            "liquidado": 145339332.17,
+            "pago": 147213881.47
+          },
+          {
+            "codigo": "450002",
+            "contratado": 4724110811.72,
+            "descricao": "UG SEMOP - Secretaria Municipal de Ordem Pública",
+            "empenhado": 510766829.48,
+            "liquidado": 434065148,
+            "pago": 446846537.36
+          },
+          {
+            "codigo": "520002",
+            "contratado": 91706227.72,
+            "descricao": "UG SEMPRE - Secretaria Municipal de Promoção Social, Combate à Pobreza, Esportes e Lazer",
+            "empenhado": 18156039.36,
+            "liquidado": 15815873.26,
+            "pago": 15490791.52
+          },
+          {
+            "codigo": "637002",
+            "contratado": 16774653.81,
+            "descricao": "UG SMART - Companhia Salvador Cidade Inteligente",
+            "empenhado": 7279762.28,
+            "liquidado": 4010190.93,
+            "pago": 3770035.36
+          },
+          {
+            "codigo": "580002",
+            "contratado": 9327096.01,
+            "descricao": "UG SPMJ - Secretaria Municipal de Política para Mulheres, Infância e Juventude",
+            "empenhado": 1607999.96,
+            "liquidado": 1500796.55,
+            "pago": 1312638.45
+          },
+          {
+            "codigo": "616002",
+            "contratado": 3039429321.98,
+            "descricao": "UG SUCOP - Superintendência de Obras Públicas de Salvador",
+            "empenhado": 309318495.73,
+            "liquidado": 302918880.48,
+            "pago": 274194053.4
+          },
+          {
+            "codigo": "536002",
+            "contratado": 1120608029.62,
+            "descricao": "UG TRANSALVADOR - Superintendência de Trânsito do Salvador",
+            "empenhado": 64750322.28,
+            "liquidado": 60805677,
+            "pago": 54859945.78
+          }
+        ],
+        "json_preview": "[{\"codigo\": \"246002\", \"descricao\": \"UG ARSAL - Agência Reguladora e Fiscalizadora dos Serviços Publicos de Salvador\", \"contratado\": 1886079, \"empenhado\": 2079, \"liquidado\": 313567, \"pago\": 313567}, {\"codigo\": \"240002\", \"descricao\": \"UG CASA CIVIL - Casa Civil\", \"contratado\": 25063854.51, \"empenhado\": 12696435.08, \"liquidado\": 14585714.74, \"pago\": 14463325.12}, {\"codigo\": \"620002\", \"descricao\": \"UG CGM - Controladoria Geral do Municipio de Salvador\", \"contratado\": 670620.36, \"empenhado\": 524651.16, \"liquidado\": 425237.95, \"pago\": 425237.95}, {\"codigo\": \"430003\", \"descricao\": \"UG CODESAL - Defesa Civil de Salvador\", \"contratado\": 12761273.46, \"empenhado\": 3779151.73, \"liquidado\": 2258353.59, \"pago\": 2309824.69}, {\"codigo\": \"637002\", \"descricao\": \"UG COGEL - Companhia de Governança Eletrônica do Salvador\", \"contratado\": 4900796.92, \"empenhado\": 738747.38, \"liquidado\": 700303.59, \"pago\": 694561.47}, {\"codigo\": \"567002\", \"descricao\": \"UG DESAL - Companhia de Desenvolvimento Urbano de Salvador\", \"contratado\": 290594687.11, \"empenhado\": 68509474.86, \"liquidado\": 62870389.68, \"pago\": 66210950.17}, {\"codigo\": \"800003\", \"descricao\": \"UG EGM-SEFAZ - Encargos Gerais do Municipio\", \"contratado\": 46651596.36, \"empenhado\": 3341322.29, \"liquidado\": 3768234.1, \"pago\": 3286102.71}, {\"codigo\": \"800004\", \"descricao\": \"UG EGM-SEMGE - Encargos Gerais do Municipio\", \"contratado\": 195937007.15, \"empenhado\": 495792.04, \"liquidado\": 595797.23, \"pago\": 595797.23}, {\"codigo\": \"591110\", \"descricao\": \"UG FCE - Fundo de Crédito Emergencial\", \"contratado\": 1044000, \"empenhado\": 0, \"liquidado\": 0, \"pago\": 0}, {\"codigo\": \"583002\", \"descricao\": \"UG FCM - Fundação Cidade Mãe\", \"contratado\": 31147.2, \"empenhado\": 0, \"liquidado\": 7900.2, \"pago\": 7900.2}, {\"codigo\": \"543002\", \"descricao\": \"UG FGM - Fundação Gregório de Matos\", \"contratado\": 20325380.27, \"empenhado\": 11026326.09, \"liquidado\": 9095827.53, \"pago\": 8711597.53}, {\"codigo\": \"521010\", \"descricao\": \"UG FMAS - Fundo Municipal de Assistência Social\", \"contratado\": 50402165.32, \"empenhado\": 7936954.32, \"liquidado\": 8426398.49, \"pago\": 8188300.16}, {\"codigo\": \"441010\", \"descricao\": \"UG FME - Fundo Municipal de Educação\", \"contratado\": 2216197173.77, \"empenhado\": 270534500.25, \"liquidado\": 226318489.92, \"pago\": 237089236.8}, {\"codigo\": \"603002\", \"descricao\": \"UG FMLF - Fundação Mário Leal Ferreira\", \"contratado\": 53196451.3, \"empenhado\": 7888897.7, \"liquidado\": 4106744.83, \"pago\": 3671656.54}, {\"codigo\": \"531010\", \"descricao\": \"UG FMMU- Fundo Municipal de Mobilidade Urbana\", \"contratado\": 4522254.05, \"empenhado\": 423038.38, \"liquidado\": 65000, \"pago\": 65000}, {\"codigo\": \"301110\", \"descricao\": \"UG FMS - Fundo Municipal de Saúde\", \"contratado\": 9597839847.22, \"empenhado\": 1017241481.79, \"liquidado\": 1035926175.14, \"pago\": 1017909569.59}, {\"codigo\": \"591010\", \"descricao\": \"UG FMT/SALVADOR - Fundo Municipal do Trabalho\", \"contratado\": 239036.52, \"empenhado\": 0, \"liquidado\": 239036.52, \"pago\": 239036.52}, {\"codigo\": \"451010\", \"descricao\": \"UG FUNCIP - Fundo de Custeio da Iluminação Pública\", \"contratado\": 843637236.44, \"empenhado\": 94600002.53, \"liquidado\": 76054336.13, \"pago\": 73353355.15}, {\"codigo\": \"411110\", \"descricao\": \"UG FUNFIN - Fundo Financeiro do RPPS\", \"contratado\": 1727062.5, \"empenhado\": 423816.67, \"liquidado\": 323403, \"pago\": 318403}, {\"codigo\": \"456002\", \"descricao\": \"UG GCM - Guarda Civil Municipal\", \"contratado\": 5125761.85, \"empenhado\": 1115746.88, \"liquidado\": 1158063.47, \"pago\": 1140961.77}, {\"codigo\": \"457002\", \"descricao\": \"UG LIMPURB - Empresa de Limpeza Urbana do Salvador\", \"contratado\": 10541108.96, \"empenhado\": 1822786.74, \"liquidado\": 1770738.42, \"pago\": 1668964.45}, {\"codigo\": \"230002\", \"descricao\": \"UG PGMS - Procuradoria Geral do Município\", \"contratado\": 1167979.2, \"empenhado\": 270197.88, \"liquidado\": 140962.91, \"pago\": 140962.91}, {\"codigo\": \"640002\", \"descricao\": \"UG SACPB - Secretaria Municipal de Articulação Comunitária e Prefeituras-Bairro\", \"contratado\": 134282.21, \"empenhado\": 30795.04, \"liquidado\": 27274, \"pago\": 25114}, {\"codigo\": \"547002\", \"descricao\": \"UG SALTUR - Empresa Salvador Turismo\", \"contratado\": 886394526.77, \"empenhado\": 226186251.87, \"liquidado\": 217631971.76, \"pago\": 216322023.98}, {\"codigo\": \"430002\", \"descricao\": \"UG SECIS - Secretaria Cidade Sustentável\", \"contratado\": 5849645.28, \"empenhado\": 496585.24, \"liquidado\": 398416.57, \"pago\": 340770.26}, {\"codigo\": \"430002\", \"descricao\": \"UG SECIS - Secretaria Municipal de Sustentabilidade e Resiliência\", \"contratado\": 32062860, \"empenhado\": 4030019.46, \"liquidado\": 3747366.8, \"pago\": 3918900.25}, {\"codigo\": \"430002\", \"descricao\": \"UG SECIS-Secretaria Municipal de Sustentabilidade Resiliência Bem-Estar Proteção Animal\", \"contratado\": 113060966.06, \"empenhado\": 23206507.5, \"liquidado\": 22169232.74, \"pago\": 22929219.36}, {\"codigo\": \"570002\", \"descricao\": \"UG SECOM - Secretaria Municipal de Comunicação\", \"contratado\": 240000000, \"empenhado\": 87919000.93, \"liquidado\": 85977262.84, \"pago\": 82925966.51}, {\"codigo\": \"540002\", \"descricao\": \"UG SECULT - Secretaria Municipal de Cultura e Turismo\", \"contratado\": 110712265.04, \"empenhado\": 20874623.2, \"liquidado\": 21666234.72, \"pago\": 20955871.31}, {\"codigo\": \"600002\", \"descricao\": \"UG SEDUR - Secretaria Municipal de Desenvolvimento e  Urbanismo\", \"contratado\": 17638400, \"empenhado\": 0, \"liquidado\": 0, \"pago\": 0}, {\"codigo\": \"600002\", \"descricao\": \"UG SEDUR - Secretaria Municipal de Desenvolvimento Urbano\", \"contratado\": 103411845.8, \"empenhado\": 12682789.08, \"liquidado\": 13676683.66, \"pago\": 13194382.69}, {\"codigo\": \"270002\", \"descricao\": \"UG SEFAZ - Secretaria Municipal da Fazenda\", \"contratado\": 193190142.03, \"empenhado\": 35060432.1, \"liquidado\": 31955098.78, \"pago\": 30934079.32}, {\"codigo\": \"210002\", \"descricao\": \"UG SEGOV - Secretaria de Governo\", \"contratado\": 6964989.58, \"empenhado\": 224886.76, \"liquidado\": 178451.62, \"pago\": 178451.62}, {\"codigo\": \"610002\", \"descricao\": \"UG SEINFRA - Secretaria Municipal de Infraestrutura e Obras Públicas\", \"contratado\": 1311780676.89, \"empenhado\": 121605612.25, \"liquidado\": 78429232.21, \"pago\": 74576861.82}, {\"codigo\": \"560002\", \"descricao\": \"UG SEMAN - Secretaria Municipal de Manutenção da Cidade\", \"contratado\": 1126155921.56, \"empenhado\": 201440989.76, \"liquidado\": 126653590.98, \"pago\": 129921542.11}, {\"codigo\": \"590002\", \"descricao\": \"UG SEMDEC - Secretaria Municipal de Desenvolvimento Econômico, Emprego e Renda\", \"contratado\": 54972675.13, \"empenhado\": 8928545.12, \"liquidado\": 6583407.68, \"pago\": 6327023.62}, {\"codigo\": \"410002\", \"descricao\": \"UG SEMGE - Secretaria Municipal de Gestão\", \"contratado\": 6207141765.11, \"empenhado\": 15689446.63, \"liquidado\": 15777800.64, \"pago\": 16454887.89}, {\"codigo\": \"630002\", \"descricao\": \"UG SEMIT-Secretaria Municipal de Inovação e Tecnologia\", \"contratado\": 913470604.87, \"empenhado\": 92705176.85, \"liquidado\": 75343336.5, \"pago\": 77155628.99}, {\"codigo\": \"530002\", \"descricao\": \"UG SEMOB - Secretaria Municipal de Mobilidade\", \"contratado\": 307199687.57, \"empenhado\": 196403279.18, \"liquidado\": 145339332.17, \"pago\": 147213881.47}, {\"codigo\": \"450002\", \"descricao\": \"UG SEMOP - Secretaria Municipal de Ordem Pública\", \"contratado\": 4724110811.72, \"empenhado\": 510766829.48, \"liquidado\": 434065148, \"pago\": 446846537.36}, {\"codigo\": \"520002\", \"descricao\": \"UG SEMPRE - Secretaria Municipal de Promoção Social, Combate à Pobreza, Esportes e Lazer\", \"contratado\": 91706227.72, \"empenhado\": 18156039.36, \"liquidado\": 15815873.26, \"pago\": 15490791.52}, {\"codigo\": \"637002\", \"descricao\": \"UG SMART - Companhia Salvador Cidade Inteligente\", \"contratado\": 16774653.81, \"empenhado\": 7279762.28, \"liquidado\": 4010190.93, \"pago\": 3770035.36}, {\"codigo\": \"580002\", \"descricao\": \"UG SPMJ - Secretaria Municipal de Política para Mulheres, Infância e Juventude\", \"contratado\": 9327096.01, \"empenhado\": 1607999.96, \"liquidado\": 1500796.55, \"pago\": 1312638.45}, {\"codigo\": \"616002\", \"descricao\": \"UG SUCOP - Superintendência de Obras Públicas de Salvador\", \"contratado\": 3039429321.98, \"empenhado\": 309318495.73, \"liquidado\": 302918880.48, \"pago\": 274194053.4}, {\"codigo\": \"536002\", \"descricao\": \"UG TRANSALVADOR - Superintendência de Trânsito do Salvador\", \"contratado\": 1120608029.62, \"empenhado\": 64750322.28, \"liquidado\": 60805677, \"pago\": 54859945.78}]",
+        "list_length": 45,
+        "sha256": "e7b8a5c9f4401e24be9bb3c8ae720e8fe641d1859270d233f64fafef810b7b3f",
+        "status": 200,
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/gridresumida"
+      },
+      "iso_datetime_2026": {
+        "bytes": 7809,
+        "content_type": "application/json; charset=utf-8",
+        "first_item_keys": [
+          "codigo",
+          "contratado",
+          "descricao",
+          "empenhado",
+          "liquidado",
+          "pago"
+        ],
+        "json": [
+          {
+            "codigo": "246002",
+            "contratado": 1886079,
+            "descricao": "UG ARSAL - Agência Reguladora e Fiscalizadora dos Serviços Publicos de Salvador",
+            "empenhado": 2079,
+            "liquidado": 313567,
+            "pago": 313567
+          },
+          {
+            "codigo": "240002",
+            "contratado": 25063854.51,
+            "descricao": "UG CASA CIVIL - Casa Civil",
+            "empenhado": 12696435.08,
+            "liquidado": 14585714.74,
+            "pago": 14463325.12
+          },
+          {
+            "codigo": "620002",
+            "contratado": 670620.36,
+            "descricao": "UG CGM - Controladoria Geral do Municipio de Salvador",
+            "empenhado": 524651.16,
+            "liquidado": 425237.95,
+            "pago": 425237.95
+          },
+          {
+            "codigo": "430003",
+            "contratado": 12761273.46,
+            "descricao": "UG CODESAL - Defesa Civil de Salvador",
+            "empenhado": 3779151.73,
+            "liquidado": 2258353.59,
+            "pago": 2309824.69
+          },
+          {
+            "codigo": "637002",
+            "contratado": 4900796.92,
+            "descricao": "UG COGEL - Companhia de Governança Eletrônica do Salvador",
+            "empenhado": 738747.38,
+            "liquidado": 700303.59,
+            "pago": 694561.47
+          },
+          {
+            "codigo": "567002",
+            "contratado": 290594687.11,
+            "descricao": "UG DESAL - Companhia de Desenvolvimento Urbano de Salvador",
+            "empenhado": 68509474.86,
+            "liquidado": 62870389.68,
+            "pago": 66210950.17
+          },
+          {
+            "codigo": "800003",
+            "contratado": 46651596.36,
+            "descricao": "UG EGM-SEFAZ - Encargos Gerais do Municipio",
+            "empenhado": 3341322.29,
+            "liquidado": 3768234.1,
+            "pago": 3286102.71
+          },
+          {
+            "codigo": "800004",
+            "contratado": 195937007.15,
+            "descricao": "UG EGM-SEMGE - Encargos Gerais do Municipio",
+            "empenhado": 495792.04,
+            "liquidado": 595797.23,
+            "pago": 595797.23
+          },
+          {
+            "codigo": "591110",
+            "contratado": 1044000,
+            "descricao": "UG FCE - Fundo de Crédito Emergencial",
+            "empenhado": 0,
+            "liquidado": 0,
+            "pago": 0
+          },
+          {
+            "codigo": "583002",
+            "contratado": 31147.2,
+            "descricao": "UG FCM - Fundação Cidade Mãe",
+            "empenhado": 0,
+            "liquidado": 7900.2,
+            "pago": 7900.2
+          },
+          {
+            "codigo": "543002",
+            "contratado": 20325380.27,
+            "descricao": "UG FGM - Fundação Gregório de Matos",
+            "empenhado": 11026326.09,
+            "liquidado": 9095827.53,
+            "pago": 8711597.53
+          },
+          {
+            "codigo": "521010",
+            "contratado": 50402165.32,
+            "descricao": "UG FMAS - Fundo Municipal de Assistência Social",
+            "empenhado": 7936954.32,
+            "liquidado": 8426398.49,
+            "pago": 8188300.16
+          },
+          {
+            "codigo": "441010",
+            "contratado": 2216197173.77,
+            "descricao": "UG FME - Fundo Municipal de Educação",
+            "empenhado": 270534500.25,
+            "liquidado": 226318489.92,
+            "pago": 237089236.8
+          },
+          {
+            "codigo": "603002",
+            "contratado": 53196451.3,
+            "descricao": "UG FMLF - Fundação Mário Leal Ferreira",
+            "empenhado": 7888897.7,
+            "liquidado": 4106744.83,
+            "pago": 3671656.54
+          },
+          {
+            "codigo": "531010",
+            "contratado": 4522254.05,
+            "descricao": "UG FMMU- Fundo Municipal de Mobilidade Urbana",
+            "empenhado": 423038.38,
+            "liquidado": 65000,
+            "pago": 65000
+          },
+          {
+            "codigo": "301110",
+            "contratado": 9597839847.22,
+            "descricao": "UG FMS - Fundo Municipal de Saúde",
+            "empenhado": 1017241481.79,
+            "liquidado": 1035926175.14,
+            "pago": 1017909569.59
+          },
+          {
+            "codigo": "591010",
+            "contratado": 239036.52,
+            "descricao": "UG FMT/SALVADOR - Fundo Municipal do Trabalho",
+            "empenhado": 0,
+            "liquidado": 239036.52,
+            "pago": 239036.52
+          },
+          {
+            "codigo": "451010",
+            "contratado": 843637236.44,
+            "descricao": "UG FUNCIP - Fundo de Custeio da Iluminação Pública",
+            "empenhado": 94600002.53,
+            "liquidado": 76054336.13,
+            "pago": 73353355.15
+          },
+          {
+            "codigo": "411110",
+            "contratado": 1727062.5,
+            "descricao": "UG FUNFIN - Fundo Financeiro do RPPS",
+            "empenhado": 423816.67,
+            "liquidado": 323403,
+            "pago": 318403
+          },
+          {
+            "codigo": "456002",
+            "contratado": 5125761.85,
+            "descricao": "UG GCM - Guarda Civil Municipal",
+            "empenhado": 1115746.88,
+            "liquidado": 1158063.47,
+            "pago": 1140961.77
+          },
+          {
+            "codigo": "457002",
+            "contratado": 10541108.96,
+            "descricao": "UG LIMPURB - Empresa de Limpeza Urbana do Salvador",
+            "empenhado": 1822786.74,
+            "liquidado": 1770738.42,
+            "pago": 1668964.45
+          },
+          {
+            "codigo": "230002",
+            "contratado": 1167979.2,
+            "descricao": "UG PGMS - Procuradoria Geral do Município",
+            "empenhado": 270197.88,
+            "liquidado": 140962.91,
+            "pago": 140962.91
+          },
+          {
+            "codigo": "640002",
+            "contratado": 134282.21,
+            "descricao": "UG SACPB - Secretaria Municipal de Articulação Comunitária e Prefeituras-Bairro",
+            "empenhado": 30795.04,
+            "liquidado": 27274,
+            "pago": 25114
+          },
+          {
+            "codigo": "547002",
+            "contratado": 886394526.77,
+            "descricao": "UG SALTUR - Empresa Salvador Turismo",
+            "empenhado": 226186251.87,
+            "liquidado": 217631971.76,
+            "pago": 216322023.98
+          },
+          {
+            "codigo": "430002",
+            "contratado": 5849645.28,
+            "descricao": "UG SECIS - Secretaria Cidade Sustentável",
+            "empenhado": 496585.24,
+            "liquidado": 398416.57,
+            "pago": 340770.26
+          },
+          {
+            "codigo": "430002",
+            "contratado": 32062860,
+            "descricao": "UG SECIS - Secretaria Municipal de Sustentabilidade e Resiliência",
+            "empenhado": 4030019.46,
+            "liquidado": 3747366.8,
+            "pago": 3918900.25
+          },
+          {
+            "codigo": "430002",
+            "contratado": 113060966.06,
+            "descricao": "UG SECIS-Secretaria Municipal de Sustentabilidade Resiliência Bem-Estar Proteção Animal",
+            "empenhado": 23206507.5,
+            "liquidado": 22169232.74,
+            "pago": 22929219.36
+          },
+          {
+            "codigo": "570002",
+            "contratado": 240000000,
+            "descricao": "UG SECOM - Secretaria Municipal de Comunicação",
+            "empenhado": 87919000.93,
+            "liquidado": 85977262.84,
+            "pago": 82925966.51
+          },
+          {
+            "codigo": "540002",
+            "contratado": 110712265.04,
+            "descricao": "UG SECULT - Secretaria Municipal de Cultura e Turismo",
+            "empenhado": 20874623.2,
+            "liquidado": 21666234.72,
+            "pago": 20955871.31
+          },
+          {
+            "codigo": "600002",
+            "contratado": 17638400,
+            "descricao": "UG SEDUR - Secretaria Municipal de Desenvolvimento e  Urbanismo",
+            "empenhado": 0,
+            "liquidado": 0,
+            "pago": 0
+          },
+          {
+            "codigo": "600002",
+            "contratado": 103411845.8,
+            "descricao": "UG SEDUR - Secretaria Municipal de Desenvolvimento Urbano",
+            "empenhado": 12682789.08,
+            "liquidado": 13676683.66,
+            "pago": 13194382.69
+          },
+          {
+            "codigo": "270002",
+            "contratado": 193190142.03,
+            "descricao": "UG SEFAZ - Secretaria Municipal da Fazenda",
+            "empenhado": 35060432.1,
+            "liquidado": 31955098.78,
+            "pago": 30934079.32
+          },
+          {
+            "codigo": "210002",
+            "contratado": 6964989.58,
+            "descricao": "UG SEGOV - Secretaria de Governo",
+            "empenhado": 224886.76,
+            "liquidado": 178451.62,
+            "pago": 178451.62
+          },
+          {
+            "codigo": "610002",
+            "contratado": 1311780676.89,
+            "descricao": "UG SEINFRA - Secretaria Municipal de Infraestrutura e Obras Públicas",
+            "empenhado": 121605612.25,
+            "liquidado": 78429232.21,
+            "pago": 74576861.82
+          },
+          {
+            "codigo": "560002",
+            "contratado": 1126155921.56,
+            "descricao": "UG SEMAN - Secretaria Municipal de Manutenção da Cidade",
+            "empenhado": 201440989.76,
+            "liquidado": 126653590.98,
+            "pago": 129921542.11
+          },
+          {
+            "codigo": "590002",
+            "contratado": 54972675.13,
+            "descricao": "UG SEMDEC - Secretaria Municipal de Desenvolvimento Econômico, Emprego e Renda",
+            "empenhado": 8928545.12,
+            "liquidado": 6583407.68,
+            "pago": 6327023.62
+          },
+          {
+            "codigo": "410002",
+            "contratado": 6207141765.11,
+            "descricao": "UG SEMGE - Secretaria Municipal de Gestão",
+            "empenhado": 15689446.63,
+            "liquidado": 15777800.64,
+            "pago": 16454887.89
+          },
+          {
+            "codigo": "630002",
+            "contratado": 913470604.87,
+            "descricao": "UG SEMIT-Secretaria Municipal de Inovação e Tecnologia",
+            "empenhado": 92705176.85,
+            "liquidado": 75343336.5,
+            "pago": 77155628.99
+          },
+          {
+            "codigo": "530002",
+            "contratado": 307199687.57,
+            "descricao": "UG SEMOB - Secretaria Municipal de Mobilidade",
+            "empenhado": 196403279.18,
+            "liquidado": 145339332.17,
+            "pago": 147213881.47
+          },
+          {
+            "codigo": "450002",
+            "contratado": 4724110811.72,
+            "descricao": "UG SEMOP - Secretaria Municipal de Ordem Pública",
+            "empenhado": 510766829.48,
+            "liquidado": 434065148,
+            "pago": 446846537.36
+          },
+          {
+            "codigo": "520002",
+            "contratado": 91706227.72,
+            "descricao": "UG SEMPRE - Secretaria Municipal de Promoção Social, Combate à Pobreza, Esportes e Lazer",
+            "empenhado": 18156039.36,
+            "liquidado": 15815873.26,
+            "pago": 15490791.52
+          },
+          {
+            "codigo": "637002",
+            "contratado": 16774653.81,
+            "descricao": "UG SMART - Companhia Salvador Cidade Inteligente",
+            "empenhado": 7279762.28,
+            "liquidado": 4010190.93,
+            "pago": 3770035.36
+          },
+          {
+            "codigo": "580002",
+            "contratado": 9327096.01,
+            "descricao": "UG SPMJ - Secretaria Municipal de Política para Mulheres, Infância e Juventude",
+            "empenhado": 1607999.96,
+            "liquidado": 1500796.55,
+            "pago": 1312638.45
+          },
+          {
+            "codigo": "616002",
+            "contratado": 3039429321.98,
+            "descricao": "UG SUCOP - Superintendência de Obras Públicas de Salvador",
+            "empenhado": 309318495.73,
+            "liquidado": 302918880.48,
+            "pago": 274194053.4
+          },
+          {
+            "codigo": "536002",
+            "contratado": 1120608029.62,
+            "descricao": "UG TRANSALVADOR - Superintendência de Trânsito do Salvador",
+            "empenhado": 64750322.28,
+            "liquidado": 60805677,
+            "pago": 54859945.78
+          }
+        ],
+        "json_preview": "[{\"codigo\": \"246002\", \"descricao\": \"UG ARSAL - Agência Reguladora e Fiscalizadora dos Serviços Publicos de Salvador\", \"contratado\": 1886079, \"empenhado\": 2079, \"liquidado\": 313567, \"pago\": 313567}, {\"codigo\": \"240002\", \"descricao\": \"UG CASA CIVIL - Casa Civil\", \"contratado\": 25063854.51, \"empenhado\": 12696435.08, \"liquidado\": 14585714.74, \"pago\": 14463325.12}, {\"codigo\": \"620002\", \"descricao\": \"UG CGM - Controladoria Geral do Municipio de Salvador\", \"contratado\": 670620.36, \"empenhado\": 524651.16, \"liquidado\": 425237.95, \"pago\": 425237.95}, {\"codigo\": \"430003\", \"descricao\": \"UG CODESAL - Defesa Civil de Salvador\", \"contratado\": 12761273.46, \"empenhado\": 3779151.73, \"liquidado\": 2258353.59, \"pago\": 2309824.69}, {\"codigo\": \"637002\", \"descricao\": \"UG COGEL - Companhia de Governança Eletrônica do Salvador\", \"contratado\": 4900796.92, \"empenhado\": 738747.38, \"liquidado\": 700303.59, \"pago\": 694561.47}, {\"codigo\": \"567002\", \"descricao\": \"UG DESAL - Companhia de Desenvolvimento Urbano de Salvador\", \"contratado\": 290594687.11, \"empenhado\": 68509474.86, \"liquidado\": 62870389.68, \"pago\": 66210950.17}, {\"codigo\": \"800003\", \"descricao\": \"UG EGM-SEFAZ - Encargos Gerais do Municipio\", \"contratado\": 46651596.36, \"empenhado\": 3341322.29, \"liquidado\": 3768234.1, \"pago\": 3286102.71}, {\"codigo\": \"800004\", \"descricao\": \"UG EGM-SEMGE - Encargos Gerais do Municipio\", \"contratado\": 195937007.15, \"empenhado\": 495792.04, \"liquidado\": 595797.23, \"pago\": 595797.23}, {\"codigo\": \"591110\", \"descricao\": \"UG FCE - Fundo de Crédito Emergencial\", \"contratado\": 1044000, \"empenhado\": 0, \"liquidado\": 0, \"pago\": 0}, {\"codigo\": \"583002\", \"descricao\": \"UG FCM - Fundação Cidade Mãe\", \"contratado\": 31147.2, \"empenhado\": 0, \"liquidado\": 7900.2, \"pago\": 7900.2}, {\"codigo\": \"543002\", \"descricao\": \"UG FGM - Fundação Gregório de Matos\", \"contratado\": 20325380.27, \"empenhado\": 11026326.09, \"liquidado\": 9095827.53, \"pago\": 8711597.53}, {\"codigo\": \"521010\", \"descricao\": \"UG FMAS - Fundo Municipal de Assistência Social\", \"contratado\": 50402165.32, \"empenhado\": 7936954.32, \"liquidado\": 8426398.49, \"pago\": 8188300.16}, {\"codigo\": \"441010\", \"descricao\": \"UG FME - Fundo Municipal de Educação\", \"contratado\": 2216197173.77, \"empenhado\": 270534500.25, \"liquidado\": 226318489.92, \"pago\": 237089236.8}, {\"codigo\": \"603002\", \"descricao\": \"UG FMLF - Fundação Mário Leal Ferreira\", \"contratado\": 53196451.3, \"empenhado\": 7888897.7, \"liquidado\": 4106744.83, \"pago\": 3671656.54}, {\"codigo\": \"531010\", \"descricao\": \"UG FMMU- Fundo Municipal de Mobilidade Urbana\", \"contratado\": 4522254.05, \"empenhado\": 423038.38, \"liquidado\": 65000, \"pago\": 65000}, {\"codigo\": \"301110\", \"descricao\": \"UG FMS - Fundo Municipal de Saúde\", \"contratado\": 9597839847.22, \"empenhado\": 1017241481.79, \"liquidado\": 1035926175.14, \"pago\": 1017909569.59}, {\"codigo\": \"591010\", \"descricao\": \"UG FMT/SALVADOR - Fundo Municipal do Trabalho\", \"contratado\": 239036.52, \"empenhado\": 0, \"liquidado\": 239036.52, \"pago\": 239036.52}, {\"codigo\": \"451010\", \"descricao\": \"UG FUNCIP - Fundo de Custeio da Iluminação Pública\", \"contratado\": 843637236.44, \"empenhado\": 94600002.53, \"liquidado\": 76054336.13, \"pago\": 73353355.15}, {\"codigo\": \"411110\", \"descricao\": \"UG FUNFIN - Fundo Financeiro do RPPS\", \"contratado\": 1727062.5, \"empenhado\": 423816.67, \"liquidado\": 323403, \"pago\": 318403}, {\"codigo\": \"456002\", \"descricao\": \"UG GCM - Guarda Civil Municipal\", \"contratado\": 5125761.85, \"empenhado\": 1115746.88, \"liquidado\": 1158063.47, \"pago\": 1140961.77}, {\"codigo\": \"457002\", \"descricao\": \"UG LIMPURB - Empresa de Limpeza Urbana do Salvador\", \"contratado\": 10541108.96, \"empenhado\": 1822786.74, \"liquidado\": 1770738.42, \"pago\": 1668964.45}, {\"codigo\": \"230002\", \"descricao\": \"UG PGMS - Procuradoria Geral do Município\", \"contratado\": 1167979.2, \"empenhado\": 270197.88, \"liquidado\": 140962.91, \"pago\": 140962.91}, {\"codigo\": \"640002\", \"descricao\": \"UG SACPB - Secretaria Municipal de Articulação Comunitária e Prefeituras-Bairro\", \"contratado\": 134282.21, \"empenhado\": 30795.04, \"liquidado\": 27274, \"pago\": 25114}, {\"codigo\": \"547002\", \"descricao\": \"UG SALTUR - Empresa Salvador Turismo\", \"contratado\": 886394526.77, \"empenhado\": 226186251.87, \"liquidado\": 217631971.76, \"pago\": 216322023.98}, {\"codigo\": \"430002\", \"descricao\": \"UG SECIS - Secretaria Cidade Sustentável\", \"contratado\": 5849645.28, \"empenhado\": 496585.24, \"liquidado\": 398416.57, \"pago\": 340770.26}, {\"codigo\": \"430002\", \"descricao\": \"UG SECIS - Secretaria Municipal de Sustentabilidade e Resiliência\", \"contratado\": 32062860, \"empenhado\": 4030019.46, \"liquidado\": 3747366.8, \"pago\": 3918900.25}, {\"codigo\": \"430002\", \"descricao\": \"UG SECIS-Secretaria Municipal de Sustentabilidade Resiliência Bem-Estar Proteção Animal\", \"contratado\": 113060966.06, \"empenhado\": 23206507.5, \"liquidado\": 22169232.74, \"pago\": 22929219.36}, {\"codigo\": \"570002\", \"descricao\": \"UG SECOM - Secretaria Municipal de Comunicação\", \"contratado\": 240000000, \"empenhado\": 87919000.93, \"liquidado\": 85977262.84, \"pago\": 82925966.51}, {\"codigo\": \"540002\", \"descricao\": \"UG SECULT - Secretaria Municipal de Cultura e Turismo\", \"contratado\": 110712265.04, \"empenhado\": 20874623.2, \"liquidado\": 21666234.72, \"pago\": 20955871.31}, {\"codigo\": \"600002\", \"descricao\": \"UG SEDUR - Secretaria Municipal de Desenvolvimento e  Urbanismo\", \"contratado\": 17638400, \"empenhado\": 0, \"liquidado\": 0, \"pago\": 0}, {\"codigo\": \"600002\", \"descricao\": \"UG SEDUR - Secretaria Municipal de Desenvolvimento Urbano\", \"contratado\": 103411845.8, \"empenhado\": 12682789.08, \"liquidado\": 13676683.66, \"pago\": 13194382.69}, {\"codigo\": \"270002\", \"descricao\": \"UG SEFAZ - Secretaria Municipal da Fazenda\", \"contratado\": 193190142.03, \"empenhado\": 35060432.1, \"liquidado\": 31955098.78, \"pago\": 30934079.32}, {\"codigo\": \"210002\", \"descricao\": \"UG SEGOV - Secretaria de Governo\", \"contratado\": 6964989.58, \"empenhado\": 224886.76, \"liquidado\": 178451.62, \"pago\": 178451.62}, {\"codigo\": \"610002\", \"descricao\": \"UG SEINFRA - Secretaria Municipal de Infraestrutura e Obras Públicas\", \"contratado\": 1311780676.89, \"empenhado\": 121605612.25, \"liquidado\": 78429232.21, \"pago\": 74576861.82}, {\"codigo\": \"560002\", \"descricao\": \"UG SEMAN - Secretaria Municipal de Manutenção da Cidade\", \"contratado\": 1126155921.56, \"empenhado\": 201440989.76, \"liquidado\": 126653590.98, \"pago\": 129921542.11}, {\"codigo\": \"590002\", \"descricao\": \"UG SEMDEC - Secretaria Municipal de Desenvolvimento Econômico, Emprego e Renda\", \"contratado\": 54972675.13, \"empenhado\": 8928545.12, \"liquidado\": 6583407.68, \"pago\": 6327023.62}, {\"codigo\": \"410002\", \"descricao\": \"UG SEMGE - Secretaria Municipal de Gestão\", \"contratado\": 6207141765.11, \"empenhado\": 15689446.63, \"liquidado\": 15777800.64, \"pago\": 16454887.89}, {\"codigo\": \"630002\", \"descricao\": \"UG SEMIT-Secretaria Municipal de Inovação e Tecnologia\", \"contratado\": 913470604.87, \"empenhado\": 92705176.85, \"liquidado\": 75343336.5, \"pago\": 77155628.99}, {\"codigo\": \"530002\", \"descricao\": \"UG SEMOB - Secretaria Municipal de Mobilidade\", \"contratado\": 307199687.57, \"empenhado\": 196403279.18, \"liquidado\": 145339332.17, \"pago\": 147213881.47}, {\"codigo\": \"450002\", \"descricao\": \"UG SEMOP - Secretaria Municipal de Ordem Pública\", \"contratado\": 4724110811.72, \"empenhado\": 510766829.48, \"liquidado\": 434065148, \"pago\": 446846537.36}, {\"codigo\": \"520002\", \"descricao\": \"UG SEMPRE - Secretaria Municipal de Promoção Social, Combate à Pobreza, Esportes e Lazer\", \"contratado\": 91706227.72, \"empenhado\": 18156039.36, \"liquidado\": 15815873.26, \"pago\": 15490791.52}, {\"codigo\": \"637002\", \"descricao\": \"UG SMART - Companhia Salvador Cidade Inteligente\", \"contratado\": 16774653.81, \"empenhado\": 7279762.28, \"liquidado\": 4010190.93, \"pago\": 3770035.36}, {\"codigo\": \"580002\", \"descricao\": \"UG SPMJ - Secretaria Municipal de Política para Mulheres, Infância e Juventude\", \"contratado\": 9327096.01, \"empenhado\": 1607999.96, \"liquidado\": 1500796.55, \"pago\": 1312638.45}, {\"codigo\": \"616002\", \"descricao\": \"UG SUCOP - Superintendência de Obras Públicas de Salvador\", \"contratado\": 3039429321.98, \"empenhado\": 309318495.73, \"liquidado\": 302918880.48, \"pago\": 274194053.4}, {\"codigo\": \"536002\", \"descricao\": \"UG TRANSALVADOR - Superintendência de Trânsito do Salvador\", \"contratado\": 1120608029.62, \"empenhado\": 64750322.28, \"liquidado\": 60805677, \"pago\": 54859945.78}]",
+        "list_length": 45,
+        "sha256": "e7b8a5c9f4401e24be9bb3c8ae720e8fe641d1859270d233f64fafef810b7b3f",
+        "status": 200,
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/gridresumida"
+      },
+      "null_filters": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b20a9-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b20a9-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18.\"]}}",
+        "sha256": "b7d821bc6673049b531df19b5b685cf9b7a95a0d534502e4517755fdbe61d802",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/gridresumida"
+      }
+    },
+    "/contratos/totalizador": {
+      "br_2026": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b20a6-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b20a6-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26.\"]}}",
+        "sha256": "57c784afb11fb0666c874b311c8e0a99e5590e4a198aaa086161955c1cb9c698",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/totalizador"
+      },
+      "empty": {
+        "bytes": 128,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "Empenhado no Período": "0,00",
+          "Liquidado no período": "0,00",
+          "Pago no período": "0,00",
+          "Valor Contratual (Atualizado)": "0,00"
+        },
+        "json_preview": "{\"Valor Contratual (Atualizado)\": \"0,00\", \"Empenhado no Período\": \"0,00\", \"Liquidado no período\": \"0,00\", \"Pago no período\": \"0,00\"}",
+        "sha256": "48c72d9658298b2ae09cf787bdae471d3e285fd2389bf82c701229f501b56610",
+        "status": 200,
+        "top_level_keys": [
+          "Empenhado no Período",
+          "Liquidado no período",
+          "Pago no período",
+          "Valor Contratual (Atualizado)"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/totalizador"
+      },
+      "iso_2026": {
+        "bytes": 177,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "Empenhado no Período": "3.462.735.792,83",
+          "Liquidado no período": "3.113.821.934,33",
+          "Pago no período": "3.080.652.918,03",
+          "Valor Contratual (Atualizado)": "34.016.559.914,23"
+        },
+        "json_preview": "{\"Valor Contratual (Atualizado)\": \"34.016.559.914,23\", \"Empenhado no Período\": \"3.462.735.792,83\", \"Liquidado no período\": \"3.113.821.934,33\", \"Pago no período\": \"3.080.652.918,03\"}",
+        "sha256": "4c776233aa7b1342316d24becac43f4e99041db685065636987d637c6dfcc46f",
+        "status": 200,
+        "top_level_keys": [
+          "Empenhado no Período",
+          "Liquidado no período",
+          "Pago no período",
+          "Valor Contratual (Atualizado)"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/totalizador"
+      },
+      "iso_datetime_2026": {
+        "bytes": 177,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "Empenhado no Período": "3.462.735.792,83",
+          "Liquidado no período": "3.113.821.934,33",
+          "Pago no período": "3.080.652.918,03",
+          "Valor Contratual (Atualizado)": "34.016.559.914,23"
+        },
+        "json_preview": "{\"Valor Contratual (Atualizado)\": \"34.016.559.914,23\", \"Empenhado no Período\": \"3.462.735.792,83\", \"Liquidado no período\": \"3.113.821.934,33\", \"Pago no período\": \"3.080.652.918,03\"}",
+        "sha256": "4c776233aa7b1342316d24becac43f4e99041db685065636987d637c6dfcc46f",
+        "status": 200,
+        "top_level_keys": [
+          "Empenhado no Período",
+          "Liquidado no período",
+          "Pago no período",
+          "Valor Contratual (Atualizado)"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/totalizador"
+      },
+      "null_filters": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b20a4-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b20a4-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18.\"]}}",
+        "sha256": "48fd1533796175bb59421da2972189a7d83bacd3f4bbcf36ad755f395a925029",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/totalizador"
+      }
+    },
+    "/despesa/gridDetalhada": {
+      "br_2026": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b20a1-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b20a1-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26.\"]}}",
+        "sha256": "fd41a50ea2d1e99d77e4c85d8d23e57ef842aaf482af050541d3f6eb3a4f1c65",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/gridDetalhada"
+      },
+      "empty": {
+        "bytes": 99,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "dados": [],
+          "paginacao": null,
+          "totalizadores": {
+            "Empenhado": "0,00",
+            "Liquidado": "0,00",
+            "Pago": "0,00"
+          }
+        },
+        "json_preview": "{\"totalizadores\": {\"Empenhado\": \"0,00\", \"Liquidado\": \"0,00\", \"Pago\": \"0,00\"}, \"dados\": [], \"paginacao\": null}",
+        "sha256": "114c5a141f344cbbd30a9531e0b4c661da0573f23fc91202e9cf87fa3989404c",
+        "status": 200,
+        "top_level_keys": [
+          "dados",
+          "paginacao",
+          "totalizadores"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/gridDetalhada"
+      },
+      "iso_2026": {
+        "bytes": 99,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "dados": [],
+          "paginacao": null,
+          "totalizadores": {
+            "Empenhado": "0,00",
+            "Liquidado": "0,00",
+            "Pago": "0,00"
+          }
+        },
+        "json_preview": "{\"totalizadores\": {\"Empenhado\": \"0,00\", \"Liquidado\": \"0,00\", \"Pago\": \"0,00\"}, \"dados\": [], \"paginacao\": null}",
+        "sha256": "114c5a141f344cbbd30a9531e0b4c661da0573f23fc91202e9cf87fa3989404c",
+        "status": 200,
+        "top_level_keys": [
+          "dados",
+          "paginacao",
+          "totalizadores"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/gridDetalhada"
+      },
+      "iso_datetime_2026": {
+        "bytes": 99,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "dados": [],
+          "paginacao": null,
+          "totalizadores": {
+            "Empenhado": "0,00",
+            "Liquidado": "0,00",
+            "Pago": "0,00"
+          }
+        },
+        "json_preview": "{\"totalizadores\": {\"Empenhado\": \"0,00\", \"Liquidado\": \"0,00\", \"Pago\": \"0,00\"}, \"dados\": [], \"paginacao\": null}",
+        "sha256": "114c5a141f344cbbd30a9531e0b4c661da0573f23fc91202e9cf87fa3989404c",
+        "status": 200,
+        "top_level_keys": [
+          "dados",
+          "paginacao",
+          "totalizadores"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/gridDetalhada"
+      },
+      "null_filters": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b209f-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b209f-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18.\"]}}",
+        "sha256": "94f6db3c614bf5cb2133c5a306fed04a140d99834f7318fbc8157b072dbe9899",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/gridDetalhada"
+      }
+    },
+    "/despesa/gridresumida": {
+      "br_2026": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b209c-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b209c-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26.\"]}}",
+        "sha256": "fccc4181d70a12296a739915553e106c333f7163b1bed7def259bb4ede399ed6",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/gridresumida"
+      },
+      "empty": {
+        "bytes": 2,
+        "content_type": "application/json; charset=utf-8",
+        "json": [],
+        "json_preview": "[]",
+        "list_length": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "status": 200,
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/gridresumida"
+      },
+      "iso_2026": {
+        "bytes": 2426,
+        "content_type": "application/json; charset=utf-8",
+        "first_item_keys": [
+          "codigo",
+          "descricao",
+          "empenhado",
+          "liquidado",
+          "pago"
+        ],
+        "json": [
+          {
+            "codigo": 10,
+            "descricao": "Saúde",
+            "empenhado": 2095625776.01,
+            "liquidado": 1999989666.41,
+            "pago": 1973563417.03
+          },
+          {
+            "codigo": 12,
+            "descricao": "Educação",
+            "empenhado": 1694351541.88,
+            "liquidado": 1614456059.09,
+            "pago": 1603018986.96
+          },
+          {
+            "codigo": 15,
+            "descricao": "Urbanismo",
+            "empenhado": 1511099038.61,
+            "liquidado": 1349107988.79,
+            "pago": 1303891449.26
+          },
+          {
+            "codigo": 28,
+            "descricao": "Encargos Especiais",
+            "empenhado": 517611313.28,
+            "liquidado": 436721695.88,
+            "pago": 433443779.99
+          },
+          {
+            "codigo": 9,
+            "descricao": "Previdência Social",
+            "empenhado": 496412882.87,
+            "liquidado": 486051875.27,
+            "pago": 485854735.14
+          },
+          {
+            "codigo": 4,
+            "descricao": "Administração",
+            "empenhado": 411517867.13,
+            "liquidado": 411880313.78,
+            "pago": 404584863.16
+          },
+          {
+            "codigo": 26,
+            "descricao": "Transporte",
+            "empenhado": 315418225.52,
+            "liquidado": 261491611.65,
+            "pago": 254191604.18
+          },
+          {
+            "codigo": 23,
+            "descricao": "Comércio e Serviços",
+            "empenhado": 260301018.4,
+            "liquidado": 247808327.51,
+            "pago": 245347029.77
+          },
+          {
+            "codigo": 8,
+            "descricao": "Assistência Social",
+            "empenhado": 235926129.37,
+            "liquidado": 230401484.28,
+            "pago": 224951642.77
+          },
+          {
+            "codigo": 24,
+            "descricao": "Comunicações",
+            "empenhado": 142933369.87,
+            "liquidado": 136419165.04,
+            "pago": 133323835.08
+          },
+          {
+            "codigo": 19,
+            "descricao": "Ciência e Tecnologia",
+            "empenhado": 128168319.74,
+            "liquidado": 109696104.79,
+            "pago": 108925666.88
+          },
+          {
+            "codigo": 27,
+            "descricao": "Desporto e Lazer",
+            "empenhado": 107721651.4,
+            "liquidado": 104271233.92,
+            "pago": 88100652.23
+          },
+          {
+            "codigo": 13,
+            "descricao": "Cultura",
+            "empenhado": 92789249.86,
+            "liquidado": 85898537,
+            "pago": 83077443.01
+          },
+          {
+            "codigo": 6,
+            "descricao": "Segurança Pública",
+            "empenhado": 84371005.76,
+            "liquidado": 84364238.05,
+            "pago": 84019978.39
+          },
+          {
+            "codigo": 16,
+            "descricao": "Habitação",
+            "empenhado": 59275616.31,
+            "liquidado": 51385915.13,
+            "pago": 44573310.96
+          },
+          {
+            "codigo": 2,
+            "descricao": "Judiciária",
+            "empenhado": 47528883.74,
+            "liquidado": 46772125.67,
+            "pago": 46541086.13
+          },
+          {
+            "codigo": 22,
+            "descricao": "Indústria",
+            "empenhado": 35123739.67,
+            "liquidado": 33926893.25,
+            "pago": 33618954.33
+          },
+          {
+            "codigo": 18,
+            "descricao": "Gestão Ambiental",
+            "empenhado": 34198489.68,
+            "liquidado": 33546768.16,
+            "pago": 33128965.28
+          },
+          {
+            "codigo": 14,
+            "descricao": "Direitos da Cidadania",
+            "empenhado": 31505731.26,
+            "liquidado": 33872591.07,
+            "pago": 33013797.67
+          },
+          {
+            "codigo": 11,
+            "descricao": "Trabalho",
+            "empenhado": 24918077.72,
+            "liquidado": 19845939.46,
+            "pago": 23026429.7
+          },
+          {
+            "codigo": 17,
+            "descricao": "Saneamento",
+            "empenhado": 10211376.43,
+            "liquidado": 10146164.19,
+            "pago": 10037022.8
+          },
+          {
+            "codigo": 20,
+            "descricao": "Agricultura",
+            "empenhado": 0,
+            "liquidado": 23840,
+            "pago": 23840
+          }
+        ],
+        "json_preview": "[{\"codigo\": 10, \"descricao\": \"Saúde\", \"empenhado\": 2095625776.01, \"liquidado\": 1999989666.41, \"pago\": 1973563417.03}, {\"codigo\": 12, \"descricao\": \"Educação\", \"empenhado\": 1694351541.88, \"liquidado\": 1614456059.09, \"pago\": 1603018986.96}, {\"codigo\": 15, \"descricao\": \"Urbanismo\", \"empenhado\": 1511099038.61, \"liquidado\": 1349107988.79, \"pago\": 1303891449.26}, {\"codigo\": 28, \"descricao\": \"Encargos Especiais\", \"empenhado\": 517611313.28, \"liquidado\": 436721695.88, \"pago\": 433443779.99}, {\"codigo\": 9, \"descricao\": \"Previdência Social\", \"empenhado\": 496412882.87, \"liquidado\": 486051875.27, \"pago\": 485854735.14}, {\"codigo\": 4, \"descricao\": \"Administração\", \"empenhado\": 411517867.13, \"liquidado\": 411880313.78, \"pago\": 404584863.16}, {\"codigo\": 26, \"descricao\": \"Transporte\", \"empenhado\": 315418225.52, \"liquidado\": 261491611.65, \"pago\": 254191604.18}, {\"codigo\": 23, \"descricao\": \"Comércio e Serviços\", \"empenhado\": 260301018.4, \"liquidado\": 247808327.51, \"pago\": 245347029.77}, {\"codigo\": 8, \"descricao\": \"Assistência Social\", \"empenhado\": 235926129.37, \"liquidado\": 230401484.28, \"pago\": 224951642.77}, {\"codigo\": 24, \"descricao\": \"Comunicações\", \"empenhado\": 142933369.87, \"liquidado\": 136419165.04, \"pago\": 133323835.08}, {\"codigo\": 19, \"descricao\": \"Ciência e Tecnologia\", \"empenhado\": 128168319.74, \"liquidado\": 109696104.79, \"pago\": 108925666.88}, {\"codigo\": 27, \"descricao\": \"Desporto e Lazer\", \"empenhado\": 107721651.4, \"liquidado\": 104271233.92, \"pago\": 88100652.23}, {\"codigo\": 13, \"descricao\": \"Cultura\", \"empenhado\": 92789249.86, \"liquidado\": 85898537, \"pago\": 83077443.01}, {\"codigo\": 6, \"descricao\": \"Segurança Pública\", \"empenhado\": 84371005.76, \"liquidado\": 84364238.05, \"pago\": 84019978.39}, {\"codigo\": 16, \"descricao\": \"Habitação\", \"empenhado\": 59275616.31, \"liquidado\": 51385915.13, \"pago\": 44573310.96}, {\"codigo\": 2, \"descricao\": \"Judiciária\", \"empenhado\": 47528883.74, \"liquidado\": 46772125.67, \"pago\": 46541086.13}, {\"codigo\": 22, \"descricao\": \"Indústria\", \"empenhado\": 35123739.67, \"liquidado\": 33926893.25, \"pago\": 33618954.33}, {\"codigo\": 18, \"descricao\": \"Gestão Ambiental\", \"empenhado\": 34198489.68, \"liquidado\": 33546768.16, \"pago\": 33128965.28}, {\"codigo\": 14, \"descricao\": \"Direitos da Cidadania\", \"empenhado\": 31505731.26, \"liquidado\": 33872591.07, \"pago\": 33013797.67}, {\"codigo\": 11, \"descricao\": \"Trabalho\", \"empenhado\": 24918077.72, \"liquidado\": 19845939.46, \"pago\": 23026429.7}, {\"codigo\": 17, \"descricao\": \"Saneamento\", \"empenhado\": 10211376.43, \"liquidado\": 10146164.19, \"pago\": 10037022.8}, {\"codigo\": 20, \"descricao\": \"Agricultura\", \"empenhado\": 0, \"liquidado\": 23840, \"pago\": 23840}]",
+        "list_length": 22,
+        "sha256": "19819766552a9a31f271522ce966c6ecee8a8572f5c1deea073aecccd5120fdc",
+        "status": 200,
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/gridresumida"
+      },
+      "iso_datetime_2026": {
+        "bytes": 2426,
+        "content_type": "application/json; charset=utf-8",
+        "first_item_keys": [
+          "codigo",
+          "descricao",
+          "empenhado",
+          "liquidado",
+          "pago"
+        ],
+        "json": [
+          {
+            "codigo": 10,
+            "descricao": "Saúde",
+            "empenhado": 2095625776.01,
+            "liquidado": 1999989666.41,
+            "pago": 1973563417.03
+          },
+          {
+            "codigo": 12,
+            "descricao": "Educação",
+            "empenhado": 1694351541.88,
+            "liquidado": 1614456059.09,
+            "pago": 1603018986.96
+          },
+          {
+            "codigo": 15,
+            "descricao": "Urbanismo",
+            "empenhado": 1511099038.61,
+            "liquidado": 1349107988.79,
+            "pago": 1303891449.26
+          },
+          {
+            "codigo": 28,
+            "descricao": "Encargos Especiais",
+            "empenhado": 517611313.28,
+            "liquidado": 436721695.88,
+            "pago": 433443779.99
+          },
+          {
+            "codigo": 9,
+            "descricao": "Previdência Social",
+            "empenhado": 496412882.87,
+            "liquidado": 486051875.27,
+            "pago": 485854735.14
+          },
+          {
+            "codigo": 4,
+            "descricao": "Administração",
+            "empenhado": 411517867.13,
+            "liquidado": 411880313.78,
+            "pago": 404584863.16
+          },
+          {
+            "codigo": 26,
+            "descricao": "Transporte",
+            "empenhado": 315418225.52,
+            "liquidado": 261491611.65,
+            "pago": 254191604.18
+          },
+          {
+            "codigo": 23,
+            "descricao": "Comércio e Serviços",
+            "empenhado": 260301018.4,
+            "liquidado": 247808327.51,
+            "pago": 245347029.77
+          },
+          {
+            "codigo": 8,
+            "descricao": "Assistência Social",
+            "empenhado": 235926129.37,
+            "liquidado": 230401484.28,
+            "pago": 224951642.77
+          },
+          {
+            "codigo": 24,
+            "descricao": "Comunicações",
+            "empenhado": 142933369.87,
+            "liquidado": 136419165.04,
+            "pago": 133323835.08
+          },
+          {
+            "codigo": 19,
+            "descricao": "Ciência e Tecnologia",
+            "empenhado": 128168319.74,
+            "liquidado": 109696104.79,
+            "pago": 108925666.88
+          },
+          {
+            "codigo": 27,
+            "descricao": "Desporto e Lazer",
+            "empenhado": 107721651.4,
+            "liquidado": 104271233.92,
+            "pago": 88100652.23
+          },
+          {
+            "codigo": 13,
+            "descricao": "Cultura",
+            "empenhado": 92789249.86,
+            "liquidado": 85898537,
+            "pago": 83077443.01
+          },
+          {
+            "codigo": 6,
+            "descricao": "Segurança Pública",
+            "empenhado": 84371005.76,
+            "liquidado": 84364238.05,
+            "pago": 84019978.39
+          },
+          {
+            "codigo": 16,
+            "descricao": "Habitação",
+            "empenhado": 59275616.31,
+            "liquidado": 51385915.13,
+            "pago": 44573310.96
+          },
+          {
+            "codigo": 2,
+            "descricao": "Judiciária",
+            "empenhado": 47528883.74,
+            "liquidado": 46772125.67,
+            "pago": 46541086.13
+          },
+          {
+            "codigo": 22,
+            "descricao": "Indústria",
+            "empenhado": 35123739.67,
+            "liquidado": 33926893.25,
+            "pago": 33618954.33
+          },
+          {
+            "codigo": 18,
+            "descricao": "Gestão Ambiental",
+            "empenhado": 34198489.68,
+            "liquidado": 33546768.16,
+            "pago": 33128965.28
+          },
+          {
+            "codigo": 14,
+            "descricao": "Direitos da Cidadania",
+            "empenhado": 31505731.26,
+            "liquidado": 33872591.07,
+            "pago": 33013797.67
+          },
+          {
+            "codigo": 11,
+            "descricao": "Trabalho",
+            "empenhado": 24918077.72,
+            "liquidado": 19845939.46,
+            "pago": 23026429.7
+          },
+          {
+            "codigo": 17,
+            "descricao": "Saneamento",
+            "empenhado": 10211376.43,
+            "liquidado": 10146164.19,
+            "pago": 10037022.8
+          },
+          {
+            "codigo": 20,
+            "descricao": "Agricultura",
+            "empenhado": 0,
+            "liquidado": 23840,
+            "pago": 23840
+          }
+        ],
+        "json_preview": "[{\"codigo\": 10, \"descricao\": \"Saúde\", \"empenhado\": 2095625776.01, \"liquidado\": 1999989666.41, \"pago\": 1973563417.03}, {\"codigo\": 12, \"descricao\": \"Educação\", \"empenhado\": 1694351541.88, \"liquidado\": 1614456059.09, \"pago\": 1603018986.96}, {\"codigo\": 15, \"descricao\": \"Urbanismo\", \"empenhado\": 1511099038.61, \"liquidado\": 1349107988.79, \"pago\": 1303891449.26}, {\"codigo\": 28, \"descricao\": \"Encargos Especiais\", \"empenhado\": 517611313.28, \"liquidado\": 436721695.88, \"pago\": 433443779.99}, {\"codigo\": 9, \"descricao\": \"Previdência Social\", \"empenhado\": 496412882.87, \"liquidado\": 486051875.27, \"pago\": 485854735.14}, {\"codigo\": 4, \"descricao\": \"Administração\", \"empenhado\": 411517867.13, \"liquidado\": 411880313.78, \"pago\": 404584863.16}, {\"codigo\": 26, \"descricao\": \"Transporte\", \"empenhado\": 315418225.52, \"liquidado\": 261491611.65, \"pago\": 254191604.18}, {\"codigo\": 23, \"descricao\": \"Comércio e Serviços\", \"empenhado\": 260301018.4, \"liquidado\": 247808327.51, \"pago\": 245347029.77}, {\"codigo\": 8, \"descricao\": \"Assistência Social\", \"empenhado\": 235926129.37, \"liquidado\": 230401484.28, \"pago\": 224951642.77}, {\"codigo\": 24, \"descricao\": \"Comunicações\", \"empenhado\": 142933369.87, \"liquidado\": 136419165.04, \"pago\": 133323835.08}, {\"codigo\": 19, \"descricao\": \"Ciência e Tecnologia\", \"empenhado\": 128168319.74, \"liquidado\": 109696104.79, \"pago\": 108925666.88}, {\"codigo\": 27, \"descricao\": \"Desporto e Lazer\", \"empenhado\": 107721651.4, \"liquidado\": 104271233.92, \"pago\": 88100652.23}, {\"codigo\": 13, \"descricao\": \"Cultura\", \"empenhado\": 92789249.86, \"liquidado\": 85898537, \"pago\": 83077443.01}, {\"codigo\": 6, \"descricao\": \"Segurança Pública\", \"empenhado\": 84371005.76, \"liquidado\": 84364238.05, \"pago\": 84019978.39}, {\"codigo\": 16, \"descricao\": \"Habitação\", \"empenhado\": 59275616.31, \"liquidado\": 51385915.13, \"pago\": 44573310.96}, {\"codigo\": 2, \"descricao\": \"Judiciária\", \"empenhado\": 47528883.74, \"liquidado\": 46772125.67, \"pago\": 46541086.13}, {\"codigo\": 22, \"descricao\": \"Indústria\", \"empenhado\": 35123739.67, \"liquidado\": 33926893.25, \"pago\": 33618954.33}, {\"codigo\": 18, \"descricao\": \"Gestão Ambiental\", \"empenhado\": 34198489.68, \"liquidado\": 33546768.16, \"pago\": 33128965.28}, {\"codigo\": 14, \"descricao\": \"Direitos da Cidadania\", \"empenhado\": 31505731.26, \"liquidado\": 33872591.07, \"pago\": 33013797.67}, {\"codigo\": 11, \"descricao\": \"Trabalho\", \"empenhado\": 24918077.72, \"liquidado\": 19845939.46, \"pago\": 23026429.7}, {\"codigo\": 17, \"descricao\": \"Saneamento\", \"empenhado\": 10211376.43, \"liquidado\": 10146164.19, \"pago\": 10037022.8}, {\"codigo\": 20, \"descricao\": \"Agricultura\", \"empenhado\": 0, \"liquidado\": 23840, \"pago\": 23840}]",
+        "list_length": 22,
+        "sha256": "19819766552a9a31f271522ce966c6ecee8a8572f5c1deea073aecccd5120fdc",
+        "status": 200,
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/gridresumida"
+      },
+      "null_filters": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b2098-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b2098-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18.\"]}}",
+        "sha256": "3251c00011eb8f87e23433f22498506a350d8714b482e53f0240c4f10406003e",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/gridresumida"
+      }
+    },
+    "/despesa/totalizador": {
+      "br_2026": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b2095-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b2095-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26.\"]}}",
+        "sha256": "6ade54f045ddd0de85fdf354e30b8a9c5e37fdfd4f636c1802736d238ca52097",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/totalizador"
+      },
+      "empty": {
+        "bytes": 53,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "Empenhado": "0,00",
+          "Liquidado": "0,00",
+          "Pago": "0,00"
+        },
+        "json_preview": "{\"Empenhado\": \"0,00\", \"Liquidado\": \"0,00\", \"Pago\": \"0,00\"}",
+        "sha256": "340c7f47a29e5e812deb971f1587c133ff72de8ff0477488e3d561aa8953970d",
+        "status": 200,
+        "top_level_keys": [
+          "Empenhado",
+          "Liquidado",
+          "Pago"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/totalizador"
+      },
+      "iso_2026": {
+        "bytes": 89,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "Empenhado": "8.337.009.304,51",
+          "Liquidado": "7.788.078.538,39",
+          "Pago": "7.650.258.490,72"
+        },
+        "json_preview": "{\"Empenhado\": \"8.337.009.304,51\", \"Liquidado\": \"7.788.078.538,39\", \"Pago\": \"7.650.258.490,72\"}",
+        "sha256": "86216d908b4bab8b01b0c9d20ecd67719cc1abedcb0776e50f7763e472d9f318",
+        "status": 200,
+        "top_level_keys": [
+          "Empenhado",
+          "Liquidado",
+          "Pago"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/totalizador"
+      },
+      "iso_datetime_2026": {
+        "bytes": 89,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "Empenhado": "8.337.009.304,51",
+          "Liquidado": "7.788.078.538,39",
+          "Pago": "7.650.258.490,72"
+        },
+        "json_preview": "{\"Empenhado\": \"8.337.009.304,51\", \"Liquidado\": \"7.788.078.538,39\", \"Pago\": \"7.650.258.490,72\"}",
+        "sha256": "86216d908b4bab8b01b0c9d20ecd67719cc1abedcb0776e50f7763e472d9f318",
+        "status": 200,
+        "top_level_keys": [
+          "Empenhado",
+          "Liquidado",
+          "Pago"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/totalizador"
+      },
+      "null_filters": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b2093-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b2093-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18.\"]}}",
+        "sha256": "a644bf2a7d4e253a6c30d14617dac71cdb3080d9299f329d771a02d599e67f22",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/despesa/totalizador"
+      }
+    },
+    "/receita/gridDetalhada": {
+      "br_2026": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b208e-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b208e-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26.\"]}}",
+        "sha256": "b0873605e6e63a385c09b40b3cf4046936cc995284b6661ae6d5ed80b7a06d8f",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/gridDetalhada"
+      },
+      "empty": {
+        "bytes": 131,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "dados": [],
+          "paginacao": null,
+          "totalizadores": {
+            "Arrecadado no ano": "0,00",
+            "Arrecadado no período": "0,00",
+            "Previsto no ano": "0,00"
+          }
+        },
+        "json_preview": "{\"dados\": [], \"totalizadores\": {\"Previsto no ano\": \"0,00\", \"Arrecadado no período\": \"0,00\", \"Arrecadado no ano\": \"0,00\"}, \"paginacao\": null}",
+        "sha256": "0fd5c55559de70e1f350451271a8e1c95669f91658232bebb023dfa97d4aff70",
+        "status": 200,
+        "top_level_keys": [
+          "dados",
+          "paginacao",
+          "totalizadores"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/gridDetalhada"
+      },
+      "iso_2026": {
+        "bytes": 450220,
+        "content_type": "application/json; charset=utf-8",
+        "json": null,
+        "json_preview": "{\"dados\": [{\"temItens\": false, \"descricao\": \"1113034101 - Imposto de Renda Retido nas Fontes s/ O Rendimentos - Fonte 500.1\", \"previstoAno\": \"170.321.000,00\", \"acumulado\": \"94.682.243,82\", \"arrecadadoPeriodo\": \"94.682.243,82\", \"desempenho\": \"55,59\", \"id\": \"1113034101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1721521199 - Dedução de Receita para a Formação do FUNDEB IPI Exportação\", \"previstoAno\": \"-1.611.000,00\", \"acumulado\": \"-1.009.013,04\", \"arrecadadoPeriodo\": \"-1.009.013,04\", \"desempenho\": \"0,00\", \"id\": \"1721521199\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1729992105 - Rateio do Rendimento ICMS (5.402-X)\", \"previstoAno\": \"755.000,00\", \"acumulado\": \"1.478.266,96\", \"arrecadadoPeriodo\": \"1.478.266,96\", \"desempenho\": \"195,80\", \"id\": \"1729992105\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992102 - Preço do Serviço de Expediente PSE - 501.1\", \"previstoAno\": \"2.000,00\", \"acumulado\": \"7.760,42\", \"arrecadadoPeriodo\": \"7.760,42\", \"desempenho\": \"388,02\", \"id\": \"1999992102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992133 - Preço de Serviço Público - PSP - Taxi - Fonte 759.3\", \"previstoAno\": \"2.130.000,00\", \"acumulado\": \"301.892,81\", \"arrecadadoPeriodo\": \"301.892,81\", \"desempenho\": \"14,17\", \"id\": \"1999992133\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011136 - FMAS - FONTE 661.3\", \"previstoAno\": \"272.000,00\", \"acumulado\": \"95.953,43\", \"arrecadadoPeriodo\": \"95.953,43\", \"desempenho\": \"35,28\", \"id\": \"1321011136\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011128 - FUNDURBS - FONTE 799.1\", \"previstoAno\": \"847.000,00\", \"acumulado\": \"1.209.030,02\", \"arrecadadoPeriodo\": \"1.209.030,02\", \"desempenho\": \"142,74\", \"id\": \"1321011128\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1713505102 - Transferência de Recursos do SUS - Gestão do SUS - Piso enfermagem - 605\", \"previstoAno\": \"52.345.000,00\", \"acumulado\": \"28.524.047,17\", \"arrecadadoPeriodo\": \"28.524.047,17\", \"desempenho\": \"54,49\", \"id\": \"1713505102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1911011201 - Multas e Juros de Mora - Infrações Previstas na Legislação de Trânsito\", \"previstoAno\": \"226.000,00\", \"acumulado\": \"211.166,28\", \"arrecadadoPeriodo\": \"211.166,28\", \"desempenho\": \"93,44\", \"id\": \"1911011201\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1922011107 - Restituições de Convênios - Fonte 661.3\", \"previstoAno\": \"2.000,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1922011107\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992411 - Multas e Juros da D.A do RMI - Fonte 501.1\", \"previstoAno\": \"299.000,00\", \"acumulado\": \"206.837,94\", \"arrecadadoPeriodo\": \"206.837,94\", \"desempenho\": \"69,18\", \"id\": \"1999992411\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1112500231 - Multas e Juros de Mora do Imp s/ Prop Pred e Ter Urbana IPTU PAD - Fonte 500.1\", \"previstoAno\": \"3.726.000,00\", \"acumulado\": \"3.584.346,89\", \"arrecadadoPeriodo\": \"3.584.346,89\", \"desempenho\": \"96,20\", \"id\": \"1112500231\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1114511421 - Multas e Juros de Mora da D.A do ISS  PPI - Fonte 500.1\", \"previstoAno\": \"3.796.000,00\", \"acumulado\": \"1.145.121,28\", \"arrecadadoPeriodo\": \"1.145.121,28\", \"desempenho\": \"30,17\", \"id\": \"1114511421\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1121010304 - Dívida Ativa - TFF\", \"previstoAno\": \"6.857.000,00\", \"acumulado\": \"1.837.112,46\", \"arrecadadoPeriodo\": \"1.837.112,46\", \"desempenho\": \"26,79\", \"id\": \"1121010304\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1121010307 - Dívida Ativa TFF - PAD\", \"previstoAno\": \"7.290.000,00\", \"acumulado\": \"6.649.851,75\", \"arrecadadoPeriodo\": \"6.649.851,75\", \"desempenho\": \"91,22\", \"id\": \"1121010307\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1311021117 - Concessão de Direito Real de Uso - PAD\", \"previstoAno\": \"1.000,00\", \"acumulado\": \"393,42\", \"arrecadadoPeriodo\": \"393,42\", \"desempenho\": \"39,34\", \"id\": \"1311021117\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011109 - Fundo de Investimento em Renda Fixa - Fonte 759.3\", \"previstoAno\": \"45.000,00\", \"acumulado\": \"116.139,91\", \"arrecadadoPeriodo\": \"116.139,91\", \"desempenho\": \"258,09\", \"id\": \"1321011109\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011125 - FMS - Fonte 631.3\", \"previstoAno\": \"178.000,00\", \"acumulado\": \"258.343,52\", \"arrecadadoPeriodo\": \"258.343,52\", \"desempenho\": \"145,14\", \"id\": \"1321011125\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011159 - Rendimento de Apoio a Cultura - Lei Aldir Blanc - Fonte 799.1\", \"previstoAno\": \"23.000,00\", \"acumulado\": \"19.432,74\", \"arrecadadoPeriodo\": \"19.432,74\", \"desempenho\": \"84,49\", \"id\": \"1321011159\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1719991111 - transferência de Recursos da União - FMD - Fonte 669.3\", \"previstoAno\": \"499.000,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1719991111\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1922990182 - Restituições de Importâncias - Fonte 599 (11)\", \"previstoAno\": \"59.000,00\", \"acumulado\": \"25.169,78\", \"arrecadadoPeriodo\": \"25.169,78\", \"desempenho\": \"42,66\", \"id\": \"1922990182\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1112500341 - Dívida Ativa  IPTU PAD - Fonte 500.1\", \"previstoAno\": \"18.210.000,00\", \"acumulado\": \"18.357.463,23\", \"arrecadadoPeriodo\": \"18.357.463,23\", \"desempenho\": \"100,81\", \"id\": \"1112500341\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1121010313 - Dívida Ativa - TFF - Dep. Judicial - Fonte 1.757.1\", \"previstoAno\": \"1.104.000,00\", \"acumulado\": \"698.589,08\", \"arrecadadoPeriodo\": \"698.589,08\", \"desempenho\": \"63,28\", \"id\": \"1121010313\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992323 - Dívida Ativa de CODECON - PAD - Fonte 501.1\", \"previstoAno\": \"2.000,00\", \"acumulado\": \"20.236,09\", \"arrecadadoPeriodo\": \"20.236,09\", \"desempenho\": \"1.011,80\", \"id\": \"1999992323\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"2122551101 - Operações de Crédito Externa para Refinanciamento da Dívida Contratual\", \"previstoAno\": \"501.952.000,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"2122551101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"2999991102 - Depósito Sob Aviso à Disposição da Justiça\", \"previstoAno\": \"110.000.000,00\", \"acumulado\": \"58.598.836,14\", \"arrecadadoPeriodo\": \"58.598.836,14\", \"desempenho\": \"53,27\", \"id\": \"2999991102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1114511231 - Multas e Juros de Mora do Imposto s/ Serv de Qq Natureza ISS PAD - Fonte 500.1\", \"previstoAno\": \"8.248.000,00\", \"acumulado\": \"8.689.209,91\", \"arrecadadoPeriodo\": \"8.689.209,91\", \"desempenho\": \"105,35\", \"id\": \"1114511231\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1114511411 - Multas e Juros de Mora da D.A do ISS - Fonte 500.1\", \"previstoAno\": \"589.000,00\", \"acumulado\": \"258.795,85\", \"arrecadadoPeriodo\": \"258.795,85\", \"desempenho\": \"43,94\", \"id\": \"1114511411\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1122010103 - Taxa de Coleta, Remoção e Destinação de Resíduos Sólidos Domiciliares - TRSD PAD\", \"previstoAno\": \"2.514.000,00\", \"acumulado\": \"2.888.453,68\", \"arrecadadoPeriodo\": \"2.888.453,68\", \"desempenho\": \"114,89\", \"id\": \"1122010103\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011106 - Fundo de Investimento em Renda Fixa - Fonte 501.5\", \"previstoAno\": \"175.000,00\", \"acumulado\": \"4.512,67\", \"arrecadadoPeriodo\": \"4.512,67\", \"desempenho\": \"2,58\", \"id\": \"1321011106\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011149 - FMS - Fonte 601.3\", \"previstoAno\": \"772.000,00\", \"acumulado\": \"1.476.188,86\", \"arrecadadoPeriodo\": \"1.476.188,86\", \"desempenho\": \"191,22\", \"id\": \"1321011149\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1713501101 - Transferência de Recursos do SUS - Atenção Básica 600.3\", \"previstoAno\": \"183.821.000,00\", \"acumulado\": \"105.654.416,81\", \"arrecadadoPeriodo\": \"105.654.416,81\", \"desempenho\": \"57,48\", \"id\": \"1713501101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1721511199 - Dedução de Receita para Formação do FUNDEB IPVA\", \"previstoAno\": \"-82.217.000,00\", \"acumulado\": \"-58.632.103,76\", \"arrecadadoPeriodo\": \"-58.632.103,76\", \"desempenho\": \"0,00\", \"id\": \"1721511199\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1721531101 - Cota-parte da CIDE (Contrib de Interv no Domínio Econômico)\", \"previstoAno\": \"2.250.000,00\", \"acumulado\": \"1.625.429,85\", \"arrecadadoPeriodo\": \"1.625.429,85\", \"desempenho\": \"72,24\", \"id\": \"1721531101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1751501111 - FPM - Fonte 540.3\", \"previstoAno\": \"378.005.000,00\", \"acumulado\": \"264.122.194,17\", \"arrecadadoPeriodo\": \"264.122.194,17\", \"desempenho\": \"69,87\", \"id\": \"1751501111\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1751501121 - ICMS - Fonte 540.3\", \"previstoAno\": \"420.025.000,00\", \"acumulado\": \"245.960.512,43\", \"arrecadadoPeriodo\": \"245.960.512,43\", \"desempenho\": \"58,56\", \"id\": \"1751501121\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1751501171 - ITCMD - Fonte 540.3\", \"previstoAno\": \"3.290.000,00\", \"acumulado\": \"2.298.289,23\", \"arrecadadoPeriodo\": \"2.298.289,23\", \"desempenho\": \"69,86\", \"id\": \"1751501171\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1922990179 - Restituições de Depósitos Judiciais - Fonte 501.1\", \"previstoAno\": \"1.848.000,00\", \"acumulado\": \"3.911.430,05\", \"arrecadadoPeriodo\": \"3.911.430,05\", \"desempenho\": \"211,66\", \"id\": \"1922990179\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1311021119 - Concessão de Uso - PPI\", \"previstoAno\": \"12.000,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1311021119\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321012101 - Salário de Educação - Fonte 550.3\", \"previstoAno\": \"1.079.000,00\", \"acumulado\": \"847.919,38\", \"arrecadadoPeriodo\": \"847.919,38\", \"desempenho\": \"78,58\", \"id\": \"1321012101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1713503102 - Transferência de Recursos do SUS - Vigilância em Saúde - ACE e ACS\", \"previstoAno\": \"57.578.000,00\", \"acumulado\": \"32.338.950,00\", \"arrecadadoPeriodo\": \"32.338.950,00\", \"desempenho\": \"56,17\", \"id\": \"1713503102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1949991101 - Multas e Juros de Amortização Crédito Emergencial\", \"previstoAno\": \"4.000,00\", \"acumulado\": \"1.963,82\", \"arrecadadoPeriodo\": \"1.963,82\", \"desempenho\": \"49,10\", \"id\": \"1949991101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992317 - Dívida Ativa de CODECON - Fonte 799.1\", \"previstoAno\": \"1.602.000,00\", \"acumulado\": \"512.401,07\", \"arrecadadoPeriodo\": \"512.401,07\", \"desempenho\": \"31,99\", \"id\": \"1999992317\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992409 - Multas e Juros da DA de CODECON - PPI - Fonte 799.1\", \"previstoAno\": \"133.000,00\", \"acumulado\": \"2.101,16\", \"arrecadadoPeriodo\": \"2.101,16\", \"desempenho\": \"1,58\", \"id\": \"1999992409\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1114511171 - ISS - Dep. Judicial - Fonte 757.1\", \"previstoAno\": \"7.183.000,00\", \"acumulado\": \"1.171.037,96\", \"arrecadadoPeriodo\": \"1.171.037,96\", \"desempenho\": \"16,30\", \"id\": \"1114511171\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011104 - Fundo de Investimento em Renda Fixa - Fonte 752.4\", \"previstoAno\": \"2.197.000,00\", \"acumulado\": \"1.249.844,76\", \"arrecadadoPeriodo\": \"1.249.844,76\", \"desempenho\": \"56,89\", \"id\": \"1321011104\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1922521108 - Restituições da Folha - Fonte 801.3\", \"previstoAno\": \"180.000,00\", \"acumulado\": \"58.308,55\", \"arrecadadoPeriodo\": \"58.308,55\", \"desempenho\": \"32,39\", \"id\": \"1922521108\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992219 - Multas e Juros de Mora de Outras Receitas -  PPI - Fonte 501.1\", \"previstoAno\": \"8.000,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1999992219\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992306 - Dívida Ativa de Ressarcimentos Aplicados pelo TCM\", \"previstoAno\": \"3.000,00\", \"acumulado\": \"3.149,94\", \"arrecadadoPeriodo\": \"3.149,94\", \"desempenho\": \"105,00\", \"id\": \"1999992306\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992322 - Dívida Ativa de CODECON - PPI - Fonte 501.1\", \"previstoAno\": \"10.000,00\", \"acumulado\": \"1.410,92\", \"arrecadadoPeriodo\": \"1.410,92\", \"desempenho\": \"14,11\", \"id\": \"1999992322\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1718103103 - Transf Convênios da União Dest a Programas de Assistência Social - Fonte 24\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1718103103\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1990991130 - Ingressos Provenientes de Depósitos Judiciais - Fonte 50\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1990991130\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1128019401 - Multas e Juros de Mora da D.A TLP\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1128019401\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1990991124 - Outras Receitas Não Tributárias - Fonte 00\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1990991124\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1990991137 - Preço de Serviço Público - PSP - ASCENSORES - Fonte 12\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1990991137\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"7611041106 - Treinamento\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"7611041106\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1758011111 - FPM - Fonte 18 (60%)\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1758011111\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"2129001101 - Operações de Crédito Externas Contratuais - Mercado Externo\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"2129001101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1717531101 - Transf Convênios da União Dest a Programas de Combate à Fome\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1717531101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1118014413 - Multas e Juros de Mora da D.A do ITIV - Fonte 02 (15%)\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1118014413\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1128029308 - Dívida Ativa  TSU - PAD\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1128029308\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1923990113 - Ressarcimento ao Erário - Fonte (04)\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1923990113\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1311012105 - Transferência de Domínio Útil - PAD\", \"previstoAno\": \"0,00\", \"acumulado\": \"280,68\", \"arrecadadoPeriodo\": \"280,68\", \"desempenho\": \"0,00\", \"id\": \"1311012105\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1741991114 - Transferências de Instituições Privadas -  Fonte 759.3\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1741991114\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1210041101 - Contribuição Patronal p/ o Regime Próprio de Previdência\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1210041101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1715511141 - ICMS 87/96 - Fonte  541 (20/21)\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1715511141\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1215013101 - Contribuições de Pensionista p/ o RPPS - Fonte 800.3\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1215013101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1118014222 - Multas e Juros de Mora do Imp s/ Transm InterVivos de Bens Imóv ITIV PPI - Fonte 01 (25%\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1118014222\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1114511321 - Dívida Ativa  ISS  REFIS - Fonte 500.1\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1114511321\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1310012102 - Transferência de Domínio Útil\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1310012102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1214031201 - Multas e Juros de Mora da Contr Previd do Segurado Assalariado\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1214031201\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1715501132 - IPI 0- Fonte 39\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1715501132\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1218036101 - Outras Contribuições Previdenciárias - Pensão Parlamentar\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1218036101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1218011101 - Contribuição do Servidor Ativo p/ o RPPS - Fonte 03\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1218011101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1922521103 - Restituições da Folha - Fonte 800.3\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1922521103\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1118011413 - Multas e Juros de Mora da D.A do IPTU - Fonte 02 (15%)\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1118011413\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"7610041106 - Treinamento\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"7610041106\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1718031151 - Vigilância Epidemiológica e Ambiental em Saúde\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1718031151\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1690991106 - Receita de Serviços de Bilheteria -  Fonte 00\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1690991106\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"7210291108 - Outras Contribuições Sociais - RPPS\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"7210291108\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1128029406 - Multas e Juros de Mora da D.A TSU - REFIS\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1128029406\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1113034102 - Imposto de Renda Retido nas Fontes s/ O Rendimentos - Fonte 500.1 (25%)\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1113034102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"2118014101 - Operações de Crédito Internas para Programas de Meio Ambiente\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"2118014101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"7218031102 - Contribuição Patronal para o RPPS (24%) - Fonte 34 - TAXA DE ADMINISTRAÇÃO\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"7218031102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1721521102 - Cota-Parte do IPI sobre Exportação - Fonte 500.1 (",
+        "sha256": "11f73d68fe1108fff531933f03287e721d539e952404a3babca9ddc5722e120a",
+        "status": 200,
+        "top_level_keys": [
+          "dados",
+          "paginacao",
+          "totalizadores"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/gridDetalhada"
+      },
+      "iso_datetime_2026": {
+        "bytes": 450220,
+        "content_type": "application/json; charset=utf-8",
+        "json": null,
+        "json_preview": "{\"dados\": [{\"temItens\": false, \"descricao\": \"1113034101 - Imposto de Renda Retido nas Fontes s/ O Rendimentos - Fonte 500.1\", \"previstoAno\": \"170.321.000,00\", \"acumulado\": \"94.682.243,82\", \"arrecadadoPeriodo\": \"94.682.243,82\", \"desempenho\": \"55,59\", \"id\": \"1113034101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1721521199 - Dedução de Receita para a Formação do FUNDEB IPI Exportação\", \"previstoAno\": \"-1.611.000,00\", \"acumulado\": \"-1.009.013,04\", \"arrecadadoPeriodo\": \"-1.009.013,04\", \"desempenho\": \"0,00\", \"id\": \"1721521199\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1729992105 - Rateio do Rendimento ICMS (5.402-X)\", \"previstoAno\": \"755.000,00\", \"acumulado\": \"1.478.266,96\", \"arrecadadoPeriodo\": \"1.478.266,96\", \"desempenho\": \"195,80\", \"id\": \"1729992105\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992102 - Preço do Serviço de Expediente PSE - 501.1\", \"previstoAno\": \"2.000,00\", \"acumulado\": \"7.760,42\", \"arrecadadoPeriodo\": \"7.760,42\", \"desempenho\": \"388,02\", \"id\": \"1999992102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992133 - Preço de Serviço Público - PSP - Taxi - Fonte 759.3\", \"previstoAno\": \"2.130.000,00\", \"acumulado\": \"301.892,81\", \"arrecadadoPeriodo\": \"301.892,81\", \"desempenho\": \"14,17\", \"id\": \"1999992133\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011136 - FMAS - FONTE 661.3\", \"previstoAno\": \"272.000,00\", \"acumulado\": \"95.953,43\", \"arrecadadoPeriodo\": \"95.953,43\", \"desempenho\": \"35,28\", \"id\": \"1321011136\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011128 - FUNDURBS - FONTE 799.1\", \"previstoAno\": \"847.000,00\", \"acumulado\": \"1.209.030,02\", \"arrecadadoPeriodo\": \"1.209.030,02\", \"desempenho\": \"142,74\", \"id\": \"1321011128\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1713505102 - Transferência de Recursos do SUS - Gestão do SUS - Piso enfermagem - 605\", \"previstoAno\": \"52.345.000,00\", \"acumulado\": \"28.524.047,17\", \"arrecadadoPeriodo\": \"28.524.047,17\", \"desempenho\": \"54,49\", \"id\": \"1713505102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1911011201 - Multas e Juros de Mora - Infrações Previstas na Legislação de Trânsito\", \"previstoAno\": \"226.000,00\", \"acumulado\": \"211.166,28\", \"arrecadadoPeriodo\": \"211.166,28\", \"desempenho\": \"93,44\", \"id\": \"1911011201\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1922011107 - Restituições de Convênios - Fonte 661.3\", \"previstoAno\": \"2.000,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1922011107\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992411 - Multas e Juros da D.A do RMI - Fonte 501.1\", \"previstoAno\": \"299.000,00\", \"acumulado\": \"206.837,94\", \"arrecadadoPeriodo\": \"206.837,94\", \"desempenho\": \"69,18\", \"id\": \"1999992411\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1112500231 - Multas e Juros de Mora do Imp s/ Prop Pred e Ter Urbana IPTU PAD - Fonte 500.1\", \"previstoAno\": \"3.726.000,00\", \"acumulado\": \"3.584.346,89\", \"arrecadadoPeriodo\": \"3.584.346,89\", \"desempenho\": \"96,20\", \"id\": \"1112500231\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1114511421 - Multas e Juros de Mora da D.A do ISS  PPI - Fonte 500.1\", \"previstoAno\": \"3.796.000,00\", \"acumulado\": \"1.145.121,28\", \"arrecadadoPeriodo\": \"1.145.121,28\", \"desempenho\": \"30,17\", \"id\": \"1114511421\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1121010304 - Dívida Ativa - TFF\", \"previstoAno\": \"6.857.000,00\", \"acumulado\": \"1.837.112,46\", \"arrecadadoPeriodo\": \"1.837.112,46\", \"desempenho\": \"26,79\", \"id\": \"1121010304\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1121010307 - Dívida Ativa TFF - PAD\", \"previstoAno\": \"7.290.000,00\", \"acumulado\": \"6.649.851,75\", \"arrecadadoPeriodo\": \"6.649.851,75\", \"desempenho\": \"91,22\", \"id\": \"1121010307\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1311021117 - Concessão de Direito Real de Uso - PAD\", \"previstoAno\": \"1.000,00\", \"acumulado\": \"393,42\", \"arrecadadoPeriodo\": \"393,42\", \"desempenho\": \"39,34\", \"id\": \"1311021117\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011109 - Fundo de Investimento em Renda Fixa - Fonte 759.3\", \"previstoAno\": \"45.000,00\", \"acumulado\": \"116.139,91\", \"arrecadadoPeriodo\": \"116.139,91\", \"desempenho\": \"258,09\", \"id\": \"1321011109\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011125 - FMS - Fonte 631.3\", \"previstoAno\": \"178.000,00\", \"acumulado\": \"258.343,52\", \"arrecadadoPeriodo\": \"258.343,52\", \"desempenho\": \"145,14\", \"id\": \"1321011125\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011159 - Rendimento de Apoio a Cultura - Lei Aldir Blanc - Fonte 799.1\", \"previstoAno\": \"23.000,00\", \"acumulado\": \"19.432,74\", \"arrecadadoPeriodo\": \"19.432,74\", \"desempenho\": \"84,49\", \"id\": \"1321011159\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1719991111 - transferência de Recursos da União - FMD - Fonte 669.3\", \"previstoAno\": \"499.000,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1719991111\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1922990182 - Restituições de Importâncias - Fonte 599 (11)\", \"previstoAno\": \"59.000,00\", \"acumulado\": \"25.169,78\", \"arrecadadoPeriodo\": \"25.169,78\", \"desempenho\": \"42,66\", \"id\": \"1922990182\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1112500341 - Dívida Ativa  IPTU PAD - Fonte 500.1\", \"previstoAno\": \"18.210.000,00\", \"acumulado\": \"18.357.463,23\", \"arrecadadoPeriodo\": \"18.357.463,23\", \"desempenho\": \"100,81\", \"id\": \"1112500341\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1121010313 - Dívida Ativa - TFF - Dep. Judicial - Fonte 1.757.1\", \"previstoAno\": \"1.104.000,00\", \"acumulado\": \"698.589,08\", \"arrecadadoPeriodo\": \"698.589,08\", \"desempenho\": \"63,28\", \"id\": \"1121010313\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992323 - Dívida Ativa de CODECON - PAD - Fonte 501.1\", \"previstoAno\": \"2.000,00\", \"acumulado\": \"20.236,09\", \"arrecadadoPeriodo\": \"20.236,09\", \"desempenho\": \"1.011,80\", \"id\": \"1999992323\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"2122551101 - Operações de Crédito Externa para Refinanciamento da Dívida Contratual\", \"previstoAno\": \"501.952.000,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"2122551101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"2999991102 - Depósito Sob Aviso à Disposição da Justiça\", \"previstoAno\": \"110.000.000,00\", \"acumulado\": \"58.598.836,14\", \"arrecadadoPeriodo\": \"58.598.836,14\", \"desempenho\": \"53,27\", \"id\": \"2999991102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1114511231 - Multas e Juros de Mora do Imposto s/ Serv de Qq Natureza ISS PAD - Fonte 500.1\", \"previstoAno\": \"8.248.000,00\", \"acumulado\": \"8.689.209,91\", \"arrecadadoPeriodo\": \"8.689.209,91\", \"desempenho\": \"105,35\", \"id\": \"1114511231\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1114511411 - Multas e Juros de Mora da D.A do ISS - Fonte 500.1\", \"previstoAno\": \"589.000,00\", \"acumulado\": \"258.795,85\", \"arrecadadoPeriodo\": \"258.795,85\", \"desempenho\": \"43,94\", \"id\": \"1114511411\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1122010103 - Taxa de Coleta, Remoção e Destinação de Resíduos Sólidos Domiciliares - TRSD PAD\", \"previstoAno\": \"2.514.000,00\", \"acumulado\": \"2.888.453,68\", \"arrecadadoPeriodo\": \"2.888.453,68\", \"desempenho\": \"114,89\", \"id\": \"1122010103\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011106 - Fundo de Investimento em Renda Fixa - Fonte 501.5\", \"previstoAno\": \"175.000,00\", \"acumulado\": \"4.512,67\", \"arrecadadoPeriodo\": \"4.512,67\", \"desempenho\": \"2,58\", \"id\": \"1321011106\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011149 - FMS - Fonte 601.3\", \"previstoAno\": \"772.000,00\", \"acumulado\": \"1.476.188,86\", \"arrecadadoPeriodo\": \"1.476.188,86\", \"desempenho\": \"191,22\", \"id\": \"1321011149\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1713501101 - Transferência de Recursos do SUS - Atenção Básica 600.3\", \"previstoAno\": \"183.821.000,00\", \"acumulado\": \"105.654.416,81\", \"arrecadadoPeriodo\": \"105.654.416,81\", \"desempenho\": \"57,48\", \"id\": \"1713501101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1721511199 - Dedução de Receita para Formação do FUNDEB IPVA\", \"previstoAno\": \"-82.217.000,00\", \"acumulado\": \"-58.632.103,76\", \"arrecadadoPeriodo\": \"-58.632.103,76\", \"desempenho\": \"0,00\", \"id\": \"1721511199\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1721531101 - Cota-parte da CIDE (Contrib de Interv no Domínio Econômico)\", \"previstoAno\": \"2.250.000,00\", \"acumulado\": \"1.625.429,85\", \"arrecadadoPeriodo\": \"1.625.429,85\", \"desempenho\": \"72,24\", \"id\": \"1721531101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1751501111 - FPM - Fonte 540.3\", \"previstoAno\": \"378.005.000,00\", \"acumulado\": \"264.122.194,17\", \"arrecadadoPeriodo\": \"264.122.194,17\", \"desempenho\": \"69,87\", \"id\": \"1751501111\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1751501121 - ICMS - Fonte 540.3\", \"previstoAno\": \"420.025.000,00\", \"acumulado\": \"245.960.512,43\", \"arrecadadoPeriodo\": \"245.960.512,43\", \"desempenho\": \"58,56\", \"id\": \"1751501121\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1751501171 - ITCMD - Fonte 540.3\", \"previstoAno\": \"3.290.000,00\", \"acumulado\": \"2.298.289,23\", \"arrecadadoPeriodo\": \"2.298.289,23\", \"desempenho\": \"69,86\", \"id\": \"1751501171\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1922990179 - Restituições de Depósitos Judiciais - Fonte 501.1\", \"previstoAno\": \"1.848.000,00\", \"acumulado\": \"3.911.430,05\", \"arrecadadoPeriodo\": \"3.911.430,05\", \"desempenho\": \"211,66\", \"id\": \"1922990179\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1311021119 - Concessão de Uso - PPI\", \"previstoAno\": \"12.000,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1311021119\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321012101 - Salário de Educação - Fonte 550.3\", \"previstoAno\": \"1.079.000,00\", \"acumulado\": \"847.919,38\", \"arrecadadoPeriodo\": \"847.919,38\", \"desempenho\": \"78,58\", \"id\": \"1321012101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1713503102 - Transferência de Recursos do SUS - Vigilância em Saúde - ACE e ACS\", \"previstoAno\": \"57.578.000,00\", \"acumulado\": \"32.338.950,00\", \"arrecadadoPeriodo\": \"32.338.950,00\", \"desempenho\": \"56,17\", \"id\": \"1713503102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1949991101 - Multas e Juros de Amortização Crédito Emergencial\", \"previstoAno\": \"4.000,00\", \"acumulado\": \"1.963,82\", \"arrecadadoPeriodo\": \"1.963,82\", \"desempenho\": \"49,10\", \"id\": \"1949991101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992317 - Dívida Ativa de CODECON - Fonte 799.1\", \"previstoAno\": \"1.602.000,00\", \"acumulado\": \"512.401,07\", \"arrecadadoPeriodo\": \"512.401,07\", \"desempenho\": \"31,99\", \"id\": \"1999992317\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992409 - Multas e Juros da DA de CODECON - PPI - Fonte 799.1\", \"previstoAno\": \"133.000,00\", \"acumulado\": \"2.101,16\", \"arrecadadoPeriodo\": \"2.101,16\", \"desempenho\": \"1,58\", \"id\": \"1999992409\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1114511171 - ISS - Dep. Judicial - Fonte 757.1\", \"previstoAno\": \"7.183.000,00\", \"acumulado\": \"1.171.037,96\", \"arrecadadoPeriodo\": \"1.171.037,96\", \"desempenho\": \"16,30\", \"id\": \"1114511171\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1321011104 - Fundo de Investimento em Renda Fixa - Fonte 752.4\", \"previstoAno\": \"2.197.000,00\", \"acumulado\": \"1.249.844,76\", \"arrecadadoPeriodo\": \"1.249.844,76\", \"desempenho\": \"56,89\", \"id\": \"1321011104\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1922521108 - Restituições da Folha - Fonte 801.3\", \"previstoAno\": \"180.000,00\", \"acumulado\": \"58.308,55\", \"arrecadadoPeriodo\": \"58.308,55\", \"desempenho\": \"32,39\", \"id\": \"1922521108\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992219 - Multas e Juros de Mora de Outras Receitas -  PPI - Fonte 501.1\", \"previstoAno\": \"8.000,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1999992219\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992306 - Dívida Ativa de Ressarcimentos Aplicados pelo TCM\", \"previstoAno\": \"3.000,00\", \"acumulado\": \"3.149,94\", \"arrecadadoPeriodo\": \"3.149,94\", \"desempenho\": \"105,00\", \"id\": \"1999992306\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1999992322 - Dívida Ativa de CODECON - PPI - Fonte 501.1\", \"previstoAno\": \"10.000,00\", \"acumulado\": \"1.410,92\", \"arrecadadoPeriodo\": \"1.410,92\", \"desempenho\": \"14,11\", \"id\": \"1999992322\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1718103103 - Transf Convênios da União Dest a Programas de Assistência Social - Fonte 24\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1718103103\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1990991130 - Ingressos Provenientes de Depósitos Judiciais - Fonte 50\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1990991130\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1128019401 - Multas e Juros de Mora da D.A TLP\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1128019401\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1990991124 - Outras Receitas Não Tributárias - Fonte 00\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1990991124\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1990991137 - Preço de Serviço Público - PSP - ASCENSORES - Fonte 12\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1990991137\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"7611041106 - Treinamento\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"7611041106\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1758011111 - FPM - Fonte 18 (60%)\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1758011111\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"2129001101 - Operações de Crédito Externas Contratuais - Mercado Externo\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"2129001101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1717531101 - Transf Convênios da União Dest a Programas de Combate à Fome\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1717531101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1118014413 - Multas e Juros de Mora da D.A do ITIV - Fonte 02 (15%)\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1118014413\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1128029308 - Dívida Ativa  TSU - PAD\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1128029308\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1923990113 - Ressarcimento ao Erário - Fonte (04)\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1923990113\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1311012105 - Transferência de Domínio Útil - PAD\", \"previstoAno\": \"0,00\", \"acumulado\": \"280,68\", \"arrecadadoPeriodo\": \"280,68\", \"desempenho\": \"0,00\", \"id\": \"1311012105\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1741991114 - Transferências de Instituições Privadas -  Fonte 759.3\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1741991114\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1210041101 - Contribuição Patronal p/ o Regime Próprio de Previdência\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1210041101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1715511141 - ICMS 87/96 - Fonte  541 (20/21)\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1715511141\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1215013101 - Contribuições de Pensionista p/ o RPPS - Fonte 800.3\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1215013101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1118014222 - Multas e Juros de Mora do Imp s/ Transm InterVivos de Bens Imóv ITIV PPI - Fonte 01 (25%\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1118014222\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1114511321 - Dívida Ativa  ISS  REFIS - Fonte 500.1\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1114511321\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1310012102 - Transferência de Domínio Útil\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1310012102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1214031201 - Multas e Juros de Mora da Contr Previd do Segurado Assalariado\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1214031201\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1715501132 - IPI 0- Fonte 39\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1715501132\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1218036101 - Outras Contribuições Previdenciárias - Pensão Parlamentar\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1218036101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1218011101 - Contribuição do Servidor Ativo p/ o RPPS - Fonte 03\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1218011101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1922521103 - Restituições da Folha - Fonte 800.3\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1922521103\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1118011413 - Multas e Juros de Mora da D.A do IPTU - Fonte 02 (15%)\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1118011413\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"7610041106 - Treinamento\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"7610041106\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1718031151 - Vigilância Epidemiológica e Ambiental em Saúde\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1718031151\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1690991106 - Receita de Serviços de Bilheteria -  Fonte 00\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1690991106\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"7210291108 - Outras Contribuições Sociais - RPPS\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"7210291108\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1128029406 - Multas e Juros de Mora da D.A TSU - REFIS\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1128029406\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1113034102 - Imposto de Renda Retido nas Fontes s/ O Rendimentos - Fonte 500.1 (25%)\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"1113034102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"2118014101 - Operações de Crédito Internas para Programas de Meio Ambiente\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"2118014101\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"7218031102 - Contribuição Patronal para o RPPS (24%) - Fonte 34 - TAXA DE ADMINISTRAÇÃO\", \"previstoAno\": \"0,00\", \"acumulado\": \"0,00\", \"arrecadadoPeriodo\": \"0,00\", \"desempenho\": \"0,00\", \"id\": \"7218031102\", \"idPai\": \"\"}, {\"temItens\": false, \"descricao\": \"1721521102 - Cota-Parte do IPI sobre Exportação - Fonte 500.1 (",
+        "sha256": "11f73d68fe1108fff531933f03287e721d539e952404a3babca9ddc5722e120a",
+        "status": 200,
+        "top_level_keys": [
+          "dados",
+          "paginacao",
+          "totalizadores"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/gridDetalhada"
+      },
+      "null_filters": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b208c-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b208c-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18.\"]}}",
+        "sha256": "e9db8a067cc5db08e6c951d9cc38b2ad2d69733b43667aed2ad1701a1dae386b",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/gridDetalhada"
+      }
+    },
+    "/receita/gridResumida/": {
+      "br_2026": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b2089-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b2089-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26.\"]}}",
+        "sha256": "8882744aa9ee6b0fc03588d561cc67b38360bef5f32f0ddfb8bda37f046d7117",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/gridResumida/"
+      },
+      "empty": {
+        "bytes": 2,
+        "content_type": "application/json; charset=utf-8",
+        "json": [],
+        "json_preview": "[]",
+        "list_length": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "status": 200,
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/gridResumida/"
+      },
+      "iso_2026": {
+        "bytes": 626,
+        "content_type": "application/json; charset=utf-8",
+        "first_item_keys": [
+          "ano",
+          "categoria",
+          "codigoCategoria",
+          "valorPrevisto",
+          "valorRealizado"
+        ],
+        "json": [
+          {
+            "ano": 0,
+            "categoria": "Receitas Correntes",
+            "codigoCategoria": 1,
+            "valorPrevisto": 12074929378,
+            "valorRealizado": 7887412937.98
+          },
+          {
+            "ano": 0,
+            "categoria": "Receitas de Capital",
+            "codigoCategoria": 2,
+            "valorPrevisto": 2394550000,
+            "valorRealizado": 815167572.97
+          },
+          {
+            "ano": 0,
+            "categoria": "Receitas Correntes Intra Orçamentárias",
+            "codigoCategoria": 7,
+            "valorPrevisto": 516653000,
+            "valorRealizado": 274321070.33
+          },
+          {
+            "ano": 0,
+            "categoria": "Rec. Cap. Intra Orçamentárias",
+            "codigoCategoria": 8,
+            "valorPrevisto": 0,
+            "valorRealizado": 0
+          },
+          {
+            "ano": 0,
+            "categoria": "Recursos Arrecadados em Exercícios Anteriores",
+            "codigoCategoria": 9,
+            "valorPrevisto": 0,
+            "valorRealizado": 0
+          }
+        ],
+        "json_preview": "[{\"ano\": 0, \"valorPrevisto\": 12074929378, \"valorRealizado\": 7887412937.98, \"categoria\": \"Receitas Correntes\", \"codigoCategoria\": 1}, {\"ano\": 0, \"valorPrevisto\": 2394550000, \"valorRealizado\": 815167572.97, \"categoria\": \"Receitas de Capital\", \"codigoCategoria\": 2}, {\"ano\": 0, \"valorPrevisto\": 516653000, \"valorRealizado\": 274321070.33, \"categoria\": \"Receitas Correntes Intra Orçamentárias\", \"codigoCategoria\": 7}, {\"ano\": 0, \"valorPrevisto\": 0, \"valorRealizado\": 0, \"categoria\": \"Rec. Cap. Intra Orçamentárias\", \"codigoCategoria\": 8}, {\"ano\": 0, \"valorPrevisto\": 0, \"valorRealizado\": 0, \"categoria\": \"Recursos Arrecadados em Exercícios Anteriores\", \"codigoCategoria\": 9}]",
+        "list_length": 5,
+        "sha256": "78282092f9219187f62e8937ae0b3a8196832778acf155658486038ee3077a21",
+        "status": 200,
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/gridResumida/"
+      },
+      "iso_datetime_2026": {
+        "bytes": 626,
+        "content_type": "application/json; charset=utf-8",
+        "first_item_keys": [
+          "ano",
+          "categoria",
+          "codigoCategoria",
+          "valorPrevisto",
+          "valorRealizado"
+        ],
+        "json": [
+          {
+            "ano": 0,
+            "categoria": "Receitas Correntes",
+            "codigoCategoria": 1,
+            "valorPrevisto": 12074929378,
+            "valorRealizado": 7887412937.98
+          },
+          {
+            "ano": 0,
+            "categoria": "Receitas de Capital",
+            "codigoCategoria": 2,
+            "valorPrevisto": 2394550000,
+            "valorRealizado": 815167572.97
+          },
+          {
+            "ano": 0,
+            "categoria": "Receitas Correntes Intra Orçamentárias",
+            "codigoCategoria": 7,
+            "valorPrevisto": 516653000,
+            "valorRealizado": 274321070.33
+          },
+          {
+            "ano": 0,
+            "categoria": "Rec. Cap. Intra Orçamentárias",
+            "codigoCategoria": 8,
+            "valorPrevisto": 0,
+            "valorRealizado": 0
+          },
+          {
+            "ano": 0,
+            "categoria": "Recursos Arrecadados em Exercícios Anteriores",
+            "codigoCategoria": 9,
+            "valorPrevisto": 0,
+            "valorRealizado": 0
+          }
+        ],
+        "json_preview": "[{\"ano\": 0, \"valorPrevisto\": 12074929378, \"valorRealizado\": 7887412937.98, \"categoria\": \"Receitas Correntes\", \"codigoCategoria\": 1}, {\"ano\": 0, \"valorPrevisto\": 2394550000, \"valorRealizado\": 815167572.97, \"categoria\": \"Receitas de Capital\", \"codigoCategoria\": 2}, {\"ano\": 0, \"valorPrevisto\": 516653000, \"valorRealizado\": 274321070.33, \"categoria\": \"Receitas Correntes Intra Orçamentárias\", \"codigoCategoria\": 7}, {\"ano\": 0, \"valorPrevisto\": 0, \"valorRealizado\": 0, \"categoria\": \"Rec. Cap. Intra Orçamentárias\", \"codigoCategoria\": 8}, {\"ano\": 0, \"valorPrevisto\": 0, \"valorRealizado\": 0, \"categoria\": \"Recursos Arrecadados em Exercícios Anteriores\", \"codigoCategoria\": 9}]",
+        "list_length": 5,
+        "sha256": "78282092f9219187f62e8937ae0b3a8196832778acf155658486038ee3077a21",
+        "status": 200,
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/gridResumida/"
+      },
+      "null_filters": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b2087-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b2087-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18.\"]}}",
+        "sha256": "e08e937a78b1329a9b9678d012eee11ff242fc5cd9fe37367977106655d66c8b",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/gridResumida/"
+      }
+    },
+    "/receita/totalizador": {
+      "br_2026": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b2084-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b2084-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 26.\"]}}",
+        "sha256": "c868e92e410bb4e1c082f6a579454a0c7b44e9a98257b2ed3fcb51787ce36926",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/totalizador"
+      },
+      "empty": {
+        "bytes": 38,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "Previsto": "0,00",
+          "Realizado": "0,00"
+        },
+        "json_preview": "{\"Previsto\": \"0,00\", \"Realizado\": \"0,00\"}",
+        "sha256": "6cbcb09d377d77e76af3930706e5365325569c58098bbdd4d812de96084f6e9d",
+        "status": 200,
+        "top_level_keys": [
+          "Previsto",
+          "Realizado"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/totalizador"
+      },
+      "iso_2026": {
+        "bytes": 63,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "Previsto": "14.986.132.378,00",
+          "Realizado": "8.976.901.581,28"
+        },
+        "json_preview": "{\"Previsto\": \"14.986.132.378,00\", \"Realizado\": \"8.976.901.581,28\"}",
+        "sha256": "6ad9353ab1f5e0a2bc2e1809b601e1af5caa4df94dc21a64f2a35e23e86c074c",
+        "status": 200,
+        "top_level_keys": [
+          "Previsto",
+          "Realizado"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/totalizador"
+      },
+      "iso_datetime_2026": {
+        "bytes": 63,
+        "content_type": "application/json; charset=utf-8",
+        "json": {
+          "Previsto": "14.986.132.378,00",
+          "Realizado": "8.976.901.581,28"
+        },
+        "json_preview": "{\"Previsto\": \"14.986.132.378,00\", \"Realizado\": \"8.976.901.581,28\"}",
+        "sha256": "6ad9353ab1f5e0a2bc2e1809b601e1af5caa4df94dc21a64f2a35e23e86c074c",
+        "status": 200,
+        "top_level_keys": [
+          "Previsto",
+          "Realizado"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/totalizador"
+      },
+      "null_filters": {
+        "bytes": 312,
+        "content_type": "application/problem+json; charset=utf-8",
+        "json": {
+          "errors": {
+            "$.dataInicio": [
+              "The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18."
+            ]
+          },
+          "status": 400,
+          "title": "One or more validation errors occurred.",
+          "traceId": "|d44b2082-43bf6a76d4d7a7df.",
+          "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+        },
+        "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b2082-43bf6a76d4d7a7df.\", \"errors\": {\"$.dataInicio\": [\"The JSON value could not be converted to System.DateTime. Path: $.dataInicio | LineNumber: 0 | BytePositionInLine: 18.\"]}}",
+        "sha256": "5aa86e7a6e4c249ecef40e67551ae89263ac0cdf3f0016b210e24fe7bb63a7cd",
+        "status": 400,
+        "top_level_keys": [
+          "errors",
+          "status",
+          "title",
+          "traceId",
+          "type"
+        ],
+        "url": "https://apitmptransparencia.salvador.ba.gov.br/api/receita/totalizador"
+      }
+    }
+  }
+}
