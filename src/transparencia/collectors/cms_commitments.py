@@ -37,7 +37,6 @@ def _mask_document(value: str) -> tuple[str | None, str | None]:
 
 
 def parse_visible_commitments(text: str, *, source_url: str, observed_at: str, snapshot_sha256: str) -> list[dict]:
-    # The ScriptCase page renders repeated labeled records. Restrict to the actual record section.
     pattern = re.compile(
         r"Empenho:\s*(?P<note>\d{4}NE\d+)\s+"
         r"Modalidade:\s*(?P<modality>.*?)\s+"
@@ -125,41 +124,139 @@ def attach_verified_official_matches(rows: list[dict], root: Path) -> list[dict]
     return rows
 
 
-def collect(root: Path, out_dir: Path) -> dict:
-    out_dir.mkdir(parents=True, exist_ok=True)
-    headers = {
-        "User-Agent": "municipal-transparency-research/0.2 (+public-data-audit)",
+def _headers() -> dict[str, str]:
+    return {
+        "User-Agent": "municipal-transparency-research/0.3 (+public-data-audit)",
         "Accept": "text/html,application/xhtml+xml",
         "Accept-Language": "pt-BR,pt;q=0.9",
     }
-    with httpx.Client(headers=headers, follow_redirects=True, timeout=60.0) as client:
+
+
+def _f3_fields(html: str) -> dict[str, str]:
+    """Extract only the hidden F3 fields needed by ScriptCase navigation."""
+    form = re.search(r'<form\s+name=["\']F3["\'].*?</form>', html, re.I | re.S)
+    if not form:
+        raise ValueError("CMS ScriptCase F3 navigation form not found")
+    fields: dict[str, str] = {}
+    for match in re.finditer(r'<input[^>]+name=["\']([^"\']+)["\'][^>]*>', form.group(0), re.I):
+        tag = match.group(0)
+        name = match.group(1)
+        value_match = re.search(r'value=["\']([^"\']*)["\']', tag, re.I)
+        fields[name] = value_match.group(1) if value_match else ""
+    return fields
+
+
+def _navigation_payload(html: str, opcode: str) -> dict[str, str]:
+    fields = _f3_fields(html)
+    fields.update({
+        "nmgp_opcao": opcode,
+        "nmgp_parms": "SC_null",
+        "nmgp_orig_pesq": "",
+        "nmgp_url_saida": "",
+        "nmgp_outra_jan": "",
+    })
+    return fields
+
+
+def collect(root: Path, out_dir: Path, *, max_pages: int = 1000) -> dict:
+    """Collect the complete default public ScriptCase commitment view when navigation can be exhausted.
+
+    `complete=True` means repeated/empty `avanca` navigation proved exhaustion of the default server
+    view in this session. It does not claim completeness for hidden historical filters or other CMS
+    accounting systems.
+    """
+    out_dir.mkdir(parents=True, exist_ok=True)
+    all_rows: dict[str, dict] = {}
+    page_meta: list[dict] = []
+    termination_reason: str | None = None
+    stopped_error: str | None = None
+
+    with httpx.Client(headers=_headers(), follow_redirects=True, timeout=60.0) as client:
         response = client.get(URL)
         response.raise_for_status()
-    meta = persist_snapshot(
-        out_dir=out_dir / "raw",
-        source_id="cms_empenhos_visible",
-        requested_url=URL,
-        final_url=str(response.url),
-        status_code=response.status_code,
-        content_type=response.headers.get("content-type", "text/html"),
-        body=response.content,
-    )
-    rows = parse_visible_commitments(
-        visible_text(response.text), source_url=str(response.url), observed_at=meta.collected_at, snapshot_sha256=meta.sha256
-    )
+        html = response.text
+        page = 1
+        previous_notes: tuple[str, ...] | None = None
+
+        while page <= max_pages:
+            meta = persist_snapshot(
+                out_dir=out_dir / "raw",
+                source_id=f"cms_empenhos_p{page:04d}",
+                requested_url=URL if page == 1 else f"{URL}#scriptcase-avanca-{page}",
+                final_url=str(response.url),
+                status_code=response.status_code,
+                content_type=response.headers.get("content-type", "text/html"),
+                body=response.content,
+            )
+            rows = parse_visible_commitments(
+                visible_text(html), source_url=str(response.url), observed_at=meta.collected_at, snapshot_sha256=meta.sha256
+            )
+            notes = tuple(row["commitment_number"] for row in rows)
+            if previous_notes is not None and notes == previous_notes:
+                termination_reason = "source_repeated_page_after_avanca"
+                break
+            new_count = 0
+            for row in rows:
+                if row["commitment_number"] not in all_rows:
+                    all_rows[row["commitment_number"]] = row
+                    new_count += 1
+            page_meta.append({
+                "page": page,
+                "records_parsed": len(rows),
+                "new_records": new_count,
+                "first_commitment": notes[0] if notes else None,
+                "last_commitment": notes[-1] if notes else None,
+                "sha256": meta.sha256,
+                "status_code": meta.status_code,
+            })
+            if not rows:
+                termination_reason = "source_returned_empty_page"
+                break
+            if new_count == 0:
+                termination_reason = "source_returned_no_new_records"
+                break
+            previous_notes = notes
+            try:
+                payload = _navigation_payload(html, "avanca")
+                response = client.post(URL, data=payload)
+                response.raise_for_status()
+                html = response.text
+            except Exception as exc:
+                stopped_error = f"{type(exc).__name__}: {exc}"
+                termination_reason = "navigation_error"
+                break
+            page += 1
+        else:
+            termination_reason = "max_pages_reached"
+
+    rows = list(all_rows.values())
     attach_verified_official_matches(rows, root)
-    output = out_dir / "commitments_visible.jsonl"
+    output = out_dir / "commitments.jsonl"
     with output.open("w", encoding="utf-8") as handle:
         for row in rows:
             handle.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
+
+    complete = termination_reason in {
+        "source_repeated_page_after_avanca",
+        "source_returned_empty_page",
+        "source_returned_no_new_records",
+    }
     coverage = {
         "source_url": URL,
-        "records_visible_and_parsed": len(rows),
-        "complete": False,
-        "coverage_note": "The public ScriptCase HTML exposes a current visible slice. Pagination/all-record retrieval has not yet been proven, so this snapshot must not be described as the complete Câmara commitment ledger.",
+        "records_parsed": len(rows),
+        "pages_with_new_records": len(page_meta),
+        "complete": complete,
+        "coverage_scope": "default public ScriptCase commitment ledger view in the observed session",
+        "termination_reason": termination_reason,
+        "stopped_error": stopped_error,
+        "coverage_note": (
+            "Complete for the default public ScriptCase commitment view: repeated/empty/no-new navigation proved source exhaustion. This does not assert completeness for hidden historical filters or other CMS accounting systems."
+            if complete else
+            "Pagination did not reach a source-proven end; collected commitment records remain valid snapshots but coverage is partial."
+        ),
         "privacy_note": "Individual CPF values displayed by the source are masked in normalized output; CNPJ values are retained.",
-        "snapshot_sha256": meta.sha256,
-        "observed_at": meta.collected_at,
+        "pages": page_meta,
     }
-    (out_dir / "coverage.json").write_text(json.dumps(coverage, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    return {"output": output, "coverage": coverage, "rows": rows}
+    coverage_path = out_dir / "coverage.json"
+    coverage_path.write_text(json.dumps(coverage, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return {"output": output, "coverage": coverage, "coverage_path": coverage_path, "rows": rows}
