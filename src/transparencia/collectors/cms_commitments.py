@@ -45,11 +45,7 @@ def _field(block: str, label: str, next_labels: tuple[str, ...]) -> str:
 
 
 def parse_visible_commitments(text: str, *, source_url: str, observed_at: str, snapshot_sha256: str) -> list[dict]:
-    """Parse each visible ScriptCase commitment as an independent block.
-
-    Block splitting is deliberate: a single malformed field cannot make one commitment consume the
-    following commitments. Collection-level coverage separately verifies parsed count == visible count.
-    """
+    """Parse each visible ScriptCase commitment as an independent block."""
     blocks = re.split(r"(?=\bEmpenho:\s*\d{4}NE\d+)", unescape(text), flags=re.I)
     rows: list[dict] = []
     seen: set[str] = set()
@@ -73,7 +69,6 @@ def parse_visible_commitments(text: str, *, source_url: str, observed_at: str, s
         obj = " ".join(object_match.group(1).split()) if object_match else ""
 
         if not date_match or not value_match or not creditor:
-            # The caller compares parsed IDs against every visible ID and will mark coverage partial.
             continue
 
         document, document_type = _mask_document(document_text)
@@ -137,6 +132,40 @@ def attach_verified_official_matches(rows: list[dict], root: Path) -> list[dict]
         row["official_match_type"] = match_type
         row["official_match_evidence_url"] = evidence_url
     return rows
+
+
+def to_expense_event(row: dict, *, city_slug: str = "salvador") -> dict:
+    """Map a CMS commitment to the reusable event model without changing its accounting stage."""
+    return {
+        "city_slug": city_slug,
+        "source_system": SOURCE_SYSTEM,
+        "event_key": row["commitment_number"],
+        "stage": "commitment",
+        "event_date": row.get("issue_date"),
+        "agency_code": None,
+        "agency_name": "Câmara Municipal de Salvador",
+        "supplier_document": row.get("creditor_document"),
+        "supplier_name": row.get("creditor_name"),
+        "process_number": row.get("process_number"),
+        "contract_number": None,
+        "function_code": None,
+        "function_name": None,
+        "subfunction_code": None,
+        "subfunction_name": None,
+        "program_code": None,
+        "program_name": None,
+        "action_code": None,
+        "action_name": None,
+        "expense_nature_code": None,
+        "expense_nature_name": None,
+        "funding_source_code": None,
+        "funding_source_name": row.get("funding_source"),
+        "gross_value": row.get("committed_value"),
+        "net_value": None,
+        "source_url": row["source_url"],
+        "observed_at": row["observed_at"],
+        "snapshot_sha256": row["snapshot_sha256"],
+    }
 
 
 def _headers() -> dict[str, str]:
@@ -258,12 +287,18 @@ def collect(root: Path, out_dir: Path, *, max_pages: int = 1000) -> dict:
         for row in rows:
             handle.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
 
+    expense_output = out_dir / "expense_events.jsonl"
+    with expense_output.open("w", encoding="utf-8") as handle:
+        for row in rows:
+            handle.write(json.dumps(to_expense_event(row), ensure_ascii=False, sort_keys=True) + "\n")
+
     source_exhausted = termination_reason in {"source_repeated_page_after_avanca", "source_returned_empty_page"}
     parser_complete = not parse_gaps
     complete = source_exhausted and parser_complete
     coverage = {
         "source_url": URL,
         "records_parsed": len(rows),
+        "expense_events_emitted": len(rows),
         "pages_with_records": sum(1 for item in page_meta if item["visible_records"]),
         "source_exhausted": source_exhausted,
         "parser_complete_for_visible_records": parser_complete,
@@ -278,8 +313,9 @@ def collect(root: Path, out_dir: Path, *, max_pages: int = 1000) -> dict:
             "Coverage is partial unless both source_exhausted=true and parser_complete_for_visible_records=true. Collected records remain valid snapshots."
         ),
         "privacy_note": "Individual CPF values displayed by the source are masked in normalized output; CNPJ values are retained.",
+        "accounting_note": "Every normalized expense event has stage=commitment. No commitment is re-labelled as liquidation or payment.",
         "pages": page_meta,
     }
     coverage_path = out_dir / "coverage.json"
     coverage_path.write_text(json.dumps(coverage, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    return {"output": output, "coverage": coverage, "coverage_path": coverage_path, "rows": rows}
+    return {"output": output, "expense_output": expense_output, "coverage": coverage, "coverage_path": coverage_path, "rows": rows}
