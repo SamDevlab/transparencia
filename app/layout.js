@@ -1,5 +1,7 @@
 import Link from "next/link";
+import QuickSearch from "../components/QuickSearch";
 import "./globals.css";
+import "./ux.css";
 
 export const metadata = {
   title: {
@@ -10,7 +12,7 @@ export const metadata = {
     "Dados públicos de Salvador/BA organizados com fonte, cobertura e metodologia auditável.",
   openGraph: {
     title: "Transparência Salvador",
-    description: "Receita, despesa, licitações, contratos e Câmara com rastreabilidade de fonte.",
+    description: "Receita, despesa, licitações, contratos e agentes públicos com rastreabilidade de fonte.",
     type: "website",
     locale: "pt_BR",
   },
@@ -18,10 +20,10 @@ export const metadata = {
 
 const nav = [
   ["/", "Visão geral"],
-  ["/licitacoes", "Licitações"],
   ["/financas", "Finanças"],
+  ["/licitacoes", "Licitações"],
   ["/contratos", "Contratos"],
-  ["/camara", "Câmara"],
+  ["/agentes", "Agentes públicos"],
   ["/metodologia", "Metodologia"],
 ];
 
@@ -30,7 +32,7 @@ export default function RootLayout({ children }) {
     <html lang="pt-BR">
       <body>
         <header className="site-header">
-          <div className="shell header-inner">
+          <div className="shell header-inner header-principal">
             <Link href="/" className="brand" aria-label="Transparência Salvador — início">
               <span className="brand-mark" aria-hidden="true">T</span>
               <span>
@@ -38,42 +40,39 @@ export default function RootLayout({ children }) {
                 <small>Salvador / BA</small>
               </span>
             </Link>
+
+            <QuickSearch />
+
             <nav className="nav" aria-label="Navegação principal">
               {nav.map(([href, label]) => (
                 <Link key={href} href={href}>{label}</Link>
               ))}
             </nav>
+
             <a
               className="github-link"
               href="https://github.com/SamDevlab/transparencia/tree/city/salvador"
               target="_blank"
               rel="noreferrer"
             >
-              GitHub ↗
+              Repositório ↗
             </a>
           </div>
         </header>
+
         <main>{children}</main>
+
         <footer className="site-footer">
-          <div className="shell footer-grid">
+          <div className="shell rodape-enxuto">
             <div>
-              <div className="brand footer-brand">
-                <span className="brand-mark" aria-hidden="true">T</span>
-                <span><strong>Transparência</strong><small>dados públicos rastreáveis</small></span>
-              </div>
-              <p>Projeto independente de organização de dados públicos. Não é um detector de corrupção e não substitui as fontes oficiais.</p>
+              <strong>Transparência Salvador</strong>
+              <p>Projeto independente de organização de dados públicos. Sem fonte, sem fato.</p>
             </div>
-            <div>
-              <strong>Princípio central</strong>
-              <p>Sem fonte, sem fato. Falha de fonte não vira zero; agregado não vira gasto individual.</p>
-            </div>
-            <div>
-              <strong>Fontes</strong>
-              <p>
-                <a href="https://transparencia.salvador.ba.gov.br/" target="_blank" rel="noreferrer">Prefeitura ↗</a><br />
-                <a href="https://www.cms.ba.gov.br/" target="_blank" rel="noreferrer">Câmara ↗</a><br />
-                <a href="https://pncp.gov.br/" target="_blank" rel="noreferrer">PNCP ↗</a>
-              </p>
+            <div className="rodape-links">
+              <a href="https://transparencia.salvador.ba.gov.br/" target="_blank" rel="noreferrer">Portal da Prefeitura ↗</a>
+              <a href="https://www.cms.ba.gov.br/" target="_blank" rel="noreferrer">Câmara Municipal ↗</a>
+              <a href="https://pncp.gov.br/" target="_blank" rel="noreferrer">Portal Nacional de Contratações ↗</a>
+              <Link href="/metodologia">Como os dados são tratados</Link>
             </div>
           </div>
         </footer>
