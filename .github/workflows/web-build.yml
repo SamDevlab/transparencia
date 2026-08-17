@@ -1,0 +1,38 @@
+name: Web build
+
+on:
+  push:
+    branches:
+      - city/salvador
+  pull_request:
+    paths:
+      - "app/**"
+      - "components/**"
+      - "lib/**"
+      - "public/**"
+      - "scripts/build-web-data.mjs"
+      - "package.json"
+      - "next.config.mjs"
+      - ".github/workflows/web-build.yml"
+      - "cities/salvador/data/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install frontend dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build Vercel frontend
+        run: npm run build
+      - name: Verify generated datasets
+        run: |
+          test -s public/data/dashboard.json
+          test -s public/data/acquisitions.json
+          test -s public/data/finance.json
+          test -s public/data/camara.json
+          node -e "const d=require('./public/data/meta.json'); if(d.acquisitions!==2306) process.exit(1); console.log(d)"
