@@ -131,6 +131,18 @@ def build(db_path: Path, workspace: CityWorkspace, pncp_jsonl: list[Path] | None
             conn.execute("INSERT OR REPLACE INTO legislative_observations VALUES (?,?,?,?,?,?,?,?,?,?,?)",
                          (city.slug, row["entity"], row["period"], row["metric"], float(row["value_numeric"]) if row.get("value_numeric") else None,
                           row.get("reported_value_text"), row["precision"], row["source_url"], row.get("source_location"), row["observed_at"], row.get("notes")))
+        procurement_keys = ["city_slug","source_system","pncp_control_number","process_number","notice_number","year","modality_id","modality_name","object","agency_cnpj","agency_name","sphere","power","unit_code","unit_name","municipality_ibge","municipality_name","uf","published_at","proposal_opening_at","proposal_closing_at","estimated_value","homologated_value","status_name","source_url","observed_at","snapshot_sha256"]
+        for row in _csv_rows(workspace.seed_dir / "procurements.csv"):
+            normalized = {key: row.get(key) or None for key in procurement_keys}
+            normalized["city_slug"] = city.slug
+            if normalized["year"]:
+                normalized["year"] = int(normalized["year"])
+            if normalized["modality_id"]:
+                normalized["modality_id"] = int(normalized["modality_id"])
+            for money_key in ("estimated_value", "homologated_value"):
+                if normalized[money_key]:
+                    normalized[money_key] = float(normalized[money_key])
+            conn.execute(f"INSERT OR IGNORE INTO procurements ({','.join(procurement_keys)}) VALUES ({','.join('?' for _ in procurement_keys)})", [normalized[k] for k in procurement_keys])
         for path in pncp_jsonl or []:
             for line in path.read_text(encoding="utf-8").splitlines():
                 row = json.loads(line)
