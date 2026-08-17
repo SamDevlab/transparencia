@@ -1,0 +1,686 @@
+{
+  "aquisicoes_licitacoes": [
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "/aquisicao/barraJustaPosta"
+    },
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "/aquisicao/detalhamento"
+    },
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "/aquisicao/downloadCsv"
+    },
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "/aquisicao/downloadDados"
+    },
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "/aquisicao/graficoPizza/"
+    },
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "/aquisicao/gridDetalhada?pagina="
+    },
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "/aquisicao/gridItens/downloadCsv"
+    },
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "/aquisicao/gridItens/downloadDados"
+    },
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "/aquisicao/gridresumida"
+    },
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "/aquisicao/totalizador"
+    },
+    {
+      "chunk_sha256": "3316f337bf72ff4fdd4eed761c32c27f9ff4d2723788d13bbb4f01ea8b1f201a",
+      "literal": "/filtro/aquisicoes/criterio/UNIDADEGESTORA/"
+    },
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "aquisicao/gridImagens?pagina="
+    },
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "aquisicao/gridItens"
+    }
+  ],
+  "contratos": [
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/aditivo/downloadCsv"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/aditivo/downloadDados"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/aditivo?pagina="
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/detalhamentoContrato"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/detalhamentoEmpenho"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/dotacao/downloadCsv"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/dotacao/downloadDados"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/dotacao?pagina="
+    },
+    {
+      "chunk_sha256": "743eb1ebf7796d2397d01c70636026ecc1de9bfa8c7ff87229a58a0c38325c66",
+      "literal": "/contratos/downloadCsv"
+    },
+    {
+      "chunk_sha256": "743eb1ebf7796d2397d01c70636026ecc1de9bfa8c7ff87229a58a0c38325c66",
+      "literal": "/contratos/downloadDados"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/empenhoRelacionado/downloadCsv"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/empenhoRelacionado/downloadDados"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/empenhoRelacionado?pagina="
+    },
+    {
+      "chunk_sha256": "743eb1ebf7796d2397d01c70636026ecc1de9bfa8c7ff87229a58a0c38325c66",
+      "literal": "/contratos/gridDetalhada?pagina="
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/gridDetalhadaDocumento?pagina="
+    },
+    {
+      "chunk_sha256": "743eb1ebf7796d2397d01c70636026ecc1de9bfa8c7ff87229a58a0c38325c66",
+      "literal": "/contratos/gridresumida"
+    },
+    {
+      "chunk_sha256": "3108a304a6c552f6a50ef0e80cff8027b07529cf247dd27509e31180295ec97e",
+      "literal": "/contratos/imagem/"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/liquidacaoRelacionado/downloadCsv"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/liquidacaoRelacionado/downloadDados"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/liquidacaoRelacionado?pagina="
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/pagamentoRelacionado/downloadCsv"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/pagamentoRelacionado/downloadDados"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/contratos/pagamentoRelacionado?pagina="
+    },
+    {
+      "chunk_sha256": "743eb1ebf7796d2397d01c70636026ecc1de9bfa8c7ff87229a58a0c38325c66",
+      "literal": "/contratos/totalizador"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/credor/contratosCredor/downloadCsv"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/credor/contratosCredor/downloadDados"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/filtro/contratos/filtros?funcao=fornecedores"
+    },
+    {
+      "chunk_sha256": "646fa417d755d8a38c419c4ac733dae1caec89d59cbbb3bf4a8daf25d0a24360",
+      "literal": "/FiscaisContratos/downloadcsv"
+    },
+    {
+      "chunk_sha256": "646fa417d755d8a38c419c4ac733dae1caec89d59cbbb3bf4a8daf25d0a24360",
+      "literal": "/FiscaisContratos/downloadpdf"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "contratos/gridImagens?pagina="
+    },
+    {
+      "chunk_sha256": "743eb1ebf7796d2397d01c70636026ecc1de9bfa8c7ff87229a58a0c38325c66",
+      "literal": "filtro/contratos/filtros"
+    }
+  ],
+  "dados_abertos": [
+    {
+      "chunk_sha256": "64a85bb2a0dc223b8826f0b863e91902aa5061708ac967751c958073f083c877",
+      "literal": "/arquivo/dicionario-dados"
+    }
+  ],
+  "despesa": [
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/adiantamentos/"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/adiantamentos/detalhamentoAdiantamento"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/adiantamentos/detalhamentoAdiantamento/downloadCsv"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/adiantamentos/detalhamentoAdiantamento/downloadDados"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/adiantamentos/downloadCsv"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/adiantamentos/downloadDados"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/adiantamentos/graficoBarra"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/adiantamentos/gridDetalhada"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/adiantamentos/gridImagens?id="
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/adiantamentos/gridresumida"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/adiantamentos/imagem/"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/adiantamentos/totalizador"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/barrajustaposta"
+    },
+    {
+      "chunk_sha256": "64a85bb2a0dc223b8826f0b863e91902aa5061708ac967751c958073f083c877",
+      "literal": "/despesa/criterioCredor/"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/detalhamentoEmpenho"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/EmpenhoItens/downloadCsv"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/EmpenhoItens/downloadDados"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/EmpenhoItens?pagina="
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/empenhoRelacionado/downloadDados"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/gridDetalhada"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/gridresumida"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/HistoricoEmpenho/downloadCsv"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/HistoricoEmpenho/downloadDados"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/HistoricoEmpenho?pagina="
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/liquidacaoRelacionado/downloadCsv"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/liquidacaoRelacionado/downloadDados"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/liquidacaoRelacionado?pagina="
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/pagamentoRelacionado/downloadCsv"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/pagamentoRelacionado/downloadDados"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/pagamentoRelacionado?pagina="
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/despesa/totalizador"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/filtro/adiantamentos/agrupar"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "/filtro/adiantamentos/filtros"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/filtro/despesa/agrupar"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "/filtro/despesa/filtros"
+    },
+    {
+      "chunk_sha256": "4ddc1f97432e3737d0a1bd776023a5f240e46977643cdf1416c9e96ef2e42d47",
+      "literal": "/filtro/movimentoextraorc/filtros"
+    },
+    {
+      "chunk_sha256": "653455637e3645746fad3ac1017fd70b5510cdacf440ab06115d95d389af9f85",
+      "literal": "/filtro/movimentoextraorc/filtros?tipoMovimento=DESPESA"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/filtro/vinculadaTransito/agrupar"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/filtro/vinculadaTransito/filtros"
+    },
+    {
+      "chunk_sha256": "5f9feed607ddfb3ef2d72e152fbde0dbf859cfbd03bc79850b75c31006c407a3",
+      "literal": "/gastosDiarios/downloadCsv"
+    },
+    {
+      "chunk_sha256": "5f9feed607ddfb3ef2d72e152fbde0dbf859cfbd03bc79850b75c31006c407a3",
+      "literal": "/gastosDiarios/downloadDados"
+    },
+    {
+      "chunk_sha256": "5f9feed607ddfb3ef2d72e152fbde0dbf859cfbd03bc79850b75c31006c407a3",
+      "literal": "/gastosDiarios/graficoBarra"
+    },
+    {
+      "chunk_sha256": "5f9feed607ddfb3ef2d72e152fbde0dbf859cfbd03bc79850b75c31006c407a3",
+      "literal": "/gastosDiarios/gridDetalhada?pagina="
+    },
+    {
+      "chunk_sha256": "5f9feed607ddfb3ef2d72e152fbde0dbf859cfbd03bc79850b75c31006c407a3",
+      "literal": "/gastosDiarios/gridResumida"
+    },
+    {
+      "chunk_sha256": "5f9feed607ddfb3ef2d72e152fbde0dbf859cfbd03bc79850b75c31006c407a3",
+      "literal": "/gastosDiarios/totalizador"
+    },
+    {
+      "chunk_sha256": "4ddc1f97432e3737d0a1bd776023a5f240e46977643cdf1416c9e96ef2e42d47",
+      "literal": "/movimentoextraorc/barraJustaposta"
+    },
+    {
+      "chunk_sha256": "653455637e3645746fad3ac1017fd70b5510cdacf440ab06115d95d389af9f85",
+      "literal": "/movimentoextraorc/barraJustaposta?tipoMovimento=DESPESA"
+    },
+    {
+      "chunk_sha256": "4ddc1f97432e3737d0a1bd776023a5f240e46977643cdf1416c9e96ef2e42d47",
+      "literal": "/movimentoextraorc/criterios/"
+    },
+    {
+      "chunk_sha256": "4ddc1f97432e3737d0a1bd776023a5f240e46977643cdf1416c9e96ef2e42d47",
+      "literal": "/movimentoextraorc/downloadCsv"
+    },
+    {
+      "chunk_sha256": "653455637e3645746fad3ac1017fd70b5510cdacf440ab06115d95d389af9f85",
+      "literal": "/movimentoextraorc/downloadCSV?tipoMovimento=DESPESA"
+    },
+    {
+      "chunk_sha256": "4ddc1f97432e3737d0a1bd776023a5f240e46977643cdf1416c9e96ef2e42d47",
+      "literal": "/movimentoextraorc/downloadDados"
+    },
+    {
+      "chunk_sha256": "653455637e3645746fad3ac1017fd70b5510cdacf440ab06115d95d389af9f85",
+      "literal": "/movimentoextraorc/downloadDados?tipoMovimento=DESPESA"
+    },
+    {
+      "chunk_sha256": "653455637e3645746fad3ac1017fd70b5510cdacf440ab06115d95d389af9f85",
+      "literal": "/movimentoextraorc/gridDetalhada?pagina"
+    },
+    {
+      "chunk_sha256": "4ddc1f97432e3737d0a1bd776023a5f240e46977643cdf1416c9e96ef2e42d47",
+      "literal": "/movimentoextraorc/gridResumida"
+    },
+    {
+      "chunk_sha256": "653455637e3645746fad3ac1017fd70b5510cdacf440ab06115d95d389af9f85",
+      "literal": "/movimentoextraorc/gridResumida?tipoMovimento=DESPESA"
+    },
+    {
+      "chunk_sha256": "653455637e3645746fad3ac1017fd70b5510cdacf440ab06115d95d389af9f85",
+      "literal": "/movimentoextraorc/gridSubDetalhada/downloadCsv?tipoMovimento=DESPESA"
+    },
+    {
+      "chunk_sha256": "653455637e3645746fad3ac1017fd70b5510cdacf440ab06115d95d389af9f85",
+      "literal": "/movimentoextraorc/gridSubDetalhada/downloadDados?tipoMovimento=DESPESA"
+    },
+    {
+      "chunk_sha256": "653455637e3645746fad3ac1017fd70b5510cdacf440ab06115d95d389af9f85",
+      "literal": "/movimentoextraorc/gridSubDetalhada?tipoMovimento=DESPESA"
+    },
+    {
+      "chunk_sha256": "4ddc1f97432e3737d0a1bd776023a5f240e46977643cdf1416c9e96ef2e42d47",
+      "literal": "/movimentoextraorc/totalizador"
+    },
+    {
+      "chunk_sha256": "653455637e3645746fad3ac1017fd70b5510cdacf440ab06115d95d389af9f85",
+      "literal": "/movimentoextraorc/totalizador?tipoMovimento=DESPESA"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/barrajustaposta"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/detalhamentoEmpenho"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/empenhoRelacionado/downloadCsv"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/empenhoRelacionado/downloadDados"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/gridDetalhada"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/gridresumida"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/liquidacaoRelacionado/downloadCsv"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/liquidacaoRelacionado/downloadDados"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/liquidacaoRelacionado?pagina="
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/pagamentoRelacionado/downloadCsv"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/pagamentoRelacionado/downloadDados"
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/pagamentoRelacionado?pagina="
+    },
+    {
+      "chunk_sha256": "9953f2d6dadbd5b27a0ae1e5318cba5e95628bad33a2db006aedc3c1e082c566",
+      "literal": "/vinculadaTransito/totalizador"
+    },
+    {
+      "chunk_sha256": "40c062202db9c6b426beb403b222cf3fffa1ff97f8629009d3203bce0566c4c8",
+      "literal": "filtro/adiantamentos/criterio/"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "filtro/despesa/criterio/"
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "filtro/despesa/criterioCredor/"
+    }
+  ],
+  "fornecedores_credores": [
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/credor/barraHorizontal"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/credor/contratosCredor/downloadCsv"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/credor/contratosCredor/downloadDados"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/credor/downloadCsv"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/credor/downloadDados"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/credor/graficoPizza"
+    },
+    {
+      "chunk_sha256": "3a1f53f3521f4a5cf363f23f5c6c4384ec8771f77b3383e6b3efe7f256c707bf",
+      "literal": "/credor/gridCredores?pagina="
+    },
+    {
+      "chunk_sha256": "64a85bb2a0dc223b8826f0b863e91902aa5061708ac967751c958073f083c877",
+      "literal": "/despesa/criterioCredor/"
+    },
+    {
+      "chunk_sha256": "cb54886802e0415452979bdfb156d8b96032c994e295e8510a398ced5aa80c1e",
+      "literal": "/fornecedorPenalizado/detalhamentoPenalidade"
+    },
+    {
+      "chunk_sha256": "cb54886802e0415452979bdfb156d8b96032c994e295e8510a398ced5aa80c1e",
+      "literal": "/fornecedorPenalizado/downloadDados"
+    },
+    {
+      "chunk_sha256": "cb54886802e0415452979bdfb156d8b96032c994e295e8510a398ced5aa80c1e",
+      "literal": "/fornecedorPenalizado/grid?pagina="
+    },
+    {
+      "chunk_sha256": "0348f73f94f0e26a4ecb47774ff99077cb828375c9753bd813c939e58cc37e71",
+      "literal": "filtro/despesa/criterioCredor/"
+    }
+  ],
+  "receita": [
+    {
+      "chunk_sha256": "4d8b81ae0b475ec7cbe73f0e5f70358507810c7d44d3229438fc648a7882e411",
+      "literal": "/arrecadacaoTransito/barrajustaposta?DataInicio="
+    },
+    {
+      "chunk_sha256": "4d8b81ae0b475ec7cbe73f0e5f70358507810c7d44d3229438fc648a7882e411",
+      "literal": "/arrecadacaoTransito/downloadCsv"
+    },
+    {
+      "chunk_sha256": "4d8b81ae0b475ec7cbe73f0e5f70358507810c7d44d3229438fc648a7882e411",
+      "literal": "/arrecadacaoTransito/downloadDados"
+    },
+    {
+      "chunk_sha256": "4d8b81ae0b475ec7cbe73f0e5f70358507810c7d44d3229438fc648a7882e411",
+      "literal": "/arrecadacaoTransito/evolucao?DataInicio="
+    },
+    {
+      "chunk_sha256": "4d8b81ae0b475ec7cbe73f0e5f70358507810c7d44d3229438fc648a7882e411",
+      "literal": "/arrecadacaoTransito/gridDetalhada"
+    },
+    {
+      "chunk_sha256": "4d8b81ae0b475ec7cbe73f0e5f70358507810c7d44d3229438fc648a7882e411",
+      "literal": "/arrecadacaoTransito/totalizador?DataInicio="
+    },
+    {
+      "chunk_sha256": "30e335ae2e3f072a498b560d8c0bc8702694df729fd82abb032c979893ec2ce4",
+      "literal": "/convenioReceita/confluxo/"
+    },
+    {
+      "chunk_sha256": "30e335ae2e3f072a498b560d8c0bc8702694df729fd82abb032c979893ec2ce4",
+      "literal": "/convenioReceita/detalhes/"
+    },
+    {
+      "chunk_sha256": "30e335ae2e3f072a498b560d8c0bc8702694df729fd82abb032c979893ec2ce4",
+      "literal": "/convenioReceita/downloadCsv"
+    },
+    {
+      "chunk_sha256": "30e335ae2e3f072a498b560d8c0bc8702694df729fd82abb032c979893ec2ce4",
+      "literal": "/convenioReceita/downloadDados"
+    },
+    {
+      "chunk_sha256": "30e335ae2e3f072a498b560d8c0bc8702694df729fd82abb032c979893ec2ce4",
+      "literal": "/convenioReceita/objetos?termo="
+    },
+    {
+      "chunk_sha256": "30e335ae2e3f072a498b560d8c0bc8702694df729fd82abb032c979893ec2ce4",
+      "literal": "/convenioReceita/orgaos?"
+    },
+    {
+      "chunk_sha256": "30e335ae2e3f072a498b560d8c0bc8702694df729fd82abb032c979893ec2ce4",
+      "literal": "/convenioReceita/pesquisar"
+    },
+    {
+      "chunk_sha256": "30e335ae2e3f072a498b560d8c0bc8702694df729fd82abb032c979893ec2ce4",
+      "literal": "/convenioReceita/situacoes?"
+    },
+    {
+      "chunk_sha256": "43f0a2a75c6c3cc92c9b7549b4de0849fe65bf017b6cefe923fd26557d8ec875",
+      "literal": "/filtro/receita/agrupar"
+    },
+    {
+      "chunk_sha256": "43f0a2a75c6c3cc92c9b7549b4de0849fe65bf017b6cefe923fd26557d8ec875",
+      "literal": "/filtro/receita/filtros"
+    },
+    {
+      "chunk_sha256": "26f56ab6ad644d63345e05e402a4fe686d01b48ee33e55d504cef17578683ef0",
+      "literal": "/filtro/transferenciaEntes/filtros"
+    },
+    {
+      "chunk_sha256": "43f0a2a75c6c3cc92c9b7549b4de0849fe65bf017b6cefe923fd26557d8ec875",
+      "literal": "/receita/barraJustaPosta/"
+    },
+    {
+      "chunk_sha256": "43f0a2a75c6c3cc92c9b7549b4de0849fe65bf017b6cefe923fd26557d8ec875",
+      "literal": "/receita/detalhesReceita"
+    },
+    {
+      "chunk_sha256": "43f0a2a75c6c3cc92c9b7549b4de0849fe65bf017b6cefe923fd26557d8ec875",
+      "literal": "/receita/downloadCsv"
+    },
+    {
+      "chunk_sha256": "43f0a2a75c6c3cc92c9b7549b4de0849fe65bf017b6cefe923fd26557d8ec875",
+      "literal": "/receita/downloadDados"
+    },
+    {
+      "chunk_sha256": "43f0a2a75c6c3cc92c9b7549b4de0849fe65bf017b6cefe923fd26557d8ec875",
+      "literal": "/receita/gridDetalhada"
+    },
+    {
+      "chunk_sha256": "43f0a2a75c6c3cc92c9b7549b4de0849fe65bf017b6cefe923fd26557d8ec875",
+      "literal": "/receita/gridResumida/"
+    },
+    {
+      "chunk_sha256": "43f0a2a75c6c3cc92c9b7549b4de0849fe65bf017b6cefe923fd26557d8ec875",
+      "literal": "/receita/totalizador"
+    },
+    {
+      "chunk_sha256": "26f56ab6ad644d63345e05e402a4fe686d01b48ee33e55d504cef17578683ef0",
+      "literal": "/transferenciaEntes/barraJustaPosta?ano="
+    },
+    {
+      "chunk_sha256": "26f56ab6ad644d63345e05e402a4fe686d01b48ee33e55d504cef17578683ef0",
+      "literal": "/transferenciaEntes/downloadCsv"
+    },
+    {
+      "chunk_sha256": "26f56ab6ad644d63345e05e402a4fe686d01b48ee33e55d504cef17578683ef0",
+      "literal": "/transferenciaEntes/downloadDados"
+    },
+    {
+      "chunk_sha256": "26f56ab6ad644d63345e05e402a4fe686d01b48ee33e55d504cef17578683ef0",
+      "literal": "/transferenciaEntes/gridDetalhada"
+    },
+    {
+      "chunk_sha256": "26f56ab6ad644d63345e05e402a4fe686d01b48ee33e55d504cef17578683ef0",
+      "literal": "/transferenciaEntes/gridResumida?dataInicio="
+    },
+    {
+      "chunk_sha256": "26f56ab6ad644d63345e05e402a4fe686d01b48ee33e55d504cef17578683ef0",
+      "literal": "/transferenciaEntes/totalizador?dataInicio="
+    },
+    {
+      "chunk_sha256": "30e335ae2e3f072a498b560d8c0bc8702694df729fd82abb032c979893ec2ce4",
+      "literal": "convenioReceita/pdf?cdInstrumento="
+    },
+    {
+      "chunk_sha256": "1039a108d538cdb4f2d9a7dc1c49fde4f110ec5b9847d9674f53e2d632e7bb02",
+      "literal": "filtro/receita/criterio/"
+    },
+    {
+      "chunk_sha256": "26f56ab6ad644d63345e05e402a4fe686d01b48ee33e55d504cef17578683ef0",
+      "literal": "filtro/transferenciaEntes/criterio/"
+    }
+  ]
+}
