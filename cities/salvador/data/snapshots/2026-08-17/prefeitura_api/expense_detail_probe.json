@@ -1,0 +1,384 @@
+{
+  "full_credor": {
+    "bytes": 923569,
+    "dados_count": 5554,
+    "first_rows": [
+      {
+        "bruto": 972583.67,
+        "descricao": "1 - ORACLE DO BRASIL SISTEMAS LTDA",
+        "empenhado": 954977.13,
+        "id": "1",
+        "idPai": null,
+        "liquidado": 972583.67,
+        "pago": 916147.49,
+        "temItens": false
+      },
+      {
+        "bruto": 10076078.33,
+        "descricao": "100 - MARTINS & NERI CONSULTORIA EM TECNOLOGIA DA INFORMACAO LTDA",
+        "empenhado": 9067290.54,
+        "id": "100",
+        "idPai": null,
+        "liquidado": 10076078.33,
+        "pago": 7719558.75,
+        "temItens": false
+      },
+      {
+        "bruto": 3737071.73,
+        "descricao": "10007 - GPEC PATRIMONIAL E ADMINISTRACAO LTDA",
+        "empenhado": 3737071.73,
+        "id": "10007",
+        "idPai": null,
+        "liquidado": 3737071.73,
+        "pago": 3737071.73,
+        "temItens": false
+      }
+    ],
+    "json_preview": "{\"totalizadores\": {\"Empenhado\": \"8.337.009.304,51\", \"Liquidado\": \"7.788.078.538,39\", \"Pago\": \"7.650.258.490,72\"}, \"dados\": [{\"temItens\": false, \"descricao\": \"1 - ORACLE DO BRASIL SISTEMAS LTDA\", \"empenhado\": 954977.13, \"liquidado\": 972583.67, \"pago\": 916147.49, \"bruto\": 972583.67, \"id\": \"1\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"100 - MARTINS & NERI CONSULTORIA EM TECNOLOGIA DA INFORMACAO LTDA\", \"empenhado\": 9067290.54, \"liquidado\": 10076078.33, \"pago\": 7719558.75, \"bruto\": 10076078.33, \"id\": \"100\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10007 - GPEC PATRIMONIAL E ADMINISTRACAO LTDA\", \"empenhado\": 3737071.73, \"liquidado\": 3737071.73, \"pago\": 3737071.73, \"bruto\": 3737071.73, \"id\": \"10007\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1001 - LEIS LTDA\", \"empenhado\": 33897.15, \"liquidado\": 26586, \"pago\": 26586, \"bruto\": 26586, \"id\": \"1001\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1003 - PLUS VIAGENS E TURISMO LTDA\", \"empenhado\": 1484054.97, \"liquidado\": 1217967.38, \"pago\": 1211410.81, \"bruto\": 1217967.38, \"id\": \"1003\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10033 - M.R.H. LOCADORA DE VEICULOS LTDA\", \"empenhado\": 15572.31, \"liquidado\": 31144.62, \"pago\": 31144.62, \"bruto\": 31144.62, \"id\": \"10033\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1005 - CINTIA CERQUEIRA SANTIAGO\", \"empenhado\": 3342.44, \"liquidado\": 2861.47, \"pago\": 3342.44, \"bruto\": 3342.44, \"id\": \"1005\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10063 - PARANA TRIBUNAL DE JUSTICA\", \"empenhado\": 359.83, \"liquidado\": 359.83, \"pago\": 359.83, \"bruto\": 359.83, \"id\": \"10063\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10071 - VALDIR OLIVEIRA DE BRITO\", \"empenhado\": 2127.5, \"liquidado\": 2127.5, \"pago\": 2127.5, \"bruto\": 2127.5, \"id\": \"10071\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"101 - PA ARQUIVOS LTDA\", \"empenhado\": 8529606.6, \"liquidado\": 9265151.76, \"pago\": 9253564.11, \"bruto\": 9265666.01, \"id\": \"101\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1014 - ESCOLA COMUNITARIA DO BATE FACHO\", \"empenhado\": 573222.71, \"liquidado\": 573222.71, \"pago\": 573222.71, \"bruto\": 573222.71, \"id\": \"1014\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10142 - PABLO MOURA BISPO\", \"empenhado\": 5254.4, \"liquidado\": 5254.4, \"pago\": 5254.4, \"bruto\": 5254.4, \"id\": \"10142\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10145 - CARLA REGINA DE ALMEIDA PAIVA CRUZ\", \"empenhado\": 35638, \"liquidado\": 0, \"pago\": 0, \"bruto\": 0, \"id\": \"10145\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10146 - TATA COMERCIO DE EQUIPAMENTOS PARA SAUDE, ODONTO-MEDICO LTDA.\", \"empenhado\": 0, \"liquidado\": 77475, \"pago\": 38737.5, \"bruto\": 77475, \"id\": \"10146\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10158 - IMAGEM DIAGNOSE LTDA\", \"empenhado\": 179909.3, \"liquidado\": 179909.3, \"pago\": 179909.3, \"bruto\": 179909.3, \"id\": \"10158\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10174 - BM PRODUCOES ARTISTICAS LTDA\", \"empenhado\": 0, \"liquidado\": 750000, \"pago\": 750000, \"bruto\": 750000, \"id\": \"10174\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10197 - ANDREA HELMA SANTOS BORGES\", \"empenhado\": 4263, \"liquidado\": 4263, \"pago\": 4263, \"bruto\": 4263, \"id\": \"10197\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10211 - L C PRODUCOES ARTISTICAS LTDA\", \"empenhado\": 70000, \"liquidado\": 70000, \"pago\": 70000, \"bruto\": 70000, \"id\": \"10211\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1022 - CLIPO SERVICOS MEDICOS LTDA\", \"empenhado\": 653486.32, \"liquidado\": 653486.32, \"pago\": 653486.32, \"bruto\": 653486.32, \"id\": \"1022\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1024 - KATIA FREITAS OFTALMOLOGIA LTDA\", \"empenhado\": 309515.76, \"liquidado\": 309515.76, \"pago\": 309515.76, \"bruto\": 309515.76, \"id\": \"1024\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1025 - EUZAIRA MIRANDA DE VASCONCELOS MARTINS DE ALMEIDA\", \"empenhado\": 21840, \"liquidado\": 21840, \"pago\": 21840, \"bruto\": 21840, \"id\": \"1025\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10265 - FORTES TECNOLOGIA EM SISTEMAS LTDA\", \"empenhado\": 18930.32, \"liquidado\": 16693.92, \"pago\": 16556.39, \"bruto\": 16693.92, \"id\": \"10265\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"103 - ASSOCIACAO EDUCATIVA E CULTURAL DIDA\", \"empenhado\": 150000, \"liquidado\": 150000, \"pago\": 150000, \"bruto\": 150000, \"id\": \"103\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10309 - MEDICALSYSTEM COMERCIO E SERVICOS DE EQUIPAMENTOS MEDICOS LTDA\", \"empenhado\": 1040960.05, \"liquidado\": 1039830.07, \"pago\": 1039830.07, \"bruto\": 1039830.07, \"id\": \"10309\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1032 - ALFACO - EMPREENDIMENTOS MEDICOS LTDA\", \"empenhado\": 8550.68, \"liquidado\": 8550.68, \"pago\": 8550.68, \"bruto\": 8550.68, \"id\": \"1032\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10342 - SANTO ANTONIO IMOVEIS E EMPREENDIMENTOS LTDA\", \"empenhado\": 175.14, \"liquidado\": 175.14, \"pago\": 175.14, \"bruto\": 175.14, \"id\": \"10342\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10355 - EVANILDES COSTA SANTOS\", \"empenhado\": 2100, \"liquidado\": 1500, \"pago\": 1200, \"bruto\": 1500, \"id\": \"10355\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1039 - AMIGOS -ASSISTENCIA MEDICA INFANTIL E EM GINECOLOGIA OBSTETRICIA LTDA\", \"empenhado\": 96349.3, \"liquidado\": 96349.3, \"pago\": 81983.5, \"bruto\": 96349.3, \"id\": \"1039\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10422 - IDELFONSO SERAFIM DE ALMEIDA\", \"empenhado\": 2999.08, \"liquidado\": 2999.08, \"pago\": 2999.08, \"bruto\": 2999.08, \"id\": \"10422\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1044 - KENIA GARCIA FLEITES\", \"empenhado\": 5254.4, \"liquidado\": 5254.4, \"pago\": 5254.4, \"bruto\": 5254.4, \"id\": \"1044\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10446 - LO - DIAGNOSTICOS POR IMAGEM LTDA\", \"empenhado\": 155875, \"liquidado\": 102931.75, \"pago\": 80625, \"bruto\": 102931.75, \"id\": \"10446\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10466 - EUFRASIA VIEIRA DE MESQUITA SANTOS\", \"empenhado\": 193471.38, \"liquidado\": 150477.74, \"pago\": 150477.74, \"bruto\": 150477.74, \"id\": \"10466\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"105 - CENTRO DE PESQUISAS EM INFORMATICA LTDA\", \"empenhado\": 260174.53, \"liquidado\": 0, \"pago\": 0, \"bruto\": 0, \"id\": \"105\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10541 - ANA LUZIA CALDAS DA SILVA MAURICIO\", \"empenhado\": 2127.5, \"liquidado\": 2127.5, \"pago\": 2127.5, \"bruto\": 2127.5, \"id\": \"10541\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10542 - CILENE OLIVEIRA DE AZEVEDO\", \"empenhado\": 867.5, \"liquidado\": 867.5, \"pago\": 867.5, \"bruto\": 867.5, \"id\": \"10542\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10555 - B.F. SERVICOS AMBIENTAIS LTDA\", \"empenhado\": 29287429.94, \"liquidado\": 26082919.95, \"pago\": 26378939.79, \"bruto\": 27423528.52, \"id\": \"10555\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10559 - MARIA JOSE BORGES DE OLIVEIRA\", \"empenhado\": 40500, \"liquidado\": 31500, \"pago\": 31500, \"bruto\": 31500, \"id\": \"10559\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10566 - WALTER RAYMUNDO THEOPHILO NEGREIROS\", \"empenhado\": 91000, \"liquidado\": 91000, \"pago\": 91000, \"bruto\": 91000, \"id\": \"10566\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10568 - CENTRAL UNICA DA CIDADANIA\", \"empenhado\": 0, \"liquidado\": 300000, \"pago\": 300000, \"bruto\": 300000, \"id\": \"10568\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"106 - ALPPOIM E ARQUITETOS ASSOCIADOS LTDA\", \"empenhado\": 552720, \"liquidado\": 66326.4, \"pago\": 66326.4, \"bruto\": 66326.4, \"id\": \"106\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10625 - DEFENSORIA PUBLICA DO ESTADO DA BAHIA\", \"empenhado\": 293963.04, \"liquidado\": 293727.57, \"pago\": 278457.72, \"bruto\": 293963.04, \"id\": \"10625\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10631 - TANANY CARLA OLIVEIRA PROENCE PEREIRA\", \"empenhado\": 38239, \"liquidado\": 0, \"pago\": 0, \"bruto\": 0, \"id\": \"10631\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10696 - MAGNO CRIACOES ARTISTICAS LTDA\", \"empenhado\": 0, \"liquidado\": 40051.06, \"pago\": 40051.06, \"bruto\": 40051.06, \"id\": \"10696\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"107 - BATTRE - BAHIA TRANSFERENCIA E TRATAMENTO DE RESIDUOS LTDA\", \"empenhado\": 92273637.73, \"liquidado\": 90178894.01, \"pago\": 88145128.95, \"bruto\": 91075257.01, \"id\": \"107\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1070 - INSTITUTO DE ORGANIZACAO NEUROLOGICA DA BAHIA\", \"empenhado\": 2111941.31, \"liquidado\": 2111941.31, \"pago\": 2111941.31, \"bruto\": 2111941.31, \"id\": \"1070\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1071 - MARIA MOREIRA SANT ANA DE OLIVEIRA\", \"empenhado\": 33712, \"liquidado\": 33712, \"pago\": 33712, \"bruto\": 33712, \"id\": \"1071\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10719 - GOLDEN CLEAN PRODUTOS COMERCIAIS LTDA\", \"empenhado\": 428010, \"liquidado\": 0, \"pago\": 0, \"bruto\": 0, \"id\": \"10719\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1072 - CS CONSTRUCOES E EMPREENDIMENTOS LTDA\", \"empenhado\": 207664032.85, \"liquidado\": 174598266.96, \"pago\": 187231481.89, \"bruto\": 197349492.78, \"id\": \"1072\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1073 - PRIMAGEM - PREVENCAO DIAGNOSTICA POR IMAGEM LTDA\", \"empenhado\": 201561.82, \"liquidado\": 201561.82, \"pago\": 201561.82, \"bruto\": 201561.82, \"id\": \"1073\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10730 - SECRETARIA DE ESTADO DE ECONOMIA DO DISTRITO FEDERAL - SEEC/DF\", \"empenhado\": 5935.13, \"liquidado\": 5935.13, \"pago\": 5935.13, \"bruto\": 5935.13, \"id\": \"10730\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1075 - ALEA COMERCIAL LTDA\", \"empenhado\": 54474.25, \"liquidado\": 54413.75, \"pago\": 52415.75, \"bruto\": 54413.75, \"id\": \"1075\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1077 - NILMAR SILVA SOUSA\", \"empenhado\": 125242.96, \"liquidado\": 125242.96, \"pago\": 125242.96, \"bruto\": 125242.96, \"id\": \"1077\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10778 - CENTRO PROJ AXE DE DEFESA E PROT A CRIANCA E AO ADOLESC\", \"empenhado\":",
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        {
+          "atributo": "CDCREDOR",
+          "descricao": "Credor",
+          "nomeTabela": "CREDOR",
+          "temAnoReferencia": false
+        }
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "sha256": "a9d128b747c0e386faf15829a28cfe133af2c881551d5c88aecbddd1396e5047",
+    "status": 200,
+    "top_level_keys": [
+      "dados",
+      "paginacao",
+      "totalizadores"
+    ],
+    "totalizadores": {
+      "Empenhado": "8.337.009.304,51",
+      "Liquidado": "7.788.078.538,39",
+      "Pago": "7.650.258.490,72"
+    }
+  },
+  "full_empenho": {
+    "bytes": 99,
+    "dados_count": 0,
+    "first_rows": [],
+    "json_preview": "{\"totalizadores\": {\"Empenhado\": \"0,00\", \"Liquidado\": \"0,00\", \"Pago\": \"0,00\"}, \"dados\": [], \"paginacao\": null}",
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        {
+          "atributo": "NUNOTAEMPENHO",
+          "descricao": "Empenho",
+          "nomeTabela": "EMPENHOS",
+          "temAnoReferencia": false
+        }
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "sha256": "114c5a141f344cbbd30a9531e0b4c661da0573f23fc91202e9cf87fa3989404c",
+    "status": 200,
+    "top_level_keys": [
+      "dados",
+      "paginacao",
+      "totalizadores"
+    ],
+    "totalizadores": {
+      "Empenhado": "0,00",
+      "Liquidado": "0,00",
+      "Pago": "0,00"
+    }
+  },
+  "full_orgao": {
+    "bytes": 4938,
+    "dados_count": 24,
+    "first_rows": [
+      {
+        "bruto": 65053899.06,
+        "descricao": "21000 - Secretaria de Governo",
+        "empenhado": 67484137.19,
+        "id": "21000",
+        "idPai": null,
+        "liquidado": 60376292.91,
+        "pago": 63758915.68,
+        "temItens": false
+      },
+      {
+        "bruto": 3335353.95,
+        "descricao": "22000 - Gabinete da Vice Prefeitura",
+        "empenhado": 3236842.51,
+        "id": "22000",
+        "idPai": null,
+        "liquidado": 3114191.2,
+        "pago": 3291296.11,
+        "temItens": false
+      },
+      {
+        "bruto": 46887434.58,
+        "descricao": "23000 - Procuradoria Geral do Município",
+        "empenhado": 47766418.62,
+        "id": "23000",
+        "idPai": null,
+        "liquidado": 40861171.69,
+        "pago": 46656395.04,
+        "temItens": false
+      }
+    ],
+    "json_preview": "{\"totalizadores\": {\"Empenhado\": \"8.337.009.304,51\", \"Liquidado\": \"7.788.078.538,39\", \"Pago\": \"7.650.258.490,72\"}, \"dados\": [{\"temItens\": false, \"descricao\": \"21000 - Secretaria de Governo\", \"empenhado\": 67484137.19, \"liquidado\": 60376292.91, \"pago\": 63758915.68, \"bruto\": 65053899.06, \"id\": \"21000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"22000 - Gabinete da Vice Prefeitura\", \"empenhado\": 3236842.51, \"liquidado\": 3114191.2, \"pago\": 3291296.11, \"bruto\": 3335353.95, \"id\": \"22000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"23000 - Procuradoria Geral do Município\", \"empenhado\": 47766418.62, \"liquidado\": 40861171.69, \"pago\": 46656395.04, \"bruto\": 46887434.58, \"id\": \"23000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"24000 - Casa Civil\", \"empenhado\": 27072360.44, \"liquidado\": 27954217.18, \"pago\": 28978659.83, \"bruto\": 29156216.29, \"id\": \"24000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"27000 - Secretaria Municipal da Fazenda\", \"empenhado\": 160815590.48, \"liquidado\": 138401304.8, \"pago\": 156076095.41, \"bruto\": 157452837.53, \"id\": \"27000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"30000 - Secretaria Municipal da Saúde\", \"empenhado\": 2074029297.76, \"liquidado\": 1836037648.96, \"pago\": 1957387950.98, \"bruto\": 1983320884.39, \"id\": \"30000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"34000 - Secretaria Municipal da Reparação\", \"empenhado\": 7143391.91, \"liquidado\": 6776961.02, \"pago\": 7193567.32, \"bruto\": 7239967, \"id\": \"34000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"41000 - Secretaria Municipal de Gestão\", \"empenhado\": 540959763.35, \"liquidado\": 449598739.79, \"pago\": 535414921.4, \"bruto\": 532515960.72, \"id\": \"41000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"43000 - Secretaria Municipal de Sustentabilidade, Resiliência e Bem-Estar e Proteção Animal\", \"empenhado\": 65553089.96, \"liquidado\": 59535564.85, \"pago\": 62790057.99, \"bruto\": 63957161.02, \"id\": \"43000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"44000 - Secretaria Municipal da Educação\", \"empenhado\": 1690639022.58, \"liquidado\": 1399234106.39, \"pago\": 1602983139.06, \"bruto\": 1614420211.19, \"id\": \"44000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"45000 - Secretaria Municipal de Ordem Pública\", \"empenhado\": 836990277.2, \"liquidado\": 705446556.74, \"pago\": 748823940.15, \"bruto\": 762478738.59, \"id\": \"45000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"52000 - Secretaria Municipal de Promoção Social, Combate à Pobreza, Esportes e Lazer\", \"empenhado\": 203332405.4, \"liquidado\": 182569065.45, \"pago\": 189119942.77, \"bruto\": 194633867.11, \"id\": \"52000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"53000 - Secretaria Municipal de Mobilidade\", \"empenhado\": 456798684.45, \"liquidado\": 380777697.89, \"pago\": 394799751.8, \"bruto\": 408321406.74, \"id\": \"53000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"54000 - Secretaria Municipal de Cultura e Turismo\", \"empenhado\": 321234754.4, \"liquidado\": 298520447.87, \"pago\": 298165509.84, \"bruto\": 303294119.27, \"id\": \"54000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"56000 - Secretaria Municipal de Manutenção da Cidade\", \"empenhado\": 311404114.32, \"liquidado\": 223371542.36, \"pago\": 236175788.5, \"bruto\": 239257107.74, \"id\": \"56000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"57000 - Secretaria Municipal de Comunicação\", \"empenhado\": 142933369.86, \"liquidado\": 135265964.23, \"pago\": 133323835.08, \"bruto\": 136419165.04, \"id\": \"57000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"58000 - Secretaria Municipal de Políticas para Mulheres, Infância e Juventude\", \"empenhado\": 45501564.76, \"liquidado\": 40657293.11, \"pago\": 44313563.27, \"bruto\": 45147892.93, \"id\": \"58000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"59000 - Secretaria Municipal de Desenvolvimento Econômico, Emprego e Renda\", \"empenhado\": 21989913.55, \"liquidado\": 16036410.34, \"pago\": 16098176.3, \"bruto\": 16872291.1, \"id\": \"59000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"60000 - Secretaria Municipal de Desenvolvimento Urbano\", \"empenhado\": 79536223.51, \"liquidado\": 67843747.13, \"pago\": 75584252.87, \"bruto\": 77364813.93, \"id\": \"60000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"61000 - Secretaria Municipal de Infraestrutura e Obras Públicas\", \"empenhado\": 483394140.09, \"liquidado\": 432519416.44, \"pago\": 404600407.06, \"bruto\": 449732368.56, \"id\": \"61000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"62000 - Controladoria Geral do Município de Salvador\", \"empenhado\": 21617678.26, \"liquidado\": 18337693.52, \"pago\": 20650448.58, \"bruto\": 20865088.98, \"id\": \"62000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"63000 - Secretaria Municipal de Inovação e Tecnologia\", \"empenhado\": 133105379.57, \"liquidado\": 108841817.76, \"pago\": 113620755.34, \"bruto\": 114298720.23, \"id\": \"63000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"64000 - Secretaria Municipal de Articulação Comunitária  e Prefeituras Bairro\", \"empenhado\": 21319199.49, \"liquidado\": 16885955.47, \"pago\": 18584459.33, \"bruto\": 18875997.77, \"id\": \"64000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"80000 - Encargos Gerais do Município\", \"empenhado\": 573151684.85, \"liquidado\": 497164823.11, \"pago\": 491866661.01, \"bruto\": 497177034.67, \"id\": \"80000\", \"idPai\": null}], \"paginacao\": null}",
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        {
+          "atributo": "CDORGAO",
+          "descricao": "Órgão",
+          "nomeTabela": "ORGAO",
+          "temAnoReferencia": true
+        }
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "sha256": "23fe6502ed11fe9b9a7c50649ff9f2929a7918939cfb29e23a6774ca920d1bcc",
+    "status": 200,
+    "top_level_keys": [
+      "dados",
+      "paginacao",
+      "totalizadores"
+    ],
+    "totalizadores": {
+      "Empenhado": "8.337.009.304,51",
+      "Liquidado": "7.788.078.538,39",
+      "Pago": "7.650.258.490,72"
+    }
+  },
+  "object_credor": {
+    "bytes": 923569,
+    "dados_count": 5554,
+    "first_rows": [
+      {
+        "bruto": 972583.67,
+        "descricao": "1 - ORACLE DO BRASIL SISTEMAS LTDA",
+        "empenhado": 954977.13,
+        "id": "1",
+        "idPai": null,
+        "liquidado": 972583.67,
+        "pago": 916147.49,
+        "temItens": false
+      },
+      {
+        "bruto": 10076078.33,
+        "descricao": "100 - MARTINS & NERI CONSULTORIA EM TECNOLOGIA DA INFORMACAO LTDA",
+        "empenhado": 9067290.54,
+        "id": "100",
+        "idPai": null,
+        "liquidado": 10076078.33,
+        "pago": 7719558.75,
+        "temItens": false
+      },
+      {
+        "bruto": 3737071.73,
+        "descricao": "10007 - GPEC PATRIMONIAL E ADMINISTRACAO LTDA",
+        "empenhado": 3737071.73,
+        "id": "10007",
+        "idPai": null,
+        "liquidado": 3737071.73,
+        "pago": 3737071.73,
+        "temItens": false
+      }
+    ],
+    "json_preview": "{\"totalizadores\": {\"Empenhado\": \"8.337.009.304,51\", \"Liquidado\": \"7.788.078.538,39\", \"Pago\": \"7.650.258.490,72\"}, \"dados\": [{\"temItens\": false, \"descricao\": \"1 - ORACLE DO BRASIL SISTEMAS LTDA\", \"empenhado\": 954977.13, \"liquidado\": 972583.67, \"pago\": 916147.49, \"bruto\": 972583.67, \"id\": \"1\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"100 - MARTINS & NERI CONSULTORIA EM TECNOLOGIA DA INFORMACAO LTDA\", \"empenhado\": 9067290.54, \"liquidado\": 10076078.33, \"pago\": 7719558.75, \"bruto\": 10076078.33, \"id\": \"100\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10007 - GPEC PATRIMONIAL E ADMINISTRACAO LTDA\", \"empenhado\": 3737071.73, \"liquidado\": 3737071.73, \"pago\": 3737071.73, \"bruto\": 3737071.73, \"id\": \"10007\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1001 - LEIS LTDA\", \"empenhado\": 33897.15, \"liquidado\": 26586, \"pago\": 26586, \"bruto\": 26586, \"id\": \"1001\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1003 - PLUS VIAGENS E TURISMO LTDA\", \"empenhado\": 1484054.97, \"liquidado\": 1217967.38, \"pago\": 1211410.81, \"bruto\": 1217967.38, \"id\": \"1003\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10033 - M.R.H. LOCADORA DE VEICULOS LTDA\", \"empenhado\": 15572.31, \"liquidado\": 31144.62, \"pago\": 31144.62, \"bruto\": 31144.62, \"id\": \"10033\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1005 - CINTIA CERQUEIRA SANTIAGO\", \"empenhado\": 3342.44, \"liquidado\": 2861.47, \"pago\": 3342.44, \"bruto\": 3342.44, \"id\": \"1005\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10063 - PARANA TRIBUNAL DE JUSTICA\", \"empenhado\": 359.83, \"liquidado\": 359.83, \"pago\": 359.83, \"bruto\": 359.83, \"id\": \"10063\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10071 - VALDIR OLIVEIRA DE BRITO\", \"empenhado\": 2127.5, \"liquidado\": 2127.5, \"pago\": 2127.5, \"bruto\": 2127.5, \"id\": \"10071\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"101 - PA ARQUIVOS LTDA\", \"empenhado\": 8529606.6, \"liquidado\": 9265151.76, \"pago\": 9253564.11, \"bruto\": 9265666.01, \"id\": \"101\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1014 - ESCOLA COMUNITARIA DO BATE FACHO\", \"empenhado\": 573222.71, \"liquidado\": 573222.71, \"pago\": 573222.71, \"bruto\": 573222.71, \"id\": \"1014\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10142 - PABLO MOURA BISPO\", \"empenhado\": 5254.4, \"liquidado\": 5254.4, \"pago\": 5254.4, \"bruto\": 5254.4, \"id\": \"10142\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10145 - CARLA REGINA DE ALMEIDA PAIVA CRUZ\", \"empenhado\": 35638, \"liquidado\": 0, \"pago\": 0, \"bruto\": 0, \"id\": \"10145\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10146 - TATA COMERCIO DE EQUIPAMENTOS PARA SAUDE, ODONTO-MEDICO LTDA.\", \"empenhado\": 0, \"liquidado\": 77475, \"pago\": 38737.5, \"bruto\": 77475, \"id\": \"10146\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10158 - IMAGEM DIAGNOSE LTDA\", \"empenhado\": 179909.3, \"liquidado\": 179909.3, \"pago\": 179909.3, \"bruto\": 179909.3, \"id\": \"10158\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10174 - BM PRODUCOES ARTISTICAS LTDA\", \"empenhado\": 0, \"liquidado\": 750000, \"pago\": 750000, \"bruto\": 750000, \"id\": \"10174\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10197 - ANDREA HELMA SANTOS BORGES\", \"empenhado\": 4263, \"liquidado\": 4263, \"pago\": 4263, \"bruto\": 4263, \"id\": \"10197\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10211 - L C PRODUCOES ARTISTICAS LTDA\", \"empenhado\": 70000, \"liquidado\": 70000, \"pago\": 70000, \"bruto\": 70000, \"id\": \"10211\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1022 - CLIPO SERVICOS MEDICOS LTDA\", \"empenhado\": 653486.32, \"liquidado\": 653486.32, \"pago\": 653486.32, \"bruto\": 653486.32, \"id\": \"1022\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1024 - KATIA FREITAS OFTALMOLOGIA LTDA\", \"empenhado\": 309515.76, \"liquidado\": 309515.76, \"pago\": 309515.76, \"bruto\": 309515.76, \"id\": \"1024\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1025 - EUZAIRA MIRANDA DE VASCONCELOS MARTINS DE ALMEIDA\", \"empenhado\": 21840, \"liquidado\": 21840, \"pago\": 21840, \"bruto\": 21840, \"id\": \"1025\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10265 - FORTES TECNOLOGIA EM SISTEMAS LTDA\", \"empenhado\": 18930.32, \"liquidado\": 16693.92, \"pago\": 16556.39, \"bruto\": 16693.92, \"id\": \"10265\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"103 - ASSOCIACAO EDUCATIVA E CULTURAL DIDA\", \"empenhado\": 150000, \"liquidado\": 150000, \"pago\": 150000, \"bruto\": 150000, \"id\": \"103\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10309 - MEDICALSYSTEM COMERCIO E SERVICOS DE EQUIPAMENTOS MEDICOS LTDA\", \"empenhado\": 1040960.05, \"liquidado\": 1039830.07, \"pago\": 1039830.07, \"bruto\": 1039830.07, \"id\": \"10309\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1032 - ALFACO - EMPREENDIMENTOS MEDICOS LTDA\", \"empenhado\": 8550.68, \"liquidado\": 8550.68, \"pago\": 8550.68, \"bruto\": 8550.68, \"id\": \"1032\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10342 - SANTO ANTONIO IMOVEIS E EMPREENDIMENTOS LTDA\", \"empenhado\": 175.14, \"liquidado\": 175.14, \"pago\": 175.14, \"bruto\": 175.14, \"id\": \"10342\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10355 - EVANILDES COSTA SANTOS\", \"empenhado\": 2100, \"liquidado\": 1500, \"pago\": 1200, \"bruto\": 1500, \"id\": \"10355\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1039 - AMIGOS -ASSISTENCIA MEDICA INFANTIL E EM GINECOLOGIA OBSTETRICIA LTDA\", \"empenhado\": 96349.3, \"liquidado\": 96349.3, \"pago\": 81983.5, \"bruto\": 96349.3, \"id\": \"1039\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10422 - IDELFONSO SERAFIM DE ALMEIDA\", \"empenhado\": 2999.08, \"liquidado\": 2999.08, \"pago\": 2999.08, \"bruto\": 2999.08, \"id\": \"10422\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1044 - KENIA GARCIA FLEITES\", \"empenhado\": 5254.4, \"liquidado\": 5254.4, \"pago\": 5254.4, \"bruto\": 5254.4, \"id\": \"1044\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10446 - LO - DIAGNOSTICOS POR IMAGEM LTDA\", \"empenhado\": 155875, \"liquidado\": 102931.75, \"pago\": 80625, \"bruto\": 102931.75, \"id\": \"10446\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10466 - EUFRASIA VIEIRA DE MESQUITA SANTOS\", \"empenhado\": 193471.38, \"liquidado\": 150477.74, \"pago\": 150477.74, \"bruto\": 150477.74, \"id\": \"10466\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"105 - CENTRO DE PESQUISAS EM INFORMATICA LTDA\", \"empenhado\": 260174.53, \"liquidado\": 0, \"pago\": 0, \"bruto\": 0, \"id\": \"105\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10541 - ANA LUZIA CALDAS DA SILVA MAURICIO\", \"empenhado\": 2127.5, \"liquidado\": 2127.5, \"pago\": 2127.5, \"bruto\": 2127.5, \"id\": \"10541\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10542 - CILENE OLIVEIRA DE AZEVEDO\", \"empenhado\": 867.5, \"liquidado\": 867.5, \"pago\": 867.5, \"bruto\": 867.5, \"id\": \"10542\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10555 - B.F. SERVICOS AMBIENTAIS LTDA\", \"empenhado\": 29287429.94, \"liquidado\": 26082919.95, \"pago\": 26378939.79, \"bruto\": 27423528.52, \"id\": \"10555\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10559 - MARIA JOSE BORGES DE OLIVEIRA\", \"empenhado\": 40500, \"liquidado\": 31500, \"pago\": 31500, \"bruto\": 31500, \"id\": \"10559\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10566 - WALTER RAYMUNDO THEOPHILO NEGREIROS\", \"empenhado\": 91000, \"liquidado\": 91000, \"pago\": 91000, \"bruto\": 91000, \"id\": \"10566\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10568 - CENTRAL UNICA DA CIDADANIA\", \"empenhado\": 0, \"liquidado\": 300000, \"pago\": 300000, \"bruto\": 300000, \"id\": \"10568\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"106 - ALPPOIM E ARQUITETOS ASSOCIADOS LTDA\", \"empenhado\": 552720, \"liquidado\": 66326.4, \"pago\": 66326.4, \"bruto\": 66326.4, \"id\": \"106\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10625 - DEFENSORIA PUBLICA DO ESTADO DA BAHIA\", \"empenhado\": 293963.04, \"liquidado\": 293727.57, \"pago\": 278457.72, \"bruto\": 293963.04, \"id\": \"10625\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10631 - TANANY CARLA OLIVEIRA PROENCE PEREIRA\", \"empenhado\": 38239, \"liquidado\": 0, \"pago\": 0, \"bruto\": 0, \"id\": \"10631\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10696 - MAGNO CRIACOES ARTISTICAS LTDA\", \"empenhado\": 0, \"liquidado\": 40051.06, \"pago\": 40051.06, \"bruto\": 40051.06, \"id\": \"10696\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"107 - BATTRE - BAHIA TRANSFERENCIA E TRATAMENTO DE RESIDUOS LTDA\", \"empenhado\": 92273637.73, \"liquidado\": 90178894.01, \"pago\": 88145128.95, \"bruto\": 91075257.01, \"id\": \"107\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1070 - INSTITUTO DE ORGANIZACAO NEUROLOGICA DA BAHIA\", \"empenhado\": 2111941.31, \"liquidado\": 2111941.31, \"pago\": 2111941.31, \"bruto\": 2111941.31, \"id\": \"1070\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1071 - MARIA MOREIRA SANT ANA DE OLIVEIRA\", \"empenhado\": 33712, \"liquidado\": 33712, \"pago\": 33712, \"bruto\": 33712, \"id\": \"1071\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10719 - GOLDEN CLEAN PRODUTOS COMERCIAIS LTDA\", \"empenhado\": 428010, \"liquidado\": 0, \"pago\": 0, \"bruto\": 0, \"id\": \"10719\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1072 - CS CONSTRUCOES E EMPREENDIMENTOS LTDA\", \"empenhado\": 207664032.85, \"liquidado\": 174598266.96, \"pago\": 187231481.89, \"bruto\": 197349492.78, \"id\": \"1072\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1073 - PRIMAGEM - PREVENCAO DIAGNOSTICA POR IMAGEM LTDA\", \"empenhado\": 201561.82, \"liquidado\": 201561.82, \"pago\": 201561.82, \"bruto\": 201561.82, \"id\": \"1073\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10730 - SECRETARIA DE ESTADO DE ECONOMIA DO DISTRITO FEDERAL - SEEC/DF\", \"empenhado\": 5935.13, \"liquidado\": 5935.13, \"pago\": 5935.13, \"bruto\": 5935.13, \"id\": \"10730\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1075 - ALEA COMERCIAL LTDA\", \"empenhado\": 54474.25, \"liquidado\": 54413.75, \"pago\": 52415.75, \"bruto\": 54413.75, \"id\": \"1075\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"1077 - NILMAR SILVA SOUSA\", \"empenhado\": 125242.96, \"liquidado\": 125242.96, \"pago\": 125242.96, \"bruto\": 125242.96, \"id\": \"1077\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"10778 - CENTRO PROJ AXE DE DEFESA E PROT A CRIANCA E AO ADOLESC\", \"empenhado\":",
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        {
+          "atributo": "CDCREDOR"
+        }
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "sha256": "a9d128b747c0e386faf15829a28cfe133af2c881551d5c88aecbddd1396e5047",
+    "status": 200,
+    "top_level_keys": [
+      "dados",
+      "paginacao",
+      "totalizadores"
+    ],
+    "totalizadores": {
+      "Empenhado": "8.337.009.304,51",
+      "Liquidado": "7.788.078.538,39",
+      "Pago": "7.650.258.490,72"
+    }
+  },
+  "object_empenho": {
+    "bytes": 99,
+    "dados_count": 0,
+    "first_rows": [],
+    "json_preview": "{\"totalizadores\": {\"Empenhado\": \"0,00\", \"Liquidado\": \"0,00\", \"Pago\": \"0,00\"}, \"dados\": [], \"paginacao\": null}",
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        {
+          "atributo": "NUNOTAEMPENHO"
+        }
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "sha256": "114c5a141f344cbbd30a9531e0b4c661da0573f23fc91202e9cf87fa3989404c",
+    "status": 200,
+    "top_level_keys": [
+      "dados",
+      "paginacao",
+      "totalizadores"
+    ],
+    "totalizadores": {
+      "Empenhado": "0,00",
+      "Liquidado": "0,00",
+      "Pago": "0,00"
+    }
+  },
+  "object_orgao": {
+    "bytes": 4938,
+    "dados_count": 24,
+    "first_rows": [
+      {
+        "bruto": 65053899.06,
+        "descricao": "21000 - Secretaria de Governo",
+        "empenhado": 67484137.19,
+        "id": "21000",
+        "idPai": null,
+        "liquidado": 60376292.91,
+        "pago": 63758915.68,
+        "temItens": false
+      },
+      {
+        "bruto": 3335353.95,
+        "descricao": "22000 - Gabinete da Vice Prefeitura",
+        "empenhado": 3236842.51,
+        "id": "22000",
+        "idPai": null,
+        "liquidado": 3114191.2,
+        "pago": 3291296.11,
+        "temItens": false
+      },
+      {
+        "bruto": 46887434.58,
+        "descricao": "23000 - Procuradoria Geral do Município",
+        "empenhado": 47766418.62,
+        "id": "23000",
+        "idPai": null,
+        "liquidado": 40861171.69,
+        "pago": 46656395.04,
+        "temItens": false
+      }
+    ],
+    "json_preview": "{\"totalizadores\": {\"Empenhado\": \"8.337.009.304,51\", \"Liquidado\": \"7.788.078.538,39\", \"Pago\": \"7.650.258.490,72\"}, \"dados\": [{\"temItens\": false, \"descricao\": \"21000 - Secretaria de Governo\", \"empenhado\": 67484137.19, \"liquidado\": 60376292.91, \"pago\": 63758915.68, \"bruto\": 65053899.06, \"id\": \"21000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"22000 - Gabinete da Vice Prefeitura\", \"empenhado\": 3236842.51, \"liquidado\": 3114191.2, \"pago\": 3291296.11, \"bruto\": 3335353.95, \"id\": \"22000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"23000 - Procuradoria Geral do Município\", \"empenhado\": 47766418.62, \"liquidado\": 40861171.69, \"pago\": 46656395.04, \"bruto\": 46887434.58, \"id\": \"23000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"24000 - Casa Civil\", \"empenhado\": 27072360.44, \"liquidado\": 27954217.18, \"pago\": 28978659.83, \"bruto\": 29156216.29, \"id\": \"24000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"27000 - Secretaria Municipal da Fazenda\", \"empenhado\": 160815590.48, \"liquidado\": 138401304.8, \"pago\": 156076095.41, \"bruto\": 157452837.53, \"id\": \"27000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"30000 - Secretaria Municipal da Saúde\", \"empenhado\": 2074029297.76, \"liquidado\": 1836037648.96, \"pago\": 1957387950.98, \"bruto\": 1983320884.39, \"id\": \"30000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"34000 - Secretaria Municipal da Reparação\", \"empenhado\": 7143391.91, \"liquidado\": 6776961.02, \"pago\": 7193567.32, \"bruto\": 7239967, \"id\": \"34000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"41000 - Secretaria Municipal de Gestão\", \"empenhado\": 540959763.35, \"liquidado\": 449598739.79, \"pago\": 535414921.4, \"bruto\": 532515960.72, \"id\": \"41000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"43000 - Secretaria Municipal de Sustentabilidade, Resiliência e Bem-Estar e Proteção Animal\", \"empenhado\": 65553089.96, \"liquidado\": 59535564.85, \"pago\": 62790057.99, \"bruto\": 63957161.02, \"id\": \"43000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"44000 - Secretaria Municipal da Educação\", \"empenhado\": 1690639022.58, \"liquidado\": 1399234106.39, \"pago\": 1602983139.06, \"bruto\": 1614420211.19, \"id\": \"44000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"45000 - Secretaria Municipal de Ordem Pública\", \"empenhado\": 836990277.2, \"liquidado\": 705446556.74, \"pago\": 748823940.15, \"bruto\": 762478738.59, \"id\": \"45000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"52000 - Secretaria Municipal de Promoção Social, Combate à Pobreza, Esportes e Lazer\", \"empenhado\": 203332405.4, \"liquidado\": 182569065.45, \"pago\": 189119942.77, \"bruto\": 194633867.11, \"id\": \"52000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"53000 - Secretaria Municipal de Mobilidade\", \"empenhado\": 456798684.45, \"liquidado\": 380777697.89, \"pago\": 394799751.8, \"bruto\": 408321406.74, \"id\": \"53000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"54000 - Secretaria Municipal de Cultura e Turismo\", \"empenhado\": 321234754.4, \"liquidado\": 298520447.87, \"pago\": 298165509.84, \"bruto\": 303294119.27, \"id\": \"54000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"56000 - Secretaria Municipal de Manutenção da Cidade\", \"empenhado\": 311404114.32, \"liquidado\": 223371542.36, \"pago\": 236175788.5, \"bruto\": 239257107.74, \"id\": \"56000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"57000 - Secretaria Municipal de Comunicação\", \"empenhado\": 142933369.86, \"liquidado\": 135265964.23, \"pago\": 133323835.08, \"bruto\": 136419165.04, \"id\": \"57000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"58000 - Secretaria Municipal de Políticas para Mulheres, Infância e Juventude\", \"empenhado\": 45501564.76, \"liquidado\": 40657293.11, \"pago\": 44313563.27, \"bruto\": 45147892.93, \"id\": \"58000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"59000 - Secretaria Municipal de Desenvolvimento Econômico, Emprego e Renda\", \"empenhado\": 21989913.55, \"liquidado\": 16036410.34, \"pago\": 16098176.3, \"bruto\": 16872291.1, \"id\": \"59000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"60000 - Secretaria Municipal de Desenvolvimento Urbano\", \"empenhado\": 79536223.51, \"liquidado\": 67843747.13, \"pago\": 75584252.87, \"bruto\": 77364813.93, \"id\": \"60000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"61000 - Secretaria Municipal de Infraestrutura e Obras Públicas\", \"empenhado\": 483394140.09, \"liquidado\": 432519416.44, \"pago\": 404600407.06, \"bruto\": 449732368.56, \"id\": \"61000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"62000 - Controladoria Geral do Município de Salvador\", \"empenhado\": 21617678.26, \"liquidado\": 18337693.52, \"pago\": 20650448.58, \"bruto\": 20865088.98, \"id\": \"62000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"63000 - Secretaria Municipal de Inovação e Tecnologia\", \"empenhado\": 133105379.57, \"liquidado\": 108841817.76, \"pago\": 113620755.34, \"bruto\": 114298720.23, \"id\": \"63000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"64000 - Secretaria Municipal de Articulação Comunitária  e Prefeituras Bairro\", \"empenhado\": 21319199.49, \"liquidado\": 16885955.47, \"pago\": 18584459.33, \"bruto\": 18875997.77, \"id\": \"64000\", \"idPai\": null}, {\"temItens\": false, \"descricao\": \"80000 - Encargos Gerais do Município\", \"empenhado\": 573151684.85, \"liquidado\": 497164823.11, \"pago\": 491866661.01, \"bruto\": 497177034.67, \"id\": \"80000\", \"idPai\": null}], \"paginacao\": null}",
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        {
+          "atributo": "CDORGAO"
+        }
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "sha256": "23fe6502ed11fe9b9a7c50649ff9f2929a7918939cfb29e23a6774ca920d1bcc",
+    "status": 200,
+    "top_level_keys": [
+      "dados",
+      "paginacao",
+      "totalizadores"
+    ],
+    "totalizadores": {
+      "Empenhado": "8.337.009.304,51",
+      "Liquidado": "7.788.078.538,39",
+      "Pago": "7.650.258.490,72"
+    }
+  },
+  "string_credor": {
+    "bytes": 351,
+    "dados_count": null,
+    "first_rows": null,
+    "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b20d8-43bf6a76d4d7a7df.\", \"errors\": {\"$.agrupamentos[0]\": [\"The JSON value could not be converted to PTRANSP.Dominio.Entidade.DTO.ParametroFiltro. Path: $.agrupamentos[0] | LineNumber: 0 | BytePositionInLine: 89.\"]}}",
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        "CDCREDOR"
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "sha256": "7eb9427021c3c58a6771769bba5ae44f64d39289bea5291fc9a2c1761ea1e009",
+    "status": 400,
+    "top_level_keys": [
+      "errors",
+      "status",
+      "title",
+      "traceId",
+      "type"
+    ],
+    "totalizadores": null
+  },
+  "string_empenho": {
+    "bytes": 351,
+    "dados_count": null,
+    "first_rows": null,
+    "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b20e3-43bf6a76d4d7a7df.\", \"errors\": {\"$.agrupamentos[0]\": [\"The JSON value could not be converted to PTRANSP.Dominio.Entidade.DTO.ParametroFiltro. Path: $.agrupamentos[0] | LineNumber: 0 | BytePositionInLine: 94.\"]}}",
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        "NUNOTAEMPENHO"
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "sha256": "bb6012de667d7f487e11b248cd9db3752c4e5dbe81934d26079a969377ae1477",
+    "status": 400,
+    "top_level_keys": [
+      "errors",
+      "status",
+      "title",
+      "traceId",
+      "type"
+    ],
+    "totalizadores": null
+  },
+  "string_orgao": {
+    "bytes": 351,
+    "dados_count": null,
+    "first_rows": null,
+    "json_preview": "{\"type\": \"https://tools.ietf.org/html/rfc7231#section-6.5.1\", \"title\": \"One or more validation errors occurred.\", \"status\": 400, \"traceId\": \"|d44b20e6-43bf6a76d4d7a7df.\", \"errors\": {\"$.agrupamentos[0]\": [\"The JSON value could not be converted to PTRANSP.Dominio.Entidade.DTO.ParametroFiltro. Path: $.agrupamentos[0] | LineNumber: 0 | BytePositionInLine: 88.\"]}}",
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        "CDORGAO"
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "sha256": "025f5a5cc1eab20977c1d1adeec1ab5b4d390a2a613119a1f341501afcbcec24",
+    "status": 400,
+    "top_level_keys": [
+      "errors",
+      "status",
+      "title",
+      "traceId",
+      "type"
+    ],
+    "totalizadores": null
+  }
+}
