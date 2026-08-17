@@ -9,3 +9,11 @@ __pycache__/
 *.sqlite3
 cities/*/data/raw/*
 !cities/*/data/raw/.gitkeep
+
+# Frontend / Vercel
+node_modules/
+.next/
+out/
+.vercel/
+public/data/
+npm-debug.log*
