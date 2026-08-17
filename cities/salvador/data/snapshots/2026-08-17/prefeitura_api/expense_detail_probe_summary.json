@@ -1,0 +1,324 @@
+{
+  "full_credor": {
+    "bytes": 923569,
+    "dados_count": 5554,
+    "error": null,
+    "first_rows": [
+      {
+        "bruto": 972583.67,
+        "descricao": "1 - ORACLE DO BRASIL SISTEMAS LTDA",
+        "empenhado": 954977.13,
+        "id": "1",
+        "idPai": null,
+        "liquidado": 972583.67,
+        "pago": 916147.49,
+        "temItens": false
+      },
+      {
+        "bruto": 10076078.33,
+        "descricao": "100 - MARTINS & NERI CONSULTORIA EM TECNOLOGIA DA INFORMACAO LTDA",
+        "empenhado": 9067290.54,
+        "id": "100",
+        "idPai": null,
+        "liquidado": 10076078.33,
+        "pago": 7719558.75,
+        "temItens": false
+      },
+      {
+        "bruto": 3737071.73,
+        "descricao": "10007 - GPEC PATRIMONIAL E ADMINISTRACAO LTDA",
+        "empenhado": 3737071.73,
+        "id": "10007",
+        "idPai": null,
+        "liquidado": 3737071.73,
+        "pago": 3737071.73,
+        "temItens": false
+      }
+    ],
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        {
+          "atributo": "CDCREDOR",
+          "descricao": "Credor",
+          "nomeTabela": "CREDOR",
+          "temAnoReferencia": false
+        }
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "status": 200,
+    "totalizadores": {
+      "Empenhado": "8.337.009.304,51",
+      "Liquidado": "7.788.078.538,39",
+      "Pago": "7.650.258.490,72"
+    }
+  },
+  "full_empenho": {
+    "bytes": 99,
+    "dados_count": 0,
+    "error": null,
+    "first_rows": [],
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        {
+          "atributo": "NUNOTAEMPENHO",
+          "descricao": "Empenho",
+          "nomeTabela": "EMPENHOS",
+          "temAnoReferencia": false
+        }
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "status": 200,
+    "totalizadores": {
+      "Empenhado": "0,00",
+      "Liquidado": "0,00",
+      "Pago": "0,00"
+    }
+  },
+  "full_orgao": {
+    "bytes": 4938,
+    "dados_count": 24,
+    "error": null,
+    "first_rows": [
+      {
+        "bruto": 65053899.06,
+        "descricao": "21000 - Secretaria de Governo",
+        "empenhado": 67484137.19,
+        "id": "21000",
+        "idPai": null,
+        "liquidado": 60376292.91,
+        "pago": 63758915.68,
+        "temItens": false
+      },
+      {
+        "bruto": 3335353.95,
+        "descricao": "22000 - Gabinete da Vice Prefeitura",
+        "empenhado": 3236842.51,
+        "id": "22000",
+        "idPai": null,
+        "liquidado": 3114191.2,
+        "pago": 3291296.11,
+        "temItens": false
+      },
+      {
+        "bruto": 46887434.58,
+        "descricao": "23000 - Procuradoria Geral do Município",
+        "empenhado": 47766418.62,
+        "id": "23000",
+        "idPai": null,
+        "liquidado": 40861171.69,
+        "pago": 46656395.04,
+        "temItens": false
+      }
+    ],
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        {
+          "atributo": "CDORGAO",
+          "descricao": "Órgão",
+          "nomeTabela": "ORGAO",
+          "temAnoReferencia": true
+        }
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "status": 200,
+    "totalizadores": {
+      "Empenhado": "8.337.009.304,51",
+      "Liquidado": "7.788.078.538,39",
+      "Pago": "7.650.258.490,72"
+    }
+  },
+  "object_credor": {
+    "bytes": 923569,
+    "dados_count": 5554,
+    "error": null,
+    "first_rows": [
+      {
+        "bruto": 972583.67,
+        "descricao": "1 - ORACLE DO BRASIL SISTEMAS LTDA",
+        "empenhado": 954977.13,
+        "id": "1",
+        "idPai": null,
+        "liquidado": 972583.67,
+        "pago": 916147.49,
+        "temItens": false
+      },
+      {
+        "bruto": 10076078.33,
+        "descricao": "100 - MARTINS & NERI CONSULTORIA EM TECNOLOGIA DA INFORMACAO LTDA",
+        "empenhado": 9067290.54,
+        "id": "100",
+        "idPai": null,
+        "liquidado": 10076078.33,
+        "pago": 7719558.75,
+        "temItens": false
+      },
+      {
+        "bruto": 3737071.73,
+        "descricao": "10007 - GPEC PATRIMONIAL E ADMINISTRACAO LTDA",
+        "empenhado": 3737071.73,
+        "id": "10007",
+        "idPai": null,
+        "liquidado": 3737071.73,
+        "pago": 3737071.73,
+        "temItens": false
+      }
+    ],
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        {
+          "atributo": "CDCREDOR"
+        }
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "status": 200,
+    "totalizadores": {
+      "Empenhado": "8.337.009.304,51",
+      "Liquidado": "7.788.078.538,39",
+      "Pago": "7.650.258.490,72"
+    }
+  },
+  "object_empenho": {
+    "bytes": 99,
+    "dados_count": 0,
+    "error": null,
+    "first_rows": [],
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        {
+          "atributo": "NUNOTAEMPENHO"
+        }
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "status": 200,
+    "totalizadores": {
+      "Empenhado": "0,00",
+      "Liquidado": "0,00",
+      "Pago": "0,00"
+    }
+  },
+  "object_orgao": {
+    "bytes": 4938,
+    "dados_count": 24,
+    "error": null,
+    "first_rows": [
+      {
+        "bruto": 65053899.06,
+        "descricao": "21000 - Secretaria de Governo",
+        "empenhado": 67484137.19,
+        "id": "21000",
+        "idPai": null,
+        "liquidado": 60376292.91,
+        "pago": 63758915.68,
+        "temItens": false
+      },
+      {
+        "bruto": 3335353.95,
+        "descricao": "22000 - Gabinete da Vice Prefeitura",
+        "empenhado": 3236842.51,
+        "id": "22000",
+        "idPai": null,
+        "liquidado": 3114191.2,
+        "pago": 3291296.11,
+        "temItens": false
+      },
+      {
+        "bruto": 46887434.58,
+        "descricao": "23000 - Procuradoria Geral do Município",
+        "empenhado": 47766418.62,
+        "id": "23000",
+        "idPai": null,
+        "liquidado": 40861171.69,
+        "pago": 46656395.04,
+        "temItens": false
+      }
+    ],
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        {
+          "atributo": "CDORGAO"
+        }
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "status": 200,
+    "totalizadores": {
+      "Empenhado": "8.337.009.304,51",
+      "Liquidado": "7.788.078.538,39",
+      "Pago": "7.650.258.490,72"
+    }
+  },
+  "string_credor": {
+    "bytes": 351,
+    "dados_count": null,
+    "error": null,
+    "first_rows": null,
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        "CDCREDOR"
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "status": 400,
+    "totalizadores": null
+  },
+  "string_empenho": {
+    "bytes": 351,
+    "dados_count": null,
+    "error": null,
+    "first_rows": null,
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        "NUNOTAEMPENHO"
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "status": 400,
+    "totalizadores": null
+  },
+  "string_orgao": {
+    "bytes": 351,
+    "dados_count": null,
+    "error": null,
+    "first_rows": null,
+    "paginacao": null,
+    "payload": {
+      "agrupamentos": [
+        "CDORGAO"
+      ],
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-01-01",
+      "filtros": []
+    },
+    "status": 400,
+    "totalizadores": null
+  }
+}
