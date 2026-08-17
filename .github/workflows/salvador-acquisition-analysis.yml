@@ -1,0 +1,36 @@
+name: salvador-acquisition-analysis
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - scripts/analyze_salvador_acquisitions.py
+      - cities/salvador/data/snapshots/2026-08-17/prefeitura_acquisitions/acquisitions.jsonl
+      - .github/workflows/salvador-acquisition-analysis.yml
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/analyze_salvador_acquisitions.py
+      - name: Commit descriptive analysis
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/snapshots/2026-08-17/prefeitura_acquisitions/analysis.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(salvador): derive descriptive acquisition analysis"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
