@@ -25,6 +25,28 @@ function badgeClass(type) {
   return "badge";
 }
 
+function Copiar({ valor }) {
+  const [copiado, setCopiado] = useState(false);
+  if (!valor) return null;
+  return (
+    <button
+      type="button"
+      className="copiar"
+      onClick={async () => {
+        try {
+          await navigator.clipboard.writeText(String(valor));
+          setCopiado(true);
+          setTimeout(() => setCopiado(false), 1300);
+        } catch {
+          setCopiado(false);
+        }
+      }}
+    >
+      {copiado ? "Copiado" : "Copiar"}
+    </button>
+  );
+}
+
 export default function AcquisitionsExplorer() {
   const [data, setData] = useState(null);
   const [query, setQuery] = useState("");
@@ -34,6 +56,8 @@ export default function AcquisitionsExplorer() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setQuery(params.get("busca") || "");
     fetch("/data/acquisitions.json")
       .then((response) => {
         if (!response.ok) throw new Error("Falha ao carregar aquisições");
@@ -83,8 +107,8 @@ export default function AcquisitionsExplorer() {
 
   useEffect(() => setPage(1), [query, type, agency, sort]);
 
-  if (!data) return <div className="card loading">Carregando base publicada…</div>;
-  if (data.error) return <div className="card empty">Não foi possível carregar o dataset gerado neste deploy.</div>;
+  if (!data) return <div className="card loading">Carregando aquisições publicadas…</div>;
+  if (data.error) return <div className="card empty">Não foi possível carregar os dados desta publicação.</div>;
 
   const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const safePage = Math.min(page, pages);
@@ -97,7 +121,7 @@ export default function AcquisitionsExplorer() {
           className="input"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Buscar objeto, processo, órgão, modalidade…"
+          placeholder="Buscar objeto, processo, número ou órgão…"
           aria-label="Buscar aquisições"
         />
         <select className="select" value={type} onChange={(event) => setType(event.target.value)} aria-label="Filtrar por tipo">
@@ -124,15 +148,22 @@ export default function AcquisitionsExplorer() {
         <div className="table-wrap">
           <table>
             <thead>
-              <tr><th>Órgão</th><th>Objeto / processo</th><th>Tipo</th><th>Modalidade</th><th>Publicação</th><th>Valor</th><th>Fonte</th></tr>
+              <tr><th>Órgão</th><th>Objeto</th><th>Referências para consulta</th><th>Tipo</th><th>Publicação</th><th>Valor</th><th>Fonte</th></tr>
             </thead>
             <tbody>
               {visible.map((row) => (
                 <tr key={row.id}>
                   <td><strong>{row.orgao || "—"}</strong><div className="muted">{row.unidade || ""}</div></td>
-                  <td className="object-cell">{row.objeto || "—"}<div className="muted mono">{row.processo || row.numero || "sem número exibido"}</div></td>
-                  <td><span className={badgeClass(row.tipo)}>{row.tipo || "—"}</span></td>
-                  <td>{row.modalidade || "—"}</td>
+                  <td className="object-cell">{row.objeto || "—"}</td>
+                  <td>
+                    <div className="referencia-lista">
+                      {row.processo && <div className="referencia-linha"><b>Processo:</b><span className="mono">{row.processo}</span><Copiar valor={row.processo} /></div>}
+                      {row.numero && <div className="referencia-linha"><b>Aquisição:</b><span className="mono">{row.numero}</span><Copiar valor={row.numero} /></div>}
+                      {row.aviso && <div className="referencia-linha"><b>Aviso:</b><span className="mono">{row.aviso}</span><Copiar valor={row.aviso} /></div>}
+                      {!row.processo && !row.numero && !row.aviso && <span className="muted">Sem número exibido</span>}
+                    </div>
+                  </td>
+                  <td><span className={badgeClass(row.tipo)}>{row.tipo || row.modalidade || "—"}</span></td>
                   <td className="mono">{dateBR(row.publicadoEm)}</td>
                   <td><strong className="mono">{brl(row.valor)}</strong></td>
                   <td><a className="button" style={{ minHeight: 34, padding: "0 10px" }} href={row.fonte} target="_blank" rel="noreferrer">Abrir ↗</a></td>
