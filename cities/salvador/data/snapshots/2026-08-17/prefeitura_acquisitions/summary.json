@@ -1,0 +1,1867 @@
+{
+  "api_endpoint": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada",
+  "api_reported_pages": 231,
+  "api_reported_total_records": 2306,
+  "api_reported_total_value_brl_text": "3.566.352.927,80",
+  "complete_for_filter": true,
+  "duplicate_stable_keys": 0,
+  "id_note": "The API response field 'id' varied across equivalent requests during discovery. source_record_key is an internal deterministic deduplication key, not an official identifier.",
+  "pages": [
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=1",
+      "page": 1,
+      "rows": 10,
+      "sha256": "077d05bcce24d5b923abe9d4e80db77e56dff01abae6891642b7f83969b6c54a",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=2",
+      "page": 2,
+      "rows": 10,
+      "sha256": "e7f1b1d077fd61490a72a538f863554c9ca51485ac24b990883521314d31a2dc",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=3",
+      "page": 3,
+      "rows": 10,
+      "sha256": "ab871e0a59cb2c4ce82d4c59c17b69582665cc52954b587ae92c044515fb950a",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=4",
+      "page": 4,
+      "rows": 10,
+      "sha256": "32f4a000ece7406fd94cf7e6a88e6d5a481140c47c88b12ddd6a91cf144da88b",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=5",
+      "page": 5,
+      "rows": 10,
+      "sha256": "786c4030242119e84595e6075392435084cfb6be8187c00d02875e9815c2f4c8",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=6",
+      "page": 6,
+      "rows": 10,
+      "sha256": "3198edf0a039ec44bb2bd34bfc8c46a7e96030f947d60f13fd9c69ef1211f226",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=7",
+      "page": 7,
+      "rows": 10,
+      "sha256": "d6a1101e1ef96cbc3b26fed8f9d054c855ea0d8206307b6b8d192e34020616a3",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=8",
+      "page": 8,
+      "rows": 10,
+      "sha256": "d0f8f7bc28e5d8feef53de9acd838625072a612f744fb27a91a518f8e5e3b703",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=9",
+      "page": 9,
+      "rows": 10,
+      "sha256": "f50b6a59bf201d71a24f55446f88b24fddd4ab21f7286cd31d743eaf324d5335",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=10",
+      "page": 10,
+      "rows": 10,
+      "sha256": "3a0411792deaadda8e04bdd3f1acffa032f804afbd159ec8774f551be4fab5e3",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=11",
+      "page": 11,
+      "rows": 10,
+      "sha256": "8fc6ccf15e0eb3384b78f501e22c268539a3f70bcd1ad38130b18908da249376",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=12",
+      "page": 12,
+      "rows": 10,
+      "sha256": "cdc79d40205ec56e8c04c88cfba68370b8e1c2d3e76965f22aea179fcf5e0edc",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=13",
+      "page": 13,
+      "rows": 10,
+      "sha256": "e8c1b79e4e0c30bc8ede2ef610eb054c1fa285ed6bfccb044e6182b0da28f0cd",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=14",
+      "page": 14,
+      "rows": 10,
+      "sha256": "a49bf8f55134a6f2da2c5911679c2e4db61a25ed5b3d9223d749a2131254c7cb",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=15",
+      "page": 15,
+      "rows": 10,
+      "sha256": "d1d572fdcef88c50c9d7d07e5c4b9524021e233a4996fd56f3f328336e3ea99c",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=16",
+      "page": 16,
+      "rows": 10,
+      "sha256": "d6206f599640467727b96c8284395db6af6f968f4a8670078c359503d2f5ba4b",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=17",
+      "page": 17,
+      "rows": 10,
+      "sha256": "5a992f1319f4b225ce8a5979cfdb8904823d7f38d13a4682a05a90321ed48953",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=18",
+      "page": 18,
+      "rows": 10,
+      "sha256": "7c63b9757a0192981a3234c745c25609d454234610b31cfa065e3bd5f47bb749",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=19",
+      "page": 19,
+      "rows": 10,
+      "sha256": "95849f97381665445990c3af864385d04748b7e9ee87da64c8d5bdab5b21c6c9",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=20",
+      "page": 20,
+      "rows": 10,
+      "sha256": "17758349184abe3ff9532ab9954d016ed51bb95efd19f33c0d385631496a22a8",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=21",
+      "page": 21,
+      "rows": 10,
+      "sha256": "3a46f939ba319daee19ba92336c429c8d50f018fb91afb1c05be3280491df3a6",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=22",
+      "page": 22,
+      "rows": 10,
+      "sha256": "d0ae0ce12948a8a5f349135df8b7e859c7423d4b680f705495af1cc657f6e5e3",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=23",
+      "page": 23,
+      "rows": 10,
+      "sha256": "2e31e595b1e599162eb35ce34c22f0eed26ff129751040fdc4884d9e3d748c7b",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=24",
+      "page": 24,
+      "rows": 10,
+      "sha256": "f7db858f5a2113ec3c19e09bb7e61e20aefb721b45e6f1bda0fa857042aa2dbf",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=25",
+      "page": 25,
+      "rows": 10,
+      "sha256": "10d6fa0cb1b0e7958cbf97a8ad6fefff6dff6062395596d9b4b566da2cac177f",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=26",
+      "page": 26,
+      "rows": 10,
+      "sha256": "caec7a945e5a83e0b13ead66b492affb490712bfa90bfa1e1c40e7beab3a174a",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=27",
+      "page": 27,
+      "rows": 10,
+      "sha256": "d528a67e25b493ce9abc3f4e3a1d52dabcbd0acb6786294efed86aacd51a4f73",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=28",
+      "page": 28,
+      "rows": 10,
+      "sha256": "0ec349c9d4a9247e3ca440f819cfe8983ba7ff09dd123c07dff431c2d00983ad",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=29",
+      "page": 29,
+      "rows": 10,
+      "sha256": "d826aa3f2eb5581153229e75eb609d9f260ef07da51f35eb1d462ac744335eb0",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=30",
+      "page": 30,
+      "rows": 10,
+      "sha256": "2a62aee059240cf43a5deecd4102f8614d4d8c39690334767a89f2f40e6f96f4",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=31",
+      "page": 31,
+      "rows": 10,
+      "sha256": "f771323e8054d922bec0207c9a785dfccb1f75245e45c938c55d1c48c1e07d1a",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=32",
+      "page": 32,
+      "rows": 10,
+      "sha256": "9f979fbd0a86e73b25532d128ea51212a5e802dde10065b60b0152fede13abd3",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=33",
+      "page": 33,
+      "rows": 10,
+      "sha256": "91c1324f757018de714d0fbbec1510f938e19d22c28ae3d1ce9599ec2d0c18c6",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=34",
+      "page": 34,
+      "rows": 10,
+      "sha256": "051ca9eec603d8ef2c6dbc36f655193ec4f81ce70a480d5f965fa71a995ffde0",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=35",
+      "page": 35,
+      "rows": 10,
+      "sha256": "3e28f7a3bc153612e4ed1960ffeca4d1123639bf1c5bd49ff1c419cf2fddca75",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=36",
+      "page": 36,
+      "rows": 10,
+      "sha256": "441878a529228a79caed6d7cd1021c61a58065f21da006dc425c7f242e719c42",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=37",
+      "page": 37,
+      "rows": 10,
+      "sha256": "7d2b2b8b9de90937b2c7a1f2e3d6fa1800c4bedcb54173cbf8000bd59862a286",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=38",
+      "page": 38,
+      "rows": 10,
+      "sha256": "78582f8ea24a1f75a76dc0294c190eefb63b12b332702a5606853714a07233f2",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=39",
+      "page": 39,
+      "rows": 10,
+      "sha256": "36366ef56df77613f882c29cc329d8126b402d76bb9a532fbd4fca65430a2a13",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=40",
+      "page": 40,
+      "rows": 10,
+      "sha256": "98cc2da1384f337cdb9c65146f61de4a536012ebc21f7f1536c7ff80950f3481",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=41",
+      "page": 41,
+      "rows": 10,
+      "sha256": "e84df16c53553eb4bb25b66e2020f14d29e3ac9db3c6856b5f5c2881cdb3b88a",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=42",
+      "page": 42,
+      "rows": 10,
+      "sha256": "59d0cae30ef920fa7725c3a59b6f3cd7522c2d8d5a6e4eae7b38ee0659c9a9d9",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=43",
+      "page": 43,
+      "rows": 10,
+      "sha256": "8424db13dbc310d81d15af54a39b62bac39943341190f401268d24b8ba55a63d",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=44",
+      "page": 44,
+      "rows": 10,
+      "sha256": "b98dbf6a6b8a07dab70f00249074c2232efb6ee26056efd57ffeb67e6becdf1d",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=45",
+      "page": 45,
+      "rows": 10,
+      "sha256": "f15a31fd58da02e36ab289f37fdc3966a4f41deeccca5a0534b3382319641c4c",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=46",
+      "page": 46,
+      "rows": 10,
+      "sha256": "bd246cbe04e7f1b4d9056cb408d46cd4fc18812dc712eca2e710eb5c8ea5a4a9",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=47",
+      "page": 47,
+      "rows": 10,
+      "sha256": "6d2ab35cd37c6cc91a1cb845f30de9dbfa499fe7cfaa242495d8819a242d3dde",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=48",
+      "page": 48,
+      "rows": 10,
+      "sha256": "f5cbf37d5f81cae5e755693a9b5ca243f30b9893651b7bf021998b95e19d4250",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=49",
+      "page": 49,
+      "rows": 10,
+      "sha256": "5166961db12a576b584150c8380c60c9b5f388c10aa57b5a7d39ab4e2672b3a9",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=50",
+      "page": 50,
+      "rows": 10,
+      "sha256": "6290f8a2f9d91877fe13cbfff15d40200d7e715258fad710ed75b39be4c711f9",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=51",
+      "page": 51,
+      "rows": 10,
+      "sha256": "4624c8abb99ae2b5637db907cbb904055618334e3c662bda312385af37292c7d",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=52",
+      "page": 52,
+      "rows": 10,
+      "sha256": "7451aa13224160d1d3b500401e844e0de74911fbd7974009e623db545e391d9d",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=53",
+      "page": 53,
+      "rows": 10,
+      "sha256": "b378282d3cb07ba13251e0765fcae10fe39871bc800d5aeda4e55dbe1c11f67b",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=54",
+      "page": 54,
+      "rows": 10,
+      "sha256": "94a28e5eb0ffa8a892effcde269aed964577c2692ac983026236919b73bb08b5",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=55",
+      "page": 55,
+      "rows": 10,
+      "sha256": "0e61ac7738529724dd8f27532305c5341036237c6d3e3517e351ce6dd3093f04",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=56",
+      "page": 56,
+      "rows": 10,
+      "sha256": "1f793d2fb85761e29b89bcc1e8470ba14fecee2127489c4a0f26f74f2c211d62",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=57",
+      "page": 57,
+      "rows": 10,
+      "sha256": "c353865395f56c87447b1ec89592b07bc0799fe80b2d9924aec8b17b73ad031a",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=58",
+      "page": 58,
+      "rows": 10,
+      "sha256": "866f7f817b372ae54b232f75d07cb1cdd13c575da68cf84ccfe04cef16c2f38e",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=59",
+      "page": 59,
+      "rows": 10,
+      "sha256": "b9b1da0f27df5acbedb6a57690da3b088444abeca75109b3da4756917b22b807",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=60",
+      "page": 60,
+      "rows": 10,
+      "sha256": "8ee28b655e07d3a93da80206993b4eea83e3fcde78d4bef89693a8dda3f1c404",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=61",
+      "page": 61,
+      "rows": 10,
+      "sha256": "f87f2270a246ca890d95ae5b95da8d640d700b331368626f102797c39fbf2ef3",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=62",
+      "page": 62,
+      "rows": 10,
+      "sha256": "89bb85b4a9f5cd9dbd4ce13cbd63ebae9a40e16de1bb87cd47be4c50939886d5",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=63",
+      "page": 63,
+      "rows": 10,
+      "sha256": "854a2ad97315dc20af82b64f307acb056ea4784c599ee4b929f661f63b1eb887",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=64",
+      "page": 64,
+      "rows": 10,
+      "sha256": "79e241b5c2d1933d3b80d7a7fc0ff4ce68e39ec575f58970733ee0bd886510fa",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=65",
+      "page": 65,
+      "rows": 10,
+      "sha256": "8386d6ba2650ba46f442e511a2f42c8d524152855d290dfda30de23820f6ffce",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=66",
+      "page": 66,
+      "rows": 10,
+      "sha256": "7c0524c1f53fb783b84640af6cde2f95bb6ed3f8afaa683d5b7a6eb6688c9593",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=67",
+      "page": 67,
+      "rows": 10,
+      "sha256": "758e0edd29c9a55cb5f4ce56a2e71a930e25d409efc12bae9fa10448278d52bb",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=68",
+      "page": 68,
+      "rows": 10,
+      "sha256": "0a5f76bb43bb9d870691940889d5a71170482dc5bdff6fdc5ac4854cafd2c934",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=69",
+      "page": 69,
+      "rows": 10,
+      "sha256": "b19770355c6c73fe080fc90dab85db2909b5e6b1ad7a72e2d08d8f5daadd70d0",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=70",
+      "page": 70,
+      "rows": 10,
+      "sha256": "a8f43483b32f3922a89baba39cd4194c06bcdfc1275b6d70753d201050853552",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=71",
+      "page": 71,
+      "rows": 10,
+      "sha256": "ef40700b0e6774d1bd2815cc4c67e6a1d8a4bbe5910d5248e72a3dbab28d4c61",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=72",
+      "page": 72,
+      "rows": 10,
+      "sha256": "17e21d2f13fefe61e5abff80e092220b9fc10ea216047884c33bb26011f0fc9b",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=73",
+      "page": 73,
+      "rows": 10,
+      "sha256": "d435111d36a1d8ace4340860b0e3a676d1a7113d33540bebba8c5f6aa30bd445",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=74",
+      "page": 74,
+      "rows": 10,
+      "sha256": "b8647bb865433cf21bc4c7e829c21e879229644bf2a890ad6d9b34e82523763a",
+      "status_code": 200
+    },
+    {
+      "attempts": 2,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=75",
+      "page": 75,
+      "rows": 10,
+      "sha256": "9b92555d951877bd6dcec793dca1cba87252fa97d3f160f0c98b4d33e98e2c81",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=76",
+      "page": 76,
+      "rows": 10,
+      "sha256": "6edbab934e613da89c970e77722ad96ec5c2dbf2e1bdd3733964ae1cb2f44628",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=77",
+      "page": 77,
+      "rows": 10,
+      "sha256": "f33519214602b5b098bef850dbf7a78c45ed26ecbe858a23432a9561281a9cf1",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=78",
+      "page": 78,
+      "rows": 10,
+      "sha256": "7c923f5924720f1f55a98b4a452511be54ae75600368c4373f683d5af0e64b23",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=79",
+      "page": 79,
+      "rows": 10,
+      "sha256": "a0fae8a1fbb6ab562dfb048fc2724dfe06a368e64b5e3e35db62813be61f62e7",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=80",
+      "page": 80,
+      "rows": 10,
+      "sha256": "39e03ff2deeb8961be0eded3efba7ec1eed6e1a107104b9957ed366a7fff3d5a",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=81",
+      "page": 81,
+      "rows": 10,
+      "sha256": "9a2ed6a631b84e73c27064c94ebbdc1c5c2178454d8bf6d0815f0f2fe818cb85",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=82",
+      "page": 82,
+      "rows": 10,
+      "sha256": "391d40171a96bb38c4d76c62024fb551975433bb5256fa798c425d0651d447df",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=83",
+      "page": 83,
+      "rows": 10,
+      "sha256": "ed86b98dd2a3a42a8135741f315d2acde514625bd3fe27c6019f16b0694a5f2e",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=84",
+      "page": 84,
+      "rows": 10,
+      "sha256": "fc13c15adc8bfc1ae01863b21e5343ce32c46b988af01539790872b4e0122a5c",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=85",
+      "page": 85,
+      "rows": 10,
+      "sha256": "d064e494025a3ca58a9235e41bfd70992ae39a7b51831fe8b422aeab454227cc",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=86",
+      "page": 86,
+      "rows": 10,
+      "sha256": "3c1ec1ef5f21d00d3c6f2faff701b8cfd7f67de2e9bb88303ae90a651c5daaf9",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=87",
+      "page": 87,
+      "rows": 10,
+      "sha256": "8bfc50f1f74f28d0deb63959acf40d1ca35f26172b858b9e0e93c5ae0867bb7e",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=88",
+      "page": 88,
+      "rows": 10,
+      "sha256": "9f662cf2c0deb4d7dc7921cd9bb64100c14c1f5b14454439950fe7e715895c6c",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=89",
+      "page": 89,
+      "rows": 10,
+      "sha256": "6fcf43cf2c9a3e9c3d2da712ca885536a8ea21388d0edae3d91291b10f6ccdd1",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=90",
+      "page": 90,
+      "rows": 10,
+      "sha256": "0f1a88a35cb4f64b717f3799a37ff583319f77357b50c4060322213bf3a5a300",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=91",
+      "page": 91,
+      "rows": 10,
+      "sha256": "0bf632cfea642199cf1797bfaf915b6d08e093eff17b6727377ff85eb1c86465",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=92",
+      "page": 92,
+      "rows": 10,
+      "sha256": "0f2d82c122033fcef7e422d94a78e5ac1bb8f20529c288cb091e7ad9c84a0033",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=93",
+      "page": 93,
+      "rows": 10,
+      "sha256": "87510c520c24073ee89c9f7e970a69c265dda10fc47d5169b44643b7c5d39a22",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=94",
+      "page": 94,
+      "rows": 10,
+      "sha256": "429715b2e620bc06add064958763a8b191632e070639af3aad490db0de9121b3",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=95",
+      "page": 95,
+      "rows": 10,
+      "sha256": "640949918ebf68edb3d3d3ea6e1105106c385250d66e67c3409bf83a83305ffb",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=96",
+      "page": 96,
+      "rows": 10,
+      "sha256": "7125c99b089879b5ada2b3bede50df6aa40957479b70e7ac9c27b47d19fdb0cb",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=97",
+      "page": 97,
+      "rows": 10,
+      "sha256": "4b54363dc3674e3f853ba9d024981b373bf711b8d71f6374617920fc62f3202a",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=98",
+      "page": 98,
+      "rows": 10,
+      "sha256": "83ab29f146c466c152a7ebe309028a009fcac50597b17d2546e9028a52d14146",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=99",
+      "page": 99,
+      "rows": 10,
+      "sha256": "813a97f846f029fef2a3b64e4293c22ff565fa315fd68cf44f6701eef005cfa3",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=100",
+      "page": 100,
+      "rows": 10,
+      "sha256": "dab429a91fab9e990622b62f0f7cbcc6acfe611c4ab7c645d20b7b5e4e1beba2",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=101",
+      "page": 101,
+      "rows": 10,
+      "sha256": "934cfb2a7f93895e37d174be47195c84fe324a3ddc45a707794f09369c1b3a3e",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=102",
+      "page": 102,
+      "rows": 10,
+      "sha256": "902b2a54744ceebc2326a31678d4011640a95e38be564fce6f6be847f6b568f4",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=103",
+      "page": 103,
+      "rows": 10,
+      "sha256": "0250e14b4b6789cb90436ca1f4d6ae91083322ac609f106b5286f0b0c9030800",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=104",
+      "page": 104,
+      "rows": 10,
+      "sha256": "26b2e411f64bb8459d5a6832d901d17cdace1513ef2b592a91b1b148c80f3006",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=105",
+      "page": 105,
+      "rows": 10,
+      "sha256": "5169cc75dbae9b3c7639f716465149875502cfd8c054c056c1a3b82017ec0d8b",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=106",
+      "page": 106,
+      "rows": 10,
+      "sha256": "8bc0128313a152191e22a39bd366b95b95414a547ee780df2c4200db4b590eee",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=107",
+      "page": 107,
+      "rows": 10,
+      "sha256": "eb0309d1476e18ed2864563721ecf1eebcc390270bb4eadce9e72d714efff22d",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=108",
+      "page": 108,
+      "rows": 10,
+      "sha256": "a8c9b2d53ae44dc2d074848e00bdb39440099d16623baf9626f2e80ba6d298d4",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=109",
+      "page": 109,
+      "rows": 10,
+      "sha256": "5738bae088025afb66fed747827d8bb19c33b363df8807c125a12dd7fc6876c4",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=110",
+      "page": 110,
+      "rows": 10,
+      "sha256": "c4eeebffe41cdf3d7b428cea049c8547c248b7b5b5f0dcc2a93793207caa8b6f",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=111",
+      "page": 111,
+      "rows": 10,
+      "sha256": "0769731a40b921b625e1d7850e6a7585023a5dcf0164e2f9ba23bee008652fc6",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=112",
+      "page": 112,
+      "rows": 10,
+      "sha256": "307dd56dc1efe0e11d403122b80bcbf8b50e0e234d5cf2af5efb7467ea6e0c5e",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=113",
+      "page": 113,
+      "rows": 10,
+      "sha256": "2aeedf4a07e47b716941b0dca9c4f102e5e6db18245caa7d22ffb5dbfaea0c74",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=114",
+      "page": 114,
+      "rows": 10,
+      "sha256": "395cf7f1cd4072ad2b61a74eafcebfd1803b9180e6d6a09b4d787279aa63e8b5",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=115",
+      "page": 115,
+      "rows": 10,
+      "sha256": "7997f8510a7771aaa4585d3dba953f993944f212dbf6dbde827f9f5845dcf36f",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=116",
+      "page": 116,
+      "rows": 10,
+      "sha256": "6003d818ce2193fc260adf31fd08f19577d90ddab41f81ebdee34aba9694d545",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=117",
+      "page": 117,
+      "rows": 10,
+      "sha256": "99df117b4aaba729ef6edce1c727ae2f1eec5d27e5d98cd54590912eba1cb376",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=118",
+      "page": 118,
+      "rows": 10,
+      "sha256": "713e0a6de66797e569d9658aee10d7d67b56bef90ae7fabdc31b205f9e11ff66",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=119",
+      "page": 119,
+      "rows": 10,
+      "sha256": "df2fea5c3b35c9e09d097fae444d525067c868ef29013dba56b0be2200b98866",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=120",
+      "page": 120,
+      "rows": 10,
+      "sha256": "8f53c2f85326ed7ae7845573ac4fa1b0087f45635ac8454d27bf97ff3c9b0e60",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=121",
+      "page": 121,
+      "rows": 10,
+      "sha256": "d3c307a7030930027eddd30232258b048303fa0f8abbef7d821dbca63fdb36bc",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=122",
+      "page": 122,
+      "rows": 10,
+      "sha256": "b2624e317e0b3091233485abc4cf67680465525eb472eabcaa46e980f4b478e5",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=123",
+      "page": 123,
+      "rows": 10,
+      "sha256": "8acefc03e935904365b44c8a817d0707bce4ad054b3a8880904ecdfbb4d3755c",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=124",
+      "page": 124,
+      "rows": 10,
+      "sha256": "679f1d176d0cc0b71785f014fc71f3fac0a37754c92a636be109299212d992b1",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=125",
+      "page": 125,
+      "rows": 10,
+      "sha256": "4a00fdaa41ce366d3f225824fa2c74066f571baafaed4946e14d2fb4bfaf879a",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=126",
+      "page": 126,
+      "rows": 10,
+      "sha256": "bc757a0810ef6f74a54fa80c8ff99e0b263f7cfb2215c1c7461dddbe8a494409",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=127",
+      "page": 127,
+      "rows": 10,
+      "sha256": "ad90e4c7a7ea38d6b9eb65c09bb369497cbac3b9fad00f5187c5a60a459b475f",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=128",
+      "page": 128,
+      "rows": 10,
+      "sha256": "af7542bc61196649c7d37c57577136b9d287a9da3fc78881744fd11d022ed7f9",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=129",
+      "page": 129,
+      "rows": 10,
+      "sha256": "3c588adef1cba1a347332a94b035fbb8bcdda2075705204f7e256f2cd6853a64",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=130",
+      "page": 130,
+      "rows": 10,
+      "sha256": "573cce0bb66e091914e219fd01e5d5c1125eaf8142af619a3c471ab662def056",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=131",
+      "page": 131,
+      "rows": 10,
+      "sha256": "6ff39d4b8e4e56de8876f2bbc2be2eac16962aff001c016a4b3233e7018d8d32",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=132",
+      "page": 132,
+      "rows": 10,
+      "sha256": "387b6285c588422d23844741e78d8ddbf4cacd3e6920337cc4ad0cb4dc1b63f6",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=133",
+      "page": 133,
+      "rows": 10,
+      "sha256": "a388120660a8cf5ee84d0058b3a4a458187254af545809003218d9b7ba0d5174",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=134",
+      "page": 134,
+      "rows": 10,
+      "sha256": "e29da2cc7a24a8d68b1ba5659de0b9d176c70741fa3b7155f256ad56722555a7",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=135",
+      "page": 135,
+      "rows": 10,
+      "sha256": "7d2823358e7505fb7014f36072e1fc28582f21b7a3737061c07ed98345283131",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=136",
+      "page": 136,
+      "rows": 10,
+      "sha256": "655b6e17252e1663a00fbb7fce0593e067dc4ff1cf2680eaaece43bf0c75475c",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=137",
+      "page": 137,
+      "rows": 10,
+      "sha256": "362cfa210e81079ea89c71a5fd9f053f0d95c3f20d066b393c5f89f3f83a5645",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=138",
+      "page": 138,
+      "rows": 10,
+      "sha256": "3aac3ab66bc3fe72ad2e61ee9b73e370b9f5c6dddcae0f906b3691622d4ff95d",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=139",
+      "page": 139,
+      "rows": 10,
+      "sha256": "7b477b4fa7631efab00247232d150189c81708681a28a616dc2c3a8e6dcafb0d",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=140",
+      "page": 140,
+      "rows": 10,
+      "sha256": "36801a11468dea7454f4107e3d3edc2b0ebc59d59b8a3d866c6c267cb9ae9a3a",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=141",
+      "page": 141,
+      "rows": 10,
+      "sha256": "03408e4b3e2ad05ecc0b80a3350fbbb52f752e74ca48905dd6de2d83ebb5c35e",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=142",
+      "page": 142,
+      "rows": 10,
+      "sha256": "a5837dd1642acf34e2f8547a773dbec43f159b33d73e2054439aed9f04fa3683",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=143",
+      "page": 143,
+      "rows": 10,
+      "sha256": "f863a4220326ba83e2cd0610089736895f4e6cc9e8cc7d228b2e62429bfdc831",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=144",
+      "page": 144,
+      "rows": 10,
+      "sha256": "b44a2d94044d2df8eb8dcd104f37f32a3d55f74e185e3fec703df96d8d287673",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=145",
+      "page": 145,
+      "rows": 10,
+      "sha256": "95eef4551d0667b86de483da118b7c177face35195a9b7f2708223180bfa4087",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=146",
+      "page": 146,
+      "rows": 10,
+      "sha256": "a4c807de5b608f03dd05c66e1ee1bb26162d83a6d960208ffc1fdda31824df53",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=147",
+      "page": 147,
+      "rows": 10,
+      "sha256": "617d9ad4dc7c9dd0939ed9785ee5419d60070c589bb3e588e43345e82cc99551",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=148",
+      "page": 148,
+      "rows": 10,
+      "sha256": "b6f69b975426fd9afa5a7a54f66a48fc3cfc34ad38966809dfaf67cf777e87cd",
+      "status_code": 200
+    },
+    {
+      "attempts": 2,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=149",
+      "page": 149,
+      "rows": 10,
+      "sha256": "870b38d20ee340b1e3de269fe436d4b194d89deeb03ed67bcc77c58e4209eb22",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=150",
+      "page": 150,
+      "rows": 10,
+      "sha256": "4196994e6b3252dce9aa8af0fa049966c531531f0865fdabba504c7bdb83e4e5",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=151",
+      "page": 151,
+      "rows": 10,
+      "sha256": "dd18ce9271a80faec42af8abed7c06968633e36cc75532aaa9346b6dd0d41116",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=152",
+      "page": 152,
+      "rows": 10,
+      "sha256": "f0c07621525a2c93d6b5d263fc45894e093071c9baffe06acb10bdf03b5466b6",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=153",
+      "page": 153,
+      "rows": 10,
+      "sha256": "e28f34519bed7829ba3c5c621856e79489a520916a6bd6993a18d836e33de176",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=154",
+      "page": 154,
+      "rows": 10,
+      "sha256": "75f25d315a9a53603d62225236b56ace64ebd8e3e920a589a7da4f24f49e4766",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=155",
+      "page": 155,
+      "rows": 10,
+      "sha256": "404b757ea31ef8fd969ed9eef958e6238d0438c6b0a44b3d26a79dde3390fa6e",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=156",
+      "page": 156,
+      "rows": 10,
+      "sha256": "521b570641977736d4a46593ee9b6b5fa2b60766dcb2d556bf6667e8aff18a57",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=157",
+      "page": 157,
+      "rows": 10,
+      "sha256": "f06f6ff7387eeb342658ce3bcf145c3c0b8b13cae841bf3e4e883621fcb21a79",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=158",
+      "page": 158,
+      "rows": 10,
+      "sha256": "13caa6d8fdd714bf72a183b4d0160e8c906609d2c804e3ee6750c73aaa107717",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=159",
+      "page": 159,
+      "rows": 10,
+      "sha256": "143a8cb631cab97bbcf9cbc062ac8387a7510b2271590d4d67cde2a9881a29d8",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=160",
+      "page": 160,
+      "rows": 10,
+      "sha256": "9a55b800bb70b99e39a60a72d1fd73619eeec0f3fefd11a75d133efd4cc92c72",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=161",
+      "page": 161,
+      "rows": 10,
+      "sha256": "0e6c48966bcd7eee69349d4049867f4efb643531247ecfae27b0f9b41bfa3fb0",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=162",
+      "page": 162,
+      "rows": 10,
+      "sha256": "058add377e75a5d2dba7090719f54fb1d8988435a0844ae64a591ecc73d54e34",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=163",
+      "page": 163,
+      "rows": 10,
+      "sha256": "b9a62f02c220dbefd785cc9d85168869382b7cc39a77ef9370f3dd6e7685b376",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=164",
+      "page": 164,
+      "rows": 10,
+      "sha256": "a3200f9c6fffb193bedbcbb605256f5235ab5b84b6649e10f4982fd3020e70be",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=165",
+      "page": 165,
+      "rows": 10,
+      "sha256": "ae1631a1f954f0bf34bb51e2e61fc16f5f44d86aafe209a8cf2fda1a3c371d4e",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=166",
+      "page": 166,
+      "rows": 10,
+      "sha256": "20ea52bab2207ebf058a73003c3170a6f7acbcbc0d5a554f6b35f073d693ff4c",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=167",
+      "page": 167,
+      "rows": 10,
+      "sha256": "55907e1631701530298aea534504144df1cae816eee8065b9efc0c165b0dc934",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=168",
+      "page": 168,
+      "rows": 10,
+      "sha256": "a58bf2c1a47e990789f8cde46f53e358e401af0809d7baec54be24d5625453c8",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=169",
+      "page": 169,
+      "rows": 10,
+      "sha256": "fb2edb9a1981d3080cd0fb1eeb8897965d7994df47c6416ab39f1c858406ee50",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=170",
+      "page": 170,
+      "rows": 10,
+      "sha256": "75461590c7ec7f5161f3ad65734d751290d3c70532918c1a5f489090edbe7dca",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=171",
+      "page": 171,
+      "rows": 10,
+      "sha256": "ac803317a6064cf645d13db1464906d8b4009d0dc620a33a932ae8bbab23a5d7",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=172",
+      "page": 172,
+      "rows": 10,
+      "sha256": "563f3577f0ebd0e958ea1633648fc14c942334fcd26dcb989dd159ba0061e0ae",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=173",
+      "page": 173,
+      "rows": 10,
+      "sha256": "0dc52319ebc55fff887feceaa64fe5cbf8e24e666717022273ad4c2229735a6d",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=174",
+      "page": 174,
+      "rows": 10,
+      "sha256": "d4b7966f5c273136f57c8a423eb86fd7da9ca895658f4ebf83bfc593cf9f1946",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=175",
+      "page": 175,
+      "rows": 10,
+      "sha256": "084e0e685cbdfd4f3fae4a9ff521d99a61ccde6adb5351f97585bed321a3bcf1",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=176",
+      "page": 176,
+      "rows": 10,
+      "sha256": "26944dc902cebb1da3cfc2171fdbb027dadf7b5014805fd699803ffa5da0ae1c",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=177",
+      "page": 177,
+      "rows": 10,
+      "sha256": "2b7d6c562625042b7ec18973b3cc25ea9197066ee2ae47c8c469f0da9f17622c",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=178",
+      "page": 178,
+      "rows": 10,
+      "sha256": "eed33eb1185f5fe241e31c09d55c384c794097daa71f97ef0292c6f8c488fc58",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=179",
+      "page": 179,
+      "rows": 10,
+      "sha256": "41b129b8d59f7edd21845366f472c7970e72622c48b65dcb6fc073a705349c1c",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=180",
+      "page": 180,
+      "rows": 10,
+      "sha256": "5d8b8b6b7c7f34fb15ec383f2defa29a7e58565f57d219fcf569e62712976a6e",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=181",
+      "page": 181,
+      "rows": 10,
+      "sha256": "f6d0adc1f597329c02b043f8de15be1dc2b2b32592f45d99d99308d4c9da5874",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=182",
+      "page": 182,
+      "rows": 10,
+      "sha256": "e1578fac7e3006f740f9440d6fe4784bd31da90d673d319717b79c928fb1e241",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=183",
+      "page": 183,
+      "rows": 10,
+      "sha256": "99fdd0abafcf2728dedc1b9d5b62b38320e83f89c29edd62ea6006790b2fb816",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=184",
+      "page": 184,
+      "rows": 10,
+      "sha256": "129e7f7cc60c90754465c1f0e174a461f12d9a599f4faea6a0cdbb1f2fe224d5",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=185",
+      "page": 185,
+      "rows": 10,
+      "sha256": "29f7820c35d3c6cb162a505db8573097c3b4b9634b4ca9d14c876fcbfe150c6a",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=186",
+      "page": 186,
+      "rows": 10,
+      "sha256": "e0ad8ae8dc866a69184d022850b59dcf84611a030428fb0fd6b0de501e71409e",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=187",
+      "page": 187,
+      "rows": 10,
+      "sha256": "41a4279757157d83531c392488f9dd42d4929506a7769dcfd3d6c0e1627fdf44",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=188",
+      "page": 188,
+      "rows": 10,
+      "sha256": "03e4ed85991149b2f1e2d852bc8ab683be424bd3026973d68f5c791c58e90847",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=189",
+      "page": 189,
+      "rows": 10,
+      "sha256": "d308946624f435316c10d11f99740aea3b1db22bdfd807fb74ce90451a66aa4f",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=190",
+      "page": 190,
+      "rows": 10,
+      "sha256": "434f498b7691813a5560c7d27973e0b70dd22bd2b5ad541fdc1e14266dbab6d8",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=191",
+      "page": 191,
+      "rows": 10,
+      "sha256": "e8bf27b7edc872f7845c9274880f71aedfca66cea0d691b6464e4817fa1ca99a",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=192",
+      "page": 192,
+      "rows": 10,
+      "sha256": "3dad728dd8b6922e9eea4aa60ea62dd25530f7b149fcc7be50c367a5e7c46f65",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=193",
+      "page": 193,
+      "rows": 10,
+      "sha256": "2fa0330effcc8b3de48ab0b25c9109699a3f566debc95763f667278a56dd25b8",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=194",
+      "page": 194,
+      "rows": 10,
+      "sha256": "44a06c140ce3daf3ffd17952af3520907915129d9ac68e12c2bbe03c5e7255dd",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=195",
+      "page": 195,
+      "rows": 10,
+      "sha256": "8758609da1c925917ce8d59f04471599c380af5a924d52a9085ed38b32778cab",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=196",
+      "page": 196,
+      "rows": 10,
+      "sha256": "163426846e84b4fa5aabeb802958ba65c3865619926dd2afcbfc5ac7e4d02845",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=197",
+      "page": 197,
+      "rows": 10,
+      "sha256": "a23795728001508f9b3d59a006bbee3f09048718006fb50cda40b6a1264e5e72",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=198",
+      "page": 198,
+      "rows": 10,
+      "sha256": "40dd896536449cde8d7bc0ef43fa4c04132f8b3a5da2e0a391f84752787ac289",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=199",
+      "page": 199,
+      "rows": 10,
+      "sha256": "d03c8c7d05a41f6392f54d769dc823caa559419f066ebaf974b42604ceb7334e",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=200",
+      "page": 200,
+      "rows": 10,
+      "sha256": "ad68c75f20d76be90721b94780f8d33b5af04682fce4f2764bec6390f9f6fd4f",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=201",
+      "page": 201,
+      "rows": 10,
+      "sha256": "badca429201621bf56801e7b2f78f56789ad637aa30443851be736a38ad02d1c",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=202",
+      "page": 202,
+      "rows": 10,
+      "sha256": "92b3e59d38cc58be3f4411673b390b4faee13a4997c7cba3ab4f3bb0f8af4a66",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=203",
+      "page": 203,
+      "rows": 10,
+      "sha256": "93c1981abc95c5fafb455bef8485ea4093cf38d481c2d1279a698cdc79d9d57f",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=204",
+      "page": 204,
+      "rows": 10,
+      "sha256": "61629b7a5fb9428520727d5256dbb1f53f88464822a31beecd3c8b5128830216",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=205",
+      "page": 205,
+      "rows": 10,
+      "sha256": "de8c6b16df69a99fb4a3fff3b7ed2ca2b17982a334b834029e434b11994c547f",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=206",
+      "page": 206,
+      "rows": 10,
+      "sha256": "b8b8d760b1e1d2f4f0df69f5fe8242a992f3f14b530270a7962cde5577af7a63",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=207",
+      "page": 207,
+      "rows": 10,
+      "sha256": "95be34dbfa44837d10ecbddce6a5cb5a46d75d098684b5cfb64656ba5c5fe1c6",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=208",
+      "page": 208,
+      "rows": 10,
+      "sha256": "e85e24884254370abf29444118b1472797f4819dfd38cd17f92c0ca7f40a4ad8",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=209",
+      "page": 209,
+      "rows": 10,
+      "sha256": "0498f23564ee820293d5fa14674d2f915b5cd4afb943263fb9aaacb43bbdc4ca",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=210",
+      "page": 210,
+      "rows": 10,
+      "sha256": "b89384ce9b26477db44068080da7cebc2c38b37ca8d4b594429b797ea0759ea4",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=211",
+      "page": 211,
+      "rows": 10,
+      "sha256": "212c181dbf90926ab8ac776264777749aab886c245dbde509d724dd4e682996f",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=212",
+      "page": 212,
+      "rows": 10,
+      "sha256": "9f0f7fe0830ce788f760d4edd1f2134e3a4a6a22111c4259d6b940068052768b",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=213",
+      "page": 213,
+      "rows": 10,
+      "sha256": "63dfb9b06dd4dfb0a8d4fe730d7f8f02cd8951d526ee960520f06b75df0af386",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=214",
+      "page": 214,
+      "rows": 10,
+      "sha256": "b88af9eba42d92d31a8abd2e106aa415e817e1a234f0d281892bba7a602a6ca7",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=215",
+      "page": 215,
+      "rows": 10,
+      "sha256": "ecba4927322eef01e8c02b10cee7b7cfbb59c96b386019c41154c6c5afd62ec5",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=216",
+      "page": 216,
+      "rows": 10,
+      "sha256": "44489b67a229167e50193ae9c0d2cd6ca7caee0186a2189d079250818f2be1a1",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=217",
+      "page": 217,
+      "rows": 10,
+      "sha256": "a930846a22d035236703bd63cd1608f0017b6192e8a98d72c1b91cff6bd9fe32",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=218",
+      "page": 218,
+      "rows": 10,
+      "sha256": "62faeaee2eb48a31ff75092672d45ed2810665934737390048cc8c7ea2aedf0b",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=219",
+      "page": 219,
+      "rows": 10,
+      "sha256": "29405688aff80f744b764e0dc286189ab347f815656772ff20e53d1f1d5e8f68",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=220",
+      "page": 220,
+      "rows": 10,
+      "sha256": "d1f61dec5e96914919d12e63fba22ce4daadcc9cb7bd72280bab078f93f329de",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=221",
+      "page": 221,
+      "rows": 10,
+      "sha256": "52bdabe3ef395dc651ece842b77f71ab841bbdcb3fbdd2f9685f77feff00b103",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=222",
+      "page": 222,
+      "rows": 10,
+      "sha256": "d4374906a73d88cf6e89fb966cbbde5b03c31ac314a04be524e2ab287d875df4",
+      "status_code": 200
+    },
+    {
+      "attempts": 2,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=223",
+      "page": 223,
+      "rows": 10,
+      "sha256": "d0d70fe17a38c7a893fa577d51c9471512b18be882a7980b8371e6c703c804d4",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=224",
+      "page": 224,
+      "rows": 10,
+      "sha256": "0267321c31823558fba8dfc0e3556e0b4247ce44ae1941d3c42fea133d018122",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=225",
+      "page": 225,
+      "rows": 10,
+      "sha256": "aefd6517bdf89cba1285f16ca45191cd72f4831f99726c6987aae04fff614fc2",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=226",
+      "page": 226,
+      "rows": 10,
+      "sha256": "cebe85c16d3a13c8cb154c019d47f05b3cf0339610defcbe21f47dcb8d778731",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=227",
+      "page": 227,
+      "rows": 10,
+      "sha256": "52e43e7bdaa7610e28b20f086976fe3eb9d3b5c24643fe602a391bf86ab44c27",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=228",
+      "page": 228,
+      "rows": 10,
+      "sha256": "7f973851de19b087ee130f45a2914c7a3a50d3a04e1d55bb9e5043268c3508cc",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=229",
+      "page": 229,
+      "rows": 10,
+      "sha256": "9421bfd41b1dfde9e53d21ff79126eb9210f449daf1a2aef0104784374e41669",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=230",
+      "page": 230,
+      "rows": 10,
+      "sha256": "151f894ec3b88cf398c69519102fa5ea06d568602e48f6015668c63c6c1b83e4",
+      "status_code": 200
+    },
+    {
+      "attempts": 1,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/aquisicao/gridDetalhada?pagina=231",
+      "page": 231,
+      "rows": 6,
+      "sha256": "584f8d7ca9cf2a10626b9144b339efa33482ef85191dc6d5455a7b650e9b39ae",
+      "status_code": 200
+    }
+  ],
+  "pages_collected": 231,
+  "period_end": "2026-08-17",
+  "period_start": "2026-01-01",
+  "records_received": 2306,
+  "scope_note": "Complete for the unfiltered official Salvador acquisition API and requested date interval; this does not prove completeness across PNCP or independent sectoral systems.",
+  "source_system": "SALVADOR_TRANSPARENCIA_API",
+  "source_url": "https://transparencia.salvador.ba.gov.br/",
+  "unique_stable_records": 2306
+}
