@@ -1,0 +1,74 @@
+name: salvador-cms-export-probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-cms-export-probe.yml
+      - cities/salvador/data/snapshots/2026-08-17/cms_finance_probe_summary.json
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx
+      - name: Probe only export routes advertised by public Câmara HTML
+        run: |
+          python - <<'PY'
+          import hashlib, json, re
+          from pathlib import Path
+          import httpx
+
+          src=Path('cities/salvador/data/snapshots/2026-08-17/cms_finance_probe_summary.json')
+          payload=json.loads(src.read_text(encoding='utf-8'))
+          headers={'user-agent':'municipal-transparency-research/0.2 (+public-data-audit)','accept':'*/*','accept-language':'pt-BR,pt;q=0.9'}
+          out={}
+          with httpx.Client(headers=headers,follow_redirects=True,timeout=40) as client:
+            for app_url,item in payload.items():
+              candidates=[]
+              for url in item.get('export_candidates') or []:
+                low=url.lower()
+                if url.startswith('http') and ('sType=json'.lower() in low or 'stype=csv' in low or 'stype=json' in low):
+                  candidates.append(url)
+              # Contract app explicitly advertises CSV/JSON. Other apps are left untouched if HTML did not advertise them.
+              out[app_url]={}
+              for url in candidates:
+                try:
+                  r=client.get(url,headers={'Referer':app_url})
+                  text=r.text if 'text' in (r.headers.get('content-type') or '').lower() or 'html' in (r.headers.get('content-type') or '').lower() or 'json' in (r.headers.get('content-type') or '').lower() else ''
+                  title_match=re.search(r'<title[^>]*>(.*?)</title>',text,re.I|re.S)
+                  out[app_url][url]={
+                    'status':r.status_code,'final_url':str(r.url),'content_type':r.headers.get('content-type'),
+                    'content_disposition':r.headers.get('content-disposition'),'bytes':len(r.content),
+                    'sha256':hashlib.sha256(r.content).hexdigest(),
+                    'title':title_match.group(1).strip() if title_match else None,
+                    'text_preview':' '.join(re.sub(r'<[^>]+>',' ',text).split())[:4000],
+                  }
+                except Exception as exc:
+                  out[app_url][url]={'error':f'{type(exc).__name__}: {exc}'}
+          p=Path('cities/salvador/data/snapshots/2026-08-17/cms_export_probe.json')
+          p.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)[:60000])
+          PY
+      - name: Commit export probe
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/snapshots/2026-08-17/cms_export_probe.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(salvador): probe advertised Câmara export routes"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
