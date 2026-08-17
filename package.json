@@ -1,0 +1,21 @@
+{
+  "name": "transparencia-salvador-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Frontend público e auditável para os dados de transparência de Salvador/BA.",
+  "scripts": {
+    "predev": "node scripts/build-web-data.mjs",
+    "dev": "next dev",
+    "prebuild": "node scripts/build-web-data.mjs",
+    "build": "next build",
+    "start": "next start"
+  },
+  "engines": {
+    "node": ">=20.9"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}
