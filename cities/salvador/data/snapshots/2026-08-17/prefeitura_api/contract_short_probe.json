@@ -1,5 +1,19 @@
 {
-  "/FiscaisContratos/downloadcsv": {
+  "august_partial:/contratos/gridDetalhada?pagina=1": {
+    "error": "ReadTimeout: The read operation timed out",
+    "request_body": {
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-08-01"
+    }
+  },
+  "august_partial:/contratos/gridDetalhadaDocumento?pagina=1": {
+    "error": "ReadTimeout: The read operation timed out",
+    "request_body": {
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-08-01"
+    }
+  },
+  "fiscais_csv": {
     "bytes": 0,
     "content_disposition": null,
     "content_type": null,
@@ -8,10 +22,32 @@
     "status": 405,
     "text_preview": ""
   },
-  "/contratos/gridDetalhada?pagina=1": {
-    "error": "ReadTimeout: The read operation timed out"
+  "january:/contratos/gridDetalhada?pagina=1": {
+    "error": "ReadTimeout: The read operation timed out",
+    "request_body": {
+      "dataFim": "2026-01-31",
+      "dataInicio": "2026-01-01"
+    }
   },
-  "/contratos/gridDetalhadaDocumento?pagina=1": {
-    "error": "ReadTimeout: The read operation timed out"
+  "january:/contratos/gridDetalhadaDocumento?pagina=1": {
+    "error": "ReadTimeout: The read operation timed out",
+    "request_body": {
+      "dataFim": "2026-01-31",
+      "dataInicio": "2026-01-01"
+    }
+  },
+  "one_day:/contratos/gridDetalhada?pagina=1": {
+    "error": "ReadTimeout: The read operation timed out",
+    "request_body": {
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-08-17"
+    }
+  },
+  "one_day:/contratos/gridDetalhadaDocumento?pagina=1": {
+    "error": "ReadTimeout: The read operation timed out",
+    "request_body": {
+      "dataFim": "2026-08-17",
+      "dataInicio": "2026-08-17"
+    }
   }
 }
