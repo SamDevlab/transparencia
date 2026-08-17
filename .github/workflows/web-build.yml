@@ -4,17 +4,32 @@ on:
   push:
     branches:
       - city/salvador
+    paths:
+      - "app/**"
+      - "components/**"
+      - "lib/**"
+      - "scripts/build-web-data.mjs"
+      - "package.json"
+      - "next.config.mjs"
+      - ".github/workflows/web-build.yml"
+      - "cities/salvador/data/seed/**"
+      - "cities/salvador/data/snapshots/**"
+      - "cities/salvador/data/final/**"
   pull_request:
     paths:
       - "app/**"
       - "components/**"
       - "lib/**"
-      - "public/**"
       - "scripts/build-web-data.mjs"
       - "package.json"
       - "next.config.mjs"
       - ".github/workflows/web-build.yml"
-      - "cities/salvador/data/**"
+      - "cities/salvador/data/seed/**"
+      - "cities/salvador/data/snapshots/**"
+      - "cities/salvador/data/final/**"
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -36,3 +51,31 @@ jobs:
           test -s public/data/finance.json
           test -s public/data/camara.json
           node -e "const d=require('./public/data/meta.json'); if(d.acquisitions!==2306) process.exit(1); console.log(d)"
+      - name: Record successful build
+        if: github.event_name == 'push'
+        env:
+          TESTED_SHA: ${{ github.sha }}
+        run: |
+          mkdir -p cities/salvador/data/validation
+          node - <<'NODE'
+          const fs = require('fs');
+          const meta = require('./public/data/meta.json');
+          const payload = {
+            passed: true,
+            tested_commit: process.env.TESTED_SHA,
+            node: process.version,
+            next: require('./node_modules/next/package.json').version,
+            react: require('./node_modules/react/package.json').version,
+            acquisitions_generated: meta.acquisitions,
+            officials_generated: meta.officials,
+            as_of: meta.asOf,
+          };
+          fs.writeFileSync('cities/salvador/data/validation/web_build.json', JSON.stringify(payload, null, 2) + '\n');
+          NODE
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/validation/web_build.json
+          if ! git diff --cached --quiet; then
+            git commit -m "ci(web): record successful frontend build [skip ci]"
+            git push
+          fi
