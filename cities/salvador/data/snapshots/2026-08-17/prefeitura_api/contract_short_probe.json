@@ -1,0 +1,17 @@
+{
+  "/FiscaisContratos/downloadcsv": {
+    "bytes": 0,
+    "content_disposition": null,
+    "content_type": null,
+    "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/FiscaisContratos/downloadcsv",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": 405,
+    "text_preview": ""
+  },
+  "/contratos/gridDetalhada?pagina=1": {
+    "error": "ReadTimeout: The read operation timed out"
+  },
+  "/contratos/gridDetalhadaDocumento?pagina=1": {
+    "error": "ReadTimeout: The read operation timed out"
+  }
+}
