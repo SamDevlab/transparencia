@@ -13,7 +13,7 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -23,38 +23,73 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install httpx
-      - name: Probe a short official contract interval
+      - name: Probe exact official contract payloads
         run: |
           python - <<'PY'
-          import hashlib,json
+          import hashlib, json
           from pathlib import Path
           import httpx
+
           BASE='https://apitmptransparencia.salvador.ba.gov.br/api'
-          headers={'accept':'application/json, text/plain, */*','origin':'https://transparencia.salvador.ba.gov.br','referer':'https://transparencia.salvador.ba.gov.br/','user-agent':'municipal-transparency-research/0.2 (+public-data-audit)'}
-          payload={'dataInicio':'2026-08-01','dataFim':'2026-08-17','agrupamentos':[],'filtros':[]}
-          probes=[('/contratos/gridDetalhada?pagina=1',payload),('/contratos/gridDetalhadaDocumento?pagina=1',payload)]
+          headers={
+            'accept':'application/json, text/plain, */*',
+            'origin':'https://transparencia.salvador.ba.gov.br',
+            'referer':'https://transparencia.salvador.ba.gov.br/',
+            'user-agent':'municipal-transparency-research/0.3 (+public-data-audit)'
+          }
+          cases=[]
+          for start,end,label in [
+            ('2026-08-17','2026-08-17','one_day'),
+            ('2026-08-01','2026-08-17','august_partial'),
+            ('2026-01-01','2026-01-31','january'),
+          ]:
+            body={'dataInicio':start,'dataFim':end}
+            for path in ('/contratos/gridDetalhada?pagina=1','/contratos/gridDetalhadaDocumento?pagina=1'):
+              cases.append((f'{label}:{path}',path,body))
           out={}
-          with httpx.Client(headers=headers,follow_redirects=True,timeout=100) as client:
-            for path,body in probes:
+          with httpx.Client(headers=headers,follow_redirects=True,timeout=90) as client:
+            for label,path,body in cases:
               try:
                 r=client.post(BASE+path,json=body); raw=r.content
-                item={'status':r.status_code,'final_url':str(r.url),'bytes':len(raw),'content_type':r.headers.get('content-type'),'sha256':hashlib.sha256(raw).hexdigest()}
+                item={
+                  'request_body':body,
+                  'status':r.status_code,
+                  'final_url':str(r.url),
+                  'bytes':len(raw),
+                  'content_type':r.headers.get('content-type'),
+                  'sha256':hashlib.sha256(raw).hexdigest(),
+                }
                 try:
-                  j=r.json(); item['top_level_keys']=sorted(j.keys()) if isinstance(j,dict) else None; item['type']=type(j).__name__
+                  j=r.json(); item['type']=type(j).__name__
                   if isinstance(j,dict):
-                    item['paginacao']=j.get('paginacao'); item['totalizadores']=j.get('totalizadores')
-                    for k in ('dados','valor','items','registros'):
-                      if isinstance(j.get(k),list): item['list_key']=k; item['count']=len(j[k]); item['first_rows']=j[k][:5]; break
-                  elif isinstance(j,list): item['count']=len(j); item['first_rows']=j[:5]
-                  item['json_preview']=json.dumps(j,ensure_ascii=False)[:30000]
-                except Exception:item['text_preview']=r.text[:12000]
-                out[path]=item
-              except Exception as exc:out[path]={'error':f'{type(exc).__name__}: {exc}'}
+                    item['top_level_keys']=sorted(j.keys())
+                    for key in ('paginacao','totalizadores','total','paginas','pagina','quantidadeRegistros'):
+                      if key in j: item[key]=j[key]
+                    for key in ('dados','valor','items','registros','content'):
+                      if isinstance(j.get(key),list):
+                        item['list_key']=key; item['count']=len(j[key]); item['first_rows']=j[key][:5]; break
+                  elif isinstance(j,list):
+                    item['count']=len(j); item['first_rows']=j[:5]
+                  item['json_preview']=json.dumps(j,ensure_ascii=False)[:40000]
+                except Exception:
+                  item['text_preview']=r.text[:12000]
+                out[label]=item
+              except Exception as exc:
+                out[label]={'request_body':body,'error':f'{type(exc).__name__}: {exc}'}
             try:
               r=client.get(BASE+'/FiscaisContratos/downloadcsv'); raw=r.content
-              out['/FiscaisContratos/downloadcsv']={'status':r.status_code,'final_url':str(r.url),'bytes':len(raw),'content_type':r.headers.get('content-type'),'content_disposition':r.headers.get('content-disposition'),'sha256':hashlib.sha256(raw).hexdigest(),'text_preview':r.text[:10000] if len(raw)<100000 else r.text[:1000]}
-            except Exception as exc:out['/FiscaisContratos/downloadcsv']={'error':f'{type(exc).__name__}: {exc}'}
-          p=Path('cities/salvador/data/snapshots/2026-08-17/prefeitura_api/contract_short_probe.json');p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+              out['fiscais_csv']={
+                'status':r.status_code,'final_url':str(r.url),'bytes':len(raw),
+                'content_type':r.headers.get('content-type'),
+                'content_disposition':r.headers.get('content-disposition'),
+                'sha256':hashlib.sha256(raw).hexdigest(),
+                'text_preview':r.text[:12000],
+              }
+            except Exception as exc:
+              out['fiscais_csv']={'error':f'{type(exc).__name__}: {exc}'}
+          p=Path('cities/salvador/data/snapshots/2026-08-17/prefeitura_api/contract_short_probe.json')
+          p.parent.mkdir(parents=True,exist_ok=True)
+          p.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
           print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)[:60000])
           PY
       - name: Commit probe
@@ -63,7 +98,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add cities/salvador/data/snapshots/2026-08-17/prefeitura_api/contract_short_probe.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "data(salvador): probe short contract interval and fiscal CSV"
+          git commit -m "data(salvador): probe exact contract payloads"
           git fetch origin city/salvador
           git rebase origin/city/salvador
           git push origin HEAD:city/salvador
