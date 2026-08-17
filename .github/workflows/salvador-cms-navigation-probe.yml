@@ -1,0 +1,73 @@
+name: salvador-cms-navigation-probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-cms-navigation-probe.yml
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx beautifulsoup4
+      - name: Verify ScriptCase navigation opcodes
+        run: |
+          python - <<'PY'
+          import hashlib, json, re
+          from pathlib import Path
+          import httpx
+          from bs4 import BeautifulSoup
+
+          URL='https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/'
+          headers={'user-agent':'municipal-transparency-research/0.3 (+public-data-audit)','accept':'text/html,application/xhtml+xml','accept-language':'pt-BR,pt;q=0.9'}
+
+          def notes(text):
+            return re.findall(r'Empenho:\s*(\d{4}NE\d+)', BeautifulSoup(text,'html.parser').get_text(' ',strip=True), re.I)
+
+          def base_fields(text):
+            soup=BeautifulSoup(text,'html.parser'); form=soup.find('form',attrs={'name':'F3'}); data={}
+            if form:
+              for inp in form.find_all('input'):
+                if inp.get('name'): data[inp['name']]=inp.get('value') or ''
+            return data
+
+          out={}
+          for opcode in ['avanca','retorna','inicio','fim']:
+            with httpx.Client(headers=headers,follow_redirects=True,timeout=60) as client:
+              first=client.get(URL); fnotes=notes(first.text); fields=base_fields(first.text)
+              fields.update({'nmgp_opcao':opcode,'nmgp_parms':'SC_null','nmgp_orig_pesq':'','nmgp_url_saida':'','nmgp_outra_jan':''})
+              second=client.post(URL,data=fields); snotes=notes(second.text)
+              out[opcode]={
+                'initial_status':first.status_code,'post_status':second.status_code,
+                'script_case_init':fields.get('script_case_init'),
+                'initial_notes':fnotes[:20],'post_notes':snotes[:20],
+                'changed':bool(fnotes and snotes and fnotes[:10] != snotes[:10]),
+                'post_bytes':len(second.content),'post_sha256':hashlib.sha256(second.content).hexdigest(),
+              }
+          p=Path('cities/salvador/data/snapshots/2026-08-17/cms_navigation_probe.json')
+          p.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True))
+          PY
+      - name: Commit probe
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/snapshots/2026-08-17/cms_navigation_probe.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(salvador): verify Câmara navigation opcodes"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
