@@ -1,0 +1,383 @@
+[
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 28168,
+    "method": "POST",
+    "strings_after_call": [
+      "/",
+      "/estruturaOrganizacional/competencia/",
+      "/",
+      "/estruturaOrganizacional/",
+      "/",
+      "/catalogoServico/",
+      "/",
+      "/",
+      "indicadores",
+      "/assistenciaSocial/",
+      "/",
+      "/",
+      "indicadores",
+      "/educacao/",
+      "/",
+      "/",
+      "indicadores",
+      "/saude/",
+      "/",
+      "/",
+      "indicadores",
+      "/obrasPublicas/",
+      "/",
+      "/",
+      "indicadores",
+      "/transportes/"
+    ],
+    "context": "ESSOAL_LISTA_SERVIDORES:b,PESSOAL_CONCURSOS:y,PESSOAL_GASTOS_DIARIAS:G,PESSOAL_ADIANTAMENTOS:U,PESSOAL_TABELAS_SALARIAIS:F,RECEITA_REALIZACAO_RECEITA:S,DATAS_ATUALIZACAO:Y,PARAMETROS:Q,AVALIACAO:q}},102:function(e,a,t){e.exports=t.p+\"static/media/logo_transparencia_salvador.9fcbcbf0.png\"},115:function(e,a,t){e.exports=t.p+\"static/media/magnifying-glass.8a7f56a4.svg\"},136:function(e,a,t){\"use strict\";t.d(a,\"b\",(function(){return i}));var o=t(23),n=t(8);const i=e=>new Promise((a,t)=>{Object(o.b)().post(\"/\".concat(n.f.GESTAO,\"/estruturaOrganizacional/competencia/\").concat(e)).then(e=>a(e)).catch(e=>t(e))});a.a={obterEstruturaOrganizacional:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/estruturaOrganizacional/\")).then(a=>e(a)).catch(e=>a(e))}),obterCatalogoServico:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/catalogoServico/\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosIndicadoresAssistenciaSocial:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/assistenciaSocial/\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosIndicadoresEducacao:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/educacao/\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosIndicadoresSaude:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/saude/\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosIndicadoresObrasPublicas:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/obrasPublicas/\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosIndicadoresTransportes:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/transportes/\")).then(a=>e(a)).catch(e=>a(e))}),serv"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 29761,
+    "method": "GET",
+    "strings_after_call": [
+      "/",
+      "/",
+      "indicadores",
+      "/planejamentoestrategico/",
+      "/",
+      "/",
+      "indicadores",
+      "/participacaopopular/",
+      "/",
+      "/",
+      "indicadores",
+      "/",
+      "/arquivo",
+      "blob",
+      "application/pdf",
+      "use strict",
+      "use strict",
+      "a",
+      "referencia",
+      "nome",
+      "use strict"
+    ],
+    "context": "a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/transportes/\")).then(a=>e(a)).catch(e=>a(e))}),serviceObterInformacaoFuncionamento:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/estruturaOrganizacional/funcionamento\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosIndicadoresSustentabilidade:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/sustentabilidade/\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosPlanejamentoEstrategico:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/planejamentoestrategico/\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosParticipacaoPopular:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/participacaopopular/\")).then(a=>e(a)).catch(e=>a(e))}),obterCompetencia:i,buscarArquivoIndicador:e=>new Promise((a,t)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/\").concat(e,\"/arquivo\"),{responseType:\"blob\"}).then(e=>{const t=new Blob([e.data],{type:\"application/pdf\"}),o=URL.createObjectURL(t);window.open(o),a(e)}).catch(e=>t(e))})}},149:function(e,a,t){\"use strict\";var o=t(53),n=t(20),i=t(1);a.a={obterParametro:e=>a=>{o.a.obterParametro(e).then(t=>{let{data:{valor:o}}=t;a({type:i.A.ADICIONAR_PARAMETRO,payload:{nome:e,valor:o}})}).catch(e=>Object(n.c)(e))}}},165:function(e,a,t){\"use strict\";t.d(a,\"a\",(function(){return o}));const o={REFERENCIA:\"referencia\",NOME:\"nome\"}},166:function(e,a,t){\"use strict\";var o=t(86),n=t(1),i=t(20);const l={loading:{autentication:!1,identificadorPdfReceita:!1,identificadorPdfEntes:!1,identificadorPdfTransito:!1,identificadorCsvTransito:!1,identificadorCsvReceita:!1,identificadorCsvEntes:!1,loadingDetalharEmpenho:!"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 29932,
+    "method": "GET",
+    "strings_after_call": [
+      "/",
+      "/",
+      "indicadores",
+      "/participacaopopular/",
+      "/",
+      "/",
+      "indicadores",
+      "/",
+      "/arquivo",
+      "blob",
+      "application/pdf",
+      "use strict",
+      "use strict",
+      "a",
+      "referencia",
+      "nome",
+      "use strict"
+    ],
+    "context": "\"/\".concat(n.f.GESTAO,\"/estruturaOrganizacional/funcionamento\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosIndicadoresSustentabilidade:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/sustentabilidade/\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosPlanejamentoEstrategico:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/planejamentoestrategico/\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosParticipacaoPopular:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/participacaopopular/\")).then(a=>e(a)).catch(e=>a(e))}),obterCompetencia:i,buscarArquivoIndicador:e=>new Promise((a,t)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/\").concat(e,\"/arquivo\"),{responseType:\"blob\"}).then(e=>{const t=new Blob([e.data],{type:\"application/pdf\"}),o=URL.createObjectURL(t);window.open(o),a(e)}).catch(e=>t(e))})}},149:function(e,a,t){\"use strict\";var o=t(53),n=t(20),i=t(1);a.a={obterParametro:e=>a=>{o.a.obterParametro(e).then(t=>{let{data:{valor:o}}=t;a({type:i.A.ADICIONAR_PARAMETRO,payload:{nome:e,valor:o}})}).catch(e=>Object(n.c)(e))}}},165:function(e,a,t){\"use strict\";t.d(a,\"a\",(function(){return o}));const o={REFERENCIA:\"referencia\",NOME:\"nome\"}},166:function(e,a,t){\"use strict\";var o=t(86),n=t(1),i=t(20);const l={loading:{autentication:!1,identificadorPdfReceita:!1,identificadorPdfEntes:!1,identificadorPdfTransito:!1,identificadorCsvTransito:!1,identificadorCsvReceita:!1,identificadorCsvEntes:!1,loadingDetalharEmpenho:!1,gridDetalhadaConvenio:!1,loadingEmpenhoRelacionado:!1,waitingforbarchart:!1,waitingforpiegrid:!1,waitingCardFilter:!1,loadingCredores:!1,loadingFornecedores:!1,waitingTe"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 30110,
+    "method": "GET",
+    "strings_after_call": [
+      "/",
+      "/",
+      "indicadores",
+      "/",
+      "/arquivo",
+      "blob",
+      "application/pdf",
+      "use strict",
+      "use strict",
+      "a",
+      "referencia",
+      "nome",
+      "use strict"
+    ],
+    "context": ".f.GESTAO,\"/\").concat(\"indicadores\",\"/sustentabilidade/\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosPlanejamentoEstrategico:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/planejamentoestrategico/\")).then(a=>e(a)).catch(e=>a(e))}),obterDadosParticipacaoPopular:()=>new Promise((e,a)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/participacaopopular/\")).then(a=>e(a)).catch(e=>a(e))}),obterCompetencia:i,buscarArquivoIndicador:e=>new Promise((a,t)=>{o.a.get(\"/\".concat(n.f.GESTAO,\"/\").concat(\"indicadores\",\"/\").concat(e,\"/arquivo\"),{responseType:\"blob\"}).then(e=>{const t=new Blob([e.data],{type:\"application/pdf\"}),o=URL.createObjectURL(t);window.open(o),a(e)}).catch(e=>t(e))})}},149:function(e,a,t){\"use strict\";var o=t(53),n=t(20),i=t(1);a.a={obterParametro:e=>a=>{o.a.obterParametro(e).then(t=>{let{data:{valor:o}}=t;a({type:i.A.ADICIONAR_PARAMETRO,payload:{nome:e,valor:o}})}).catch(e=>Object(n.c)(e))}}},165:function(e,a,t){\"use strict\";t.d(a,\"a\",(function(){return o}));const o={REFERENCIA:\"referencia\",NOME:\"nome\"}},166:function(e,a,t){\"use strict\";var o=t(86),n=t(1),i=t(20);const l={loading:{autentication:!1,identificadorPdfReceita:!1,identificadorPdfEntes:!1,identificadorPdfTransito:!1,identificadorCsvTransito:!1,identificadorCsvReceita:!1,identificadorCsvEntes:!1,loadingDetalharEmpenho:!1,gridDetalhadaConvenio:!1,loadingEmpenhoRelacionado:!1,waitingforbarchart:!1,waitingforpiegrid:!1,waitingCardFilter:!1,loadingCredores:!1,loadingFornecedores:!1,waitingTelaInteira:!1,waitingIframe:!1,waitingFromDadosAbertos:!1,waitingUnidades:!1,loadingTable:!1,loadingTableResumida:!1,tableGerenciar:!1},idPopUp:null,exibirModalCovid:!1,statusPopu"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 51911,
+    "route_marker": "RealizacaoReceita",
+    "context": "void 0:a.payload};case n.X.POP_UP.ID_POPUP:return{...e,idPopUp:null===a||void 0===a?void 0:a.payload};case n.X.POP_UP.STATUS_POPUP:return{...e,statusPopup:null===a||void 0===a?void 0:a.payload};case n.X.EXIBIR_MODAL_COVID:return{...e,exibirModalCovid:null===a||void 0===a?void 0:a.payload};case n.X.EXIBIR_MODAL_AVISO:return{...e,exibirModalAviso:null===a||void 0===a?void 0:a.payload};case n.X.FILTRO_TABELA_AGRUPADA_APP:return{...e,filtroTabelaAgrupada:null===a||void 0===a?void 0:a.payload};case n.X.FILTRO_CONSULTA_DETALHADA_APP:return{...e,placeholderFormConsultaDetalhada:null===a||void 0===a?void 0:a.payload};case n.X.FILTRO_CONSULTA_DETALHADA_CRITERIO_APP:return{...e,placeholderFormConsultaDetalhadaCriterio:null===a||void 0===a?void 0:a.payload};case n.X.EXIBIR_MODAL_AGENDAR_PESQUISA:return{...e,exibirModalAgendarPesquisa:null===a||void 0===a?void 0:a.payload};default:return e}},receitaRealizacaoReceitaReducer:function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:A,a=arguments.length>1?arguments[1]:void 0;switch(a.type){case n.O.LOADING_TELA:return{...e,loadingTela:{...e.loadingTela,...a.loading}};case n.O.DATA_INICIO_RESUMIDO:return{...e,dataInicioResumido:null===a||void 0===a?void 0:a.payload};case n.O.DATA_FIM_RESUMIDO:return{...e,dataFimResumido:null===a||void 0===a?void 0:a.payload};case n.O.TOTALIZADOR_RESUMIDO:return{...e,totalizadorResumido:a.payload};case n.O.GRID_RESUMIDA:return{...e,dadosGridResumida:a.payload};case n.O.GRAFICO_PIZZA:return{...e,dadosGraficoPizza:a.payload};case n.O.GRAFICO_BARRAS:return{...e,dadosGraficoBarras:null===a||void 0===a?void 0:a.payload};case n.O.DATA_INICIO_DETALHADO:return{...e,dataInicioDetalhado:null===a||void 0===a?void 0:a.payload};case n.O.DATA_FIM_DETALHADO:return{...e,dataFimDetalhado:null===a||void 0===a?void 0:a.payload};case n.O.TODOS_AGRUPAMENTOS:return{...e,todosAgrupamentos:null===a||void 0===a?void 0:a.payload};case n.O.FILTRO_GRID_DETALHADA:return{...e,filtroGridDetalhada:null===a||void 0===a?void 0:a.payload};case n.O.TOTALIZADOR_DETALHADO:return{...e,totalizadorDetalhado:null===a||void 0===a?void 0:a.payload};default:return e}},receitaOperacaoTransitoReducer:s,gestao:F,despesaRealizacaoDespesaReducer:function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:S,a=arguments.length>1?arguments[1]:void 0;switch(a.type){case n.p.LOADING_TELA:return{...e,loadingTela:{...e.loadingTela,...a.loading}};case n.p.DATA_INICIO_RESUMIDA:return{...e,dataInicioResumido:null===a||void 0===a?void 0:a.payload};case n.p.DATA_FIM_RESUMIDA:return{...e,dataFimResumido:null===a||void 0===a?void 0:a.payload};case n.p.TOTALIZADOR_RESUMIDA:return{...e,totalizadorResumido:null===a||void 0===a?void 0:a.payloa"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 53202,
+    "route_marker": "RealizacaoDespesa",
+    "context": "ll===a||void 0===a?void 0:a.payload};case n.O.TOTALIZADOR_RESUMIDO:return{...e,totalizadorResumido:a.payload};case n.O.GRID_RESUMIDA:return{...e,dadosGridResumida:a.payload};case n.O.GRAFICO_PIZZA:return{...e,dadosGraficoPizza:a.payload};case n.O.GRAFICO_BARRAS:return{...e,dadosGraficoBarras:null===a||void 0===a?void 0:a.payload};case n.O.DATA_INICIO_DETALHADO:return{...e,dataInicioDetalhado:null===a||void 0===a?void 0:a.payload};case n.O.DATA_FIM_DETALHADO:return{...e,dataFimDetalhado:null===a||void 0===a?void 0:a.payload};case n.O.TODOS_AGRUPAMENTOS:return{...e,todosAgrupamentos:null===a||void 0===a?void 0:a.payload};case n.O.FILTRO_GRID_DETALHADA:return{...e,filtroGridDetalhada:null===a||void 0===a?void 0:a.payload};case n.O.TOTALIZADOR_DETALHADO:return{...e,totalizadorDetalhado:null===a||void 0===a?void 0:a.payload};default:return e}},receitaOperacaoTransitoReducer:s,gestao:F,despesaRealizacaoDespesaReducer:function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:S,a=arguments.length>1?arguments[1]:void 0;switch(a.type){case n.p.LOADING_TELA:return{...e,loadingTela:{...e.loadingTela,...a.loading}};case n.p.DATA_INICIO_RESUMIDA:return{...e,dataInicioResumido:null===a||void 0===a?void 0:a.payload};case n.p.DATA_FIM_RESUMIDA:return{...e,dataFimResumido:null===a||void 0===a?void 0:a.payload};case n.p.TOTALIZADOR_RESUMIDA:return{...e,totalizadorResumido:null===a||void 0===a?void 0:a.payload};case n.p.GRAFICO_BARRAS:return{...e,dadosGraficoBarras:null===a||void 0===a?void 0:a.payload};case n.p.GRID_RESUMIDA:return{...e,dadosGridResumida:null===a||void 0===a?void 0:a.payload};case n.p.DATA_INICIO_DETALHADA:return{...e,dataInicioDetalhada:null===a||void 0===a?void 0:a.payload};case n.p.DATA_FIM_DETALHADA:return{...e,dataFimDetalhada:null===a||void 0===a?void 0:a.payload};case n.p.TODOS_AGRUPAMENTOS:return{...e,todosAgrupamentos:null===a||void 0===a?void 0:a.payload};case n.p.FILTRO_GRID_DETALHADA_AGRUPADA:return{...e,filtroGridAgrupada:null===a||void 0===a?void 0:a.payload};case n.p.TOTALIZADOR_DETALHADO:return{...e,totalizadorDetalhado:null===a||void 0===a?void 0:a.payload};case n.p.CARD_DETALHAMENTO_EMPENHO:return{...e,cardDetalhamentoEmpenho:null===a||void 0===a?void 0:a.payload,gridItensEmpenho:null,gridHistoricoEmpenho:null};case n.p.LIQUIDACOES_PERIODO:return{...e,gridLiquidacoesPeriodo:null===a||void 0===a?void 0:a.payload};case n.p.FILTRO_CARD_EMPENHO:return{...e,filtroCardEmpenho:null===a||void 0===a?void 0:a.payload};case n.p.PAGAMENTOS_PERIODO:return{...e,gridPagamentosPeriodo:null===a||void 0===a?void 0:a.payload};case n.p.ITENS_EMPENHO:return{...e,gridItensEmpenho:null===a||void 0===a?void 0:a.payload};case n.p.HISTORICO_EMPENHO:return{...e,grid"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 100447,
+    "method": "POST",
+    "strings_after_call": [
+      "/concursos/gridConcursoSituacao?pagina=",
+      "&tamanho=",
+      "&considerarMovimentacaoNoPeriodo=",
+      "&ordenarPor=",
+      "/concursos/gridConcursoCargos?numeroConcurso=",
+      "&pagina=",
+      "&tamanho=",
+      "&ordenarPor=",
+      "/concursos/gridConcursoAprovadosCargo?numeroConcurso=",
+      "&espCod=",
+      "&pagina=",
+      "&tamanho=",
+      "&ordenarPor="
+    ],
+    "context": "ETIVOS:\"Concursos e Processos Seletivos\",COMPETENCIAS:\"Compet\\xeancias\"}},181:function(e,a,t){\"use strict\";t.d(a,\"a\",(function(){return S}));var o=t(23);var n=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:10,n=arguments.length>3&&void 0!==arguments[3]&&arguments[3],i=arguments.length>4?arguments[4]:void 0;const l=i?\"&ordenarPor=\".concat(i):\"\";return o.a.post(\"/concursos/gridConcursoSituacao?pagina=\".concat(a,\"&tamanho=\").concat(t,\"&considerarMovimentacaoNoPeriodo=\").concat(n).concat(l),e)},i=function(e){let a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:10,n=arguments.length>3?arguments[3]:void 0;const i=n?\"&ordenarPor=\".concat(n):\"\";return o.a.post(\"/concursos/gridConcursoCargos?numeroConcurso=\".concat(encodeURIComponent(e),\"&pagina=\").concat(a,\"&tamanho=\").concat(t).concat(i),{})},l=function(e,a){let t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:10,i=arguments.length>4?arguments[4]:void 0;const l=i?\"&ordenarPor=\".concat(i):\"\";return o.a.post(\"/concursos/gridConcursoAprovadosCargo?numeroConcurso=\".concat(encodeURIComponent(e),\"&espCod=\").concat(encodeURIComponent(a),\"&pagina=\").concat(t,\"&tamanho=\").concat(n).concat(l),{})},r=function(e){let a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:10,n=arguments.length>3?arguments[3]:void 0;const i=n?\"&ordenarPor=\".concat(n):\"\";return o.a.post(\"/concursos/gridConcursoEtapas?numeroConc"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 100813,
+    "method": "POST",
+    "strings_after_call": [
+      "/concursos/gridConcursoCargos?numeroConcurso=",
+      "&pagina=",
+      "&tamanho=",
+      "&ordenarPor=",
+      "/concursos/gridConcursoAprovadosCargo?numeroConcurso=",
+      "&espCod=",
+      "&pagina=",
+      "&tamanho=",
+      "&ordenarPor=",
+      "/concursos/gridConcursoEtapas?numeroConcurso=",
+      "&pagina=",
+      "&tamanho=",
+      "&ordenarPor="
+    ],
+    "context": "ength>3&&void 0!==arguments[3]&&arguments[3],i=arguments.length>4?arguments[4]:void 0;const l=i?\"&ordenarPor=\".concat(i):\"\";return o.a.post(\"/concursos/gridConcursoSituacao?pagina=\".concat(a,\"&tamanho=\").concat(t,\"&considerarMovimentacaoNoPeriodo=\").concat(n).concat(l),e)},i=function(e){let a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:10,n=arguments.length>3?arguments[3]:void 0;const i=n?\"&ordenarPor=\".concat(n):\"\";return o.a.post(\"/concursos/gridConcursoCargos?numeroConcurso=\".concat(encodeURIComponent(e),\"&pagina=\").concat(a,\"&tamanho=\").concat(t).concat(i),{})},l=function(e,a){let t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:10,i=arguments.length>4?arguments[4]:void 0;const l=i?\"&ordenarPor=\".concat(i):\"\";return o.a.post(\"/concursos/gridConcursoAprovadosCargo?numeroConcurso=\".concat(encodeURIComponent(e),\"&espCod=\").concat(encodeURIComponent(a),\"&pagina=\").concat(t,\"&tamanho=\").concat(n).concat(l),{})},r=function(e){let a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:10,n=arguments.length>3?arguments[3]:void 0;const i=n?\"&ordenarPor=\".concat(n):\"\";return o.a.post(\"/concursos/gridConcursoEtapas?numeroConcurso=\".concat(encodeURIComponent(e),\"&pagina=\").concat(a,\"&tamanho=\").concat(t).concat(i),{})},A=function(e,a,t){let n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:1,i=arguments.length>4&&void 0!==arguments[4]?arguments[4]:10,l=arguments.length>5?arguments[5]:void 0;const r=l?\"&ordenarPor=\".concat(l):\"\";return o.a.post(\"/concursos/gridConcursoDetalhament"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 101183,
+    "method": "POST",
+    "strings_after_call": [
+      "/concursos/gridConcursoAprovadosCargo?numeroConcurso=",
+      "&espCod=",
+      "&pagina=",
+      "&tamanho=",
+      "&ordenarPor=",
+      "/concursos/gridConcursoEtapas?numeroConcurso=",
+      "&pagina=",
+      "&tamanho=",
+      "&ordenarPor=",
+      "/concursos/gridConcursoDetalhamentoAprovados?id=",
+      "&inscricao=",
+      "&espCod=",
+      "&pagina=",
+      "&tamanho=",
+      "/concursos/distinctSituacao",
+      "/concursos/distinctTipo"
+    ],
+    "context": "2&&void 0!==arguments[2]?arguments[2]:10,n=arguments.length>3?arguments[3]:void 0;const i=n?\"&ordenarPor=\".concat(n):\"\";return o.a.post(\"/concursos/gridConcursoCargos?numeroConcurso=\".concat(encodeURIComponent(e),\"&pagina=\").concat(a,\"&tamanho=\").concat(t).concat(i),{})},l=function(e,a){let t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:10,i=arguments.length>4?arguments[4]:void 0;const l=i?\"&ordenarPor=\".concat(i):\"\";return o.a.post(\"/concursos/gridConcursoAprovadosCargo?numeroConcurso=\".concat(encodeURIComponent(e),\"&espCod=\").concat(encodeURIComponent(a),\"&pagina=\").concat(t,\"&tamanho=\").concat(n).concat(l),{})},r=function(e){let a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:10,n=arguments.length>3?arguments[3]:void 0;const i=n?\"&ordenarPor=\".concat(n):\"\";return o.a.post(\"/concursos/gridConcursoEtapas?numeroConcurso=\".concat(encodeURIComponent(e),\"&pagina=\").concat(a,\"&tamanho=\").concat(t).concat(i),{})},A=function(e,a,t){let n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:1,i=arguments.length>4&&void 0!==arguments[4]?arguments[4]:10,l=arguments.length>5?arguments[5]:void 0;const r=l?\"&ordenarPor=\".concat(l):\"\";return o.a.post(\"/concursos/gridConcursoDetalhamentoAprovados?id=\".concat(encodeURIComponent(e),\"&inscricao=\").concat(encodeURIComponent(a),\"&espCod=\").concat(encodeURIComponent(t),\"&pagina=\").concat(n,\"&tamanho=\").concat(i).concat(r),{})},d=()=>o.a.get(\"/concursos/distinctSituacao\"),s=()=>o.a.get(\"/concursos/distinctTipo\"),c=t(1),u=t(20);const E=e=>({type:c.G.LOADING_TELA,loading:{[e]:!0}}),O=e=>({type:c.G.LOADING_TE"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 101600,
+    "method": "POST",
+    "strings_after_call": [
+      "/concursos/gridConcursoEtapas?numeroConcurso=",
+      "&pagina=",
+      "&tamanho=",
+      "&ordenarPor=",
+      "/concursos/gridConcursoDetalhamentoAprovados?id=",
+      "&inscricao=",
+      "&espCod=",
+      "&pagina=",
+      "&tamanho=",
+      "/concursos/distinctSituacao",
+      "/concursos/distinctTipo",
+      "EXIBIR_MODAL_AVISO_CONCURSO"
+    ],
+    "context": "ments.length>4?arguments[4]:void 0;const l=i?\"&ordenarPor=\".concat(i):\"\";return o.a.post(\"/concursos/gridConcursoAprovadosCargo?numeroConcurso=\".concat(encodeURIComponent(e),\"&espCod=\").concat(encodeURIComponent(a),\"&pagina=\").concat(t,\"&tamanho=\").concat(n).concat(l),{})},r=function(e){let a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:10,n=arguments.length>3?arguments[3]:void 0;const i=n?\"&ordenarPor=\".concat(n):\"\";return o.a.post(\"/concursos/gridConcursoEtapas?numeroConcurso=\".concat(encodeURIComponent(e),\"&pagina=\").concat(a,\"&tamanho=\").concat(t).concat(i),{})},A=function(e,a,t){let n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:1,i=arguments.length>4&&void 0!==arguments[4]?arguments[4]:10,l=arguments.length>5?arguments[5]:void 0;const r=l?\"&ordenarPor=\".concat(l):\"\";return o.a.post(\"/concursos/gridConcursoDetalhamentoAprovados?id=\".concat(encodeURIComponent(e),\"&inscricao=\").concat(encodeURIComponent(a),\"&espCod=\").concat(encodeURIComponent(t),\"&pagina=\").concat(n,\"&tamanho=\").concat(i).concat(r),{})},d=()=>o.a.get(\"/concursos/distinctSituacao\"),s=()=>o.a.get(\"/concursos/distinctTipo\"),c=t(1),u=t(20);const E=e=>({type:c.G.LOADING_TELA,loading:{[e]:!0}}),O=e=>({type:c.G.LOADING_TELA,loading:{[e]:!1}}),S=\"EXIBIR_MODAL_AVISO_CONCURSO\",I=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO_ETAPAS,payload:e})}},D=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO_APROVADOS,payload:e})}};a.b={atualizarPaginacaoDeConcursos:function(){let e=arguments.length>0&&void 0"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 101972,
+    "method": "POST",
+    "strings_after_call": [
+      "/concursos/gridConcursoDetalhamentoAprovados?id=",
+      "&inscricao=",
+      "&espCod=",
+      "&pagina=",
+      "&tamanho=",
+      "/concursos/distinctSituacao",
+      "/concursos/distinctTipo",
+      "EXIBIR_MODAL_AVISO_CONCURSO"
+    ],
+    "context": "&void 0!==arguments[2]?arguments[2]:10,n=arguments.length>3?arguments[3]:void 0;const i=n?\"&ordenarPor=\".concat(n):\"\";return o.a.post(\"/concursos/gridConcursoEtapas?numeroConcurso=\".concat(encodeURIComponent(e),\"&pagina=\").concat(a,\"&tamanho=\").concat(t).concat(i),{})},A=function(e,a,t){let n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:1,i=arguments.length>4&&void 0!==arguments[4]?arguments[4]:10,l=arguments.length>5?arguments[5]:void 0;const r=l?\"&ordenarPor=\".concat(l):\"\";return o.a.post(\"/concursos/gridConcursoDetalhamentoAprovados?id=\".concat(encodeURIComponent(e),\"&inscricao=\").concat(encodeURIComponent(a),\"&espCod=\").concat(encodeURIComponent(t),\"&pagina=\").concat(n,\"&tamanho=\").concat(i).concat(r),{})},d=()=>o.a.get(\"/concursos/distinctSituacao\"),s=()=>o.a.get(\"/concursos/distinctTipo\"),c=t(1),u=t(20);const E=e=>({type:c.G.LOADING_TELA,loading:{[e]:!0}}),O=e=>({type:c.G.LOADING_TELA,loading:{[e]:!1}}),S=\"EXIBIR_MODAL_AVISO_CONCURSO\",I=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO_ETAPAS,payload:e})}},D=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO_APROVADOS,payload:e})}};a.b={atualizarPaginacaoDeConcursos:function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO,payload:e})}},atualizarPaginacaoCargos:function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO_CARGOS,payload:e})}},atualizarPaginacaoEtapas:I,atualizarPaginacaoAprovados:D,obterListaDeConcursos:function(){let e=arguments.length>0&&voi"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 102211,
+    "method": "GET",
+    "strings_after_call": [
+      "/concursos/distinctSituacao",
+      "/concursos/distinctTipo",
+      "EXIBIR_MODAL_AVISO_CONCURSO"
+    ],
+    "context": "ho=\").concat(t).concat(i),{})},A=function(e,a,t){let n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:1,i=arguments.length>4&&void 0!==arguments[4]?arguments[4]:10,l=arguments.length>5?arguments[5]:void 0;const r=l?\"&ordenarPor=\".concat(l):\"\";return o.a.post(\"/concursos/gridConcursoDetalhamentoAprovados?id=\".concat(encodeURIComponent(e),\"&inscricao=\").concat(encodeURIComponent(a),\"&espCod=\").concat(encodeURIComponent(t),\"&pagina=\").concat(n,\"&tamanho=\").concat(i).concat(r),{})},d=()=>o.a.get(\"/concursos/distinctSituacao\"),s=()=>o.a.get(\"/concursos/distinctTipo\"),c=t(1),u=t(20);const E=e=>({type:c.G.LOADING_TELA,loading:{[e]:!0}}),O=e=>({type:c.G.LOADING_TELA,loading:{[e]:!1}}),S=\"EXIBIR_MODAL_AVISO_CONCURSO\",I=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO_ETAPAS,payload:e})}},D=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO_APROVADOS,payload:e})}};a.b={atualizarPaginacaoDeConcursos:function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO,payload:e})}},atualizarPaginacaoCargos:function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO_CARGOS,payload:e})}},atualizarPaginacaoEtapas:I,atualizarPaginacaoAprovados:D,obterListaDeConcursos:function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:10,o=arguments.length>3&&void 0!==arguments[3]&&arguments[3],i=arguments.length>4?argume"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 102256,
+    "method": "GET",
+    "strings_after_call": [
+      "/concursos/distinctTipo",
+      "EXIBIR_MODAL_AVISO_CONCURSO",
+      "gridConcursos"
+    ],
+    "context": ",t){let n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:1,i=arguments.length>4&&void 0!==arguments[4]?arguments[4]:10,l=arguments.length>5?arguments[5]:void 0;const r=l?\"&ordenarPor=\".concat(l):\"\";return o.a.post(\"/concursos/gridConcursoDetalhamentoAprovados?id=\".concat(encodeURIComponent(e),\"&inscricao=\").concat(encodeURIComponent(a),\"&espCod=\").concat(encodeURIComponent(t),\"&pagina=\").concat(n,\"&tamanho=\").concat(i).concat(r),{})},d=()=>o.a.get(\"/concursos/distinctSituacao\"),s=()=>o.a.get(\"/concursos/distinctTipo\"),c=t(1),u=t(20);const E=e=>({type:c.G.LOADING_TELA,loading:{[e]:!0}}),O=e=>({type:c.G.LOADING_TELA,loading:{[e]:!1}}),S=\"EXIBIR_MODAL_AVISO_CONCURSO\",I=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO_ETAPAS,payload:e})}},D=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO_APROVADOS,payload:e})}};a.b={atualizarPaginacaoDeConcursos:function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO,payload:e})}},atualizarPaginacaoCargos:function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return a=>{a({type:c.G.ATUALIZAR_PAGINACAO_CARGOS,payload:e})}},atualizarPaginacaoEtapas:I,atualizarPaginacaoAprovados:D,obterListaDeConcursos:function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:10,o=arguments.length>3&&void 0!==arguments[3]&&arguments[3],i=arguments.length>4?arguments[4]:void 0;return l=>{l(E(\"gridConcursos\")"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 221520,
+    "route_marker": "ReceitaDadosAbertos",
+    "context": "\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/));r.a.render(n.a.createElement(no,null,n.a.createElement(A.a,{store:u.a},n.a.createElement(o.Suspense,null,n.a.createElement(i.a,null,n.a.createElement(d.a,{locale:c.a},n.a.createElement(ao,null)))))),document.getElementById(\"root\")),\"serviceWorker\"in navigator&&navigator.serviceWorker.ready.then(e=>{e.unregister()})},4:function(e,a,t){\"use strict\";t.d(a,\"b\",(function(){return o})),t.d(a,\"a\",(function(){return n}));const o={REALIZACAO:\"/RealizacaoReceita\",TRANSFERENCIA:\"/TransferenciaEntes\",OPERACAO_TRANSITO:\"/OperacoesTransito\",EMENDAS_PARLAMENTARES_ESTADUAIS:\"/EmendasParlamentaresEstaduais\",EMENDAS_PARLAMENTARES_MUNICIPAIS:\"/EmendasParlamentaresMunicipais\",EMENDAS_PARLAMENTARES_FEDERAIS:\"/EmendasParlamentaresFederais\",CONVENIOS_RECEITA_BRASIL:\"/ConveniosDeReceitaPlataformaMaisBrasil\",CONVENIOS_RECEITA:\"/ConveniosReceita\",DADOS_ABERTOS:\"/ReceitaDadosAbertos\",EXTRA_ORCAMENTARIAS:\"/ExtraOrcamentarias\",LANCAMENTO_CREDITOS_TRIBUTARIOS:\"/LancamentoCreditosTributarios\",REALIZACAO_DETALHADO:\"/RealizacaoReceita&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",TRANSFERENCIA_DETALHADO:\"/TransferenciaEntes&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",EXTRAORCAMENTARIA_DETALHADO:\"/ExtraOrcamentarias&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",LANCAMENTO_CREDITOS_TRIBUTARIOS_DETALHADO:\"/LancamentoCreditosTributarios&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",EXTRA_ORCAMENTARIAS_DETALHADO:\"/ExtraOrcamentarias&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\"},n={REALIZACAO:\"/RealizacaoDespesa\",NOTAS_FISCAIS:\"/NotasFiscais\",VINCULADA:\"/VinculadaTransito\",CONVENIO:\"/Convenio\",CONVENIOSEMREPASSE:\"/ConvenioSemRepasse\",DADOS_ABERTOS:\"/DespesaDadosAbertos\",OBRAS_PUBLICAS:\"/ObrasPublicas\",DESPESAS_EXTRAORCAMENTARIAS:\"/DespesasExtraorcamentaria\",REALIZACAO_DETALHADA:\"/RealizacaoDespesa&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",CONVENIO_DETALHADA:\"/Convenio&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",NOTAS_FISCAIS_DETALHADA:\"/NotasFiscais&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",OBRAS_PUBLICAS_DETALHADO:\"/ObrasPublicas&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",DESPESA_EXTRAORCAMENTARIAS_DETALHADO:\"/DespesasExtraorcamentaria&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\"};a.c={HOME:\"\",AVALIACAO:\"/Avaliacao\",FALE_CONOSCO:\"/FaleConosco\",PEDIDO_INFORMACAO:\"/PedidoInformacao\",MAPA_SITE:\"/MapaSite\",LEGISLACAO:\"/Legislacao\",ROL_INFORMACOES:\"/informacoesclassificadas\",LGPD:\"/LGPD\",ARQUIVOS:\"/Arquivos\",BUSCA:\"/Busca/:data\",GLOSSARIO:\"/Glossario\",PERGUNTAS_FREQUENTES:\"/Pergu"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 222398,
+    "route_marker": "DespesaDadosAbertos",
+    "context": "eita\",DADOS_ABERTOS:\"/ReceitaDadosAbertos\",EXTRA_ORCAMENTARIAS:\"/ExtraOrcamentarias\",LANCAMENTO_CREDITOS_TRIBUTARIOS:\"/LancamentoCreditosTributarios\",REALIZACAO_DETALHADO:\"/RealizacaoReceita&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",TRANSFERENCIA_DETALHADO:\"/TransferenciaEntes&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",EXTRAORCAMENTARIA_DETALHADO:\"/ExtraOrcamentarias&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",LANCAMENTO_CREDITOS_TRIBUTARIOS_DETALHADO:\"/LancamentoCreditosTributarios&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",EXTRA_ORCAMENTARIAS_DETALHADO:\"/ExtraOrcamentarias&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\"},n={REALIZACAO:\"/RealizacaoDespesa\",NOTAS_FISCAIS:\"/NotasFiscais\",VINCULADA:\"/VinculadaTransito\",CONVENIO:\"/Convenio\",CONVENIOSEMREPASSE:\"/ConvenioSemRepasse\",DADOS_ABERTOS:\"/DespesaDadosAbertos\",OBRAS_PUBLICAS:\"/ObrasPublicas\",DESPESAS_EXTRAORCAMENTARIAS:\"/DespesasExtraorcamentaria\",REALIZACAO_DETALHADA:\"/RealizacaoDespesa&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",CONVENIO_DETALHADA:\"/Convenio&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",NOTAS_FISCAIS_DETALHADA:\"/NotasFiscais&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",OBRAS_PUBLICAS_DETALHADO:\"/ObrasPublicas&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",DESPESA_EXTRAORCAMENTARIAS_DETALHADO:\"/DespesasExtraorcamentaria&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\"};a.c={HOME:\"\",AVALIACAO:\"/Avaliacao\",FALE_CONOSCO:\"/FaleConosco\",PEDIDO_INFORMACAO:\"/PedidoInformacao\",MAPA_SITE:\"/MapaSite\",LEGISLACAO:\"/Legislacao\",ROL_INFORMACOES:\"/informacoesclassificadas\",LGPD:\"/LGPD\",ARQUIVOS:\"/Arquivos\",BUSCA:\"/Busca/:data\",GLOSSARIO:\"/Glossario\",PERGUNTAS_FREQUENTES:\"/PerguntasFrequentes\",ACESSIBILIDADE:\"/Acessibilidade\",RECEITA:o,GESTAO:{ADM_MUNICIPAL:{ESTRUTURA_ORGANIZACIONAL:\"/AdministracaoMunicipal/EstruturaOrganizacional\",COMPETENCIAS:\"/AdministracaoMunicipal/Competencias\",CATALOGO_SERVICOS:\"/AdministracaoMunicipal/CatalogoServicos\"},PARTICIPACAO_POPULAR:\"/ParticipacaoPopular\",INFORMACOES:{SAUDE:\"/MainInformacoes/Saude\",ASSISTENCIA_SOCIAL:\"/MainInformacoes/AssistenciaSocial/\",EDUCACAO:\"/MainInformacoes/Educacao/\",OBRAS_PUBLICAS:\"/MainInformacoes/ObrasPublicas/\",TRANSPORTES:\"/MainInformacoes/Transportes/\",SUSTENTABILIDADE:\"/MainInformacoes/DefesaCivil/\"},PLANEJAMENTO_ESTRATEGICO:\"/PlanejamentoEstrategico\",PATRIMONIO_IMOVEIS:\"/Patrimonio/Imoveis\",DADOS_ABERTOS:\"/GestaoDadosAbertos\"},DESPESA:n,COMPRAS:{AQUISICOES_REALIZADAS:\"/LicitacoesDispensasInexigibilidade\",CONTRATOS_FIRMADOS:\"/ContratosVigentes\",FISCAIS_CONTRATOS:\"/FiscaisDosCo"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 224109,
+    "route_marker": "LicitacoesDispensasInexigibilidade",
+    "context": "formacoesclassificadas\",LGPD:\"/LGPD\",ARQUIVOS:\"/Arquivos\",BUSCA:\"/Busca/:data\",GLOSSARIO:\"/Glossario\",PERGUNTAS_FREQUENTES:\"/PerguntasFrequentes\",ACESSIBILIDADE:\"/Acessibilidade\",RECEITA:o,GESTAO:{ADM_MUNICIPAL:{ESTRUTURA_ORGANIZACIONAL:\"/AdministracaoMunicipal/EstruturaOrganizacional\",COMPETENCIAS:\"/AdministracaoMunicipal/Competencias\",CATALOGO_SERVICOS:\"/AdministracaoMunicipal/CatalogoServicos\"},PARTICIPACAO_POPULAR:\"/ParticipacaoPopular\",INFORMACOES:{SAUDE:\"/MainInformacoes/Saude\",ASSISTENCIA_SOCIAL:\"/MainInformacoes/AssistenciaSocial/\",EDUCACAO:\"/MainInformacoes/Educacao/\",OBRAS_PUBLICAS:\"/MainInformacoes/ObrasPublicas/\",TRANSPORTES:\"/MainInformacoes/Transportes/\",SUSTENTABILIDADE:\"/MainInformacoes/DefesaCivil/\"},PLANEJAMENTO_ESTRATEGICO:\"/PlanejamentoEstrategico\",PATRIMONIO_IMOVEIS:\"/Patrimonio/Imoveis\",DADOS_ABERTOS:\"/GestaoDadosAbertos\"},DESPESA:n,COMPRAS:{AQUISICOES_REALIZADAS:\"/LicitacoesDispensasInexigibilidade\",CONTRATOS_FIRMADOS:\"/ContratosVigentes\",FISCAIS_CONTRATOS:\"/FiscaisDosContratos\",DETALHAMENTO_RESULTADO_LICITACOES:\"/DetalhamentoResultadosDasLicitacoes\",CREDORES:\"/FornecedoresPrestadoresDeServico\",FORNECEDORES:\"/FornecedoresPenalizados\",DADOS_ABERTOS:\"/ComprasDadosAbertos\",FORNECEDORES_DETALHADO:\"/FornecedoresPenalizadosParametrizado\",AQUISICOES_DETALHADA:\"/LicitacoesDispensasInexigibilidade&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",CONTRATOS_DETALHADO:\"/ContratosVigentes&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",CREDORES_DETALHADO:\"/FornecedoresPrestadoresDeServico&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\"},PESSOAL:{REMUNERACAO_DADOS_FUNCIONAIS:\"/RemuneracaoDadosFuncionais\",LISTA_DE_SERVIDORES:\"/ListaDeServidores\",TABELA_SALARIAIS:\"/TabelasSalariais\",GASTOS_DIARIOS:\"/GastosDiarios\",ADIANTAMENTOS:\"/Adiantamentos\",TABELA_DIARIAS:\"/TabelaDiarias\",DADOS_ABERTOS:\"/PessoalDadosAbertos\",CONCURSOS:\"/ConcursosProcessosSeletivos\",ADIANTAMENTOS_DETALHADO:\"/Adiantamentos&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",REMUNERACAO_DADOS_FUNCIONAIS_DETALHADO:\"/RemuneracaoDadosFuncionais&codigoOrgao=/:codigoOrgao\",GASTOS_DIARIOS_DETALHADO:\"/GastosDiarios&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\"},CONTAS_PUBLICAS:{ORCAMENTO_MUNICIPAL:{LEI_DIRETRIZES_ORCAMENTARIAS:\"/LeiDeDiretrizesOrcamentarias\",PLANO_PLURIANUAL:\"/PlanoPlurial\",LEI_ORCAMENTARIA:\"/LeiOrcamentaria\",MANUAL_PROGRAMACAO_ORCAMENTO:\"/ManualDeProgramacaoOrcamento\",LEGISLACAO_BASICA:\"/LegislacaoBasica\"},DEMONSTRACOES_CONTABEIS:\"/DemonstracoesContabeis\",AUDIENCIA_PUBLICA:\"/AudienciasPublicas\",RELATORIOS_GESTAO:\"/RelatoriosGestao\",LEI_RESPONSABILIDADE_FISCAL:{RELATORIO_RESUMO_EXECUCAO_ORCAMENTARIA:\"/RelatorioResumoExecucaoOrcame"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 224166,
+    "route_marker": "ContratosVigentes",
+    "context": ",BUSCA:\"/Busca/:data\",GLOSSARIO:\"/Glossario\",PERGUNTAS_FREQUENTES:\"/PerguntasFrequentes\",ACESSIBILIDADE:\"/Acessibilidade\",RECEITA:o,GESTAO:{ADM_MUNICIPAL:{ESTRUTURA_ORGANIZACIONAL:\"/AdministracaoMunicipal/EstruturaOrganizacional\",COMPETENCIAS:\"/AdministracaoMunicipal/Competencias\",CATALOGO_SERVICOS:\"/AdministracaoMunicipal/CatalogoServicos\"},PARTICIPACAO_POPULAR:\"/ParticipacaoPopular\",INFORMACOES:{SAUDE:\"/MainInformacoes/Saude\",ASSISTENCIA_SOCIAL:\"/MainInformacoes/AssistenciaSocial/\",EDUCACAO:\"/MainInformacoes/Educacao/\",OBRAS_PUBLICAS:\"/MainInformacoes/ObrasPublicas/\",TRANSPORTES:\"/MainInformacoes/Transportes/\",SUSTENTABILIDADE:\"/MainInformacoes/DefesaCivil/\"},PLANEJAMENTO_ESTRATEGICO:\"/PlanejamentoEstrategico\",PATRIMONIO_IMOVEIS:\"/Patrimonio/Imoveis\",DADOS_ABERTOS:\"/GestaoDadosAbertos\"},DESPESA:n,COMPRAS:{AQUISICOES_REALIZADAS:\"/LicitacoesDispensasInexigibilidade\",CONTRATOS_FIRMADOS:\"/ContratosVigentes\",FISCAIS_CONTRATOS:\"/FiscaisDosContratos\",DETALHAMENTO_RESULTADO_LICITACOES:\"/DetalhamentoResultadosDasLicitacoes\",CREDORES:\"/FornecedoresPrestadoresDeServico\",FORNECEDORES:\"/FornecedoresPenalizados\",DADOS_ABERTOS:\"/ComprasDadosAbertos\",FORNECEDORES_DETALHADO:\"/FornecedoresPenalizadosParametrizado\",AQUISICOES_DETALHADA:\"/LicitacoesDispensasInexigibilidade&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",CONTRATOS_DETALHADO:\"/ContratosVigentes&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",CREDORES_DETALHADO:\"/FornecedoresPrestadoresDeServico&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\"},PESSOAL:{REMUNERACAO_DADOS_FUNCIONAIS:\"/RemuneracaoDadosFuncionais\",LISTA_DE_SERVIDORES:\"/ListaDeServidores\",TABELA_SALARIAIS:\"/TabelasSalariais\",GASTOS_DIARIOS:\"/GastosDiarios\",ADIANTAMENTOS:\"/Adiantamentos\",TABELA_DIARIAS:\"/TabelaDiarias\",DADOS_ABERTOS:\"/PessoalDadosAbertos\",CONCURSOS:\"/ConcursosProcessosSeletivos\",ADIANTAMENTOS_DETALHADO:\"/Adiantamentos&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",REMUNERACAO_DADOS_FUNCIONAIS_DETALHADO:\"/RemuneracaoDadosFuncionais&codigoOrgao=/:codigoOrgao\",GASTOS_DIARIOS_DETALHADO:\"/GastosDiarios&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\"},CONTAS_PUBLICAS:{ORCAMENTO_MUNICIPAL:{LEI_DIRETRIZES_ORCAMENTARIAS:\"/LeiDeDiretrizesOrcamentarias\",PLANO_PLURIANUAL:\"/PlanoPlurial\",LEI_ORCAMENTARIA:\"/LeiOrcamentaria\",MANUAL_PROGRAMACAO_ORCAMENTO:\"/ManualDeProgramacaoOrcamento\",LEGISLACAO_BASICA:\"/LegislacaoBasica\"},DEMONSTRACOES_CONTABEIS:\"/DemonstracoesContabeis\",AUDIENCIA_PUBLICA:\"/AudienciasPublicas\",RELATORIOS_GESTAO:\"/RelatoriosGestao\",LEI_RESPONSABILIDADE_FISCAL:{RELATORIO_RESUMO_EXECUCAO_ORCAMENTARIA:\"/RelatorioResumoExecucaoOrcamentaria\",RELATORIO_GESTAO_FISCAL:\"/Relato"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 224310,
+    "route_marker": "FornecedoresPrestadoresDeServico",
+    "context": "MUNICIPAL:{ESTRUTURA_ORGANIZACIONAL:\"/AdministracaoMunicipal/EstruturaOrganizacional\",COMPETENCIAS:\"/AdministracaoMunicipal/Competencias\",CATALOGO_SERVICOS:\"/AdministracaoMunicipal/CatalogoServicos\"},PARTICIPACAO_POPULAR:\"/ParticipacaoPopular\",INFORMACOES:{SAUDE:\"/MainInformacoes/Saude\",ASSISTENCIA_SOCIAL:\"/MainInformacoes/AssistenciaSocial/\",EDUCACAO:\"/MainInformacoes/Educacao/\",OBRAS_PUBLICAS:\"/MainInformacoes/ObrasPublicas/\",TRANSPORTES:\"/MainInformacoes/Transportes/\",SUSTENTABILIDADE:\"/MainInformacoes/DefesaCivil/\"},PLANEJAMENTO_ESTRATEGICO:\"/PlanejamentoEstrategico\",PATRIMONIO_IMOVEIS:\"/Patrimonio/Imoveis\",DADOS_ABERTOS:\"/GestaoDadosAbertos\"},DESPESA:n,COMPRAS:{AQUISICOES_REALIZADAS:\"/LicitacoesDispensasInexigibilidade\",CONTRATOS_FIRMADOS:\"/ContratosVigentes\",FISCAIS_CONTRATOS:\"/FiscaisDosContratos\",DETALHAMENTO_RESULTADO_LICITACOES:\"/DetalhamentoResultadosDasLicitacoes\",CREDORES:\"/FornecedoresPrestadoresDeServico\",FORNECEDORES:\"/FornecedoresPenalizados\",DADOS_ABERTOS:\"/ComprasDadosAbertos\",FORNECEDORES_DETALHADO:\"/FornecedoresPenalizadosParametrizado\",AQUISICOES_DETALHADA:\"/LicitacoesDispensasInexigibilidade&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",CONTRATOS_DETALHADO:\"/ContratosVigentes&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",CREDORES_DETALHADO:\"/FornecedoresPrestadoresDeServico&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\"},PESSOAL:{REMUNERACAO_DADOS_FUNCIONAIS:\"/RemuneracaoDadosFuncionais\",LISTA_DE_SERVIDORES:\"/ListaDeServidores\",TABELA_SALARIAIS:\"/TabelasSalariais\",GASTOS_DIARIOS:\"/GastosDiarios\",ADIANTAMENTOS:\"/Adiantamentos\",TABELA_DIARIAS:\"/TabelaDiarias\",DADOS_ABERTOS:\"/PessoalDadosAbertos\",CONCURSOS:\"/ConcursosProcessosSeletivos\",ADIANTAMENTOS_DETALHADO:\"/Adiantamentos&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\",REMUNERACAO_DADOS_FUNCIONAIS_DETALHADO:\"/RemuneracaoDadosFuncionais&codigoOrgao=/:codigoOrgao\",GASTOS_DIARIOS_DETALHADO:\"/GastosDiarios&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio\"},CONTAS_PUBLICAS:{ORCAMENTO_MUNICIPAL:{LEI_DIRETRIZES_ORCAMENTARIAS:\"/LeiDeDiretrizesOrcamentarias\",PLANO_PLURIANUAL:\"/PlanoPlurial\",LEI_ORCAMENTARIA:\"/LeiOrcamentaria\",MANUAL_PROGRAMACAO_ORCAMENTO:\"/ManualDeProgramacaoOrcamento\",LEGISLACAO_BASICA:\"/LegislacaoBasica\"},DEMONSTRACOES_CONTABEIS:\"/DemonstracoesContabeis\",AUDIENCIA_PUBLICA:\"/AudienciasPublicas\",RELATORIOS_GESTAO:\"/RelatoriosGestao\",LEI_RESPONSABILIDADE_FISCAL:{RELATORIO_RESUMO_EXECUCAO_ORCAMENTARIA:\"/RelatorioResumoExecucaoOrcamentaria\",RELATORIO_GESTAO_FISCAL:\"/RelatorioGestaoFiscal\"},PARECERES_PREVIOS_TCM:\"/PareceremPreviosTCM\",DADOS_ABERTOS:\"/ContasPublicasDadosAbertos\",PLANO_ACAO_SIAFIC_SIGED_SSA:\"/PlanoAcao\"},DADOS_ABER"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 226882,
+    "method": "GET",
+    "strings_after_call": [
+      "/parametro?nome=",
+      "arquivo?referencia=",
+      "arraybuffer",
+      "/arquivo?referencia=",
+      ".csv",
+      "use strict",
+      "h",
+      "d",
+      "a",
+      "g",
+      "e",
+      "c",
+      "b",
+      "f",
+      "/#",
+      "Receita",
+      "receita",
+      "Realiza\\xe7\\xe3o da Receita"
+    ],
+    "context": "firmButtonText:o=\"Ok\",title:l,html:r=null}=e;return n.a.fire({icon:a,title:l,text:t,html:r,confirmButtonText:o})},r=e=>{let{icon:a,title:t}=e;n.a.mixin({toast:!0,position:\"bottom\",showConfirmButton:!1,timer:3e3,timerProgressBar:!0,onOpen:e=>{e.addEventListener(\"mouseenter\",n.a.stopTimer),e.addEventListener(\"mouseleave\",n.a.resumeTimer)}}).fire({icon:a,title:t})}},53:function(e,a,t){\"use strict\";t.d(a,\"b\",(function(){return A}));var o=t(23),n=t(99);const i=Object(o.b)(),l=e=>new Promise((a,t)=>{i.get(\"/parametro?nome=\".concat(e)).then(e=>a(e)).catch(e=>t(e))}),r=e=>new Promise((a,t)=>{i.get(\"arquivo?referencia=\".concat(e),{responseType:\"arraybuffer\"}).then(e=>{a(e)}).catch(e=>t(e))}),A=e=>{var a,t;return\"\".concat(null===(a=window)||void 0===a||null===(t=a.env)||void 0===t?void 0:t.URL_API,\"/arquivo?referencia=\").concat(e)};a.a={baixarArquivoPorParametro:function(e,a){let t=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];l(e).then(e=>{let{data:o}=e;if((null===o||void 0===o?void 0:o.flagArquivo)&&(null===o||void 0===o?void 0:o.valor)){const{valor:e,descricao:i}=o;t?r(e).then(Object(n.d)(i)):e.endsWith(\".csv\")?r(e).then(Object(n.a)(e)):r(e).then(Object(n.c)(a))}})},obterParametro:l}},55:function(e,a,t){\"use strict\";t.d(a,\"h\",(function(){return i})),t.d(a,\"d\",(function(){return l})),t.d(a,\"a\",(function(){return r})),t.d(a,\"g\",(function(){return A})),t.d(a,\"e\",(function(){return d})),t.d(a,\"c\",(function(){return s})),t.d(a,\"b\",(function(){return c})),t.d(a,\"f\",(function(){return u}));var o=t(4);t(257);const n=e=>\"/#\".concat(e||\"\"),i={item:\"Receita\",id:\"receita\",lista:[{menu:\"Realiza\\xe7\\xe3o da Receita\",url:o.c.RECEITA.REALIZACAO,urlResponsive:n(o.c.RECEITA.REALIZACA"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940.js",
+    "offset": 226974,
+    "method": "GET",
+    "strings_after_call": [
+      "arquivo?referencia=",
+      "arraybuffer",
+      "/arquivo?referencia=",
+      ".csv",
+      "use strict",
+      "h",
+      "d",
+      "a",
+      "g",
+      "e",
+      "c",
+      "b",
+      "f",
+      "/#",
+      "Receita",
+      "receita",
+      "Realiza\\xe7\\xe3o da Receita",
+      "Opera\\xe7\\xf5es de Tr\\xe2nsito - Lei n\\xba 9.503/97, Art 320"
+    ],
+    "context": "onfirmButtonText:o})},r=e=>{let{icon:a,title:t}=e;n.a.mixin({toast:!0,position:\"bottom\",showConfirmButton:!1,timer:3e3,timerProgressBar:!0,onOpen:e=>{e.addEventListener(\"mouseenter\",n.a.stopTimer),e.addEventListener(\"mouseleave\",n.a.resumeTimer)}}).fire({icon:a,title:t})}},53:function(e,a,t){\"use strict\";t.d(a,\"b\",(function(){return A}));var o=t(23),n=t(99);const i=Object(o.b)(),l=e=>new Promise((a,t)=>{i.get(\"/parametro?nome=\".concat(e)).then(e=>a(e)).catch(e=>t(e))}),r=e=>new Promise((a,t)=>{i.get(\"arquivo?referencia=\".concat(e),{responseType:\"arraybuffer\"}).then(e=>{a(e)}).catch(e=>t(e))}),A=e=>{var a,t;return\"\".concat(null===(a=window)||void 0===a||null===(t=a.env)||void 0===t?void 0:t.URL_API,\"/arquivo?referencia=\").concat(e)};a.a={baixarArquivoPorParametro:function(e,a){let t=!(arguments.length>2&&void 0!==arguments[2])||arguments[2];l(e).then(e=>{let{data:o}=e;if((null===o||void 0===o?void 0:o.flagArquivo)&&(null===o||void 0===o?void 0:o.valor)){const{valor:e,descricao:i}=o;t?r(e).then(Object(n.d)(i)):e.endsWith(\".csv\")?r(e).then(Object(n.a)(e)):r(e).then(Object(n.c)(a))}})},obterParametro:l}},55:function(e,a,t){\"use strict\";t.d(a,\"h\",(function(){return i})),t.d(a,\"d\",(function(){return l})),t.d(a,\"a\",(function(){return r})),t.d(a,\"g\",(function(){return A})),t.d(a,\"e\",(function(){return d})),t.d(a,\"c\",(function(){return s})),t.d(a,\"b\",(function(){return c})),t.d(a,\"f\",(function(){return u}));var o=t(4);t(257);const n=e=>\"/#\".concat(e||\"\"),i={item:\"Receita\",id:\"receita\",lista:[{menu:\"Realiza\\xe7\\xe3o da Receita\",url:o.c.RECEITA.REALIZACAO,urlResponsive:n(o.c.RECEITA.REALIZACAO)},{menu:\"Opera\\xe7\\xf5es de Tr\\xe2nsito - Lei n\\xba 9.503/97, Art 320\",url:o.c.RECEITA.OPE"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/a4ddab40028859ba283d987cf7ad801cc0271bfd1b697d6c0201e20fa36da753.js",
+    "offset": 82159,
+    "method": "GET",
+    "strings_after_call": [
+      "string",
+      "number",
+      "number",
+      "px",
+      "background",
+      "inherit",
+      "set",
+      "get",
+      "normal",
+      "height",
+      "width",
+      "display",
+      "absolute",
+      "border-box",
+      "boxSizing",
+      "offset",
+      "border",
+      "px",
+      "px"
+    ],
+    "context": ",fontWeight:!0,gridArea:!0,gridColumn:!0,gridColumnEnd:!0,gridColumnStart:!0,gridRow:!0,gridRowEnd:!0,gridRowStart:!0,lineHeight:!0,opacity:!0,order:!0,orphans:!0,scale:!0,widows:!0,zIndex:!0,zoom:!0,fillOpacity:!0,floodOpacity:!0,stopOpacity:!0,strokeMiterlimit:!0,strokeOpacity:!0},cssProps:{},style:function(e,t,n,r){if(e&&3!==e.nodeType&&8!==e.nodeType&&e.style){var i,o,a,s=re(t),c=Ye.test(t),l=e.style;if(c||(t=tt(s)),a=S.cssHooks[t]||S.cssHooks[s],void 0===n)return a&&\"get\"in a&&void 0!==(i=a.get(e,!1,r))?i:l[t];\"string\"===(o=typeof n)&&(i=de.exec(n))&&i[1]&&(n=be(e,t,i),o=\"number\"),null!=n&&n===n&&(\"number\"!==o||c||(n+=i&&i[3]||(S.cssNumber[s]?\"\":\"px\")),g.clearCloneStyle||\"\"!==n||0!==t.indexOf(\"background\")||(l[t]=\"inherit\"),a&&\"set\"in a&&void 0===(n=a.set(e,n,r))||(c?l.setProperty(t,n):l[t]=n))}},css:function(e,t,n,r){var i,o,a,s=re(t);return Ye.test(t)||(t=tt(s)),(a=S.cssHooks[t]||S.cssHooks[s])&&\"get\"in a&&(i=a.get(e,!0,n)),void 0===i&&(i=Xe(e,t,r)),\"normal\"===i&&t in it&&(i=it[t]),\"\"===n||n?(o=parseFloat(i),!0===n||isFinite(o)?o||0:i):i}}),S.each([\"height\",\"width\"],(function(e,t){S.cssHooks[t]={get:function(e,n,r){if(n)return!nt.test(S.css(e,\"display\"))||e.getClientRects().length&&e.getBoundingClientRect().width?st(e,t,r):Ge(e,rt,(function(){return st(e,t,r)}))},set:function(e,n,r){var i,o=$e(e),a=!g.scrollboxSize()&&\"absolute\"===o.position,s=(a||r)&&\"border-box\"===S.css(e,\"boxSizing\",!1,o),c=r?at(e,t,r,s,o):0;return s&&a&&(c-=Math.ceil(e[\"offset\"+t[0].toUpperCase()+t.slice(1)]-parseFloat(o[t])-at(e,t,\"border\",!1,o)-.5)),c&&(i=de.exec(n))&&\"px\"!==(i[3]||\"px\")&&(e.style[t]=n,n=S.css(e,t)),ot(0,n,c)}}})),S.cssHooks.marginLeft=Qe(g.reliableMarginLeft,(function(e,t){i"
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/a4ddab40028859ba283d987cf7ad801cc0271bfd1b697d6c0201e20fa36da753.js",
+    "offset": 1019086,
+    "method": "GET",
+    "strings_after_call": [
+      "gotpointercapture",
+      "Webkit",
+      "ms",
+      "Moz",
+      "O"
+    ],
+    "context": "y{R(i,e,t,n,r)}finally{(I=o)||z()}}function Xt(e,t,n,r){Vt(Wt,Qt.bind(null,e,t,n,r))}function Qt(e,t,n,r){if(Yt)if(0<yt.length&&-1<_t.indexOf(e))e=jt(null,e,t,n,r),yt.push(e);else{var i=Jt(e,t,n,r);if(null===i)Nt(e,r);else if(-1<_t.indexOf(e))e=jt(i,e,t,n,r),yt.push(e);else if(!function(e,t,n,r,i){switch(t){case\"focus\":return wt=At(wt,e,t,n,r,i),!0;case\"dragenter\":return xt=At(xt,e,t,n,r,i),!0;case\"mouseover\":return Ot=At(Ot,e,t,n,r,i),!0;case\"pointerover\":var o=i.pointerId;return kt.set(o,At(kt.get(o)||null,e,t,n,r,i)),!0;case\"gotpointercapture\":return o=i.pointerId,St.set(o,At(St.get(o)||null,e,t,n,r,i)),!0}return!1}(i,e,t,n,r)){Nt(e,r),e=dt(e,r,null,t);try{q(pt,e)}finally{ft(e)}}}}function Jt(e,t,n,r){if(null!==(n=En(n=ct(r)))){var i=Ze(n);if(null===i)n=null;else{var o=i.tag;if(13===o){if(null!==(n=et(i)))return n;n=null}else if(3===o){if(i.stateNode.hydrate)return 3===i.tag?i.stateNode.containerInfo:null;n=null}else i!==n&&(n=null)}}e=dt(e,r,n,t);try{q(pt,e)}finally{ft(e)}return null}var Zt={animationIterationCount:!0,borderImageOutset:!0,borderImageSlice:!0,borderImageWidth:!0,boxFlex:!0,boxFlexGroup:!0,boxOrdinalGroup:!0,columnCount:!0,columns:!0,flex:!0,flexGrow:!0,flexPositive:!0,flexShrink:!0,flexNegative:!0,flexOrder:!0,gridArea:!0,gridRow:!0,gridRowEnd:!0,gridRowSpan:!0,gridRowStart:!0,gridColumn:!0,gridColumnEnd:!0,gridColumnSpan:!0,gridColumnStart:!0,fontWeight:!0,lineClamp:!0,lineHeight:!0,opacity:!0,order:!0,orphans:!0,tabSize:!0,widows:!0,zIndex:!0,zoom:!0,fillOpacity:!0,floodOpacity:!0,stopOpacity:!0,strokeDasharray:!0,strokeDashoffset:!0,strokeMiterlimit:!0,strokeOpacity:!0,strokeWidth:!0},en=[\"Webkit\",\"ms\",\"Moz\",\"O\"];function tn(e,t,n){return null==t||\""
+  },
+  {
+    "asset": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/snapshots/webapp_asset/a4ddab40028859ba283d987cf7ad801cc0271bfd1b697d6c0201e20fa36da753.js",
+    "offset": 1019174,
+    "method": "GET",
+    "strings_after_call": [
+      "Webkit",
+      "ms",
+      "Moz",
+      "O",
+      "boolean",
+      "number"
+    ],
+    "context": "ction Qt(e,t,n,r){if(Yt)if(0<yt.length&&-1<_t.indexOf(e))e=jt(null,e,t,n,r),yt.push(e);else{var i=Jt(e,t,n,r);if(null===i)Nt(e,r);else if(-1<_t.indexOf(e))e=jt(i,e,t,n,r),yt.push(e);else if(!function(e,t,n,r,i){switch(t){case\"focus\":return wt=At(wt,e,t,n,r,i),!0;case\"dragenter\":return xt=At(xt,e,t,n,r,i),!0;case\"mouseover\":return Ot=At(Ot,e,t,n,r,i),!0;case\"pointerover\":var o=i.pointerId;return kt.set(o,At(kt.get(o)||null,e,t,n,r,i)),!0;case\"gotpointercapture\":return o=i.pointerId,St.set(o,At(St.get(o)||null,e,t,n,r,i)),!0}return!1}(i,e,t,n,r)){Nt(e,r),e=dt(e,r,null,t);try{q(pt,e)}finally{ft(e)}}}}function Jt(e,t,n,r){if(null!==(n=En(n=ct(r)))){var i=Ze(n);if(null===i)n=null;else{var o=i.tag;if(13===o){if(null!==(n=et(i)))return n;n=null}else if(3===o){if(i.stateNode.hydrate)return 3===i.tag?i.stateNode.containerInfo:null;n=null}else i!==n&&(n=null)}}e=dt(e,r,n,t);try{q(pt,e)}finally{ft(e)}return null}var Zt={animationIterationCount:!0,borderImageOutset:!0,borderImageSlice:!0,borderImageWidth:!0,boxFlex:!0,boxFlexGroup:!0,boxOrdinalGroup:!0,columnCount:!0,columns:!0,flex:!0,flexGrow:!0,flexPositive:!0,flexShrink:!0,flexNegative:!0,flexOrder:!0,gridArea:!0,gridRow:!0,gridRowEnd:!0,gridRowSpan:!0,gridRowStart:!0,gridColumn:!0,gridColumnEnd:!0,gridColumnSpan:!0,gridColumnStart:!0,fontWeight:!0,lineClamp:!0,lineHeight:!0,opacity:!0,order:!0,orphans:!0,tabSize:!0,widows:!0,zIndex:!0,zoom:!0,fillOpacity:!0,floodOpacity:!0,stopOpacity:!0,strokeDasharray:!0,strokeDashoffset:!0,strokeMiterlimit:!0,strokeOpacity:!0,strokeWidth:!0},en=[\"Webkit\",\"ms\",\"Moz\",\"O\"];function tn(e,t,n){return null==t||\"boolean\"===typeof t||\"\"===t?\"\":n||\"number\"!==typeof t||0===t||Zt.hasOwnProperty(e)&&Zt[e"
+  }
+]
