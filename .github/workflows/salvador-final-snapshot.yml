@@ -1,0 +1,87 @@
+name: salvador-final-snapshot
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-final-snapshot.yml
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e '.[dev]'
+      - name: Validate and collect final source-scoped snapshots
+        run: |
+          pytest -q
+          python - <<'PY'
+          import json
+          from datetime import date, datetime, timezone
+          from pathlib import Path
+          from transparencia.config import load_city
+          from transparencia.collectors.cms_commitments import collect as collect_cms
+          from transparencia.collectors.salvador_contracts import collect as collect_contracts
+
+          root=Path('.').resolve()
+          base=Path('cities/salvador/data/final/2026-08-17')
+          base.mkdir(parents=True,exist_ok=True)
+          city=load_city(root,'salvador').config
+
+          cms=collect_cms(root,base/'cms_commitments')
+          contract_path=collect_contracts(
+              city,date(2026,1,1),date(2026,8,17),base/'prefeitura_contracts',
+              timeout_seconds=12,max_windows=8,max_pages_per_window=500,
+          )
+          contract_cov=json.loads((base/'prefeitura_contracts/coverage.json').read_text(encoding='utf-8'))
+          acq=json.loads(Path('cities/salvador/data/snapshots/2026-08-17/prefeitura_acquisitions/summary.json').read_text(encoding='utf-8'))
+          validation=json.loads(Path('cities/salvador/data/validation/final_validation.json').read_text(encoding='utf-8'))
+          status={
+            'generated_at':datetime.now(timezone.utc).isoformat(),
+            'technical_validation_passed':bool(validation.get('passed')),
+            'acquisitions':{
+              'complete_for_filter':bool(acq.get('complete_for_filter')),
+              'records':acq.get('unique_stable_records'),
+              'pages':acq.get('pages_collected'),
+              'api_reported_records':acq.get('api_reported_total_records'),
+            },
+            'cms_commitments':{
+              'complete_for_default_public_view':bool(cms['coverage'].get('complete')),
+              'records':cms['coverage'].get('records_parsed'),
+              'pages':cms['coverage'].get('pages_with_records'),
+              'source_exhausted':cms['coverage'].get('source_exhausted'),
+              'parser_complete_for_visible_records':cms['coverage'].get('parser_complete_for_visible_records'),
+              'parse_gap_count':len(cms['coverage'].get('parse_gaps') or []),
+            },
+            'prefeitura_contract_grid':{
+              'complete_for_filter':bool(contract_cov.get('complete_for_filter')),
+              'records':contract_cov.get('records_unique'),
+              'request_count':contract_cov.get('request_count'),
+              'coverage_note':contract_cov.get('coverage_note'),
+            },
+            'status_note':'Technical project completion is independent of source completeness. Each dataset is source/filter scoped.',
+          }
+          (base/'FINAL_STATUS.json').write_text(json.dumps(status,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print(json.dumps(status,ensure_ascii=False,indent=2,sort_keys=True))
+          PY
+      - name: Commit final snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/final/2026-08-17
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(salvador): record final source coverage snapshot"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
