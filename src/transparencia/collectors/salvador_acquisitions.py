@@ -13,6 +13,7 @@ from ..provenance import persist_snapshot
 from .salvador_portal import BASE_URL, PUBLIC_PORTAL, SOURCE_SYSTEM, parse_brl
 
 ENDPOINT = "/aquisicao/gridDetalhada"
+RETRYABLE_STATUS = {429, 500, 502, 503, 504}
 
 
 def _headers() -> dict[str, str]:
@@ -92,7 +93,41 @@ def normalize(row: dict, city: CityConfig, *, observed_at: str, snapshot_sha256:
     }
 
 
-def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, sleep_seconds: float = 0.04) -> dict:
+def _fetch_page(
+    client: httpx.Client,
+    *,
+    url: str,
+    payload: dict,
+    page: int,
+    max_attempts: int = 7,
+) -> tuple[httpx.Response, int]:
+    last_response: httpx.Response | None = None
+    for attempt in range(1, max_attempts + 1):
+        try:
+            response = client.post(url, json=payload)
+            last_response = response
+        except (httpx.TimeoutException, httpx.NetworkError):
+            if attempt == max_attempts:
+                raise
+            time.sleep(min(0.75 * (2 ** (attempt - 1)), 12.0))
+            continue
+        if response.status_code not in RETRYABLE_STATUS:
+            response.raise_for_status()
+            return response, attempt
+        if attempt == max_attempts:
+            response.raise_for_status()
+        retry_after = response.headers.get("retry-after")
+        try:
+            delay = float(retry_after) if retry_after else min(0.75 * (2 ** (attempt - 1)), 12.0)
+        except ValueError:
+            delay = min(0.75 * (2 ** (attempt - 1)), 12.0)
+        time.sleep(delay)
+    assert last_response is not None
+    last_response.raise_for_status()
+    return last_response, max_attempts
+
+
+def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, sleep_seconds: float = 0.08) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
     raw_dir = out_dir / "raw"
     payload = {
@@ -111,8 +146,7 @@ def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, sleep_se
         page = 1
         while True:
             url = f"{BASE_URL}{ENDPOINT}?pagina={page}"
-            response = client.post(url, json=payload)
-            response.raise_for_status()
+            response, attempts = _fetch_page(client, url=url, payload=payload, page=page)
             meta = persist_snapshot(
                 out_dir=raw_dir,
                 source_id=f"salvador_aquisicoes_p{page:04d}",
@@ -128,6 +162,14 @@ def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, sleep_se
                 expected_total = int(pagination.get("total") or 0)
                 expected_pages = int(pagination.get("paginas") or 0)
                 official_total_value = (data.get("totalizadores") or {}).get("Valor")
+            else:
+                current_total = int(pagination.get("total") or 0)
+                current_pages = int(pagination.get("paginas") or 0)
+                if current_total != expected_total or current_pages != expected_pages:
+                    raise RuntimeError(
+                        f"pagination changed during collection on page {page}: "
+                        f"expected total/pages {expected_total}/{expected_pages}, got {current_total}/{current_pages}"
+                    )
             page_rows = data.get("dados") or []
             rows.extend(normalize(row, city, observed_at=meta.collected_at, snapshot_sha256=meta.sha256) for row in page_rows)
             page_meta.append({
@@ -136,6 +178,7 @@ def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, sleep_se
                 "sha256": meta.sha256,
                 "status_code": meta.status_code,
                 "final_url": meta.final_url,
+                "attempts": attempts,
             })
             if expected_pages is None or page >= expected_pages:
                 break
