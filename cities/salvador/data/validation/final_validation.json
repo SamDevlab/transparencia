@@ -1,0 +1,20 @@
+{
+  "cli": {
+    "exit_code": 0,
+    "output_tail": "usage: transparencia collect-salvador [-h] --start START --end END [--out OUT]\n                                      [--skip-pncp] [--skip-cms-auxiliary]\n\noptions:\n  -h, --help            show this help message and exit\n  --start START\n  --end END\n  --out OUT\n  --skip-pncp           não consulta o PNCP nesta execução\n  --skip-cms-auxiliary  não coleta viagens/documentos/certames auxiliares da\n                        CMS\n"
+  },
+  "cms_live_parser": {
+    "exit_code": 0,
+    "output_tail": "{\"extra\": [], \"missing\": [], \"parsed\": 10, \"status\": 200, \"visible\": 10}\n"
+  },
+  "compileall": {
+    "exit_code": 0,
+    "output_tail": ""
+  },
+  "generated_at": "2026-08-17T22:49:06.287290+00:00",
+  "passed": true,
+  "pytest": {
+    "exit_code": 0,
+    "output_tail": ".................................                                        [100%]\n33 passed in 0.28s\n"
+  }
+}
