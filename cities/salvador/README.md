@@ -6,26 +6,35 @@ O projeto não é um detector de corrupção. Ele coleta, preserva, normaliza, r
 
 ## Estado do projeto
 
-O **pipeline técnico está completo**: cada fonte configurada é tentada, cada saída tem proveniência e cada conjunto de dados recebe um status explícito em `project_coverage.json`. A palavra “completo” nunca é usada como sinônimo de “todos os fatos existentes na cidade”. Ela é sempre limitada à fonte, filtro e período que conseguimos provar.
+**Status técnico: COMPLETO.**
 
-Cobertura consolidada em 17/08/2026:
+O pipeline de produção, os coletores, o manifesto de cobertura, a reconciliação, o banco reconstruível, os testes e a documentação estão implementados. “Completo” nunca significa “todos os fatos existentes na cidade”: cada conjunto de dados tem cobertura limitada à fonte, filtro e período que conseguimos provar.
+
+Referências de estado:
+
+```text
+cities/salvador/docs/PROJECT_STATUS.md
+cities/salvador/data/final/2026-08-17/FINAL_STATUS.json
+cities/salvador/data/validation/final_validation.json
+```
+
+A validação final registrada em 17/08/2026 passou com **33 testes**, `compileall`, CLI de produção e teste ao vivo da CMS com **10 empenhos visíveis / 10 normalizados / 0 faltantes / 0 extras**.
+
+Cobertura consolidada:
 
 | Conjunto | Fonte | Estado comprovado |
 |---|---|---|
 | Receita e execução da despesa do Executivo | Portal da Transparência de Salvador | Coleta oficial do período, com respostas brutas e SHA-256 |
 | Aquisições/licitações 01/01–17/08/2026 | API oficial do Portal | **2.306/2.306 registros; 231/231 páginas; completo para o filtro** |
 | Despesa por credor | API oficial do Portal | 5.554 agregados de credor; não são pagamentos individualizados |
-| Contratos por unidade gestora | API oficial do Portal | Agregados de execução coletados; grade individual depende da disponibilidade da rota detalhada |
-| PNCP | Governo Federal | Fonte de reconciliação; cobertura é registrada como completa/parcial conforme o próprio run |
+| Execução contratual agregada | API oficial do Portal | Coletada por unidade gestora |
+| Grade municipal de contratos individualizados | API oficial do Portal | Coletor adaptativo implementado; timeout/falha de intervalo permanece `partial`, nunca zero inventado |
+| Contratações e contratos PNCP | PNCP | Fonte complementar; cobertura limitada às consultas/CNPJs comprovados em cada run |
 | Câmara – composição | CMS | Cadastro oficial preservado; exercício em data específica exige atos de licença/posse quando aplicável |
-| Câmara – empenhos | Sistema financeiro público da CMS | Registros visíveis normalizados; paginação só será promovida a completa após prova técnica |
+| Câmara – empenhos | Sistema financeiro público da CMS | Paginação ScriptCase real implementada; `complete` exige exaustão da fonte + 100% dos identificadores visíveis normalizados |
 | Câmara – viagens/documentos/certames | CMS | Coletados separadamente, cada um com cobertura própria |
 
-A matriz machine-readable do run de produção fica em:
-
-```text
-cities/salvador/data/snapshots/<DATA>/production/project_coverage.json
-```
+Um snapshot antigo de empenhos da CMS foi explicitamente invalidado após a descoberta de subcaptura do parser; o arquivo normalizado antigo foi removido e os snapshots brutos foram mantidos como evidência. O projeto prefere retirar uma reivindicação de completude a preservar um resultado enganoso.
 
 ## Fontes principais
 
@@ -36,7 +45,7 @@ cities/salvador/data/snapshots/<DATA>/production/project_coverage.json
 - PNCP: https://pncp.gov.br/
 - Transparência Brasil: https://www.transparencia.org.br/
 
-O catálogo completo e auditável está em `sources.csv`. Seeds mantêm `source_url` e data de observação. Evidências documentais relevantes ficam em `data/evidence/` com SHA-256 no manifesto.
+O catálogo auditável está em `sources.csv`. Seeds mantêm `source_url` e data de observação. Evidências documentais relevantes ficam em `data/evidence/` com SHA-256 no manifesto.
 
 ## Pipeline de produção
 
@@ -50,22 +59,25 @@ transparencia --repo-root . --city salvador collect-salvador \
   --out cities/salvador/data/snapshots/2026-08-17/production
 ```
 
-O comando produz, entre outros:
+O comando produz, conforme a disponibilidade de cada fonte:
 
 ```text
 project_report.json
 project_coverage.json
 prefeitura_finance/
 prefeitura_acquisitions/
+prefeitura_contracts/
 cms_commitments/
 cms_auxiliary/
 pncp_executivo/
 pncp_legislativo/
+pncp_contracts_executivo/
+pncp_contracts_legislativo/
 reconciliation/
-salvador.db   # derivado; pode ser reconstruído e não precisa ser versionado
+salvador.db   # derivado; reconstruível e não precisa ser versionado
 ```
 
-Também existe o workflow `.github/workflows/salvador-production.yml`, que executa testes antes e depois da coleta e versiona o snapshot source-linked.
+O workflow `.github/workflows/salvador-production.yml` executa testes antes/depois da coleta e versiona os snapshots source-linked, mantendo o SQLite como artefato derivado.
 
 ## Regras de integridade
 
@@ -78,7 +90,8 @@ Também existe o workflow `.github/workflows/salvador-production.yml`, que execu
 7. Ausência em uma fonte não prova inexistência do fato.
 8. Identidade de pessoa exige nome oficial exato ou alias documentado em fonte oficial; similaridade de nomes não basta.
 9. Reconciliação PNCP × município usa identificadores normalizados exatos. Ambiguidade permanece `multiple_candidates`; não existe fuzzy match promovido a fato.
-10. Valor alto, concentração de fornecedor, dispensa ou inexigibilidade não provam ilícito. Qualquer alegação de irregularidade exige documentação primária e, quando aplicável, conclusão de órgão competente.
+10. Falha, timeout ou rate limit da fonte nunca é convertido em zero registros.
+11. Valor alto, concentração de fornecedor, dispensa ou inexigibilidade não provam ilícito. Qualquer alegação de irregularidade exige documentação primária e, quando aplicável, conclusão de órgão competente.
 
 ## Semântica de cobertura
 
@@ -87,4 +100,4 @@ Também existe o workflow `.github/workflows/salvador-production.yml`, que execu
 - `unavailable`: a tentativa do run falhou e nenhum status de completude é reivindicado.
 - `not_run`: a etapa foi explicitamente desabilitada naquele run.
 
-Esses estados existem para impedir que indisponibilidade técnica seja silenciosamente transformada em “zero registros” ou “base completa”.
+Esses estados impedem que indisponibilidade técnica seja silenciosamente transformada em “base completa”.
