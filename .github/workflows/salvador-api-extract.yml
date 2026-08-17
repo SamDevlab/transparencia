@@ -6,6 +6,7 @@ on:
     branches: [city/salvador]
     paths:
       - .github/workflows/salvador-api-extract.yml
+      - scripts/extract_salvador_api_services.py
 
 permissions:
   contents: write
