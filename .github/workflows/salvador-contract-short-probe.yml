@@ -1,0 +1,69 @@
+name: salvador-contract-short-probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-contract-short-probe.yml
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx
+      - name: Probe a short official contract interval
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          import httpx
+          BASE='https://apitmptransparencia.salvador.ba.gov.br/api'
+          headers={'accept':'application/json, text/plain, */*','origin':'https://transparencia.salvador.ba.gov.br','referer':'https://transparencia.salvador.ba.gov.br/','user-agent':'municipal-transparency-research/0.2 (+public-data-audit)'}
+          payload={'dataInicio':'2026-08-01','dataFim':'2026-08-17','agrupamentos':[],'filtros':[]}
+          probes=[('/contratos/gridDetalhada?pagina=1',payload),('/contratos/gridDetalhadaDocumento?pagina=1',payload)]
+          out={}
+          with httpx.Client(headers=headers,follow_redirects=True,timeout=100) as client:
+            for path,body in probes:
+              try:
+                r=client.post(BASE+path,json=body); raw=r.content
+                item={'status':r.status_code,'final_url':str(r.url),'bytes':len(raw),'content_type':r.headers.get('content-type'),'sha256':hashlib.sha256(raw).hexdigest()}
+                try:
+                  j=r.json(); item['top_level_keys']=sorted(j.keys()) if isinstance(j,dict) else None; item['type']=type(j).__name__
+                  if isinstance(j,dict):
+                    item['paginacao']=j.get('paginacao'); item['totalizadores']=j.get('totalizadores')
+                    for k in ('dados','valor','items','registros'):
+                      if isinstance(j.get(k),list): item['list_key']=k; item['count']=len(j[k]); item['first_rows']=j[k][:5]; break
+                  elif isinstance(j,list): item['count']=len(j); item['first_rows']=j[:5]
+                  item['json_preview']=json.dumps(j,ensure_ascii=False)[:30000]
+                except Exception:item['text_preview']=r.text[:12000]
+                out[path]=item
+              except Exception as exc:out[path]={'error':f'{type(exc).__name__}: {exc}'}
+            try:
+              r=client.get(BASE+'/FiscaisContratos/downloadcsv'); raw=r.content
+              out['/FiscaisContratos/downloadcsv']={'status':r.status_code,'final_url':str(r.url),'bytes':len(raw),'content_type':r.headers.get('content-type'),'content_disposition':r.headers.get('content-disposition'),'sha256':hashlib.sha256(raw).hexdigest(),'text_preview':r.text[:10000] if len(raw)<100000 else r.text[:1000]}
+            except Exception as exc:out['/FiscaisContratos/downloadcsv']={'error':f'{type(exc).__name__}: {exc}'}
+          p=Path('cities/salvador/data/snapshots/2026-08-17/prefeitura_api/contract_short_probe.json');p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)[:60000])
+          PY
+      - name: Commit probe
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/snapshots/2026-08-17/prefeitura_api/contract_short_probe.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(salvador): probe short contract interval and fiscal CSV"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
