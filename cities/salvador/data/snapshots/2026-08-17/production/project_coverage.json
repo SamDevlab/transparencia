@@ -1,0 +1,111 @@
+{
+  "city_slug": "salvador",
+  "counts_by_status": {
+    "complete_for_filter": 4,
+    "not_run": 0,
+    "partial": 2,
+    "unavailable": 2
+  },
+  "entries": [
+    {
+      "dataset": "prefeitura_finance",
+      "evidence_path": "cities/salvador/data/snapshots/2026-08-17/production/prefeitura_finance/summary.json",
+      "note": "Complete for the unfiltered finance endpoints requested by this adapter and date interval; creditor rows are aggregates, not individual payments.",
+      "pages": null,
+      "period_end": "2026-08-17",
+      "period_start": "2026-01-01",
+      "records": 7731,
+      "source_system": "SALVADOR_TRANSPARENCIA_API",
+      "source_url": "https://transparencia.salvador.ba.gov.br/",
+      "status": "complete_for_filter"
+    },
+    {
+      "dataset": "prefeitura_acquisitions",
+      "evidence_path": "cities/salvador/data/snapshots/2026-08-17/production/prefeitura_acquisitions/summary.json",
+      "note": "Complete only for the unfiltered official Salvador acquisition API and requested interval; this does not prove completeness across PNCP or sectoral systems.",
+      "pages": 231,
+      "period_end": "2026-08-17",
+      "period_start": "2026-01-01",
+      "records": 2306,
+      "source_system": "SALVADOR_TRANSPARENCIA_API",
+      "source_url": "https://transparencia.salvador.ba.gov.br/",
+      "status": "complete_for_filter"
+    },
+    {
+      "dataset": "cms_commitments",
+      "evidence_path": "cities/salvador/data/snapshots/2026-08-17/production/cms_commitments/coverage.json",
+      "note": "The public ScriptCase HTML exposes a current visible slice. Pagination/all-record retrieval has not yet been proven, so this snapshot must not be described as the complete Câmara commitment ledger.",
+      "pages": null,
+      "period_end": null,
+      "period_start": null,
+      "records": 1,
+      "source_system": "CMS_EMPENHOS",
+      "source_url": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+      "status": "partial"
+    },
+    {
+      "dataset": "cms_travel_expenses",
+      "evidence_path": "cities/salvador/data/snapshots/2026-08-17/production/cms_auxiliary/cms_travel_expenses.coverage.json",
+      "note": "Complete means the CMS travel page pagination reached source exhaustion without a blocking status; it is not a statement about unrelated expense systems.",
+      "pages": 36,
+      "period_end": null,
+      "period_start": null,
+      "records": 160,
+      "source_system": "CMS",
+      "source_url": "https://www.cms.ba.gov.br/transparencia/despesas-viagem",
+      "status": "complete_for_filter"
+    },
+    {
+      "dataset": "cms_document_catalog",
+      "evidence_path": "cities/salvador/data/snapshots/2026-08-17/production/cms_auxiliary/cms_documents.coverage.json",
+      "note": "Complete only for the configured CMS transparency document sections and their pagination.",
+      "pages": null,
+      "period_end": null,
+      "period_start": null,
+      "records": 1994,
+      "source_system": "CMS",
+      "source_url": "https://www.cms.ba.gov.br/transparencia",
+      "status": "complete_for_filter"
+    },
+    {
+      "dataset": "cms_certames_visible",
+      "evidence_path": "cities/salvador/data/snapshots/2026-08-17/production/cms_auxiliary/cms_certames_visible.jsonl",
+      "note": "The ScriptCase server-visible page is collected, but complete catalogue pagination has not been proven by this collector.",
+      "pages": null,
+      "period_end": null,
+      "period_start": null,
+      "records": 10,
+      "source_system": "CMS_CERTAMES",
+      "source_url": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+      "status": "partial"
+    },
+    {
+      "dataset": "pncp_procurements_executivo",
+      "evidence_path": null,
+      "note": "PNCP collector failed in this run; municipal sources remain independently valid.",
+      "pages": null,
+      "period_end": "2026-08-17",
+      "period_start": "2026-01-01",
+      "records": null,
+      "source_system": "PNCP",
+      "source_url": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao",
+      "status": "unavailable"
+    },
+    {
+      "dataset": "pncp_procurements_legislativo",
+      "evidence_path": null,
+      "note": "PNCP collector failed in this run; municipal sources remain independently valid.",
+      "pages": null,
+      "period_end": "2026-08-17",
+      "period_start": "2026-01-01",
+      "records": null,
+      "source_system": "PNCP",
+      "source_url": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao",
+      "status": "unavailable"
+    }
+  ],
+  "generated_at": "2026-08-17T22:39:58.596079+00:00",
+  "methodology_note": "Coverage is source-and-filter specific. A complete_for_filter entry proves only that the collector received the count/pages reported by that source for the stated filter. It does not prove that no record exists in another municipal, legislative, federal or sectoral system.",
+  "period_end": "2026-08-17",
+  "period_start": "2026-01-01"
+}

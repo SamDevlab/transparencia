@@ -1,0 +1,16 @@
+{
+  "note": "complete=false means pagination was stopped by the source; collected document links remain valid.",
+  "records": 1994,
+  "sections": {
+    "execucao_orcamentaria_financeira": {
+      "complete": true,
+      "pages_collected": 44,
+      "stopped_status": null
+    },
+    "prestacao_contas": {
+      "complete": true,
+      "pages_collected": 66,
+      "stopped_status": null
+    }
+  }
+}

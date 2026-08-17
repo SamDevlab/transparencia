@@ -1,0 +1,51 @@
+{
+  "city": {
+    "ibge_code": "2927408",
+    "municipality_cnpj": "13927801000149",
+    "name": "Salvador",
+    "slug": "salvador",
+    "uf": "BA"
+  },
+  "coverage_counts": {
+    "complete_for_filter": 4,
+    "not_run": 0,
+    "partial": 2,
+    "unavailable": 2
+  },
+  "errors": [
+    {
+      "error": "The read operation timed out",
+      "error_type": "ReadTimeout",
+      "step": "pncp_executivo"
+    },
+    {
+      "error": "The read operation timed out",
+      "error_type": "ReadTimeout",
+      "step": "pncp_legislativo"
+    }
+  ],
+  "generated_at": "2026-08-17T23:04:49.432997+00:00",
+  "methodology": [
+    "No source, no fact.",
+    "Raw source snapshots carry SHA-256 provenance where the collector supports snapshots.",
+    "Commitment, liquidation and payment are never conflated.",
+    "Aggregate institutional spending is never attributed to an individual.",
+    "Identity links require exact official evidence or a documented alias; name similarity alone is not a match.",
+    "High value, concentration, dispensa or inexigibilidade are descriptive audit signals, not proof of irregularity.",
+    "Reconciliation uses exact normalized identifiers only; ambiguity remains ambiguity."
+  ],
+  "outputs": {
+    "cms_certames_visible": "cities/salvador/data/snapshots/2026-08-17/production/cms_auxiliary/cms_certames_visible.jsonl",
+    "cms_commitments": "cities/salvador/data/snapshots/2026-08-17/production/cms_commitments/commitments_visible.jsonl",
+    "cms_documents": "cities/salvador/data/snapshots/2026-08-17/production/cms_auxiliary/cms_documents.jsonl",
+    "cms_travel": "cities/salvador/data/snapshots/2026-08-17/production/cms_auxiliary/cms_travel_expenses.jsonl",
+    "coverage": "cities/salvador/data/snapshots/2026-08-17/production/project_coverage.json",
+    "prefeitura_acquisitions": "cities/salvador/data/snapshots/2026-08-17/production/prefeitura_acquisitions/acquisitions.jsonl",
+    "prefeitura_finance_summary": "cities/salvador/data/snapshots/2026-08-17/production/prefeitura_finance/summary.json",
+    "sqlite": "cities/salvador/data/snapshots/2026-08-17/production/salvador.db"
+  },
+  "period_end": "2026-08-17",
+  "period_start": "2026-01-01",
+  "project_status": "pipeline_complete",
+  "status_meaning": "All configured production steps were attempted. Dataset completeness remains source-scoped and is reported in project_coverage.json."
+}

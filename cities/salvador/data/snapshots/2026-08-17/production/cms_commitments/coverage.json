@@ -1,0 +1,9 @@
+{
+  "complete": false,
+  "coverage_note": "The public ScriptCase HTML exposes a current visible slice. Pagination/all-record retrieval has not yet been proven, so this snapshot must not be described as the complete Câmara commitment ledger.",
+  "observed_at": "2026-08-17T22:41:50.681734+00:00",
+  "privacy_note": "Individual CPF values displayed by the source are masked in normalized output; CNPJ values are retained.",
+  "records_visible_and_parsed": 1,
+  "snapshot_sha256": "f89eb219aec6141f77508d49e831acb8a88abc0f1c1e439d9f13e3069cca5511",
+  "source_url": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/"
+}
