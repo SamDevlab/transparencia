@@ -1,0 +1,36 @@
+{
+  "assets": [
+    {
+      "bytes": 86927,
+      "candidates": [],
+      "sha256": "160a426ff2894252cd7cebbdd6d6b7da8fcd319c65b70468f10b6690c45d02ef",
+      "url": "https://cmsalvador.sys.inf.br/con-files/jquery-3.3.1.min.js"
+    },
+    {
+      "bytes": 1984,
+      "candidates": [],
+      "sha256": "675907dc07cf79029e48000ec2957f469053660cb82029bad2aa1684c8e7d394",
+      "url": "https://cmsalvador.sys.inf.br/con-files/scripts.js"
+    },
+    {
+      "bytes": 2861,
+      "candidates": [],
+      "sha256": "c82ad647cc588bcfb35e89f9a0c2456bf3898155566b54b1ebcde859a51978d1",
+      "url": "https://cmsalvador.sys.inf.br/con-files/stylesheet.css"
+    }
+  ],
+  "base_url": "https://cmsalvador.sys.inf.br/consulta.html",
+  "candidates": [
+    "https://cmsalvador.sys.inf.br/ca/contrato/",
+    "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa",
+    "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+    "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+    "https://www.cms.ba.gov.br/transparencia/despesas-viagem"
+  ],
+  "errors": [],
+  "homepage": {
+    "bytes": 3337,
+    "final_url": "https://cmsalvador.sys.inf.br/consulta.html",
+    "sha256": "a837d5e5644cbbd051d911e6320e36e7ebd7df9b1b34bb8b656f90b82026f6de"
+  }
+}

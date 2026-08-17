@@ -1,0 +1,90 @@
+{
+  "city": {
+    "ibge_code": "2927408",
+    "name": "Salvador",
+    "uf": "BA"
+  },
+  "cms_certames_visible": {
+    "coverage": "server_visible_page_only",
+    "note": "The CMS application reports a larger client-side catalogue; this file is not labelled complete.",
+    "records": 10
+  },
+  "coverage_notes": [
+    "PNCP coverage is reconciliatory: absence in PNCP is not treated as proof that a local procurement does not exist.",
+    "CMS pagination may be partial when the official source returns 403/429; partial coverage is explicitly recorded.",
+    "CMS certame visible-page output is explicitly partial until its export/API pagination is discovered.",
+    "No concentration metric is labelled fraud, corruption or irregularity without separate evidence."
+  ],
+  "discoveries": {
+    "cms_certames_app": {
+      "candidate_count": 5,
+      "candidates": [
+        "/ca/licitacao/",
+        "/ca/licitacao/licitacao_export_email.php?script_case_init=5934&path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=",
+        "/ca/licitacao/licitacao_export_email.php?script_case_init=5934&path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=pdf&sAdd=__E__nmgp_tipo_pdf=",
+        "/p/tmp/sc_css_licitacao_grid_916.css",
+        "http://api.jquery.com/jQuery.browser"
+      ],
+      "errors": []
+    },
+    "cms_financeiro": {
+      "candidate_count": 5,
+      "candidates": [
+        "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa",
+        "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "https://www.cms.ba.gov.br/transparencia/despesas-viagem"
+      ],
+      "errors": []
+    },
+    "prefeitura_portal": {
+      "candidate_count": 29,
+      "candidates": [
+        "/ContratosVigentes",
+        "/ContratosVigentes&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+        "/ConveniosDeReceitaPlataformaMaisBrasil",
+        "/ConveniosReceita",
+        "/DespesaDadosAbertos",
+        "/DespesasExtraorcamentaria",
+        "/DespesasExtraorcamentaria&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+        "/DetalhamentoResultadosDasLicitacoes",
+        "/FiscaisDosContratos",
+        "/FornecedoresPenalizados",
+        "/FornecedoresPenalizadosParametrizado",
+        "/FornecedoresPrestadoresDeServico",
+        "/FornecedoresPrestadoresDeServico&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+        "/LicitacoesDispensasInexigibilidade",
+        "/LicitacoesDispensasInexigibilidade&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+        "/RealizacaoDespesa",
+        "/RealizacaoDespesa&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+        "/RealizacaoReceita",
+        "/RealizacaoReceita&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+        "/ReceitaDadosAbertos",
+        "/receita/gridDetalhada",
+        "http://localhost:8080/api",
+        "https://acesso.sefaz.salvador.ba.gov.br/api/",
+        "https://apitmptransparencia.salvador.ba.gov.br/api",
+        "https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap",
+        "https://fonts.googleapis.com/css?family=Lato&display=swap",
+        "https://fonts.googleapis.com/css?family=Open+Sans&display=swap",
+        "https://fonts.googleapis.com/css?family=Ubuntu:400,500&display=swap",
+        "https://www.licitacoes-e.com.br/aop/index.jsp?codSite=7546&url=www.compras.salvador.ba.gov.br"
+      ],
+      "errors": []
+    }
+  },
+  "errors": {
+    "cms_documents": "ConnectTimeout: timed out",
+    "cms_travel": "ConnectTimeout: timed out",
+    "pncp_contracts": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20250730&dataFinal=20250828&cnpjOrgao=13927801000149&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+    "pncp_procurements": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20250101&dataFinal=20250130&codigoModalidadeContratacao=6&uf=BA&codigoMunicipioIbge=2927408&pagina=4&tamanhoPagina=50'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429"
+  },
+  "period_end": "2026-08-17",
+  "period_start": "2025-01-01",
+  "prefeitura_api_contexts": {
+    "file": "discovery/prefeitura_portal/api_contexts.json",
+    "records": 44
+  },
+  "snapshot_date": "2026-08-17"
+}

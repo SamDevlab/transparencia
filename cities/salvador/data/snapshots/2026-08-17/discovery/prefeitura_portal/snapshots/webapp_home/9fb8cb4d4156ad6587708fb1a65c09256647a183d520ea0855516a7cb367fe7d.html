@@ -1,0 +1,132 @@
+<!doctype html><html><head><meta charset="utf-8"/><link rel="icon" href="/ico.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Portal da Transparência da Prefeitura Municipal de Salvador"/><script>window.process={env:{}}</script><script src="/Chart.min.js"></script><link rel="manifest" href="/manifest.json"/><link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500&display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap" rel="stylesheet"><script src="/env.js"></script><title>Portal da Transparência</title><meta name="app-version" content="1.10.0"/><meta name="copyright" content="Copyright © 2020 SEFAZ - Secretaria Municipal da Fazenda"/><link href="/static/css/11.71497c08.chunk.css" rel="stylesheet"><link href="/static/css/main.3054f32a.chunk.css" rel="stylesheet"></head><body id="canvasGraphics"><noscript>Ative o JavaScript para executar esse aplicativo.</noscript><div id="root"></div><div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div><script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script><script>new window.VLibras.Widget("https://vlibras.gov.br/app")</script><script>(function () {
+            var Contrast = {
+                storage: 'contrastState',
+                cssClass: 'contrast',
+                currentState: null,
+                check: checkContrast,
+                getState: getContrastState,
+                setState: setContrastState,
+                toogle: toogleContrast,
+                updateView: updateViewContrast
+            };
+
+            console.info(`Versão atual do Portal da Transparência: ${window?.env?.VERSAO} em ${window?.env?.DATA_VERSAO}`)
+
+            window.toggleContrast = function () { Contrast.toogle(); };
+
+            Contrast.check();
+
+            function checkContrast() {
+                this.updateView();
+            }
+
+            function getContrastState() {
+                try {
+                    return localStorage?.getItem(this.storage) === 'true' || false;
+                } catch (erro) {
+                    console.error(`Não foi possível realizar essa ação devido ao bloqueio de cookies - Index A - ${erro}`)
+                }
+            }
+
+            function setContrastState(state) {
+                try {
+                    if(localStorage?.getItem('permitirCookiesAcessibilidade') === 'true' ||  localStorage?.getItem('permitirCookiesAcessibilidade') === null){
+                        localStorage?.setItem(this.storage, '' + state);
+                    }
+                } catch (erro) {
+                    console.error(`Não foi possível realizar essa ação devido ao bloqueio de cookies - Index B - ${erro}`)
+                }
+                // window.dispatchEvent( new Event('storage'));
+                this.currentState = state;
+                this.updateView();
+            }
+
+            function updateViewContrast() {
+                var body = document.body;
+
+                if (this.currentState === null)
+                    this.currentState = this.getState();
+
+                if (this.currentState)
+                    body.classList.add(this.cssClass);
+                else
+                    body.classList.remove(this.cssClass);
+            }
+
+            function toogleContrast() {
+                this.setState(!this.currentState);
+            }
+
+
+            function scrollAndFocus(element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                element.focus();
+            }
+
+            window.addEventListener('keydown', (event) => {
+
+                if (event.altKey && !event.ctrlKey) {
+                    event.preventDefault();
+
+                    const key = event.key;
+
+                    switch (key) {
+                        case "1":
+                            document.location.href = "/";
+                            break;
+
+                        case "2":
+                            const menu = document.getElementById("menu").firstChild.firstChild;
+                            scrollAndFocus(menu);
+                            break;
+
+                        case "3":
+                            const buscar = document.querySelector("[aria-label='Buscar']");
+                            scrollAndFocus(buscar);
+                            break;
+
+                        case "4":
+                            const rodape = document.getElementById("rodape");
+                            scrollAndFocus(rodape);
+                            break;
+
+                        case "5":
+                            const reduzirFonte = document.querySelector("[aria-label='Reduzir Fonte']");
+                            scrollAndFocus(reduzirFonte);
+                            reduzirFonte.click();
+                            break;
+
+                        case "6":
+                            const ampliarFonte = document.querySelector("[aria-label='Ampliar Fonte']");
+                            scrollAndFocus(ampliarFonte);
+                            ampliarFonte.click();
+                            break;
+
+                        case "7":
+                            const contraste = document.querySelector("[aria-label='Contraste']");
+                            scrollAndFocus(contraste);
+                            contraste.click();
+                            break;
+
+                        case "8":
+                            document.location.href = "/#/PerguntasFrequentes";
+                            setTimeout(() => window.scrollTo(0, 0), 100);
+                            break;
+
+                        case "9":
+                            const mapaSite = document.getElementById("grid-mapa-site");
+                            scrollAndFocus(mapaSite);
+                            break;
+
+                        case "0":
+                            document.location.href = "/#/Glossario";
+                            setTimeout(() => window.scrollTo(0, 0), 100);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            });
+
+        })();</script><script>!function(e){function c(c){for(var t,d,n=c[0],o=c[1],b=c[2],u=0,l=[];u<n.length;u++)d=n[u],Object.prototype.hasOwnProperty.call(f,d)&&f[d]&&l.push(f[d][0]),f[d]=0;for(t in o)Object.prototype.hasOwnProperty.call(o,t)&&(e[t]=o[t]);for(i&&i(c);l.length;)l.shift()();return r.push.apply(r,b||[]),a()}function a(){for(var e,c=0;c<r.length;c++){for(var a=r[c],t=!0,d=1;d<a.length;d++){var o=a[d];0!==f[o]&&(t=!1)}t&&(r.splice(c--,1),e=n(n.s=a[0]))}return e}var t={},d={10:0},f={10:0},r=[];function n(c){if(t[c])return t[c].exports;var a=t[c]={i:c,l:!1,exports:{}};return e[c].call(a.exports,a,a.exports,n),a.l=!0,a.exports}n.e=function(e){var c=[];d[e]?c.push(d[e]):0!==d[e]&&{5:1,7:1,8:1,12:1,13:1,14:1,15:1,16:1,17:1,18:1,19:1,20:1,21:1,22:1,23:1,24:1,25:1,26:1,27:1,28:1,29:1,30:1,31:1,32:1,33:1,34:1,35:1,36:1,37:1,38:1,39:1,40:1,41:1,42:1,43:1,44:1,45:1,46:1,47:1,48:1,49:1,50:1,51:1,52:1,53:1,54:1,55:1,56:1,57:1,58:1,59:1,60:1,61:1,62:1,63:1,64:1,65:1,66:1,67:1,68:1,70:1,71:1,72:1,73:1,74:1,75:1,77:1,78:1,79:1}[e]&&c.push(d[e]=new Promise((function(c,a){for(var t="static/css/"+({}[e]||e)+"."+{0:"31d6cfe0",1:"31d6cfe0",2:"31d6cfe0",3:"31d6cfe0",4:"31d6cfe0",5:"ca7d7514",6:"31d6cfe0",7:"32112fe9",8:"0bb78255",12:"f53f2de5",13:"afa45666",14:"af9d3a77",15:"20ad2b40",16:"549ab48f",17:"309ec059",18:"4e000ff9",19:"43d6c7ae",20:"2681447e",21:"54bf834a",22:"ccf363bc",23:"24144f5a",24:"55f7a4e5",25:"a6cfd5c2",26:"9c4c185b",27:"4ec21a0e",28:"8935078a",29:"b090e968",30:"b30b7278",31:"549aa325",32:"c275673d",33:"9f2895d5",34:"c7c06fb7",35:"46effd52",36:"bfda084b",37:"cddff68b",38:"9fb1269e",39:"1d9055bc",40:"2e9e9dab",41:"82ff6ce0",42:"f6663167",43:"61ad2d0f",44:"825eb5c0",45:"ab1f01c0",46:"b8968a2e",47:"d789d1c3",48:"128453a0",49:"8c8b6c1d",50:"b0ee6a44",51:"a252cedc",52:"d1c2c28c",53:"68b56aac",54:"059c9819",55:"a00e29b1",56:"888c3148",57:"888c3148",58:"888c3148",59:"888c3148",60:"888c3148",61:"888c3148",62:"888c3148",63:"28102710",64:"183dd719",65:"7eb9305a",66:"2ad84139",67:"f8c86356",68:"b15b8cfd",69:"31d6cfe0",70:"b11cc8ed",71:"fa0e4587",72:"fa0e4587",73:"ffacd479",74:"e12db10d",75:"4afed660",76:"31d6cfe0",77:"37762d56",78:"bfc3a7ab",79:"83c285ef",80:"31d6cfe0",81:"31d6cfe0",82:"31d6cfe0",83:"31d6cfe0",84:"31d6cfe0",85:"31d6cfe0",86:"31d6cfe0",87:"31d6cfe0",88:"31d6cfe0",89:"31d6cfe0",90:"31d6cfe0",91:"31d6cfe0",92:"31d6cfe0",93:"31d6cfe0",94:"31d6cfe0",95:"31d6cfe0",96:"31d6cfe0",97:"31d6cfe0",98:"31d6cfe0",99:"31d6cfe0",100:"31d6cfe0",101:"31d6cfe0",102:"31d6cfe0"}[e]+".chunk.css",f=n.p+t,r=document.getElementsByTagName("link"),o=0;o<r.length;o++){var b=(i=r[o]).getAttribute("data-href")||i.getAttribute("href");if("stylesheet"===i.rel&&(b===t||b===f))return c()}var u=document.getElementsByTagName("style");for(o=0;o<u.length;o++){var i;if((b=(i=u[o]).getAttribute("data-href"))===t||b===f)return c()}var l=document.createElement("link");l.rel="stylesheet",l.type="text/css",l.onload=c,l.onerror=function(c){var t=c&&c.target&&c.target.src||f,r=new Error("Loading CSS chunk "+e+" failed.\n("+t+")");r.code="CSS_CHUNK_LOAD_FAILED",r.request=t,delete d[e],l.parentNode.removeChild(l),a(r)},l.href=f,document.getElementsByTagName("head")[0].appendChild(l)})).then((function(){d[e]=0})));var a=f[e];if(0!==a)if(a)c.push(a[2]);else{var t=new Promise((function(c,t){a=f[e]=[c,t]}));c.push(a[2]=t);var r,o=document.createElement("script");o.charset="utf-8",o.timeout=120,n.nc&&o.setAttribute("nonce",n.nc),o.src=function(e){return n.p+"static/js/"+({}[e]||e)+"."+{0:"b43483c1",1:"c8193cb9",2:"562818f8",3:"0dd2cf8d",4:"4b91525b",5:"2f1d44f2",6:"54776cee",7:"783ca22d",8:"d37353bc",12:"f030d0b4",13:"a467fdef",14:"32ecf151",15:"87da4719",16:"77b2d320",17:"1de05098",18:"ed8cd600",19:"4721d701",20:"dfb456bc",21:"87b083e7",22:"4069049c",23:"933e6a90",24:"14e4c1a8",25:"22e647bf",26:"9f374b40",27:"f5f89be5",28:"251ba041",29:"3fd9529d",30:"638480c0",31:"eda8c834",32:"3be51dbb",33:"3ea1c468",34:"d4421170",35:"17e8a2cb",36:"863a9912",37:"3410bdf6",38:"6d8fc7ed",39:"62b0375c",40:"0ac8db71",41:"e7c89950",42:"3f3281a8",43:"cdadf84b",44:"431f73a9",45:"ea53f0b0",46:"0d021e8a",47:"c47cc685",48:"ae5f6a1e",49:"ba97657e",50:"87f2d824",51:"55bb02a4",52:"b3ea5893",53:"ca68c417",54:"8453e05d",55:"e087879d",56:"85cd076e",57:"741c788d",58:"e259cfc0",59:"79ec48ff",60:"97c6574e",61:"d58bda68",62:"032dd05a",63:"6a38daf8",64:"63294ce9",65:"5afc5398",66:"44c20c32",67:"fd9ebbac",68:"3d3174bd",69:"09ea3868",70:"1d1972c5",71:"91c10e9e",72:"492be82e",73:"ac5c6550",74:"a4c8e37f",75:"c5a48e90",76:"a2f74f28",77:"d0b091e0",78:"1cd9de6f",79:"4e4803c0",80:"e528726a",81:"705369ab",82:"492c7d77",83:"b43ff72c",84:"b080494c",85:"e81174ac",86:"19c2aa2d",87:"3868110a",88:"7894e9b5",89:"5e53ddfd",90:"bb77654f",91:"d85627fa",92:"0a88bb99",93:"cd735f8f",94:"e401a49e",95:"3cd6eb85",96:"9e8d60d8",97:"317b6168",98:"1c815022",99:"2336a16d",100:"3a68275e",101:"fda343b7",102:"8d1b4ec2"}[e]+".chunk.js"}(e);var b=new Error;r=function(c){o.onerror=o.onload=null,clearTimeout(u);var a=f[e];if(0!==a){if(a){var t=c&&("load"===c.type?"missing":c.type),d=c&&c.target&&c.target.src;b.message="Loading chunk "+e+" failed.\n("+t+": "+d+")",b.name="ChunkLoadError",b.type=t,b.request=d,a[1](b)}f[e]=void 0}};var u=setTimeout((function(){r({type:"timeout",target:o})}),12e4);o.onerror=o.onload=r,document.head.appendChild(o)}return Promise.all(c)},n.m=e,n.c=t,n.d=function(e,c,a){n.o(e,c)||Object.defineProperty(e,c,{enumerable:!0,get:a})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,c){if(1&c&&(e=n(e)),8&c)return e;if(4&c&&"object"==typeof e&&e&&e.__esModule)return e;var a=Object.create(null);if(n.r(a),Object.defineProperty(a,"default",{enumerable:!0,value:e}),2&c&&"string"!=typeof e)for(var t in e)n.d(a,t,function(c){return e[c]}.bind(null,t));return a},n.n=function(e){var c=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(c,"a",c),c},n.o=function(e,c){return Object.prototype.hasOwnProperty.call(e,c)},n.p="/",n.oe=function(e){throw console.error(e),e};var o=this["webpackJsonpportal-transparencia"]=this["webpackJsonpportal-transparencia"]||[],b=o.push.bind(o);o.push=c,o=o.slice();for(var u=0;u<o.length;u++)c(o[u]);var i=b;a()}([])</script><script src="/static/js/11.96b0dee4.chunk.js"></script><script src="/static/js/main.376901f1.chunk.js"></script></body></html>

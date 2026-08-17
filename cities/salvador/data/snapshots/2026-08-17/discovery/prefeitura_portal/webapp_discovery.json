@@ -1,0 +1,117 @@
+{
+  "assets": [
+    {
+      "bytes": 31038,
+      "candidates": [],
+      "sha256": "7cb9f798122fb778ac5bba9ab5466109eefc172f1894a9f05b21c4569b6711ff",
+      "url": "https://transparencia.salvador.ba.gov.br/ico.ico"
+    },
+    {
+      "bytes": 156728,
+      "candidates": [],
+      "sha256": "a17ca6d3f79a929397dd119cf007bf5049e37f09a0890cb8c4b98457195c1091",
+      "url": "https://transparencia.salvador.ba.gov.br/Chart.min.js"
+    },
+    {
+      "bytes": 334,
+      "candidates": [],
+      "sha256": "3a8bd3c1aaae4eafecb6ae5e81032f24cb11c5fe2689ee8df7dabf0ba3920e47",
+      "url": "https://transparencia.salvador.ba.gov.br/manifest.json"
+    },
+    {
+      "bytes": 606,
+      "candidates": [
+        "http://localhost:8080/api",
+        "https://acesso.sefaz.salvador.ba.gov.br/api/",
+        "https://apitmptransparencia.salvador.ba.gov.br/api"
+      ],
+      "sha256": "649404c6c59528ee6970c026c80d4be40c3d7b405ddeaa5d79f32cf17a8b7e0e",
+      "url": "https://transparencia.salvador.ba.gov.br/env.js"
+    },
+    {
+      "bytes": 579464,
+      "candidates": [],
+      "sha256": "c31fbdc4da52117464a1ff86047beb659e3728453d345149869f9ed0628f2ded",
+      "url": "https://transparencia.salvador.ba.gov.br/static/css/11.71497c08.chunk.css"
+    },
+    {
+      "bytes": 67340,
+      "candidates": [],
+      "sha256": "4929484affdeeb86e2cb69b408572f72e70442425a66bb9b0d69d618367552f4",
+      "url": "https://transparencia.salvador.ba.gov.br/static/css/main.3054f32a.chunk.css"
+    },
+    {
+      "bytes": 1402867,
+      "candidates": [],
+      "sha256": "a4ddab40028859ba283d987cf7ad801cc0271bfd1b697d6c0201e20fa36da753",
+      "url": "https://transparencia.salvador.ba.gov.br/static/js/11.96b0dee4.chunk.js"
+    },
+    {
+      "bytes": 374512,
+      "candidates": [
+        "/ContratosVigentes",
+        "/ContratosVigentes&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+        "/ConveniosDeReceitaPlataformaMaisBrasil",
+        "/ConveniosReceita",
+        "/DespesaDadosAbertos",
+        "/DespesasExtraorcamentaria",
+        "/DespesasExtraorcamentaria&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+        "/DetalhamentoResultadosDasLicitacoes",
+        "/FiscaisDosContratos",
+        "/FornecedoresPenalizados",
+        "/FornecedoresPenalizadosParametrizado",
+        "/FornecedoresPrestadoresDeServico",
+        "/FornecedoresPrestadoresDeServico&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+        "/LicitacoesDispensasInexigibilidade",
+        "/LicitacoesDispensasInexigibilidade&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+        "/RealizacaoDespesa",
+        "/RealizacaoDespesa&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+        "/RealizacaoReceita",
+        "/RealizacaoReceita&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+        "/ReceitaDadosAbertos",
+        "/receita/gridDetalhada",
+        "https://www.licitacoes-e.com.br/aop/index.jsp?codSite=7546&url=www.compras.salvador.ba.gov.br"
+      ],
+      "sha256": "7e79a1150ac87ed6cd707dc9859a5515daeb9f8294d7dedecf2d022455613940",
+      "url": "https://transparencia.salvador.ba.gov.br/static/js/main.376901f1.chunk.js"
+    }
+  ],
+  "base_url": "https://transparencia.salvador.ba.gov.br/",
+  "candidates": [
+    "/ContratosVigentes",
+    "/ContratosVigentes&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+    "/ConveniosDeReceitaPlataformaMaisBrasil",
+    "/ConveniosReceita",
+    "/DespesaDadosAbertos",
+    "/DespesasExtraorcamentaria",
+    "/DespesasExtraorcamentaria&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+    "/DetalhamentoResultadosDasLicitacoes",
+    "/FiscaisDosContratos",
+    "/FornecedoresPenalizados",
+    "/FornecedoresPenalizadosParametrizado",
+    "/FornecedoresPrestadoresDeServico",
+    "/FornecedoresPrestadoresDeServico&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+    "/LicitacoesDispensasInexigibilidade",
+    "/LicitacoesDispensasInexigibilidade&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+    "/RealizacaoDespesa",
+    "/RealizacaoDespesa&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+    "/RealizacaoReceita",
+    "/RealizacaoReceita&valorCriterio=/:valorCriterio&codigoCriterio=/:codigoCriterio",
+    "/ReceitaDadosAbertos",
+    "/receita/gridDetalhada",
+    "http://localhost:8080/api",
+    "https://acesso.sefaz.salvador.ba.gov.br/api/",
+    "https://apitmptransparencia.salvador.ba.gov.br/api",
+    "https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&display=swap",
+    "https://fonts.googleapis.com/css?family=Lato&display=swap",
+    "https://fonts.googleapis.com/css?family=Open+Sans&display=swap",
+    "https://fonts.googleapis.com/css?family=Ubuntu:400,500&display=swap",
+    "https://www.licitacoes-e.com.br/aop/index.jsp?codSite=7546&url=www.compras.salvador.ba.gov.br"
+  ],
+  "errors": [],
+  "homepage": {
+    "bytes": 13112,
+    "final_url": "https://transparencia.salvador.ba.gov.br/",
+    "sha256": "9fb8cb4d4156ad6587708fb1a65c09256647a183d520ea0855516a7cb367fe7d"
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "assets": [
+    {
+      "bytes": 15086,
+      "candidates": [],
+      "sha256": "85272ef1aad133911f00e76c69e9b05552dde11b8810e2231c03662577d2df9a",
+      "url": "https://cmsalvador.sys.inf.br/ca/_lib/img/scriptcase__NM__ico__NM__favicon.ico"
+    },
+    {
+      "bytes": 17373,
+      "candidates": [],
+      "sha256": "1cabfab031ad4d82878e0e1b33e3742e9688f3351d1cf10647b59d690ede3fef",
+      "url": "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_jquery_2153.js"
+    },
+    {
+      "bytes": 4484,
+      "candidates": [],
+      "sha256": "dd70621c6dde74279092b0ac69c04e5096a6e1aa346fbc20b9a16d65c074f226",
+      "url": "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_ajax.js"
+    },
+    {
+      "bytes": 15228,
+      "candidates": [],
+      "sha256": "b4b18b8bf993708f596ab2a9dc69dce6b5d5c3d184e2d7f0380dc49f4a7427ff",
+      "url": "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_message.js"
+    },
+    {
+      "bytes": 91949,
+      "candidates": [
+        "http://api.jquery.com/jQuery.browser"
+      ],
+      "sha256": "d3ef4cda5f164996a93225a9b408c8fad99ad26f38665fdd4fb8395eb039ff14",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/jquery/js/jquery.js"
+    },
+    {
+      "bytes": 1092,
+      "candidates": [],
+      "sha256": "d139f99695520fd6d5280af7f9d135ed7d6ca58c8abf883b86a5f497a81abd4f",
+      "url": "https://cmsalvador.sys.inf.br/ca/_lib/css/Sc9_Rhino/Sc9_Rhino_sweetalert.css"
+    },
+    {
+      "bytes": 65128,
+      "candidates": [],
+      "sha256": "9a6654568193df90684461cd64921a60ecf8f8468b56cbaeda9db735220ec026",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/sweetalert/sweetalert2.all.min.js"
+    },
+    {
+      "bytes": 3066,
+      "candidates": [],
+      "sha256": "17d313a7567c497811d486bfe7dd1344f472ea31632f5cd896b2be200aef57d0",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/sweetalert/polyfill.min.js"
+    },
+    {
+      "bytes": 3110,
+      "candidates": [],
+      "sha256": "60bb465d53bcf45d017c4e5bbf075eca3c58cda3f74a5df555a2c8572c3f4720",
+      "url": "https://cmsalvador.sys.inf.br/ca/_lib/lib/js/frameControl.js"
+    },
+    {
+      "bytes": 10244,
+      "candidates": [],
+      "sha256": "6048a83c62de3999bb4daa60dfe20bfd8a5316b065e3b9d3d4ebadc4a3d84612",
+      "url": "https://cmsalvador.sys.inf.br/ca/_lib/lib/js/hotkeys.inc.js"
+    },
+    {
+      "bytes": 1670,
+      "candidates": [],
+      "sha256": "4a1695ad8eb73703542cbd922d7cce3781cff7e9ac90bccf76e1bf2d4e894657",
+      "url": "https://cmsalvador.sys.inf.br/ca/_lib/lib/js/hotkeys_setup.js"
+    },
+    {
+      "bytes": 255079,
+      "candidates": [],
+      "sha256": "46d7560b6dbafc402af5c7e455ad8c2bf3df6ee31670aa7ecaa7b75ecda14f26",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/jquery/js/jquery-ui.js"
+    },
+    {
+      "bytes": 36692,
+      "candidates": [],
+      "sha256": "9f6b529cd13dc3466db731f78c455cbf11483d030ff3184839402af2daeb5786",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/jquery/css/smoothness/jquery-ui.css"
+    },
+    {
+      "bytes": 1291,
+      "candidates": [],
+      "sha256": "000854d782781aff1b16ea5451c1da3d07efadd35ab911ccb7e4b851571a25bd",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/jquery_plugin/touch_punch/jquery.ui.touch-punch.min.js"
+    },
+    {
+      "bytes": 16611,
+      "candidates": [],
+      "sha256": "d1d8a0a84375373af6fe3c8e289abb0d7de79368487096f38a85cc7b7aec6645",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/jquery_plugin/malsup-blockui/jquery.blockUI.js"
+    },
+    {
+      "bytes": 1216,
+      "candidates": [],
+      "sha256": "351677bbbb04644b97f0986a2dfe8b95dfba089f8b6d82dee69f7dbe6d3f2410",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/jquery_plugin/dropdown_check_list/css/ui.dropdownchecklist.standalone.css"
+    },
+    {
+      "bytes": 43846,
+      "candidates": [],
+      "sha256": "67511275376a8c4e8ce492549d381cc14a68644b6787a91dc893456f2135d54f",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/jquery_plugin/dropdown_check_list/js/ui.dropdownchecklist.js"
+    },
+    {
+      "bytes": 12547,
+      "candidates": [],
+      "sha256": "27ad8ca1e61ab865c8ea5a2a88fbcd97317ea3000996d7ad42a7b1a95d6d2e08",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/jquery_plugin/thickbox/thickbox-compressed.js"
+    },
+    {
+      "bytes": 691,
+      "candidates": [],
+      "sha256": "c9ef454615fbb43862cedc020f52eaea3d6dab3fd0c67d70b96c6aa938593ab8",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/tippyjs/light.css"
+    },
+    {
+      "bytes": 2810,
+      "candidates": [],
+      "sha256": "15ebfd4ca0df21946284c7a8f9596860143abc6d4f7a19f5ed2174c10135c3fd",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/tippyjs/light-border.css"
+    },
+    {
+      "bytes": 619,
+      "candidates": [],
+      "sha256": "688a7c06aa8fffecd1299b1a9412b047c16429e6b2f079da8f42081813898a87",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/tippyjs/material.css"
+    },
+    {
+      "bytes": 845,
+      "candidates": [],
+      "sha256": "0587d13b38a97b08035c389bbae09a776fcb58a6cffa96f75546543b559d3feb",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/tippyjs/translucent.css"
+    },
+    {
+      "bytes": 20095,
+      "candidates": [],
+      "sha256": "051a8137b75880006ab58f47778ca713ed6c967130faba043c5cd0ed34517dc8",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/tippyjs/popper.min.js"
+    },
+    {
+      "bytes": 25717,
+      "candidates": [],
+      "sha256": "3f0fe70eb26ccf28f6887a192e29d38dd7ef7c2f079a73304ad42ddc7bed37de",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/tippyjs/tippy-bundle.umd.min.js"
+    },
+    {
+      "bytes": 1790,
+      "candidates": [],
+      "sha256": "acdeb629feffbdd496c0900877bfe98ce9521b1b21f3398a9dae69f2dc1f8db6",
+      "url": "https://cmsalvador.sys.inf.br/ca/_lib/lib/js/scInput.js"
+    },
+    {
+      "bytes": 50052,
+      "candidates": [],
+      "sha256": "061ed5168d95ed40c80d5c60fabdea26ac84f7ce897da52a02686635497a0a03",
+      "url": "https://cmsalvador.sys.inf.br/ca/_lib/lib/js/jquery.scInput.js"
+    },
+    {
+      "bytes": 42556,
+      "candidates": [],
+      "sha256": "5ecfd7a245a80b7817eaa6cdfb6e442f44053342d3f56255cbee6e24c53732d3",
+      "url": "https://cmsalvador.sys.inf.br/ca/_lib/lib/js/jquery.scInput2.js"
+    },
+    {
+      "bytes": 81530,
+      "candidates": [],
+      "sha256": "bd5da4364c94b11a9e56f0d0388439082ef6d3b29c15255ac17bad40abe0c248",
+      "url": "https://cmsalvador.sys.inf.br/ca/_lib/lib/js/bluebird.min.js"
+    },
+    {
+      "bytes": 1827,
+      "candidates": [],
+      "sha256": "1cb8906819ce8095558f5c1a507180ab9b6667a9b4af9e6a63e3f73e628c5592",
+      "url": "https://cmsalvador.sys.inf.br/ca/_lib/lib/js/nm_position.js"
+    },
+    {
+      "bytes": 4651,
+      "candidates": [],
+      "sha256": "113a764827169a661870fc14d6eaef4800370c0f9a15d34debed1af4fa617be7",
+      "url": "https://cmsalvador.sys.inf.br/p/prod/third/jquery_plugin/thickbox/thickbox.css"
+    }
+  ],
+  "base_url": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+  "candidates": [
+    "/ca/licitacao/",
+    "/ca/licitacao/licitacao_export_email.php?script_case_init=5934&path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=",
+    "/ca/licitacao/licitacao_export_email.php?script_case_init=5934&path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=pdf&sAdd=__E__nmgp_tipo_pdf=",
+    "/p/tmp/sc_css_licitacao_grid_916.css",
+    "http://api.jquery.com/jQuery.browser"
+  ],
+  "errors": [],
+  "homepage": {
+    "bytes": 352198,
+    "final_url": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+    "sha256": "7d22ff25af10336403afb02b207df0f7a8aad200780b1bf2cde6aee80b9426f9"
+  }
+}
