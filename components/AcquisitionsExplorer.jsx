@@ -73,7 +73,7 @@ export default function AcquisitionsExplorer() {
       ].join(" ")).includes(needle);
     });
 
-    return rows.toSorted((a, b) => {
+    return rows.slice().sort((a, b) => {
       if (sort === "valor_asc") return Number(a.valor ?? 0) - Number(b.valor ?? 0);
       if (sort === "data_desc") return String(b.publicadoEm ?? "").localeCompare(String(a.publicadoEm ?? ""));
       if (sort === "data_asc") return String(a.publicadoEm ?? "").localeCompare(String(b.publicadoEm ?? ""));
