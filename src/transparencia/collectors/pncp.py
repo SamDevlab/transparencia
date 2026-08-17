@@ -102,7 +102,7 @@ def normalize_record(r: dict, city: CityConfig, observed_at: str, snapshot_sha25
         "modality_name": r.get("modalidadeNome"),
         "object": r.get("objetoCompra"),
         "agency_cnpj": org.get("cnpj"),
-        "agency_name": org.get("razaosocial"),
+        "agency_name": org.get("razaosocial") or org.get("razaoSocial"),
         "sphere": org.get("esferaId"),
         "power": org.get("poderId"),
         "unit_code": unit.get("codigoUnidade"),
@@ -127,7 +127,7 @@ def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, scope: s
     out_dir.mkdir(parents=True, exist_ok=True)
     output = out_dir / f"contratacoes_{scope}_{start.isoformat()}_{end.isoformat()}.jsonl"
     seen: set[str] = set()
-    headers = {"User-Agent": "transparencia-municipal/0.1", "Accept": "application/json"}
+    headers = {"User-Agent": "transparencia-municipal/0.2", "Accept": "application/json"}
     with httpx.Client(headers=headers, follow_redirects=True, timeout=60.0) as client, output.open("w", encoding="utf-8") as sink:
         modality_ids = discover_modality_ids(client, out_dir)
         for window in date_windows(start, end):
@@ -154,7 +154,7 @@ def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, scope: s
                                             status_code=response.status_code,
                                             content_type=response.headers.get("content-type", "application/json"),
                                             body=response.content)
-                    payload = response.json()
+                    payload = {} if response.status_code == 204 or not response.content.strip() else response.json()
                     records = payload.get("data") or payload.get("content") or []
                     for raw in records:
                         if not in_scope(raw, city, scope):
