@@ -1,0 +1,467 @@
+{
+  "https://cmsalvador.sys.inf.br/ca/contrato/": {
+    "bytes": 306414,
+    "candidates": [
+      "https://cmsalvador.sys.inf.br/ca/_lib/img/scriptcase__NM__ajax_load.gif",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_ajax.js",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_config_pdf.php?export_ajax=S&nm_opc=pdf&nm_target=&nm_cor=cor&papel=1&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&password=n&summary_export_columns=N&origem=cons&language=pt_br&conf_socor=N&nm_label_group=S&nm_all_cab=N&nm_all_label=N&&pdf_zip=Nnm_orient_grid=2&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=1&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=S&nm_all_cab=N&nm_all_label=N&nm_orient_grid=2&password=n&summary_export_columns=N&pdf_zip=N&origem=cons&language=pt_br&conf_socor=N&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_config_word.php?script_case_init=4087&summary_export_columns=N&export_ajax=S&nm_opc=doc_word&nm_cor=AM&nm_res_cons=n&nm_ini_word_res=grid&nm_all_modules=grid&password=n&origem=cons&language=pt_br&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_config_word.php?script_case_init=4087&summary_export_columns=N&nm_cor=AM&nm_res_cons=n&nm_ini_word_res=grid&nm_all_modules=grid&password=n&origem=cons&language=pt_br&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=csv&sAdd=&nm_opc=csv&nm_target=0&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=json&sAdd=&nm_opc=json&nm_target=0&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=rtf&sAdd=&nm_opc=rtf&nm_target=0&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=xls&sAdd=&nm_opc=xls&nm_target=0&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=xml&sAdd=&nm_opc=xml&nm_target=0&script_case_init=4087&app_name=contrato&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_fim.php",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_iframe.php",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_iframe_prt.php",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_jquery_812.js",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_message.js",
+      "https://cmsalvador.sys.inf.br/ca/contrato/contrato_pesq.class.php",
+      "https://cmsalvador.sys.inf.br/ca/contrato/index.php",
+      "https://cmsalvador.sys.inf.br/ca/contrato/index.php?script_case_init=4087",
+      "https://cmsalvador.sys.inf.br/p/tmp/sc_css_contrato_grid_331.css",
+      "javascript: nm_gp_json_conf("
+    ],
+    "content_type": "text/html; charset=UTF-8",
+    "final_url": "https://cmsalvador.sys.inf.br/ca/contrato/",
+    "forms": [
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/contrato_pesq.class.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/contrato_iframe_prt.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/contrato/",
+        "method": "POST"
+      }
+    ],
+    "sha256": "3b3876292d653bfac6e0a6dce4743bab0a5f1206a7ca12e547a430be4bfa41bd",
+    "status": 200,
+    "text_preview": "Consulta de Contratos var sc_ajaxBg = '#6e6e6e'; var sc_ajaxBordC = ''; var sc_ajaxBordS = 'none'; var sc_ajaxBordW = ''; if (!window.Promise) { var head = document.getElementsByTagName('head')[0]; var js = document.createElement(\"script\"); js.src = \"../_lib/lib/js/bluebird.min.js\"; head.appendChild(js); } $(\"#TB_iframeContent\").ready(function(){ jQuery(document).bind('keydown.thickbox', function(e) { var keyPressed = e.charCode || e.keyCode || e.which; if (keyPressed == 27) { tb_remove(); } }) }) var applicationKeys = ''; var hotkeyList = ''; function execHotKey(e, h) { var hotkey_fired = false switch (true) { } if (hotkey_fired) { e.preventDefault(); return false; } else { return true; } } var sc_pathToTB = '/p/prod/third/jquery_plugin/thickbox/'; var sc_tbLangClose = \"Fechar\"; var sc_tbLangEsc = \"ou tecla Esc\"; .scButton_default.sc-actb { padding: 4px 7px; white-space: nowrap; animation-delay: 0s; animation-duration: 0s; } .scButton_default.sc-actb:hover { padding: 4px 7px !important; } .sc-actionbar-fa { padding: 5px !important;font-size: 17px !important; } .sc-actionbar-fa i { } .sc-actionbar-fa i:hover { } .sc-actionbar-fa i:active { } .sc-actionbar-btn { text-decoration: none !important;padding: 5px !important; } .sc-actionbar-img { padding: 5px !important; } .sc-actionbar-txt { padding: 5px !important; } .sc-actionbar-fa.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-btn.disabled .scButton_default.sc-actb { cursor: not-allowed !important; } .sc-actionbar-btn.disabled { opacity: 0.44 !important; } .sc-actionbar-img.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-txt.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-button-hidden { display: none; } .sc-actionbar-txt:hover { } .sc-actionbar-txt:active { } function actionBar_displayState(buttonName, buttonState, buttonRow) { let stateHtml, buttonId, stateHint; stateHint = actionBar_getStateHint(buttonName, buttonState); stateConfirm = actionBar_getStateConfirm(buttonName, buttonState); switch (buttonName) { } $(\"#\" + buttonId).html(stateHtml).data(\"actionbarState\", buttonState).data(\"actionbarConfirm\", stateConfirm); if (\"\" == stateHint) { if (\"undefined\" != typeof document.querySelector(\"#\" + buttonId)._tippy) { document.querySelector(\"#\" + buttonId)._tippy.disable(); } } else { if (\"undefined\" == typeof document.querySelector(\"#\" + buttonId)._tippy) { tippy(\"#\" + buttonId, { content: stateHint, theme: \"light\" }); } else { document.querySelector(\"#\" + buttonId)._tippy.enable(); } document.querySelector(\"#\" + buttonId)._tippy.setContent(stateHint); } } function actionBar_getStateHint(buttonName, buttonState) { switch (buttonName) { } } function actionBar_getStateConfirm(buttonName, buttonState) { switch (buttonName) { } } function actionBar_disable(buttonName, disableButton, buttonRow) { if (disableButton) { $(\"#sc-actionbar-actbtn_\" + buttonName + buttonRow).addClass(\"disabled\").on(\"mouseover\", function() { $(this).css(\"cursor\", \"not-allowed\"); }); } else { $(\"#sc-actionbar-actbtn_\" + buttonName + buttonRow).removeClass(\"disabled\").on(\"mouseover\", function() { $(this).css(\"cursor\", \"pointer\"); }); } } function actionBar_hide(buttonName, hideButton, buttonRow) { if (hideButton) { $(\"#sc-actionbar-actbtn_\" + buttonName + buttonRow).hide(); } else { $(\"#sc-actionbar-actbtn_\" + buttonName + buttonRow).show(); } } function actionBar_linkSubmit5(link_selector, apl_lig, apl_saida, parms, target, opc, modal_h, modal_w, m_confirm, apl_name, ancor, confirm) { if ($(\"#\" + link_selector).hasClass(\"disabled\")) { return; } if ('' != confirm) { scJs_confirm(confirm, function() { nm_gp_submit5(apl_lig, apl_saida, parms, target, opc, modal_h, modal_w, m_confirm, apl_name, ancor); }, function() {}); return; } nm_gp_submit5(apl_lig, apl_saida, parms, target, opc, modal_h, modal_w, m_confirm, apl_name, ancor); } function actionBar_linkSubmit6(link_obj, apl_lig, apl_saida, parms, target, pos, alt, larg, opc, modal_h, modal_w, m_confirm, apl_name, ancor, confirm) { if ($(\"#\" + link_selector).hasClass(\"disabled\")) { return; } if ('' != confirm) { scJs_confirm(confirm, function() { nm_gp_submit6(apl_lig, apl_saida, parms, target, pos, alt, larg, opc, modal_h, modal_w, m_confirm, apl_name, ancor); }, function() {}); return; } nm_gp_submit6(apl_lig, apl_saida, parms, target, pos, alt, larg, opc, modal_h, modal_w, m_confirm, apl_name, ancor); } var scFixCol_left = 0, scFixCol_list = [], scFixCol_selectedFields = []; function scFixCol() { var i; scFixCol_left = 0; scFixCol_list = []; scFixCol_addFieldColumns(); for (i = 0; i .sc-grid-order-icon { padding: 0 2px; } .sc-grid-order-icon-unused { visibility: hidden; opacity: 0.5; } .scGridLabelFont:hover .sc-grid-order-icon-unused { visibility: visible; opacity: 1; } .scGridBlock > table { position: sticky; left: 10px; max-width: 100vw; } .sc-col-actions { text-align: center !important; } .sc-op-fix-col { padding: 0 2px; } .s",
+    "title": "Consulta de Contratos"
+  },
+  "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa": {
+    "bytes": 267442,
+    "candidates": [
+      "https://cmsalvador.sys.inf.br/ca/_lib/css/Sc9_Rhino/Sc9_Rhino_grid.css",
+      "https://cmsalvador.sys.inf.br/ca/_lib/css/Sc9_Rhino/Sc9_Rhino_gridLTR.css",
+      "https://cmsalvador.sys.inf.br/ca/_lib/img/scriptcase__NM__ajax_load.gif",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_ajax.js",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=8&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=N&nm_all_cab=S&nm_all_label=S&nm_orient_grid=2&password=n&summary_export_columns=S&pdf_zip=N&origem=cons&language=pt_br&conf_socor=N&script_case_init=5490&app_name=gridRegistroDespesa&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_config_print.php?script_case_init=5490&summary_export_columns=S&nm_opc=RC&nm_cor=CO&password=n&language=pt_br&nm_page=5490&nm_res_cons=n&nm_ini_prt_res=grid&nm_all_modules=grid&origem=cons&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_fim.php",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_grid_ltr.css",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_iframe.php",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_iframe_prt.php",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_jquery_1121.js",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_message.js",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_pesq.class.php",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/index.php",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/index.php?script_case_init=5490"
+    ],
+    "content_type": "text/html; charset=UTF-8",
+    "final_url": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+    "forms": [
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_pesq.class.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/gridRegistroDespesa_iframe_prt.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "GET"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa/",
+        "method": "POST"
+      }
+    ],
+    "sha256": "ef32e9755d38732a02a2c5c4b92bf3dc2fa771ea700ed7c177c026df51034987",
+    "status": 200,
+    "text_preview": "CÂMARA MUNICIPAL DE SALVADOR - Registro de Despesa var scSweetAlertConfirmButton = \"scButton_sweetalertok\"; var scSweetAlertCancelButton = \"scButton_sweetalertcancel\"; var scSweetAlertConfirmButtonText = \"Ok\"; var scSweetAlertCancelButtonText = \"Cancelar\"; var scSweetAlertConfirmButtonFA = \"fas fa-check\"; var scSweetAlertCancelButtonFA = \"fas fa-ban\"; var scSweetAlertConfirmButtonFAPos = \"text_right\"; var scSweetAlertCancelButtonFAPos = \"text_right\"; var sc_ajaxBg = '#6e6e6e'; var sc_ajaxBordC = ''; var sc_ajaxBordS = 'none'; var sc_ajaxBordW = ''; if (!window.Promise) { var head = document.getElementsByTagName('head')[0]; var js = document.createElement(\"script\"); js.src = \"../_lib/lib/js/bluebird.min.js\"; head.appendChild(js); } $(\"#TB_iframeContent\").ready(function(){ jQuery(document).bind('keydown.thickbox', function(e) { var keyPressed = e.charCode || e.keyCode || e.which; if (keyPressed == 27) { tb_remove(); } }) }) var applicationKeys = ''; var hotkeyList = ''; function execHotKey(e, h) { var hotkey_fired = false switch (true) { } if (hotkey_fired) { e.preventDefault(); return false; } else { return true; } } var sc_pathToTB = '/p/prod/third/jquery_plugin/thickbox/'; var sc_tbLangClose = \"Fechar\"; var sc_tbLangEsc = \"ou tecla Esc\"; .scButton_default.sc-actb { padding: 4px 7px; white-space: nowrap; animation-delay: 0s; animation-duration: 0s; } .scButton_default.sc-actb:hover { padding: 4px 7px !important; } .sc-actionbar-fa { padding: 5px !important;font-size: 17px !important; } .sc-actionbar-fa i { } .sc-actionbar-fa i:hover { } .sc-actionbar-fa i:active { } .sc-actionbar-btn { text-decoration: none !important;padding: 5px !important; } .sc-actionbar-img { padding: 5px !important; } .sc-actionbar-txt { padding: 5px !important; } .sc-actionbar-fa.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-btn.disabled .scButton_default.sc-actb { cursor: not-allowed !important; } .sc-actionbar-btn.disabled { opacity: 0.44 !important; } .sc-actionbar-img.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-txt.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-button-hidden { display: none; } .sc-actionbar-txt:hover { } .sc-actionbar-txt:active { } .sc-actionbar-group-first-button { padding-right: 0 !important; } .sc-actionbar-group-middle-button { padding-right: 0 !important; padding-left: 0 !important; } .sc-actionbar-group-last-button { padding-left: 0 !important; } .sc-actionbar-group-first-button span { border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; } .sc-actionbar-group-middle-button span { border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; border-left-width: 0 !important; } .sc-actionbar-group-last-button span { border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; border-left-width: 0 !important; } function actionBar_displayState(buttonName, buttonState, buttonRow) { let stateHtml, buttonId, stateHint; stateHint = actionBar_getStateHint(buttonName, buttonState); stateConfirm = actionBar_getStateConfirm(buttonName, buttonState); switch (buttonName) { } $(\"#\" + buttonId).html(stateHtml).data(\"actionbarState\", buttonState).data(\"actionbarConfirm\", stateConfirm); if (\"\" == stateHint) { if (\"undefined\" != typeof document.querySelector(\"#\" + buttonId)._tippy) { document.querySelector(\"#\" + buttonId)._tippy.disable(); } } else { if (\"undefined\" == typeof document.querySelector(\"#\" + buttonId)._tippy) { tippy(\"#\" + buttonId, { content: stateHint, theme: \"light\" }); } else { document.querySelector(\"#\" + buttonId)._tippy.enable(); } document.querySelector(\"#\" + buttonId)._tippy.setContent(stateHint); } } function actionBar_getStateHint(buttonName, buttonState) { switch (buttonName) { } } function actionBar_getStateConfirm(buttonName, buttonState) { switch (buttonName) { } } $(function() { applyGroupButtons(); }); var ltrRtl = \"LTR\"; function applyGroupButtons() { $(\".sc-actionbar-button-container\").each(function() { applyGroupButton($(this)); }); } function applyGroupButton(container) { if (ltrRtl == \"RTL\") { firstItem = \"last\"; lastItem = \"first\"; } else { firstItem = \"first\"; lastItem = \"last\"; } let buttonList = container.find(\".sc-actionbar-btn\").not(\":hidden\"), listLength = buttonList.length, i; if (2 .sc-grid-order-icon { padding: 0 2px; } .sc-grid-order-icon-unused { visibility: hidden; opacity: 0.5; } .scGridLabelFont:hover .sc-grid-order-icon-unused { visibility: visible; opacity: 1; } function sc_session_redir(url_redir) { if (typeof(sc_session_redir_mobile) === typeof(function(){})) { sc_session_redir_mobile(url_redir); } if (window.parent && window.parent.document != window.document && typeof window.parent.sc_session_redir === 'function') { window.parent.sc_session_redir(url_redir); } else { if (window.opener && typeof window.opener.sc_se",
+    "title": "CÂMARA MUNICIPAL DE SALVADOR - Registro de Despesa"
+  },
+  "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/": {
+    "bytes": 227543,
+    "candidates": [
+      "https://cmsalvador.sys.inf.br/ca/_lib/css/Sc9_Rhino/Sc9_Rhino_grid.css",
+      "https://cmsalvador.sys.inf.br/ca/_lib/css/Sc9_Rhino/Sc9_Rhino_gridLTR.css",
+      "https://cmsalvador.sys.inf.br/ca/_lib/img/scriptcase__NM__ajax_load.gif",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_ajax.js",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=8&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=N&nm_all_cab=S&nm_all_label=S&nm_orient_grid=2&password=n&summary_export_columns=S&pdf_zip=N&origem=cons&language=pt_br&conf_socor=N&script_case_init=254&app_name=gridRegistroEmpenho&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_config_print.php?script_case_init=254&summary_export_columns=S&nm_opc=RC&nm_cor=CO&password=n&language=pt_br&nm_page=254&nm_res_cons=n&nm_ini_prt_res=grid&nm_all_modules=grid&origem=cons&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_fim.php",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_grid_ltr.css",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_iframe.php",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_iframe_prt.php",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_jquery_7726.js",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_message.js",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_pesq.class.php",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/index.php",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/index.php?script_case_init=254"
+    ],
+    "content_type": "text/html; charset=UTF-8",
+    "final_url": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+    "forms": [
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_pesq.class.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/gridRegistroEmpenho_iframe_prt.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "GET"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+        "method": "POST"
+      }
+    ],
+    "sha256": "29c66f9fae5b16ab9948d8937b042ab4fd9f0f38cbd5fbfc2ad145389321a7f1",
+    "status": 200,
+    "text_preview": "CÂMARA MUNICIPAL DE SALVADOR - Relação de Empenho var scSweetAlertConfirmButton = \"scButton_sweetalertok\"; var scSweetAlertCancelButton = \"scButton_sweetalertcancel\"; var scSweetAlertConfirmButtonText = \"Ok\"; var scSweetAlertCancelButtonText = \"Cancelar\"; var scSweetAlertConfirmButtonFA = \"fas fa-check\"; var scSweetAlertCancelButtonFA = \"fas fa-ban\"; var scSweetAlertConfirmButtonFAPos = \"text_right\"; var scSweetAlertCancelButtonFAPos = \"text_right\"; var sc_ajaxBg = '#6e6e6e'; var sc_ajaxBordC = ''; var sc_ajaxBordS = 'none'; var sc_ajaxBordW = ''; if (!window.Promise) { var head = document.getElementsByTagName('head')[0]; var js = document.createElement(\"script\"); js.src = \"../_lib/lib/js/bluebird.min.js\"; head.appendChild(js); } $(\"#TB_iframeContent\").ready(function(){ jQuery(document).bind('keydown.thickbox', function(e) { var keyPressed = e.charCode || e.keyCode || e.which; if (keyPressed == 27) { tb_remove(); } }) }) var applicationKeys = ''; var hotkeyList = ''; function execHotKey(e, h) { var hotkey_fired = false switch (true) { } if (hotkey_fired) { e.preventDefault(); return false; } else { return true; } } var sc_pathToTB = '/p/prod/third/jquery_plugin/thickbox/'; var sc_tbLangClose = \"Fechar\"; var sc_tbLangEsc = \"ou tecla Esc\"; .scButton_default.sc-actb { padding: 4px 7px; white-space: nowrap; animation-delay: 0s; animation-duration: 0s; } .scButton_default.sc-actb:hover { padding: 4px 7px !important; } .sc-actionbar-fa { padding: 5px !important;font-size: 17px !important; } .sc-actionbar-fa i { } .sc-actionbar-fa i:hover { } .sc-actionbar-fa i:active { } .sc-actionbar-btn { text-decoration: none !important;padding: 5px !important; } .sc-actionbar-img { padding: 5px !important; } .sc-actionbar-txt { padding: 5px !important; } .sc-actionbar-fa.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-btn.disabled .scButton_default.sc-actb { cursor: not-allowed !important; } .sc-actionbar-btn.disabled { opacity: 0.44 !important; } .sc-actionbar-img.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-txt.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-button-hidden { display: none; } .sc-actionbar-txt:hover { } .sc-actionbar-txt:active { } .sc-actionbar-group-first-button { padding-right: 0 !important; } .sc-actionbar-group-middle-button { padding-right: 0 !important; padding-left: 0 !important; } .sc-actionbar-group-last-button { padding-left: 0 !important; } .sc-actionbar-group-first-button span { border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; } .sc-actionbar-group-middle-button span { border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; border-left-width: 0 !important; } .sc-actionbar-group-last-button span { border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; border-left-width: 0 !important; } function actionBar_displayState(buttonName, buttonState, buttonRow) { let stateHtml, buttonId, stateHint; stateHint = actionBar_getStateHint(buttonName, buttonState); stateConfirm = actionBar_getStateConfirm(buttonName, buttonState); switch (buttonName) { } $(\"#\" + buttonId).html(stateHtml).data(\"actionbarState\", buttonState).data(\"actionbarConfirm\", stateConfirm); if (\"\" == stateHint) { if (\"undefined\" != typeof document.querySelector(\"#\" + buttonId)._tippy) { document.querySelector(\"#\" + buttonId)._tippy.disable(); } } else { if (\"undefined\" == typeof document.querySelector(\"#\" + buttonId)._tippy) { tippy(\"#\" + buttonId, { content: stateHint, theme: \"light\" }); } else { document.querySelector(\"#\" + buttonId)._tippy.enable(); } document.querySelector(\"#\" + buttonId)._tippy.setContent(stateHint); } } function actionBar_getStateHint(buttonName, buttonState) { switch (buttonName) { } } function actionBar_getStateConfirm(buttonName, buttonState) { switch (buttonName) { } } $(function() { applyGroupButtons(); }); var ltrRtl = \"LTR\"; function applyGroupButtons() { $(\".sc-actionbar-button-container\").each(function() { applyGroupButton($(this)); }); } function applyGroupButton(container) { if (ltrRtl == \"RTL\") { firstItem = \"last\"; lastItem = \"first\"; } else { firstItem = \"first\"; lastItem = \"last\"; } let buttonList = container.find(\".sc-actionbar-btn\").not(\":hidden\"), listLength = buttonList.length, i; if (2 .sc-grid-order-icon { padding: 0 2px; } .sc-grid-order-icon-unused { visibility: hidden; opacity: 0.5; } .scGridLabelFont:hover .sc-grid-order-icon-unused { visibility: visible; opacity: 1; } function sc_session_redir(url_redir) { if (typeof(sc_session_redir_mobile) === typeof(function(){})) { sc_session_redir_mobile(url_redir); } if (window.parent && window.parent.document != window.document && typeof window.parent.sc_session_redir === 'function') { window.parent.sc_session_redir(url_redir); } else { if (window.opener && typeof window.opener.sc_ses",
+    "title": "CÂMARA MUNICIPAL DE SALVADOR - Relação de Empenho"
+  },
+  "https://cmsalvador.sys.inf.br/ca/licitacao/": {
+    "bytes": 352198,
+    "candidates": [
+      "https://cmsalvador.sys.inf.br/ca/_lib/img/scriptcase__NM__ajax_load.gif",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/index.php",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/index.php?script_case_init=4827",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_ajax.js",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_config_pdf.php?export_ajax=S&nm_opc=pdf&nm_target=&nm_cor=cor&papel=1&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&password=n&summary_export_columns=N&origem=cons&language=pt_br&conf_socor=N&nm_label_group=S&nm_all_cab=N&nm_all_label=N&&pdf_zip=Nnm_orient_grid=2&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=1&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=S&nm_all_cab=N&nm_all_label=N&nm_orient_grid=2&password=n&summary_export_columns=N&pdf_zip=N&origem=cons&language=pt_br&conf_socor=N&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_config_word.php?script_case_init=4827&summary_export_columns=N&export_ajax=S&nm_opc=doc_word&nm_cor=AM&nm_res_cons=n&nm_ini_word_res=grid&nm_all_modules=grid&password=n&origem=cons&language=pt_br&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_config_word.php?script_case_init=4827&summary_export_columns=N&nm_cor=AM&nm_res_cons=n&nm_ini_word_res=grid&nm_all_modules=grid&password=n&origem=cons&language=pt_br&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=csv&sAdd=&nm_opc=csv&nm_target=0&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=json&sAdd=&nm_opc=json&nm_target=0&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=rtf&sAdd=&nm_opc=rtf&nm_target=0&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=xls&sAdd=&nm_opc=xls&nm_target=0&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_export_email.php?path_img=/ca/_lib/img&path_btn=/ca/_lib/img&sType=xml&sAdd=&nm_opc=xml&nm_target=0&script_case_init=4827&app_name=licitacao&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_fim.php",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_iframe.php",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_iframe_prt.php",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_jquery_2153.js",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_message.js",
+      "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_pesq.class.php",
+      "https://cmsalvador.sys.inf.br/p/tmp/sc_css_licitacao_grid_374.css",
+      "javascript: nm_gp_json_conf("
+    ],
+    "content_type": "text/html; charset=UTF-8",
+    "final_url": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+    "forms": [
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_pesq.class.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/licitacao_iframe_prt.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/licitacao/",
+        "method": "POST"
+      }
+    ],
+    "sha256": "b5041182b3ead0c800795afb7be45933a1678a46ff9f54402bb54d871a74a695",
+    "status": 200,
+    "text_preview": "Consulta de Certames var scSweetAlertConfirmButton = \"scButton_sweetalertok\"; var scSweetAlertCancelButton = \"scButton_sweetalertcancel\"; var scSweetAlertConfirmButtonText = \"Ok\"; var scSweetAlertCancelButtonText = \"Cancelar\"; var scSweetAlertConfirmButtonFA = \"fas fa-check\"; var scSweetAlertCancelButtonFA = \"fas fa-ban\"; var scSweetAlertConfirmButtonFAPos = \"text_right\"; var scSweetAlertCancelButtonFAPos = \"text_right\"; var sc_ajaxBg = '#6e6e6e'; var sc_ajaxBordC = ''; var sc_ajaxBordS = 'none'; var sc_ajaxBordW = ''; if (!window.Promise) { var head = document.getElementsByTagName('head')[0]; var js = document.createElement(\"script\"); js.src = \"../_lib/lib/js/bluebird.min.js\"; head.appendChild(js); } $(\"#TB_iframeContent\").ready(function(){ jQuery(document).bind('keydown.thickbox', function(e) { var keyPressed = e.charCode || e.keyCode || e.which; if (keyPressed == 27) { tb_remove(); } }) }) var applicationKeys = ''; var hotkeyList = ''; function execHotKey(e, h) { var hotkey_fired = false switch (true) { } if (hotkey_fired) { e.preventDefault(); return false; } else { return true; } } var sc_pathToTB = '/p/prod/third/jquery_plugin/thickbox/'; var sc_tbLangClose = \"Fechar\"; var sc_tbLangEsc = \"ou tecla Esc\"; .scButton_default.sc-actb { padding: 4px 7px; white-space: nowrap; animation-delay: 0s; animation-duration: 0s; } .scButton_default.sc-actb:hover { padding: 4px 7px !important; } .sc-actionbar-fa { padding: 5px !important;font-size: 17px !important; } .sc-actionbar-fa i { } .sc-actionbar-fa i:hover { } .sc-actionbar-fa i:active { } .sc-actionbar-btn { text-decoration: none !important;padding: 5px !important; } .sc-actionbar-img { padding: 5px !important; } .sc-actionbar-txt { padding: 5px !important; } .sc-actionbar-fa.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-btn.disabled .scButton_default.sc-actb { cursor: not-allowed !important; } .sc-actionbar-btn.disabled { opacity: 0.44 !important; } .sc-actionbar-img.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-txt.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-button-hidden { display: none; } .sc-actionbar-txt:hover { } .sc-actionbar-txt:active { } function actionBar_displayState(buttonName, buttonState, buttonRow) { let stateHtml, buttonId, stateHint; stateHint = actionBar_getStateHint(buttonName, buttonState); stateConfirm = actionBar_getStateConfirm(buttonName, buttonState); switch (buttonName) { } $(\"#\" + buttonId).html(stateHtml).data(\"actionbarState\", buttonState).data(\"actionbarConfirm\", stateConfirm); if (\"\" == stateHint) { if (\"undefined\" != typeof document.querySelector(\"#\" + buttonId)._tippy) { document.querySelector(\"#\" + buttonId)._tippy.disable(); } } else { if (\"undefined\" == typeof document.querySelector(\"#\" + buttonId)._tippy) { tippy(\"#\" + buttonId, { content: stateHint, theme: \"light\" }); } else { document.querySelector(\"#\" + buttonId)._tippy.enable(); } document.querySelector(\"#\" + buttonId)._tippy.setContent(stateHint); } } function actionBar_getStateHint(buttonName, buttonState) { switch (buttonName) { } } function actionBar_getStateConfirm(buttonName, buttonState) { switch (buttonName) { } } function actionBar_disable(buttonName, disableButton, buttonRow) { if (disableButton) { $(\"#sc-actionbar-actbtn_\" + buttonName + buttonRow).addClass(\"disabled\").on(\"mouseover\", function() { $(this).css(\"cursor\", \"not-allowed\"); }); } else { $(\"#sc-actionbar-actbtn_\" + buttonName + buttonRow).removeClass(\"disabled\").on(\"mouseover\", function() { $(this).css(\"cursor\", \"pointer\"); }); } } function actionBar_hide(buttonName, hideButton, buttonRow) { if (hideButton) { $(\"#sc-actionbar-actbtn_\" + buttonName + buttonRow).hide(); } else { $(\"#sc-actionbar-actbtn_\" + buttonName + buttonRow).show(); } } function actionBar_linkSubmit5(link_selector, apl_lig, apl_saida, parms, target, opc, modal_h, modal_w, m_confirm, apl_name, ancor, confirm) { if ($(\"#\" + link_selector).hasClass(\"disabled\")) { return; } if ('' != confirm) { scJs_confirm(confirm, function() { nm_gp_submit5(apl_lig, apl_saida, parms, target, opc, modal_h, modal_w, m_confirm, apl_name, ancor); }, function() {}); return; } nm_gp_submit5(apl_lig, apl_saida, parms, target, opc, modal_h, modal_w, m_confirm, apl_name, ancor); } function actionBar_linkSubmit6(link_obj, apl_lig, apl_saida, parms, target, pos, alt, larg, opc, modal_h, modal_w, m_confirm, apl_name, ancor, confirm) { if ($(\"#\" + link_selector).hasClass(\"disabled\")) { return; } if ('' != confirm) { scJs_confirm(confirm, function() { nm_gp_submit6(apl_lig, apl_saida, parms, target, pos, alt, larg, opc, modal_h, modal_w, m_confirm, apl_name, ancor); }, function() {}); return; } nm_gp_submit6(apl_lig, apl_saida, parms, target, pos, alt, larg, opc, modal_h, modal_w, m_confirm, apl_name, ancor); } var scFixCol_left = 0, scFixCol_list = [], scFixCol_selectedFields = []; function scFixCol() { var i; scFixCol_left = 0; scFixCol_lis",
+    "title": "Consulta de Certames"
+  },
+  "https://cmsalvador.sys.inf.br/ca/trans_pagamento/": {
+    "bytes": 165374,
+    "candidates": [
+      "https://cmsalvador.sys.inf.br/ca/_lib/css/Sc9_Rhino/Sc9_Rhino_grid.css",
+      "https://cmsalvador.sys.inf.br/ca/_lib/css/Sc9_Rhino/Sc9_Rhino_gridLTR.css",
+      "https://cmsalvador.sys.inf.br/ca/_lib/img/scriptcase__NM__ajax_load.gif",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/index.php",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/index.php?script_case_init=1195",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_ajax.js",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=8&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=n&nm_res_cons=n&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=N&nm_all_cab=S&nm_all_label=S&nm_orient_grid=2&password=n&summary_export_columns=S&pdf_zip=N&origem=cons&language=pt_br&conf_socor=N&script_case_init=1195&app_name=trans_pagamento&KeepThis=true&TB_iframe=true&modal=true",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_fim.php",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_grid_ltr.css",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_iframe.php",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_iframe_prt.php",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_jquery_146.js",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_message.js",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_pesq.class.php"
+    ],
+    "content_type": "text/html; charset=UTF-8",
+    "final_url": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+    "forms": [
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_pesq.class.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/trans_pagamento_iframe_prt.php",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      },
+      {
+        "action": "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+        "method": "POST"
+      }
+    ],
+    "sha256": "8343118cddc99fdcac9861b7bbc163baa3aab578b5f6cfe047e502efad6cedef",
+    "status": 200,
+    "text_preview": "PAGAMENTOS var scSweetAlertConfirmButton = \"scButton_sweetalertok\"; var scSweetAlertCancelButton = \"scButton_sweetalertcancel\"; var scSweetAlertConfirmButtonText = \"Ok\"; var scSweetAlertCancelButtonText = \"Cancelar\"; var scSweetAlertConfirmButtonFA = \"fas fa-check\"; var scSweetAlertCancelButtonFA = \"fas fa-ban\"; var scSweetAlertConfirmButtonFAPos = \"text_right\"; var scSweetAlertCancelButtonFAPos = \"text_right\"; var sc_ajaxBg = '#6e6e6e'; var sc_ajaxBordC = ''; var sc_ajaxBordS = 'none'; var sc_ajaxBordW = ''; if (!window.Promise) { var head = document.getElementsByTagName('head')[0]; var js = document.createElement(\"script\"); js.src = \"../_lib/lib/js/bluebird.min.js\"; head.appendChild(js); } $(\"#TB_iframeContent\").ready(function(){ jQuery(document).bind('keydown.thickbox', function(e) { var keyPressed = e.charCode || e.keyCode || e.which; if (keyPressed == 27) { tb_remove(); } }) }) var applicationKeys = ''; var hotkeyList = ''; function execHotKey(e, h) { var hotkey_fired = false switch (true) { } if (hotkey_fired) { e.preventDefault(); return false; } else { return true; } } var sc_pathToTB = '/p/prod/third/jquery_plugin/thickbox/'; var sc_tbLangClose = \"Fechar\"; var sc_tbLangEsc = \"ou tecla Esc\"; .scButton_default.sc-actb { padding: 4px 7px; white-space: nowrap; animation-delay: 0s; animation-duration: 0s; } .scButton_default.sc-actb:hover { padding: 4px 7px !important; } .sc-actionbar-fa { padding: 5px !important;font-size: 17px !important; } .sc-actionbar-fa i { } .sc-actionbar-fa i:hover { } .sc-actionbar-fa i:active { } .sc-actionbar-btn { text-decoration: none !important;padding: 5px !important; } .sc-actionbar-img { padding: 5px !important; } .sc-actionbar-txt { padding: 5px !important; } .sc-actionbar-fa.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-btn.disabled .scButton_default.sc-actb { cursor: not-allowed !important; } .sc-actionbar-btn.disabled { opacity: 0.44 !important; } .sc-actionbar-img.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-txt.disabled { cursor: not-allowed !important; opacity: 0.44 !important; } .sc-actionbar-button-hidden { display: none; } .sc-actionbar-txt:hover { } .sc-actionbar-txt:active { } .sc-actionbar-group-first-button { padding-right: 0 !important; } .sc-actionbar-group-middle-button { padding-right: 0 !important; padding-left: 0 !important; } .sc-actionbar-group-last-button { padding-left: 0 !important; } .sc-actionbar-group-first-button span { border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; } .sc-actionbar-group-middle-button span { border-top-right-radius: 0 !important; border-bottom-right-radius: 0 !important; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; border-left-width: 0 !important; } .sc-actionbar-group-last-button span { border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; border-left-width: 0 !important; } function actionBar_displayState(buttonName, buttonState, buttonRow) { let stateHtml, buttonId, stateHint; stateHint = actionBar_getStateHint(buttonName, buttonState); stateConfirm = actionBar_getStateConfirm(buttonName, buttonState); switch (buttonName) { } $(\"#\" + buttonId).html(stateHtml).data(\"actionbarState\", buttonState).data(\"actionbarConfirm\", stateConfirm); if (\"\" == stateHint) { if (\"undefined\" != typeof document.querySelector(\"#\" + buttonId)._tippy) { document.querySelector(\"#\" + buttonId)._tippy.disable(); } } else { if (\"undefined\" == typeof document.querySelector(\"#\" + buttonId)._tippy) { tippy(\"#\" + buttonId, { content: stateHint, theme: \"light\" }); } else { document.querySelector(\"#\" + buttonId)._tippy.enable(); } document.querySelector(\"#\" + buttonId)._tippy.setContent(stateHint); } } function actionBar_getStateHint(buttonName, buttonState) { switch (buttonName) { } } function actionBar_getStateConfirm(buttonName, buttonState) { switch (buttonName) { } } $(function() { applyGroupButtons(); }); var ltrRtl = \"LTR\"; function applyGroupButtons() { $(\".sc-actionbar-button-container\").each(function() { applyGroupButton($(this)); }); } function applyGroupButton(container) { if (ltrRtl == \"RTL\") { firstItem = \"last\"; lastItem = \"first\"; } else { firstItem = \"first\"; lastItem = \"last\"; } let buttonList = container.find(\".sc-actionbar-btn\").not(\":hidden\"), listLength = buttonList.length, i; if (2 var scFixCol_left = 0, scFixCol_list = [], scFixCol_selectedFields = []; function scFixCol() { var i; scFixCol_left = 0; scFixCol_list = []; scFixCol_addFieldColumns(); for (i = 0; i .sc-grid-order-icon { padding: 0 2px; } .sc-grid-order-icon-unused { visibility: hidden; opacity: 0.5; } .scGridLabelFont:hover .sc-grid-order-icon-unused { visibility: visible; opacity: 1; } .sc-col-actions { text-align: center !important; } .sc-op-fix-col { padding: 0 2px; } .sc-op-fix-col:hover { cursor: pointer; } .sc-op-fix-col-notfixed { visibility: hidden; opacity: 0.5; } .scGridLabelFont:hover .sc-op",
+    "title": "PAGAMENTOS"
+  },
+  "https://cmsalvador.sys.inf.br/consulta.html": {
+    "bytes": 3337,
+    "candidates": [
+      "https://cmsalvador.sys.inf.br/ca/contrato/",
+      "https://cmsalvador.sys.inf.br/ca/gridAcompanhamento/",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroDespesa",
+      "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+      "https://cmsalvador.sys.inf.br/ca/trans_pagamento/",
+      "https://www.cms.ba.gov.br/transparencia/despesas-viagem"
+    ],
+    "content_type": "text/html",
+    "final_url": "https://cmsalvador.sys.inf.br/consulta.html",
+    "forms": [],
+    "sha256": "a837d5e5644cbbd051d911e6320e36e7ebd7df9b1b34bb8b656f90b82026f6de",
+    "status": 200,
+    "text_preview": "Consultas TRANSPARÊNCIA FINANCEIRA ORÇAMENTO Registro de Despesa Repasses ou Transf. de Recursos Financeiros EMPENHOS CONTRATOS NOTAS FISCAIS LIQUIDAÇÃO PAGAMENTOS DESPESAS DE VIAGEM EXECUÇÃO ORÇAMENTARIA E FINANCEIRA PARECER PR�VIO - TCM PRESTAÇÃO DE CONTAS CONV�NIO, PROGRAMA, AÇÃO, PROJETO E OBRA RELAT�RIO LRF VERIFICAR AUTENTICIDADE Dúvidas e Sugestões. Segunda à sexta de 8h às 12h e das 14h às 18h. Telefone: (71) 3320-0143 - assin@cms.ba.gov.br",
+    "title": "Consultas"
+  },
+  "https://www.cms.ba.gov.br/transparencia/despesas-viagem": {
+    "bytes": 52428,
+    "candidates": [
+      "https://cmsalvador.sys.inf.br/ca/licitacao/",
+      "https://www.cms.ba.gov.br/transparencia/despesas-viagem/search",
+      "https://www.cms.ba.gov.br/transparencia/despesas-viagem?page=2",
+      "https://www.cms.ba.gov.br/transparencia/despesas-viagem?page=3",
+      "https://www.cms.ba.gov.br/transparencia/despesas-viagem?page=32",
+      "https://www.cms.ba.gov.br/transparencia/despesas-viagem?page=33",
+      "https://www.cms.ba.gov.br/transparencia/despesas-viagem?page=4",
+      "https://www.cms.ba.gov.br/transparencia/despesas-viagem?page=5",
+      "https://www.cms.ba.gov.br/transparencia/despesas-viagem?page=6",
+      "https://www.cms.ba.gov.br/transparencia/despesas-viagem?page=7",
+      "https://www.cms.ba.gov.br/transparencia/despesas-viagem?page=8"
+    ],
+    "content_type": "text/html; charset=UTF-8",
+    "final_url": "https://www.cms.ba.gov.br/transparencia/despesas-viagem",
+    "forms": [
+      {
+        "action": "https://www.cms.ba.gov.br/home/search",
+        "method": "GET"
+      },
+      {
+        "action": "https://www.cms.ba.gov.br/transparencia/despesas-viagem/search",
+        "method": "POST"
+      }
+    ],
+    "sha256": "98f357e2e81ccdf593fdfcf94e3d182942934c788b7aa1375d141373106303bf",
+    "status": 200,
+    "text_preview": "Despesas de Viagem - Câmara Municipal de Salvador Câmara Municipal de Salvador Menu Sugira aqui seu projeto Webmail Portal do servidor câmara A Câmara Agenda da Câmara Biblioteca Centro de Cultura Contatos Escola do Legislativo Função e definição Fund. Cosme de Farias Galeria de Fotos Links Marcas e manual Memorial Organograma Perguntas Frequentes Planejamento e Acompanhamento de Gestão Presidência Rádio Câmara Títulos e Honrarias TV Câmara Videos Institucionais vereadores Atividade Legislativa Câmara Itinerante Colégio de Líderes Comissões Permanentes Comissões Temporárias Estatuto da Igualdade Racial Frente Parlamentar Lei Orgânica do Município Mesa Diretora PDDU Regimento Interno Revisão de LOUOS Revisão PDDU Sugira aqui seu projeto transparência Atas Sessões Ordinárias e Pronunciamentos Concurso público Discursos de Vereadores Frequência de Vereadores Leis Municipais LGPD Mensagens do Executivo OBRAS Ordem do Dia Processo Legislativo Processos Licitatórios Recursos Humanos Resumo Prod. Legislativa Transparência Financeira Verificar Aut. Documentos ouvidoria Audiências Públicas Coronavírus Fale Conosco Galeria de imagens Institucional Notícias Outros Ouvidores Ouvidora Serviços Prestados Vídeos notícias Diário Oficial Despesas de Viagem Período Pesquisar Ano: 2026 Data: 16/08/2026 Tipo: Diária Usuário: THAMIRES DA SILVA ALMEIDA Valor: R$ 3150.00 Localidade: RECIFE/PE Justificativa: DI&Aacute;RIAS PARA PARTICIPAR &nbsp;DO XXIX CONGRESSO BRASILEIRO DE OUVIDORES, EVENTO PROMOVIDO PELA ASSOCIA&Ccedil;&Atilde;O BRASILEIRA DE OUVIDORES/OMBUDSMAN (ABO NACIONAL), &nbsp;A SER REALIZADO ENTRE OS DIAS 17 A 19 DE AGOSTO NA CIDADE DE RECIFE -PE, CONFORME PROCESSO 1672/2026 E AUTORIZA&Ccedil;&Atilde;O DA PRESID&Ecirc;NCIA (ID 548517). SAIDA: DIA 16/08/2026 &Agrave;S 14:45H CHEGADA: DIA 20/08/2026 &Agrave;S 23:10H Data: 16/08/2026 Tipo: Diária Usuário: MARIA LETICIA SILVA ANDRADE Valor: R$ 3150.00 Localidade: RECIFE/PE Justificativa: DI&Aacute;RIAS PARA PARTICIPAR &nbsp;DO XXIX CONGRESSO BRASILEIRO DE OUVIDORES, EVENTO PROMOVIDO PELA ASSOCIA&Ccedil;&Atilde;O BRASILEIRA DE OUVIDORES/OMBUDSMAN (ABO NACIONAL), &nbsp;A SER REALIZADO ENTRE OS DIAS 17 A 19 DE AGOSTO NA CIDADE DE RECIFE -PE, CONFORME PROCESSO 1672/2026 E AUTORIZA&Ccedil;&Atilde;O DA PRESID&Ecirc;NCIA (ID 548517). SAIDA: DIA 16/08/2026 &Agrave;S 14:45H CHEGADA: DIA 20/08/2026 &Agrave;S 23:10H Data: 16/08/2026 Tipo: Diária Usuário: SIMONE LIMA GAUDIANO Valor: R$ 3150.00 Localidade: RECIFE/PE Justificativa: DI&Aacute;RIAS PARA PARTICIPAR &nbsp;DO XXIX CONGRESSO BRASILEIRO DE OUVIDORES, EVENTO PROMOVIDO PELA ASSOCIA&Ccedil;&Atilde;O BRASILEIRA DE OUVIDORES/OMBUDSMAN (ABO NACIONAL), &nbsp;A SER REALIZADO ENTRE OS DIAS 17 A 19 DE AGOSTO NA CIDADE DE RECIFE -PE, CONFORME PROCESSO 1672/2026 E AUTORIZA&Ccedil;&Atilde;O DA PRESID&Ecirc;NCIA (ID 548517). SAIDA: DIA 16/08/2026 &Agrave;S 14:45H CHEGADA: DIA 20/08/2026 &Agrave;S 23:10H Data: 03/06/2026 Tipo: Diária Usuário: MARIANA DANTAS DE ARAÚJO Valor: R$ 3150.00 Localidade: FOZ DO IGUAÇU/PR Justificativa: DI&Aacute;RIAS P/ PARTICIPAR DO XII SIMP&Oacute;SIO NACIONAL &nbsp;ONE CURSOS &nbsp;PREVID&Ecirc;NCIA DOS SERVIDORES P&Uacute;BLICOS E NA LEGISL. DE PESSOAL NA ADM. P&Uacute;BLICA..., CIDADE: FOZ DO IGUA&Ccedil;U-PR (26 A 29 DE MAIO/2026), CONFORME DESPACHO DA COORDENADORA DA CEDASB (ID 524549), AUTORIZA&Ccedil;&Atilde;O DA PRESID&Ecirc;NCIA (ID 530858), ATO N&ordm; 807/2025 PRESID&Ecirc;NCIA DA CMS, PROCESSO N&ordm; 800/2026. SA&Iacute;DA: 24/05/26 &Agrave;S 09:15H; CHEGADA: 31/05/26 &Agrave;S 02:00H. Data: 24/05/2026 Tipo: Diária Usuário: UELTON DE SANTANA BARBOSA Valor: R$ 3150.00 Localidade: FOZ DO IGUAÇU/PR Justificativa: DI&Aacute;RIAS P/ PARTICIPAR DO XII SIMP&Oacute;SIO NACIONAL &nbsp;ONE CURSOS &nbsp;PREVID&Ecirc;NCIA DOS SERVIDORES P&Uacute;BLICOS E NA LEGISL. DE PESSOAL NA ADM. P&Uacute;BLICA..., CIDADE: FOZ DO IGUA&Ccedil;U-PR (26 A 29 DE MAIO/2026), CONFORME DESPACHO DA COORDENADORA DA CEDASB (ID 524549), AUTORIZA&Ccedil;&Atilde;O DA PRESID&Ecirc;NCIA (ID 530858), ATO N&ordm; 807/2025 PRESID&Ecirc;NCIA DA CMS, PROCESSO N&ordm; 800/2026. SA&Iacute;DA: 24/05/26 &Agrave;S 09:15H; CHEGADA: 31/05/26 &Agrave;S 02:00H. &laquo; 1 2 3 4 5 6 7 8 ... 32 33 &raquo; Transparência Atas Sessões Ordinárias e Pronunciamentos Concurso público Discursos de Vereadores Frequência de Vereadores Leis Municipais LGPD Mensagens do Executivo OBRAS Ordem do Dia Processo Legislativo Processos Licitatórios Recursos Humanos Resumo Prod. Legislativa Transparência Financeira Verificar Aut. Documentos Câmara Agenda Biblioteca Centro de Cultura Gestão da Qualidade Marcas e Manual Presidência Transparência Concurso público Despesas viagem Frequencia de vereadores Leis Municipais Prestação de contas Processos Licitatórios #a11y-toolbar { left: -180px; transition: left 750ms cubic-bezier(.23, 1, .32, 1); top: 100px; position: fixed; font-size: 16px; line-height: 1.4; z-index: 99999; } #a11y-toolbar.a11y-toolbar-open { left: 0; } .a11y-toolba",
+    "title": "Despesas de Viagem - Câmara Municipal de Salvador"
+  }
+}
