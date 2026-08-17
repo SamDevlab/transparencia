@@ -7,6 +7,8 @@ on:
     paths:
       - .github/workflows/salvador-api-summary.yml
       - scripts/summarize_salvador_api_calls.py
+      - scripts/summarize_salvador_expense_probe.py
+      - cities/salvador/data/snapshots/2026-08-17/prefeitura_api/expense_detail_probe.json
 
 permissions:
   contents: write
@@ -23,13 +25,16 @@ jobs:
         with:
           python-version: '3.12'
       - run: python scripts/summarize_salvador_api_calls.py
-      - name: Commit concise API map
+      - run: python scripts/summarize_salvador_expense_probe.py
+      - name: Commit concise API maps
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/lazy_chunks/api_call_signatures.json
+          git add \
+            cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/lazy_chunks/api_call_signatures.json \
+            cities/salvador/data/snapshots/2026-08-17/prefeitura_api/expense_detail_probe_summary.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "data(salvador): summarize finance API call signatures"
+          git commit -m "data(salvador): summarize finance API probes"
           git fetch origin city/salvador
           git rebase origin/city/salvador
           git push origin HEAD:city/salvador
