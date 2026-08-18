@@ -4,8 +4,8 @@ Framework aberto e replicável para coletar, preservar e analisar **receitas, de
 
 ## Estrutura por branch
 
-- `main`: engine genérica, sem dados de uma cidade específica.
-- `city/<slug>`: configuração, fontes, evidências, seeds e publicação daquele município.
+- `main`: núcleo genérico, sem dados de uma cidade específica.
+- `city/<slug>`: configuração, fontes, evidências, dados revisados e publicação daquele município.
 
 Esta branch contém a primeira implantação: **Salvador/BA**. O núcleo reutilizável permanece em `main`.
 
@@ -19,28 +19,36 @@ npm run build
 npm run dev
 ```
 
-O `prebuild` lê os snapshots auditados em `cities/salvador/data/` e gera datasets compactos em `public/data/`. Nenhuma API Python, banco externo ou variável de ambiente é necessária para publicar a versão atual.
+Antes da construção, o gerador seleciona automaticamente o **snapshot auditado mais recente** que possui dados financeiros, aquisições e estado final validado na mesma data. A partir dele, cria arquivos compactos em `public/data/`. Nenhuma API Python, banco externo ou variável de ambiente é necessária para publicar a versão atual.
 
-Rotas:
+Principais rotas:
 
-- `/` — visão geral;
-- `/licitacoes` — pesquisa e filtros sobre as 2.306 aquisições do recorte publicado;
+- `/` — entrada orientada por perguntas;
+- `/buscar` — busca geral por pessoa, empresa, CNPJ, processo, contrato, órgão, credor ou receita;
+- `/dinheiro` — navegação do agregado para relações documentadas;
+- `/licitacoes` — pesquisa e filtros sobre as aquisições municipais;
+- `/processos/[id]` — perfil do processo/aquisição, referências, relações exatas e linha do tempo;
 - `/financas` — receita, despesa, funções e credores agregados;
-- `/contratos` — totalizadores e execução por unidade, com cobertura da grade detalhada explicitada;
-- `/camara` — composição observada, produção legislativa e prestação de contas institucional;
+- `/contratos` — totais municipais e contratos individualizados preservados do PNCP;
+- `/fornecedores` e `/fornecedores/[id]` — diretório e perfis de fornecedores;
+- `/orgaos` e `/orgaos/[id]` — diretório e perfis de órgãos;
+- `/agentes` e `/agentes/[id]` — agentes públicos e perfis individuais;
+- `/camara` — atividade legislativa e prestação de contas institucional;
+- `/comparar` — comparação de órgãos no mesmo recorte;
+- `/analises` — pontos descritivos para orientar leitura documental;
 - `/metodologia` — regras editoriais, cobertura e fontes.
 
-Guia de deploy: [`docs/VERCEL.md`](docs/VERCEL.md).
+Guia de publicação: [`docs/VERCEL.md`](docs/VERCEL.md).
 
 ## Objetivos
 
 - responder quanto um município arrecada e gasta;
-- ligar despesas a órgão, favorecido, contrato e licitação quando a fonte permite;
-- acompanhar Legislativo sem confundir gasto institucional com gasto individual;
-- reconciliar contratações municipais com PNCP;
+- ligar despesas, processos, contratos e fornecedores somente quando a fonte permite;
+- acompanhar agentes públicos e Legislativo sem confundir gasto institucional com gasto individual;
+- reconciliar contratações municipais com PNCP usando identificadores exatos;
 - preservar evidência bruta e SHA-256;
 - tornar cada afirmação reproduzível e citável;
-- publicar uma interface acessível sem esconder as limitações de cobertura.
+- facilitar a consulta pública sem esconder limitações de cobertura.
 
 ## Criando uma nova cidade
 
@@ -71,4 +79,4 @@ O SQLite gerado contém `city_slug` em todas as tabelas factuais para impedir mi
 
 ## Regra editorial
 
-**Sem fonte, sem fato.** Dados derivados precisam manter ligação explícita com a origem e não podem aumentar artificialmente a precisão do documento publicado.
+**Sem fonte, sem fato.** Dados derivados precisam manter ligação explícita com a origem e não podem aumentar artificialmente a precisão do documento publicado. Repetição de fornecedor, concentração, dispensa, inexigibilidade ou valor elevado são características descritivas para orientar consulta; não são conclusões automáticas de irregularidade.
