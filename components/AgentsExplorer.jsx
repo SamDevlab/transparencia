@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
 function normalizar(valor) {
@@ -105,7 +106,7 @@ export default function AgentsExplorer() {
 
       <div className="results-line">
         <span><strong>{resultados.length.toLocaleString("pt-BR")}</strong> agentes encontrados</span>
-        <span>Dados de contato só aparecem quando publicados pela fonte oficial.</span>
+        <span>Contatos aparecem somente quando publicados pela fonte oficial.</span>
       </div>
 
       <div className="agentes-grid">
@@ -129,8 +130,8 @@ export default function AgentsExplorer() {
             </dl>
 
             <div className="agente-acoes">
-              <a className="button" href={pessoa.fonte} target="_blank" rel="noreferrer">Fonte oficial ↗</a>
-              {pessoa.fonteComplementar && <a className="button discreto" href={pessoa.fonteComplementar} target="_blank" rel="noreferrer">Fonte complementar ↗</a>}
+              <Link className="button primary" href={`/agentes/${pessoa.id}`}>Abrir perfil →</Link>
+              <a className="button discreto" href={pessoa.fonte} target="_blank" rel="noreferrer">Fonte ↗</a>
             </div>
           </article>
         ))}
