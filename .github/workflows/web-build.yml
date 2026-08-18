@@ -44,21 +44,24 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Construir site para a Vercel
         run: npm run build
-      - name: Verificar dados gerados
+      - name: Verificar conjuntos de dados gerados
         run: |
-          test -s public/data/dashboard.json
-          test -s public/data/acquisitions.json
-          test -s public/data/finance.json
-          test -s public/data/camara.json
-          test -s public/data/agents.json
-          test -s public/data/search.json
+          for file in dashboard acquisitions processes contracts suppliers agencies finance camara agents analysis money comparisons search meta; do
+            test -s "public/data/${file}.json"
+          done
           node - <<'NODE'
           const d = require('./public/data/meta.json');
           if (d.acquisitions !== 2306) throw new Error(`aquisições geradas: ${d.acquisitions}`);
+          if (d.processes !== d.acquisitions) throw new Error(`processos gerados: ${d.processes}`);
           if (d.officials !== 43) throw new Error(`vereadores gerados: ${d.officials}`);
-          if (d.executiveAgents !== 6) throw new Error(`agentes do Executivo gerados: ${d.executiveAgents}`);
-          if (d.publicAgents !== 49) throw new Error(`agentes públicos gerados: ${d.publicAgents}`);
-          if (!(d.searchItems > 2306)) throw new Error(`itens de consulta insuficientes: ${d.searchItems}`);
+          if (d.executiveAgents < 6) throw new Error(`agentes do Executivo gerados: ${d.executiveAgents}`);
+          if (d.publicAgents < 49) throw new Error(`agentes públicos gerados: ${d.publicAgents}`);
+          if (!(d.contracts > 0)) throw new Error(`contratos PNCP insuficientes: ${d.contracts}`);
+          if (!(d.suppliers > 0)) throw new Error(`fornecedores insuficientes: ${d.suppliers}`);
+          if (!(d.agencies > 0)) throw new Error(`órgãos insuficientes: ${d.agencies}`);
+          if (!(d.searchItems > d.acquisitions)) throw new Error(`itens de consulta insuficientes: ${d.searchItems}`);
+          if (typeof d.exactCrossSourceLinks !== 'number') throw new Error('contagem de vínculos entre fontes ausente');
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(d.snapshotDate || '')) throw new Error(`snapshot inválido: ${d.snapshotDate}`);
           console.log(d);
           NODE
       - name: Registrar construção bem-sucedida
@@ -76,7 +79,13 @@ jobs:
             node: process.version,
             next: require('./node_modules/next/package.json').version,
             react: require('./node_modules/react/package.json').version,
+            snapshot_used: meta.snapshotDate,
             acquisitions_generated: meta.acquisitions,
+            processes_generated: meta.processes,
+            contracts_generated: meta.contracts,
+            suppliers_generated: meta.suppliers,
+            agencies_generated: meta.agencies,
+            exact_cross_source_links: meta.exactCrossSourceLinks,
             councilors_generated: meta.officials,
             executive_agents_generated: meta.executiveAgents,
             public_agents_generated: meta.publicAgents,
