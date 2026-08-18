@@ -2,6 +2,7 @@ import Link from "next/link";
 import QuickSearch from "../components/QuickSearch";
 import "./globals.css";
 import "./ux.css";
+import "./features.css";
 
 export const metadata = {
   title: { default: "Transparência Salvador", template: "%s | Transparência Salvador" },
