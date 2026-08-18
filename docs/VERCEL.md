@@ -1,49 +1,77 @@
-# Deploy do frontend na Vercel
+# Publicação do frontend na Vercel
 
-O frontend Next.js fica na **raiz do repositório**. Ele foi estruturado assim para que o passo `prebuild` possa ler os snapshots versionados em `cities/salvador/data/` e gerar arquivos compactos em `public/data/` antes do `next build`.
+O frontend Next.js fica na **raiz do repositório**. Assim, o passo anterior à construção pode ler os dados versionados em `cities/salvador/data/` e gerar os arquivos compactos usados pelo site.
 
-## Deploy pelo painel da Vercel
+## Publicação pelo painel da Vercel
 
-1. Abra a Vercel e escolha **Add New → Project**.
-2. Importe o repositório `SamDevlab/transparencia`.
-3. Mantenha **Root Directory** vazio / na raiz do repositório.
-4. Framework Preset: **Next.js**.
-5. Install Command: deixe automático (`npm install`).
-6. Build Command: deixe automático (`npm run build`).
-7. Output Directory: deixe automático (`.next`).
-8. Não é necessária nenhuma variável de ambiente para a versão atual.
-9. Crie/conecte o projeto. Como o GitHub usa `main` como branch padrão, a Vercel poderá assumir `main` como produção inicialmente; o frontend de Salvador está em outra branch.
-10. No projeto, abra **Settings → Environments → Production → Branch Tracking** e altere a Production Branch para `city/salvador`. Salve.
-11. Abra **Deployments → Create Deployment**, informe a branch `city/salvador` e crie o deployment. Depois disso, novos pushes nessa branch poderão gerar deployments de produção automaticamente.
+1. Na Vercel, crie um projeto a partir de `SamDevlab/transparencia`.
+2. Mantenha o diretório raiz na raiz do repositório.
+3. Selecione **Next.js** como tecnologia da aplicação.
+4. Deixe a instalação automática (`npm install`).
+5. Deixe a construção automática (`npm run build`).
+6. Deixe a saída padrão do Next.js (`.next`).
+7. A versão atual não exige variável de ambiente.
+8. Em **Settings → Environments → Production → Branch Tracking**, configure `city/salvador` como branch de produção.
+9. Crie a primeira publicação dessa branch. Depois disso, novos envios para `city/salvador` podem gerar novas versões de produção automaticamente.
 
-> Não altere o Root Directory para `cities/salvador`: o frontend está na raiz e o `prebuild` precisa acessar os snapshots dentro dessa pasta.
+> Não configure `cities/salvador` como diretório raiz. O frontend está na raiz e precisa acessar os dados dentro dessa pasta.
 
-## O que acontece no build
+## Como os dados do site são gerados
 
-O `package.json` usa o lifecycle padrão do npm:
+O `package.json` executa:
 
 ```text
 prebuild -> node scripts/build-web-data.mjs
 build    -> next build
 ```
 
-O gerador lê os dados auditados do Git e cria, apenas durante o build:
+O gerador procura automaticamente o **snapshot auditado mais recente**. Uma pasta com data só pode ser escolhida quando contém, ao mesmo tempo:
+
+- resumo financeiro municipal;
+- resumo das aquisições municipais;
+- `FINAL_STATUS.json` da mesma data.
+
+Isso impede que uma coleta nova, ainda sem validação final, substitua silenciosamente a publicação anterior.
+
+A construção gera arquivos derivados em `public/data/`, entre eles:
 
 ```text
 public/data/dashboard.json
 public/data/acquisitions.json
+public/data/processes.json
+public/data/contracts.json
+public/data/suppliers.json
+public/data/agencies.json
 public/data/finance.json
 public/data/camara.json
+public/data/agents.json
+public/data/analysis.json
+public/data/money.json
+public/data/comparisons.json
+public/data/search.json
 public/data/meta.json
 ```
 
-`public/data/` está no `.gitignore`: estes arquivos são derivados e podem ser reconstruídos a qualquer momento a partir dos snapshots versionados.
+Esses arquivos não são fonte primária e não precisam ser versionados: podem ser reconstruídos a partir dos snapshots e seeds auditados do repositório.
 
-## Atualização dos dados
+## Principais rotas públicas
 
-Quando os coletores atualizarem e versionarem um novo snapshot, o frontend precisa apontar para a nova data em `scripts/build-web-data.mjs`. A intenção é, numa próxima evolução, resolver automaticamente o snapshot válido mais recente; nesta publicação inicial a data é deliberadamente fixa em `2026-08-17` para não trocar silenciosamente uma base auditada por outra ainda não validada.
+- `/` — ponto de partida por pergunta;
+- `/buscar` — busca geral por pessoa, empresa, CNPJ, processo, contrato, órgão, credor ou receita;
+- `/dinheiro` — navegação do agregado para relações documentadas;
+- `/licitacoes` — aquisições municipais com filtros e referências copiáveis;
+- `/processos/[id]` — perfil de processo/aquisição e linha do tempo;
+- `/contratos` — totais municipais + contratos individualizados preservados do PNCP;
+- `/fornecedores` e `/fornecedores/[id]` — diretório e perfis de fornecedores;
+- `/orgaos` e `/orgaos/[id]` — diretório e perfis de órgãos;
+- `/agentes` e `/agentes/[id]` — agentes públicos e perfis individuais;
+- `/comparar` — comparação entre órgãos no mesmo recorte;
+- `/analises` — pontos descritivos para orientar leitura documental;
+- `/metodologia` — regras de interpretação e cobertura.
 
-## Validação local
+## Validação
+
+Para testar localmente:
 
 ```bash
 npm install
@@ -51,14 +79,16 @@ npm run build
 npm run dev
 ```
 
-O workflow `.github/workflows/web-build.yml` executa o mesmo `npm run build` no GitHub Actions e verifica se os datasets foram gerados corretamente.
+O fluxo `.github/workflows/web-build.yml` executa a mesma construção no GitHub Actions e verifica os conjuntos de dados, o número de aquisições, perfis, contratos, fornecedores, órgãos e índice de busca antes de registrar uma construção bem-sucedida.
 
 ## Segurança de interpretação
 
-O deploy do frontend não muda as regras do projeto:
+A publicação não muda as regras do projeto:
 
 - empenhado, liquidado e pago permanecem separados;
-- credor agregado não é exibido como pagamento individual;
-- timeout não vira zero registros;
-- dispensa, inexigibilidade, valor alto ou concentração não são classificados automaticamente como irregularidade;
-- toda página de exploração mantém links para as fontes públicas.
+- valor contratual não é renomeado como pagamento;
+- credor agregado não vira pagamento individual;
+- falha da fonte não vira zero;
+- relações Prefeitura ↔ PNCP usam referência exata de processo, não aproximação textual;
+- repetição de fornecedor, concentração, dispensa, inexigibilidade ou valor elevado são sinais descritivos para consulta, não conclusões de irregularidade;
+- páginas de perfil mantêm acesso às fontes públicas utilizadas.
