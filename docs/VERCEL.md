@@ -1,39 +1,30 @@
 # Publicação do frontend na Vercel
 
-O frontend Next.js fica na **raiz do repositório**. Assim, o passo anterior à construção pode ler os dados versionados em `cities/salvador/data/` e gerar os arquivos compactos usados pelo site.
+O frontend Next.js fica na **raiz do repositório** para conseguir ler tanto `cities/salvador/data/` quanto `regions/bahia/data/` durante a construção.
 
-## Publicação pelo painel da Vercel
+## Configuração
 
-1. Na Vercel, crie um projeto a partir de `SamDevlab/transparencia`.
+1. Importe `SamDevlab/transparencia` na Vercel.
 2. Mantenha o diretório raiz na raiz do repositório.
-3. Selecione **Next.js** como tecnologia da aplicação.
-4. Deixe a instalação automática (`npm install`).
-5. Deixe a construção automática (`npm run build`).
-6. Deixe a saída padrão do Next.js (`.next`).
-7. A versão atual não exige variável de ambiente.
-8. Em **Settings → Environments → Production → Branch Tracking**, configure `city/salvador` como branch de produção.
-9. Crie a primeira publicação dessa branch. Depois disso, novos envios para `city/salvador` podem gerar novas versões de produção automaticamente.
+3. Tecnologia da aplicação: **Next.js**.
+4. Instalação: automática (`npm install`).
+5. Construção: automática (`npm run build`).
+6. Saída: padrão do Next.js (`.next`).
+7. Não é necessária variável de ambiente.
+8. Em **Settings → Environments → Production → Branch Tracking**, use `city/salvador` como branch de produção.
 
-> Não configure `cities/salvador` como diretório raiz. O frontend está na raiz e precisa acessar os dados dentro dessa pasta.
-
-## Como os dados do site são gerados
+## Construção dos dados
 
 O `package.json` executa:
 
 ```text
-prebuild -> node scripts/build-web-data.mjs
+prebuild -> node scripts/build-web-data.mjs && node scripts/build-economy-web-data.mjs
 build    -> next build
 ```
 
-O gerador procura automaticamente o **snapshot auditado mais recente**. Uma pasta com data só pode ser escolhida quando contém, ao mesmo tempo:
+A primeira etapa seleciona o snapshot auditado mais recente de Salvador. A segunda seleciona o snapshot econômico mais recente da Bahia/Salvador. Se ainda não houver snapshot econômico válido, `economy.json` é gerado com `available=false` e o site continua compilando sem transformar ausência em zero.
 
-- resumo financeiro municipal;
-- resumo das aquisições municipais;
-- `FINAL_STATUS.json` da mesma data.
-
-Isso impede que uma coleta nova, ainda sem validação final, substitua silenciosamente a publicação anterior.
-
-A construção gera arquivos derivados em `public/data/`, entre eles:
+Arquivos derivados principais:
 
 ```text
 public/data/dashboard.json
@@ -49,29 +40,35 @@ public/data/analysis.json
 public/data/money.json
 public/data/comparisons.json
 public/data/search.json
+public/data/economy.json
+public/data/transparency.json
 public/data/meta.json
 ```
 
-Esses arquivos não são fonte primária e não precisam ser versionados: podem ser reconstruídos a partir dos snapshots e seeds auditados do repositório.
+Eles são derivados dos dados versionados e podem ser reconstruídos; não são fonte primária.
 
-## Principais rotas públicas
+## Atualização econômica
 
-- `/` — ponto de partida por pergunta;
-- `/buscar` — busca geral por pessoa, empresa, CNPJ, processo, contrato, órgão, credor ou receita;
-- `/dinheiro` — navegação do agregado para relações documentadas;
-- `/licitacoes` — aquisições municipais com filtros e referências copiáveis;
-- `/processos/[id]` — perfil de processo/aquisição e linha do tempo;
-- `/contratos` — totais municipais + contratos individualizados preservados do PNCP;
-- `/fornecedores` e `/fornecedores/[id]` — diretório e perfis de fornecedores;
-- `/orgaos` e `/orgaos/[id]` — diretório e perfis de órgãos;
-- `/agentes` e `/agentes/[id]` — agentes públicos e perfis individuais;
-- `/comparar` — comparação entre órgãos no mesmo recorte;
-- `/analises` — pontos descritivos para orientar leitura documental;
-- `/metodologia` — regras de interpretação e cobertura.
+`.github/workflows/economic-intelligence.yml` roda mensalmente e também pode ser executado manualmente. Ele:
+
+- testa o coletor do Comex Stat;
+- descobre a última competência oficial disponível;
+- consulta Bahia e Salvador para o ano atual e o mesmo período do ano anterior;
+- preserva requisição/resposta com SHA-256;
+- gera resumo, produtos, países, série mensal, triagem produtiva e cobertura;
+- versiona o snapshot em `regions/bahia/data/snapshots/`.
+
+O commit do snapshot dispara nova construção do frontend porque `.github/workflows/web-build.yml` observa `regions/bahia/**`.
+
+## Rotas econômicas
+
+- `/economia` — visão geral;
+- `/economia/bahia` — comércio exterior estadual;
+- `/economia/salvador` — empresas domiciliadas em Salvador;
+- `/economia/oportunidades` — triagem produtiva explicável;
+- `/transparencia` — situação e limitações de todas as fontes.
 
 ## Validação
-
-Para testar localmente:
 
 ```bash
 npm install
@@ -79,16 +76,14 @@ npm run build
 npm run dev
 ```
 
-O fluxo `.github/workflows/web-build.yml` executa a mesma construção no GitHub Actions e verifica os conjuntos de dados, o número de aquisições, perfis, contratos, fornecedores, órgãos e índice de busca antes de registrar uma construção bem-sucedida.
+O fluxo `.github/workflows/web-build.yml` exige todos os conjuntos do frontend, verifica a base pública já existente e valida a estrutura de `economy.json` e `transparency.json`. A disponibilidade econômica é tratada separadamente: a construção pode passar com `economy.available=false` quando a fonte externa ainda não produziu um snapshot válido.
 
 ## Segurança de interpretação
 
-A publicação não muda as regras do projeto:
-
 - empenhado, liquidado e pago permanecem separados;
-- valor contratual não é renomeado como pagamento;
 - credor agregado não vira pagamento individual;
-- falha da fonte não vira zero;
-- relações Prefeitura ↔ PNCP usam referência exata de processo, não aproximação textual;
-- repetição de fornecedor, concentração, dispensa, inexigibilidade ou valor elevado são sinais descritivos para consulta, não conclusões de irregularidade;
-- páginas de perfil mantêm acesso às fontes públicas utilizadas.
+- falha de fonte não vira zero;
+- relações Prefeitura ↔ PNCP usam referência exata de processo;
+- déficit comercial, concentração e nota produtiva são indicadores descritivos;
+- comércio exterior de Salvador é rotulado como comércio de empresas domiciliadas no município;
+- dependência de outros estados não é inferida do Comex Stat.
