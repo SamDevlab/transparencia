@@ -1,0 +1,7 @@
+source_id,name,url,scope,role,notes
+mdic_comex_open,MDIC - Comex Stat Dados Abertos,https://www.gov.br/mdic/pt-br/assuntos/comercio-exterior/estatisticas/base-de-dados-bruta,Bahia e Salvador,primary,"Dados oficiais de comércio exterior; arquivos por NCM e município/SH4."
+mdic_comex_api,MDIC - API Comex Stat,https://api-comexstat.mdic.gov.br,Bahia e Salvador,primary,"API usada para consultas filtradas e reprodução automatizada."
+mdic_comex_faq,MDIC - Perguntas Frequentes Comex Stat,https://www.gov.br/mdic/pt-br/assuntos/comercio-exterior/estatisticas/perguntas-frequentes-faq,Bahia e Salvador,methodology,"Define diferenças entre dados gerais e dados por municípios."
+sei_mip,SEI - Matriz de Insumo-Produto da Bahia,https://www.ba.gov.br/sei/relatorio-da-matriz-de-insumo-produto,Bahia,primary_methodology,"Base para futura camada de dependência interestadual e encadeamentos; não é substituída por comércio exterior."
+sei_pib,SEI - PIB Estadual Anual,https://www.ba.gov.br/sei/pib-estadual-anual,Bahia,primary_context,"Estrutura setorial e contexto macroeconômico estadual."
+sei_indicators,SEI - Indicadores da Bahia,https://www.ba.gov.br/sei/bahia,Bahia,primary_context,"Indicadores socioeconômicos estaduais para contexto e validação."
