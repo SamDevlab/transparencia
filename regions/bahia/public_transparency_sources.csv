@@ -1,0 +1,9 @@
+source_id,name,url,scope,role,automation,notes
+ba_transparencia,Portal Transparência Bahia,https://www.transparencia.ba.gov.br/,Estado da Bahia,primary,mapped,"Receitas, despesas, pagamentos, licitações, contratos, pessoal, emendas e gestão fiscal."
+ba_transparencia_receitas,Painel de Receitas,https://www.transparencia.ba.gov.br/Receita/Painel,Estado da Bahia,primary,mapped,"Receitas estaduais; integração automatizada ainda não implementada."
+ba_transparencia_despesas,Painel de Despesas,https://www.transparencia.ba.gov.br/Despesa/Painel,Estado da Bahia,primary,mapped,"Despesas estaduais; integração automatizada ainda não implementada."
+tce_ba_open,TCE/BA Dados Abertos,https://www.tce.ba.gov.br/dados-abertos,Estado da Bahia,primary,automatable,"Portal de dados abertos com contratos, despesas, licitações e repasses."
+tce_ba_expenses,TCE/BA Execução da Despesa Pública,https://www.tce.ba.gov.br/dados-abertos/despesas,Estado da Bahia,primary,automatable,"CSV anual automatizável desde 2013."
+tce_ba_contracts,TCE/BA Contratos Administrativos,https://www.tce.ba.gov.br/dados-abertos/contratos,Estado da Bahia,primary,automatable,"CSV automatizado de contratos vigentes, incluindo contratado, objeto, valor, vigência e aditivos."
+tce_ba_procurement,TCE/BA Procedimentos Licitatórios,https://www.tce.ba.gov.br/dados-abertos/procedimentos-licitatorios,Estado da Bahia,primary,automatable,"CSV automatizado com procedimentos desde 2008; campos mais completos a partir de 2018."
+tce_ba_transfers,TCE/BA Repasses e Transferências,https://www.tce.ba.gov.br/dados-abertos/repasses-e-transferencias,Estado da Bahia,primary,automatable,"CSV automatizado de instrumentos, recebedores, valores e objetos."
