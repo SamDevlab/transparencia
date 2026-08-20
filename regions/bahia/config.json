@@ -1,0 +1,15 @@
+{
+  "slug": "bahia",
+  "name": "Bahia",
+  "uf": "BA",
+  "comex_state_code": 29,
+  "capital": {
+    "name": "Salvador",
+    "ibge_code": "2927408"
+  },
+  "methodology": {
+    "state_trade": "Comex Stat - dados gerais: exportação usa UF produtora; importação usa UF do domicílio fiscal do importador.",
+    "capital_trade": "Comex Stat - municípios: exportação e importação usam o domicílio fiscal da empresa declarante; não representam necessariamente produção ou consumo físico no município.",
+    "interstate_dependency": "Camada separada, baseada em relações intersetoriais e Matriz de Insumo-Produto da Bahia/SEI; não é inferida do comércio exterior."
+  }
+}
