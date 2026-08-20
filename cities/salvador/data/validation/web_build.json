@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "tested_commit": "596f5fb81ed6f988b4d07bbdc96b3e1dab3868f3",
+  "tested_commit": "340e9e3b2ba77d4184a4e4402040d503b8b2ab52",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
@@ -15,5 +15,9 @@
   "executive_agents_generated": 6,
   "public_agents_generated": 49,
   "search_items_generated": 3500,
+  "economy_available": false,
+  "economy_snapshot": null,
+  "bahia_economic_products": 0,
+  "salvador_economic_products": 0,
   "as_of": "2026-08-17"
 }
