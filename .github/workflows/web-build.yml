@@ -9,24 +9,28 @@ on:
       - "components/**"
       - "lib/**"
       - "scripts/build-web-data.mjs"
+      - "scripts/build-economy-web-data.mjs"
       - "package.json"
       - "next.config.mjs"
       - ".github/workflows/web-build.yml"
       - "cities/salvador/data/seed/**"
       - "cities/salvador/data/snapshots/**"
       - "cities/salvador/data/final/**"
+      - "regions/bahia/**"
   pull_request:
     paths:
       - "app/**"
       - "components/**"
       - "lib/**"
       - "scripts/build-web-data.mjs"
+      - "scripts/build-economy-web-data.mjs"
       - "package.json"
       - "next.config.mjs"
       - ".github/workflows/web-build.yml"
       - "cities/salvador/data/seed/**"
       - "cities/salvador/data/snapshots/**"
       - "cities/salvador/data/final/**"
+      - "regions/bahia/**"
 
 permissions:
   contents: write
@@ -46,11 +50,13 @@ jobs:
         run: npm run build
       - name: Verificar conjuntos de dados gerados
         run: |
-          for file in dashboard acquisitions processes contracts suppliers agencies finance camara agents analysis money comparisons search meta; do
+          for file in dashboard acquisitions processes contracts suppliers agencies finance camara agents analysis money comparisons search meta economy transparency; do
             test -s "public/data/${file}.json"
           done
           node - <<'NODE'
           const d = require('./public/data/meta.json');
+          const economy = require('./public/data/economy.json');
+          const transparency = require('./public/data/transparency.json');
           if (d.acquisitions !== 2306) throw new Error(`aquisições geradas: ${d.acquisitions}`);
           if (d.processes !== d.acquisitions) throw new Error(`processos gerados: ${d.processes}`);
           if (d.officials !== 43) throw new Error(`vereadores gerados: ${d.officials}`);
@@ -62,7 +68,10 @@ jobs:
           if (!(d.searchItems > d.acquisitions)) throw new Error(`itens de consulta insuficientes: ${d.searchItems}`);
           if (typeof d.exactCrossSourceLinks !== 'number') throw new Error('contagem de vínculos entre fontes ausente');
           if (!/^\d{4}-\d{2}-\d{2}$/.test(d.snapshotDate || '')) throw new Error(`snapshot inválido: ${d.snapshotDate}`);
-          console.log(d);
+          if (typeof economy.available !== 'boolean') throw new Error('economy.available ausente');
+          if (!Array.isArray(transparency.datasets) || transparency.datasets.length < 7) throw new Error('cobertura integrada incompleta');
+          if (economy.available && (!economy.bahia?.summary || !economy.salvador?.summary)) throw new Error('snapshot econômico disponível sem resumos Bahia/Salvador');
+          console.log({ ...d, economicCoverage: economy.coverage });
           NODE
       - name: Registrar construção bem-sucedida
         if: github.event_name == 'push'
@@ -73,6 +82,7 @@ jobs:
           node - <<'NODE'
           const fs = require('fs');
           const meta = require('./public/data/meta.json');
+          const economy = require('./public/data/economy.json');
           const payload = {
             passed: true,
             tested_commit: process.env.TESTED_SHA,
@@ -90,6 +100,10 @@ jobs:
             executive_agents_generated: meta.executiveAgents,
             public_agents_generated: meta.publicAgents,
             search_items_generated: meta.searchItems,
+            economy_available: economy.available,
+            economy_snapshot: economy.snapshot || null,
+            bahia_economic_products: meta.bahiaEconomicProducts || 0,
+            salvador_economic_products: meta.salvadorEconomicProducts || 0,
             as_of: meta.asOf,
           };
           fs.writeFileSync('cities/salvador/data/validation/web_build.json', JSON.stringify(payload, null, 2) + '\n');
