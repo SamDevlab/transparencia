@@ -8,7 +8,7 @@
     "ibge_code": "2927408"
   },
   "collection": {
-    "version": 1,
+    "version": 2,
     "details": ["country", "heading"],
     "metrics": ["metricFOB", "metricKG"],
     "comparison": "janela acumulada do ano contra o mesmo número de meses do ano anterior"
