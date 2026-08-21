@@ -1,8 +1,8 @@
 {
-  "tested_commit": "1cf1aae0846e12a6cd466f8daef549616f626308",
+  "tested_commit": "c415b0cf8cb51fda34dcc5f1d672125d7afaf15b",
   "tests": "success",
   "collector": "cancelled",
-  "workflow_finished_at": "2026-08-21T09:28:21.892458+00:00",
+  "workflow_finished_at": "2026-08-21T09:29:25.403126+00:00",
   "latest": {
     "collection_mode": "metadata_only",
     "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
@@ -63,7 +63,7 @@
   },
   "test_log_tail": [
     "...                                                                      [100%]",
-    "3 passed in 0.08s"
+    "3 passed in 0.07s"
   ],
   "collector_log_tail": [],
   "contracts": {
@@ -85,7 +85,10 @@
     },
     "selected_year": 2026,
     "primary_member": "VW_PROCESSO_SEI.csv",
-    "selected_rows": 108190,
+    "relation_rows_2026": 108190,
+    "rows_with_instrument_id": null,
+    "unique_instruments": null,
+    "unique_process_keys": null,
     "contract_field": "num_instrumento_formatado",
     "process_field": "NUM_PROCESSO_SIST_ELET_INFO",
     "supplier_document_field": "CNPJ_CPF",
@@ -94,8 +97,7 @@
       "numeric_rows": 108171,
       "sum": 1311029663238.34
     },
-    "instrument_keys": 59350,
-    "process_keys": 84448,
-    "cnpj_suppliers": 100
+    "deduplication": {},
+    "cnpj_suppliers_published": 100
   }
 }
