@@ -104,6 +104,13 @@ jobs:
             if (!(payments.primary_table.selected_rows > 0)) throw new Error('Pagamentos SEFAZ sem linhas 2026');
             if (!payments.selected_year_payment?.source_field || payments.selected_year_payment?.sum == null) throw new Error('Pagamentos SEFAZ sem campo monetário auditável');
           }
+          if ((sefaz?.processed ?? 0) >= 5) {
+            const contracts = bahiaTransparency.sefaz?.contracts?.summary;
+            if (!contracts?.primary_table || contracts.selected_year !== 2026) throw new Error('Contratos SEFAZ sem tabela principal/recorte 2026 válido');
+            if (!(contracts.primary_table.selected_rows > 0)) throw new Error('Contratos SEFAZ sem linhas 2026');
+            if (!contracts.primary_table.schema?.detected_fields?.contract) throw new Error('Contratos SEFAZ sem identificador oficial detectado');
+            if (!(contracts.primary_table.instrument_index?.length > 0)) throw new Error('Contratos SEFAZ sem chaves oficiais de instrumento');
+          }
           console.log({ ...d, economicCoverage: economy.coverage, bahiaState: bahiaTransparency.status, sefaz });
           NODE
       - name: Registrar construção bem-sucedida
@@ -121,6 +128,7 @@ jobs:
           const stateProcurements = bahiaTransparency.sefaz?.procurements?.summary;
           const stateExpenses = bahiaTransparency.sefaz?.expenses?.summary;
           const statePayments = bahiaTransparency.sefaz?.payments?.summary;
+          const stateContracts = bahiaTransparency.sefaz?.contracts?.summary;
           const payload = {
             passed: true,
             tested_commit: process.env.TESTED_SHA,
@@ -162,6 +170,12 @@ jobs:
             state_payment_rows_2026: statePayments?.primary_table?.selected_rows || 0,
             state_payments_2026: statePayments?.selected_year_payment?.sum ?? null,
             state_payment_source_field: statePayments?.selected_year_payment?.source_field ?? null,
+            state_contract_rows_2026: stateContracts?.primary_table?.selected_rows || 0,
+            state_contract_value_2026: stateContracts?.primary_table?.contract_value?.sum ?? null,
+            state_contract_value_field: stateContracts?.primary_table?.contract_value?.field ?? null,
+            state_contract_instrument_keys_2026: stateContracts?.primary_table?.instrument_index?.length || 0,
+            state_contract_process_keys_2026: stateContracts?.primary_table?.process_ids?.length || 0,
+            state_contract_cnpj_suppliers_published: stateContracts?.primary_table?.top_suppliers_cnpj_only?.length || 0,
             as_of: meta.asOf,
           };
           fs.writeFileSync('cities/salvador/data/validation/web_build.json', JSON.stringify(payload, null, 2) + '\n');
