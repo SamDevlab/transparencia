@@ -33,11 +33,7 @@ def write_json(path: Path, payload: Any) -> None:
 
 def persist_raw(raw_dir: Path, *, name: str, endpoint: str, body: dict[str, Any], payload: dict[str, Any]) -> dict[str, Any]:
     raw_dir.mkdir(parents=True, exist_ok=True)
-    envelope = {
-        "endpoint": endpoint,
-        "request_body": body,
-        "response": payload,
-    }
+    envelope = {"endpoint": endpoint, "request_body": body, "response": payload}
     encoded = json.dumps(envelope, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     digest = hashlib.sha256(encoded).hexdigest()
     target = raw_dir / f"{name}.json"
@@ -50,27 +46,18 @@ def period(year: int, month: int) -> tuple[str, str]:
 
 
 def compact_products(products: list[dict[str, Any]], *, limit: int = 400) -> list[dict[str, Any]]:
-    # Mantém produtos economicamente materiais sem esconder o total agregado.
     ordered = sorted(products, key=lambda row: float(row.get("exports_fob") or 0) + float(row.get("imports_fob") or 0), reverse=True)
     return ordered[:limit]
 
 
 def collect_scope(
-    *,
-    client: ComexStatClient,
-    out_root: Path,
-    scope_name: str,
-    query: Callable[..., tuple[dict[str, Any], Any]],
-    filters: list[dict[str, Any]],
-    methodology: str,
-    update_scope: str,
+    *, client: ComexStatClient, out_root: Path, scope_name: str,
+    query: Callable[..., tuple[dict[str, Any], Any]], filters: list[dict[str, Any]],
+    methodology: str, update_scope: str,
 ) -> dict[str, Any]:
     coverage: dict[str, Any] = {
-        "status": "unavailable",
-        "scope": scope_name,
-        "methodology": methodology,
-        "source": "MDIC / Comex Stat",
-        "api": COMEX_API_BASE,
+        "status": "unavailable", "scope": scope_name, "methodology": methodology,
+        "source": "MDIC / Comex Stat", "api": COMEX_API_BASE,
     }
     manifest: list[dict[str, Any]] = []
     try:
@@ -84,35 +71,14 @@ def collect_scope(
             "period_current": {"from": current_from, "to": current_to},
             "period_previous": {"from": previous_from, "to": previous_to},
         })
-
         batches: dict[str, list[dict[str, Any]]] = {}
-        for period_name, start, end in (
-            ("current", current_from, current_to),
-            ("previous", previous_from, previous_to),
-        ):
+        for period_name, start, end in (("current", current_from, current_to), ("previous", previous_from, previous_to)):
             for flow in ("export", "import"):
-                body = client.query_body(
-                    flow=flow,
-                    start=start,
-                    end=end,
-                    filters=filters,
-                    details=["country", "heading"],
-                    month_detail=True,
-                )
-                payload, _response = query(
-                    flow=flow,
-                    start=start,
-                    end=end,
-                    filters=filters,
-                    details=["country", "heading"],
-                    month_detail=True,
-                )
+                body = client.query_body(flow=flow, start=start, end=end, filters=filters, details=["country", "heading"], month_detail=True)
+                payload, _response = query(flow=flow, start=start, end=end, filters=filters, details=["country", "heading"], month_detail=True)
                 manifest.append(persist_raw(
-                    out_root / "raw",
-                    name=f"{scope_name}_{period_name}_{flow}",
-                    endpoint=f"/{update_scope}?language=pt",
-                    body=body,
-                    payload=payload,
+                    out_root / "raw", name=f"{scope_name}_{period_name}_{flow}",
+                    endpoint=f"/{update_scope}?language=pt", body=body, payload=payload,
                 ))
                 batches[f"{period_name}_{flow}"] = unwrap_list(payload)
 
@@ -120,7 +86,6 @@ def collect_scope(
         current_imports = batches["current_import"]
         previous_exports = batches["previous_export"]
         previous_imports = batches["previous_import"]
-
         summary = summarize_flows(current_exports, current_imports)
         previous_summary = summarize_flows(previous_exports, previous_imports)
         current_products = aggregate_products(current_exports, current_imports)
@@ -132,7 +97,7 @@ def collect_scope(
         def yoy(current: float, previous: float) -> float | None:
             return None if previous == 0 else (current - previous) / previous
 
-        summary_payload = {
+        write_json(out_root / scope_name / "summary.json", {
             **summary,
             "previous_period": previous_summary,
             "exports_yoy": yoy(summary["exports_fob"], previous_summary["exports_fob"]),
@@ -143,13 +108,11 @@ def collect_scope(
             "source_updated_at": last.updated,
             "source": "MDIC / Comex Stat",
             "methodology": methodology,
-        }
-        write_json(out_root / scope_name / "summary.json", summary_payload)
+        })
         write_json(out_root / scope_name / "products.json", compact_products(screened))
         write_json(out_root / scope_name / "countries.json", countries[:250])
         write_json(out_root / scope_name / "monthly.json", monthly)
         write_json(out_root / scope_name / "opportunities.json", screened[:250])
-
         coverage.update({
             "status": "complete_for_api_query",
             "current_export_rows": len(current_exports),
@@ -160,11 +123,9 @@ def collect_scope(
             "countries": len(countries),
             "note": "Completo apenas para as consultas descritas no manifesto; não significa completude de toda a economia regional.",
         })
-    except Exception as exc:  # noqa: BLE001 - snapshot deve registrar falha externa de forma explícita
+    except Exception as exc:  # noqa: BLE001
         coverage.update({
-            "status": "unavailable",
-            "error_type": type(exc).__name__,
-            "error": str(exc),
+            "status": "unavailable", "error_type": type(exc).__name__, "error": str(exc),
             "note": "A falha da fonte não é convertida em zero de exportações/importações.",
         })
     return {"coverage": coverage, "manifest": manifest}
@@ -174,37 +135,21 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Coleta inteligência econômica Bahia/Salvador no Comex Stat")
     parser.add_argument("--out", type=Path, default=None, help="Diretório do snapshot. Padrão: regions/bahia/data/snapshots/AAAA-MM-DD")
     args = parser.parse_args()
-
     out_root = args.out or ROOT / "regions" / "bahia" / "data" / "snapshots" / date.today().isoformat()
     out_root.mkdir(parents=True, exist_ok=True)
 
-    state_method = (
-        "Bahia / dados gerais: exportação por UF corresponde à UF produtora; "
-        "importação por UF corresponde ao domicílio fiscal do importador."
-    )
-    city_method = (
-        "Salvador / dados municipais: exportação e importação correspondem ao domicílio fiscal "
-        "da empresa declarante; não provam produção ou consumo físico no município."
-    )
+    state_method = "Bahia / dados gerais: exportação por UF corresponde à UF produtora; importação por UF corresponde ao domicílio fiscal do importador."
+    city_method = "Salvador / dados municipais: exportação e importação correspondem ao domicílio fiscal da empresa declarante; não provam produção ou consumo físico no município."
 
     with ComexStatClient() as client:
         bahia = collect_scope(
-            client=client,
-            out_root=out_root,
-            scope_name="bahia",
-            query=client.query_general,
-            filters=[{"filter": "state", "values": [29]}],
-            methodology=state_method,
-            update_scope="general",
+            client=client, out_root=out_root, scope_name="bahia", query=client.query_general,
+            filters=[{"filter": "state", "values": [29]}], methodology=state_method, update_scope="general",
         )
         salvador = collect_scope(
-            client=client,
-            out_root=out_root,
-            scope_name="salvador",
-            query=client.query_cities,
-            filters=[{"filter": "state", "values": [29]}, {"filter": "city", "values": ["2927408"]}],
-            methodology=city_method,
-            update_scope="cities",
+            client=client, out_root=out_root, scope_name="salvador", query=client.query_cities,
+            filters=[{"filter": "state", "values": [29]}, {"filter": "city", "values": [2927408]}],
+            methodology=city_method, update_scope="cities",
         )
 
     coverage = {
@@ -212,34 +157,23 @@ def main() -> int:
         "bahia": bahia["coverage"],
         "salvador": salvador["coverage"],
         "interstate_dependency": {
-            "status": "source_mapped_not_normalized",
-            "source": "SEI - Matriz de Insumo-Produto da Bahia",
-            "note": "Dependência de outros estados não é inferida do Comex Stat. A fonte intersetorial está mapeada para normalização própria.",
+            "status": "historical_baseline_normalized",
+            "source": "SEI - cadeia regional de valor (matriz interestadual 2017) + MIP Bahia 2012",
+            "note": "A dependência interestadual possui linha de base estrutural histórica normalizada separadamente. Não é inferida do Comex Stat nem apresentada como percentual corrente de 2026.",
         },
     }
-    manifest = {
-        "generated_at": date.today().isoformat(),
-        "raw_files": bahia["manifest"] + salvador["manifest"],
-        "hash_algorithm": "SHA-256",
-    }
+    manifest = {"generated_at": date.today().isoformat(), "raw_files": bahia["manifest"] + salvador["manifest"], "hash_algorithm": "SHA-256"}
     write_json(out_root / "coverage.json", coverage)
     write_json(out_root / "manifest.json", manifest)
-
-    latest = ROOT / "regions" / "bahia" / "data" / "latest.json"
-    write_json(latest, {
+    write_json(ROOT / "regions" / "bahia" / "data" / "latest.json", {
         "snapshot": out_root.name,
         "path": str(out_root.relative_to(ROOT)),
         "bahia_status": coverage["bahia"]["status"],
         "salvador_status": coverage["salvador"]["status"],
     })
-
-    # A execução é considerada tecnicamente válida mesmo se uma fonte externa estiver
-    # indisponível: coverage.json registra a limitação e evita falso zero.
     print(json.dumps({
-        "snapshot": str(out_root),
-        "bahia": coverage["bahia"]["status"],
-        "salvador": coverage["salvador"]["status"],
-        "raw_files": len(manifest["raw_files"]),
+        "snapshot": str(out_root), "bahia": coverage["bahia"]["status"],
+        "salvador": coverage["salvador"]["status"], "raw_files": len(manifest["raw_files"]),
     }, ensure_ascii=False))
     return 0
 
