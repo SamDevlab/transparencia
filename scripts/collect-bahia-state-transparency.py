@@ -33,7 +33,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Coleta transparência estadual da Bahia (SEFAZ/CKAN + TCE/BA)")
     parser.add_argument("--out", type=Path, default=None)
     parser.add_argument("--year", type=int, default=date.today().year)
-    parser.add_argument("--skip-tce-large", action="store_true", help="Coleta apenas metadados CKAN e catálogo quando a rede estiver limitada")
+    parser.add_argument("--skip-tce-large", action="store_true", help="Coleta somente os metadados oficiais do CKAN")
     args = parser.parse_args()
 
     region_root = ROOT / "regions" / "bahia"
@@ -49,6 +49,7 @@ def main() -> int:
         "ckan": {},
         "tce": {},
         "status": "partial",
+        "collection_mode": "metadata_only" if args.skip_tce_large else "full",
     }
     manifest: list[dict[str, Any]] = []
     catalog_rows = []
@@ -148,13 +149,15 @@ def main() -> int:
                 if temp and temp.exists():
                     temp.unlink(missing_ok=True)
     else:
-        coverage["tce"] = {"status": "not_run", "note": "Execução solicitada com --skip-tce-large"}
+        coverage["tce"] = {"status": "not_run", "note": "Fase rápida: arquivos grandes do TCE serão tentados na fase de enriquecimento."}
 
     write_json(out_root / "catalog.json", {"observed_at": date.today().isoformat(), "rows": catalog_rows})
     processed = sum(1 for item in coverage["ckan"].values() if item.get("status") == "metadata_collected")
     tce_processed = sum(1 for item in coverage["tce"].values() if isinstance(item, dict) and item.get("status") == "processed")
 
-    if processed >= 5 and (args.skip_tce_large or tce_processed == 3):
+    if args.skip_tce_large and processed >= 5:
+        coverage["status"] = "complete_for_metadata_collection"
+    elif not args.skip_tce_large and processed >= 5 and tce_processed == 3:
         coverage["status"] = "complete_for_defined_collection"
     elif processed >= 5 or tce_processed > 0:
         coverage["status"] = "partial_with_verified_sources"
@@ -168,9 +171,9 @@ def main() -> int:
         "tce_datasets_expected": 0 if args.skip_tce_large else 3,
     }
     coverage["note"] = (
-        "Completo para a rotina definida significa metadados CKAN consultados e, quando habilitado, "
-        "os três arquivos automatizados do TCE processados. Fallback TLS do CKAN, quando necessário, "
-        "é registrado explicitamente. Não significa completude de toda a transparência estadual."
+        "A fase de metadados pode ficar completa mesmo sem baixar os arquivos grandes do TCE. "
+        "A cobertura plena da rotina exige os metadados CKAN e os três conjuntos automatizados do TCE. "
+        "Fallback TLS do CKAN, quando necessário, fica registrado e nunca é silencioso."
     )
     write_json(out_root / "coverage.json", coverage)
     write_json(out_root / "manifest.json", {"hash_algorithm": "SHA-256", "entries": manifest})
@@ -178,11 +181,13 @@ def main() -> int:
         "snapshot": out_root.name,
         "path": str(out_root.relative_to(ROOT.resolve())),
         "status": coverage["status"],
+        "collection_mode": coverage["collection_mode"],
         "summary": coverage["summary"],
     })
     print(json.dumps({
         "snapshot": str(out_root),
         "status": coverage["status"],
+        "mode": coverage["collection_mode"],
         "ckan_collected": processed,
         "tce_processed": tce_processed,
     }, ensure_ascii=False))
