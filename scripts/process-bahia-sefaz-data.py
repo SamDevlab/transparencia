@@ -81,8 +81,10 @@ def summary_rows(dataset: str, summary: dict[str, Any]) -> int | None:
         return summary.get("rows")
     if dataset == "licitacoes":
         return summary.get("total_rows_across_related_tables")
-    if dataset in {"despesas", "pagamentos", "contratos"}:
+    if dataset in {"despesas", "pagamentos"}:
         return (summary.get("primary_table") or {}).get("rows")
+    if dataset == "contratos":
+        return (summary.get("primary_table") or {}).get("unique_instruments")
     return None
 
 
@@ -186,7 +188,7 @@ def main() -> int:
                 "privacy": "O arquivo bruto foi processado temporariamente e não é republicado pelo projeto.",
             }
             write_json(snapshot / config["output"], payload)
-            coverage["sefaz_data"][dataset] = {
+            coverage_entry = {
                 "status": "processed",
                 "output": config["output"],
                 "resource_id": resource.get("id"),
@@ -200,6 +202,12 @@ def main() -> int:
                 "rows": summary_rows(dataset, summary),
                 "selected_year": args.year,
             }
+            if dataset == "contratos":
+                primary = summary.get("primary_table") or {}
+                coverage_entry["relation_rows"] = primary.get("selected_rows")
+                coverage_entry["unique_instruments"] = primary.get("unique_instruments")
+                coverage_entry["deduplication"] = primary.get("deduplication")
+            coverage["sefaz_data"][dataset] = coverage_entry
             update_manifest(snapshot, {
                 "source_id": f"sefaz_{dataset}_data",
                 "url": evidence.url,
