@@ -16,7 +16,6 @@ if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
 from transparencia.collectors.bahia_open_data import (  # noqa: E402
-    BahiaOpenDataError,
     ckan_package,
     normalize_ckan_package,
     persist_json_snapshot,
@@ -40,7 +39,10 @@ def main() -> int:
 
     region_root = ROOT / "regions" / "bahia"
     reference = json.loads((region_root / "data" / "reference" / "state_transparency_catalog.json").read_text(encoding="utf-8"))
-    out_root = args.out or region_root / "data" / "state_transparency" / "snapshots" / date.today().isoformat()
+    out_root = args.out or Path("regions") / "bahia" / "data" / "state_transparency" / "snapshots" / date.today().isoformat()
+    if not out_root.is_absolute():
+        out_root = ROOT / out_root
+    out_root = out_root.resolve()
     out_root.mkdir(parents=True, exist_ok=True)
 
     coverage: dict[str, Any] = {
@@ -63,7 +65,11 @@ def main() -> int:
                 manifest.append({"source_id": source["id"], **persist_json_snapshot(out_root / "raw", f"ckan_{dataset}", payload)})
                 normalized = normalize_ckan_package(payload)
                 catalog_rows.append({**source, "status": "metadata_collected", "ckan": normalized})
-                coverage["ckan"][dataset] = {"status": "metadata_collected", "resources": len(normalized["resources"]), "metadata_modified": normalized.get("metadata_modified")}
+                coverage["ckan"][dataset] = {
+                    "status": "metadata_collected",
+                    "resources": len(normalized["resources"]),
+                    "metadata_modified": normalized.get("metadata_modified"),
+                }
             except Exception as exc:  # noqa: BLE001
                 catalog_rows.append({**source, "status": "unavailable", "error": str(exc)})
                 coverage["ckan"][dataset] = {"status": "unavailable", "error_type": type(exc).__name__, "error": str(exc)}
@@ -101,8 +107,19 @@ def main() -> int:
                         "evidence": evidence.__dict__,
                         "summary": summary,
                     })
-                    coverage["tce"][job["id"]] = {"status": "processed", "sha256": evidence.sha256, "bytes": evidence.bytes, "rows": summary.get("totals", {}).get("rows", summary.get("rows"))}
-                    manifest.append({"source_id": f"tce_{job['id']}", "url": evidence.url, "sha256": evidence.sha256, "bytes": evidence.bytes, "content_type": evidence.content_type})
+                    coverage["tce"][job["id"]] = {
+                        "status": "processed",
+                        "sha256": evidence.sha256,
+                        "bytes": evidence.bytes,
+                        "rows": summary.get("totals", {}).get("rows", summary.get("rows")),
+                    }
+                    manifest.append({
+                        "source_id": f"tce_{job['id']}",
+                        "url": evidence.url,
+                        "sha256": evidence.sha256,
+                        "bytes": evidence.bytes,
+                        "content_type": evidence.content_type,
+                    })
                 except Exception as exc:  # noqa: BLE001
                     coverage["tce"][job["id"]] = {"status": "unavailable", "error_type": type(exc).__name__, "error": str(exc)}
                 finally:
@@ -120,10 +137,15 @@ def main() -> int:
     write_json(out_root / "manifest.json", {"hash_algorithm": "SHA-256", "entries": manifest})
     write_json(region_root / "data" / "state_transparency" / "latest.json", {
         "snapshot": out_root.name,
-        "path": str(out_root.relative_to(ROOT)),
+        "path": str(out_root.relative_to(ROOT.resolve())),
         "status": coverage["status"],
     })
-    print(json.dumps({"snapshot": str(out_root), "status": coverage["status"], "ckan_collected": processed, "tce_processed": tce_processed}, ensure_ascii=False))
+    print(json.dumps({
+        "snapshot": str(out_root),
+        "status": coverage["status"],
+        "ckan_collected": processed,
+        "tce_processed": tce_processed,
+    }, ensure_ascii=False))
     return 0
 
 
