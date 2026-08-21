@@ -1,0 +1,82 @@
+name: Transparência estadual da Bahia
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "40 10 * * 2"
+  push:
+    branches:
+      - city/salvador
+    paths:
+      - ".github/workflows/bahia-state-transparency.yml"
+      - "src/transparencia/collectors/bahia_open_data.py"
+      - "scripts/collect-bahia-state-transparency.py"
+      - "tests/test_bahia_open_data.py"
+      - "regions/bahia/data/reference/state_transparency_catalog.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bahia-state-transparency
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependências
+        run: pip install -e '.[dev]'
+      - name: Validar parser estadual
+        run: pytest -q tests/test_bahia_open_data.py
+      - name: Coletar SEFAZ CKAN e TCE BA
+        run: |
+          SNAPSHOT_DATE=$(date -u +%F)
+          python scripts/collect-bahia-state-transparency.py \
+            --year 2026 \
+            --out "regions/bahia/data/state_transparency/snapshots/${SNAPSHOT_DATE}"
+          cat "regions/bahia/data/state_transparency/snapshots/${SNAPSHOT_DATE}/coverage.json"
+      - name: Registrar diagnóstico
+        if: always()
+        run: |
+          mkdir -p regions/bahia/data/validation
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+          root = Path('regions/bahia/data/state_transparency')
+          latest = root / 'latest.json'
+          payload = {
+              'workflow_finished_at': datetime.now(timezone.utc).isoformat(),
+              'latest_exists': latest.exists(),
+          }
+          if latest.exists():
+              pointer = json.loads(latest.read_text(encoding='utf-8'))
+              payload['latest'] = pointer
+              coverage = Path(pointer['path']) / 'coverage.json'
+              if coverage.exists():
+                  payload['coverage'] = json.loads(coverage.read_text(encoding='utf-8'))
+          Path('regions/bahia/data/validation/state_transparency_run.json').write_text(
+              json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+          PY
+      - name: Versionar somente dados derivados e hashes
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add regions/bahia/data/state_transparency regions/bahia/data/validation/state_transparency_run.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data(transparencia): atualizar fontes estaduais da Bahia [skip ci]"
+            git pull --rebase origin city/salvador
+            git push origin HEAD:city/salvador
+          else
+            echo "Nenhuma alteração estadual para versionar."
+          fi
