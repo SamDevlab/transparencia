@@ -8,6 +8,7 @@ def test_normalize_identifier_only_removes_formatting():
     assert normalize_identifier(" 123/2026-ABC ") == "1232026ABC"
     assert normalize_identifier("123-2026-abc") == "1232026ABC"
     assert normalize_identifier("124/2026-ABC") != normalize_identifier("123/2026-ABC")
+    assert normalize_identifier("123/2026-ABD") != normalize_identifier("123/2026-ABC")
     assert normalize_identifier("") is None
 
 
@@ -39,6 +40,7 @@ def test_contracts_keep_addenda_separate_and_do_not_publish_cpf(tmp_path: Path):
         {"cnpj": "12345678000100", "name": "Empresa A", "rows": 1, "contracts": 1, "value": 1000.0}
     ]
     assert "12345678901" not in str(result)
+    assert "Não há correspondência aproximada" in result["identity_rule"]
     addenda = next(table for table in result["tables"] if table["classification"] == "aditivos")
     assert addenda["selected_rows"] == 1
     assert result["archive"]["processed_tabular_members"] == 2
