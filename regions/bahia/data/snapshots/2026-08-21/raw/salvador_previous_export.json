@@ -1,0 +1,1 @@
+{"endpoint":"/cities?language=pt","request_body":{"details":["country","heading"],"filters":[{"filter":"state","values":[29]},{"filter":"city","values":[2927408]}],"flow":"export","metrics":["metricFOB","metricKG"],"monthDetail":true,"period":{"from":"2025-01","to":"2025-07"}},"response":{"data":{"list":[]},"language":"pt","message":null,"processo_info":null,"success":true}}

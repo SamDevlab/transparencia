@@ -1,0 +1,26 @@
+{
+  "balance_change_fob": 0,
+  "balance_fob": 0,
+  "comparison_period": {
+    "from": "2025-01",
+    "to": "2025-07"
+  },
+  "exports_fob": 0,
+  "exports_yoy": null,
+  "imports_fob": 0,
+  "imports_yoy": null,
+  "methodology": "Salvador / dados municipais: exportação e importação correspondem ao domicílio fiscal da empresa declarante; não provam produção ou consumo físico no município.",
+  "period": {
+    "from": "2026-01",
+    "to": "2026-07"
+  },
+  "previous_period": {
+    "balance_fob": 0,
+    "exports_fob": 0,
+    "imports_fob": 0,
+    "trade_flow_fob": 0
+  },
+  "source": "MDIC / Comex Stat",
+  "source_updated_at": "2026-08-06",
+  "trade_flow_fob": 0
+}

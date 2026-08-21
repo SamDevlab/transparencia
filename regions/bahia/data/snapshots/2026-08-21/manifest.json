@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-08-21",
+  "hash_algorithm": "SHA-256",
+  "raw_files": [
+    {
+      "bytes": 342,
+      "file": "bahia_current_export.json",
+      "sha256": "f5c877f746eaef43425065fb636ee7088badb4b834f0e6027cca28fc2bb8fb1c"
+    },
+    {
+      "bytes": 342,
+      "file": "bahia_current_import.json",
+      "sha256": "5eb6d41103a93f13f2ed224878c37acc198706199eccfdf3dd139afacd82d683"
+    },
+    {
+      "bytes": 342,
+      "file": "bahia_previous_export.json",
+      "sha256": "b21d98e85e657b25ed6eeadcd6634e7f7b4deaa00fb36ae581fcedc8d593fd59"
+    },
+    {
+      "bytes": 342,
+      "file": "bahia_previous_import.json",
+      "sha256": "cd68399861cff9b0e26d2935f8127c2793588df638e0ad24a8d28f72556ed8f1"
+    },
+    {
+      "bytes": 378,
+      "file": "salvador_current_export.json",
+      "sha256": "629d1d0d34c87a301e1c68f60a089f31d73bf60e66fa953e544330ca001f3eed"
+    },
+    {
+      "bytes": 378,
+      "file": "salvador_current_import.json",
+      "sha256": "05c7dad5c18637f0d10ff310e05695dd41d6d236f4dd77fd2940313ee2450431"
+    },
+    {
+      "bytes": 378,
+      "file": "salvador_previous_export.json",
+      "sha256": "afe313d634c40a3a19b2dee667dc491c44145a591bda44890b8ed17258d76be1"
+    },
+    {
+      "bytes": 378,
+      "file": "salvador_previous_import.json",
+      "sha256": "100de2f38447f18047194ba00fe06a75989b630f859510af859b4b93ab0d227f"
+    }
+  ]
+}
