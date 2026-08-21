@@ -8,7 +8,8 @@ import tempfile
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Iterable, Sequence
+from urllib.parse import urlsplit, urlunsplit
 
 import httpx
 
@@ -54,6 +55,40 @@ def ckan_package(client: httpx.Client, dataset: str) -> dict[str, Any]:
     if not isinstance(payload, dict) or payload.get("success") is not True or not isinstance(payload.get("result"), dict):
         raise BahiaOpenDataError(f"CKAN não devolveu package_show válido para {dataset}")
     return payload
+
+
+def _certificate_chain_error(exc: Exception) -> bool:
+    text = str(exc).upper()
+    return "CERTIFICATE_VERIFY_FAILED" in text or "CERTIFICATE VERIFY FAILED" in text
+
+
+def ckan_package_resilient(
+    dataset: str,
+    *,
+    headers: dict[str, str] | None = None,
+    timeout: float = 60.0,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Consulta o CKAN oficial e só desativa a validação TLS se a cadeia oficial falhar.
+
+    O fallback fica explícito no metadado retornado; ele nunca é silencioso e só vale
+    para o host fixo dados.ba.gov.br definido em CKAN_BASE.
+    """
+    try:
+        with httpx.Client(headers=headers, timeout=timeout, follow_redirects=True, verify=True) as client:
+            return ckan_package(client, dataset), {
+                "tls_verified": True,
+                "transport_note": "Validação TLS concluída normalmente.",
+            }
+    except httpx.ConnectError as exc:
+        if not _certificate_chain_error(exc):
+            raise
+        with httpx.Client(headers=headers, timeout=timeout, follow_redirects=True, verify=False) as client:
+            payload = ckan_package(client, dataset)
+        return payload, {
+            "tls_verified": False,
+            "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada.",
+            "fallback_reason": "certificate_chain_error",
+        }
 
 
 def normalize_ckan_package(payload: dict[str, Any]) -> dict[str, Any]:
@@ -113,12 +148,27 @@ def _norm_header(value: str) -> str:
     return re.sub(r"\s+", " ", value.strip().upper())
 
 
+def official_tce_url_candidates(url: str) -> list[str]:
+    """Mantém somente hosts oficiais do TCE e tenta os dois frontends observados."""
+    parts = urlsplit(url)
+    if parts.scheme != "https" or parts.hostname not in {"www.tce.ba.gov.br", "its.tce.ba.gov.br"}:
+        return [url]
+    hosts = [parts.hostname, "its.tce.ba.gov.br" if parts.hostname == "www.tce.ba.gov.br" else "www.tce.ba.gov.br"]
+    result: list[str] = []
+    for host in hosts:
+        candidate = urlunsplit((parts.scheme, host, parts.path, parts.query, parts.fragment))
+        if candidate not in result:
+            result.append(candidate)
+    return result
+
+
 def stream_to_temp(client: httpx.Client, url: str, *, max_bytes: int = 800_000_000) -> tuple[Path, DownloadEvidence]:
     digest = hashlib.sha256()
     total = 0
     with client.stream("GET", url, follow_redirects=True) as response:
         response.raise_for_status()
-        suffix = ".csv" if "csv" in (response.headers.get("content-type") or "").lower() or url.lower().endswith(".csv") else ".bin"
+        content_type = response.headers.get("content-type", "")
+        suffix = ".csv" if "csv" in content_type.lower() or url.lower().endswith(".csv") else ".bin"
         handle = tempfile.NamedTemporaryFile(prefix="bahia-open-data-", suffix=suffix, delete=False)
         path = Path(handle.name)
         try:
@@ -137,9 +187,33 @@ def stream_to_temp(client: httpx.Client, url: str, *, max_bytes: int = 800_000_0
             status_code=response.status_code,
             sha256=digest.hexdigest(),
             bytes=total,
-            content_type=response.headers.get("content-type", ""),
+            content_type=content_type,
         )
     return path, evidence
+
+
+def stream_first_available(
+    urls: Sequence[str],
+    *,
+    headers: dict[str, str] | None = None,
+    max_bytes: int = 800_000_000,
+) -> tuple[Path, DownloadEvidence, list[dict[str, str]]]:
+    attempts: list[dict[str, str]] = []
+    timeout = httpx.Timeout(connect=18.0, read=240.0, write=30.0, pool=30.0)
+    for url in urls:
+        try:
+            with httpx.Client(
+                headers=headers,
+                timeout=timeout,
+                follow_redirects=True,
+                verify=True,
+            ) as client:
+                path, evidence = stream_to_temp(client, url, max_bytes=max_bytes)
+            attempts.append({"url": url, "status": "success"})
+            return path, evidence, attempts
+        except Exception as exc:  # noqa: BLE001 - cada host oficial é tentado e registrado
+            attempts.append({"url": url, "status": "failed", "error_type": type(exc).__name__, "error": str(exc)[:500]})
+    raise BahiaOpenDataError("Nenhum endpoint oficial do TCE respondeu: " + json.dumps(attempts, ensure_ascii=False))
 
 
 def summarize_tce_expenses(path: Path) -> dict[str, Any]:
