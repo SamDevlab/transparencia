@@ -1,17 +1,15 @@
 from __future__ import annotations
 
 import csv
-import hashlib
 import io
 import json
 import re
-import tempfile
 import unicodedata
 import zipfile
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, BinaryIO, Iterable
+from typing import Any, Iterable
 from urllib.parse import urlsplit
 
 import httpx
@@ -255,10 +253,10 @@ def _classify_licitacao_table(member: str, headers: Iterable[str]) -> str:
         return "participantes"
     if "ITEM" in joined and "VALOR" in joined:
         return "itens"
-    if "HOMOLOG" in joined or "ADJUDIC" in joined:
-        return "homologacoes"
     if "MODALIDADE" in joined or "LICITAC" in name or "CERTAME" in joined:
         return "licitacoes"
+    if "HOMOLOG" in joined or "ADJUDIC" in joined:
+        return "homologacoes"
     return "tabela_relacionada"
 
 
