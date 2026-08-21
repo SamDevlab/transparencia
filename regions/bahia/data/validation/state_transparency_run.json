@@ -1,16 +1,14 @@
 {
-  "tested_commit": "18e4fdc3ae41a47669d29a2156b43f7bffe227d3",
+  "tested_commit": "e81e77e9ae7e0fc734ece0c7ade07332dcab3f42",
   "tests": "success",
-  "collector": "success",
-  "workflow_finished_at": "2026-08-21T01:27:20.317668+00:00",
+  "collector": "cancelled",
+  "workflow_finished_at": "2026-08-21T01:34:28.678362+00:00",
   "latest_exists": true,
   "test_log_tail": [
     "...                                                                      [100%]",
     "3 passed in 0.05s"
   ],
-  "collector_log_tail": [
-    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"status\": \"partial\", \"ckan_collected\": 0, \"tce_processed\": 0}"
-  ],
+  "collector_log_tail": [],
   "latest": {
     "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
     "snapshot": "2026-08-21",
