@@ -1,20 +1,27 @@
 {
-  "tested_commit": "3f5f3cf6931a8576981ce5ae77b5004504927a0b",
-  "collector": "success",
-  "workflow_finished_at": "2026-08-21T01:38:22.737853+00:00",
+  "tested_commit": "0d045fa054abf49d4626e1fe069e95ced9abedf4",
+  "collector": "cancelled",
+  "workflow_finished_at": "2026-08-21T02:25:43.106317+00:00",
   "latest_exists": true,
-  "collector_log_tail": [
-    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"status\": \"partial_with_verified_sources\", \"mode\": \"full\", \"ckan_collected\": 6, \"tce_processed\": 0}"
-  ],
+  "collector_log_tail": [],
   "latest": {
-    "collection_mode": "full",
+    "collection_mode": "metadata_only",
     "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
+    "sefaz_data": {
+      "datasets": [
+        "receitas",
+        "licitacoes"
+      ],
+      "expected": 2,
+      "processed": 2,
+      "reference_year": 2026
+    },
     "snapshot": "2026-08-21",
-    "status": "partial_with_verified_sources",
+    "status": "complete_for_metadata_collection",
     "summary": {
       "ckan_datasets_collected": 6,
       "ckan_datasets_expected": 6,
-      "tce_datasets_expected": 3,
+      "tce_datasets_expected": 0,
       "tce_datasets_processed": 0
     }
   },
@@ -69,47 +76,52 @@
         "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
       }
     },
-    "collection_mode": "full",
+    "collection_mode": "metadata_only",
     "generated_at": "2026-08-21",
-    "note": "A fase de metadados pode ficar completa mesmo sem baixar os arquivos grandes do TCE. A cobertura plena da rotina exige os metadados CKAN e os três conjuntos automatizados do TCE. Fallback TLS do CKAN, quando necessário, fica registrado e nunca é silencioso.",
-    "status": "partial_with_verified_sources",
+    "note": "A fase de metadados pode ficar completa mesmo sem baixar os arquivos grandes do TCE. A cobertura plena da rotina exige os metadados CKAN e os três conjuntos automatizados do TCE. Dados SEFAZ já processados são preservados entre reexecuções. Fallback TLS do CKAN, quando necessário, fica registrado e nunca é silencioso.",
+    "sefaz_data": {
+      "licitacoes": {
+        "bytes": 130216796,
+        "output": "sefaz_licitacoes.json",
+        "resource_id": "c5040c7d-4375-459e-93b0-beca841f63b4",
+        "resource_last_modified": "2026-08-20T11:13:12",
+        "rows": 3045273,
+        "selected_year": 2026,
+        "sha256": "95409ee6d9aacced3a4a6a0fe455b6c7450ea5f001056e3ee78c83768b6d7391",
+        "status": "processed",
+        "tls_verified": false
+      },
+      "receitas": {
+        "bytes": 189198575,
+        "output": "sefaz_receitas.json",
+        "resource_id": "70483fa8-362c-40c3-9389-67bff289fee5",
+        "resource_last_modified": "2026-08-20T10:05:01",
+        "rows": 290280,
+        "selected_year": 2026,
+        "sha256": "c7b972121d18444bb3b3b7e8b9e7ee06e2aa5ec12c5888fa250df6d1bbaed641",
+        "status": "processed",
+        "tls_verified": false
+      }
+    },
+    "sefaz_data_summary": {
+      "datasets": [
+        "receitas",
+        "licitacoes"
+      ],
+      "expected": 2,
+      "processed": 2,
+      "reference_year": 2026
+    },
+    "status": "complete_for_metadata_collection",
     "summary": {
       "ckan_datasets_collected": 6,
       "ckan_datasets_expected": 6,
-      "tce_datasets_expected": 3,
+      "tce_datasets_expected": 0,
       "tce_datasets_processed": 0
     },
     "tce": {
-      "contracts": {
-        "attempted_urls": [
-          "https://www.tce.ba.gov.br/contratos/dados-abertos",
-          "https://its.tce.ba.gov.br/contratos/dados-abertos"
-        ],
-        "canonical_source_url": "https://www.tce.ba.gov.br/contratos/dados-abertos",
-        "error": "Nenhum endpoint oficial do TCE respondeu: [{\"url\": \"https://www.tce.ba.gov.br/contratos/dados-abertos\", \"status\": \"failed\", \"error_type\": \"ConnectTimeout\", \"error\": \"timed out\"}, {\"url\": \"https://its.tce.ba.gov.br/contratos/dados-abertos\", \"status\": \"failed\", \"error_type\": \"ConnectTimeout\", \"error\": \"timed out\"}]",
-        "error_type": "BahiaOpenDataError",
-        "status": "unavailable"
-      },
-      "expenses": {
-        "attempted_urls": [
-          "https://www.tce.ba.gov.br/images/transparencia/despesa-detalhada/despesa-detalhada/Despesa_detalhada_Exercicio_2026.csv",
-          "https://its.tce.ba.gov.br/images/transparencia/despesa-detalhada/despesa-detalhada/Despesa_detalhada_Exercicio_2026.csv"
-        ],
-        "canonical_source_url": "https://www.tce.ba.gov.br/images/transparencia/despesa-detalhada/despesa-detalhada/Despesa_detalhada_Exercicio_2026.csv",
-        "error": "Nenhum endpoint oficial do TCE respondeu: [{\"url\": \"https://www.tce.ba.gov.br/images/transparencia/despesa-detalhada/despesa-detalhada/Despesa_detalhada_Exercicio_2026.csv\", \"status\": \"failed\", \"error_type\": \"ConnectTimeout\", \"error\": \"timed out\"}, {\"url\": \"https://its.tce.ba.gov.br/images/transparencia/despesa-detalhada/despesa-detalhada/Despesa_detalhada_Exercicio_2026.csv\", \"status\": \"failed\", \"error_type\": \"ConnectTimeout\", \"error\": \"timed out\"}]",
-        "error_type": "BahiaOpenDataError",
-        "status": "unavailable"
-      },
-      "procurements": {
-        "attempted_urls": [
-          "https://www.tce.ba.gov.br/institucional/transparencia/licitacoes/dados-abertos",
-          "https://its.tce.ba.gov.br/institucional/transparencia/licitacoes/dados-abertos"
-        ],
-        "canonical_source_url": "https://www.tce.ba.gov.br/institucional/transparencia/licitacoes/dados-abertos",
-        "error": "Nenhum endpoint oficial do TCE respondeu: [{\"url\": \"https://www.tce.ba.gov.br/institucional/transparencia/licitacoes/dados-abertos\", \"status\": \"failed\", \"error_type\": \"ConnectTimeout\", \"error\": \"timed out\"}, {\"url\": \"https://its.tce.ba.gov.br/institucional/transparencia/licitacoes/dados-abertos\", \"status\": \"failed\", \"error_type\": \"ConnectTimeout\", \"error\": \"timed out\"}]",
-        "error_type": "BahiaOpenDataError",
-        "status": "unavailable"
-      }
+      "note": "Fase rápida: arquivos grandes do TCE serão tentados na fase de enriquecimento.",
+      "status": "not_run"
     }
   }
 }
