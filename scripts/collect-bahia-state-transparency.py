@@ -8,18 +8,17 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
-import httpx
-
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
 from transparencia.collectors.bahia_open_data import (  # noqa: E402
-    ckan_package,
+    ckan_package_resilient,
     normalize_ckan_package,
+    official_tce_url_candidates,
     persist_json_snapshot,
-    stream_to_temp,
+    stream_first_available,
     summarize_hash_csv,
     summarize_tce_expenses,
 )
@@ -54,91 +53,132 @@ def main() -> int:
     manifest: list[dict[str, Any]] = []
     catalog_rows = []
 
-    headers = {"Accept": "application/json,text/csv,*/*", "User-Agent": "transparencia-municipal/0.4"}
-    with httpx.Client(headers=headers, timeout=120.0, follow_redirects=True) as client:
-        for source in reference["sources"]:
-            if not source.get("dataset"):
-                continue
-            dataset = source["dataset"]
-            try:
-                payload = ckan_package(client, dataset)
-                manifest.append({"source_id": source["id"], **persist_json_snapshot(out_root / "raw", f"ckan_{dataset}", payload)})
-                normalized = normalize_ckan_package(payload)
-                catalog_rows.append({**source, "status": "metadata_collected", "ckan": normalized})
-                coverage["ckan"][dataset] = {
-                    "status": "metadata_collected",
-                    "resources": len(normalized["resources"]),
-                    "metadata_modified": normalized.get("metadata_modified"),
-                }
-            except Exception as exc:  # noqa: BLE001
-                catalog_rows.append({**source, "status": "unavailable", "error": str(exc)})
-                coverage["ckan"][dataset] = {"status": "unavailable", "error_type": type(exc).__name__, "error": str(exc)}
+    headers = {
+        "Accept": "application/json,text/csv,*/*",
+        "Accept-Encoding": "identity",
+        "User-Agent": "Mozilla/5.0 transparencia-municipal/0.5",
+    }
 
-        if not args.skip_tce_large:
-            tce_jobs = [
-                {
-                    "id": "expenses",
-                    "url": f"https://www.tce.ba.gov.br/images/transparencia/despesa-detalhada/despesa-detalhada/Despesa_detalhada_Exercicio_{args.year}.csv",
-                    "summarize": summarize_tce_expenses,
-                    "target": "tce_expenses.json",
-                },
-                {
-                    "id": "contracts",
-                    "url": "https://www.tce.ba.gov.br/contratos/dados-abertos",
-                    "summarize": lambda path: summarize_hash_csv(path, value_headers=("VALOR ATUAL",)),
-                    "target": "tce_contracts.json",
-                },
-                {
-                    "id": "procurements",
-                    "url": "https://www.tce.ba.gov.br/institucional/transparencia/licitacoes/dados-abertos",
-                    "summarize": lambda path: summarize_hash_csv(path, value_headers=("VALOR DA PROPOSTA VENCEDORA",)),
-                    "target": "tce_procurements.json",
-                },
-            ]
-            for job in tce_jobs:
-                temp = None
-                try:
-                    temp, evidence = stream_to_temp(client, job["url"])
-                    summary = job["summarize"](temp)
-                    write_json(out_root / job["target"], {
-                        "source": "TCE/BA",
-                        "source_url": job["url"],
-                        "reference_year": args.year if job["id"] == "expenses" else None,
-                        "evidence": evidence.__dict__,
-                        "summary": summary,
-                    })
-                    coverage["tce"][job["id"]] = {
-                        "status": "processed",
-                        "sha256": evidence.sha256,
-                        "bytes": evidence.bytes,
-                        "rows": summary.get("totals", {}).get("rows", summary.get("rows")),
-                    }
-                    manifest.append({
-                        "source_id": f"tce_{job['id']}",
-                        "url": evidence.url,
-                        "sha256": evidence.sha256,
-                        "bytes": evidence.bytes,
-                        "content_type": evidence.content_type,
-                    })
-                except Exception as exc:  # noqa: BLE001
-                    coverage["tce"][job["id"]] = {"status": "unavailable", "error_type": type(exc).__name__, "error": str(exc)}
-                finally:
-                    if temp and temp.exists():
-                        temp.unlink(missing_ok=True)
-        else:
-            coverage["tce"] = {"status": "not_run", "note": "Execução solicitada com --skip-tce-large"}
+    for source in reference["sources"]:
+        if not source.get("dataset"):
+            continue
+        dataset = source["dataset"]
+        try:
+            payload, transport = ckan_package_resilient(dataset, headers=headers, timeout=60.0)
+            snapshot_meta = persist_json_snapshot(out_root / "raw", f"ckan_{dataset}", payload)
+            manifest.append({"source_id": source["id"], "transport": transport, **snapshot_meta})
+            normalized = normalize_ckan_package(payload)
+            catalog_rows.append({**source, "status": "metadata_collected", "transport": transport, "ckan": normalized})
+            coverage["ckan"][dataset] = {
+                "status": "metadata_collected",
+                "resources": len(normalized["resources"]),
+                "metadata_modified": normalized.get("metadata_modified"),
+                **transport,
+            }
+        except Exception as exc:  # noqa: BLE001
+            catalog_rows.append({**source, "status": "unavailable", "error": str(exc)})
+            coverage["ckan"][dataset] = {
+                "status": "unavailable",
+                "error_type": type(exc).__name__,
+                "error": str(exc),
+            }
+
+    if not args.skip_tce_large:
+        tce_jobs = [
+            {
+                "id": "expenses",
+                "url": f"https://www.tce.ba.gov.br/images/transparencia/despesa-detalhada/despesa-detalhada/Despesa_detalhada_Exercicio_{args.year}.csv",
+                "summarize": summarize_tce_expenses,
+                "target": "tce_expenses.json",
+            },
+            {
+                "id": "contracts",
+                "url": "https://www.tce.ba.gov.br/contratos/dados-abertos",
+                "summarize": lambda path: summarize_hash_csv(path, value_headers=("VALOR ATUAL",)),
+                "target": "tce_contracts.json",
+            },
+            {
+                "id": "procurements",
+                "url": "https://www.tce.ba.gov.br/institucional/transparencia/licitacoes/dados-abertos",
+                "summarize": lambda path: summarize_hash_csv(path, value_headers=("VALOR DA PROPOSTA VENCEDORA",)),
+                "target": "tce_procurements.json",
+            },
+        ]
+        for job in tce_jobs:
+            temp = None
+            candidates = official_tce_url_candidates(job["url"])
+            try:
+                temp, evidence, attempts = stream_first_available(candidates, headers=headers)
+                summary = job["summarize"](temp)
+                write_json(out_root / job["target"], {
+                    "source": "TCE/BA",
+                    "canonical_source_url": job["url"],
+                    "retrieved_from": evidence.url,
+                    "attempts": attempts,
+                    "reference_year": args.year if job["id"] == "expenses" else None,
+                    "evidence": evidence.__dict__,
+                    "summary": summary,
+                })
+                coverage["tce"][job["id"]] = {
+                    "status": "processed",
+                    "canonical_source_url": job["url"],
+                    "retrieved_from": evidence.url,
+                    "attempts": attempts,
+                    "sha256": evidence.sha256,
+                    "bytes": evidence.bytes,
+                    "rows": summary.get("totals", {}).get("rows", summary.get("rows")),
+                }
+                manifest.append({
+                    "source_id": f"tce_{job['id']}",
+                    "canonical_source_url": job["url"],
+                    "url": evidence.url,
+                    "sha256": evidence.sha256,
+                    "bytes": evidence.bytes,
+                    "content_type": evidence.content_type,
+                })
+            except Exception as exc:  # noqa: BLE001
+                coverage["tce"][job["id"]] = {
+                    "status": "unavailable",
+                    "canonical_source_url": job["url"],
+                    "attempted_urls": candidates,
+                    "error_type": type(exc).__name__,
+                    "error": str(exc),
+                }
+            finally:
+                if temp and temp.exists():
+                    temp.unlink(missing_ok=True)
+    else:
+        coverage["tce"] = {"status": "not_run", "note": "Execução solicitada com --skip-tce-large"}
 
     write_json(out_root / "catalog.json", {"observed_at": date.today().isoformat(), "rows": catalog_rows})
     processed = sum(1 for item in coverage["ckan"].values() if item.get("status") == "metadata_collected")
     tce_processed = sum(1 for item in coverage["tce"].values() if isinstance(item, dict) and item.get("status") == "processed")
-    coverage["status"] = "complete_for_defined_collection" if processed >= 5 and (args.skip_tce_large or tce_processed == 3) else "partial"
-    coverage["note"] = "Completo para a rotina definida significa metadados CKAN consultados e, quando habilitado, os três arquivos automatizados do TCE processados. Não significa completude de toda a transparência estadual."
+
+    if processed >= 5 and (args.skip_tce_large or tce_processed == 3):
+        coverage["status"] = "complete_for_defined_collection"
+    elif processed >= 5 or tce_processed > 0:
+        coverage["status"] = "partial_with_verified_sources"
+    else:
+        coverage["status"] = "partial"
+
+    coverage["summary"] = {
+        "ckan_datasets_collected": processed,
+        "ckan_datasets_expected": 6,
+        "tce_datasets_processed": tce_processed,
+        "tce_datasets_expected": 0 if args.skip_tce_large else 3,
+    }
+    coverage["note"] = (
+        "Completo para a rotina definida significa metadados CKAN consultados e, quando habilitado, "
+        "os três arquivos automatizados do TCE processados. Fallback TLS do CKAN, quando necessário, "
+        "é registrado explicitamente. Não significa completude de toda a transparência estadual."
+    )
     write_json(out_root / "coverage.json", coverage)
     write_json(out_root / "manifest.json", {"hash_algorithm": "SHA-256", "entries": manifest})
     write_json(region_root / "data" / "state_transparency" / "latest.json", {
         "snapshot": out_root.name,
         "path": str(out_root.relative_to(ROOT.resolve())),
         "status": coverage["status"],
+        "summary": coverage["summary"],
     })
     print(json.dumps({
         "snapshot": str(out_root),
