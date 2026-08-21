@@ -52,6 +52,14 @@
   "collection_mode": "metadata_only",
   "generated_at": "2026-08-21",
   "note": "A fase de metadados pode ficar completa mesmo sem baixar os arquivos grandes do TCE. A cobertura plena da rotina exige os metadados CKAN e os três conjuntos automatizados do TCE. Dados SEFAZ já processados são preservados entre reexecuções. Fallback TLS do CKAN, quando necessário, fica registrado e nunca é silencioso.",
+  "procurement_contract_links": {
+    "exact_link_count": 334,
+    "processes_with_instruments": 208,
+    "selected_year": 2026,
+    "sha256": "95409ee6d9aacced3a4a6a0fe455b6c7450ea5f001056e3ee78c83768b6d7391",
+    "status": "processed",
+    "unique_instruments": 334
+  },
   "sefaz_data": {
     "contratos": {
       "bytes": 673108405,

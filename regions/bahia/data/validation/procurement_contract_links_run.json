@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "snapshot": "2026-08-21",
+  "selected_year": 2026,
+  "exact_link_count": 334,
+  "processes_with_instruments": 208,
+  "unique_instruments": 334,
+  "source_tables": {
+    "primary": "VW_PROC_AQUISICAO_LIC_REQ.csv",
+    "relation": "VW_PROC_AQUISICAO_ITEM_INSTRUMENTO.csv"
+  },
+  "fields": {
+    "primary_process": "Processo de Aquisição",
+    "primary_year": "Ano da Aquisição",
+    "relation_instrument": "NUM_INST_FORMATADO",
+    "relation_process": "Processo_de_Aquisicao"
+  }
+}

@@ -1,0 +1,1395 @@
+{
+  "dataset": "licitacoes_contratos_links",
+  "evidence": {
+    "bytes": 130216796,
+    "content_type": "application/zip",
+    "sha256": "95409ee6d9aacced3a4a6a0fe455b6c7450ea5f001056e3ee78c83768b6d7391",
+    "status_code": 200,
+    "url": "https://dados.ba.gov.br/dataset/36c792f9-1999-4f21-a669-752a178b06b7/resource/c5040c7d-4375-459e-93b0-beca841f63b4/download/licitacoes.zip"
+  },
+  "note": "Mapa derivado exclusivamente de campos oficiais das próprias tabelas SEFAZ/SIMPAS. Arquivo bruto não é republicado.",
+  "resource": {
+    "declared_size": 130216796,
+    "id": "c5040c7d-4375-459e-93b0-beca841f63b4",
+    "last_modified": "2026-08-20T11:13:12",
+    "name": "Licitacoes.zip",
+    "url": "https://dados.ba.gov.br/dataset/36c792f9-1999-4f21-a669-752a178b06b7/resource/c5040c7d-4375-459e-93b0-beca841f63b4/download/licitacoes.zip"
+  },
+  "source": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+  "summary": {
+    "dataset": "licitacoes_contratos_links",
+    "exact_link_count": 334,
+    "exact_links": [
+      {
+        "instrument_id": "1030100012600001513",
+        "process_id": "10610PE0022026"
+      },
+      {
+        "instrument_id": "1050100012600001215",
+        "process_id": "10910PE0012026"
+      },
+      {
+        "instrument_id": "1050100012600001223",
+        "process_id": "10910PE0012026"
+      },
+      {
+        "instrument_id": "1050100012600001231",
+        "process_id": "10910PE0012026"
+      },
+      {
+        "instrument_id": "1050100012600001363",
+        "process_id": "10910PE0032026"
+      },
+      {
+        "instrument_id": "1050100012600001371",
+        "process_id": "10910PE0032026"
+      },
+      {
+        "instrument_id": "1110100012600007151",
+        "process_id": "11004PE0022026"
+      },
+      {
+        "instrument_id": "1110100922600000389",
+        "process_id": "11004PE0052026"
+      },
+      {
+        "instrument_id": "1130100052600000840",
+        "process_id": "11230PE0032026"
+      },
+      {
+        "instrument_id": "1130100052600000859",
+        "process_id": "11230PE0032026"
+      },
+      {
+        "instrument_id": "1130100052600000867",
+        "process_id": "11230PE0032026"
+      },
+      {
+        "instrument_id": "1130100082600000567",
+        "process_id": "11233PE0012026"
+      },
+      {
+        "instrument_id": "1130100082600000575",
+        "process_id": "11233PE0012026"
+      },
+      {
+        "instrument_id": "1130100082600000931",
+        "process_id": "11233PE0072026"
+      },
+      {
+        "instrument_id": "1130100382600000523",
+        "process_id": "11255PE0012026"
+      },
+      {
+        "instrument_id": "1130100012600005215",
+        "process_id": "11610PE0012026"
+      },
+      {
+        "instrument_id": "1130100012600007102",
+        "process_id": "11610PE0032026"
+      },
+      {
+        "instrument_id": "1130200022600000087",
+        "process_id": "11620PE0012026"
+      },
+      {
+        "instrument_id": "1130200022600000125",
+        "process_id": "11620PE0052026"
+      },
+      {
+        "instrument_id": "1130300012600000555",
+        "process_id": "11630PE0012026"
+      },
+      {
+        "instrument_id": "1130300012600000881",
+        "process_id": "11630PE0012026"
+      },
+      {
+        "instrument_id": "1130300012600002833",
+        "process_id": "11630PE0042026"
+      },
+      {
+        "instrument_id": "1130300012600003260",
+        "process_id": "11630PE0062026"
+      },
+      {
+        "instrument_id": "1130300012600003473",
+        "process_id": "11630PE0072026"
+      },
+      {
+        "instrument_id": "1130300012600003295",
+        "process_id": "11630PE0092026"
+      },
+      {
+        "instrument_id": "1130400012600002349",
+        "process_id": "11640PE0032026"
+      },
+      {
+        "instrument_id": "1130400012600001822",
+        "process_id": "11640PE0112026"
+      },
+      {
+        "instrument_id": "1130400012600001490",
+        "process_id": "11640PE0172026"
+      },
+      {
+        "instrument_id": "1130400012600001873",
+        "process_id": "11640PE0182026"
+      },
+      {
+        "instrument_id": "1130400012600001881",
+        "process_id": "11640PE0182026"
+      },
+      {
+        "instrument_id": "1130400012600001891",
+        "process_id": "11640PE0182026"
+      },
+      {
+        "instrument_id": "1130400012600002500",
+        "process_id": "11640PE0202026"
+      },
+      {
+        "instrument_id": "1130400012600003019",
+        "process_id": "11640PE0272026"
+      },
+      {
+        "instrument_id": "1130400012600002225",
+        "process_id": "11640PE0302026"
+      },
+      {
+        "instrument_id": "1130400012600002233",
+        "process_id": "11640PE0302026"
+      },
+      {
+        "instrument_id": "1130400012600003116",
+        "process_id": "11640PE0352026"
+      },
+      {
+        "instrument_id": "1130400012600002969",
+        "process_id": "11640PE0402026"
+      },
+      {
+        "instrument_id": "1130400012600002861",
+        "process_id": "11640PE0442026"
+      },
+      {
+        "instrument_id": "1120100012600000701",
+        "process_id": "11700PE0012026"
+      },
+      {
+        "instrument_id": "1310100032600000611",
+        "process_id": "13003PE0012026"
+      },
+      {
+        "instrument_id": "1310100032600001012",
+        "process_id": "13003PE0022026"
+      },
+      {
+        "instrument_id": "1310100032600001020",
+        "process_id": "13003PE0022026"
+      },
+      {
+        "instrument_id": "1310100032600000997",
+        "process_id": "13003PE0032026"
+      },
+      {
+        "instrument_id": "1310100032600001004",
+        "process_id": "13003PE0032026"
+      },
+      {
+        "instrument_id": "1310100032600000768",
+        "process_id": "13003PE0042026"
+      },
+      {
+        "instrument_id": "1310100032600001799",
+        "process_id": "13003PE0052026"
+      },
+      {
+        "instrument_id": "1310100032600001772",
+        "process_id": "13003PE0072026"
+      },
+      {
+        "instrument_id": "1410100052600001635",
+        "process_id": "14004PE0012026"
+      },
+      {
+        "instrument_id": "1530100012600000496",
+        "process_id": "15600PE0012026"
+      },
+      {
+        "instrument_id": "1530400012600000136",
+        "process_id": "15640PE0012026"
+      },
+      {
+        "instrument_id": "1960100832600023562",
+        "process_id": "19004CP0012026"
+      },
+      {
+        "instrument_id": "1960100372600000446",
+        "process_id": "19008PE0092026"
+      },
+      {
+        "instrument_id": "1960100372600000454",
+        "process_id": "19008PE0092026"
+      },
+      {
+        "instrument_id": "1960100392600003407",
+        "process_id": "19048PE0042026"
+      },
+      {
+        "instrument_id": "1960100392600003865",
+        "process_id": "19048PE0062026"
+      },
+      {
+        "instrument_id": "1960100432600002225",
+        "process_id": "19068PE0012026"
+      },
+      {
+        "instrument_id": "1960100432600003353",
+        "process_id": "19068PE0032026"
+      },
+      {
+        "instrument_id": "1960100462600002634",
+        "process_id": "19075PE0142026"
+      },
+      {
+        "instrument_id": "1960100462600003290",
+        "process_id": "19075PE0252026"
+      },
+      {
+        "instrument_id": "1960100472600010881",
+        "process_id": "19076PE0012026"
+      },
+      {
+        "instrument_id": "1960100472600015164",
+        "process_id": "19076PE0022026"
+      },
+      {
+        "instrument_id": "1960100472600007811",
+        "process_id": "19076PE0042026"
+      },
+      {
+        "instrument_id": "1960100472600017272",
+        "process_id": "19076PE0052026"
+      },
+      {
+        "instrument_id": "1960100472600009016",
+        "process_id": "19076PE0072026"
+      },
+      {
+        "instrument_id": "1960100472600014109",
+        "process_id": "19076PE0112026"
+      },
+      {
+        "instrument_id": "1960100472600013201",
+        "process_id": "19076PE0162026"
+      },
+      {
+        "instrument_id": "1960100472600013218",
+        "process_id": "19076PE0162026"
+      },
+      {
+        "instrument_id": "1960100472600008974",
+        "process_id": "19076PE0182026"
+      },
+      {
+        "instrument_id": "1960100472600014214",
+        "process_id": "19076PE0202026"
+      },
+      {
+        "instrument_id": "1960100472600011576",
+        "process_id": "19076PE0242026"
+      },
+      {
+        "instrument_id": "1960100472600012890",
+        "process_id": "19076PE0272026"
+      },
+      {
+        "instrument_id": "1960100472600016561",
+        "process_id": "19076PE0302026"
+      },
+      {
+        "instrument_id": "1960100472600018201",
+        "process_id": "19076PE0302026"
+      },
+      {
+        "instrument_id": "1960100472600018211",
+        "process_id": "19076PE0322026"
+      },
+      {
+        "instrument_id": "1960100472600018228",
+        "process_id": "19076PE0322026"
+      },
+      {
+        "instrument_id": "1960100482600018896",
+        "process_id": "19077PE0012026"
+      },
+      {
+        "instrument_id": "1960100482600018901",
+        "process_id": "19077PE0012026"
+      },
+      {
+        "instrument_id": "1960100482600020671",
+        "process_id": "19077PE0022026"
+      },
+      {
+        "instrument_id": "1960100482600020688",
+        "process_id": "19077PE0022026"
+      },
+      {
+        "instrument_id": "1960100482600020696",
+        "process_id": "19077PE0022026"
+      },
+      {
+        "instrument_id": "1960100482600007959",
+        "process_id": "19077PE0032026"
+      },
+      {
+        "instrument_id": "1960100482600008572",
+        "process_id": "19077PE0042026"
+      },
+      {
+        "instrument_id": "1960100482600008580",
+        "process_id": "19077PE0042026"
+      },
+      {
+        "instrument_id": "1960100482600014882",
+        "process_id": "19077PE0052026"
+      },
+      {
+        "instrument_id": "1960100482600014890",
+        "process_id": "19077PE0052026"
+      },
+      {
+        "instrument_id": "1960100482600014904",
+        "process_id": "19077PE0052026"
+      },
+      {
+        "instrument_id": "1960100482600019159",
+        "process_id": "19077PE0072026"
+      },
+      {
+        "instrument_id": "1960100482600020718",
+        "process_id": "19077PE0072026"
+      },
+      {
+        "instrument_id": "1960100482600020726",
+        "process_id": "19077PE0072026"
+      },
+      {
+        "instrument_id": "1960100482600021137",
+        "process_id": "19077PE0082026"
+      },
+      {
+        "instrument_id": "1960100482600021171",
+        "process_id": "19077PE0082026"
+      },
+      {
+        "instrument_id": "1960100482600014238",
+        "process_id": "19077PE0092026"
+      },
+      {
+        "instrument_id": "1960100482600020491",
+        "process_id": "19077PE0102026"
+      },
+      {
+        "instrument_id": "1960100482600016001",
+        "process_id": "19077PE0112026"
+      },
+      {
+        "instrument_id": "1960100482600013411",
+        "process_id": "19077PE0142026"
+      },
+      {
+        "instrument_id": "1960100482600021072",
+        "process_id": "19077PE0152026"
+      },
+      {
+        "instrument_id": "1960100482600021080",
+        "process_id": "19077PE0152026"
+      },
+      {
+        "instrument_id": "1960100482600021099",
+        "process_id": "19077PE0172026"
+      },
+      {
+        "instrument_id": "1960100482600021102",
+        "process_id": "19077PE0172026"
+      },
+      {
+        "instrument_id": "1960100482600021110",
+        "process_id": "19077PE0172026"
+      },
+      {
+        "instrument_id": "1960100482600021129",
+        "process_id": "19077PE0172026"
+      },
+      {
+        "instrument_id": "1960100482600021064",
+        "process_id": "19077PE0192026"
+      },
+      {
+        "instrument_id": "1960100512600004238",
+        "process_id": "19081PE0012026"
+      },
+      {
+        "instrument_id": "1960100512600004246",
+        "process_id": "19081PE0012026"
+      },
+      {
+        "instrument_id": "1960100512600004254",
+        "process_id": "19081PE0022026"
+      },
+      {
+        "instrument_id": "1960100512600006060",
+        "process_id": "19081PE0052026"
+      },
+      {
+        "instrument_id": "1960100512600006087",
+        "process_id": "19081PE0052026"
+      },
+      {
+        "instrument_id": "1960100512600006095",
+        "process_id": "19081PE0052026"
+      },
+      {
+        "instrument_id": "1960100542600017250",
+        "process_id": "19085PE0062026"
+      },
+      {
+        "instrument_id": "1960100542600013697",
+        "process_id": "19085PE0092026"
+      },
+      {
+        "instrument_id": "1960100542600017722",
+        "process_id": "19085PE0152026"
+      },
+      {
+        "instrument_id": "1960100542600016173",
+        "process_id": "19085PE0162026"
+      },
+      {
+        "instrument_id": "1960100542600017269",
+        "process_id": "19085PE0182026"
+      },
+      {
+        "instrument_id": "1960100542600021045",
+        "process_id": "19085PE0342026"
+      },
+      {
+        "instrument_id": "1960100542600021071",
+        "process_id": "19085PE0352026"
+      },
+      {
+        "instrument_id": "1960100542600021088",
+        "process_id": "19085PE0392026"
+      },
+      {
+        "instrument_id": "1960100722600009566",
+        "process_id": "19123PE0052026"
+      },
+      {
+        "instrument_id": "1960100762600002382",
+        "process_id": "19134PE0042026"
+      },
+      {
+        "instrument_id": "1960100772600015708",
+        "process_id": "19138PE0072026"
+      },
+      {
+        "instrument_id": "1960100772600017840",
+        "process_id": "19138PE0092026"
+      },
+      {
+        "instrument_id": "1960100832600030259",
+        "process_id": "19148PE0022026"
+      },
+      {
+        "instrument_id": "1960100852600001555",
+        "process_id": "19150PE0022026"
+      },
+      {
+        "instrument_id": "1960100852600002063",
+        "process_id": "19150PE0042026"
+      },
+      {
+        "instrument_id": "1960100852600002039",
+        "process_id": "19150PE0052026"
+      },
+      {
+        "instrument_id": "1960100852600003221",
+        "process_id": "19150PE0082026"
+      },
+      {
+        "instrument_id": "1960100852600003231",
+        "process_id": "19150PE0082026"
+      },
+      {
+        "instrument_id": "1960100852600003647",
+        "process_id": "19150PE0092026"
+      },
+      {
+        "instrument_id": "1960100972600007767",
+        "process_id": "19183PE0032026"
+      },
+      {
+        "instrument_id": "1920100012600000373",
+        "process_id": "19700PE0012026"
+      },
+      {
+        "instrument_id": "1920100012600000381",
+        "process_id": "19700PE0012026"
+      },
+      {
+        "instrument_id": "1920100012600000853",
+        "process_id": "19700PE0032026"
+      },
+      {
+        "instrument_id": "1920100012600001361",
+        "process_id": "19700PE0042026"
+      },
+      {
+        "instrument_id": "1920100012600001371",
+        "process_id": "19700PE0042026"
+      },
+      {
+        "instrument_id": "1920100012600001795",
+        "process_id": "19700PE0082026"
+      },
+      {
+        "instrument_id": "1920100012600002848",
+        "process_id": "19700PE0172026"
+      },
+      {
+        "instrument_id": "2060300012600000398",
+        "process_id": "20004PE0012026"
+      },
+      {
+        "instrument_id": "2060300012600000401",
+        "process_id": "20004PE0012026"
+      },
+      {
+        "instrument_id": "2010100042600000679",
+        "process_id": "20004PE0022026"
+      },
+      {
+        "instrument_id": "2010100012600000642",
+        "process_id": "20004PE0032026"
+      },
+      {
+        "instrument_id": "2060300012600000789",
+        "process_id": "20004PE0052026"
+      },
+      {
+        "instrument_id": "2010100012600001215",
+        "process_id": "20004PE0072026"
+      },
+      {
+        "instrument_id": "2010100012600001525",
+        "process_id": "20004PE0082026"
+      },
+      {
+        "instrument_id": "2010100012600001479",
+        "process_id": "20004PE0092026"
+      },
+      {
+        "instrument_id": "2010100042600000385",
+        "process_id": "20004PE0102026"
+      },
+      {
+        "instrument_id": "2010100042600000989",
+        "process_id": "20004PE0112026"
+      },
+      {
+        "instrument_id": "2060300012600001191",
+        "process_id": "20004PE0152026"
+      },
+      {
+        "instrument_id": "2060300012600001459",
+        "process_id": "20004PE0252026"
+      },
+      {
+        "instrument_id": "2010200012600001715",
+        "process_id": "20007PE0012026"
+      },
+      {
+        "instrument_id": "2010200012600001731",
+        "process_id": "20007PE0012026"
+      },
+      {
+        "instrument_id": "2010200012600001741",
+        "process_id": "20007PE0012026"
+      },
+      {
+        "instrument_id": "2010200012600001766",
+        "process_id": "20007PE0012026"
+      },
+      {
+        "instrument_id": "2010200012600001782",
+        "process_id": "20007PE0012026"
+      },
+      {
+        "instrument_id": "2010200012600001790",
+        "process_id": "20007PE0012026"
+      },
+      {
+        "instrument_id": "2010200012600001804",
+        "process_id": "20007PE0012026"
+      },
+      {
+        "instrument_id": "2010200012600001847",
+        "process_id": "20007PE0012026"
+      },
+      {
+        "instrument_id": "2010200012600002762",
+        "process_id": "20007PE0022026"
+      },
+      {
+        "instrument_id": "2010200012600003335",
+        "process_id": "20007PE0022026"
+      },
+      {
+        "instrument_id": "2010200012600003343",
+        "process_id": "20007PE0022026"
+      },
+      {
+        "instrument_id": "2010200012600003351",
+        "process_id": "20007PE0022026"
+      },
+      {
+        "instrument_id": "2010200012600003361",
+        "process_id": "20007PE0022026"
+      },
+      {
+        "instrument_id": "2010200012600003378",
+        "process_id": "20007PE0022026"
+      },
+      {
+        "instrument_id": "2010200012600003386",
+        "process_id": "20007PE0022026"
+      },
+      {
+        "instrument_id": "2010200012600001391",
+        "process_id": "20007PE0032026"
+      },
+      {
+        "instrument_id": "2010200012600001170",
+        "process_id": "20007PE0042026"
+      },
+      {
+        "instrument_id": "2010200012600002983",
+        "process_id": "20007PE0112026"
+      },
+      {
+        "instrument_id": "2010200012600003564",
+        "process_id": "20007PE0142026"
+      },
+      {
+        "instrument_id": "2010100052600000854",
+        "process_id": "20028PE0012026"
+      },
+      {
+        "instrument_id": "2080200062600000475",
+        "process_id": "20047PE0022026"
+      },
+      {
+        "instrument_id": "2080200062600001226",
+        "process_id": "20047PE0082026"
+      },
+      {
+        "instrument_id": "2080200062600001498",
+        "process_id": "20047PE0092026"
+      },
+      {
+        "instrument_id": "2080200062600001471",
+        "process_id": "20047PE0112026"
+      },
+      {
+        "instrument_id": "2080200062600001617",
+        "process_id": "20047PE0142026"
+      },
+      {
+        "instrument_id": "2080100192600000240",
+        "process_id": "20071PE0012026"
+      },
+      {
+        "instrument_id": "2080100202600000098",
+        "process_id": "20072PE0012026"
+      },
+      {
+        "instrument_id": "2080100202600000063",
+        "process_id": "20072PE0022026"
+      },
+      {
+        "instrument_id": "2080100202600000039",
+        "process_id": "20072PE0032026"
+      },
+      {
+        "instrument_id": "2080100202600000047",
+        "process_id": "20072PE0032026"
+      },
+      {
+        "instrument_id": "2080100242600000615",
+        "process_id": "20079PE0012026"
+      },
+      {
+        "instrument_id": "2080100272600000897",
+        "process_id": "20085PE0012026"
+      },
+      {
+        "instrument_id": "2080100372600001229",
+        "process_id": "20100PE0012026"
+      },
+      {
+        "instrument_id": "2080100722600001015",
+        "process_id": "20155PE0032026"
+      },
+      {
+        "instrument_id": "2080100722600001368",
+        "process_id": "20155PE0052026"
+      },
+      {
+        "instrument_id": "2010300012600000585",
+        "process_id": "20211PE0012026"
+      },
+      {
+        "instrument_id": "2080100852600001099",
+        "process_id": "20213PE0032026"
+      },
+      {
+        "instrument_id": "2080100932600001147",
+        "process_id": "20221PE0012026"
+      },
+      {
+        "instrument_id": "2080100952600000390",
+        "process_id": "20223PE0022026"
+      },
+      {
+        "instrument_id": "2080100952600000714",
+        "process_id": "20223PE0032026"
+      },
+      {
+        "instrument_id": "2080100952600000722",
+        "process_id": "20223PE0032026"
+      },
+      {
+        "instrument_id": "2080100952600000919",
+        "process_id": "20223PE0072026"
+      },
+      {
+        "instrument_id": "2080100952600000927",
+        "process_id": "20223PE0072026"
+      },
+      {
+        "instrument_id": "2080100952600000935",
+        "process_id": "20223PE0072026"
+      },
+      {
+        "instrument_id": "2080100952600000943",
+        "process_id": "20223PE0072026"
+      },
+      {
+        "instrument_id": "2080100952600000951",
+        "process_id": "20223PE0072026"
+      },
+      {
+        "instrument_id": "2080100952600000862",
+        "process_id": "20223PE0082026"
+      },
+      {
+        "instrument_id": "2080100952600000870",
+        "process_id": "20223PE0082026"
+      },
+      {
+        "instrument_id": "2080100962600000691",
+        "process_id": "20224PE0042026"
+      },
+      {
+        "instrument_id": "2080100972600000093",
+        "process_id": "20225PE0012026"
+      },
+      {
+        "instrument_id": "2080100972600000727",
+        "process_id": "20225PE0022026"
+      },
+      {
+        "instrument_id": "2080100972600000778",
+        "process_id": "20225PE0022026"
+      },
+      {
+        "instrument_id": "2080100972600000786",
+        "process_id": "20225PE0022026"
+      },
+      {
+        "instrument_id": "2080100972600000859",
+        "process_id": "20225PE0022026"
+      },
+      {
+        "instrument_id": "2080100982600001501",
+        "process_id": "20226PE0022026"
+      },
+      {
+        "instrument_id": "2080101012600000561",
+        "process_id": "20229PE0012026"
+      },
+      {
+        "instrument_id": "2080100742600000986",
+        "process_id": "20231PE0082026"
+      },
+      {
+        "instrument_id": "2080101102600000054",
+        "process_id": "20273PE0012026"
+      },
+      {
+        "instrument_id": "2080101102600000062",
+        "process_id": "20273PE0022026"
+      },
+      {
+        "instrument_id": "2080101102600000089",
+        "process_id": "20273PE0032026"
+      },
+      {
+        "instrument_id": "2080101102600000097",
+        "process_id": "20273PE0032026"
+      },
+      {
+        "instrument_id": "2080101102600000135",
+        "process_id": "20273PE0032026"
+      },
+      {
+        "instrument_id": "2080101102600000100",
+        "process_id": "20273PE0042026"
+      },
+      {
+        "instrument_id": "2080101102600000143",
+        "process_id": "20273PE0042026"
+      },
+      {
+        "instrument_id": "2080101102600000151",
+        "process_id": "20273PE0042026"
+      },
+      {
+        "instrument_id": "2080101102600000161",
+        "process_id": "20273PE0042026"
+      },
+      {
+        "instrument_id": "2080101102600000178",
+        "process_id": "20273PE0042026"
+      },
+      {
+        "instrument_id": "2080101102600000186",
+        "process_id": "20273PE0042026"
+      },
+      {
+        "instrument_id": "2080101102600000194",
+        "process_id": "20273PE0042026"
+      },
+      {
+        "instrument_id": "2080101102600000208",
+        "process_id": "20273PE0042026"
+      },
+      {
+        "instrument_id": "2080101102600000216",
+        "process_id": "20273PE0052026"
+      },
+      {
+        "instrument_id": "2080101102600000224",
+        "process_id": "20273PE0052026"
+      },
+      {
+        "instrument_id": "2080101102600000232",
+        "process_id": "20273PE0052026"
+      },
+      {
+        "instrument_id": "2080101102600000240",
+        "process_id": "20273PE0052026"
+      },
+      {
+        "instrument_id": "2080101102600000259",
+        "process_id": "20273PE0052026"
+      },
+      {
+        "instrument_id": "2080101102600000267",
+        "process_id": "20273PE0072026"
+      },
+      {
+        "instrument_id": "2080101102600000275",
+        "process_id": "20273PE0072026"
+      },
+      {
+        "instrument_id": "2080101102600000283",
+        "process_id": "20273PE0072026"
+      },
+      {
+        "instrument_id": "2080101102600000291",
+        "process_id": "20273PE0072026"
+      },
+      {
+        "instrument_id": "2080101102600000305",
+        "process_id": "20273PE0072026"
+      },
+      {
+        "instrument_id": "2080101102600000331",
+        "process_id": "20273PE0082026"
+      },
+      {
+        "instrument_id": "2080100732600000083",
+        "process_id": "20504PE0012026"
+      },
+      {
+        "instrument_id": "2080100732600000091",
+        "process_id": "20504PE0012026"
+      },
+      {
+        "instrument_id": "2080100732600000105",
+        "process_id": "20504PE0012026"
+      },
+      {
+        "instrument_id": "2080100732600000555",
+        "process_id": "20504PE0022026"
+      },
+      {
+        "instrument_id": "2080100732600000601",
+        "process_id": "20504PE0032026"
+      },
+      {
+        "instrument_id": "2080100732600000611",
+        "process_id": "20504PE0032026"
+      },
+      {
+        "instrument_id": "2080100732600000636",
+        "process_id": "20504PE0032026"
+      },
+      {
+        "instrument_id": "2080100732600000644",
+        "process_id": "20504PE0032026"
+      },
+      {
+        "instrument_id": "2080100732600000652",
+        "process_id": "20504PE0032026"
+      },
+      {
+        "instrument_id": "2080100732600000741",
+        "process_id": "20504PE0062026"
+      },
+      {
+        "instrument_id": "2080300112600001556",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001564",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001572",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001580",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001599",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001602",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001610",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001629",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001637",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001645",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001653",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001661",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001671",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001688",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001696",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600001701",
+        "process_id": "20605PE0022026"
+      },
+      {
+        "instrument_id": "2080300112600002005",
+        "process_id": "20605PE0032026"
+      },
+      {
+        "instrument_id": "2080300112600002307",
+        "process_id": "20605PE0042026"
+      },
+      {
+        "instrument_id": "2080300132600000813",
+        "process_id": "20607PE0042026"
+      },
+      {
+        "instrument_id": "2080300132600001161",
+        "process_id": "20607PE0112026"
+      },
+      {
+        "instrument_id": "2080300132600001062",
+        "process_id": "20607PE0122026"
+      },
+      {
+        "instrument_id": "2080300132600001100",
+        "process_id": "20607PE0152026"
+      },
+      {
+        "instrument_id": "2080300132600001534",
+        "process_id": "20607PE0232026"
+      },
+      {
+        "instrument_id": "2080101042600000057",
+        "process_id": "20782PE0012026"
+      },
+      {
+        "instrument_id": "2080101042600000065",
+        "process_id": "20782PE0012026"
+      },
+      {
+        "instrument_id": "2080300212600000580",
+        "process_id": "20786PE0012026"
+      },
+      {
+        "instrument_id": "2080300212600000599",
+        "process_id": "20786PE0012026"
+      },
+      {
+        "instrument_id": "2080300212600000602",
+        "process_id": "20786PE0012026"
+      },
+      {
+        "instrument_id": "2080300212600000610",
+        "process_id": "20786PE0012026"
+      },
+      {
+        "instrument_id": "2080300212600000629",
+        "process_id": "20786PE0012026"
+      },
+      {
+        "instrument_id": "2080300212600000637",
+        "process_id": "20786PE0012026"
+      },
+      {
+        "instrument_id": "2080300212600000645",
+        "process_id": "20786PE0012026"
+      },
+      {
+        "instrument_id": "2080300212600000971",
+        "process_id": "20786PE0052026"
+      },
+      {
+        "instrument_id": "2080300212600000981",
+        "process_id": "20786PE0052026"
+      },
+      {
+        "instrument_id": "2080101132600001176",
+        "process_id": "20789PE0012026"
+      },
+      {
+        "instrument_id": "2080101132600001346",
+        "process_id": "20789PE0022026"
+      },
+      {
+        "instrument_id": "2080101132600001354",
+        "process_id": "20789PE0022026"
+      },
+      {
+        "instrument_id": "2080101132600001311",
+        "process_id": "20789PE0042026"
+      },
+      {
+        "instrument_id": "2080101122600000555",
+        "process_id": "20790PE0012026"
+      },
+      {
+        "instrument_id": "2080101122600000563",
+        "process_id": "20790PE0012026"
+      },
+      {
+        "instrument_id": "2080101122600000431",
+        "process_id": "20790PE0022026"
+      },
+      {
+        "instrument_id": "2080101122600000611",
+        "process_id": "20790PE0032026"
+      },
+      {
+        "instrument_id": "2080101122600001683",
+        "process_id": "20790PE0042026"
+      },
+      {
+        "instrument_id": "2080101122600001705",
+        "process_id": "20790PE0052026"
+      },
+      {
+        "instrument_id": "2080101122600001713",
+        "process_id": "20790PE0052026"
+      },
+      {
+        "instrument_id": "2080101192600000157",
+        "process_id": "20801PE0012026"
+      },
+      {
+        "instrument_id": "2080101192600000262",
+        "process_id": "20801PE0032026"
+      },
+      {
+        "instrument_id": "2080101192600000165",
+        "process_id": "20801PE0042026"
+      },
+      {
+        "instrument_id": "2080101192600000181",
+        "process_id": "20801PE0052026"
+      },
+      {
+        "instrument_id": "2080101192600000191",
+        "process_id": "20801PE0052026"
+      },
+      {
+        "instrument_id": "2080101192600000203",
+        "process_id": "20801PE0052026"
+      },
+      {
+        "instrument_id": "2080101192600000211",
+        "process_id": "20801PE0052026"
+      },
+      {
+        "instrument_id": "2080101192600000246",
+        "process_id": "20801PE0052026"
+      },
+      {
+        "instrument_id": "2080101192600000254",
+        "process_id": "20801PE0052026"
+      },
+      {
+        "instrument_id": "2160200012600000163",
+        "process_id": "21003PE0012026"
+      },
+      {
+        "instrument_id": "2110100052600000046",
+        "process_id": "21003PE0022026"
+      },
+      {
+        "instrument_id": "2230100012600000601",
+        "process_id": "22600PE0012026"
+      },
+      {
+        "instrument_id": "2230100012600001304",
+        "process_id": "22600PE0022026"
+      },
+      {
+        "instrument_id": "2230100012600001487",
+        "process_id": "22600PE0042026"
+      },
+      {
+        "instrument_id": "2230100012600001517",
+        "process_id": "22600PE0052026"
+      },
+      {
+        "instrument_id": "2220100022600000737",
+        "process_id": "22700PE0022026"
+      },
+      {
+        "instrument_id": "2220200012600001071",
+        "process_id": "22710PE0022026"
+      },
+      {
+        "instrument_id": "2220200042600002940",
+        "process_id": "22712PE0022026"
+      },
+      {
+        "instrument_id": "2410100012600000122",
+        "process_id": "24004PE0012026"
+      },
+      {
+        "instrument_id": "2410100012600000173",
+        "process_id": "24004PE0022026"
+      },
+      {
+        "instrument_id": "2410100012600000564",
+        "process_id": "24004PE0032026"
+      },
+      {
+        "instrument_id": "2640100012600000809",
+        "process_id": "26800PE0012026"
+      },
+      {
+        "instrument_id": "2640100012600000892",
+        "process_id": "26800PE0022026"
+      },
+      {
+        "instrument_id": "2640100012600000906",
+        "process_id": "26800PE0022026"
+      },
+      {
+        "instrument_id": "2640100012600003034",
+        "process_id": "26800PE0032026"
+      },
+      {
+        "instrument_id": "2640100012600003042",
+        "process_id": "26800PE0032026"
+      },
+      {
+        "instrument_id": "2820100012600003185",
+        "process_id": "28700PE0012026"
+      },
+      {
+        "instrument_id": "3010100012600000682",
+        "process_id": "30003PE0012026"
+      },
+      {
+        "instrument_id": "3010100022600000248",
+        "process_id": "30003PE0012026"
+      },
+      {
+        "instrument_id": "3010100032600000032",
+        "process_id": "30003PE0012026"
+      },
+      {
+        "instrument_id": "3010100042600000013",
+        "process_id": "30003PE0012026"
+      },
+      {
+        "instrument_id": "3210100012600001243",
+        "process_id": "32004PE0032026"
+      },
+      {
+        "instrument_id": "3210100012600001464",
+        "process_id": "32004PE0052026"
+      },
+      {
+        "instrument_id": "3310100012600000393",
+        "process_id": "33003PE0012026"
+      },
+      {
+        "instrument_id": "3310100012600000407",
+        "process_id": "33003PE0012026"
+      },
+      {
+        "instrument_id": "3310100012600000415",
+        "process_id": "33003PE0012026"
+      },
+      {
+        "instrument_id": "3310100012600000423",
+        "process_id": "33003PE0012026"
+      },
+      {
+        "instrument_id": "3310100012600000431",
+        "process_id": "33003PE0012026"
+      },
+      {
+        "instrument_id": "3310100012600000611",
+        "process_id": "33003PE0022026"
+      },
+      {
+        "instrument_id": "3310100012600000784",
+        "process_id": "33003PE0032026"
+      },
+      {
+        "instrument_id": "3610100012600000691",
+        "process_id": "36004PE0012026"
+      },
+      {
+        "instrument_id": "3610100012600000762",
+        "process_id": "36004PE0022026"
+      },
+      {
+        "instrument_id": "3610100012600001009",
+        "process_id": "36004PE0052026"
+      },
+      {
+        "instrument_id": "3820100012600002437",
+        "process_id": "44001PE0022026"
+      },
+      {
+        "instrument_id": "3820100012600002445",
+        "process_id": "44001PE0022026"
+      },
+      {
+        "instrument_id": "3820100012600001856",
+        "process_id": "44001PE0032026"
+      },
+      {
+        "instrument_id": "3820100012600003220",
+        "process_id": "44001PE0052026"
+      },
+      {
+        "instrument_id": "3820100012600003565",
+        "process_id": "44001PE0072026"
+      },
+      {
+        "instrument_id": "3820100012600003573",
+        "process_id": "44001PE0072026"
+      },
+      {
+        "instrument_id": "3820100012600003603",
+        "process_id": "44001PE0072026"
+      },
+      {
+        "instrument_id": "3820100012600003621",
+        "process_id": "44001PE0072026"
+      }
+    ],
+    "fields": {
+      "primary_process": "Processo de Aquisição",
+      "primary_year": "Ano da Aquisição",
+      "relation_instrument": "NUM_INST_FORMATADO",
+      "relation_process": "Processo_de_Aquisicao"
+    },
+    "identity_rule": "Somente igualdade após normalização de pontuação/espaço/capitalização de dois campos oficiais. Nenhuma aproximação textual é usada.",
+    "primary_rows": 108594,
+    "primary_selected_rows": 2088,
+    "processes_with_instruments": 208,
+    "relation_rows": 167925,
+    "relation_rows_matching_selected_processes": 1464,
+    "selected_year": 2026,
+    "source_tables": {
+      "primary": "VW_PROC_AQUISICAO_LIC_REQ.csv",
+      "relation": "VW_PROC_AQUISICAO_ITEM_INSTRUMENTO.csv"
+    },
+    "unique_instruments": 334,
+    "unique_processes_selected": 2088
+  },
+  "transport": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "bytes": 130216796,
+        "mode": "whole",
+        "status": "success"
+      }
+    ],
+    "download_mode": "whole_with_retries",
+    "expected_size": 130216796,
+    "fallback_reason": "certificate_chain_error",
+    "tls_verified": false,
+    "transport_note": "O recurso foi baixado do mesmo host oficial dados.ba.gov.br sem validação TLS porque o runner não conseguiu validar a cadeia de certificados; a condição foi registrada."
+  }
+}
