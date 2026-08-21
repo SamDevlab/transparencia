@@ -25,20 +25,65 @@ function slugSearch(value) {
     .trim();
 }
 
-function latestSnapshot() {
-  const pointer = path.join(dataRoot, "latest.json");
-  if (fs.existsSync(pointer)) {
-    const latest = readJson(pointer);
-    const candidate = path.join(root, latest.path ?? "");
-    if (latest.path && fs.existsSync(path.join(candidate, "coverage.json"))) return candidate;
-  }
-  if (!fs.existsSync(snapshotsRoot)) return null;
-  const candidates = fs.readdirSync(snapshotsRoot, { withFileTypes: true })
+function datedSnapshotDirs() {
+  if (!fs.existsSync(snapshotsRoot)) return [];
+  return fs.readdirSync(snapshotsRoot, { withFileTypes: true })
     .filter((entry) => entry.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(entry.name))
     .map((entry) => path.join(snapshotsRoot, entry.name))
     .filter((dir) => fs.existsSync(path.join(dir, "coverage.json")))
     .sort();
-  return candidates.at(-1) ?? null;
+}
+
+function scopeHasRealRows(scope) {
+  return scope?.status === "complete_for_api_query"
+    && (Number(scope.current_export_rows ?? 0) + Number(scope.current_import_rows ?? 0)) > 0;
+}
+
+function validEconomicSnapshot(dir) {
+  if (!dir || !fs.existsSync(path.join(dir, "coverage.json"))) return false;
+  let coverage;
+  try {
+    coverage = readJson(path.join(dir, "coverage.json"));
+  } catch {
+    return false;
+  }
+  return scopeHasRealRows(coverage.bahia)
+    && scopeHasRealRows(coverage.salvador)
+    && fs.existsSync(path.join(dir, "bahia", "summary.json"))
+    && fs.existsSync(path.join(dir, "salvador", "summary.json"));
+}
+
+function latestObservedSnapshot() {
+  return datedSnapshotDirs().at(-1) ?? null;
+}
+
+function latestSnapshot() {
+  const pointer = path.join(dataRoot, "latest.json");
+  if (fs.existsSync(pointer)) {
+    try {
+      const latest = readJson(pointer);
+      const candidate = path.join(root, latest.path ?? "");
+      if (latest.path && validEconomicSnapshot(candidate)) return candidate;
+    } catch {
+      // Ponteiro inválido não substitui a busca por um snapshot anterior válido.
+    }
+  }
+  return datedSnapshotDirs().filter(validEconomicSnapshot).at(-1) ?? null;
+}
+
+function sanitizedObservedCoverage(snapshot) {
+  if (!snapshot) return null;
+  const coverage = readJson(path.join(snapshot, "coverage.json"));
+  const clean = structuredClone(coverage);
+  for (const scope of ["bahia", "salvador"]) {
+    const item = clean?.[scope];
+    if (item?.status === "complete_for_api_query"
+      && (Number(item.current_export_rows ?? 0) + Number(item.current_import_rows ?? 0)) === 0) {
+      item.status = "invalid_empty_query";
+      item.note = "A API respondeu com lista vazia para exportação e importação. O projeto rejeitou esse resultado como falso zero e não publicou valores econômicos.";
+    }
+  }
+  return clean;
 }
 
 function readScope(snapshot, name) {
@@ -57,15 +102,20 @@ function readScope(snapshot, name) {
 
 const config = readJson(path.join(regionRoot, "config.json"));
 const snapshot = latestSnapshot();
+const observedSnapshot = latestObservedSnapshot();
 let economy;
 
 if (!snapshot) {
+  const observedCoverage = sanitizedObservedCoverage(observedSnapshot);
   economy = {
     available: false,
-    reason: "Nenhum snapshot econômico versionado foi encontrado ainda.",
+    reason: observedCoverage
+      ? "A coleta econômica mais recente não passou pelos critérios de publicação. O site não converte consulta vazia ou falha externa em US$ 0."
+      : "Nenhum snapshot econômico validado foi encontrado ainda.",
+    observedSnapshot: observedSnapshot ? path.basename(observedSnapshot) : null,
     bahia: null,
     salvador: null,
-    coverage: {
+    coverage: observedCoverage ?? {
       bahia: { status: "not_collected" },
       salvador: { status: "not_collected" },
       interstate_dependency: {
@@ -78,7 +128,7 @@ if (!snapshot) {
 } else {
   const coverage = readJson(path.join(snapshot, "coverage.json"));
   economy = {
-    available: Boolean(fs.existsSync(path.join(snapshot, "bahia", "summary.json")) || fs.existsSync(path.join(snapshot, "salvador", "summary.json"))),
+    available: true,
     snapshot: path.basename(snapshot),
     bahia: readScope(snapshot, "bahia"),
     salvador: readScope(snapshot, "salvador"),
@@ -100,7 +150,9 @@ const statusPt = (status) => ({
   partial: "Parcial",
   unavailable: "Indisponível",
   not_collected: "Ainda não coletado",
+  invalid_empty_query: "Consulta vazia rejeitada",
   source_mapped_not_normalized: "Fonte mapeada; normalização pendente",
+  historical_baseline_normalized: "Linha de base histórica normalizada",
 }[status] ?? status ?? "Não informado");
 
 const transparency = {
@@ -147,7 +199,7 @@ const transparency = {
       title: "Comércio exterior da Bahia",
       status: economy.coverage?.bahia?.status ?? "not_collected",
       statusLabel: statusPt(economy.coverage?.bahia?.status),
-      detail: economy.coverage?.bahia?.methodology ?? config.methodology.state_trade,
+      detail: economy.coverage?.bahia?.note ?? economy.coverage?.bahia?.methodology ?? config.methodology.state_trade,
       source: "MDIC / Comex Stat",
       href: "/economia/bahia",
     },
@@ -156,7 +208,7 @@ const transparency = {
       title: "Comércio exterior de empresas de Salvador",
       status: economy.coverage?.salvador?.status ?? "not_collected",
       statusLabel: statusPt(economy.coverage?.salvador?.status),
-      detail: economy.coverage?.salvador?.methodology ?? config.methodology.capital_trade,
+      detail: economy.coverage?.salvador?.note ?? economy.coverage?.salvador?.methodology ?? config.methodology.capital_trade,
       source: "MDIC / Comex Stat",
       href: "/economia/salvador",
     },
@@ -165,7 +217,7 @@ const transparency = {
       title: "Dependência interestadual da Bahia",
       status: economy.coverage?.interstate_dependency?.status ?? "source_mapped_not_normalized",
       statusLabel: statusPt(economy.coverage?.interstate_dependency?.status),
-      detail: "A Matriz de Insumo-Produto da SEI está mapeada. O projeto não usa comércio exterior como substituto para fluxos entre estados.",
+      detail: economy.coverage?.interstate_dependency?.note ?? "A dependência entre estados é tratada separadamente do comércio exterior.",
       source: "SEI - Matriz de Insumo-Produto da Bahia",
       href: "/economia/oportunidades",
     },
@@ -213,10 +265,11 @@ if (fs.existsSync(metaPath)) {
   const meta = readJson(metaPath);
   meta.economyAvailable = economy.available;
   meta.economySnapshot = economy.snapshot ?? null;
+  meta.economyObservedSnapshot = economy.observedSnapshot ?? null;
   meta.bahiaEconomicProducts = economy.bahia?.products?.length ?? 0;
   meta.salvadorEconomicProducts = economy.salvador?.products?.length ?? 0;
   meta.searchItems = fs.existsSync(searchPath) ? (readJson(searchPath).rows?.length ?? meta.searchItems) : meta.searchItems;
   writeJson(metaPath, meta);
 }
 
-console.log(`economia: ${economy.available ? `snapshot ${economy.snapshot}` : "aguardando snapshot"}; cobertura integrada gerada`);
+console.log(`economia: ${economy.available ? `snapshot validado ${economy.snapshot}` : "sem snapshot publicável; falso zero bloqueado"}; cobertura integrada gerada`);
