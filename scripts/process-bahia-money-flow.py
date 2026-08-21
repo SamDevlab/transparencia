@@ -57,8 +57,6 @@ def main() -> int:
     state_root = ROOT / "regions" / "bahia" / "data" / "state_transparency"
     latest_path = state_root / "latest.json"
     latest = read_json(latest_path)
-    if not latest?.get("path") if False else False:
-        pass
     if not latest or not latest.get("path"):
         raise RuntimeError("Snapshot estadual mais recente não encontrado")
     snapshot = (ROOT / latest["path"]).resolve()
