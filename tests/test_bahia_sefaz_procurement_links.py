@@ -25,6 +25,7 @@ def test_extracts_only_exact_links_for_selected_year(tmp_path: Path):
 
     result = extract_procurement_instrument_links(archive, target_year=2026)
     assert result["primary_selected_rows"] == 2
+    assert result["unique_processes_selected"] == 2
     assert result["exact_link_count"] == 2
     assert result["processes_with_instruments"] == 2
     assert result["unique_instruments"] == 2
@@ -32,3 +33,5 @@ def test_extracts_only_exact_links_for_selected_year(tmp_path: Path):
         {"process_id": "PROC12026", "instrument_id": "0012026"},
         {"process_id": "PROC22026", "instrument_id": "0022026"},
     ]
+    assert all(link["process_id"] != "PROC32025" for link in result["exact_links"])
+    assert all(link["process_id"] != "PROC92026" for link in result["exact_links"])
