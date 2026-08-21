@@ -11,11 +11,10 @@
     ],
     "expected": 5,
     "last_run_datasets": [
-      "receitas",
-      "licitacoes"
+      "contratos"
     ],
-    "last_run_processed": 2,
-    "processed": 4,
+    "last_run_processed": 1,
+    "processed": 5,
     "reference_year": 2026
   },
   "snapshot": "2026-08-21",

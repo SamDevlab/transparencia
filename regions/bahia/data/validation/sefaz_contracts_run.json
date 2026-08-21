@@ -1,0 +1,103 @@
+{
+  "tested_commit": "952448e214812b8288cc033239ee08400bff79cb",
+  "tests": "success",
+  "collector": "success",
+  "workflow_finished_at": "2026-08-21T09:20:42.293795+00:00",
+  "latest": {
+    "collection_mode": "metadata_only",
+    "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
+    "sefaz_data": {
+      "datasets": [
+        "receitas",
+        "licitacoes",
+        "despesas",
+        "pagamentos",
+        "contratos"
+      ],
+      "expected": 5,
+      "last_run_datasets": [
+        "contratos"
+      ],
+      "last_run_processed": 1,
+      "processed": 5,
+      "reference_year": 2026
+    },
+    "snapshot": "2026-08-21",
+    "status": "complete_for_metadata_collection",
+    "summary": {
+      "ckan_datasets_collected": 6,
+      "ckan_datasets_expected": 6,
+      "tce_datasets_expected": 0,
+      "tce_datasets_processed": 0
+    }
+  },
+  "sefaz_data_summary": {
+    "datasets": [
+      "receitas",
+      "licitacoes",
+      "despesas",
+      "pagamentos",
+      "contratos"
+    ],
+    "expected": 5,
+    "last_run_datasets": [
+      "contratos"
+    ],
+    "last_run_processed": 1,
+    "processed": 5,
+    "reference_year": 2026
+  },
+  "contracts_status": {
+    "bytes": 673108405,
+    "declared_size": 673108405,
+    "download_mode": "http_range",
+    "output": "sefaz_contratos.json",
+    "resource_id": "d13f3bbc-ed6b-4070-8828-fb218a625c0d",
+    "resource_last_modified": "2026-08-20T10:29:24",
+    "resource_name": "Contratos.zip",
+    "rows": 1015746,
+    "selected_year": 2026,
+    "sha256": "8a435709f2999c9edfeb5c7cbf17f2d191728b9651970647130698b198143247",
+    "status": "processed",
+    "tls_verified": false
+  },
+  "test_log_tail": [
+    "..                                                                       [100%]",
+    "2 passed in 0.07s"
+  ],
+  "collector_log_tail": [
+    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"requested_processed\": 1, \"requested_expected\": 1, \"total_processed\": 5, \"total_expected\": 5, \"datasets\": {\"contratos\": {\"status\": \"processed\", \"output\": \"sefaz_contratos.json\", \"resource_id\": \"d13f3bbc-ed6b-4070-8828-fb218a625c0d\", \"resource_name\": \"Contratos.zip\", \"resource_last_modified\": \"2026-08-20T10:29:24\", \"sha256\": \"8a435709f2999c9edfeb5c7cbf17f2d191728b9651970647130698b198143247\", \"bytes\": 673108405, \"declared_size\": 673108405, \"tls_verified\": false, \"download_mode\": \"http_range\", \"rows\": 1015746, \"selected_year\": 2026}}}"
+  ],
+  "contracts": {
+    "resource": {
+      "declared_size": 673108405,
+      "format": "ZIP",
+      "id": "d13f3bbc-ed6b-4070-8828-fb218a625c0d",
+      "last_modified": "2026-08-20T10:29:24",
+      "metadata_modified": "2026-08-20T10:29:25.394015",
+      "name": "Contratos.zip",
+      "url": "https://dados.ba.gov.br/dataset/edbe8b9a-c363-457e-8b06-4e1c1f693cb8/resource/d13f3bbc-ed6b-4070-8828-fb218a625c0d/download/contratos.zip"
+    },
+    "evidence": {
+      "bytes": 673108405,
+      "content_type": "application/zip",
+      "sha256": "8a435709f2999c9edfeb5c7cbf17f2d191728b9651970647130698b198143247",
+      "status_code": 206,
+      "url": "https://dados.ba.gov.br/dataset/edbe8b9a-c363-457e-8b06-4e1c1f693cb8/resource/d13f3bbc-ed6b-4070-8828-fb218a625c0d/download/contratos.zip"
+    },
+    "selected_year": 2026,
+    "primary_member": "VW_PROCESSO_SEI.csv",
+    "selected_rows": 108190,
+    "contract_field": "num_instrumento_formatado",
+    "process_field": "NUM_PROCESSO_SIST_ELET_INFO",
+    "supplier_document_field": "CNPJ_CPF",
+    "contract_value": {
+      "field": "Val_Inst_Atual",
+      "numeric_rows": 108171,
+      "sum": 1311029663238.34
+    },
+    "instrument_keys": 59350,
+    "process_keys": 84448,
+    "cnpj_suppliers": 100
+  }
+}

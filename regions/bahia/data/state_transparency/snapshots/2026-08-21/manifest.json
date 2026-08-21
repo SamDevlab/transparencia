@@ -117,6 +117,19 @@
       "source_id": "sefaz_licitacoes_data",
       "tls_verified": false,
       "url": "https://dados.ba.gov.br/dataset/36c792f9-1999-4f21-a669-752a178b06b7/resource/c5040c7d-4375-459e-93b0-beca841f63b4/download/licitacoes.zip"
+    },
+    {
+      "bytes": 673108405,
+      "content_type": "application/zip",
+      "declared_size": 673108405,
+      "download_mode": "http_range",
+      "resource_id": "d13f3bbc-ed6b-4070-8828-fb218a625c0d",
+      "resource_last_modified": "2026-08-20T10:29:24",
+      "resource_name": "Contratos.zip",
+      "sha256": "8a435709f2999c9edfeb5c7cbf17f2d191728b9651970647130698b198143247",
+      "source_id": "sefaz_contratos_data",
+      "tls_verified": false,
+      "url": "https://dados.ba.gov.br/dataset/edbe8b9a-c363-457e-8b06-4e1c1f693cb8/resource/d13f3bbc-ed6b-4070-8828-fb218a625c0d/download/contratos.zip"
     }
   ],
   "hash_algorithm": "SHA-256"
