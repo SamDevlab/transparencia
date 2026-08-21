@@ -23,8 +23,6 @@ def _number(value: Any) -> float:
     text = str(value).strip().replace(" ", "")
     if not text:
         return 0.0
-    # A API normalmente devolve número JSON. Este fallback evita quebrar em
-    # representações textuais sem interpretar pontos de milhar de forma cega.
     try:
         return float(text)
     except ValueError:
@@ -86,8 +84,6 @@ def _month_key(row: dict[str, Any]) -> str:
 def _heading(row: dict[str, Any]) -> tuple[str, str]:
     code = _code(row, "headingCode", "heading_code", "sh4", "SH4", "coHeading")
     label = _label(row, "heading", "headingName", "heading_name", "sh4Name", "description")
-    # Algumas respostas trazem apenas o texto em `heading`. Se começar por 4 dígitos,
-    # preservamos esse código como SH4 sem inventar uma classificação.
     if not code:
         raw = str(row.get("heading") or "").strip()
         prefix = raw[:4]
@@ -174,7 +170,8 @@ def aggregate_products(export_rows: Iterable[dict[str, Any]], import_rows: Itera
             })
             value = metric(row)
             kg = metric(row, "metricKG")
-            product[f"{flow}_fob"] += value
+            fob_key = "exports_fob" if flow == "export" else "imports_fob"
+            product[fob_key] += value
             product[f"{flow}_kg"] += kg
             country_code, country_label = _country(row)
             country_key = country_code or country_label
@@ -216,12 +213,8 @@ def _scaled_log(value: float, reference: float) -> float:
 
 
 def productive_screening_score(
-    *,
-    imports_fob: float,
-    exports_fob: float,
-    import_growth: float | None,
-    import_country_top_share: float,
-    import_scale_reference: float,
+    *, imports_fob: float, exports_fob: float, import_growth: float | None,
+    import_country_top_share: float, import_scale_reference: float,
 ) -> dict[str, Any]:
     """Heurística explicável de triagem; não é recomendação econômica."""
     imports_fob = max(0.0, float(imports_fob or 0))
@@ -230,19 +223,11 @@ def productive_screening_score(
     scale = 30.0 * _scaled_log(imports_fob, max(import_scale_reference, imports_fob))
     deficit_ratio = deficit / imports_fob if imports_fob else 0.0
     deficit_score = 25.0 * min(1.0, deficit_ratio)
-    if import_growth is None:
-        growth_score = 0.0
-    else:
-        growth_score = 15.0 * min(1.0, max(0.0, float(import_growth)) / 0.5)
+    growth_score = 0.0 if import_growth is None else 15.0 * min(1.0, max(0.0, float(import_growth)) / 0.5)
     concentration_score = 15.0 * min(1.0, max(0.0, float(import_country_top_share)))
     related_capacity_score = 15.0 if exports_fob > 0 else 0.0
     total = round(min(100.0, scale + deficit_score + growth_score + concentration_score + related_capacity_score), 2)
-    if total >= 70:
-        label = "triagem_alta"
-    elif total >= 45:
-        label = "triagem_media"
-    else:
-        label = "triagem_baixa"
+    label = "triagem_alta" if total >= 70 else "triagem_media" if total >= 45 else "triagem_baixa"
     return {
         "score": total,
         "label": label,
