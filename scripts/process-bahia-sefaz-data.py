@@ -13,6 +13,7 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
+from transparencia.collectors.bahia_sefaz_contracts import summarize_sefaz_contracts_zip  # noqa: E402
 from transparencia.collectors.bahia_sefaz_download import download_ckan_resource_resilient  # noqa: E402
 from transparencia.collectors.bahia_sefaz_files import (  # noqa: E402
     summarize_sefaz_licitacoes_zip,
@@ -23,7 +24,7 @@ from transparencia.collectors.bahia_sefaz_finance import (  # noqa: E402
     summarize_sefaz_payments_zip,
 )
 
-PRIORITY_DATASETS = ("receitas", "licitacoes", "despesas", "pagamentos")
+PRIORITY_DATASETS = ("receitas", "licitacoes", "despesas", "pagamentos", "contratos")
 
 
 def read_json(path: Path, fallback: Any = None) -> Any:
@@ -80,7 +81,7 @@ def summary_rows(dataset: str, summary: dict[str, Any]) -> int | None:
         return summary.get("rows")
     if dataset == "licitacoes":
         return summary.get("total_rows_across_related_tables")
-    if dataset in {"despesas", "pagamentos"}:
+    if dataset in {"despesas", "pagamentos", "contratos"}:
         return (summary.get("primary_table") or {}).get("rows")
     return None
 
@@ -109,7 +110,7 @@ def main() -> int:
     headers = {
         "Accept": "text/csv,application/zip,application/octet-stream,*/*",
         "Accept-Encoding": "identity",
-        "User-Agent": "Mozilla/5.0 transparencia-municipal/0.8",
+        "User-Agent": "Mozilla/5.0 transparencia-municipal/0.9",
     }
 
     processors = {
@@ -136,6 +137,12 @@ def main() -> int:
             "preferred_names": ("Pagamentos.zip",),
             "output": "sefaz_pagamentos.json",
             "process": lambda path: summarize_sefaz_payments_zip(path, target_year=args.year),
+        },
+        "contratos": {
+            "formats": ("ZIP",),
+            "preferred_names": ("Contratos.zip",),
+            "output": "sefaz_contratos.json",
+            "process": lambda path: summarize_sefaz_contracts_zip(path, target_year=args.year),
         },
     }
 
