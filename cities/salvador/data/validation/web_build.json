@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "tested_commit": "23e9b01e9e31dbc6860be9502dca8633a5e2ba85",
+  "tested_commit": "2074f42cc2b4fda4598b211ce3ebfd90816d471c",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
