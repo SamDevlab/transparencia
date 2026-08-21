@@ -1,8 +1,8 @@
 {
-  "tested_commit": "fe9c86cd9eee2f418c01f77f010daf94c16f5e14",
+  "tested_commit": "7121978c6e8e543abc1c1a96134870cbb62b7d9a",
   "tests": "success",
-  "collector": "cancelled",
-  "workflow_finished_at": "2026-08-21T08:48:24.564109+00:00",
+  "collector": "success",
+  "workflow_finished_at": "2026-08-21T08:54:15.012402+00:00",
   "latest": {
     "collection_mode": "metadata_only",
     "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
@@ -15,11 +15,11 @@
       ],
       "expected": 4,
       "last_run_datasets": [
-        "receitas",
-        "licitacoes"
+        "despesas",
+        "pagamentos"
       ],
       "last_run_processed": 2,
-      "processed": 2,
+      "processed": 4,
       "reference_year": 2026
     },
     "snapshot": "2026-08-21",
@@ -40,30 +40,112 @@
     ],
     "expected": 4,
     "last_run_datasets": [
-      "receitas",
-      "licitacoes"
+      "despesas",
+      "pagamentos"
     ],
     "last_run_processed": 2,
-    "processed": 2,
+    "processed": 4,
     "reference_year": 2026
   },
   "expenses_status": {
-    "error": "Tabela sem colunas suficientes: 2025.CSV",
-    "error_type": "BahiaOpenDataError",
-    "note": "Falha de download/processamento não é convertida em zero registros ou zero reais.",
+    "bytes": 221670223,
+    "declared_size": 221670223,
+    "download_mode": "whole_with_retries",
+    "output": "sefaz_despesas.json",
+    "resource_id": "6356ec2d-6bc0-476e-bfd5-7cdc78864d55",
+    "resource_last_modified": "2026-08-20T10:13:17",
+    "resource_name": "Despesas.zip",
+    "rows": 2216886,
     "selected_year": 2026,
-    "status": "unavailable"
+    "sha256": "381a12450a88ebe20559751258db8e67d23b8c30a83ed87261749ee02014eb5c",
+    "status": "processed",
+    "tls_verified": false
   },
   "payments_status": {
-    "error": "peer closed connection without sending complete message body (received 312633059 bytes, expected 498799120)",
-    "error_type": "RemoteProtocolError",
-    "note": "Falha de download/processamento não é convertida em zero registros ou zero reais.",
+    "bytes": 498799120,
+    "declared_size": 498799120,
+    "download_mode": "http_range",
+    "output": "sefaz_pagamentos.json",
+    "resource_id": "2319e322-587b-4cea-b6e5-e184ebf040ef",
+    "resource_last_modified": "2026-08-20T10:36:46",
+    "resource_name": "Pagamentos.zip",
+    "rows": 3470605,
     "selected_year": 2026,
-    "status": "unavailable"
+    "sha256": "a0e8309602145a0c7b311a979863e4a7dc175fc450d967d417d921aab7a60996",
+    "status": "processed",
+    "tls_verified": false
   },
   "test_log_tail": [
     ".....                                                                    [100%]",
     "5 passed in 0.09s"
   ],
-  "collector_log_tail": []
+  "collector_log_tail": [
+    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"requested_processed\": 2, \"requested_expected\": 2, \"total_processed\": 4, \"total_expected\": 4, \"datasets\": {\"despesas\": {\"status\": \"processed\", \"output\": \"sefaz_despesas.json\", \"resource_id\": \"6356ec2d-6bc0-476e-bfd5-7cdc78864d55\", \"resource_name\": \"Despesas.zip\", \"resource_last_modified\": \"2026-08-20T10:13:17\", \"sha256\": \"381a12450a88ebe20559751258db8e67d23b8c30a83ed87261749ee02014eb5c\", \"bytes\": 221670223, \"declared_size\": 221670223, \"tls_verified\": false, \"download_mode\": \"whole_with_retries\", \"rows\": 2216886, \"selected_year\": 2026}, \"pagamentos\": {\"status\": \"processed\", \"output\": \"sefaz_pagamentos.json\", \"resource_id\": \"2319e322-587b-4cea-b6e5-e184ebf040ef\", \"resource_name\": \"Pagamentos.zip\", \"resource_last_modified\": \"2026-08-20T10:36:46\", \"sha256\": \"a0e8309602145a0c7b311a979863e4a7dc175fc450d967d417d921aab7a60996\", \"bytes\": 498799120, \"declared_size\": 498799120, \"tls_verified\": false, \"download_mode\": \"http_range\", \"rows\": 3470605, \"selected_year\": 2026}}}"
+  ],
+  "expenses": {
+    "resource": {
+      "declared_size": 221670223,
+      "format": "ZIP",
+      "id": "6356ec2d-6bc0-476e-bfd5-7cdc78864d55",
+      "last_modified": "2026-08-20T10:13:17",
+      "metadata_modified": "2026-08-20T10:13:17.597377",
+      "name": "Despesas.zip",
+      "url": "https://dados.ba.gov.br/dataset/518569da-ccaa-4621-b8d2-e7424ec3f1ea/resource/6356ec2d-6bc0-476e-bfd5-7cdc78864d55/download/despesas.zip"
+    },
+    "evidence": {
+      "bytes": 221670223,
+      "content_type": "application/zip",
+      "sha256": "381a12450a88ebe20559751258db8e67d23b8c30a83ed87261749ee02014eb5c",
+      "status_code": 200,
+      "url": "https://dados.ba.gov.br/dataset/518569da-ccaa-4621-b8d2-e7424ec3f1ea/resource/6356ec2d-6bc0-476e-bfd5-7cdc78864d55/download/despesas.zip"
+    },
+    "selected_year": 2026,
+    "primary_member": "VW_PAINEL_DESPESA.csv",
+    "selected_rows": 111942,
+    "stage_fields": {
+      "committed": "VAL_EMPENHADO_TOTAL",
+      "liquidated": "VAL_LIQUIDADO_TOTAL",
+      "paid": "VAL_PAGO"
+    },
+    "stage_totals": {
+      "committed": {
+        "numeric_rows": 111942,
+        "sum": 56828961047.83
+      },
+      "liquidated": {
+        "numeric_rows": 111942,
+        "sum": 48561808563.31
+      },
+      "paid": {
+        "numeric_rows": 111942,
+        "sum": 48021950710.15
+      }
+    }
+  },
+  "payments": {
+    "resource": {
+      "declared_size": 498799120,
+      "format": "ZIP",
+      "id": "2319e322-587b-4cea-b6e5-e184ebf040ef",
+      "last_modified": "2026-08-20T10:36:46",
+      "metadata_modified": "2026-08-20T10:36:46.521726",
+      "name": "Pagamentos.zip",
+      "url": "https://dados.ba.gov.br/dataset/7c78e7bf-f753-4fff-87b4-5d6950ba18a8/resource/2319e322-587b-4cea-b6e5-e184ebf040ef/download/pagamentos.zip"
+    },
+    "evidence": {
+      "bytes": 498799120,
+      "content_type": "application/zip",
+      "sha256": "a0e8309602145a0c7b311a979863e4a7dc175fc450d967d417d921aab7a60996",
+      "status_code": 206,
+      "url": "https://dados.ba.gov.br/dataset/7c78e7bf-f753-4fff-87b4-5d6950ba18a8/resource/2319e322-587b-4cea-b6e5-e184ebf040ef/download/pagamentos.zip"
+    },
+    "selected_year": 2026,
+    "primary_member": "VW_PAINEL_PAGAMENTO_NOTA_ORDEM_BANCARIA.csv",
+    "selected_rows": 598254,
+    "selected_year_payment": {
+      "numeric_rows": 598254,
+      "source_field": "Valor do Pagamento",
+      "sum": 49695587103.71
+    }
+  }
 }

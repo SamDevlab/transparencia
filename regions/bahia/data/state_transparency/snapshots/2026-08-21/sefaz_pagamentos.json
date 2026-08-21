@@ -1,0 +1,620 @@
+{
+  "dataset": "pagamentos",
+  "evidence": {
+    "bytes": 498799120,
+    "content_type": "application/zip",
+    "sha256": "a0e8309602145a0c7b311a979863e4a7dc175fc450d967d417d921aab7a60996",
+    "status_code": 206,
+    "url": "https://dados.ba.gov.br/dataset/7c78e7bf-f753-4fff-87b4-5d6950ba18a8/resource/2319e322-587b-4cea-b6e5-e184ebf040ef/download/pagamentos.zip"
+  },
+  "privacy": "O arquivo bruto foi processado temporariamente e não é republicado pelo projeto.",
+  "resource": {
+    "declared_size": 498799120,
+    "format": "ZIP",
+    "id": "2319e322-587b-4cea-b6e5-e184ebf040ef",
+    "last_modified": "2026-08-20T10:36:46",
+    "metadata_modified": "2026-08-20T10:36:46.521726",
+    "name": "Pagamentos.zip",
+    "url": "https://dados.ba.gov.br/dataset/7c78e7bf-f753-4fff-87b4-5d6950ba18a8/resource/2319e322-587b-4cea-b6e5-e184ebf040ef/download/pagamentos.zip"
+  },
+  "source": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+  "summary": {
+    "archive": {
+      "candidate_tabular_members": 5,
+      "invalid_tabular_members": 0,
+      "members": 5,
+      "processed_tabular_members": 5,
+      "uncompressed_bytes": 3779959899
+    },
+    "dataset": "pagamentos",
+    "interpretation": "O total publicado usa apenas o campo de pagamento identificado na tabela principal com escopo temporal verificável. Views anuais podem usar o ano explícito no nome do arquivo. Outros campos monetários permanecem rotulados pelo nome original e membros inválidos são registrados, não somados.",
+    "primary_table": {
+      "member": "VW_PAINEL_PAGAMENTO_NOTA_ORDEM_BANCARIA.csv",
+      "member_year": null,
+      "rows": 3470605,
+      "schema": {
+        "delimiter": ";",
+        "detected_fields": {
+          "agency": "Poder/Órgão Autônomo",
+          "date": "Data do Pagamento",
+          "member_year": null,
+          "payment_value_fields": [
+            "Valor do Pagamento"
+          ],
+          "primary_value_field": "Valor do Pagamento",
+          "year": null
+        },
+        "encoding": "utf-8-sig",
+        "headers": [
+          "Nº da Liquidação",
+          "COD_CREDOR_DESPESA",
+          "Recebedor do pag principal",
+          "Código do Município/IBGE",
+          "CPF/CNPJ Credor do Pagamento Principal",
+          "COD_CREDOR_DESPESA_PAGAMENTO",
+          "Recebedor",
+          "CPF/CNPJ Credor do Pagamento",
+          "Nº do Pagamento",
+          "Nº do Pagamento Formatado",
+          "Código do Poder/Órgão Autônomo",
+          "Poder/Órgão Autônomo",
+          "Órgão",
+          "Sigla do Órgão",
+          "Sigla da Unidade Orçamentária",
+          "Unidade Orçamentária",
+          "Código da Unidade Gestora",
+          "Sigla da Unidade Gestora",
+          "Unidade Gestora",
+          "NUM_EMPENHO_ORCAMENTO",
+          "Nº do Empenho",
+          "Função",
+          "Subfunção",
+          "Programa",
+          "Ação",
+          "Modalidade da Licitação",
+          "Tipo do Empenho",
+          "Natureza da Despesa",
+          "Código Elemento da Despesa",
+          "Elemento da Despesa",
+          "Subelemento da Despesa",
+          "Código da Consignataria",
+          "Tipo de Pagamento",
+          "Consignataria",
+          "Data do Pagamento",
+          "Valor do Pagamento",
+          "Nº LID",
+          "Nº do Processo de Licitação/Inexigibilidade/Dispensa",
+          "num_instrumento",
+          "num_instrumento_formatado",
+          "CodTipoInstrumento",
+          "val_GCV",
+          "Data do Vencimento da Despesa",
+          "Pagamento Efetivado"
+        ],
+        "privacy_sensitive_columns_present": [
+          "COD_CREDOR_DESPESA",
+          "CPF/CNPJ Credor do Pagamento Principal",
+          "COD_CREDOR_DESPESA_PAGAMENTO",
+          "CPF/CNPJ Credor do Pagamento"
+        ]
+      },
+      "score": 28,
+      "selected_rows": 598254,
+      "top_agencies": [
+        {
+          "name": "Executivo",
+          "value": 44925486421.53
+        },
+        {
+          "name": "Judiciário",
+          "value": 2525917511.62
+        },
+        {
+          "name": "Legislativo",
+          "value": 1061543545.57
+        },
+        {
+          "name": "Ministério Público",
+          "value": 870872665.17
+        },
+        {
+          "name": "Defensoria Pública",
+          "value": 311766959.82
+        }
+      ],
+      "value_field_sums": {
+        "Valor do Pagamento": {
+          "numeric_rows": 598254,
+          "sum": 49695587103.71
+        }
+      },
+      "years": {
+        "2023": 881844,
+        "2024": 997656,
+        "2025": 992851,
+        "2026": 598254
+      }
+    },
+    "privacy_note": "Nenhuma linha bruta, CPF/CNPJ, favorecido ou credor é republicado. Agregações públicas são limitadas a órgãos.",
+    "selected_year": 2026,
+    "selected_year_payment": {
+      "numeric_rows": 598254,
+      "source_field": "Valor do Pagamento",
+      "sum": 49695587103.71
+    },
+    "table_errors": [],
+    "tables": [
+      {
+        "member": "VW_PAINEL_PAGAMENTO_EMPENHO.csv",
+        "member_year": null,
+        "rows": 1938917,
+        "schema": {
+          "delimiter": ";",
+          "detected_fields": {
+            "agency": null,
+            "date": "Data do Empenho",
+            "member_year": null,
+            "payment_value_fields": [],
+            "primary_value_field": null,
+            "year": null
+          },
+          "encoding": "utf-8-sig",
+          "headers": [
+            "NUM_EMPENHO_ORCAMENTO",
+            "Nº do Empenho",
+            "Data do Empenho",
+            "Valor do Estorno do Empenho",
+            "Nº do Empenho Formatado",
+            "Valor do Empenho"
+          ],
+          "privacy_sensitive_columns_present": []
+        },
+        "score": 12,
+        "selected_rows": 301565,
+        "value_field_sums": {},
+        "years": {
+          "2015": 27,
+          "2016": 6,
+          "2017": 12,
+          "2018": 48,
+          "2019": 9,
+          "2020": 140,
+          "2021": 207,
+          "2022": 18052,
+          "2023": 528769,
+          "2024": 555732,
+          "2025": 534350,
+          "2026": 301565
+        }
+      },
+      {
+        "member": "VW_PAINEL_PAGAMENTO_LIQUIDACAO.csv",
+        "member_year": null,
+        "rows": 2197753,
+        "schema": {
+          "delimiter": ";",
+          "detected_fields": {
+            "agency": null,
+            "date": "Data da Liquidação",
+            "member_year": null,
+            "payment_value_fields": [],
+            "primary_value_field": null,
+            "year": null
+          },
+          "encoding": "utf-8-sig",
+          "headers": [
+            "Nº da Liquidação",
+            "Objeto",
+            "Nº do Instrumento",
+            "Data da Liquidação",
+            "Valor da Liquidação"
+          ],
+          "privacy_sensitive_columns_present": []
+        },
+        "score": 12,
+        "selected_rows": 348856,
+        "value_field_sums": {},
+        "years": {
+          "1900": 5,
+          "1907": 2,
+          "1910": 1,
+          "1915": 1,
+          "1916": 1,
+          "1924": 2,
+          "1929": 1,
+          "1930": 1,
+          "1934": 1,
+          "1938": 1,
+          "1942": 1,
+          "1944": 2,
+          "1950": 5,
+          "1951": 1,
+          "1954": 1,
+          "1964": 7,
+          "1965": 1,
+          "1968": 1,
+          "1969": 1,
+          "1970": 1,
+          "1975": 3,
+          "1976": 1,
+          "1980": 1,
+          "1986": 1,
+          "1987": 1,
+          "1988": 1,
+          "1990": 2,
+          "1993": 1,
+          "2000": 31,
+          "2001": 12,
+          "2002": 3,
+          "2008": 3,
+          "2015": 2,
+          "2016": 30,
+          "2017": 10,
+          "2018": 43,
+          "2019": 27,
+          "2020": 125,
+          "2021": 185,
+          "2022": 6417,
+          "2023": 596075,
+          "2024": 626521,
+          "2025": 604073,
+          "2026": 348856,
+          "2034": 1,
+          "2040": 1,
+          "2042": 4,
+          "2046": 2,
+          "2052": 1,
+          "2055": 1,
+          "2063": 1,
+          "2069": 1,
+          "2072": 3,
+          "2089": 1,
+          "2097": 1
+        }
+      },
+      {
+        "member": "VW_PAINEL_PAGAMENTO_LIQUIDACAO_SUB_ELEMENTO.csv",
+        "member_year": null,
+        "rows": 2202660,
+        "schema": {
+          "delimiter": ";",
+          "detected_fields": {
+            "agency": null,
+            "date": null,
+            "member_year": null,
+            "payment_value_fields": [],
+            "primary_value_field": null,
+            "year": "Ano da Liquidação do Subelemento"
+          },
+          "encoding": "utf-8-sig",
+          "headers": [
+            "Nº da Liquidação",
+            "Elemento da Despesa",
+            "Subelemento da Despesa",
+            "Valor da Liquidação do Subelemento",
+            "Ano da Liquidação do Subelemento"
+          ],
+          "privacy_sensitive_columns_present": []
+        },
+        "score": 12,
+        "selected_rows": 351782,
+        "value_field_sums": {},
+        "years": {
+          "2015": 2,
+          "2016": 30,
+          "2017": 9,
+          "2018": 43,
+          "2019": 21,
+          "2020": 125,
+          "2021": 185,
+          "2022": 6448,
+          "2023": 601984,
+          "2024": 633433,
+          "2025": 608598,
+          "2026": 351782
+        }
+      },
+      {
+        "member": "VW_PAINEL_PAGAMENTO_NOTA_ORDEM_BANCARIA.csv",
+        "member_year": null,
+        "rows": 3470605,
+        "schema": {
+          "delimiter": ";",
+          "detected_fields": {
+            "agency": "Poder/Órgão Autônomo",
+            "date": "Data do Pagamento",
+            "member_year": null,
+            "payment_value_fields": [
+              "Valor do Pagamento"
+            ],
+            "primary_value_field": "Valor do Pagamento",
+            "year": null
+          },
+          "encoding": "utf-8-sig",
+          "headers": [
+            "Nº da Liquidação",
+            "COD_CREDOR_DESPESA",
+            "Recebedor do pag principal",
+            "Código do Município/IBGE",
+            "CPF/CNPJ Credor do Pagamento Principal",
+            "COD_CREDOR_DESPESA_PAGAMENTO",
+            "Recebedor",
+            "CPF/CNPJ Credor do Pagamento",
+            "Nº do Pagamento",
+            "Nº do Pagamento Formatado",
+            "Código do Poder/Órgão Autônomo",
+            "Poder/Órgão Autônomo",
+            "Órgão",
+            "Sigla do Órgão",
+            "Sigla da Unidade Orçamentária",
+            "Unidade Orçamentária",
+            "Código da Unidade Gestora",
+            "Sigla da Unidade Gestora",
+            "Unidade Gestora",
+            "NUM_EMPENHO_ORCAMENTO",
+            "Nº do Empenho",
+            "Função",
+            "Subfunção",
+            "Programa",
+            "Ação",
+            "Modalidade da Licitação",
+            "Tipo do Empenho",
+            "Natureza da Despesa",
+            "Código Elemento da Despesa",
+            "Elemento da Despesa",
+            "Subelemento da Despesa",
+            "Código da Consignataria",
+            "Tipo de Pagamento",
+            "Consignataria",
+            "Data do Pagamento",
+            "Valor do Pagamento",
+            "Nº LID",
+            "Nº do Processo de Licitação/Inexigibilidade/Dispensa",
+            "num_instrumento",
+            "num_instrumento_formatado",
+            "CodTipoInstrumento",
+            "val_GCV",
+            "Data do Vencimento da Despesa",
+            "Pagamento Efetivado"
+          ],
+          "privacy_sensitive_columns_present": [
+            "COD_CREDOR_DESPESA",
+            "CPF/CNPJ Credor do Pagamento Principal",
+            "COD_CREDOR_DESPESA_PAGAMENTO",
+            "CPF/CNPJ Credor do Pagamento"
+          ]
+        },
+        "score": 28,
+        "selected_rows": 598254,
+        "value_field_sums": {
+          "Valor do Pagamento": {
+            "numeric_rows": 598254,
+            "sum": 49695587103.71
+          }
+        },
+        "years": {
+          "2023": 881844,
+          "2024": 997656,
+          "2025": 992851,
+          "2026": 598254
+        }
+      },
+      {
+        "member": "VW_PAINEL_PAGAMENTO_PROCESSO_SEI.csv",
+        "member_year": null,
+        "rows": 584669,
+        "schema": {
+          "delimiter": ";",
+          "detected_fields": {
+            "agency": null,
+            "date": null,
+            "member_year": null,
+            "payment_value_fields": [],
+            "primary_value_field": null,
+            "year": null
+          },
+          "encoding": "utf-8-sig",
+          "headers": [
+            "Nº do Processo SEI",
+            "NUM_EMPENHO_ORCAMENTO"
+          ],
+          "privacy_sensitive_columns_present": []
+        },
+        "score": -20,
+        "selected_rows": 0,
+        "value_field_sums": {},
+        "years": {}
+      }
+    ]
+  },
+  "transport": {
+    "download_mode": "http_range",
+    "expected_size": 498799120,
+    "fallback_reason": "certificate_chain_error",
+    "range_attempts": [
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "0-16777215",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "16777216-33554431",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "33554432-50331647",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "50331648-67108863",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "67108864-83886079",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "83886080-100663295",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "100663296-117440511",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "117440512-134217727",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "134217728-150994943",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "150994944-167772159",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "167772160-184549375",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "184549376-201326591",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "201326592-218103807",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "218103808-234881023",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "234881024-251658239",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "251658240-268435455",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "268435456-285212671",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "285212672-301989887",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "301989888-318767103",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "318767104-335544319",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "335544320-352321535",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "352321536-369098751",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "369098752-385875967",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "385875968-402653183",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "402653184-419430399",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "419430400-436207615",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "436207616-452984831",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "452984832-469762047",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 16777216,
+        "range": "469762048-486539263",
+        "status": "success"
+      },
+      {
+        "attempt": 1,
+        "bytes": 12259856,
+        "range": "486539264-498799119",
+        "status": "success"
+      }
+    ],
+    "range_chunk_bytes": 16777216,
+    "tls_verified": false,
+    "transport_note": "O recurso foi baixado do mesmo host oficial dados.ba.gov.br sem validação TLS porque o runner não conseguiu validar a cadeia de certificados; a condição foi registrada."
+  }
+}

@@ -54,11 +54,18 @@
   "note": "A fase de metadados pode ficar completa mesmo sem baixar os arquivos grandes do TCE. A cobertura plena da rotina exige os metadados CKAN e os três conjuntos automatizados do TCE. Dados SEFAZ já processados são preservados entre reexecuções. Fallback TLS do CKAN, quando necessário, fica registrado e nunca é silencioso.",
   "sefaz_data": {
     "despesas": {
-      "error": "Tabela sem colunas suficientes: 2025.CSV",
-      "error_type": "BahiaOpenDataError",
-      "note": "Falha de download/processamento não é convertida em zero registros ou zero reais.",
+      "bytes": 221670223,
+      "declared_size": 221670223,
+      "download_mode": "whole_with_retries",
+      "output": "sefaz_despesas.json",
+      "resource_id": "6356ec2d-6bc0-476e-bfd5-7cdc78864d55",
+      "resource_last_modified": "2026-08-20T10:13:17",
+      "resource_name": "Despesas.zip",
+      "rows": 2216886,
       "selected_year": 2026,
-      "status": "unavailable"
+      "sha256": "381a12450a88ebe20559751258db8e67d23b8c30a83ed87261749ee02014eb5c",
+      "status": "processed",
+      "tls_verified": false
     },
     "licitacoes": {
       "bytes": 130216796,
@@ -75,11 +82,18 @@
       "tls_verified": false
     },
     "pagamentos": {
-      "error": "peer closed connection without sending complete message body (received 312633059 bytes, expected 498799120)",
-      "error_type": "RemoteProtocolError",
-      "note": "Falha de download/processamento não é convertida em zero registros ou zero reais.",
+      "bytes": 498799120,
+      "declared_size": 498799120,
+      "download_mode": "http_range",
+      "output": "sefaz_pagamentos.json",
+      "resource_id": "2319e322-587b-4cea-b6e5-e184ebf040ef",
+      "resource_last_modified": "2026-08-20T10:36:46",
+      "resource_name": "Pagamentos.zip",
+      "rows": 3470605,
       "selected_year": 2026,
-      "status": "unavailable"
+      "sha256": "a0e8309602145a0c7b311a979863e4a7dc175fc450d967d417d921aab7a60996",
+      "status": "processed",
+      "tls_verified": false
     },
     "receitas": {
       "bytes": 189198575,
@@ -105,11 +119,11 @@
     ],
     "expected": 4,
     "last_run_datasets": [
-      "receitas",
-      "licitacoes"
+      "despesas",
+      "pagamentos"
     ],
     "last_run_processed": 2,
-    "processed": 2,
+    "processed": 4,
     "reference_year": 2026
   },
   "status": "complete_for_metadata_collection",
