@@ -1,0 +1,315 @@
+{
+  "dataset": "receitas",
+  "evidence": {
+    "bytes": 189198575,
+    "content_type": "text/csv",
+    "sha256": "c7b972121d18444bb3b3b7e8b9e7ee06e2aa5ec12c5888fa250df6d1bbaed641",
+    "status_code": 200,
+    "url": "https://dados.ba.gov.br/dataset/1b6b2933-b13b-4754-a910-105683a4edff/resource/70483fa8-362c-40c3-9389-67bff289fee5/download/receitas.csv"
+  },
+  "privacy": "O arquivo bruto foi processado temporariamente e não é republicado pelo projeto.",
+  "resource": {
+    "declared_size": 189198575,
+    "format": "CSV",
+    "id": "70483fa8-362c-40c3-9389-67bff289fee5",
+    "last_modified": "2026-08-20T10:05:01",
+    "metadata_modified": "2026-08-20T10:05:01.546035",
+    "name": "Receitas.csv",
+    "url": "https://dados.ba.gov.br/dataset/1b6b2933-b13b-4754-a910-105683a4edff/resource/70483fa8-362c-40c3-9389-67bff289fee5/download/receitas.csv"
+  },
+  "source": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+  "summary": {
+    "dataset": "receitas",
+    "interpretation": "Os valores são somas dos campos detectados no arquivo oficial. Previsão, atualização e arrecadação permanecem separados; ausência de campo não é convertida em zero factual.",
+    "rows": 290280,
+    "rows_by_year": {
+      "2015": 32052,
+      "2016": 25380,
+      "2017": 24888,
+      "2018": 23232,
+      "2019": 23772,
+      "2020": 21816,
+      "2021": 21696,
+      "2022": 22668,
+      "2023": 22644,
+      "2024": 22536,
+      "2025": 23892,
+      "2026": 25704
+    },
+    "schema": {
+      "delimiter": ";",
+      "detected_fields": {
+        "agency": "nom_orgao_orcamento",
+        "forecast": "Receita Prevista Col",
+        "realized": "Receita Arrecadada Col",
+        "revenue_nature": null,
+        "updated": "Receita Atualizada Col",
+        "year": "ano_exercicio"
+      },
+      "encoding": "utf-8-sig",
+      "headers": [
+        "mes_exercicio",
+        "ano_exercicio",
+        "cod_unidade_orcamentaria",
+        "cod_natureza_receita",
+        "cod_poder_orcamento",
+        "nom_poder_orcamento",
+        "cod_orgao_orcamento",
+        "nom_orgao_orcamento",
+        "cod_fonte_recurso",
+        "NOME_FONTE_RECURSO",
+        "nom_res_unidade_orcamentaria",
+        "nom_unidade_orcamentaria",
+        "sgl_orgao_orcamento",
+        "Nivel_1",
+        "CATEGORIA",
+        "Nivel_2",
+        "ORIGEM",
+        "Nivel_3",
+        "ESPECIE",
+        "Nivel_4",
+        "Desdobramento1",
+        "Nivel_5",
+        "Desdobramento2",
+        "Nivel_6",
+        "Desdobramento3",
+        "Nivel_7",
+        "Tipo",
+        "Receita Prevista Col",
+        "Receita Atualizada Col",
+        "Receita Arrecadada Col"
+      ]
+    },
+    "selected_year": 2026,
+    "selected_year_totals": {
+      "forecast": 75684122457.0,
+      "realized": 55065695627.14,
+      "updated": 88154961871.0
+    },
+    "top_agencies_by_realized": [
+      {
+        "name": "Diretoria do Tesouro",
+        "realized": 39164255276.94,
+        "rows": 6648
+      },
+      {
+        "name": "Secretaria da Educação",
+        "realized": 5676773688.58,
+        "rows": 3756
+      },
+      {
+        "name": "Secretaria da Administração",
+        "realized": 5465430747.21,
+        "rows": 1908
+      },
+      {
+        "name": "Secretaria da Saúde",
+        "realized": 2608560451.34,
+        "rows": 3924
+      },
+      {
+        "name": "Tribunal de Justiça",
+        "realized": 1049219992.98,
+        "rows": 360
+      },
+      {
+        "name": "Secretaria de Desenvolvimento Urbano",
+        "realized": 203968691.85,
+        "rows": 1668
+      },
+      {
+        "name": "Secretaria da Fazenda",
+        "realized": 127077754.02,
+        "rows": 84
+      },
+      {
+        "name": "Secretaria do Meio Ambiente",
+        "realized": 119256643.37,
+        "rows": 312
+      },
+      {
+        "name": "Secretaria de Desenvolvimento Econômico",
+        "realized": 117868517.0,
+        "rows": 228
+      },
+      {
+        "name": "Secretaria de Infraestrutura Hídrica e Saneamento",
+        "realized": 109346066.54,
+        "rows": 864
+      },
+      {
+        "name": "Secretaria de Infraestrutura",
+        "realized": 103866105.41,
+        "rows": 264
+      },
+      {
+        "name": "Secretaria de Desenvolvimento Rural",
+        "realized": 52703105.83,
+        "rows": 768
+      },
+      {
+        "name": "Secretaria de Assistência e Desenvolvimento Social",
+        "realized": 46147680.32,
+        "rows": 240
+      },
+      {
+        "name": "Ministério Público",
+        "realized": 43135783.75,
+        "rows": 288
+      },
+      {
+        "name": "Secretaria da Segurança Pública",
+        "realized": 32364616.63,
+        "rows": 1056
+      },
+      {
+        "name": "Secretaria do Trabalho, Emprego, Renda e Esporte",
+        "realized": 30001317.8,
+        "rows": 516
+      },
+      {
+        "name": "Procuradoria Geral do Estado",
+        "realized": 23058135.29,
+        "rows": 84
+      },
+      {
+        "name": "Defensoria Pública",
+        "realized": 19557808.56,
+        "rows": 204
+      },
+      {
+        "name": "Secretaria de Cultura",
+        "realized": 18017643.88,
+        "rows": 624
+      },
+      {
+        "name": "Secretaria de Ciência, Tecnologia e Inovação",
+        "realized": 14053715.8,
+        "rows": 300
+      },
+      {
+        "name": "Assembleia Legislativa da Bahia",
+        "realized": 10418031.58,
+        "rows": 24
+      },
+      {
+        "name": "Secretaria da Agricultura, Pecuária, Irrigação, Pesca e Aquicultura",
+        "realized": 6172069.2,
+        "rows": 396
+      },
+      {
+        "name": "Secretaria do Planejamento",
+        "realized": 5000000.0,
+        "rows": 24
+      },
+      {
+        "name": "Casa Civil",
+        "realized": 4808393.9,
+        "rows": 48
+      },
+      {
+        "name": "Secretaria de Justiça e Direitos Humanos",
+        "realized": 4555833.08,
+        "rows": 216
+      },
+      {
+        "name": "Tribunal de Contas do Estado",
+        "realized": 3219810.09,
+        "rows": 132
+      },
+      {
+        "name": "Secretaria de Administração Penitenciária e Ressocialização",
+        "realized": 3213059.66,
+        "rows": 156
+      },
+      {
+        "name": "Secretaria de Turismo",
+        "realized": 2397239.93,
+        "rows": 468
+      },
+      {
+        "name": "Tribunal de Contas dos Municípios",
+        "realized": 1235473.44,
+        "rows": 72
+      },
+      {
+        "name": "Secretaria de Políticas para as Mulheres",
+        "realized": 9748.28,
+        "rows": 60
+      },
+      {
+        "name": "Secretaria de Promoção da Igualdade Racial e dos Povos e Comunidades Tradicionais",
+        "realized": 2224.88,
+        "rows": 12
+      }
+    ],
+    "top_revenue_natures_by_realized": [],
+    "totals_by_year": {
+      "2015": {
+        "forecast": 39091321000.0,
+        "realized": 39213169665.73,
+        "updated": 41581582315.0
+      },
+      "2016": {
+        "forecast": 41892642557.0,
+        "realized": 42045806779.12,
+        "updated": 45130681710.0
+      },
+      "2017": {
+        "forecast": 43772584633.0,
+        "realized": 45225610968.46,
+        "updated": 47423997425.0
+      },
+      "2018": {
+        "forecast": 44581718341.0,
+        "realized": 45877354687.58,
+        "updated": 47456572459.0
+      },
+      "2019": {
+        "forecast": 46484892786.0,
+        "realized": 48898651318.78,
+        "updated": 50624921005.0
+      },
+      "2020": {
+        "forecast": 48341875630.0,
+        "realized": 51180539294.7,
+        "updated": 53606494526.0
+      },
+      "2021": {
+        "forecast": 48401650000.0,
+        "realized": 60695347486.61,
+        "updated": 57225858684.0
+      },
+      "2022": {
+        "forecast": 52835335473.0,
+        "realized": 71667009738.26,
+        "updated": 71704400788.0
+      },
+      "2023": {
+        "forecast": 63118623600.0,
+        "realized": 75265718122.83,
+        "updated": 77755166932.0
+      },
+      "2024": {
+        "forecast": 61681634290.0,
+        "realized": 74696294061.44,
+        "updated": 76014469987.0
+      },
+      "2025": {
+        "forecast": 69328747072.0,
+        "realized": 81855538999.69,
+        "updated": 87038421847.0
+      },
+      "2026": {
+        "forecast": 75684122457.0,
+        "realized": 55065695627.14,
+        "updated": 88154961871.0
+      }
+    }
+  },
+  "transport": {
+    "fallback_reason": "certificate_chain_error",
+    "tls_verified": false,
+    "transport_note": "O recurso foi baixado do mesmo host oficial dados.ba.gov.br sem validação TLS porque o runner não conseguiu validar a cadeia de certificados; a condição foi registrada."
+  }
+}

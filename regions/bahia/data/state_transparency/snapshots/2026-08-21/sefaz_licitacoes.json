@@ -1,0 +1,454 @@
+{
+  "dataset": "licitacoes",
+  "evidence": {
+    "bytes": 130216796,
+    "content_type": "application/zip",
+    "sha256": "95409ee6d9aacced3a4a6a0fe455b6c7450ea5f001056e3ee78c83768b6d7391",
+    "status_code": 200,
+    "url": "https://dados.ba.gov.br/dataset/36c792f9-1999-4f21-a669-752a178b06b7/resource/c5040c7d-4375-459e-93b0-beca841f63b4/download/licitacoes.zip"
+  },
+  "privacy": "O arquivo bruto foi processado temporariamente e não é republicado pelo projeto.",
+  "resource": {
+    "declared_size": 130216796,
+    "format": "ZIP",
+    "id": "c5040c7d-4375-459e-93b0-beca841f63b4",
+    "last_modified": "2026-08-20T11:13:12",
+    "metadata_modified": "2026-08-20T11:13:12.737411",
+    "name": "Licitacoes.zip",
+    "url": "https://dados.ba.gov.br/dataset/36c792f9-1999-4f21-a669-752a178b06b7/resource/c5040c7d-4375-459e-93b0-beca841f63b4/download/licitacoes.zip"
+  },
+  "source": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+  "summary": {
+    "archive": {
+      "members": 4,
+      "tabular_members": 4,
+      "uncompressed_bytes": 1025130506
+    },
+    "dataset": "licitacoes",
+    "interpretation": "As linhas pertencem a tabelas relacionadas e não são somadas como número de licitações. Valores são apresentados por campo/tabela; o projeto não combina automaticamente itens, participantes e certames.",
+    "privacy_note": "Nenhuma linha bruta, CPF, CNPJ ou nome de participante é republicado por este resumo. O esquema apenas registra a existência de colunas sensíveis.",
+    "selected_rows_across_related_tables": 2938767,
+    "selected_year": 2026,
+    "table_classes": {
+      "participantes": 3,
+      "tabela_relacionada": 1
+    },
+    "tables": [
+      {
+        "classification": "participantes",
+        "member": "VW_PROC_AQUISICAO_FORNEC.csv",
+        "rows": 1828532,
+        "schema": {
+          "delimiter": ";",
+          "detected_fields": {
+            "agency": null,
+            "date": null,
+            "modality": null,
+            "status": "DESC_SITUACAO_FORNEC",
+            "value_fields": [],
+            "year": null
+          },
+          "encoding": "utf-8-sig",
+          "headers": [
+            "NOM_FORNECEDOR",
+            "DESC_SITUACAO_FORNEC",
+            "Processo de Aquisição",
+            "Item",
+            "Categoria",
+            "VAL_ITEM_COTADO",
+            "VAL_ITEM_HOMOLOGADO",
+            "NUM_SEQ_CHAVE",
+            "QTD_PEDIDA",
+            "VAL_TOTAL_COTADO",
+            "VAL_TOTAL_COTADO_HOMOLOGADO",
+            "VAL_TOTAL_HOMOLOGADO",
+            "FK_ITENS_FORNECEDORES",
+            "CPF_CNPJ_formatado",
+            "FK_Uniao_CPF_CNPJ"
+          ],
+          "privacy_sensitive_columns_present": [
+            "NOM_FORNECEDOR",
+            "FK_ITENS_FORNECEDORES",
+            "CPF_CNPJ_formatado",
+            "FK_Uniao_CPF_CNPJ"
+          ]
+        },
+        "selected_rows": 1828532,
+        "top_agencies": [],
+        "top_modalities": [],
+        "top_statuses": [
+          {
+            "name": "Vencedor",
+            "rows": 777445
+          },
+          {
+            "name": "Perdedor",
+            "rows": 676569
+          },
+          {
+            "name": "Desclassificado",
+            "rows": 371154
+          },
+          {
+            "name": "Informação Alterada",
+            "rows": 3364
+          }
+        ],
+        "value_field_sums": {},
+        "years": {}
+      },
+      {
+        "classification": "participantes",
+        "member": "VW_PROC_AQUISICAO_ITEM.csv",
+        "rows": 940222,
+        "schema": {
+          "delimiter": ";",
+          "detected_fields": {
+            "agency": null,
+            "date": null,
+            "modality": null,
+            "status": null,
+            "value_fields": [],
+            "year": null
+          },
+          "encoding": "utf-8-sig",
+          "headers": [
+            "Processo de Aquisição",
+            "NUM_SEQ_CHAVE",
+            "Num Item",
+            "NUM_IDENTIFICACAO_FORMATADO",
+            "Categoria",
+            "DESC_SIT_ITEM_REVOG",
+            "NUM_ITEM_CATALOGO_FORMATADO",
+            "Nome do Item",
+            "DESC_SIT_ITEM_MAT",
+            "DESC_TIP_ITEM_MAT",
+            "TIPO_ITEM",
+            "DESC_IND_BEM_COMUM",
+            "NUM_LOTE_ITEM",
+            "Quantidade",
+            "VAL_ITEM_ESTIMADO",
+            "VAL_ITEM_TOTAL_ESTIMADO",
+            "val_item_homologado",
+            "VAL_ITEM_TOTAL_HOMOLOGADO",
+            "Nome do Item Completo",
+            "FK_Itens_Fornecedores",
+            "Nome do Item Intermediario",
+            "FK_Itens_Instrumento"
+          ],
+          "privacy_sensitive_columns_present": [
+            "FK_Itens_Fornecedores"
+          ]
+        },
+        "selected_rows": 940222,
+        "top_agencies": [],
+        "top_modalities": [],
+        "top_statuses": [],
+        "value_field_sums": {},
+        "years": {}
+      },
+      {
+        "classification": "tabela_relacionada",
+        "member": "VW_PROC_AQUISICAO_ITEM_INSTRUMENTO.csv",
+        "rows": 167925,
+        "schema": {
+          "delimiter": ";",
+          "detected_fields": {
+            "agency": null,
+            "date": null,
+            "modality": null,
+            "status": null,
+            "value_fields": [],
+            "year": null
+          },
+          "encoding": "utf-8-sig",
+          "headers": [
+            "FK_Itens_Instrumento",
+            "NUM_INSTRUMENTO_ORCAMENTO",
+            "NUM_INST_FORMATADO",
+            "Processo_de_Aquisicao"
+          ],
+          "privacy_sensitive_columns_present": []
+        },
+        "selected_rows": 167925,
+        "top_agencies": [],
+        "top_modalities": [],
+        "top_statuses": [],
+        "value_field_sums": {},
+        "years": {}
+      },
+      {
+        "classification": "participantes",
+        "member": "VW_PROC_AQUISICAO_LIC_REQ.csv",
+        "rows": 108594,
+        "schema": {
+          "delimiter": ";",
+          "detected_fields": {
+            "agency": "Sigla do Órgão Solicitante",
+            "date": "Data de Homologação",
+            "modality": "Modalidade",
+            "status": "Situação",
+            "value_fields": [
+              "Valor Estimado",
+              "Valor Homologado"
+            ],
+            "year": "Ano da Aquisição"
+          },
+          "encoding": "utf-8-sig",
+          "headers": [
+            "N° da Licitação",
+            "N° da Licitação Formatado",
+            "Processo de Aquisição",
+            "Processo de Aquisição Formatado",
+            "Código da  Modalidade",
+            "Modalidade",
+            "Código do Tipo",
+            "DESC_TIPO",
+            "Tipo",
+            "Código da Situação",
+            "Situação",
+            "Código do Poder",
+            "DESC_PODER_SOLICITANTE",
+            "Poder",
+            "Código do Órgão Solicitante",
+            "Sigla do Órgão Solicitante",
+            "DESC_SECRETARIA_SOLICITANTE",
+            "Órgão Solicitante",
+            "N° da Unidade",
+            "DESC_UNIDADE_SOLICITANTE",
+            "Unidade",
+            "Sigla da Unidade Solicitante",
+            "Grupo",
+            "Código do Grupo",
+            "Descrição do Grupo",
+            "Valor Estimado",
+            "Valor Homologado",
+            "Processo SEI",
+            "Data de Publicação DOE",
+            "Data de Abertura",
+            "Data de Homologação",
+            "Data de Homologação Tratada",
+            "Forma de Contratação",
+            "Objeto",
+            "Ano da Aquisição",
+            "Categoria",
+            "Registro de preço"
+          ],
+          "privacy_sensitive_columns_present": [
+            "DESC_PODER_SOLICITANTE",
+            "Código do Órgão Solicitante",
+            "Sigla do Órgão Solicitante",
+            "DESC_SECRETARIA_SOLICITANTE",
+            "Órgão Solicitante",
+            "DESC_UNIDADE_SOLICITANTE",
+            "Sigla da Unidade Solicitante"
+          ]
+        },
+        "selected_rows": 2088,
+        "top_agencies": [
+          {
+            "name": "SESAB",
+            "rows": 1066
+          },
+          {
+            "name": "SSP",
+            "rows": 309
+          },
+          {
+            "name": "SEC",
+            "rows": 220
+          },
+          {
+            "name": "SAEB",
+            "rows": 124
+          },
+          {
+            "name": "SEDUR",
+            "rows": 61
+          },
+          {
+            "name": "SIHS",
+            "rows": 51
+          },
+          {
+            "name": "SECULT",
+            "rows": 34
+          },
+          {
+            "name": "SETRE",
+            "rows": 15
+          },
+          {
+            "name": "SJDH",
+            "rows": 14
+          },
+          {
+            "name": "CMG",
+            "rows": 12
+          },
+          {
+            "name": "SDR",
+            "rows": 12
+          },
+          {
+            "name": "SEAGRI",
+            "rows": 11
+          },
+          {
+            "name": "SEAP",
+            "rows": 11
+          },
+          {
+            "name": "PGE",
+            "rows": 9
+          },
+          {
+            "name": "SETUR",
+            "rows": 8
+          },
+          {
+            "name": "SEMA",
+            "rows": 8
+          },
+          {
+            "name": "SEINFRA",
+            "rows": 8
+          },
+          {
+            "name": "SEFAZ",
+            "rows": 7
+          },
+          {
+            "name": "CASA CIVIL",
+            "rows": 7
+          },
+          {
+            "name": "SECOM",
+            "rows": 7
+          },
+          {
+            "name": "SECTI",
+            "rows": 6
+          },
+          {
+            "name": "SDE",
+            "rows": 5
+          },
+          {
+            "name": "GAB GOV",
+            "rows": 5
+          },
+          {
+            "name": "SEPLAN",
+            "rows": 3
+          },
+          {
+            "name": "SEADES",
+            "rows": 3
+          },
+          {
+            "name": "SEPROMI",
+            "rows": 1
+          },
+          {
+            "name": "VICE-GOV",
+            "rows": 1
+          }
+        ],
+        "top_modalities": [
+          {
+            "name": "Pregão Eletrônico",
+            "rows": 1960
+          },
+          {
+            "name": "Concorrência Pública",
+            "rows": 122
+          },
+          {
+            "name": "Pregão Presencial",
+            "rows": 5
+          },
+          {
+            "name": "Tomada de Preço",
+            "rows": 1
+          }
+        ],
+        "top_statuses": [
+          {
+            "name": "Homologada",
+            "rows": 985
+          },
+          {
+            "name": "Em andamento/elaboração",
+            "rows": 937
+          },
+          {
+            "name": "Fracassada",
+            "rows": 85
+          },
+          {
+            "name": "Suspensa",
+            "rows": 32
+          },
+          {
+            "name": "Revogada",
+            "rows": 19
+          },
+          {
+            "name": "Deserta",
+            "rows": 18
+          },
+          {
+            "name": "Anulada",
+            "rows": 7
+          },
+          {
+            "name": "Cancelada",
+            "rows": 5
+          }
+        ],
+        "value_field_sums": {
+          "Valor Estimado": {
+            "numeric_rows": 2088,
+            "sum": 13949694522.25
+          },
+          "Valor Homologado": {
+            "numeric_rows": 2088,
+            "sum": 5338103277.05
+          }
+        },
+        "years": {
+          "2004": 3283,
+          "2005": 4073,
+          "2006": 3676,
+          "2007": 4041,
+          "2008": 5568,
+          "2009": 5261,
+          "2010": 5748,
+          "2011": 6206,
+          "2012": 6649,
+          "2013": 6537,
+          "2014": 6597,
+          "2015": 5144,
+          "2016": 4849,
+          "2017": 5247,
+          "2018": 4578,
+          "2019": 4061,
+          "2020": 3122,
+          "2021": 4812,
+          "2022": 5821,
+          "2023": 5370,
+          "2024": 2660,
+          "2025": 3203,
+          "2026": 2088
+        }
+      }
+    ],
+    "total_rows_across_related_tables": 3045273
+  },
+  "transport": {
+    "fallback_reason": "certificate_chain_error",
+    "tls_verified": false,
+    "transport_note": "O recurso foi baixado do mesmo host oficial dados.ba.gov.br sem validação TLS porque o runner não conseguiu validar a cadeia de certificados; a condição foi registrada."
+  }
+}

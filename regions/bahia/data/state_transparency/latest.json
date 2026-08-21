@@ -1,6 +1,15 @@
 {
   "collection_mode": "metadata_only",
   "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
+  "sefaz_data": {
+    "datasets": [
+      "receitas",
+      "licitacoes"
+    ],
+    "expected": 2,
+    "processed": 2,
+    "reference_year": 2026
+  },
   "snapshot": "2026-08-21",
   "status": "complete_for_metadata_collection",
   "summary": {
