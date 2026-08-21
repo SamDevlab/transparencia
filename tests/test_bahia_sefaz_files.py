@@ -59,7 +59,7 @@ def test_licitacoes_zip_summarizes_related_tables_without_republishing_people(tm
             "2026;99999999000100;Empresa B;SEC A\n",
         )
         zf.writestr(
-            "itens_sem_ano.csv",
+            "VW_PROC_AQUISICAO_ITEM.csv",
             "ITEM;VAL_ITEM_ESTIMADO\n"
             "1;100,00\n"
             "2;200,00\n",
