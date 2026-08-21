@@ -110,8 +110,7 @@ def _parse_brl(value: str | None) -> float:
 
 
 def _norm_header(value: str) -> str:
-    text = value.strip().upper()
-    return re.sub(r"\s+", " ", text)
+    return re.sub(r"\s+", " ", value.strip().upper())
 
 
 def stream_to_temp(client: httpx.Client, url: str, *, max_bytes: int = 800_000_000) -> tuple[Path, DownloadEvidence]:
@@ -149,9 +148,11 @@ def summarize_tce_expenses(path: Path) -> dict[str, Any]:
     by_creditor: dict[str, dict[str, Any]] = {}
     with path.open("r", encoding="utf-8-sig", errors="replace", newline="") as fh:
         reader = csv.DictReader(fh, delimiter=";")
-        if not reader.fieldnames:
-            raise BahiaOpenDataError("CSV de despesas do TCE sem cabeçalho")
+        if not reader.fieldnames or len(reader.fieldnames) < 3:
+            raise BahiaOpenDataError("Resposta do TCE não possui cabeçalho tabular de despesas")
         field_map = {_norm_header(name): name for name in reader.fieldnames if name}
+        if not field_map.get("VALOR DO EMPENHO"):
+            raise BahiaOpenDataError("CSV de despesas do TCE não contém o campo VALOR DO EMPENHO esperado")
 
         def pick(row: dict[str, str], *names: str) -> str:
             for name in names:
@@ -191,8 +192,8 @@ def summarize_hash_csv(path: Path, *, delimiter: str = "#", value_headers: Itera
     agencies: dict[str, int] = {}
     with path.open("r", encoding="utf-8-sig", errors="replace", newline="") as fh:
         reader = csv.DictReader(fh, delimiter=delimiter)
-        if not reader.fieldnames:
-            raise BahiaOpenDataError("CSV do TCE sem cabeçalho")
+        if not reader.fieldnames or len(reader.fieldnames) < 2:
+            raise BahiaOpenDataError("Resposta do TCE não possui cabeçalho tabular compatível")
         field_map = {_norm_header(name): name for name in reader.fieldnames if name}
         agency_field = field_map.get("ÓRGÃO CONTRATANTE") or field_map.get("ORGAO CONTRATANTE") or field_map.get("ORGÃO") or field_map.get("ORGAO")
         value_field = None
@@ -200,6 +201,8 @@ def summarize_hash_csv(path: Path, *, delimiter: str = "#", value_headers: Itera
             value_field = field_map.get(_norm_header(candidate))
             if value_field:
                 break
+        if not agency_field and not value_field:
+            raise BahiaOpenDataError("CSV do TCE não contém nenhum dos campos esperados para validação")
         for row in reader:
             rows += 1
             if agency_field:
