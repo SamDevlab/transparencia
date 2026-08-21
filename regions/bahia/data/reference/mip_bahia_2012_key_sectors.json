@@ -1,0 +1,20 @@
+{
+  "scope": "Bahia",
+  "kind": "historical_input_output_key_sectors",
+  "reference_year": 2012,
+  "publication_year": 2020,
+  "source": {
+    "publisher": "SEI - Superintendência de Estudos Econômicos e Sociais da Bahia",
+    "publication": "Relatório da Matriz de Insumo-Produto",
+    "url": "https://www.ba.gov.br/sei/sites/site-sei/files/migracao_2024/arquivos/images/publicacoes/download/relatorios/relatorio_matriz_2020.pdf"
+  },
+  "method": "Setores-chave segundo coeficientes de Rasmussen de ligação para frente e para trás maiores que 1, conforme Tabela 6 da publicação.",
+  "sectors": [
+    {"sector": "Produtos químicos", "forward_linkage": 3.195, "backward_linkage": 1.326, "forward_dispersion": 0.803, "backward_dispersion": 2.303},
+    {"sector": "Refino de petróleo", "forward_linkage": 4.080, "backward_linkage": 1.666, "forward_dispersion": 0.921, "backward_dispersion": 2.600},
+    {"sector": "Metalurgia e produtos de metal", "forward_linkage": 1.783, "backward_linkage": 1.210, "forward_dispersion": 1.375, "backward_dispersion": 2.253},
+    {"sector": "Borracha e plásticos", "forward_linkage": 1.331, "backward_linkage": 1.287, "forward_dispersion": 1.877, "backward_dispersion": 2.125},
+    {"sector": "Produção florestal", "forward_linkage": 1.008, "backward_linkage": 1.308, "forward_dispersion": 5.314, "backward_dispersion": 4.076}
+  ],
+  "warning": "A MIP se refere à estrutura econômica de 2012. Os setores-chave são evidência estrutural histórica para priorização de estudos e não medem capacidade produtiva corrente de 2026."
+}
