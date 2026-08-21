@@ -59,6 +59,8 @@ if (stateLatest?.path) {
 
 const stateCoverage = stateSnapshot ? readJson(path.join(stateSnapshot, "coverage.json"), {}) : {};
 const stateCollectedCatalog = stateSnapshot ? readJson(path.join(stateSnapshot, "catalog.json"), { rows: [] }) : { rows: [] };
+const stateRevenues = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_receitas.json")) : null;
+const stateProcurements = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_licitacoes.json")) : null;
 const tceExpenses = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_expenses.json")) : null;
 const tceContracts = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_contracts.json")) : null;
 const tceProcurements = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_procurements.json")) : null;
@@ -68,6 +70,12 @@ const ckanSummary = stateCoverage.summary ?? {
   ckan_datasets_expected: 6,
   tce_datasets_processed: 0,
   tce_datasets_expected: 3,
+};
+const sefazSummary = stateCoverage.sefaz_data_summary ?? {
+  processed: 0,
+  expected: 2,
+  datasets: ["receitas", "licitacoes"],
+  reference_year: 2026,
 };
 
 const bahiaTransparency = {
@@ -79,13 +87,18 @@ const bahiaTransparency = {
   coverage: stateCoverage,
   summary: ckanSummary,
   sources: stateCollectedCatalog.rows?.length ? stateCollectedCatalog.rows : stateCatalog.sources,
+  sefaz: {
+    summary: sefazSummary,
+    revenues: stateRevenues,
+    procurements: stateProcurements,
+  },
   tce: {
     expenses: tceExpenses,
     contracts: tceContracts,
     procurements: tceProcurements,
   },
   mappedSources: stateCatalog.sources?.length ?? 0,
-  privacyNote: "Arquivos brutos grandes do TCE são processados temporariamente e não são republicados pelo projeto. Resumos não mantêm amostras de CPF/CNPJ.",
+  privacyNote: "Arquivos brutos grandes são processados temporariamente e não são republicados pelo projeto. Resumos não mantêm amostras de CPF/CNPJ ou nomes de participantes.",
 };
 writeJson(path.join(outputRoot, "bahia-transparency.json"), bahiaTransparency);
 
@@ -98,7 +111,7 @@ transparency.datasets.push({
   status: stateSnapshot ? stateCoverage.status : "sources_mapped",
   statusLabel: stateSnapshot ? stateStatusLabel(stateCoverage.status) : "Fontes oficiais mapeadas",
   detail: stateSnapshot
-    ? `${ckanSummary.ckan_datasets_collected ?? 0}/${ckanSummary.ckan_datasets_expected ?? 6} catálogos SEFAZ/CKAN coletados; arquivos TCE permanecem com cobertura separada.`
+    ? `${ckanSummary.ckan_datasets_collected ?? 0}/${ckanSummary.ckan_datasets_expected ?? 6} catálogos SEFAZ/CKAN coletados; ${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 2} conjuntos estaduais prioritários processados; arquivos TCE permanecem com cobertura separada.`
     : "Receitas, despesas, pagamentos, contratos, licitações, diárias e bases TCE já têm fontes oficiais catalogadas; o primeiro snapshot processado ainda não está versionado.",
   source: "SEFAZ/AGE Bahia + TCE/BA",
   href: "/bahia/transparencia",
@@ -126,8 +139,12 @@ meta.stateTransparencySnapshot = stateSnapshot ? path.basename(stateSnapshot) : 
 meta.stateTransparencyStatus = stateCoverage.status ?? null;
 meta.stateCkanCollected = ckanSummary.ckan_datasets_collected ?? 0;
 meta.stateCkanExpected = ckanSummary.ckan_datasets_expected ?? 6;
+meta.stateSefazDataProcessed = sefazSummary.processed ?? 0;
+meta.stateSefazDataExpected = sefazSummary.expected ?? 2;
+meta.stateRevenueRows = stateRevenues?.summary?.rows ?? 0;
+meta.stateProcurementRelatedRows = stateProcurements?.summary?.total_rows_across_related_tables ?? 0;
 meta.stateTceProcessed = ckanSummary.tce_datasets_processed ?? 0;
 meta.stateTransparencyMappedSources = stateCatalog.sources?.length ?? 0;
 writeJson(metaPath, meta);
 
-console.log(`Bahia regional: interestadual=${interstate ? "linha de base normalizada" : "pendente"}; transparência estadual=${stateSnapshot ? stateCoverage.status : "fontes mapeadas"}`);
+console.log(`Bahia regional: interestadual=${interstate ? "linha de base normalizada" : "pendente"}; transparência estadual=${stateSnapshot ? stateCoverage.status : "fontes mapeadas"}; SEFAZ=${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 2}`);
