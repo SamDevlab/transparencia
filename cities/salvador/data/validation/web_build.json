@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "tested_commit": "9366dd07f742bc0443a4283fc4cf1efb63eade2a",
+  "tested_commit": "d8a990e7d733650ddb92d89252b09d840ba6acef",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
@@ -22,8 +22,8 @@
   "interstate_baseline_available": true,
   "interstate_reference_year": 2017,
   "mip_reference_year": 2012,
-  "state_transparency_available": false,
-  "state_transparency_snapshot": null,
+  "state_transparency_available": true,
+  "state_transparency_snapshot": "2026-08-21",
   "state_transparency_mapped_sources": 9,
   "as_of": "2026-08-17"
 }
