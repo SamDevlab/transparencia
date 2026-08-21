@@ -18,6 +18,12 @@ from transparencia.collectors.bahia_sefaz_files import (  # noqa: E402
     summarize_sefaz_licitacoes_zip,
     summarize_sefaz_revenues,
 )
+from transparencia.collectors.bahia_sefaz_finance import (  # noqa: E402
+    summarize_sefaz_expenses_zip,
+    summarize_sefaz_payments_zip,
+)
+
+PRIORITY_DATASETS = ("receitas", "licitacoes", "despesas", "pagamentos")
 
 
 def read_json(path: Path, fallback: Any = None) -> Any:
@@ -31,15 +37,31 @@ def write_json(path: Path, payload: Any) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def choose_resource(catalog: dict[str, Any], dataset: str, formats: tuple[str, ...]) -> dict[str, Any]:
+def choose_resource(
+    catalog: dict[str, Any],
+    dataset: str,
+    formats: tuple[str, ...],
+    *,
+    preferred_names: tuple[str, ...] = (),
+) -> dict[str, Any]:
+    resources: list[dict[str, Any]] = []
     for row in catalog.get("rows") or []:
-        if row.get("dataset") != dataset:
-            continue
-        resources = (row.get("ckan") or {}).get("resources") or []
-        for fmt in formats:
-            for resource in resources:
-                if str(resource.get("format") or "").upper() == fmt and resource.get("url"):
-                    return resource
+        if row.get("dataset") == dataset:
+            resources = (row.get("ckan") or {}).get("resources") or []
+            break
+    if not resources:
+        raise RuntimeError(f"Nenhum recurso oficial encontrado no catálogo para {dataset}")
+
+    preferred = {name.casefold() for name in preferred_names}
+    if preferred:
+        for resource in resources:
+            if str(resource.get("name") or "").casefold() in preferred and resource.get("url"):
+                return resource
+
+    for fmt in formats:
+        for resource in resources:
+            if str(resource.get("format") or "").upper() == fmt and resource.get("url"):
+                return resource
     raise RuntimeError(f"Recurso oficial {formats} não encontrado no catálogo para {dataset}")
 
 
@@ -53,11 +75,21 @@ def update_manifest(snapshot: Path, entry: dict[str, Any]) -> None:
     write_json(path, manifest)
 
 
+def summary_rows(dataset: str, summary: dict[str, Any]) -> int | None:
+    if dataset == "receitas":
+        return summary.get("rows")
+    if dataset == "licitacoes":
+        return summary.get("total_rows_across_related_tables")
+    if dataset in {"despesas", "pagamentos"}:
+        return (summary.get("primary_table") or {}).get("rows")
+    return None
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Processa recursos reais da SEFAZ/BA sem versionar arquivos brutos grandes")
     parser.add_argument("--snapshot", type=Path, default=None, help="Diretório do snapshot estadual; por padrão usa latest.json")
     parser.add_argument("--year", type=int, default=date.today().year)
-    parser.add_argument("--datasets", nargs="+", choices=("receitas", "licitacoes"), default=("receitas", "licitacoes"))
+    parser.add_argument("--datasets", nargs="+", choices=PRIORITY_DATASETS, default=PRIORITY_DATASETS)
     args = parser.parse_args()
 
     state_root = ROOT / "regions" / "bahia" / "data" / "state_transparency"
@@ -77,28 +109,47 @@ def main() -> int:
     headers = {
         "Accept": "text/csv,application/zip,application/octet-stream,*/*",
         "Accept-Encoding": "identity",
-        "User-Agent": "Mozilla/5.0 transparencia-municipal/0.6",
+        "User-Agent": "Mozilla/5.0 transparencia-municipal/0.7",
     }
 
     processors = {
         "receitas": {
             "formats": ("CSV",),
+            "preferred_names": ("Receitas.csv",),
             "output": "sefaz_receitas.json",
             "process": lambda path: summarize_sefaz_revenues(path, target_year=args.year),
         },
         "licitacoes": {
             "formats": ("ZIP",),
+            "preferred_names": ("Licitacoes.zip", "Licitações.zip"),
             "output": "sefaz_licitacoes.json",
             "process": lambda path: summarize_sefaz_licitacoes_zip(path, target_year=args.year),
         },
+        "despesas": {
+            "formats": ("ZIP",),
+            "preferred_names": ("Despesas.zip",),
+            "output": "sefaz_despesas.json",
+            "process": lambda path: summarize_sefaz_expenses_zip(path, target_year=args.year),
+        },
+        "pagamentos": {
+            "formats": ("ZIP",),
+            "preferred_names": ("Pagamentos.zip",),
+            "output": "sefaz_pagamentos.json",
+            "process": lambda path: summarize_sefaz_payments_zip(path, target_year=args.year),
+        },
     }
 
-    processed = 0
+    requested_processed = 0
     for dataset in args.datasets:
         config = processors[dataset]
         temp: Path | None = None
         try:
-            resource = choose_resource(catalog, dataset, config["formats"])
+            resource = choose_resource(
+                catalog,
+                dataset,
+                config["formats"],
+                preferred_names=config.get("preferred_names", ()),
+            )
             temp, evidence, transport = download_ckan_resource(resource["url"], headers=headers)
             summary = config["process"](temp)
             payload = {
@@ -123,11 +174,12 @@ def main() -> int:
                 "status": "processed",
                 "output": config["output"],
                 "resource_id": resource.get("id"),
+                "resource_name": resource.get("name"),
                 "resource_last_modified": resource.get("last_modified"),
                 "sha256": evidence.sha256,
                 "bytes": evidence.bytes,
                 "tls_verified": transport.get("tls_verified"),
-                "rows": summary.get("rows", summary.get("total_rows_across_related_tables")),
+                "rows": summary_rows(dataset, summary),
                 "selected_year": args.year,
             }
             update_manifest(snapshot, {
@@ -137,10 +189,11 @@ def main() -> int:
                 "bytes": evidence.bytes,
                 "content_type": evidence.content_type,
                 "resource_id": resource.get("id"),
+                "resource_name": resource.get("name"),
                 "resource_last_modified": resource.get("last_modified"),
                 "tls_verified": transport.get("tls_verified"),
             })
-            processed += 1
+            requested_processed += 1
         except Exception as exc:  # noqa: BLE001
             coverage["sefaz_data"][dataset] = {
                 "status": "unavailable",
@@ -153,12 +206,17 @@ def main() -> int:
             if temp and temp.exists():
                 temp.unlink(missing_ok=True)
 
-    expected = len(args.datasets)
+    total_processed = sum(
+        1 for dataset in PRIORITY_DATASETS
+        if (coverage["sefaz_data"].get(dataset) or {}).get("status") == "processed"
+    )
     coverage["sefaz_data_summary"] = {
-        "processed": processed,
-        "expected": expected,
-        "datasets": list(args.datasets),
+        "processed": total_processed,
+        "expected": len(PRIORITY_DATASETS),
+        "datasets": list(PRIORITY_DATASETS),
         "reference_year": args.year,
+        "last_run_datasets": list(args.datasets),
+        "last_run_processed": requested_processed,
     }
     write_json(snapshot / "coverage.json", coverage)
 
@@ -173,11 +231,13 @@ def main() -> int:
 
     print(json.dumps({
         "snapshot": str(snapshot),
-        "processed": processed,
-        "expected": expected,
-        "datasets": coverage["sefaz_data"],
+        "requested_processed": requested_processed,
+        "requested_expected": len(args.datasets),
+        "total_processed": total_processed,
+        "total_expected": len(PRIORITY_DATASETS),
+        "datasets": {dataset: coverage["sefaz_data"].get(dataset) for dataset in args.datasets},
     }, ensure_ascii=False))
-    return 0 if processed > 0 else 2
+    return 0 if requested_processed == len(args.datasets) else 2
 
 
 if __name__ == "__main__":
