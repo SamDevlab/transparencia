@@ -1,8 +1,8 @@
 {
-  "tested_commit": "e925f9e2bf367e961261c65f99ada429c57ebe1b",
+  "tested_commit": "fe9c86cd9eee2f418c01f77f010daf94c16f5e14",
   "tests": "success",
-  "collector": "failure",
-  "workflow_finished_at": "2026-08-21T08:44:51.023545+00:00",
+  "collector": "cancelled",
+  "workflow_finished_at": "2026-08-21T08:48:24.564109+00:00",
   "latest": {
     "collection_mode": "metadata_only",
     "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
@@ -15,10 +15,10 @@
       ],
       "expected": 4,
       "last_run_datasets": [
-        "despesas",
-        "pagamentos"
+        "receitas",
+        "licitacoes"
       ],
-      "last_run_processed": 0,
+      "last_run_processed": 2,
       "processed": 2,
       "reference_year": 2026
     },
@@ -40,10 +40,10 @@
     ],
     "expected": 4,
     "last_run_datasets": [
-      "despesas",
-      "pagamentos"
+      "receitas",
+      "licitacoes"
     ],
-    "last_run_processed": 0,
+    "last_run_processed": 2,
     "processed": 2,
     "reference_year": 2026
   },
@@ -65,7 +65,5 @@
     ".....                                                                    [100%]",
     "5 passed in 0.09s"
   ],
-  "collector_log_tail": [
-    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"requested_processed\": 0, \"requested_expected\": 2, \"total_processed\": 2, \"total_expected\": 4, \"datasets\": {\"despesas\": {\"status\": \"unavailable\", \"error_type\": \"BahiaOpenDataError\", \"error\": \"Tabela sem colunas suficientes: 2025.CSV\", \"selected_year\": 2026, \"note\": \"Falha de download/processamento não é convertida em zero registros ou zero reais.\"}, \"pagamentos\": {\"status\": \"unavailable\", \"error_type\": \"RemoteProtocolError\", \"error\": \"peer closed connection without sending complete message body (received 312633059 bytes, expected 498799120)\", \"selected_year\": 2026, \"note\": \"Falha de download/processamento não é convertida em zero registros ou zero reais.\"}}}"
-  ]
+  "collector_log_tail": []
 }
