@@ -1,0 +1,28 @@
+{
+  "scope": "Bahia",
+  "kind": "historical_interstate_value_chain_baseline",
+  "reference_year": 2017,
+  "publication_year": 2019,
+  "source": {
+    "publisher": "SEI - Superintendência de Estudos Econômicos e Sociais da Bahia",
+    "publication": "Bahia Análise & Dados, v. 29, n. 1, jan./jun. 2019",
+    "article": "A inserção da economia baiana nas cadeias regionais de valor: uma análise de insumo-produto",
+    "url": "https://www.ba.gov.br/sei/sites/site-sei/files/2025-06/economia_baiana.pdf",
+    "matrix_reference": "Matriz interestadual de insumo-produto para o Brasil - 2017, produzida por Haddad, Gonçalves Junior e Nascimento (2017)"
+  },
+  "metrics": {
+    "share_of_brazil_interregional_trade": 0.0924,
+    "bahia_exports_share_of_brazil_interregional_trade": 0.0444,
+    "bahia_imports_share_of_brazil_interregional_trade": 0.0480,
+    "domestic_value_added_share_in_bahia_interstate_exports": 0.2732,
+    "other_states_value_added_share_in_bahia_interstate_exports": 0.7268,
+    "backward_participation_fva_over_exports": 0.73,
+    "forward_participation_dvx_over_exports": 0.57,
+    "regional_value_chain_position_index": -0.092
+  },
+  "interpretation": {
+    "backward_participation": "No estudo, a participação para trás mede o grau de dependência da economia baiana de insumos importados de outras regiões do país para realizar sua produção exportada.",
+    "historical_result": "A publicação informa que a dependência para trás supera a participação para a frente e caracteriza a posição baiana como negativa na cadeia regional de valor.",
+    "warning": "Estes indicadores são uma linha de base estrutural baseada na matriz interestadual de 2017. Não devem ser apresentados como percentuais correntes de 2026 e não identificam, sozinhos, quais estados ou empresas deveriam ser substituídos por produção local."
+  }
+}
