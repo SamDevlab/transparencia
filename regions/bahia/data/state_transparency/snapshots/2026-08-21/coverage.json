@@ -53,6 +53,13 @@
   "generated_at": "2026-08-21",
   "note": "A fase de metadados pode ficar completa mesmo sem baixar os arquivos grandes do TCE. A cobertura plena da rotina exige os metadados CKAN e os três conjuntos automatizados do TCE. Dados SEFAZ já processados são preservados entre reexecuções. Fallback TLS do CKAN, quando necessário, fica registrado e nunca é silencioso.",
   "sefaz_data": {
+    "despesas": {
+      "error": "Tabela sem colunas suficientes: 2025.CSV",
+      "error_type": "BahiaOpenDataError",
+      "note": "Falha de download/processamento não é convertida em zero registros ou zero reais.",
+      "selected_year": 2026,
+      "status": "unavailable"
+    },
     "licitacoes": {
       "bytes": 130216796,
       "output": "sefaz_licitacoes.json",
@@ -63,6 +70,13 @@
       "sha256": "95409ee6d9aacced3a4a6a0fe455b6c7450ea5f001056e3ee78c83768b6d7391",
       "status": "processed",
       "tls_verified": false
+    },
+    "pagamentos": {
+      "error": "peer closed connection without sending complete message body (received 312633059 bytes, expected 498799120)",
+      "error_type": "RemoteProtocolError",
+      "note": "Falha de download/processamento não é convertida em zero registros ou zero reais.",
+      "selected_year": 2026,
+      "status": "unavailable"
     },
     "receitas": {
       "bytes": 189198575,
@@ -79,9 +93,16 @@
   "sefaz_data_summary": {
     "datasets": [
       "receitas",
-      "licitacoes"
+      "licitacoes",
+      "despesas",
+      "pagamentos"
     ],
-    "expected": 2,
+    "expected": 4,
+    "last_run_datasets": [
+      "despesas",
+      "pagamentos"
+    ],
+    "last_run_processed": 0,
     "processed": 2,
     "reference_year": 2026
   },

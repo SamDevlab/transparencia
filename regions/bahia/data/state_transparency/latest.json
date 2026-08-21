@@ -4,9 +4,16 @@
   "sefaz_data": {
     "datasets": [
       "receitas",
-      "licitacoes"
+      "licitacoes",
+      "despesas",
+      "pagamentos"
     ],
-    "expected": 2,
+    "expected": 4,
+    "last_run_datasets": [
+      "despesas",
+      "pagamentos"
+    ],
+    "last_run_processed": 0,
     "processed": 2,
     "reference_year": 2026
   },

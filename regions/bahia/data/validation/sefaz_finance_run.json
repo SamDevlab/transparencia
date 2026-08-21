@@ -1,17 +1,24 @@
 {
-  "tested_commit": "c741df45304d9ed5a4cdb7bc5b5affb63cef3145",
-  "tests": "failure",
-  "collector": "skipped",
-  "workflow_finished_at": "2026-08-21T08:41:37.902869+00:00",
+  "tested_commit": "e925f9e2bf367e961261c65f99ada429c57ebe1b",
+  "tests": "success",
+  "collector": "failure",
+  "workflow_finished_at": "2026-08-21T08:44:51.023545+00:00",
   "latest": {
     "collection_mode": "metadata_only",
     "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
     "sefaz_data": {
       "datasets": [
         "receitas",
-        "licitacoes"
+        "licitacoes",
+        "despesas",
+        "pagamentos"
       ],
-      "expected": 2,
+      "expected": 4,
+      "last_run_datasets": [
+        "despesas",
+        "pagamentos"
+      ],
+      "last_run_processed": 0,
       "processed": 2,
       "reference_year": 2026
     },
@@ -27,59 +34,38 @@
   "sefaz_data_summary": {
     "datasets": [
       "receitas",
-      "licitacoes"
+      "licitacoes",
+      "despesas",
+      "pagamentos"
     ],
-    "expected": 2,
+    "expected": 4,
+    "last_run_datasets": [
+      "despesas",
+      "pagamentos"
+    ],
+    "last_run_processed": 0,
     "processed": 2,
     "reference_year": 2026
   },
-  "expenses_status": null,
-  "payments_status": null,
+  "expenses_status": {
+    "error": "Tabela sem colunas suficientes: 2025.CSV",
+    "error_type": "BahiaOpenDataError",
+    "note": "Falha de download/processamento não é convertida em zero registros ou zero reais.",
+    "selected_year": 2026,
+    "status": "unavailable"
+  },
+  "payments_status": {
+    "error": "peer closed connection without sending complete message body (received 312633059 bytes, expected 498799120)",
+    "error_type": "RemoteProtocolError",
+    "note": "Falha de download/processamento não é convertida em zero registros ou zero reais.",
+    "selected_year": 2026,
+    "status": "unavailable"
+  },
   "test_log_tail": [
-    "....F                                                                    [100%]",
-    "=================================== FAILURES ===================================",
-    "__ test_licitacoes_zip_summarizes_related_tables_without_republishing_people ___",
-    "",
-    "tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_licitacoes_zip_summarizes0')",
-    "",
-    "    def test_licitacoes_zip_summarizes_related_tables_without_republishing_people(tmp_path: Path):",
-    "        archive = tmp_path / \"licitacoes.zip\"",
-    "        with zipfile.ZipFile(archive, \"w\", compression=zipfile.ZIP_DEFLATED) as zf:",
-    "            zf.writestr(",
-    "                \"licitacoes.csv\",",
-    "                \"ANO;ORGAO;MODALIDADE;SITUACAO;VALOR HOMOLOGADO\\n\"",
-    "                \"2026;SEC A;Pregão;Homologada;1000,00\\n\"",
-    "                \"2026;SEC B;Dispensa;Homologada;500,00\\n\"",
-    "                \"2025;SEC A;Pregão;Encerrada;250,00\\n\",",
-    "            )",
-    "            zf.writestr(",
-    "                \"participantes.csv\",",
-    "                \"ANO;CNPJ;NOME PARTICIPANTE;ORGAO\\n\"",
-    "                \"2026;12345678000100;Empresa A;SEC A\\n\"",
-    "                \"2026;99999999000100;Empresa B;SEC A\\n\",",
-    "            )",
-    "            zf.writestr(",
-    "                \"itens_sem_ano.csv\",",
-    "                \"ITEM;VAL_ITEM_ESTIMADO\\n\"",
-    "                \"1;100,00\\n\"",
-    "                \"2;200,00\\n\",",
-    "            )",
-    "    ",
-    "        result = summarize_sefaz_licitacoes_zip(archive, target_year=2026)",
-    "        assert result[\"archive\"][\"tabular_members\"] == 3",
-    "        assert result[\"total_rows_across_related_tables\"] == 7",
-    "        assert result[\"selected_rows_across_filterable_tables\"] == 4",
-    "        assert result[\"unfilterable_related_rows\"] == 2",
-    "        assert result[\"table_classes\"][\"licitacoes\"] == 1",
-    "        assert result[\"table_classes\"][\"participantes\"] == 1",
-    ">       assert result[\"table_classes\"][\"itens\"] == 1",
-    "               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-    "E       KeyError: 'itens'",
-    "",
-    "tests/test_bahia_sefaz_files.py:75: KeyError",
-    "=========================== short test summary info ============================",
-    "FAILED tests/test_bahia_sefaz_files.py::test_licitacoes_zip_summarizes_related_tables_without_republishing_people - KeyError: 'itens'",
-    "1 failed, 4 passed in 0.12s"
+    ".....                                                                    [100%]",
+    "5 passed in 0.09s"
   ],
-  "collector_log_tail": []
+  "collector_log_tail": [
+    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"requested_processed\": 0, \"requested_expected\": 2, \"total_processed\": 2, \"total_expected\": 4, \"datasets\": {\"despesas\": {\"status\": \"unavailable\", \"error_type\": \"BahiaOpenDataError\", \"error\": \"Tabela sem colunas suficientes: 2025.CSV\", \"selected_year\": 2026, \"note\": \"Falha de download/processamento não é convertida em zero registros ou zero reais.\"}, \"pagamentos\": {\"status\": \"unavailable\", \"error_type\": \"RemoteProtocolError\", \"error\": \"peer closed connection without sending complete message body (received 312633059 bytes, expected 498799120)\", \"selected_year\": 2026, \"note\": \"Falha de download/processamento não é convertida em zero registros ou zero reais.\"}}}"
+  ]
 }
