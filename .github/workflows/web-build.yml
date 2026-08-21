@@ -10,6 +10,7 @@ on:
       - "lib/**"
       - "scripts/build-web-data.mjs"
       - "scripts/build-economy-web-data.mjs"
+      - "scripts/build-bahia-regional-data.mjs"
       - "package.json"
       - "next.config.mjs"
       - ".github/workflows/web-build.yml"
@@ -24,6 +25,7 @@ on:
       - "lib/**"
       - "scripts/build-web-data.mjs"
       - "scripts/build-economy-web-data.mjs"
+      - "scripts/build-bahia-regional-data.mjs"
       - "package.json"
       - "next.config.mjs"
       - ".github/workflows/web-build.yml"
@@ -35,12 +37,18 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: web-build-city-salvador
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -50,13 +58,14 @@ jobs:
         run: npm run build
       - name: Verificar conjuntos de dados gerados
         run: |
-          for file in dashboard acquisitions processes contracts suppliers agencies finance camara agents analysis money comparisons search meta economy transparency; do
+          for file in dashboard acquisitions processes contracts suppliers agencies finance camara agents analysis money comparisons search meta economy transparency bahia-transparency; do
             test -s "public/data/${file}.json"
           done
           node - <<'NODE'
           const d = require('./public/data/meta.json');
           const economy = require('./public/data/economy.json');
           const transparency = require('./public/data/transparency.json');
+          const bahiaTransparency = require('./public/data/bahia-transparency.json');
           if (d.acquisitions !== 2306) throw new Error(`aquisições geradas: ${d.acquisitions}`);
           if (d.processes !== d.acquisitions) throw new Error(`processos gerados: ${d.processes}`);
           if (d.officials !== 43) throw new Error(`vereadores gerados: ${d.officials}`);
@@ -69,9 +78,13 @@ jobs:
           if (typeof d.exactCrossSourceLinks !== 'number') throw new Error('contagem de vínculos entre fontes ausente');
           if (!/^\d{4}-\d{2}-\d{2}$/.test(d.snapshotDate || '')) throw new Error(`snapshot inválido: ${d.snapshotDate}`);
           if (typeof economy.available !== 'boolean') throw new Error('economy.available ausente');
-          if (!Array.isArray(transparency.datasets) || transparency.datasets.length < 7) throw new Error('cobertura integrada incompleta');
+          if (!economy.interstate?.available) throw new Error('linha de base interestadual não carregada');
+          if (economy.interstate?.baseline?.reference_year !== 2017) throw new Error('ano da matriz interestadual divergente');
+          if (economy.interstate?.keySectors?.reference_year !== 2012) throw new Error('ano da MIP Bahia divergente');
+          if (!Array.isArray(transparency.datasets) || transparency.datasets.length < 8) throw new Error('cobertura integrada incompleta');
+          if (!(bahiaTransparency.mappedSources >= 8)) throw new Error(`fontes estaduais mapeadas insuficientes: ${bahiaTransparency.mappedSources}`);
           if (economy.available && (!economy.bahia?.summary || !economy.salvador?.summary)) throw new Error('snapshot econômico disponível sem resumos Bahia/Salvador');
-          console.log({ ...d, economicCoverage: economy.coverage });
+          console.log({ ...d, economicCoverage: economy.coverage, bahiaState: bahiaTransparency.status });
           NODE
       - name: Registrar construção bem-sucedida
         if: github.event_name == 'push'
@@ -83,6 +96,7 @@ jobs:
           const fs = require('fs');
           const meta = require('./public/data/meta.json');
           const economy = require('./public/data/economy.json');
+          const bahiaTransparency = require('./public/data/bahia-transparency.json');
           const payload = {
             passed: true,
             tested_commit: process.env.TESTED_SHA,
@@ -104,6 +118,12 @@ jobs:
             economy_snapshot: economy.snapshot || null,
             bahia_economic_products: meta.bahiaEconomicProducts || 0,
             salvador_economic_products: meta.salvadorEconomicProducts || 0,
+            interstate_baseline_available: meta.interstateBaselineAvailable,
+            interstate_reference_year: meta.interstateReferenceYear,
+            mip_reference_year: meta.mipReferenceYear,
+            state_transparency_available: bahiaTransparency.available,
+            state_transparency_snapshot: bahiaTransparency.snapshot,
+            state_transparency_mapped_sources: bahiaTransparency.mappedSources,
             as_of: meta.asOf,
           };
           fs.writeFileSync('cities/salvador/data/validation/web_build.json', JSON.stringify(payload, null, 2) + '\n');
@@ -113,5 +133,6 @@ jobs:
           git add cities/salvador/data/validation/web_build.json
           if ! git diff --cached --quiet; then
             git commit -m "ci(web): registrar construção bem-sucedida [skip ci]"
-            git push
+            git pull --rebase origin city/salvador
+            git push origin HEAD:city/salvador
           fi
