@@ -114,12 +114,14 @@ const stateCollectedCatalog = stateSnapshot ? readJson(path.join(stateSnapshot, 
 const stateRevenues = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_receitas.json")) : null;
 const rawStateProcurements = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_licitacoes.json")) : null;
 const stateProcurements = normalizeStateProcurements(rawStateProcurements);
+const stateExpenses = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_despesas.json")) : null;
+const statePayments = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_pagamentos.json")) : null;
 const tceExpenses = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_expenses.json")) : null;
 const tceContracts = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_contracts.json")) : null;
 const tceProcurements = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_procurements.json")) : null;
 
 const ckanSummary = stateCoverage.summary ?? { ckan_datasets_collected: 0, ckan_datasets_expected: 6, tce_datasets_processed: 0, tce_datasets_expected: 3 };
-const sefazSummary = stateCoverage.sefaz_data_summary ?? { processed: 0, expected: 2, datasets: ["receitas", "licitacoes"], reference_year: 2026 };
+const sefazSummary = stateCoverage.sefaz_data_summary ?? { processed: 0, expected: 4, datasets: ["receitas", "licitacoes", "despesas", "pagamentos"], reference_year: 2026 };
 
 const bahiaTransparency = {
   available: Boolean(stateSnapshot),
@@ -130,10 +132,16 @@ const bahiaTransparency = {
   coverage: stateCoverage,
   summary: ckanSummary,
   sources: stateCollectedCatalog.rows?.length ? stateCollectedCatalog.rows : stateCatalog.sources,
-  sefaz: { summary: sefazSummary, revenues: stateRevenues, procurements: stateProcurements },
+  sefaz: {
+    summary: sefazSummary,
+    revenues: stateRevenues,
+    procurements: stateProcurements,
+    expenses: stateExpenses,
+    payments: statePayments,
+  },
   tce: { expenses: tceExpenses, contracts: tceContracts, procurements: tceProcurements },
   mappedSources: stateCatalog.sources?.length ?? 0,
-  privacyNote: "Arquivos brutos grandes são processados temporariamente e não são republicados pelo projeto. Resumos não mantêm amostras de CPF/CNPJ ou nomes de participantes.",
+  privacyNote: "Arquivos brutos grandes são processados temporariamente e não são republicados pelo projeto. Resumos não mantêm amostras de CPF/CNPJ, credores, favorecidos ou nomes de participantes.",
 };
 writeJson(path.join(outputRoot, "bahia-transparency.json"), bahiaTransparency);
 
@@ -146,7 +154,7 @@ transparency.datasets.push({
   status: stateSnapshot ? stateCoverage.status : "sources_mapped",
   statusLabel: stateSnapshot ? stateStatusLabel(stateCoverage.status) : "Fontes oficiais mapeadas",
   detail: stateSnapshot
-    ? `${ckanSummary.ckan_datasets_collected ?? 0}/${ckanSummary.ckan_datasets_expected ?? 6} catálogos SEFAZ/CKAN coletados; ${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 2} conjuntos estaduais prioritários processados; arquivos TCE permanecem com cobertura separada.`
+    ? `${ckanSummary.ckan_datasets_collected ?? 0}/${ckanSummary.ckan_datasets_expected ?? 6} catálogos SEFAZ/CKAN coletados; ${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 4} conjuntos estaduais prioritários processados; arquivos TCE permanecem com cobertura separada.`
     : "Receitas, despesas, pagamentos, contratos, licitações, diárias e bases TCE já têm fontes oficiais catalogadas.",
   source: "SEFAZ/AGE Bahia + TCE/BA",
   href: "/bahia/transparencia",
@@ -173,12 +181,21 @@ meta.stateTransparencyStatus = stateCoverage.status ?? null;
 meta.stateCkanCollected = ckanSummary.ckan_datasets_collected ?? 0;
 meta.stateCkanExpected = ckanSummary.ckan_datasets_expected ?? 6;
 meta.stateSefazDataProcessed = sefazSummary.processed ?? 0;
-meta.stateSefazDataExpected = sefazSummary.expected ?? 2;
+meta.stateSefazDataExpected = sefazSummary.expected ?? 4;
 meta.stateRevenueRows = stateRevenues?.summary?.rows ?? 0;
 meta.stateProcurementRelatedRows = stateProcurements?.summary?.total_rows_across_related_tables ?? 0;
 meta.stateProcurements2026 = stateProcurements?.summary?.primary_licitacoes?.rows_selected_year ?? 0;
+meta.stateExpenseRows = stateExpenses?.summary?.primary_table?.rows ?? 0;
+meta.stateExpenseRows2026 = stateExpenses?.summary?.primary_table?.selected_rows ?? 0;
+meta.stateExpenseCommitted2026 = stateExpenses?.summary?.primary_table?.stage_totals?.committed?.sum ?? null;
+meta.stateExpenseLiquidated2026 = stateExpenses?.summary?.primary_table?.stage_totals?.liquidated?.sum ?? null;
+meta.stateExpensePaid2026 = stateExpenses?.summary?.primary_table?.stage_totals?.paid?.sum ?? null;
+meta.statePaymentRows = statePayments?.summary?.primary_table?.rows ?? 0;
+meta.statePaymentRows2026 = statePayments?.summary?.primary_table?.selected_rows ?? 0;
+meta.statePayments2026 = statePayments?.summary?.selected_year_payment?.sum ?? null;
+meta.statePaymentSourceField = statePayments?.summary?.selected_year_payment?.source_field ?? null;
 meta.stateTceProcessed = ckanSummary.tce_datasets_processed ?? 0;
 meta.stateTransparencyMappedSources = stateCatalog.sources?.length ?? 0;
 writeJson(metaPath, meta);
 
-console.log(`Bahia regional: interestadual=${interstate ? "linha de base normalizada" : "pendente"}; transparência estadual=${stateSnapshot ? stateCoverage.status : "fontes mapeadas"}; SEFAZ=${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 2}; licitações2026=${meta.stateProcurements2026}`);
+console.log(`Bahia regional: interestadual=${interstate ? "linha de base normalizada" : "pendente"}; transparência estadual=${stateSnapshot ? stateCoverage.status : "fontes mapeadas"}; SEFAZ=${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 4}; licitações2026=${meta.stateProcurements2026}; despesas2026=${meta.stateExpenseRows2026}; pagamentos2026=${meta.statePaymentRows2026}`);
