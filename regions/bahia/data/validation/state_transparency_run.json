@@ -1,4 +1,73 @@
 {
-  "workflow_finished_at": "2026-08-21T01:02:03.353741+00:00",
-  "latest_exists": false
+  "tested_commit": "18e4fdc3ae41a47669d29a2156b43f7bffe227d3",
+  "tests": "success",
+  "collector": "success",
+  "workflow_finished_at": "2026-08-21T01:27:20.317668+00:00",
+  "latest_exists": true,
+  "test_log_tail": [
+    "...                                                                      [100%]",
+    "3 passed in 0.05s"
+  ],
+  "collector_log_tail": [
+    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"status\": \"partial\", \"ckan_collected\": 0, \"tce_processed\": 0}"
+  ],
+  "latest": {
+    "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
+    "snapshot": "2026-08-21",
+    "status": "partial"
+  },
+  "coverage": {
+    "ckan": {
+      "contratos": {
+        "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+        "error_type": "ConnectError",
+        "status": "unavailable"
+      },
+      "despesas": {
+        "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+        "error_type": "ConnectError",
+        "status": "unavailable"
+      },
+      "diarias": {
+        "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+        "error_type": "ConnectError",
+        "status": "unavailable"
+      },
+      "licitacoes": {
+        "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+        "error_type": "ConnectError",
+        "status": "unavailable"
+      },
+      "pagamentos": {
+        "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+        "error_type": "ConnectError",
+        "status": "unavailable"
+      },
+      "receitas": {
+        "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+        "error_type": "ConnectError",
+        "status": "unavailable"
+      }
+    },
+    "generated_at": "2026-08-21",
+    "note": "Completo para a rotina definida significa metadados CKAN consultados e, quando habilitado, os três arquivos automatizados do TCE processados. Não significa completude de toda a transparência estadual.",
+    "status": "partial",
+    "tce": {
+      "contracts": {
+        "error": "timed out",
+        "error_type": "ConnectTimeout",
+        "status": "unavailable"
+      },
+      "expenses": {
+        "error": "timed out",
+        "error_type": "ConnectTimeout",
+        "status": "unavailable"
+      },
+      "procurements": {
+        "error": "timed out",
+        "error_type": "ConnectTimeout",
+        "status": "unavailable"
+      }
+    }
+  }
 }
