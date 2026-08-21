@@ -117,6 +117,7 @@ const stateProcurements = normalizeStateProcurements(rawStateProcurements);
 const stateExpenses = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_despesas.json")) : null;
 const statePayments = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_pagamentos.json")) : null;
 const stateContracts = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_contratos.json")) : null;
+const stateProcurementContractLinks = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_licitacoes_contratos_links.json")) : null;
 const tceExpenses = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_expenses.json")) : null;
 const tceContracts = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_contracts.json")) : null;
 const tceProcurements = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_procurements.json")) : null;
@@ -140,6 +141,7 @@ const bahiaTransparency = {
     expenses: stateExpenses,
     payments: statePayments,
     contracts: stateContracts,
+    procurementContractLinks: stateProcurementContractLinks,
   },
   tce: { expenses: tceExpenses, contracts: tceContracts, procurements: tceProcurements },
   mappedSources: stateCatalog.sources?.length ?? 0,
@@ -203,8 +205,10 @@ meta.stateContractValueField = stateContracts?.summary?.primary_table?.contract_
 meta.stateContractInstrumentKeys2026 = stateContracts?.summary?.primary_table?.instrument_index?.length ?? 0;
 meta.stateContractProcessKeys2026 = stateContracts?.summary?.primary_table?.process_ids?.length ?? 0;
 meta.stateContractCnpjSuppliersPublished = stateContracts?.summary?.primary_table?.top_suppliers_cnpj_only?.length ?? 0;
+meta.stateProcurementContractExactLinks = stateProcurementContractLinks?.summary?.exact_link_count ?? 0;
+meta.stateProcurementProcessesWithContracts = stateProcurementContractLinks?.summary?.processes_with_instruments ?? 0;
 meta.stateTceProcessed = ckanSummary.tce_datasets_processed ?? 0;
 meta.stateTransparencyMappedSources = stateCatalog.sources?.length ?? 0;
 writeJson(metaPath, meta);
 
-console.log(`Bahia regional: interestadual=${interstate ? "linha de base normalizada" : "pendente"}; transparência estadual=${stateSnapshot ? stateCoverage.status : "fontes mapeadas"}; SEFAZ=${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 5}; licitações2026=${meta.stateProcurements2026}; despesas2026=${meta.stateExpenseRows2026}; pagamentos2026=${meta.statePaymentRows2026}; contratos2026=${meta.stateContracts2026}`);
+console.log(`Bahia regional: interestadual=${interstate ? "linha de base normalizada" : "pendente"}; transparência estadual=${stateSnapshot ? stateCoverage.status : "fontes mapeadas"}; SEFAZ=${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 5}; licitações2026=${meta.stateProcurements2026}; despesas2026=${meta.stateExpenseRows2026}; pagamentos2026=${meta.statePaymentRows2026}; contratos2026=${meta.stateContracts2026}; vínculos=${meta.stateProcurementContractExactLinks}`);
