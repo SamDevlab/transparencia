@@ -11,6 +11,7 @@ on:
       - ".github/workflows/bahia-sefaz-finance.yml"
       - "src/transparencia/collectors/bahia_sefaz_finance.py"
       - "src/transparencia/collectors/bahia_sefaz_files.py"
+      - "src/transparencia/collectors/bahia_sefaz_download.py"
       - "scripts/process-bahia-sefaz-data.py"
       - "tests/test_bahia_sefaz_finance.py"
       - "tests/test_bahia_sefaz_files.py"
