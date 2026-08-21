@@ -2,6 +2,7 @@ from pathlib import Path
 
 from transparencia.collectors.bahia_open_data import (
     normalize_ckan_package,
+    official_tce_url_candidates,
     summarize_hash_csv,
     summarize_tce_expenses,
 )
@@ -50,6 +51,16 @@ def test_normalize_ckan_package_keeps_only_public_metadata():
         "metadata_modified": "2026-08-20",
         "state": "active",
     }]
+
+
+def test_official_tce_url_candidates_never_leave_official_hosts():
+    source = "https://www.tce.ba.gov.br/contratos/dados-abertos"
+    assert official_tce_url_candidates(source) == [
+        "https://www.tce.ba.gov.br/contratos/dados-abertos",
+        "https://its.tce.ba.gov.br/contratos/dados-abertos",
+    ]
+    external = "https://example.test/file.csv"
+    assert official_tce_url_candidates(external) == [external]
 
 
 def test_summarize_tce_expenses_separates_commitment_and_payment(tmp_path: Path):
