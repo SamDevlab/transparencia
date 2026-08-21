@@ -85,13 +85,24 @@ jobs:
           if (!(bahiaTransparency.mappedSources >= 8)) throw new Error(`fontes estaduais mapeadas insuficientes: ${bahiaTransparency.mappedSources}`);
           if (economy.available && (!economy.bahia?.summary || !economy.salvador?.summary)) throw new Error('snapshot econômico disponível sem resumos Bahia/Salvador');
           const sefaz = bahiaTransparency.sefaz?.summary;
-          if (sefaz?.processed === 2) {
+          if ((sefaz?.processed ?? 0) >= 2) {
             const revenues = bahiaTransparency.sefaz?.revenues?.summary;
             const procurements = bahiaTransparency.sefaz?.procurements?.summary;
             if (!revenues || !(revenues.rows > 0)) throw new Error('Receitas SEFAZ declaradas como processadas sem resumo válido');
             if (!revenues.selected_year_totals || revenues.selected_year !== 2026) throw new Error('Receitas SEFAZ sem recorte 2026 válido');
             if (!procurements?.primary_licitacoes) throw new Error('Licitações SEFAZ sem tabela principal identificada');
             if (!(procurements.primary_licitacoes.rows_selected_year > 0)) throw new Error('Licitações SEFAZ sem contagem anual válida');
+          }
+          if ((sefaz?.processed ?? 0) >= 4) {
+            const expenses = bahiaTransparency.sefaz?.expenses?.summary;
+            const payments = bahiaTransparency.sefaz?.payments?.summary;
+            if (!expenses?.primary_table || expenses.selected_year !== 2026) throw new Error('Despesas SEFAZ sem tabela principal/recorte 2026 válido');
+            if (!(expenses.primary_table.selected_rows > 0)) throw new Error('Despesas SEFAZ sem linhas 2026');
+            const stages = expenses.primary_table.stage_totals || {};
+            if (!stages.committed && !stages.liquidated && !stages.paid) throw new Error('Despesas SEFAZ sem estágio financeiro detectado');
+            if (!payments?.primary_table || payments.selected_year !== 2026) throw new Error('Pagamentos SEFAZ sem tabela principal/recorte 2026 válido');
+            if (!(payments.primary_table.selected_rows > 0)) throw new Error('Pagamentos SEFAZ sem linhas 2026');
+            if (!payments.selected_year_payment?.source_field || payments.selected_year_payment?.sum == null) throw new Error('Pagamentos SEFAZ sem campo monetário auditável');
           }
           console.log({ ...d, economicCoverage: economy.coverage, bahiaState: bahiaTransparency.status, sefaz });
           NODE
@@ -108,6 +119,8 @@ jobs:
           const bahiaTransparency = require('./public/data/bahia-transparency.json');
           const stateRevenues = bahiaTransparency.sefaz?.revenues?.summary;
           const stateProcurements = bahiaTransparency.sefaz?.procurements?.summary;
+          const stateExpenses = bahiaTransparency.sefaz?.expenses?.summary;
+          const statePayments = bahiaTransparency.sefaz?.payments?.summary;
           const payload = {
             passed: true,
             tested_commit: process.env.TESTED_SHA,
@@ -136,11 +149,19 @@ jobs:
             state_transparency_snapshot: bahiaTransparency.snapshot,
             state_transparency_mapped_sources: bahiaTransparency.mappedSources,
             state_sefaz_processed: bahiaTransparency.sefaz?.summary?.processed || 0,
+            state_sefaz_expected: bahiaTransparency.sefaz?.summary?.expected || 0,
             state_revenue_rows: stateRevenues?.rows || 0,
             state_revenue_2026_realized: stateRevenues?.selected_year_totals?.realized ?? null,
             state_procurements_2026: stateProcurements?.primary_licitacoes?.rows_selected_year || 0,
             state_procurements_2026_estimated: stateProcurements?.primary_licitacoes?.estimated_value?.sum ?? null,
             state_procurements_2026_homologated: stateProcurements?.primary_licitacoes?.homologated_value?.sum ?? null,
+            state_expense_rows_2026: stateExpenses?.primary_table?.selected_rows || 0,
+            state_expense_2026_committed: stateExpenses?.primary_table?.stage_totals?.committed?.sum ?? null,
+            state_expense_2026_liquidated: stateExpenses?.primary_table?.stage_totals?.liquidated?.sum ?? null,
+            state_expense_2026_paid: stateExpenses?.primary_table?.stage_totals?.paid?.sum ?? null,
+            state_payment_rows_2026: statePayments?.primary_table?.selected_rows || 0,
+            state_payments_2026: statePayments?.selected_year_payment?.sum ?? null,
+            state_payment_source_field: statePayments?.selected_year_payment?.source_field ?? null,
             as_of: meta.asOf,
           };
           fs.writeFileSync('cities/salvador/data/validation/web_build.json', JSON.stringify(payload, null, 2) + '\n');
