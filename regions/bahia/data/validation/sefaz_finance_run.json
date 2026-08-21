@@ -1,8 +1,8 @@
 {
-  "tested_commit": "7121978c6e8e543abc1c1a96134870cbb62b7d9a",
+  "tested_commit": "ad888c6f776a9775d64abef3085d081e26769a01",
   "tests": "success",
   "collector": "success",
-  "workflow_finished_at": "2026-08-21T08:54:15.012402+00:00",
+  "workflow_finished_at": "2026-08-21T09:11:23.169858+00:00",
   "latest": {
     "collection_mode": "metadata_only",
     "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
@@ -11,9 +11,10 @@
         "receitas",
         "licitacoes",
         "despesas",
-        "pagamentos"
+        "pagamentos",
+        "contratos"
       ],
-      "expected": 4,
+      "expected": 5,
       "last_run_datasets": [
         "despesas",
         "pagamentos"
@@ -36,9 +37,10 @@
       "receitas",
       "licitacoes",
       "despesas",
-      "pagamentos"
+      "pagamentos",
+      "contratos"
     ],
-    "expected": 4,
+    "expected": 5,
     "last_run_datasets": [
       "despesas",
       "pagamentos"
@@ -77,10 +79,10 @@
   },
   "test_log_tail": [
     ".....                                                                    [100%]",
-    "5 passed in 0.09s"
+    "5 passed in 0.08s"
   ],
   "collector_log_tail": [
-    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"requested_processed\": 2, \"requested_expected\": 2, \"total_processed\": 4, \"total_expected\": 4, \"datasets\": {\"despesas\": {\"status\": \"processed\", \"output\": \"sefaz_despesas.json\", \"resource_id\": \"6356ec2d-6bc0-476e-bfd5-7cdc78864d55\", \"resource_name\": \"Despesas.zip\", \"resource_last_modified\": \"2026-08-20T10:13:17\", \"sha256\": \"381a12450a88ebe20559751258db8e67d23b8c30a83ed87261749ee02014eb5c\", \"bytes\": 221670223, \"declared_size\": 221670223, \"tls_verified\": false, \"download_mode\": \"whole_with_retries\", \"rows\": 2216886, \"selected_year\": 2026}, \"pagamentos\": {\"status\": \"processed\", \"output\": \"sefaz_pagamentos.json\", \"resource_id\": \"2319e322-587b-4cea-b6e5-e184ebf040ef\", \"resource_name\": \"Pagamentos.zip\", \"resource_last_modified\": \"2026-08-20T10:36:46\", \"sha256\": \"a0e8309602145a0c7b311a979863e4a7dc175fc450d967d417d921aab7a60996\", \"bytes\": 498799120, \"declared_size\": 498799120, \"tls_verified\": false, \"download_mode\": \"http_range\", \"rows\": 3470605, \"selected_year\": 2026}}}"
+    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"requested_processed\": 2, \"requested_expected\": 2, \"total_processed\": 4, \"total_expected\": 5, \"datasets\": {\"despesas\": {\"status\": \"processed\", \"output\": \"sefaz_despesas.json\", \"resource_id\": \"6356ec2d-6bc0-476e-bfd5-7cdc78864d55\", \"resource_name\": \"Despesas.zip\", \"resource_last_modified\": \"2026-08-20T10:13:17\", \"sha256\": \"381a12450a88ebe20559751258db8e67d23b8c30a83ed87261749ee02014eb5c\", \"bytes\": 221670223, \"declared_size\": 221670223, \"tls_verified\": false, \"download_mode\": \"whole_with_retries\", \"rows\": 2216886, \"selected_year\": 2026}, \"pagamentos\": {\"status\": \"processed\", \"output\": \"sefaz_pagamentos.json\", \"resource_id\": \"2319e322-587b-4cea-b6e5-e184ebf040ef\", \"resource_name\": \"Pagamentos.zip\", \"resource_last_modified\": \"2026-08-20T10:36:46\", \"sha256\": \"a0e8309602145a0c7b311a979863e4a7dc175fc450d967d417d921aab7a60996\", \"bytes\": 498799120, \"declared_size\": 498799120, \"tls_verified\": false, \"download_mode\": \"http_range\", \"rows\": 3470605, \"selected_year\": 2026}}}"
   ],
   "expenses": {
     "resource": {
