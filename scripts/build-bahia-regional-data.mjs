@@ -26,6 +26,63 @@ function stateStatusLabel(status) {
   }[status] ?? "Fontes oficiais mapeadas";
 }
 
+function classifyStateTable(table) {
+  const name = String(table?.member ?? "").toUpperCase();
+  if (name.includes("AQUISICAO_FORNEC")) return "participantes";
+  if (name.includes("AQUISICAO_ITEM_INSTRUMENTO")) return "tabela_relacionada";
+  if (name.includes("AQUISICAO_ITEM")) return "itens";
+  if (name.includes("AQUISICAO_LIC_REQ")) return "licitacoes";
+  return table?.classification ?? "tabela_relacionada";
+}
+
+function semanticValue(table, token) {
+  const entries = Object.entries(table?.value_field_sums ?? {});
+  const found = entries.find(([field]) => String(field).toUpperCase().includes(token));
+  return found ? { field: found[0], ...found[1] } : null;
+}
+
+function normalizeStateProcurements(payload) {
+  if (!payload?.summary?.tables) return payload;
+  const copy = structuredClone(payload);
+  const tables = copy.summary.tables.map((table) => {
+    const hasTemporalField = Boolean(table?.schema?.detected_fields?.year || table?.schema?.detected_fields?.date);
+    return {
+      ...table,
+      classification: classifyStateTable(table),
+      selected_rows: hasTemporalField ? table.selected_rows : null,
+      scope_status: hasTemporalField ? "year_filtered" : "year_not_filterable",
+    };
+  });
+  copy.summary.tables = tables;
+  copy.summary.table_classes = tables.reduce((acc, table) => {
+    acc[table.classification] = (acc[table.classification] ?? 0) + 1;
+    return acc;
+  }, {});
+
+  const primary = tables.find((table) => table.classification === "licitacoes" && table?.schema?.detected_fields?.year);
+  if (primary) {
+    copy.summary.primary_licitacoes = {
+      member: primary.member,
+      rows_all_years: primary.rows,
+      rows_selected_year: primary.selected_rows,
+      years: primary.years ?? {},
+      top_modalities: primary.top_modalities ?? [],
+      top_statuses: primary.top_statuses ?? [],
+      top_agencies: primary.top_agencies ?? [],
+      estimated_value: semanticValue(primary, "ESTIMADO"),
+      homologated_value: semanticValue(primary, "HOMOLOGADO"),
+    };
+  }
+  const filterable = tables.filter((table) => table.selected_rows != null);
+  const unfilterable = tables.filter((table) => table.selected_rows == null);
+  copy.summary.selected_rows_across_filterable_tables = filterable.reduce((sum, table) => sum + Number(table.selected_rows || 0), 0);
+  copy.summary.year_filterable_tables = filterable.length;
+  copy.summary.year_unfilterable_tables = unfilterable.length;
+  copy.summary.unfilterable_related_rows = unfilterable.reduce((sum, table) => sum + Number(table.rows || 0), 0);
+  copy.summary.interpretation = "A quantidade anual vem somente da tabela principal com campo de ano/data. Itens, fornecedores e instrumentos sem referência temporal suficiente permanecem auxiliares e não são contados como licitações do ano.";
+  return copy;
+}
+
 const interstate = readJson(path.join(referenceRoot, "interstate_dependency_2017.json"));
 const mip = readJson(path.join(referenceRoot, "mip_bahia_2012_key_sectors.json"));
 const stateCatalog = readJson(path.join(referenceRoot, "state_transparency_catalog.json"), { sources: [] });
@@ -41,12 +98,7 @@ economy.interstate = {
 };
 economy.coverage = economy.coverage ?? {};
 economy.coverage.interstate_dependency = interstate
-  ? {
-      status: "historical_baseline_normalized",
-      source: "SEI - cadeia regional de valor e Matriz de Insumo-Produto da Bahia",
-      reference_years: [2017, 2012],
-      note: "Linha de base histórica normalizada; não é um indicador corrente de 2026.",
-    }
+  ? { status: "historical_baseline_normalized", source: "SEI - cadeia regional de valor e Matriz de Insumo-Produto da Bahia", reference_years: [2017, 2012], note: "Linha de base histórica normalizada; não é um indicador corrente de 2026." }
   : economy.coverage.interstate_dependency;
 writeJson(economyPath, economy);
 
@@ -60,23 +112,14 @@ if (stateLatest?.path) {
 const stateCoverage = stateSnapshot ? readJson(path.join(stateSnapshot, "coverage.json"), {}) : {};
 const stateCollectedCatalog = stateSnapshot ? readJson(path.join(stateSnapshot, "catalog.json"), { rows: [] }) : { rows: [] };
 const stateRevenues = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_receitas.json")) : null;
-const stateProcurements = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_licitacoes.json")) : null;
+const rawStateProcurements = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_licitacoes.json")) : null;
+const stateProcurements = normalizeStateProcurements(rawStateProcurements);
 const tceExpenses = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_expenses.json")) : null;
 const tceContracts = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_contracts.json")) : null;
 const tceProcurements = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_procurements.json")) : null;
 
-const ckanSummary = stateCoverage.summary ?? {
-  ckan_datasets_collected: 0,
-  ckan_datasets_expected: 6,
-  tce_datasets_processed: 0,
-  tce_datasets_expected: 3,
-};
-const sefazSummary = stateCoverage.sefaz_data_summary ?? {
-  processed: 0,
-  expected: 2,
-  datasets: ["receitas", "licitacoes"],
-  reference_year: 2026,
-};
+const ckanSummary = stateCoverage.summary ?? { ckan_datasets_collected: 0, ckan_datasets_expected: 6, tce_datasets_processed: 0, tce_datasets_expected: 3 };
+const sefazSummary = stateCoverage.sefaz_data_summary ?? { processed: 0, expected: 2, datasets: ["receitas", "licitacoes"], reference_year: 2026 };
 
 const bahiaTransparency = {
   available: Boolean(stateSnapshot),
@@ -87,16 +130,8 @@ const bahiaTransparency = {
   coverage: stateCoverage,
   summary: ckanSummary,
   sources: stateCollectedCatalog.rows?.length ? stateCollectedCatalog.rows : stateCatalog.sources,
-  sefaz: {
-    summary: sefazSummary,
-    revenues: stateRevenues,
-    procurements: stateProcurements,
-  },
-  tce: {
-    expenses: tceExpenses,
-    contracts: tceContracts,
-    procurements: tceProcurements,
-  },
+  sefaz: { summary: sefazSummary, revenues: stateRevenues, procurements: stateProcurements },
+  tce: { expenses: tceExpenses, contracts: tceContracts, procurements: tceProcurements },
   mappedSources: stateCatalog.sources?.length ?? 0,
   privacyNote: "Arquivos brutos grandes são processados temporariamente e não são republicados pelo projeto. Resumos não mantêm amostras de CPF/CNPJ ou nomes de participantes.",
 };
@@ -112,7 +147,7 @@ transparency.datasets.push({
   statusLabel: stateSnapshot ? stateStatusLabel(stateCoverage.status) : "Fontes oficiais mapeadas",
   detail: stateSnapshot
     ? `${ckanSummary.ckan_datasets_collected ?? 0}/${ckanSummary.ckan_datasets_expected ?? 6} catálogos SEFAZ/CKAN coletados; ${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 2} conjuntos estaduais prioritários processados; arquivos TCE permanecem com cobertura separada.`
-    : "Receitas, despesas, pagamentos, contratos, licitações, diárias e bases TCE já têm fontes oficiais catalogadas; o primeiro snapshot processado ainda não está versionado.",
+    : "Receitas, despesas, pagamentos, contratos, licitações, diárias e bases TCE já têm fontes oficiais catalogadas.",
   source: "SEFAZ/AGE Bahia + TCE/BA",
   href: "/bahia/transparencia",
 });
@@ -121,9 +156,7 @@ transparency.datasets.push({
   title: "Dependência interestadual da Bahia",
   status: interstate ? "historical_baseline_normalized" : "source_mapped_not_normalized",
   statusLabel: interstate ? "Linha de base histórica normalizada" : "Fonte mapeada",
-  detail: interstate
-    ? "Estrutura interestadual baseada na matriz de 2017 e setores-chave da MIP Bahia 2012; anos de referência ficam visíveis na interface."
-    : "A fonte SEI está mapeada, mas ainda não foi normalizada.",
+  detail: interstate ? "Estrutura interestadual baseada na matriz de 2017 e setores-chave da MIP Bahia 2012; anos de referência ficam visíveis na interface." : "A fonte SEI está mapeada, mas ainda não foi normalizada.",
   source: "SEI Bahia",
   href: "/economia/oportunidades",
 });
@@ -143,8 +176,9 @@ meta.stateSefazDataProcessed = sefazSummary.processed ?? 0;
 meta.stateSefazDataExpected = sefazSummary.expected ?? 2;
 meta.stateRevenueRows = stateRevenues?.summary?.rows ?? 0;
 meta.stateProcurementRelatedRows = stateProcurements?.summary?.total_rows_across_related_tables ?? 0;
+meta.stateProcurements2026 = stateProcurements?.summary?.primary_licitacoes?.rows_selected_year ?? 0;
 meta.stateTceProcessed = ckanSummary.tce_datasets_processed ?? 0;
 meta.stateTransparencyMappedSources = stateCatalog.sources?.length ?? 0;
 writeJson(metaPath, meta);
 
-console.log(`Bahia regional: interestadual=${interstate ? "linha de base normalizada" : "pendente"}; transparência estadual=${stateSnapshot ? stateCoverage.status : "fontes mapeadas"}; SEFAZ=${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 2}`);
+console.log(`Bahia regional: interestadual=${interstate ? "linha de base normalizada" : "pendente"}; transparência estadual=${stateSnapshot ? stateCoverage.status : "fontes mapeadas"}; SEFAZ=${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 2}; licitações2026=${meta.stateProcurements2026}`);
