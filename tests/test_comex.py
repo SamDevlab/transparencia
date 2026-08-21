@@ -82,9 +82,7 @@ def test_yoy_growth_is_attached_without_inventing_growth_for_zero_base():
 
 
 def test_methodology_is_not_encoded_as_same_geography():
-    # Protege a distinção editorial usada pelo frontend/coletor:
-    # Bahia geral != Salvador municipal. O coletor recebe escopos distintos,
-    # e nenhum helper tenta converter município em UF produtora.
     state_filters = [{"filter": "state", "values": [29]}]
-    city_filters = [{"filter": "state", "values": [29]}, {"filter": "city", "values": ["2927408"]}]
+    city_filters = [{"filter": "state", "values": [29]}, {"filter": "city", "values": [2927408]}]
     assert state_filters != city_filters
+    assert isinstance(city_filters[1]["values"][0], int)
