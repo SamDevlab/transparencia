@@ -101,19 +101,22 @@ jobs:
           }
           if contracts:
               primary = contracts.get('summary', {}).get('primary_table') or {}
+              dedupe = primary.get('deduplication') or {}
               payload['contracts'] = {
                   'resource': contracts.get('resource'),
                   'evidence': contracts.get('evidence'),
                   'selected_year': contracts.get('summary', {}).get('selected_year'),
                   'primary_member': primary.get('member'),
-                  'selected_rows': primary.get('selected_rows'),
+                  'relation_rows_2026': primary.get('selected_rows'),
+                  'rows_with_instrument_id': primary.get('rows_with_contract_id'),
+                  'unique_instruments': primary.get('unique_instruments'),
+                  'unique_process_keys': primary.get('unique_process_keys'),
                   'contract_field': (primary.get('schema', {}).get('detected_fields') or {}).get('contract'),
                   'process_field': (primary.get('schema', {}).get('detected_fields') or {}).get('process'),
                   'supplier_document_field': (primary.get('schema', {}).get('detected_fields') or {}).get('supplier_document'),
                   'contract_value': primary.get('contract_value'),
-                  'instrument_keys': len(primary.get('instrument_index') or []),
-                  'process_keys': len(primary.get('process_ids') or []),
-                  'cnpj_suppliers': len(primary.get('top_suppliers_cnpj_only') or []),
+                  'deduplication': dedupe,
+                  'cnpj_suppliers_published': len(primary.get('top_suppliers_cnpj_only') or []),
               }
           out = Path('regions/bahia/data/validation/sefaz_contracts_run.json')
           out.parent.mkdir(parents=True, exist_ok=True)
