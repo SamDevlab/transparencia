@@ -56,16 +56,30 @@
     "contratos": {
       "bytes": 673108405,
       "declared_size": 673108405,
+      "deduplication": {
+        "grain": "normalized_official_instrument_id",
+        "instruments_with_conflicting_values": 0,
+        "instruments_with_multiple_agencies": 0,
+        "instruments_with_multiple_cnpjs": 75,
+        "instruments_with_single_value": 59331,
+        "instruments_without_value": 19,
+        "raw_relation_rows": 108190,
+        "rows_with_instrument_id": 108190,
+        "unique_instruments": 59350,
+        "value_policy": "O valor de um instrumento só entra no total consolidado quando todas as linhas desse mesmo identificador oficial publicam o mesmo valor monetário. Valores conflitantes ficam fora da soma."
+      },
       "download_mode": "http_range",
       "output": "sefaz_contratos.json",
+      "relation_rows": 108190,
       "resource_id": "d13f3bbc-ed6b-4070-8828-fb218a625c0d",
       "resource_last_modified": "2026-08-20T10:29:24",
       "resource_name": "Contratos.zip",
-      "rows": 1015746,
+      "rows": 59350,
       "selected_year": 2026,
       "sha256": "8a435709f2999c9edfeb5c7cbf17f2d191728b9651970647130698b198143247",
       "status": "processed",
-      "tls_verified": false
+      "tls_verified": false,
+      "unique_instruments": 59350
     },
     "despesas": {
       "bytes": 221670223,

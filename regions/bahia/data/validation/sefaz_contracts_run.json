@@ -1,8 +1,8 @@
 {
-  "tested_commit": "c415b0cf8cb51fda34dcc5f1d672125d7afaf15b",
+  "tested_commit": "ab259b2fd3df18d0da3f759d97db971d0b441dac",
   "tests": "success",
-  "collector": "cancelled",
-  "workflow_finished_at": "2026-08-21T09:29:25.403126+00:00",
+  "collector": "success",
+  "workflow_finished_at": "2026-08-21T09:36:25.001408+00:00",
   "latest": {
     "collection_mode": "metadata_only",
     "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
@@ -50,22 +50,38 @@
   "contracts_status": {
     "bytes": 673108405,
     "declared_size": 673108405,
+    "deduplication": {
+      "grain": "normalized_official_instrument_id",
+      "instruments_with_conflicting_values": 0,
+      "instruments_with_multiple_agencies": 0,
+      "instruments_with_multiple_cnpjs": 75,
+      "instruments_with_single_value": 59331,
+      "instruments_without_value": 19,
+      "raw_relation_rows": 108190,
+      "rows_with_instrument_id": 108190,
+      "unique_instruments": 59350,
+      "value_policy": "O valor de um instrumento só entra no total consolidado quando todas as linhas desse mesmo identificador oficial publicam o mesmo valor monetário. Valores conflitantes ficam fora da soma."
+    },
     "download_mode": "http_range",
     "output": "sefaz_contratos.json",
+    "relation_rows": 108190,
     "resource_id": "d13f3bbc-ed6b-4070-8828-fb218a625c0d",
     "resource_last_modified": "2026-08-20T10:29:24",
     "resource_name": "Contratos.zip",
-    "rows": 1015746,
+    "rows": 59350,
     "selected_year": 2026,
     "sha256": "8a435709f2999c9edfeb5c7cbf17f2d191728b9651970647130698b198143247",
     "status": "processed",
-    "tls_verified": false
+    "tls_verified": false,
+    "unique_instruments": 59350
   },
   "test_log_tail": [
     "...                                                                      [100%]",
     "3 passed in 0.07s"
   ],
-  "collector_log_tail": [],
+  "collector_log_tail": [
+    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"requested_processed\": 1, \"requested_expected\": 1, \"total_processed\": 5, \"total_expected\": 5, \"datasets\": {\"contratos\": {\"status\": \"processed\", \"output\": \"sefaz_contratos.json\", \"resource_id\": \"d13f3bbc-ed6b-4070-8828-fb218a625c0d\", \"resource_name\": \"Contratos.zip\", \"resource_last_modified\": \"2026-08-20T10:29:24\", \"sha256\": \"8a435709f2999c9edfeb5c7cbf17f2d191728b9651970647130698b198143247\", \"bytes\": 673108405, \"declared_size\": 673108405, \"tls_verified\": false, \"download_mode\": \"http_range\", \"rows\": 59350, \"selected_year\": 2026, \"relation_rows\": 108190, \"unique_instruments\": 59350, \"deduplication\": {\"grain\": \"normalized_official_instrument_id\", \"raw_relation_rows\": 108190, \"rows_with_instrument_id\": 108190, \"unique_instruments\": 59350, \"instruments_with_single_value\": 59331, \"instruments_with_conflicting_values\": 0, \"instruments_without_value\": 19, \"instruments_with_multiple_agencies\": 0, \"instruments_with_multiple_cnpjs\": 75, \"value_policy\": \"O valor de um instrumento só entra no total consolidado quando todas as linhas desse mesmo identificador oficial publicam o mesmo valor monetário. Valores conflitantes ficam fora da soma.\"}}}}"
+  ],
   "contracts": {
     "resource": {
       "declared_size": 673108405,
@@ -86,18 +102,33 @@
     "selected_year": 2026,
     "primary_member": "VW_PROCESSO_SEI.csv",
     "relation_rows_2026": 108190,
-    "rows_with_instrument_id": null,
-    "unique_instruments": null,
-    "unique_process_keys": null,
+    "rows_with_instrument_id": 108190,
+    "unique_instruments": 59350,
+    "unique_process_keys": 84448,
     "contract_field": "num_instrumento_formatado",
     "process_field": "NUM_PROCESSO_SIST_ELET_INFO",
     "supplier_document_field": "CNPJ_CPF",
     "contract_value": {
+      "conflicting_instruments_excluded": 0,
+      "deduplicated_sum": 83556100694.48,
       "field": "Val_Inst_Atual",
-      "numeric_rows": 108171,
-      "sum": 1311029663238.34
+      "instruments_in_sum": 59331,
+      "raw_numeric_relation_rows": 108171,
+      "raw_relation_sum_diagnostic_only": 1311029663238.34,
+      "without_value_excluded": 19
     },
-    "deduplication": {},
+    "deduplication": {
+      "grain": "normalized_official_instrument_id",
+      "instruments_with_conflicting_values": 0,
+      "instruments_with_multiple_agencies": 0,
+      "instruments_with_multiple_cnpjs": 75,
+      "instruments_with_single_value": 59331,
+      "instruments_without_value": 19,
+      "raw_relation_rows": 108190,
+      "rows_with_instrument_id": 108190,
+      "unique_instruments": 59350,
+      "value_policy": "O valor de um instrumento só entra no total consolidado quando todas as linhas desse mesmo identificador oficial publicam o mesmo valor monetário. Valores conflitantes ficam fora da soma."
+    },
     "cnpj_suppliers_published": 100
   }
 }
