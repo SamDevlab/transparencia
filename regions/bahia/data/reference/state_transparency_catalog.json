@@ -1,0 +1,109 @@
+{
+  "scope": "Estado da Bahia",
+  "observed_at": "2026-08-20",
+  "sources": [
+    {
+      "id": "sefaz_receitas",
+      "title": "Receitas",
+      "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+      "system": "FIPLAN",
+      "frequency": "Diária, com dados do dia anterior",
+      "dataset": "receitas",
+      "dataset_url": "https://dados.ba.gov.br/dataset/receitas",
+      "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=receitas",
+      "coverage": "Receitas previstas, atualizadas e arrecadadas dos poderes e órgãos abrangidos pelo FIPLAN.",
+      "status": "mapped"
+    },
+    {
+      "id": "sefaz_despesas",
+      "title": "Despesas",
+      "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+      "system": "FIPLAN",
+      "frequency": "Diária, com dados do dia anterior",
+      "dataset": "despesas",
+      "dataset_url": "https://dados.ba.gov.br/dataset/despesas",
+      "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=despesas",
+      "coverage": "Despesas realizadas pelos órgãos e entidades abrangidos pelo FIPLAN.",
+      "status": "mapped"
+    },
+    {
+      "id": "sefaz_pagamentos",
+      "title": "Pagamentos",
+      "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+      "system": "FIPLAN",
+      "frequency": "Diária, com dados do dia anterior",
+      "dataset": "pagamentos",
+      "dataset_url": "https://dados.ba.gov.br/dataset/pagamentos",
+      "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=pagamentos",
+      "coverage": "Pagamentos efetuados pelos órgãos e entidades que utilizam o FIPLAN.",
+      "status": "mapped"
+    },
+    {
+      "id": "sefaz_contratos",
+      "title": "Contratos",
+      "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+      "system": "FIPLAN",
+      "frequency": "Diária, com dados do dia anterior",
+      "dataset": "contratos",
+      "dataset_url": "https://dados.ba.gov.br/dataset/contratos",
+      "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=contratos",
+      "coverage": "Execução orçamentária e financeira de contratos de bens e serviços do Poder Executivo estadual.",
+      "status": "mapped"
+    },
+    {
+      "id": "sefaz_licitacoes",
+      "title": "Licitações",
+      "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+      "system": "SIMPA/Sistema estadual de materiais e patrimônio",
+      "frequency": "Conforme publicação do conjunto",
+      "dataset": "licitacoes",
+      "dataset_url": "https://dados.ba.gov.br/dataset/licitacoes",
+      "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=licitacoes",
+      "coverage": "Modalidades, homologações, situação, itens, valores e participantes das licitações do Poder Executivo estadual.",
+      "status": "mapped"
+    },
+    {
+      "id": "sefaz_diarias",
+      "title": "Diárias",
+      "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+      "system": "FIPLAN",
+      "frequency": "Diária, com dados do dia anterior",
+      "dataset": "diarias",
+      "dataset_url": "https://dados.ba.gov.br/dataset/diarias",
+      "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=diarias",
+      "coverage": "Concessão e prestação de contas de diárias do Poder Executivo.",
+      "status": "mapped"
+    },
+    {
+      "id": "tce_despesa_detalhada",
+      "title": "Execução da despesa detalhada",
+      "publisher": "TCE/BA",
+      "format": "CSV UTF-8; delimitador ponto e vírgula",
+      "access_url_template": "https://www.tce.ba.gov.br/images/transparencia/despesa-detalhada/despesa-detalhada/Despesa_detalhada_Exercicio_####.csv",
+      "documentation_url": "https://www.tce.ba.gov.br/dados-abertos/despesas",
+      "coverage": "Arquivos anuais a partir de 2013, com empenho, credor, processo de pagamento, função, órgão, valor empenhado e valores pagos.",
+      "status": "mapped"
+    },
+    {
+      "id": "tce_contratos",
+      "title": "Contratos administrativos",
+      "publisher": "TCE/BA",
+      "format": "CSV UTF-8; delimitador #",
+      "access_url": "https://www.tce.ba.gov.br/contratos/dados-abertos",
+      "documentation_url": "https://www.tce.ba.gov.br/dados-abertos/contratos",
+      "coverage": "Contratos vigentes com órgão, processo, contratado, objeto, valor atual, vigência e quantidade de aditivos.",
+      "status": "mapped"
+    },
+    {
+      "id": "tce_licitacoes",
+      "title": "Procedimentos licitatórios",
+      "publisher": "TCE/BA",
+      "format": "CSV UTF-8; delimitador #",
+      "access_url": "https://www.tce.ba.gov.br/institucional/transparencia/licitacoes/dados-abertos",
+      "documentation_url": "https://www.tce.ba.gov.br/dados-abertos/procedimentos-licitatorios",
+      "coverage": "Procedimentos desde 2008; campos mais completos a partir de 2018, incluindo proposta vencedora e empresas participantes.",
+      "status": "mapped"
+    }
+  ],
+  "principle": "Fonte mapeada não é sinônimo de dataset coletado. O frontend deve distinguir catálogo de fonte, metadado coletado e dados efetivamente processados."
+}
