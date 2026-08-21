@@ -134,9 +134,10 @@
     ],
     "expected": 5,
     "last_run_datasets": [
-      "contratos"
+      "receitas",
+      "licitacoes"
     ],
-    "last_run_processed": 1,
+    "last_run_processed": 2,
     "processed": 5,
     "reference_year": 2026
   },
