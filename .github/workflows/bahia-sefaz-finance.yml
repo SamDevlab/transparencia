@@ -13,6 +13,7 @@ on:
       - "src/transparencia/collectors/bahia_sefaz_files.py"
       - "scripts/process-bahia-sefaz-data.py"
       - "tests/test_bahia_sefaz_finance.py"
+      - "tests/test_bahia_sefaz_files.py"
 
 permissions:
   contents: write
@@ -37,10 +38,17 @@ jobs:
         run: pip install -e '.[dev]'
       - name: Validar parsers financeiros
         id: tests
+        continue-on-error: true
         shell: bash
         run: |
-          pytest -q tests/test_bahia_sefaz_finance.py tests/test_bahia_sefaz_files.py
+          mkdir -p regions/bahia/data/validation
+          set +e
+          pytest -q tests/test_bahia_sefaz_finance.py tests/test_bahia_sefaz_files.py \
+            2>&1 | tee regions/bahia/data/validation/sefaz_finance_tests.log
+          code=${PIPESTATUS[0]}
+          exit $code
       - name: Processar Despesas e Pagamentos
+        if: steps.tests.outcome == 'success'
         id: collect
         continue-on-error: true
         shell: bash
@@ -71,7 +79,7 @@ jobs:
                   return fallback
               return json.loads(p.read_text(encoding='utf-8'))
 
-          def tail(path, lines=80):
+          def tail(path, lines=100):
               p = Path(path)
               if not p.exists():
                   return []
@@ -92,6 +100,7 @@ jobs:
               'sefaz_data_summary': coverage.get('sefaz_data_summary'),
               'expenses_status': (coverage.get('sefaz_data') or {}).get('despesas'),
               'payments_status': (coverage.get('sefaz_data') or {}).get('pagamentos'),
+              'test_log_tail': tail('regions/bahia/data/validation/sefaz_finance_tests.log'),
               'collector_log_tail': tail('regions/bahia/data/validation/sefaz_finance_collect.log'),
           }
           if expenses:
@@ -119,7 +128,7 @@ jobs:
           out.parent.mkdir(parents=True, exist_ok=True)
           out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           PY
-          rm -f regions/bahia/data/validation/sefaz_finance_collect.log
+          rm -f regions/bahia/data/validation/sefaz_finance_tests.log regions/bahia/data/validation/sefaz_finance_collect.log
       - name: Versionar somente resumos e evidências
         if: always()
         run: |
