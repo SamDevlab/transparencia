@@ -17,6 +17,15 @@ function writeJson(file, payload) {
   fs.writeFileSync(file, JSON.stringify(payload), "utf8");
 }
 
+function stateStatusLabel(status) {
+  return {
+    complete_for_defined_collection: "Rotina estadual processada",
+    complete_for_metadata_collection: "Catálogo estadual atualizado",
+    partial_with_verified_sources: "Dados estaduais parciais verificados",
+    partial: "Coleta estadual parcial",
+  }[status] ?? "Fontes oficiais mapeadas";
+}
+
 const interstate = readJson(path.join(referenceRoot, "interstate_dependency_2017.json"));
 const mip = readJson(path.join(referenceRoot, "mip_bahia_2012_key_sectors.json"));
 const stateCatalog = readJson(path.join(referenceRoot, "state_transparency_catalog.json"), { sources: [] });
@@ -54,11 +63,21 @@ const tceExpenses = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_expen
 const tceContracts = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_contracts.json")) : null;
 const tceProcurements = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_procurements.json")) : null;
 
+const ckanSummary = stateCoverage.summary ?? {
+  ckan_datasets_collected: 0,
+  ckan_datasets_expected: 6,
+  tce_datasets_processed: 0,
+  tce_datasets_expected: 3,
+};
+
 const bahiaTransparency = {
   available: Boolean(stateSnapshot),
   snapshot: stateSnapshot ? path.basename(stateSnapshot) : null,
   status: stateCoverage.status ?? "sources_mapped",
+  statusLabel: stateStatusLabel(stateCoverage.status),
+  collectionMode: stateCoverage.collection_mode ?? null,
   coverage: stateCoverage,
+  summary: ckanSummary,
   sources: stateCollectedCatalog.rows?.length ? stateCollectedCatalog.rows : stateCatalog.sources,
   tce: {
     expenses: tceExpenses,
@@ -77,9 +96,9 @@ transparency.datasets.push({
   id: "bahia_state_transparency",
   title: "Transparência estadual da Bahia",
   status: stateSnapshot ? stateCoverage.status : "sources_mapped",
-  statusLabel: stateSnapshot ? (stateCoverage.status === "complete_for_defined_collection" ? "Rotina estadual processada" : "Coleta estadual parcial") : "Fontes oficiais mapeadas",
+  statusLabel: stateSnapshot ? stateStatusLabel(stateCoverage.status) : "Fontes oficiais mapeadas",
   detail: stateSnapshot
-    ? "Catálogos SEFAZ/CKAN e arquivos automatizados do TCE são acompanhados com cobertura e hashes separados."
+    ? `${ckanSummary.ckan_datasets_collected ?? 0}/${ckanSummary.ckan_datasets_expected ?? 6} catálogos SEFAZ/CKAN coletados; arquivos TCE permanecem com cobertura separada.`
     : "Receitas, despesas, pagamentos, contratos, licitações, diárias e bases TCE já têm fontes oficiais catalogadas; o primeiro snapshot processado ainda não está versionado.",
   source: "SEFAZ/AGE Bahia + TCE/BA",
   href: "/bahia/transparencia",
@@ -104,6 +123,10 @@ meta.interstateReferenceYear = interstate?.reference_year ?? null;
 meta.mipReferenceYear = mip?.reference_year ?? null;
 meta.stateTransparencyAvailable = Boolean(stateSnapshot);
 meta.stateTransparencySnapshot = stateSnapshot ? path.basename(stateSnapshot) : null;
+meta.stateTransparencyStatus = stateCoverage.status ?? null;
+meta.stateCkanCollected = ckanSummary.ckan_datasets_collected ?? 0;
+meta.stateCkanExpected = ckanSummary.ckan_datasets_expected ?? 6;
+meta.stateTceProcessed = ckanSummary.tce_datasets_processed ?? 0;
 meta.stateTransparencyMappedSources = stateCatalog.sources?.length ?? 0;
 writeJson(metaPath, meta);
 
