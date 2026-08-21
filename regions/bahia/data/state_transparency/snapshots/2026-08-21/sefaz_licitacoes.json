@@ -25,12 +25,216 @@
       "uncompressed_bytes": 1025130506
     },
     "dataset": "licitacoes",
-    "interpretation": "As linhas pertencem a tabelas relacionadas e não são somadas como número de licitações. Valores são apresentados por campo/tabela; o projeto não combina automaticamente itens, participantes e certames.",
+    "interpretation": "As linhas pertencem a tabelas relacionadas e não são somadas como número de licitações. O número anual de processos é extraído apenas da tabela principal quando ela possui campo de ano/data. Tabelas sem campo temporal ficam fora do total anual.",
+    "primary_licitacoes": {
+      "estimated_value": {
+        "field": "Valor Estimado",
+        "numeric_rows": 2088,
+        "sum": 13949694522.25
+      },
+      "homologated_value": {
+        "field": "Valor Homologado",
+        "numeric_rows": 2088,
+        "sum": 5338103277.05
+      },
+      "member": "VW_PROC_AQUISICAO_LIC_REQ.csv",
+      "rows_all_years": 108594,
+      "rows_selected_year": 2088,
+      "top_agencies": [
+        {
+          "name": "SESAB",
+          "rows": 1066
+        },
+        {
+          "name": "SSP",
+          "rows": 309
+        },
+        {
+          "name": "SEC",
+          "rows": 220
+        },
+        {
+          "name": "SAEB",
+          "rows": 124
+        },
+        {
+          "name": "SEDUR",
+          "rows": 61
+        },
+        {
+          "name": "SIHS",
+          "rows": 51
+        },
+        {
+          "name": "SECULT",
+          "rows": 34
+        },
+        {
+          "name": "SETRE",
+          "rows": 15
+        },
+        {
+          "name": "SJDH",
+          "rows": 14
+        },
+        {
+          "name": "CMG",
+          "rows": 12
+        },
+        {
+          "name": "SDR",
+          "rows": 12
+        },
+        {
+          "name": "SEAGRI",
+          "rows": 11
+        },
+        {
+          "name": "SEAP",
+          "rows": 11
+        },
+        {
+          "name": "PGE",
+          "rows": 9
+        },
+        {
+          "name": "SETUR",
+          "rows": 8
+        },
+        {
+          "name": "SEMA",
+          "rows": 8
+        },
+        {
+          "name": "SEINFRA",
+          "rows": 8
+        },
+        {
+          "name": "SEFAZ",
+          "rows": 7
+        },
+        {
+          "name": "CASA CIVIL",
+          "rows": 7
+        },
+        {
+          "name": "SECOM",
+          "rows": 7
+        },
+        {
+          "name": "SECTI",
+          "rows": 6
+        },
+        {
+          "name": "SDE",
+          "rows": 5
+        },
+        {
+          "name": "GAB GOV",
+          "rows": 5
+        },
+        {
+          "name": "SEPLAN",
+          "rows": 3
+        },
+        {
+          "name": "SEADES",
+          "rows": 3
+        },
+        {
+          "name": "SEPROMI",
+          "rows": 1
+        },
+        {
+          "name": "VICE-GOV",
+          "rows": 1
+        }
+      ],
+      "top_modalities": [
+        {
+          "name": "Pregão Eletrônico",
+          "rows": 1960
+        },
+        {
+          "name": "Concorrência Pública",
+          "rows": 122
+        },
+        {
+          "name": "Pregão Presencial",
+          "rows": 5
+        },
+        {
+          "name": "Tomada de Preço",
+          "rows": 1
+        }
+      ],
+      "top_statuses": [
+        {
+          "name": "Homologada",
+          "rows": 985
+        },
+        {
+          "name": "Em andamento/elaboração",
+          "rows": 937
+        },
+        {
+          "name": "Fracassada",
+          "rows": 85
+        },
+        {
+          "name": "Suspensa",
+          "rows": 32
+        },
+        {
+          "name": "Revogada",
+          "rows": 19
+        },
+        {
+          "name": "Deserta",
+          "rows": 18
+        },
+        {
+          "name": "Anulada",
+          "rows": 7
+        },
+        {
+          "name": "Cancelada",
+          "rows": 5
+        }
+      ],
+      "years": {
+        "2004": 3283,
+        "2005": 4073,
+        "2006": 3676,
+        "2007": 4041,
+        "2008": 5568,
+        "2009": 5261,
+        "2010": 5748,
+        "2011": 6206,
+        "2012": 6649,
+        "2013": 6537,
+        "2014": 6597,
+        "2015": 5144,
+        "2016": 4849,
+        "2017": 5247,
+        "2018": 4578,
+        "2019": 4061,
+        "2020": 3122,
+        "2021": 4812,
+        "2022": 5821,
+        "2023": 5370,
+        "2024": 2660,
+        "2025": 3203,
+        "2026": 2088
+      }
+    },
     "privacy_note": "Nenhuma linha bruta, CPF, CNPJ ou nome de participante é republicado por este resumo. O esquema apenas registra a existência de colunas sensíveis.",
-    "selected_rows_across_related_tables": 2938767,
+    "selected_rows_across_filterable_tables": 2088,
     "selected_year": 2026,
     "table_classes": {
-      "participantes": 3,
+      "itens": 1,
+      "licitacoes": 1,
+      "participantes": 1,
       "tabela_relacionada": 1
     },
     "tables": [
@@ -45,7 +249,13 @@
             "date": null,
             "modality": null,
             "status": "DESC_SITUACAO_FORNEC",
-            "value_fields": [],
+            "value_fields": [
+              "VAL_ITEM_COTADO",
+              "VAL_ITEM_HOMOLOGADO",
+              "VAL_TOTAL_COTADO",
+              "VAL_TOTAL_COTADO_HOMOLOGADO",
+              "VAL_TOTAL_HOMOLOGADO"
+            ],
             "year": null
           },
           "encoding": "utf-8-sig",
@@ -73,32 +283,37 @@
             "FK_Uniao_CPF_CNPJ"
           ]
         },
-        "selected_rows": 1828532,
+        "scope_status": "year_not_filterable",
+        "selected_rows": null,
         "top_agencies": [],
         "top_modalities": [],
-        "top_statuses": [
-          {
-            "name": "Vencedor",
-            "rows": 777445
+        "top_statuses": [],
+        "value_field_sums": {
+          "VAL_ITEM_COTADO": {
+            "numeric_rows": 0,
+            "sum": 0.0
           },
-          {
-            "name": "Perdedor",
-            "rows": 676569
+          "VAL_ITEM_HOMOLOGADO": {
+            "numeric_rows": 0,
+            "sum": 0.0
           },
-          {
-            "name": "Desclassificado",
-            "rows": 371154
+          "VAL_TOTAL_COTADO": {
+            "numeric_rows": 0,
+            "sum": 0.0
           },
-          {
-            "name": "Informação Alterada",
-            "rows": 3364
+          "VAL_TOTAL_COTADO_HOMOLOGADO": {
+            "numeric_rows": 0,
+            "sum": 0.0
+          },
+          "VAL_TOTAL_HOMOLOGADO": {
+            "numeric_rows": 0,
+            "sum": 0.0
           }
-        ],
-        "value_field_sums": {},
+        },
         "years": {}
       },
       {
-        "classification": "participantes",
+        "classification": "itens",
         "member": "VW_PROC_AQUISICAO_ITEM.csv",
         "rows": 940222,
         "schema": {
@@ -108,7 +323,12 @@
             "date": null,
             "modality": null,
             "status": null,
-            "value_fields": [],
+            "value_fields": [
+              "VAL_ITEM_ESTIMADO",
+              "VAL_ITEM_TOTAL_ESTIMADO",
+              "val_item_homologado",
+              "VAL_ITEM_TOTAL_HOMOLOGADO"
+            ],
             "year": null
           },
           "encoding": "utf-8-sig",
@@ -140,11 +360,29 @@
             "FK_Itens_Fornecedores"
           ]
         },
-        "selected_rows": 940222,
+        "scope_status": "year_not_filterable",
+        "selected_rows": null,
         "top_agencies": [],
         "top_modalities": [],
         "top_statuses": [],
-        "value_field_sums": {},
+        "value_field_sums": {
+          "VAL_ITEM_ESTIMADO": {
+            "numeric_rows": 0,
+            "sum": 0.0
+          },
+          "VAL_ITEM_TOTAL_ESTIMADO": {
+            "numeric_rows": 0,
+            "sum": 0.0
+          },
+          "VAL_ITEM_TOTAL_HOMOLOGADO": {
+            "numeric_rows": 0,
+            "sum": 0.0
+          },
+          "val_item_homologado": {
+            "numeric_rows": 0,
+            "sum": 0.0
+          }
+        },
         "years": {}
       },
       {
@@ -170,7 +408,8 @@
           ],
           "privacy_sensitive_columns_present": []
         },
-        "selected_rows": 167925,
+        "scope_status": "year_not_filterable",
+        "selected_rows": null,
         "top_agencies": [],
         "top_modalities": [],
         "top_statuses": [],
@@ -178,7 +417,7 @@
         "years": {}
       },
       {
-        "classification": "participantes",
+        "classification": "licitacoes",
         "member": "VW_PROC_AQUISICAO_LIC_REQ.csv",
         "rows": 108594,
         "schema": {
@@ -234,16 +473,9 @@
             "Categoria",
             "Registro de preço"
           ],
-          "privacy_sensitive_columns_present": [
-            "DESC_PODER_SOLICITANTE",
-            "Código do Órgão Solicitante",
-            "Sigla do Órgão Solicitante",
-            "DESC_SECRETARIA_SOLICITANTE",
-            "Órgão Solicitante",
-            "DESC_UNIDADE_SOLICITANTE",
-            "Sigla da Unidade Solicitante"
-          ]
+          "privacy_sensitive_columns_present": []
         },
+        "scope_status": "year_filtered",
         "selected_rows": 2088,
         "top_agencies": [
           {
@@ -444,7 +676,10 @@
         }
       }
     ],
-    "total_rows_across_related_tables": 3045273
+    "total_rows_across_related_tables": 3045273,
+    "unfilterable_related_rows": 2936679,
+    "year_filterable_tables": 1,
+    "year_unfilterable_tables": 3
   },
   "transport": {
     "fallback_reason": "certificate_chain_error",

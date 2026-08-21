@@ -10,10 +10,10 @@
     ],
     "expected": 4,
     "last_run_datasets": [
-      "despesas",
-      "pagamentos"
+      "receitas",
+      "licitacoes"
     ],
-    "last_run_processed": 0,
+    "last_run_processed": 2,
     "processed": 2,
     "reference_year": 2026
   },

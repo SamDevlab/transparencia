@@ -40,7 +40,11 @@
       "delimiter": ";",
       "detected_fields": {
         "agency": "nom_orgao_orcamento",
+        "category": "CATEGORIA",
         "forecast": "Receita Prevista Col",
+        "funding_source": "NOME_FONTE_RECURSO",
+        "month": "mes_exercicio",
+        "origin": "ORIGEM",
         "realized": "Receita Arrecadada Col",
         "revenue_nature": null,
         "updated": "Receita Atualizada Col",
@@ -81,6 +85,92 @@
       ]
     },
     "selected_year": 2026,
+    "selected_year_monthly": [
+      {
+        "forecast": 75684122457.0,
+        "month": "2026-01",
+        "realized": 6431788012.7,
+        "rows": 2142,
+        "updated": 77072077328.0
+      },
+      {
+        "forecast": 0.0,
+        "month": "2026-02",
+        "realized": 6781052063.55,
+        "rows": 2142,
+        "updated": 7071153955.0
+      },
+      {
+        "forecast": 0.0,
+        "month": "2026-03",
+        "realized": 7148488584.95,
+        "rows": 2142,
+        "updated": 2046093250.0
+      },
+      {
+        "forecast": 0.0,
+        "month": "2026-04",
+        "realized": 7534653868.38,
+        "rows": 2142,
+        "updated": 169246247.0
+      },
+      {
+        "forecast": 0.0,
+        "month": "2026-05",
+        "realized": 6360369351.16,
+        "rows": 2142,
+        "updated": 144676516.0
+      },
+      {
+        "forecast": 0.0,
+        "month": "2026-06",
+        "realized": 8930856605.14,
+        "rows": 2142,
+        "updated": 323709621.0
+      },
+      {
+        "forecast": 0.0,
+        "month": "2026-07",
+        "realized": 6671409779.1,
+        "rows": 2142,
+        "updated": 553595392.0
+      },
+      {
+        "forecast": 0.0,
+        "month": "2026-08",
+        "realized": 5207077362.16,
+        "rows": 2142,
+        "updated": 774409562.0
+      },
+      {
+        "forecast": 0.0,
+        "month": "2026-09",
+        "realized": 0.0,
+        "rows": 2142,
+        "updated": 0.0
+      },
+      {
+        "forecast": 0.0,
+        "month": "2026-10",
+        "realized": 0.0,
+        "rows": 2142,
+        "updated": 0.0
+      },
+      {
+        "forecast": 0.0,
+        "month": "2026-11",
+        "realized": 0.0,
+        "rows": 2142,
+        "updated": 0.0
+      },
+      {
+        "forecast": 0.0,
+        "month": "2026-12",
+        "realized": 0.0,
+        "rows": 2142,
+        "updated": 0.0
+      }
+    ],
     "selected_year_totals": {
       "forecast": 75684122457.0,
       "realized": 55065695627.14,
@@ -243,7 +333,577 @@
         "rows": 12
       }
     ],
-    "top_revenue_natures_by_realized": [],
+    "top_funding_sources_by_realized": [
+      {
+        "name": "Recursos Ordinários não Vinculados do Tesouro",
+        "realized": 24585097606.66,
+        "rows": 1428
+      },
+      {
+        "name": "Operações de Crédito Internas em Moeda",
+        "realized": 5881068559.36,
+        "rows": 480
+      },
+      {
+        "name": "Recursos Vinculados às Ações e Serviços Públicos de Saúde",
+        "realized": 4428317178.86,
+        "rows": 444
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo de Manut e Desenv da Educação Básica e de Valoriz dos Profissionais da Educação",
+        "realized": 2837496762.9,
+        "rows": 600
+      },
+      {
+        "name": "Contribuição para o Plano de Previdência Social do Servidor",
+        "realized": 2465533517.33,
+        "rows": 468
+      },
+      {
+        "name": "Recursos Vinculados à Educação",
+        "realized": 2379401750.77,
+        "rows": 444
+      },
+      {
+        "name": "Recursos Vinculados Transferências SUS - Atenção Especializada - Bl Manutenção",
+        "realized": 2027088943.44,
+        "rows": 48
+      },
+      {
+        "name": "Contribuições para o Plano de Saúde do Servidor",
+        "realized": 1580005628.5,
+        "rows": 684
+      },
+      {
+        "name": "Transferências de Recursos de Complementação da União ao Fundeb - VAAF",
+        "realized": 1016600264.01,
+        "rows": 36
+      },
+      {
+        "name": "Recursos de Precatórios - Fundef - Juros de Mora",
+        "realized": 880973191.58,
+        "rows": 36
+      },
+      {
+        "name": "Taxas Vinculadas ao Poder Judiciário",
+        "realized": 782389783.81,
+        "rows": 108
+      },
+      {
+        "name": "Recursos do Fundo Estadual de Combate e Erradicação da Pobreza",
+        "realized": 592514456.97,
+        "rows": 156
+      },
+      {
+        "name": "Recursos do Fundo Previdenciário dos Servidores Públicos do Estado da Bahia",
+        "realized": 438327809.4,
+        "rows": 324
+      },
+      {
+        "name": "Recursos Diretamente Arrecadados por Órgãos da Administração Direta",
+        "realized": 434940348.7,
+        "rows": 864
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo de Proteção Social do Militar",
+        "realized": 417546763.45,
+        "rows": 120
+      },
+      {
+        "name": "Recursos Diretamente Arrecadados por Entidades da Administração Indireta",
+        "realized": 389879275.44,
+        "rows": 1404
+      },
+      {
+        "name": "Transferências Voluntárias de Órgãos e Entidades Federais - Adm. Direta",
+        "realized": 340560796.21,
+        "rows": 4356
+      },
+      {
+        "name": "Recursos de Precatórios - Fundef - Profissionais Educação Básica",
+        "realized": 336605343.92,
+        "rows": 24
+      },
+      {
+        "name": "Receitas de Capitalização para o Plano de Previdência Social do Servidor",
+        "realized": 300045882.71,
+        "rows": 84
+      },
+      {
+        "name": "Operações de Crédito Externas em Moeda",
+        "realized": 285625003.51,
+        "rows": 132
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo Estadual de Logística e Transportes",
+        "realized": 271117369.58,
+        "rows": 60
+      },
+      {
+        "name": "Cota-Parte do Salário Educação",
+        "realized": 248949987.34,
+        "rows": 24
+      },
+      {
+        "name": "Recursos Vinculados Transferências SUS - Gestão do SUS - Bl Manutenção",
+        "realized": 224811713.19,
+        "rows": 60
+      },
+      {
+        "name": "Recursos de Precatórios - Fundef - Programas MDE",
+        "realized": 211728213.67,
+        "rows": 24
+      },
+      {
+        "name": "Recursos Oriundos de Depósitos Judiciais - EC Fed 99/2017-art 1º, § 2º, inc I",
+        "realized": 199809520.76,
+        "rows": 12
+      },
+      {
+        "name": "Indenizações Extr Óleo Bruto, Xisto Betum e Gás, Utiliz Rec Hídricos e Explor Rec Miner EC nº 19/14",
+        "realized": 174971506.56,
+        "rows": 60
+      },
+      {
+        "name": "Recursos Oriundos de Depósitos Judiciais - EC Fed 99/2017-art 1º, § 2º, inc II",
+        "realized": 169016143.68,
+        "rows": 12
+      },
+      {
+        "name": "Recursos de Transferências Federais de Emendas individuais e Coletivas - Fundo a Fundo",
+        "realized": 136668440.93,
+        "rows": 2664
+      },
+      {
+        "name": "Contribuições do Fundo Nacional de Desenvolvimento da Educação",
+        "realized": 96904129.23,
+        "rows": 132
+      },
+      {
+        "name": "Taxas Vinculadas ao Departamento Estadual de Trânsito",
+        "realized": 90372457.35,
+        "rows": 60
+      },
+      {
+        "name": "Transferências Voluntárias de Órgãos e Entidades Federais - Adm. Indireta",
+        "realized": 73166999.18,
+        "rows": 2916
+      },
+      {
+        "name": "Fundo Nacional de Saúde - Transferências Não Diretas",
+        "realized": 72219217.71,
+        "rows": 444
+      },
+      {
+        "name": "Transferência Especial da União - Emenda Impositiva - EC Fed 105/19 art 166A, inc I -Adm. Direta",
+        "realized": 68248624.01,
+        "rows": 2904
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo Estadual do Corpo de Bombeiros da Bahia",
+        "realized": 55280240.58,
+        "rows": 120
+      },
+      {
+        "name": "Indenizações pela Extr de Óleo Bruto, Xisto Betuminoso e Gás, Utiliz de Rec Hídricos e Explor de Rec Minerais",
+        "realized": 54421512.06,
+        "rows": 60
+      },
+      {
+        "name": "Recursos Vinculado ao FEHIS",
+        "realized": 39836029.8,
+        "rows": 24
+      },
+      {
+        "name": "Outros Recursos do Fundo Estadual de Transporte",
+        "realized": 38854290.6,
+        "rows": 48
+      },
+      {
+        "name": "Recursos Vinculados Transferências SUS - Assistência Farmacêutica - BL Manutenção",
+        "realized": 38071332.72,
+        "rows": 36
+      },
+      {
+        "name": "Contribuições de Intervenção do Domínio Econômico - Estado",
+        "realized": 36999919.5,
+        "rows": 24
+      },
+      {
+        "name": "Recursos Vinculados Transferências SUS - Atenção Especializada - Bl Estruturação",
+        "realized": 36461430.87,
+        "rows": 36
+      },
+      {
+        "name": "Recursos Vinc ao Fundo de Defesa dos Direitos Fundamentais do MPBA - FDDF",
+        "realized": 30117607.32,
+        "rows": 24
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo Estadual de Segurança Pública",
+        "realized": 29243057.85,
+        "rows": 624
+      },
+      {
+        "name": "Taxas e Multas Vinculadas a Agência Estadual de Defesa Agropecuária da Bahia",
+        "realized": 28136337.16,
+        "rows": 60
+      },
+      {
+        "name": "Taxas Vinc à Agência Estadual de Regul de Serv Públicos de Energia, Transporte e Comunicação da Bahia",
+        "realized": 27960740.81,
+        "rows": 108
+      },
+      {
+        "name": "Recursos Vinculados Transferências SUS - BL Vigilância em Saúde",
+        "realized": 27581716.66,
+        "rows": 48
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo de Modernização da Procuradoria Geral do Estado",
+        "realized": 23058135.29,
+        "rows": 84
+      },
+      {
+        "name": "Recursos Oriundos de Delegação da União",
+        "realized": 21633022.85,
+        "rows": 60
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo de Promoção do Trabalho Decente",
+        "realized": 14792380.39,
+        "rows": 36
+      },
+      {
+        "name": "Taxas e Multas Vinculadas ao Instituto do Meio Ambiente e Recursos Hídricos",
+        "realized": 13267009.06,
+        "rows": 144
+      },
+      {
+        "name": "Recursos Destinados à Equalização do Déficit Atuarial Baprev (Lei 14.798/24)",
+        "realized": 9092513.24,
+        "rows": 24
+      },
+      {
+        "name": "Recursos Vinculados ao Desenvolvimento do Desporto - Lei nº 9.615/98",
+        "realized": 8042887.57,
+        "rows": 24
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo de Modernização do Ministério Público do Estado da Bahia",
+        "realized": 7687566.72,
+        "rows": 24
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo de Defesa Sanitária Vegetal",
+        "realized": 7284199.07,
+        "rows": 60
+      },
+      {
+        "name": "Transferências Outras de Recursos da União",
+        "realized": 7065796.64,
+        "rows": 36
+      },
+      {
+        "name": "Transferências de Entidades Privadas Nacionais - Adm. Indireta",
+        "realized": 6573166.74,
+        "rows": 312
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo Est. de Desenvolvimento de Áreas Industriais, Comerciais e de Serviços",
+        "realized": 6494385.85,
+        "rows": 48
+      },
+      {
+        "name": "Contribuições do Fundo Nacional de Assistência Social",
+        "realized": 5673780.27,
+        "rows": 24
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo de Assistência Judiciária da Defensoria Pública do Estado da Bahia",
+        "realized": 5208365.44,
+        "rows": 36
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo do Meio Ambiente da Bahia",
+        "realized": 5036141.91,
+        "rows": 24
+      },
+      {
+        "name": "Taxas Vinculadas ao Fundo Especial de Aperfeiçoamento dos Serviços Policiais",
+        "realized": 4942727.28,
+        "rows": 120
+      },
+      {
+        "name": "Transferências de Empresas Públicas da Bahia - Não Dependentes",
+        "realized": 4860239.64,
+        "rows": 12
+      },
+      {
+        "name": "Recursos pelo Fornecimento de Água Bruta de Reservatórios",
+        "realized": 4647900.36,
+        "rows": 24
+      },
+      {
+        "name": "Recursos Vinculados Transferências SUS - Atenção Primária - Bl Manutenção",
+        "realized": 4588473.6,
+        "rows": 24
+      },
+      {
+        "name": "Taxas e Multas Vinculadas ao Fundo Estadual de Saúde",
+        "realized": 3765076.38,
+        "rows": 108
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo de Segurança dos Magistrados - Lei nº 13.971/18",
+        "realized": 3699566.43,
+        "rows": 60
+      },
+      {
+        "name": "Recursos de Alienação de Bens - Adm. Direta",
+        "realized": 3317707.6,
+        "rows": 168
+      },
+      {
+        "name": "Outras Transferências - Adm Indireta",
+        "realized": 3250983.98,
+        "rows": 180
+      },
+      {
+        "name": "Outras Transferências - Adm. Direta",
+        "realized": 1584094.84,
+        "rows": 108
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo Penitenciário do Estado da Bahia",
+        "realized": 1377314.42,
+        "rows": 12
+      },
+      {
+        "name": "Multas Vinculadas ao Fundo Estadual de Proteção ao Consumidor",
+        "realized": 1314999.02,
+        "rows": 12
+      },
+      {
+        "name": "Recursos de Alienação de Bens - Adm. Indireta",
+        "realized": 1186300.0,
+        "rows": 204
+      },
+      {
+        "name": "Restituição de Recursos Oriundos de Operação de Crédito",
+        "realized": 1000000.0,
+        "rows": 12
+      },
+      {
+        "name": "Transferências de Órgãos e Fundos Internacionais - Adm Indireta",
+        "realized": 756489.61,
+        "rows": 168
+      },
+      {
+        "name": "Recursos para Despesas Decorrentes da LC nº 212/25 - Propag - Próprias",
+        "realized": 740405.07,
+        "rows": 36
+      },
+      {
+        "name": "Recursos Vinc ao Fundo de Modernização, Manutenção e Reequipamento da Polícia Civil do Est da Bahia",
+        "realized": 567980.76,
+        "rows": 24
+      },
+      {
+        "name": "Recursos Vinculados Transferências SUS - Estruturação da Rede de Serviços SUS - Bl Manutenção",
+        "realized": 543454.73,
+        "rows": 12
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo de Atualização Tecnológica e Desenvolvimento Fazendário",
+        "realized": 318903.94,
+        "rows": 12
+      },
+      {
+        "name": "Recursos do Fundo de Cultura da Bahia - Estado",
+        "realized": 308075.72,
+        "rows": 12
+      },
+      {
+        "name": "Recursos Vinculados Transferências SUS - Vigilância em Saúde - Bl Estruturação",
+        "realized": 220210.73,
+        "rows": 12
+      },
+      {
+        "name": "Recursos Vinculados Transferências SUS - Atenção Primária - Bl Estruturação",
+        "realized": 209828.18,
+        "rows": 12
+      },
+      {
+        "name": "Recursos Vinculados Transferências SUS - COVID-19 - Bl Manutenção",
+        "realized": 196920.82,
+        "rows": 12
+      },
+      {
+        "name": "Recursos Vinculados Transferências SUS - Gestão do SUS - Bl Estruturação",
+        "realized": 147598.19,
+        "rows": 12
+      },
+      {
+        "name": "Recursos Vinculados ao Fundo Estadual do Trabalho do Estado da Bahia",
+        "realized": 136016.8,
+        "rows": 24
+      },
+      {
+        "name": "Transferências Voluntárias de Órgãos e Entidades Municipais - Adm. Indireta",
+        "realized": 109015.92,
+        "rows": 156
+      },
+      {
+        "name": "Recursos Vinculados Transferências SUS - COVID-19 - Bl Estruturação",
+        "realized": 25207.87,
+        "rows": 12
+      },
+      {
+        "name": "Transferências de Órgãos e Fundos Internacionais - Adm. Direta",
+        "realized": 2278.06,
+        "rows": 12
+      },
+      {
+        "name": "Transferências Diretas do Fundo Nacional de Saúde para o Fundo Estadual de Saúde",
+        "realized": 1099.5,
+        "rows": 12
+      },
+      {
+        "name": "Cota-Parte do IPVA Devida aos Municípios",
+        "realized": 0.0,
+        "rows": 144
+      },
+      {
+        "name": "Cota-Parte do Imposto sobre Exportação de Produtos Industrializados Devida aos Municípios",
+        "realized": 0.0,
+        "rows": 24
+      },
+      {
+        "name": "Contribuições de Intervenção do Domínio Econômico - Município",
+        "realized": 0.0,
+        "rows": 24
+      },
+      {
+        "name": "Transferências de Recursos de Complementação da União ao Fundeb - VAAR",
+        "realized": 0.0,
+        "rows": 12
+      },
+      {
+        "name": "Cota-Parte Royalties pela Produção de Petróleo - Lei Fed nº 7.990/89 - Municípios",
+        "realized": -0.0,
+        "rows": 24
+      },
+      {
+        "name": "Cota-Parte do ICMS Devida aos Municípios",
+        "realized": -0.0,
+        "rows": 144
+      }
+    ],
+    "top_revenue_categories_by_realized": [
+      {
+        "name": "Receitas Correntes",
+        "realized": 60661177168.4,
+        "rows": 19140
+      },
+      {
+        "name": "Receitas de Capital",
+        "realized": 6806841444.81,
+        "rows": 3960
+      },
+      {
+        "name": "Receitas Intraorçamentárias Correntes",
+        "realized": 2025844046.09,
+        "rows": 660
+      },
+      {
+        "name": "Deduções e ou Restituições de Receitas",
+        "realized": -14428167032.16,
+        "rows": 1944
+      }
+    ],
+    "top_revenue_origins_by_realized": [
+      {
+        "name": "Impostos, Taxas e Contribuições de Melhoria",
+        "realized": 33137269056.93,
+        "rows": 1896
+      },
+      {
+        "name": "Transferências Correntes",
+        "realized": 21573832410.5,
+        "rows": 3792
+      },
+      {
+        "name": "Operações de Crédito",
+        "realized": 6068689518.23,
+        "rows": 408
+      },
+      {
+        "name": "Contribuições",
+        "realized": 4795665125.68,
+        "rows": 1356
+      },
+      {
+        "name": "Outras Receitas Correntes",
+        "realized": 1548500748.15,
+        "rows": 1716
+      },
+      {
+        "name": "Receita Patrimonial",
+        "realized": 1446047752.41,
+        "rows": 10176
+      },
+      {
+        "name": "Transferências de Capital",
+        "realized": 460422274.73,
+        "rows": 3168
+      },
+      {
+        "name": "Receita de Serviços",
+        "realized": 185623982.32,
+        "rows": 852
+      },
+      {
+        "name": "Outras Receitas de Capital",
+        "realized": 169016143.68,
+        "rows": 24
+      },
+      {
+        "name": "Amortização de Empréstimos",
+        "realized": 96749970.28,
+        "rows": 36
+      },
+      {
+        "name": "Alienação de Bens",
+        "realized": 11963537.89,
+        "rows": 324
+      },
+      {
+        "name": "Receita Agropecuária",
+        "realized": 82138.5,
+        "rows": 12
+      },
+      {
+        "name": "Restituição de Receita de Serviços",
+        "realized": -32198.38,
+        "rows": 60
+      },
+      {
+        "name": "Restituição de Outras Receitas Correntes",
+        "realized": -10718145.49,
+        "rows": 192
+      },
+      {
+        "name": "Dedução ou Restituição de Transferências Correntes",
+        "realized": -2688954680.81,
+        "rows": 72
+      },
+      {
+        "name": "Deduções e ou Restituições de Receitas",
+        "realized": -11728462007.48,
+        "rows": 1620
+      }
+    ],
     "totals_by_year": {
       "2015": {
         "forecast": 39091321000.0,

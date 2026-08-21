@@ -65,6 +65,7 @@
       "output": "sefaz_licitacoes.json",
       "resource_id": "c5040c7d-4375-459e-93b0-beca841f63b4",
       "resource_last_modified": "2026-08-20T11:13:12",
+      "resource_name": "Licitacoes.zip",
       "rows": 3045273,
       "selected_year": 2026,
       "sha256": "95409ee6d9aacced3a4a6a0fe455b6c7450ea5f001056e3ee78c83768b6d7391",
@@ -83,6 +84,7 @@
       "output": "sefaz_receitas.json",
       "resource_id": "70483fa8-362c-40c3-9389-67bff289fee5",
       "resource_last_modified": "2026-08-20T10:05:01",
+      "resource_name": "Receitas.csv",
       "rows": 290280,
       "selected_year": 2026,
       "sha256": "c7b972121d18444bb3b3b7e8b9e7ee06e2aa5ec12c5888fa250df6d1bbaed641",
@@ -99,10 +101,10 @@
     ],
     "expected": 4,
     "last_run_datasets": [
-      "despesas",
-      "pagamentos"
+      "receitas",
+      "licitacoes"
     ],
-    "last_run_processed": 0,
+    "last_run_processed": 2,
     "processed": 2,
     "reference_year": 2026
   },
