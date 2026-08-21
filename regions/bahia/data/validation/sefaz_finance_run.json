@@ -1,0 +1,39 @@
+{
+  "tested_commit": "b5153047001c5751b9bb5dfff17d51f4aece0735",
+  "tests": "failure",
+  "collector": "skipped",
+  "workflow_finished_at": "2026-08-21T08:37:54.162272+00:00",
+  "latest": {
+    "collection_mode": "metadata_only",
+    "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
+    "sefaz_data": {
+      "datasets": [
+        "receitas",
+        "licitacoes"
+      ],
+      "expected": 2,
+      "processed": 2,
+      "reference_year": 2026
+    },
+    "snapshot": "2026-08-21",
+    "status": "complete_for_metadata_collection",
+    "summary": {
+      "ckan_datasets_collected": 6,
+      "ckan_datasets_expected": 6,
+      "tce_datasets_expected": 0,
+      "tce_datasets_processed": 0
+    }
+  },
+  "sefaz_data_summary": {
+    "datasets": [
+      "receitas",
+      "licitacoes"
+    ],
+    "expected": 2,
+    "processed": 2,
+    "reference_year": 2026
+  },
+  "expenses_status": null,
+  "payments_status": null,
+  "collector_log_tail": []
+}
