@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "tested_commit": "e1ffdb0cc0a233cd7a19ce37b25df515c82905b4",
+  "tested_commit": "851f6bb3fe94445ffb9345c565281d2899ebb8ea",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
@@ -26,7 +26,7 @@
   "state_transparency_snapshot": "2026-08-21",
   "state_transparency_mapped_sources": 9,
   "state_sefaz_processed": 4,
-  "state_sefaz_expected": 4,
+  "state_sefaz_expected": 5,
   "state_revenue_rows": 290280,
   "state_revenue_2026_realized": 55065695627.14,
   "state_procurements_2026": 2088,
@@ -39,5 +39,11 @@
   "state_payment_rows_2026": 598254,
   "state_payments_2026": 49695587103.71,
   "state_payment_source_field": "Valor do Pagamento",
+  "state_contract_rows_2026": 0,
+  "state_contract_value_2026": null,
+  "state_contract_value_field": null,
+  "state_contract_instrument_keys_2026": 0,
+  "state_contract_process_keys_2026": 0,
+  "state_contract_cnpj_suppliers_published": 0,
   "as_of": "2026-08-17"
 }
