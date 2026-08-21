@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import csv
 import hashlib
-import io
 import json
 import re
 import tempfile
@@ -104,8 +103,6 @@ def _parse_brl(value: str | None) -> float:
         return 0.0
     if "," in text:
         text = text.replace(".", "").replace(",", ".")
-    else:
-        text = text.replace(" ", "")
     try:
         return float(text)
     except ValueError:
@@ -114,8 +111,7 @@ def _parse_brl(value: str | None) -> float:
 
 def _norm_header(value: str) -> str:
     text = value.strip().upper()
-    text = re.sub(r"\s+", " ", text)
-    return text
+    return re.sub(r"\s+", " ", text)
 
 
 def stream_to_temp(client: httpx.Client, url: str, *, max_bytes: int = 800_000_000) -> tuple[Path, DownloadEvidence]:
@@ -189,6 +185,7 @@ def summarize_tce_expenses(path: Path) -> dict[str, Any]:
 
 
 def summarize_hash_csv(path: Path, *, delimiter: str = "#", value_headers: Iterable[str] = ()) -> dict[str, Any]:
+    """Resume CSVs do TCE sem persistir linhas brutas ou documentos pessoais."""
     rows = 0
     value_sum = 0.0
     agencies: dict[str, int] = {}
@@ -203,11 +200,8 @@ def summarize_hash_csv(path: Path, *, delimiter: str = "#", value_headers: Itera
             value_field = field_map.get(_norm_header(candidate))
             if value_field:
                 break
-        sample = []
         for row in reader:
             rows += 1
-            if len(sample) < 25:
-                sample.append({k: row.get(k) for k in list(row)[:20]})
             if agency_field:
                 agency = row.get(agency_field) or "Não informado"
                 agencies[agency] = agencies.get(agency, 0) + 1
@@ -220,5 +214,4 @@ def summarize_hash_csv(path: Path, *, delimiter: str = "#", value_headers: Itera
             {"agency": key, "rows": value}
             for key, value in sorted(agencies.items(), key=lambda item: item[1], reverse=True)[:100]
         ],
-        "sample": sample,
     }
