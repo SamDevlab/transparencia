@@ -21,8 +21,7 @@ const nav = [
   ["/licitacoes", "Licitações"],
   ["/economia", "Economia"],
   ["/agentes", "Agentes"],
-  ["/fornecedores", "Fornecedores"],
-  ["/analises", "Análises"],
+  ["/bahia", "Bahia"],
 ];
 
 export default function RootLayout({ children }) {
@@ -50,7 +49,7 @@ export default function RootLayout({ children }) {
           <Link href="/buscar"><span>⌕</span><small>Buscar</small></Link>
           <Link href="/dinheiro"><span>R$</span><small>Dinheiro</small></Link>
           <Link href="/economia"><span>↗</span><small>Economia</small></Link>
-          <Link href="/agentes"><span>◎</span><small>Agentes</small></Link>
+          <Link href="/bahia"><span>BA</span><small>Bahia</small></Link>
         </nav>
 
         <footer className="site-footer">
@@ -59,8 +58,10 @@ export default function RootLayout({ children }) {
             <div className="rodape-links">
               <Link href="/financas">Finanças</Link>
               <Link href="/contratos">Contratos</Link>
+              <Link href="/fornecedores">Fornecedores</Link>
               <Link href="/orgaos">Órgãos</Link>
-              <Link href="/comparar">Comparar órgãos</Link>
+              <Link href="/analises">Análises</Link>
+              <Link href="/bahia/transparencia">Transparência Bahia</Link>
               <Link href="/transparencia">Cobertura dos dados</Link>
               <Link href="/metodologia">Metodologia</Link>
             </div>
