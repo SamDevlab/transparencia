@@ -1,0 +1,140 @@
+name: Contratos SEFAZ Bahia
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "40 12 * * 3"
+  push:
+    branches:
+      - city/salvador
+    paths:
+      - ".github/workflows/bahia-sefaz-contracts.yml"
+      - "src/transparencia/collectors/bahia_sefaz_contracts.py"
+      - "src/transparencia/collectors/bahia_sefaz_download.py"
+      - "scripts/process-bahia-sefaz-data.py"
+      - "tests/test_bahia_sefaz_contracts.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bahia-sefaz-contracts
+  cancel-in-progress: true
+
+jobs:
+  processar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependências
+        run: pip install -e '.[dev]'
+      - name: Validar parser de contratos
+        id: tests
+        continue-on-error: true
+        shell: bash
+        run: |
+          mkdir -p regions/bahia/data/validation
+          set +e
+          pytest -q tests/test_bahia_sefaz_contracts.py \
+            2>&1 | tee regions/bahia/data/validation/sefaz_contracts_tests.log
+          code=${PIPESTATUS[0]}
+          exit $code
+      - name: Processar Contratos
+        if: steps.tests.outcome == 'success'
+        id: collect
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          python scripts/process-bahia-sefaz-data.py \
+            --year 2026 \
+            --datasets contratos \
+            2>&1 | tee regions/bahia/data/validation/sefaz_contracts_collect.log
+          code=${PIPESTATUS[0]}
+          exit $code
+      - name: Registrar diagnóstico de contratos
+        if: always()
+        env:
+          TEST_OUTCOME: ${{ steps.tests.outcome }}
+          COLLECT_OUTCOME: ${{ steps.collect.outcome }}
+          TESTED_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          def read_json(path, fallback=None):
+              p = Path(path)
+              if not p.exists():
+                  return fallback
+              return json.loads(p.read_text(encoding='utf-8'))
+
+          def tail(path, lines=100):
+              p = Path(path)
+              if not p.exists():
+                  return []
+              return p.read_text(encoding='utf-8', errors='replace').splitlines()[-lines:]
+
+          state = Path('regions/bahia/data/state_transparency')
+          latest = read_json(state / 'latest.json', {})
+          snapshot = Path(latest.get('path', '')) if latest.get('path') else None
+          coverage = read_json(snapshot / 'coverage.json', {}) if snapshot else {}
+          contracts = read_json(snapshot / 'sefaz_contratos.json') if snapshot else None
+          payload = {
+              'tested_commit': os.environ['TESTED_SHA'],
+              'tests': os.environ.get('TEST_OUTCOME'),
+              'collector': os.environ.get('COLLECT_OUTCOME'),
+              'workflow_finished_at': datetime.now(timezone.utc).isoformat(),
+              'latest': latest,
+              'sefaz_data_summary': coverage.get('sefaz_data_summary'),
+              'contracts_status': (coverage.get('sefaz_data') or {}).get('contratos'),
+              'test_log_tail': tail('regions/bahia/data/validation/sefaz_contracts_tests.log'),
+              'collector_log_tail': tail('regions/bahia/data/validation/sefaz_contracts_collect.log'),
+          }
+          if contracts:
+              primary = contracts.get('summary', {}).get('primary_table') or {}
+              payload['contracts'] = {
+                  'resource': contracts.get('resource'),
+                  'evidence': contracts.get('evidence'),
+                  'selected_year': contracts.get('summary', {}).get('selected_year'),
+                  'primary_member': primary.get('member'),
+                  'selected_rows': primary.get('selected_rows'),
+                  'contract_field': (primary.get('schema', {}).get('detected_fields') or {}).get('contract'),
+                  'process_field': (primary.get('schema', {}).get('detected_fields') or {}).get('process'),
+                  'supplier_document_field': (primary.get('schema', {}).get('detected_fields') or {}).get('supplier_document'),
+                  'contract_value': primary.get('contract_value'),
+                  'instrument_keys': len(primary.get('instrument_index') or []),
+                  'process_keys': len(primary.get('process_ids') or []),
+                  'cnpj_suppliers': len(primary.get('top_suppliers_cnpj_only') or []),
+              }
+          out = Path('regions/bahia/data/validation/sefaz_contracts_run.json')
+          out.parent.mkdir(parents=True, exist_ok=True)
+          out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+          rm -f regions/bahia/data/validation/sefaz_contracts_tests.log regions/bahia/data/validation/sefaz_contracts_collect.log
+      - name: Versionar somente resumos e evidências
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add regions/bahia/data/state_transparency regions/bahia/data/validation/sefaz_contracts_run.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data(bahia): atualizar contratos SEFAZ [skip ci]"
+            git pull --rebase origin city/salvador
+            git push origin HEAD:city/salvador
+          else
+            echo "Nenhuma alteração de contratos estaduais para versionar."
+          fi
+      - name: Exigir coleta de contratos válida
+        if: steps.tests.outcome != 'success' || steps.collect.outcome != 'success'
+        run: |
+          echo "tests=${{ steps.tests.outcome }} collector=${{ steps.collect.outcome }}"
+          exit 1
