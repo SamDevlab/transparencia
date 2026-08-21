@@ -38,17 +38,32 @@ jobs:
       - name: Validar métricas econômicas
         id: tests
         continue-on-error: true
-        run: pytest -q tests/test_comex.py
+        shell: bash
+        run: |
+          mkdir -p regions/bahia/data/validation
+          set +e
+          pytest -q tests/test_comex.py 2>&1 | tee regions/bahia/data/validation/test_comex.log
+          code=${PIPESTATUS[0]}
+          exit $code
       - name: Coletar Comex Stat
         id: collect
         continue-on-error: true
+        shell: bash
         env:
           PYTHONUNBUFFERED: "1"
         run: |
+          mkdir -p regions/bahia/data/validation
           SNAPSHOT_DATE=$(date -u +%F)
-          python scripts/collect-bahia-economy.py --out "regions/bahia/data/snapshots/${SNAPSHOT_DATE}"
-          test -s "regions/bahia/data/snapshots/${SNAPSHOT_DATE}/coverage.json"
-          cat "regions/bahia/data/snapshots/${SNAPSHOT_DATE}/coverage.json"
+          set +e
+          python scripts/collect-bahia-economy.py --out "regions/bahia/data/snapshots/${SNAPSHOT_DATE}" 2>&1 | tee regions/bahia/data/validation/collect_comex.log
+          code=${PIPESTATUS[0]}
+          if [ $code -eq 0 ]; then
+            test -s "regions/bahia/data/snapshots/${SNAPSHOT_DATE}/coverage.json" || code=1
+          fi
+          if [ -s "regions/bahia/data/snapshots/${SNAPSHOT_DATE}/coverage.json" ]; then
+            cat "regions/bahia/data/snapshots/${SNAPSHOT_DATE}/coverage.json"
+          fi
+          exit $code
       - name: Registrar diagnóstico e dados produzidos
         env:
           TEST_OUTCOME: ${{ steps.tests.outcome }}
@@ -60,16 +75,26 @@ jobs:
           import json, os
           from datetime import datetime, timezone
           from pathlib import Path
+
+          def tail(path, lines=40):
+              p = Path(path)
+              if not p.exists():
+                  return []
+              return p.read_text(encoding='utf-8', errors='replace').splitlines()[-lines:]
+
           payload = {
               "tested_commit": os.environ["TESTED_SHA"],
               "tests": os.environ["TEST_OUTCOME"],
               "collector": os.environ["COLLECT_OUTCOME"],
               "recorded_at": datetime.now(timezone.utc).isoformat(),
+              "test_log_tail": tail('regions/bahia/data/validation/test_comex.log'),
+              "collector_log_tail": tail('regions/bahia/data/validation/collect_comex.log'),
           }
           Path("regions/bahia/data/workflow_status.json").write_text(
               json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
           )
           PY
+          rm -f regions/bahia/data/validation/test_comex.log regions/bahia/data/validation/collect_comex.log
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add regions/bahia/data
