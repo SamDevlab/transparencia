@@ -8,7 +8,7 @@ import zipfile
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 
 from transparencia.collectors.bahia_open_data import BahiaOpenDataError
 
@@ -55,6 +55,13 @@ def _year(value: Any) -> int | None:
     return int(match.group(1)) if match else None
 
 
+def _member_year(member: str) -> int | None:
+    """Extrai o ano quando a própria view oficial é anual (ex.: 2026.CSV)."""
+    name = Path(member).name
+    match = re.search(r"(?<!\d)(19\d{2}|20\d{2})(?!\d)", name)
+    return int(match.group(1)) if match else None
+
+
 def _decode_sample(sample: bytes) -> tuple[str, str]:
     for encoding in ("utf-8-sig", "utf-8", "cp1252", "latin-1"):
         try:
@@ -88,6 +95,8 @@ def _spec(zf: zipfile.ZipFile, member: str) -> TableSpec:
         raise BahiaOpenDataError(f"Tabela vazia no ZIP: {member}") from exc
     if len(headers) < 2:
         raise BahiaOpenDataError(f"Tabela sem colunas suficientes: {member}")
+    if not any(str(header).strip() for header in headers):
+        raise BahiaOpenDataError(f"Tabela sem cabeçalho utilizável: {member}")
     return TableSpec(delimiter=delimiter, encoding=encoding, headers=headers)
 
 
@@ -119,17 +128,18 @@ def _money_field(headers: Iterable[str], stage: str) -> str | None:
         if "DESPESA" in normalized:
             score += 3
         if "SALDO" in normalized:
-            score -= 5
+            score -= 8
         if "RETEN" in normalized or "DESCONTO" in normalized:
-            score -= 4
-        if stage == "paid" and ("PAGO" in normalized or "PAGAMENTO" in normalized or "PGTO" in normalized):
+            score -= 6
+        if stage == "paid" and any(token in normalized for token in ("PAGO", "PAGAMENTO", "PGTO")):
             score += 5
         if stage == "committed" and "EMPENH" in normalized:
             score += 5
         if stage == "liquidated" and "LIQUID" in normalized:
             score += 5
         candidates.append((score, header))
-    return max(candidates, default=(0, None), key=lambda item: item[0])[1]
+    best = max(candidates, default=(-999, None), key=lambda item: item[0])
+    return best[1] if best[0] > 0 else None
 
 
 def _payment_value_fields(headers: Iterable[str]) -> list[str]:
@@ -149,9 +159,11 @@ def _payment_value_fields(headers: Iterable[str]) -> list[str]:
             score += 1
         if "RETEN" in normalized or "DESCONTO" in normalized:
             score -= 5
+        if "ESTORN" in normalized or "CANCEL" in normalized:
+            score -= 4
         result.append((score, header))
     result.sort(key=lambda item: (-item[0], _norm(item[1])))
-    return [header for _, header in result[:12]]
+    return [header for score, header in result[:12] if score > 0]
 
 
 def _table_members(zf: zipfile.ZipFile, *, max_uncompressed: int = 8_000_000_000) -> tuple[list[str], int, int]:
@@ -172,9 +184,22 @@ def _privacy_headers(headers: Iterable[str]) -> list[str]:
     return [header for header in headers if any(token in _norm(header) for token in tokens)]
 
 
+def _row_year(row: dict[str, Any], *, year_field: str | None, date_field: str | None, member_year: int | None) -> int | None:
+    if year_field:
+        detected = _year(row.get(year_field))
+        if detected is not None:
+            return detected
+    if date_field:
+        detected = _year(row.get(date_field))
+        if detected is not None:
+            return detected
+    return member_year
+
+
 def _expense_table(zf: zipfile.ZipFile, member: str, *, target_year: int) -> dict[str, Any]:
     spec = _spec(zf, member)
     headers = list(spec.headers)
+    inferred_member_year = _member_year(member)
     year_field = _first(headers, (("ANO", "EXERC"), ("EXERCICIO",), ("ANO",)), reject=("COD",))
     date_field = _first(headers, (("DATA",),), reject=("ATUALIZ",))
     agency_field = _first(headers, (("NOM", "ORGAO"), ("ORGAO",), ("SECRETARIA",)), reject=("COD", "SIGLA"))
@@ -199,7 +224,7 @@ def _expense_table(zf: zipfile.ZipFile, member: str, *, target_year: int) -> dic
         reader = csv.DictReader(text, delimiter=spec.delimiter)
         for row in reader:
             rows += 1
-            row_year = _year(row.get(year_field)) if year_field else _year(row.get(date_field)) if date_field else None
+            row_year = _row_year(row, year_field=year_field, date_field=date_field, member_year=inferred_member_year)
             if row_year is not None:
                 years[row_year] += 1
             if row_year != target_year:
@@ -223,7 +248,10 @@ def _expense_table(zf: zipfile.ZipFile, member: str, *, target_year: int) -> dic
                 for stage, value in values.items():
                     by_function[function][stage] += value
 
-    score = len(stage_fields) * 20 + (12 if year_field or date_field else 0) + (4 if agency_field else 0) + (2 if function_field else 0)
+    has_temporal_scope = bool(year_field or date_field or inferred_member_year)
+    score = len(stage_fields) * 20 + (12 if has_temporal_scope else 0) + (4 if agency_field else 0) + (2 if function_field else 0)
+    if inferred_member_year == target_year:
+        score += 8
     if selected_rows == 0:
         score -= 20
 
@@ -233,6 +261,7 @@ def _expense_table(zf: zipfile.ZipFile, member: str, *, target_year: int) -> dic
 
     return {
         "member": member,
+        "member_year": inferred_member_year,
         "rows": rows,
         "selected_rows": selected_rows,
         "score": score,
@@ -243,6 +272,7 @@ def _expense_table(zf: zipfile.ZipFile, member: str, *, target_year: int) -> dic
             "detected_fields": {
                 "year": year_field,
                 "date": date_field,
+                "member_year": inferred_member_year,
                 "agency": agency_field,
                 "function": function_field,
                 "stages": stage_fields,
@@ -256,24 +286,56 @@ def _expense_table(zf: zipfile.ZipFile, member: str, *, target_year: int) -> dic
     }
 
 
+def _safe_tables(
+    zf: zipfile.ZipFile,
+    members: list[str],
+    parser: Callable[..., dict[str, Any]],
+    *,
+    target_year: int,
+) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
+    tables: list[dict[str, Any]] = []
+    errors: list[dict[str, str]] = []
+    for member in members:
+        try:
+            tables.append(parser(zf, member, target_year=target_year))
+        except Exception as exc:  # noqa: BLE001
+            errors.append({
+                "member": member,
+                "error_type": type(exc).__name__,
+                "error": str(exc)[:500],
+            })
+    return tables, errors
+
+
 def summarize_sefaz_expenses_zip(path: Path, *, target_year: int) -> dict[str, Any]:
     if not zipfile.is_zipfile(path):
         raise BahiaOpenDataError("Recurso de despesas não é um ZIP válido")
     with zipfile.ZipFile(path, "r") as zf:
         members, total_members, uncompressed = _table_members(zf)
-        tables = [_expense_table(zf, member, target_year=target_year) for member in members]
+        tables, table_errors = _safe_tables(zf, members, _expense_table, target_year=target_year)
     candidates = [table for table in tables if table["schema"]["detected_fields"]["stages"] and table["selected_rows"] > 0]
     primary = max(candidates, key=lambda table: (table["score"], table["selected_rows"]), default=None)
     if primary is None:
-        raise BahiaOpenDataError("Nenhuma tabela principal de despesas com estágio financeiro e ano foi identificada")
+        raise BahiaOpenDataError(
+            "Nenhuma tabela principal de despesas com estágio financeiro e escopo temporal foi identificada; "
+            f"membros inválidos={len(table_errors)}"
+        )
     return {
         "dataset": "despesas",
         "selected_year": target_year,
-        "archive": {"members": total_members, "tabular_members": len(tables), "uncompressed_bytes": uncompressed},
+        "archive": {
+            "members": total_members,
+            "candidate_tabular_members": len(members),
+            "processed_tabular_members": len(tables),
+            "invalid_tabular_members": len(table_errors),
+            "uncompressed_bytes": uncompressed,
+        },
         "primary_table": primary,
+        "table_errors": table_errors,
         "tables": [
             {
                 "member": table["member"],
+                "member_year": table["member_year"],
                 "rows": table["rows"],
                 "selected_rows": table["selected_rows"],
                 "score": table["score"],
@@ -283,7 +345,7 @@ def summarize_sefaz_expenses_zip(path: Path, *, target_year: int) -> dict[str, A
             }
             for table in tables
         ],
-        "interpretation": "Somente a tabela principal identificada pelo esquema alimenta os totais anuais. Empenho, liquidação e pagamento permanecem separados. Tabelas relacionadas não são somadas entre si.",
+        "interpretation": "Somente a tabela principal identificada pelo esquema e pelo recorte temporal alimenta os totais anuais. Views anuais podem usar o ano explícito no nome do arquivo. Empenho, liquidação e pagamento permanecem separados. Membros inválidos são registrados, não somados.",
         "privacy_note": "Nenhuma linha bruta, CPF/CNPJ ou nome de credor é republicado. Agregações públicas são limitadas a órgãos e funções.",
     }
 
@@ -291,6 +353,7 @@ def summarize_sefaz_expenses_zip(path: Path, *, target_year: int) -> dict[str, A
 def _payment_table(zf: zipfile.ZipFile, member: str, *, target_year: int) -> dict[str, Any]:
     spec = _spec(zf, member)
     headers = list(spec.headers)
+    inferred_member_year = _member_year(member)
     year_field = _first(headers, (("ANO", "EXERC"), ("EXERCICIO",), ("ANO",)), reject=("COD",))
     date_field = _first(headers, (("DATA", "PAG"), ("DATA",)), reject=("ATUALIZ",))
     agency_field = _first(headers, (("NOM", "ORGAO"), ("ORGAO",), ("SECRETARIA",)), reject=("COD", "SIGLA"))
@@ -308,7 +371,7 @@ def _payment_table(zf: zipfile.ZipFile, member: str, *, target_year: int) -> dic
         reader = csv.DictReader(text, delimiter=spec.delimiter)
         for row in reader:
             rows += 1
-            row_year = _year(row.get(year_field)) if year_field else _year(row.get(date_field)) if date_field else None
+            row_year = _row_year(row, year_field=year_field, date_field=date_field, member_year=inferred_member_year)
             if row_year is not None:
                 years[row_year] += 1
             if row_year != target_year:
@@ -324,7 +387,10 @@ def _payment_table(zf: zipfile.ZipFile, member: str, *, target_year: int) -> dic
                     agency = str(row.get(agency_field) or "Não informado").strip() or "Não informado"
                     by_agency[agency][field] += parsed
 
-    score = len(value_fields) * 12 + (12 if year_field or date_field else 0) + (4 if agency_field else 0)
+    has_temporal_scope = bool(year_field or date_field or inferred_member_year)
+    score = len(value_fields) * 12 + (12 if has_temporal_scope else 0) + (4 if agency_field else 0)
+    if inferred_member_year == target_year:
+        score += 8
     if selected_rows == 0:
         score -= 20
     primary_value_field = value_fields[0] if value_fields else None
@@ -337,6 +403,7 @@ def _payment_table(zf: zipfile.ZipFile, member: str, *, target_year: int) -> dic
         ]
     return {
         "member": member,
+        "member_year": inferred_member_year,
         "rows": rows,
         "selected_rows": selected_rows,
         "score": score,
@@ -347,6 +414,7 @@ def _payment_table(zf: zipfile.ZipFile, member: str, *, target_year: int) -> dic
             "detected_fields": {
                 "year": year_field,
                 "date": date_field,
+                "member_year": inferred_member_year,
                 "agency": agency_field,
                 "payment_value_fields": value_fields,
                 "primary_value_field": primary_value_field,
@@ -364,29 +432,40 @@ def summarize_sefaz_payments_zip(path: Path, *, target_year: int) -> dict[str, A
         raise BahiaOpenDataError("Recurso de pagamentos não é um ZIP válido")
     with zipfile.ZipFile(path, "r") as zf:
         members, total_members, uncompressed = _table_members(zf)
-        tables = [_payment_table(zf, member, target_year=target_year) for member in members]
+        tables, table_errors = _safe_tables(zf, members, _payment_table, target_year=target_year)
     candidates = [
         table for table in tables
         if table["schema"]["detected_fields"]["payment_value_fields"] and table["selected_rows"] > 0
     ]
     primary = max(candidates, key=lambda table: (table["score"], table["selected_rows"]), default=None)
     if primary is None:
-        raise BahiaOpenDataError("Nenhuma tabela principal de pagamentos com valor e ano foi identificada")
+        raise BahiaOpenDataError(
+            "Nenhuma tabela principal de pagamentos com valor e escopo temporal foi identificada; "
+            f"membros inválidos={len(table_errors)}"
+        )
     primary_field = primary["schema"]["detected_fields"]["primary_value_field"]
     primary_sum = primary["value_field_sums"].get(primary_field) if primary_field else None
     return {
         "dataset": "pagamentos",
         "selected_year": target_year,
-        "archive": {"members": total_members, "tabular_members": len(tables), "uncompressed_bytes": uncompressed},
+        "archive": {
+            "members": total_members,
+            "candidate_tabular_members": len(members),
+            "processed_tabular_members": len(tables),
+            "invalid_tabular_members": len(table_errors),
+            "uncompressed_bytes": uncompressed,
+        },
         "primary_table": primary,
         "selected_year_payment": {
             "source_field": primary_field,
             "sum": primary_sum.get("sum") if primary_sum else None,
             "numeric_rows": primary_sum.get("numeric_rows") if primary_sum else 0,
         },
+        "table_errors": table_errors,
         "tables": [
             {
                 "member": table["member"],
+                "member_year": table["member_year"],
                 "rows": table["rows"],
                 "selected_rows": table["selected_rows"],
                 "score": table["score"],
@@ -396,6 +475,6 @@ def summarize_sefaz_payments_zip(path: Path, *, target_year: int) -> dict[str, A
             }
             for table in tables
         ],
-        "interpretation": "O total publicado usa apenas o campo de pagamento identificado na tabela principal. Outros campos monetários permanecem rotulados pelo nome original e tabelas relacionadas não são somadas automaticamente.",
+        "interpretation": "O total publicado usa apenas o campo de pagamento identificado na tabela principal com escopo temporal verificável. Views anuais podem usar o ano explícito no nome do arquivo. Outros campos monetários permanecem rotulados pelo nome original e membros inválidos são registrados, não somados.",
         "privacy_note": "Nenhuma linha bruta, CPF/CNPJ, favorecido ou credor é republicado. Agregações públicas são limitadas a órgãos.",
     }
