@@ -1,8 +1,8 @@
 {
-  "tested_commit": "7121978c6e8e543abc1c1a96134870cbb62b7d9a",
+  "tested_commit": "ad888c6f776a9775d64abef3085d081e26769a01",
   "tests": "success",
   "collector": "success",
-  "workflow_finished_at": "2026-08-21T08:50:34.306411+00:00",
+  "workflow_finished_at": "2026-08-21T09:08:55.258437+00:00",
   "latest": {
     "collection_mode": "metadata_only",
     "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
@@ -11,15 +11,16 @@
         "receitas",
         "licitacoes",
         "despesas",
-        "pagamentos"
+        "pagamentos",
+        "contratos"
       ],
-      "expected": 4,
+      "expected": 5,
       "last_run_datasets": [
         "receitas",
         "licitacoes"
       ],
       "last_run_processed": 2,
-      "processed": 2,
+      "processed": 4,
       "reference_year": 2026
     },
     "snapshot": "2026-08-21",
@@ -33,11 +34,18 @@
   },
   "sefaz_data": {
     "despesas": {
-      "error": "Tabela sem colunas suficientes: 2025.CSV",
-      "error_type": "BahiaOpenDataError",
-      "note": "Falha de download/processamento não é convertida em zero registros ou zero reais.",
+      "bytes": 221670223,
+      "declared_size": 221670223,
+      "download_mode": "whole_with_retries",
+      "output": "sefaz_despesas.json",
+      "resource_id": "6356ec2d-6bc0-476e-bfd5-7cdc78864d55",
+      "resource_last_modified": "2026-08-20T10:13:17",
+      "resource_name": "Despesas.zip",
+      "rows": 2216886,
       "selected_year": 2026,
-      "status": "unavailable"
+      "sha256": "381a12450a88ebe20559751258db8e67d23b8c30a83ed87261749ee02014eb5c",
+      "status": "processed",
+      "tls_verified": false
     },
     "licitacoes": {
       "bytes": 130216796,
@@ -54,11 +62,18 @@
       "tls_verified": false
     },
     "pagamentos": {
-      "error": "peer closed connection without sending complete message body (received 312633059 bytes, expected 498799120)",
-      "error_type": "RemoteProtocolError",
-      "note": "Falha de download/processamento não é convertida em zero registros ou zero reais.",
+      "bytes": 498799120,
+      "declared_size": 498799120,
+      "download_mode": "http_range",
+      "output": "sefaz_pagamentos.json",
+      "resource_id": "2319e322-587b-4cea-b6e5-e184ebf040ef",
+      "resource_last_modified": "2026-08-20T10:36:46",
+      "resource_name": "Pagamentos.zip",
+      "rows": 3470605,
       "selected_year": 2026,
-      "status": "unavailable"
+      "sha256": "a0e8309602145a0c7b311a979863e4a7dc175fc450d967d417d921aab7a60996",
+      "status": "processed",
+      "tls_verified": false
     },
     "receitas": {
       "bytes": 189198575,
@@ -80,18 +95,19 @@
       "receitas",
       "licitacoes",
       "despesas",
-      "pagamentos"
+      "pagamentos",
+      "contratos"
     ],
-    "expected": 4,
+    "expected": 5,
     "last_run_datasets": [
       "receitas",
       "licitacoes"
     ],
     "last_run_processed": 2,
-    "processed": 2,
+    "processed": 4,
     "reference_year": 2026
   },
   "collector_log_tail": [
-    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"requested_processed\": 2, \"requested_expected\": 2, \"total_processed\": 2, \"total_expected\": 4, \"datasets\": {\"receitas\": {\"status\": \"processed\", \"output\": \"sefaz_receitas.json\", \"resource_id\": \"70483fa8-362c-40c3-9389-67bff289fee5\", \"resource_name\": \"Receitas.csv\", \"resource_last_modified\": \"2026-08-20T10:05:01\", \"sha256\": \"c7b972121d18444bb3b3b7e8b9e7ee06e2aa5ec12c5888fa250df6d1bbaed641\", \"bytes\": 189198575, \"declared_size\": 189198575, \"tls_verified\": false, \"download_mode\": \"whole_with_retries\", \"rows\": 290280, \"selected_year\": 2026}, \"licitacoes\": {\"status\": \"processed\", \"output\": \"sefaz_licitacoes.json\", \"resource_id\": \"c5040c7d-4375-459e-93b0-beca841f63b4\", \"resource_name\": \"Licitacoes.zip\", \"resource_last_modified\": \"2026-08-20T11:13:12\", \"sha256\": \"95409ee6d9aacced3a4a6a0fe455b6c7450ea5f001056e3ee78c83768b6d7391\", \"bytes\": 130216796, \"declared_size\": 130216796, \"tls_verified\": false, \"download_mode\": \"whole_with_retries\", \"rows\": 3045273, \"selected_year\": 2026}}}"
+    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"requested_processed\": 2, \"requested_expected\": 2, \"total_processed\": 4, \"total_expected\": 5, \"datasets\": {\"receitas\": {\"status\": \"processed\", \"output\": \"sefaz_receitas.json\", \"resource_id\": \"70483fa8-362c-40c3-9389-67bff289fee5\", \"resource_name\": \"Receitas.csv\", \"resource_last_modified\": \"2026-08-20T10:05:01\", \"sha256\": \"c7b972121d18444bb3b3b7e8b9e7ee06e2aa5ec12c5888fa250df6d1bbaed641\", \"bytes\": 189198575, \"declared_size\": 189198575, \"tls_verified\": false, \"download_mode\": \"whole_with_retries\", \"rows\": 290280, \"selected_year\": 2026}, \"licitacoes\": {\"status\": \"processed\", \"output\": \"sefaz_licitacoes.json\", \"resource_id\": \"c5040c7d-4375-459e-93b0-beca841f63b4\", \"resource_name\": \"Licitacoes.zip\", \"resource_last_modified\": \"2026-08-20T11:13:12\", \"sha256\": \"95409ee6d9aacced3a4a6a0fe455b6c7450ea5f001056e3ee78c83768b6d7391\", \"bytes\": 130216796, \"declared_size\": 130216796, \"tls_verified\": false, \"download_mode\": \"whole_with_retries\", \"rows\": 3045273, \"selected_year\": 2026}}}"
   ]
 }
