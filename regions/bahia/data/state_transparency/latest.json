@@ -1,12 +1,12 @@
 {
-  "collection_mode": "metadata_only",
+  "collection_mode": "full",
   "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
   "snapshot": "2026-08-21",
-  "status": "complete_for_metadata_collection",
+  "status": "partial_with_verified_sources",
   "summary": {
     "ckan_datasets_collected": 6,
     "ckan_datasets_expected": 6,
-    "tce_datasets_expected": 0,
+    "tce_datasets_expected": 3,
     "tce_datasets_processed": 0
   }
 }
