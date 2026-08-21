@@ -13,8 +13,8 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
+from transparencia.collectors.bahia_sefaz_download import download_ckan_resource_resilient  # noqa: E402
 from transparencia.collectors.bahia_sefaz_files import (  # noqa: E402
-    download_ckan_resource,
     summarize_sefaz_licitacoes_zip,
     summarize_sefaz_revenues,
 )
@@ -109,7 +109,7 @@ def main() -> int:
     headers = {
         "Accept": "text/csv,application/zip,application/octet-stream,*/*",
         "Accept-Encoding": "identity",
-        "User-Agent": "Mozilla/5.0 transparencia-municipal/0.7",
+        "User-Agent": "Mozilla/5.0 transparencia-municipal/0.8",
     }
 
     processors = {
@@ -150,7 +150,16 @@ def main() -> int:
                 config["formats"],
                 preferred_names=config.get("preferred_names", ()),
             )
-            temp, evidence, transport = download_ckan_resource(resource["url"], headers=headers)
+            declared_size = resource.get("size")
+            try:
+                expected_size = int(declared_size) if declared_size not in (None, "") else None
+            except (TypeError, ValueError):
+                expected_size = None
+            temp, evidence, transport = download_ckan_resource_resilient(
+                resource["url"],
+                expected_size=expected_size,
+                headers=headers,
+            )
             summary = config["process"](temp)
             payload = {
                 "source": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
@@ -178,7 +187,9 @@ def main() -> int:
                 "resource_last_modified": resource.get("last_modified"),
                 "sha256": evidence.sha256,
                 "bytes": evidence.bytes,
+                "declared_size": expected_size,
                 "tls_verified": transport.get("tls_verified"),
+                "download_mode": transport.get("download_mode"),
                 "rows": summary_rows(dataset, summary),
                 "selected_year": args.year,
             }
@@ -187,11 +198,13 @@ def main() -> int:
                 "url": evidence.url,
                 "sha256": evidence.sha256,
                 "bytes": evidence.bytes,
+                "declared_size": expected_size,
                 "content_type": evidence.content_type,
                 "resource_id": resource.get("id"),
                 "resource_name": resource.get("name"),
                 "resource_last_modified": resource.get("last_modified"),
                 "tls_verified": transport.get("tls_verified"),
+                "download_mode": transport.get("download_mode"),
             })
             requested_processed += 1
         except Exception as exc:  # noqa: BLE001
