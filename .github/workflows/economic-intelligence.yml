@@ -18,12 +18,18 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: economic-intelligence-bahia
+  cancel-in-progress: false
+
 jobs:
   atualizar:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -68,8 +74,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add regions/bahia/data
           if ! git diff --cached --quiet; then
-            git commit -m "data(economia): registrar coleta e diagnóstico"
-            git push
+            git commit -m "data(economia): registrar coleta e diagnóstico [skip ci]"
+            git pull --rebase origin city/salvador
+            git push origin HEAD:city/salvador
           else
             echo "Nenhuma alteração econômica para versionar."
           fi
