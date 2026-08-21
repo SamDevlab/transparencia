@@ -1,9 +1,22 @@
 {
   "bahia": {
     "api": "https://api-comexstat.mdic.gov.br",
-    "countries": 0,
-    "current_export_rows": 0,
-    "current_import_rows": 0,
+    "countries": 159,
+    "current_export_rows": 10310,
+    "current_import_rows": 11603,
+    "details": [
+      "country",
+      "state",
+      "heading"
+    ],
+    "filters": [
+      {
+        "filter": "state",
+        "values": [
+          32
+        ]
+      }
+    ],
     "methodology": "Bahia / dados gerais: exportação por UF corresponde à UF produtora; importação por UF corresponde ao domicílio fiscal do importador.",
     "note": "Completo apenas para as consultas descritas no manifesto; não significa completude de toda a economia regional.",
     "period_current": {
@@ -14,9 +27,9 @@
       "from": "2025-01",
       "to": "2025-07"
     },
-    "previous_export_rows": 0,
-    "previous_import_rows": 0,
-    "products": 0,
+    "previous_export_rows": 10173,
+    "previous_import_rows": 11891,
+    "products": 866,
     "scope": "bahia",
     "source": "MDIC / Comex Stat",
     "source_month": 7,
@@ -30,11 +43,36 @@
     "source": "SEI - cadeia regional de valor (matriz interestadual 2017) + MIP Bahia 2012",
     "status": "historical_baseline_normalized"
   },
+  "resolved_filters": {
+    "cities_bahia": 32,
+    "general_bahia": 32,
+    "salvador": 2927408
+  },
   "salvador": {
     "api": "https://api-comexstat.mdic.gov.br",
-    "countries": 0,
-    "current_export_rows": 0,
-    "current_import_rows": 0,
+    "countries": 84,
+    "current_export_rows": 5066,
+    "current_import_rows": 1710,
+    "details": [
+      "country",
+      "state",
+      "city",
+      "heading"
+    ],
+    "filters": [
+      {
+        "filter": "state",
+        "values": [
+          32
+        ]
+      },
+      {
+        "filter": "city",
+        "values": [
+          2927408
+        ]
+      }
+    ],
     "methodology": "Salvador / dados municipais: exportação e importação correspondem ao domicílio fiscal da empresa declarante; não provam produção ou consumo físico no município.",
     "note": "Completo apenas para as consultas descritas no manifesto; não significa completude de toda a economia regional.",
     "period_current": {
@@ -45,9 +83,9 @@
       "from": "2025-01",
       "to": "2025-07"
     },
-    "previous_export_rows": 0,
-    "previous_import_rows": 0,
-    "products": 0,
+    "previous_export_rows": 4957,
+    "previous_import_rows": 1868,
+    "products": 549,
     "scope": "salvador",
     "source": "MDIC / Comex Stat",
     "source_month": 7,

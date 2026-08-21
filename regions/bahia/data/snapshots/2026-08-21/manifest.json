@@ -3,44 +3,59 @@
   "hash_algorithm": "SHA-256",
   "raw_files": [
     {
-      "bytes": 342,
+      "bytes": 1291,
+      "file": "filter_general_state.json",
+      "sha256": "40b3ca9b101314936800c50470c3d388aeab5617fd5347d6b5fc1fc342ca9bdd"
+    },
+    {
+      "bytes": 1290,
+      "file": "filter_cities_state.json",
+      "sha256": "d09629cf4b5a472ab9c7784921da376d23e50ac96c522bcdcbbff42334d3c612"
+    },
+    {
+      "bytes": 369131,
+      "file": "filter_cities_city.json",
+      "sha256": "9eda0e1552a72b64cfd709c37e8a25a767ee50ef93b149644d03d7514d4da308"
+    },
+    {
+      "bytes": 2727854,
       "file": "bahia_current_export.json",
-      "sha256": "f5c877f746eaef43425065fb636ee7088badb4b834f0e6027cca28fc2bb8fb1c"
+      "sha256": "7ed95e1e5f583f8321f3415fa41e977731034e9c1ff01cf0998a69f9dba38491"
     },
     {
-      "bytes": 342,
+      "bytes": 3419609,
       "file": "bahia_current_import.json",
-      "sha256": "5eb6d41103a93f13f2ed224878c37acc198706199eccfdf3dd139afacd82d683"
+      "sha256": "57e16928576de9200628d78298766ce2385378c9d6076bcda3b4f6c5cb0a3c18"
     },
     {
-      "bytes": 342,
+      "bytes": 2679017,
       "file": "bahia_previous_export.json",
-      "sha256": "b21d98e85e657b25ed6eeadcd6634e7f7b4deaa00fb36ae581fcedc8d593fd59"
+      "sha256": "015b10b35a53841137b4d1e9ecc643cb42f2f3c36a4d5b0708ef9662c1ed2979"
     },
     {
-      "bytes": 342,
+      "bytes": 3513021,
       "file": "bahia_previous_import.json",
-      "sha256": "cd68399861cff9b0e26d2935f8127c2793588df638e0ad24a8d28f72556ed8f1"
+      "sha256": "776f00fb9ae7028e2173b3e24589ca237d3dc7c78a5d4914d1aaba285cba9a87"
     },
     {
-      "bytes": 378,
+      "bytes": 1459779,
       "file": "salvador_current_export.json",
-      "sha256": "629d1d0d34c87a301e1c68f60a089f31d73bf60e66fa953e544330ca001f3eed"
+      "sha256": "5f0a9fccc34db088a73c1a393a6762b3c8218951ef0d275a2b8b69360bf142ef"
     },
     {
-      "bytes": 378,
+      "bytes": 555849,
       "file": "salvador_current_import.json",
-      "sha256": "05c7dad5c18637f0d10ff310e05695dd41d6d236f4dd77fd2940313ee2450431"
+      "sha256": "14b47dfec2567a4410fdeee6b6f8ec3c3bc4e40db63a2ff96b2247086a3c8f4f"
     },
     {
-      "bytes": 378,
+      "bytes": 1420207,
       "file": "salvador_previous_export.json",
-      "sha256": "afe313d634c40a3a19b2dee667dc491c44145a591bda44890b8ed17258d76be1"
+      "sha256": "18d67b8b87657ce16e4ab574257c0eaf1bae7ea851e067795bae2f457d9bd427"
     },
     {
-      "bytes": 378,
+      "bytes": 610339,
       "file": "salvador_previous_import.json",
-      "sha256": "100de2f38447f18047194ba00fe06a75989b630f859510af859b4b93ab0d227f"
+      "sha256": "31b46dd237df3507f46656344fe631a4cf015b68dcdf2c834d96f626665a6f5b"
     }
   ]
 }

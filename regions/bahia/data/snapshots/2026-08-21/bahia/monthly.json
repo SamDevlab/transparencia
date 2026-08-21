@@ -1,1 +1,51 @@
-[]
+[
+  {
+    "balance_fob": 35003395.0,
+    "exports_fob": 843952052.0,
+    "imports_fob": 808948657.0,
+    "month": "2026-01",
+    "trade_flow_fob": 1652900709.0
+  },
+  {
+    "balance_fob": 260075765.0,
+    "exports_fob": 1049216704.0,
+    "imports_fob": 789140939.0,
+    "month": "2026-02",
+    "trade_flow_fob": 1838357643.0
+  },
+  {
+    "balance_fob": 78245012.0,
+    "exports_fob": 1106870452.0,
+    "imports_fob": 1028625440.0,
+    "month": "2026-03",
+    "trade_flow_fob": 2135495892.0
+  },
+  {
+    "balance_fob": 217585496.0,
+    "exports_fob": 1146948224.0,
+    "imports_fob": 929362728.0,
+    "month": "2026-04",
+    "trade_flow_fob": 2076310952.0
+  },
+  {
+    "balance_fob": 96946987.0,
+    "exports_fob": 1189319210.0,
+    "imports_fob": 1092372223.0,
+    "month": "2026-05",
+    "trade_flow_fob": 2281691433.0
+  },
+  {
+    "balance_fob": -7754066.0,
+    "exports_fob": 1085771052.0,
+    "imports_fob": 1093525118.0,
+    "month": "2026-06",
+    "trade_flow_fob": 2179296170.0
+  },
+  {
+    "balance_fob": 263027611.0,
+    "exports_fob": 1088904965.0,
+    "imports_fob": 825877354.0,
+    "month": "2026-07",
+    "trade_flow_fob": 1914782319.0
+  }
+]

@@ -1,26 +1,26 @@
 {
-  "balance_change_fob": 0,
-  "balance_fob": 0,
+  "balance_change_fob": -270483275.0,
+  "balance_fob": 943130200.0,
   "comparison_period": {
     "from": "2025-01",
     "to": "2025-07"
   },
-  "exports_fob": 0,
-  "exports_yoy": null,
-  "imports_fob": 0,
-  "imports_yoy": null,
+  "exports_fob": 7510982659.0,
+  "exports_yoy": 0.1555374690438628,
+  "imports_fob": 6567852459.0,
+  "imports_yoy": 0.24241088623011572,
   "methodology": "Bahia / dados gerais: exportação por UF corresponde à UF produtora; importação por UF corresponde ao domicílio fiscal do importador.",
   "period": {
     "from": "2026-01",
     "to": "2026-07"
   },
   "previous_period": {
-    "balance_fob": 0,
-    "exports_fob": 0,
-    "imports_fob": 0,
-    "trade_flow_fob": 0
+    "balance_fob": 1213613475.0,
+    "exports_fob": 6499990576.0,
+    "imports_fob": 5286377101.0,
+    "trade_flow_fob": 11786367677.0
   },
   "source": "MDIC / Comex Stat",
   "source_updated_at": "2026-08-06",
-  "trade_flow_fob": 0
+  "trade_flow_fob": 14078835118.0
 }

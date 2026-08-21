@@ -1,1 +1,758 @@
-[]
+[
+  {
+    "balance_fob": -69696697.0,
+    "country": "Argentina",
+    "country_code": "",
+    "export_share": 0.03685342981075304,
+    "exports_fob": 3248404.0,
+    "import_share": 0.269205420036286,
+    "imports_fob": 72945101.0
+  },
+  {
+    "balance_fob": -40852477.0,
+    "country": "Estados Unidos",
+    "country_code": "",
+    "export_share": 0.03315432977575571,
+    "exports_fob": 2922351.0,
+    "import_share": 0.16155191777383615,
+    "imports_fob": 43774828.0
+  },
+  {
+    "balance_fob": 964699.0,
+    "country": "China",
+    "country_code": "",
+    "export_share": 0.24522574864875463,
+    "exports_fob": 21615147.0,
+    "import_share": 0.07621091000720503,
+    "imports_fob": 20650448.0
+  },
+  {
+    "balance_fob": -38599753.0,
+    "country": "Bolívia",
+    "country_code": "",
+    "export_share": 0.0013785416642463813,
+    "exports_fob": 121510.0,
+    "import_share": 0.14290163050498073,
+    "imports_fob": 38721263.0
+  },
+  {
+    "balance_fob": 20181674.0,
+    "country": "Países Baixos (Holanda)",
+    "country_code": "",
+    "export_share": 0.22993021000938102,
+    "exports_fob": 20266939.0,
+    "import_share": 0.00031467226482274565,
+    "imports_fob": 85265.0
+  },
+  {
+    "balance_fob": -17670729.0,
+    "country": "Trinidad e Tobago",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 0.06521419475164453,
+    "imports_fob": 17670729.0
+  },
+  {
+    "balance_fob": -12783680.0,
+    "country": "Rússia",
+    "country_code": "",
+    "export_share": 0.011426738775442041,
+    "exports_fob": 1007197.0,
+    "import_share": 0.050895519843803576,
+    "imports_fob": 13790877.0
+  },
+  {
+    "balance_fob": -11151613.0,
+    "country": "Uruguai",
+    "country_code": "",
+    "export_share": 0.003528503944097214,
+    "exports_fob": 311016.0,
+    "import_share": 0.042303071931658755,
+    "imports_fob": 11462629.0
+  },
+  {
+    "balance_fob": 5956975.0,
+    "country": "Portugal",
+    "country_code": "",
+    "export_share": 0.09994110537826158,
+    "exports_fob": 8809196.0,
+    "import_share": 0.010526181221427271,
+    "imports_fob": 2852221.0
+  },
+  {
+    "balance_fob": 723626.0,
+    "country": "Espanha",
+    "country_code": "",
+    "export_share": 0.05108021576360975,
+    "exports_fob": 4502408.0,
+    "import_share": 0.013945673960141023,
+    "imports_fob": 3778782.0
+  },
+  {
+    "balance_fob": 2584055.0,
+    "country": "França",
+    "country_code": "",
+    "export_share": 0.06144832167118776,
+    "exports_fob": 5416293.0,
+    "import_share": 0.010452433542215955,
+    "imports_fob": 2832238.0
+  },
+  {
+    "balance_fob": -3999887.0,
+    "country": "Reino Unido",
+    "country_code": "",
+    "export_share": 0.016114007335643252,
+    "exports_fob": 1420351.0,
+    "import_share": 0.0200035016400435,
+    "imports_fob": 5420238.0
+  },
+  {
+    "balance_fob": -5573928.0,
+    "country": "Alemanha",
+    "country_code": "",
+    "export_share": 0.0023488076403087896,
+    "exports_fob": 207033.0,
+    "import_share": 0.021334757411856732,
+    "imports_fob": 5780961.0
+  },
+  {
+    "balance_fob": -3700457.0,
+    "country": "Itália",
+    "country_code": "",
+    "export_share": 0.0077004672542635745,
+    "exports_fob": 678749.0,
+    "import_share": 0.01616155128300424,
+    "imports_fob": 4379206.0
+  },
+  {
+    "balance_fob": -506103.0,
+    "country": "Egito",
+    "country_code": "",
+    "export_share": 0.023584362166436255,
+    "exports_fob": 2078817.0,
+    "import_share": 0.009539701293445278,
+    "imports_fob": 2584920.0
+  },
+  {
+    "balance_fob": -4024516.0,
+    "country": "Áustria",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 0.01485256042380082,
+    "imports_fob": 4024516.0
+  },
+  {
+    "balance_fob": -587695.0,
+    "country": "Japão",
+    "country_code": "",
+    "export_share": 0.014923419747206023,
+    "exports_fob": 1315408.0,
+    "import_share": 0.007023441402697023,
+    "imports_fob": 1903103.0
+  },
+  {
+    "balance_fob": 2780962.0,
+    "country": "Angola",
+    "country_code": "",
+    "export_share": 0.0315502591036618,
+    "exports_fob": 2780962.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": 145725.0,
+    "country": "México",
+    "country_code": "",
+    "export_share": 0.015847318347893772,
+    "exports_fob": 1396844.0,
+    "import_share": 0.004617280822057921,
+    "imports_fob": 1251119.0
+  },
+  {
+    "balance_fob": -2594158.0,
+    "country": "Turquia",
+    "country_code": "",
+    "export_share": 2.5378962249355236e-05,
+    "exports_fob": 2237.0,
+    "import_share": 0.009582050020811032,
+    "imports_fob": 2596395.0
+  },
+  {
+    "balance_fob": 2276235.0,
+    "country": "República Dominicana",
+    "country_code": "",
+    "export_share": 0.027364307299774623,
+    "exports_fob": 2411996.0,
+    "import_share": 0.0005010288083574828,
+    "imports_fob": 135761.0
+  },
+  {
+    "balance_fob": 414265.0,
+    "country": "Chile",
+    "country_code": "",
+    "export_share": 0.01635223149715955,
+    "exports_fob": 1441349.0,
+    "import_share": 0.003790474971479562,
+    "imports_fob": 1027084.0
+  },
+  {
+    "balance_fob": -2436227.0,
+    "country": "Irlanda",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 0.008990946668765884,
+    "imports_fob": 2436227.0
+  },
+  {
+    "balance_fob": -1777063.0,
+    "country": "Chipre",
+    "country_code": "",
+    "export_share": 0.0004036582372964056,
+    "exports_fob": 35580.0,
+    "import_share": 0.006689596881781459,
+    "imports_fob": 1812643.0
+  },
+  {
+    "balance_fob": 1789331.0,
+    "country": "Panamá",
+    "country_code": "",
+    "export_share": 0.020303124419131485,
+    "exports_fob": 1789596.0,
+    "import_share": 9.779880393834234e-07,
+    "imports_fob": 265.0
+  },
+  {
+    "balance_fob": 1705538.0,
+    "country": "Cuba",
+    "country_code": "",
+    "export_share": 0.019349478997246684,
+    "exports_fob": 1705538.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": -1145393.0,
+    "country": "Canadá",
+    "country_code": "",
+    "export_share": 0.0021832487685587492,
+    "exports_fob": 192440.0,
+    "import_share": 0.004937300651669598,
+    "imports_fob": 1337833.0
+  },
+  {
+    "balance_fob": -943337.0,
+    "country": "Taiwan (Formosa)",
+    "country_code": "",
+    "export_share": 0.00023975574842003764,
+    "exports_fob": 21133.0,
+    "import_share": 0.0035593966956382274,
+    "imports_fob": 964470.0
+  },
+  {
+    "balance_fob": -850508.0,
+    "country": "Malásia",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 0.0031388175524525155,
+    "imports_fob": 850508.0
+  },
+  {
+    "balance_fob": -803916.0,
+    "country": "Tcheca, República",
+    "country_code": "",
+    "export_share": 1.162871538023653e-05,
+    "exports_fob": 1025.0,
+    "import_share": 0.00297065158645031,
+    "imports_fob": 804941.0
+  },
+  {
+    "balance_fob": -767042.0,
+    "country": "Índia",
+    "country_code": "",
+    "export_share": 2.042115871651293e-07,
+    "exports_fob": 18.0,
+    "import_share": 0.002830850964111127,
+    "imports_fob": 767060.0
+  },
+  {
+    "balance_fob": -639441.0,
+    "country": "Suíça",
+    "country_code": "",
+    "export_share": 4.011623178977207e-05,
+    "exports_fob": 3536.0,
+    "import_share": 0.002372920058862775,
+    "imports_fob": 642977.0
+  },
+  {
+    "balance_fob": 304441.0,
+    "country": "Colômbia",
+    "country_code": "",
+    "export_share": 0.004404435511977509,
+    "exports_fob": 388224.0,
+    "import_share": 0.00030920291284400515,
+    "imports_fob": 83783.0
+  },
+  {
+    "balance_fob": 447034.0,
+    "country": "Brasil",
+    "country_code": "",
+    "export_share": 0.005196447462621111,
+    "exports_fob": 458035.0,
+    "import_share": 4.0599420457573735e-05,
+    "imports_fob": 11001.0
+  },
+  {
+    "balance_fob": -398401.0,
+    "country": "Israel",
+    "country_code": "",
+    "export_share": 0.0002836272043960129,
+    "exports_fob": 25000.0,
+    "import_share": 0.0015625702409923805,
+    "imports_fob": 423401.0
+  },
+  {
+    "balance_fob": -403646.0,
+    "country": "Polônia",
+    "country_code": "",
+    "export_share": 9.20653905469458e-05,
+    "exports_fob": 8115.0,
+    "import_share": 0.0015196125776775766,
+    "imports_fob": 411761.0
+  },
+  {
+    "balance_fob": -321095.0,
+    "country": "Bélgica",
+    "country_code": "",
+    "export_share": 0.00021535246375380468,
+    "exports_fob": 18982.0,
+    "import_share": 0.0012550612772430055,
+    "imports_fob": 340077.0
+  },
+  {
+    "balance_fob": -148615.0,
+    "country": "Singapura",
+    "country_code": "",
+    "export_share": 0.001161362641296266,
+    "exports_fob": 102367.0,
+    "import_share": 0.0009262543173604919,
+    "imports_fob": 250982.0
+  },
+  {
+    "balance_fob": -194795.0,
+    "country": "Tailândia",
+    "country_code": "",
+    "export_share": 0.0007942923133669463,
+    "exports_fob": 70012.0,
+    "import_share": 0.00097727576884908,
+    "imports_fob": 264807.0
+  },
+  {
+    "balance_fob": 314991.0,
+    "country": "Luxemburgo",
+    "country_code": "",
+    "export_share": 0.0035736006695961803,
+    "exports_fob": 314991.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": -252728.0,
+    "country": "Grécia",
+    "country_code": "",
+    "export_share": 8.953543588373335e-05,
+    "exports_fob": 7892.0,
+    "import_share": 0.0009618235578268218,
+    "imports_fob": 260620.0
+  },
+  {
+    "balance_fob": 248719.0,
+    "country": "Marshall, Ilhas",
+    "country_code": "",
+    "export_share": 0.0028217389860068776,
+    "exports_fob": 248719.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": -207618.0,
+    "country": "Vietnã",
+    "country_code": "",
+    "export_share": 7.75323325936941e-05,
+    "exports_fob": 6834.0,
+    "import_share": 0.0007914395887617129,
+    "imports_fob": 214452.0
+  },
+  {
+    "balance_fob": -192336.0,
+    "country": "Indonésia",
+    "country_code": "",
+    "export_share": 6.108195473872534e-05,
+    "exports_fob": 5384.0,
+    "import_share": 0.0007296897930071339,
+    "imports_fob": 197720.0
+  },
+  {
+    "balance_fob": -187706.0,
+    "country": "Suécia",
+    "country_code": "",
+    "export_share": 1.4816685157647714e-05,
+    "exports_fob": 1306.0,
+    "import_share": 0.0006975527369809042,
+    "imports_fob": 189012.0
+  },
+  {
+    "balance_fob": -186016.0,
+    "country": "Finlândia",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 0.0006864959363545166,
+    "imports_fob": 186016.0
+  },
+  {
+    "balance_fob": 176055.0,
+    "country": "Libéria",
+    "country_code": "",
+    "export_share": 0.0019973594987976024,
+    "exports_fob": 176055.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": -131345.0,
+    "country": "Noruega",
+    "country_code": "",
+    "export_share": 0.00014219933519598503,
+    "exports_fob": 12534.0,
+    "import_share": 0.0005309884570507456,
+    "imports_fob": 143879.0
+  },
+  {
+    "balance_fob": 131931.0,
+    "country": "Guiana",
+    "country_code": "",
+    "export_share": 0.0014967688281268153,
+    "exports_fob": 131931.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": -113973.0,
+    "country": "Costa Rica",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 0.0004206197389156487,
+    "imports_fob": 113973.0
+  },
+  {
+    "balance_fob": -111227.0,
+    "country": "Peru",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 0.00041048556851509447,
+    "imports_fob": 111227.0
+  },
+  {
+    "balance_fob": -19292.0,
+    "country": "Coreia do Sul",
+    "country_code": "",
+    "export_share": 0.0005145678193034225,
+    "exports_fob": 45356.0,
+    "import_share": 0.0002385847953587153,
+    "imports_fob": 64648.0
+  },
+  {
+    "balance_fob": -106332.0,
+    "country": "Marrocos",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 0.0003924204686932761,
+    "imports_fob": 106332.0
+  },
+  {
+    "balance_fob": -76751.0,
+    "country": "Irã",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 0.00028325116985176274,
+    "imports_fob": 76751.0
+  },
+  {
+    "balance_fob": 70682.0,
+    "country": "Turcas e Caicos, Ilhas",
+    "country_code": "",
+    "export_share": 0.0008018935224447594,
+    "exports_fob": 70682.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": -68958.0,
+    "country": "Romênia",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 0.0002544909404520834,
+    "imports_fob": 68958.0
+  },
+  {
+    "balance_fob": -35494.0,
+    "country": "Hong Kong",
+    "country_code": "",
+    "export_share": 0.00016625092212876693,
+    "exports_fob": 14654.0,
+    "import_share": 0.00018507224226037703,
+    "imports_fob": 50148.0
+  },
+  {
+    "balance_fob": 62310.0,
+    "country": "Malta",
+    "country_code": "",
+    "export_share": 0.0007069124442366226,
+    "exports_fob": 62310.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": -2778.0,
+    "country": "Austrália",
+    "country_code": "",
+    "export_share": 0.0002869172799670067,
+    "exports_fob": 25290.0,
+    "import_share": 0.00010358554071476953,
+    "imports_fob": 28068.0
+  },
+  {
+    "balance_fob": 46175.0,
+    "country": "Paraguai",
+    "country_code": "",
+    "export_share": 0.0005238594465194359,
+    "exports_fob": 46175.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": 44457.0,
+    "country": "Bahamas",
+    "country_code": "",
+    "export_share": 0.0005043685850333418,
+    "exports_fob": 44457.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": -32523.0,
+    "country": "Eslovênia",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 0.00012002681133912104,
+    "imports_fob": 32523.0
+  },
+  {
+    "balance_fob": -27840.0,
+    "country": "Tunísia",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 0.00010274410194880945,
+    "imports_fob": 27840.0
+  },
+  {
+    "balance_fob": 27513.0,
+    "country": "Bulgária",
+    "country_code": "",
+    "export_share": 0.00031213741098190013,
+    "exports_fob": 27513.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": 25277.0,
+    "country": "Ilha de Man",
+    "country_code": "",
+    "export_share": 0.0002867697938207207,
+    "exports_fob": 25277.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": 22783.0,
+    "country": "Arábia Saudita",
+    "country_code": "",
+    "export_share": 0.0002584751439101745,
+    "exports_fob": 22783.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": 21198.0,
+    "country": "Emirados Árabes Unidos",
+    "country_code": "",
+    "export_share": 0.00024631320938567347,
+    "exports_fob": 21711.0,
+    "import_share": 1.8932372234101742e-06,
+    "imports_fob": 513.0
+  },
+  {
+    "balance_fob": 14743.0,
+    "country": "Barbados",
+    "country_code": "",
+    "export_share": 0.00016726063497641674,
+    "exports_fob": 14743.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": -373.0,
+    "country": "Dinamarca",
+    "country_code": "",
+    "export_share": 7.881432755756407e-05,
+    "exports_fob": 6947.0,
+    "import_share": 2.7014613012402486e-05,
+    "imports_fob": 7320.0
+  },
+  {
+    "balance_fob": 12007.0,
+    "country": "Botsuana",
+    "country_code": "",
+    "export_share": 0.00013622047372731708,
+    "exports_fob": 12007.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": -7628.0,
+    "country": "Macedônia",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 2.8151293450629256e-05,
+    "imports_fob": 7628.0
+  },
+  {
+    "balance_fob": 5478.0,
+    "country": "Gibraltar",
+    "country_code": "",
+    "export_share": 6.214839302725435e-05,
+    "exports_fob": 5478.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": 4691.0,
+    "country": "Moçambique",
+    "country_code": "",
+    "export_share": 5.3219808632867866e-05,
+    "exports_fob": 4691.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": 4095.0,
+    "country": "Filipinas",
+    "country_code": "",
+    "export_share": 4.6458136080066914e-05,
+    "exports_fob": 4095.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": 3688.0,
+    "country": "Antígua e Barbuda",
+    "country_code": "",
+    "export_share": 4.1840685192499824e-05,
+    "exports_fob": 3688.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": 3167.0,
+    "country": "Cayman, Ilhas",
+    "country_code": "",
+    "export_share": 3.592989425288692e-05,
+    "exports_fob": 3167.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": 2728.0,
+    "country": "Coveite (Kuweit)",
+    "country_code": "",
+    "export_share": 3.094940054369293e-05,
+    "exports_fob": 2728.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": -1976.0,
+    "country": "Azerbaijão",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 7.292469304987338e-06,
+    "imports_fob": 1976.0
+  },
+  {
+    "balance_fob": -1661.0,
+    "country": "Estônia",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 6.129955220437231e-06,
+    "imports_fob": 1661.0
+  },
+  {
+    "balance_fob": -1062.0,
+    "country": "Camboja",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 3.9193331993403604e-06,
+    "imports_fob": 1062.0
+  },
+  {
+    "balance_fob": -912.0,
+    "country": "Nigéria",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 3.36575506384031e-06,
+    "imports_fob": 912.0
+  },
+  {
+    "balance_fob": -800.0,
+    "country": "Porto Rico",
+    "country_code": "",
+    "export_share": 0.0,
+    "exports_fob": 0.0,
+    "import_share": 2.9524167226669383e-06,
+    "imports_fob": 800.0
+  },
+  {
+    "balance_fob": 366.0,
+    "country": "Honduras",
+    "country_code": "",
+    "export_share": 4.152302272357629e-06,
+    "exports_fob": 366.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  },
+  {
+    "balance_fob": 300.0,
+    "country": "Quênia",
+    "country_code": "",
+    "export_share": 3.403526452752155e-06,
+    "exports_fob": 300.0,
+    "import_share": 0.0,
+    "imports_fob": 0.0
+  }
+]
