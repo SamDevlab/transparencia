@@ -968,6 +968,16 @@
     }
   },
   "transport": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "bytes": 189198575,
+        "mode": "whole",
+        "status": "success"
+      }
+    ],
+    "download_mode": "whole_with_retries",
+    "expected_size": 189198575,
     "fallback_reason": "certificate_chain_error",
     "tls_verified": false,
     "transport_note": "O recurso foi baixado do mesmo host oficial dados.ba.gov.br sem validação TLS porque o runner não conseguiu validar a cadeia de certificados; a condição foi registrada."

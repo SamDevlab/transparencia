@@ -1,8 +1,8 @@
 {
-  "tested_commit": "e925f9e2bf367e961261c65f99ada429c57ebe1b",
+  "tested_commit": "7121978c6e8e543abc1c1a96134870cbb62b7d9a",
   "tests": "success",
   "collector": "success",
-  "workflow_finished_at": "2026-08-21T08:46:10.658961+00:00",
+  "workflow_finished_at": "2026-08-21T08:50:34.306411+00:00",
   "latest": {
     "collection_mode": "metadata_only",
     "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
@@ -41,6 +41,8 @@
     },
     "licitacoes": {
       "bytes": 130216796,
+      "declared_size": 130216796,
+      "download_mode": "whole_with_retries",
       "output": "sefaz_licitacoes.json",
       "resource_id": "c5040c7d-4375-459e-93b0-beca841f63b4",
       "resource_last_modified": "2026-08-20T11:13:12",
@@ -60,6 +62,8 @@
     },
     "receitas": {
       "bytes": 189198575,
+      "declared_size": 189198575,
+      "download_mode": "whole_with_retries",
       "output": "sefaz_receitas.json",
       "resource_id": "70483fa8-362c-40c3-9389-67bff289fee5",
       "resource_last_modified": "2026-08-20T10:05:01",
@@ -88,6 +92,6 @@
     "reference_year": 2026
   },
   "collector_log_tail": [
-    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"requested_processed\": 2, \"requested_expected\": 2, \"total_processed\": 2, \"total_expected\": 4, \"datasets\": {\"receitas\": {\"status\": \"processed\", \"output\": \"sefaz_receitas.json\", \"resource_id\": \"70483fa8-362c-40c3-9389-67bff289fee5\", \"resource_name\": \"Receitas.csv\", \"resource_last_modified\": \"2026-08-20T10:05:01\", \"sha256\": \"c7b972121d18444bb3b3b7e8b9e7ee06e2aa5ec12c5888fa250df6d1bbaed641\", \"bytes\": 189198575, \"tls_verified\": false, \"rows\": 290280, \"selected_year\": 2026}, \"licitacoes\": {\"status\": \"processed\", \"output\": \"sefaz_licitacoes.json\", \"resource_id\": \"c5040c7d-4375-459e-93b0-beca841f63b4\", \"resource_name\": \"Licitacoes.zip\", \"resource_last_modified\": \"2026-08-20T11:13:12\", \"sha256\": \"95409ee6d9aacced3a4a6a0fe455b6c7450ea5f001056e3ee78c83768b6d7391\", \"bytes\": 130216796, \"tls_verified\": false, \"rows\": 3045273, \"selected_year\": 2026}}}"
+    "{\"snapshot\": \"/home/runner/work/transparencia/transparencia/regions/bahia/data/state_transparency/snapshots/2026-08-21\", \"requested_processed\": 2, \"requested_expected\": 2, \"total_processed\": 2, \"total_expected\": 4, \"datasets\": {\"receitas\": {\"status\": \"processed\", \"output\": \"sefaz_receitas.json\", \"resource_id\": \"70483fa8-362c-40c3-9389-67bff289fee5\", \"resource_name\": \"Receitas.csv\", \"resource_last_modified\": \"2026-08-20T10:05:01\", \"sha256\": \"c7b972121d18444bb3b3b7e8b9e7ee06e2aa5ec12c5888fa250df6d1bbaed641\", \"bytes\": 189198575, \"declared_size\": 189198575, \"tls_verified\": false, \"download_mode\": \"whole_with_retries\", \"rows\": 290280, \"selected_year\": 2026}, \"licitacoes\": {\"status\": \"processed\", \"output\": \"sefaz_licitacoes.json\", \"resource_id\": \"c5040c7d-4375-459e-93b0-beca841f63b4\", \"resource_name\": \"Licitacoes.zip\", \"resource_last_modified\": \"2026-08-20T11:13:12\", \"sha256\": \"95409ee6d9aacced3a4a6a0fe455b6c7450ea5f001056e3ee78c83768b6d7391\", \"bytes\": 130216796, \"declared_size\": 130216796, \"tls_verified\": false, \"download_mode\": \"whole_with_retries\", \"rows\": 3045273, \"selected_year\": 2026}}}"
   ]
 }

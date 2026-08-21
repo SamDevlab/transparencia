@@ -1,28 +1,6 @@
 {
   "entries": [
     {
-      "bytes": 189198575,
-      "content_type": "text/csv",
-      "resource_id": "70483fa8-362c-40c3-9389-67bff289fee5",
-      "resource_last_modified": "2026-08-20T10:05:01",
-      "resource_name": "Receitas.csv",
-      "sha256": "c7b972121d18444bb3b3b7e8b9e7ee06e2aa5ec12c5888fa250df6d1bbaed641",
-      "source_id": "sefaz_receitas_data",
-      "tls_verified": false,
-      "url": "https://dados.ba.gov.br/dataset/1b6b2933-b13b-4754-a910-105683a4edff/resource/70483fa8-362c-40c3-9389-67bff289fee5/download/receitas.csv"
-    },
-    {
-      "bytes": 130216796,
-      "content_type": "application/zip",
-      "resource_id": "c5040c7d-4375-459e-93b0-beca841f63b4",
-      "resource_last_modified": "2026-08-20T11:13:12",
-      "resource_name": "Licitacoes.zip",
-      "sha256": "95409ee6d9aacced3a4a6a0fe455b6c7450ea5f001056e3ee78c83768b6d7391",
-      "source_id": "sefaz_licitacoes_data",
-      "tls_verified": false,
-      "url": "https://dados.ba.gov.br/dataset/36c792f9-1999-4f21-a669-752a178b06b7/resource/c5040c7d-4375-459e-93b0-beca841f63b4/download/licitacoes.zip"
-    },
-    {
       "bytes": 3176,
       "file": "ckan_receitas.json",
       "sha256": "2980e1f2b890169ea186a3e11e4d40bd821b2d855f12660e43dd03176a3ec639",
@@ -87,6 +65,32 @@
         "tls_verified": false,
         "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
       }
+    },
+    {
+      "bytes": 189198575,
+      "content_type": "text/csv",
+      "declared_size": 189198575,
+      "download_mode": "whole_with_retries",
+      "resource_id": "70483fa8-362c-40c3-9389-67bff289fee5",
+      "resource_last_modified": "2026-08-20T10:05:01",
+      "resource_name": "Receitas.csv",
+      "sha256": "c7b972121d18444bb3b3b7e8b9e7ee06e2aa5ec12c5888fa250df6d1bbaed641",
+      "source_id": "sefaz_receitas_data",
+      "tls_verified": false,
+      "url": "https://dados.ba.gov.br/dataset/1b6b2933-b13b-4754-a910-105683a4edff/resource/70483fa8-362c-40c3-9389-67bff289fee5/download/receitas.csv"
+    },
+    {
+      "bytes": 130216796,
+      "content_type": "application/zip",
+      "declared_size": 130216796,
+      "download_mode": "whole_with_retries",
+      "resource_id": "c5040c7d-4375-459e-93b0-beca841f63b4",
+      "resource_last_modified": "2026-08-20T11:13:12",
+      "resource_name": "Licitacoes.zip",
+      "sha256": "95409ee6d9aacced3a4a6a0fe455b6c7450ea5f001056e3ee78c83768b6d7391",
+      "source_id": "sefaz_licitacoes_data",
+      "tls_verified": false,
+      "url": "https://dados.ba.gov.br/dataset/36c792f9-1999-4f21-a669-752a178b06b7/resource/c5040c7d-4375-459e-93b0-beca841f63b4/download/licitacoes.zip"
     }
   ],
   "hash_algorithm": "SHA-256"
