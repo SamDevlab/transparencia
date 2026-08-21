@@ -1,0 +1,83 @@
+{
+  "observed_at": "2026-08-21",
+  "rows": [
+    {
+      "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=receitas",
+      "coverage": "Receitas previstas, atualizadas e arrecadadas dos poderes e órgãos abrangidos pelo FIPLAN.",
+      "dataset": "receitas",
+      "dataset_url": "https://dados.ba.gov.br/dataset/receitas",
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+      "frequency": "Diária, com dados do dia anterior",
+      "id": "sefaz_receitas",
+      "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+      "status": "unavailable",
+      "system": "FIPLAN",
+      "title": "Receitas"
+    },
+    {
+      "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=despesas",
+      "coverage": "Despesas realizadas pelos órgãos e entidades abrangidos pelo FIPLAN.",
+      "dataset": "despesas",
+      "dataset_url": "https://dados.ba.gov.br/dataset/despesas",
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+      "frequency": "Diária, com dados do dia anterior",
+      "id": "sefaz_despesas",
+      "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+      "status": "unavailable",
+      "system": "FIPLAN",
+      "title": "Despesas"
+    },
+    {
+      "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=pagamentos",
+      "coverage": "Pagamentos efetuados pelos órgãos e entidades que utilizam o FIPLAN.",
+      "dataset": "pagamentos",
+      "dataset_url": "https://dados.ba.gov.br/dataset/pagamentos",
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+      "frequency": "Diária, com dados do dia anterior",
+      "id": "sefaz_pagamentos",
+      "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+      "status": "unavailable",
+      "system": "FIPLAN",
+      "title": "Pagamentos"
+    },
+    {
+      "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=contratos",
+      "coverage": "Execução orçamentária e financeira de contratos de bens e serviços do Poder Executivo estadual.",
+      "dataset": "contratos",
+      "dataset_url": "https://dados.ba.gov.br/dataset/contratos",
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+      "frequency": "Diária, com dados do dia anterior",
+      "id": "sefaz_contratos",
+      "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+      "status": "unavailable",
+      "system": "FIPLAN",
+      "title": "Contratos"
+    },
+    {
+      "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=licitacoes",
+      "coverage": "Modalidades, homologações, situação, itens, valores e participantes das licitações do Poder Executivo estadual.",
+      "dataset": "licitacoes",
+      "dataset_url": "https://dados.ba.gov.br/dataset/licitacoes",
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+      "frequency": "Conforme publicação do conjunto",
+      "id": "sefaz_licitacoes",
+      "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+      "status": "unavailable",
+      "system": "SIMPA/Sistema estadual de materiais e patrimônio",
+      "title": "Licitações"
+    },
+    {
+      "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=diarias",
+      "coverage": "Concessão e prestação de contas de diárias do Poder Executivo.",
+      "dataset": "diarias",
+      "dataset_url": "https://dados.ba.gov.br/dataset/diarias",
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+      "frequency": "Diária, com dados do dia anterior",
+      "id": "sefaz_diarias",
+      "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
+      "status": "unavailable",
+      "system": "FIPLAN",
+      "title": "Diárias"
+    }
+  ]
+}

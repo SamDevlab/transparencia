@@ -1,0 +1,54 @@
+{
+  "ckan": {
+    "contratos": {
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+      "error_type": "ConnectError",
+      "status": "unavailable"
+    },
+    "despesas": {
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+      "error_type": "ConnectError",
+      "status": "unavailable"
+    },
+    "diarias": {
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+      "error_type": "ConnectError",
+      "status": "unavailable"
+    },
+    "licitacoes": {
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+      "error_type": "ConnectError",
+      "status": "unavailable"
+    },
+    "pagamentos": {
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+      "error_type": "ConnectError",
+      "status": "unavailable"
+    },
+    "receitas": {
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
+      "error_type": "ConnectError",
+      "status": "unavailable"
+    }
+  },
+  "generated_at": "2026-08-21",
+  "note": "Completo para a rotina definida significa metadados CKAN consultados e, quando habilitado, os três arquivos automatizados do TCE processados. Não significa completude de toda a transparência estadual.",
+  "status": "partial",
+  "tce": {
+    "contracts": {
+      "error": "timed out",
+      "error_type": "ConnectTimeout",
+      "status": "unavailable"
+    },
+    "expenses": {
+      "error": "timed out",
+      "error_type": "ConnectTimeout",
+      "status": "unavailable"
+    },
+    "procurements": {
+      "error": "timed out",
+      "error_type": "ConnectTimeout",
+      "status": "unavailable"
+    }
+  }
+}
