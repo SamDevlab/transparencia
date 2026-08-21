@@ -84,7 +84,16 @@ jobs:
           if (!Array.isArray(transparency.datasets) || transparency.datasets.length < 8) throw new Error('cobertura integrada incompleta');
           if (!(bahiaTransparency.mappedSources >= 8)) throw new Error(`fontes estaduais mapeadas insuficientes: ${bahiaTransparency.mappedSources}`);
           if (economy.available && (!economy.bahia?.summary || !economy.salvador?.summary)) throw new Error('snapshot econômico disponível sem resumos Bahia/Salvador');
-          console.log({ ...d, economicCoverage: economy.coverage, bahiaState: bahiaTransparency.status });
+          const sefaz = bahiaTransparency.sefaz?.summary;
+          if (sefaz?.processed === 2) {
+            const revenues = bahiaTransparency.sefaz?.revenues?.summary;
+            const procurements = bahiaTransparency.sefaz?.procurements?.summary;
+            if (!revenues || !(revenues.rows > 0)) throw new Error('Receitas SEFAZ declaradas como processadas sem resumo válido');
+            if (!revenues.selected_year_totals || revenues.selected_year !== 2026) throw new Error('Receitas SEFAZ sem recorte 2026 válido');
+            if (!procurements?.primary_licitacoes) throw new Error('Licitações SEFAZ sem tabela principal identificada');
+            if (!(procurements.primary_licitacoes.rows_selected_year > 0)) throw new Error('Licitações SEFAZ sem contagem anual válida');
+          }
+          console.log({ ...d, economicCoverage: economy.coverage, bahiaState: bahiaTransparency.status, sefaz });
           NODE
       - name: Registrar construção bem-sucedida
         if: github.event_name == 'push'
@@ -97,6 +106,8 @@ jobs:
           const meta = require('./public/data/meta.json');
           const economy = require('./public/data/economy.json');
           const bahiaTransparency = require('./public/data/bahia-transparency.json');
+          const stateRevenues = bahiaTransparency.sefaz?.revenues?.summary;
+          const stateProcurements = bahiaTransparency.sefaz?.procurements?.summary;
           const payload = {
             passed: true,
             tested_commit: process.env.TESTED_SHA,
@@ -124,6 +135,12 @@ jobs:
             state_transparency_available: bahiaTransparency.available,
             state_transparency_snapshot: bahiaTransparency.snapshot,
             state_transparency_mapped_sources: bahiaTransparency.mappedSources,
+            state_sefaz_processed: bahiaTransparency.sefaz?.summary?.processed || 0,
+            state_revenue_rows: stateRevenues?.rows || 0,
+            state_revenue_2026_realized: stateRevenues?.selected_year_totals?.realized ?? null,
+            state_procurements_2026: stateProcurements?.primary_licitacoes?.rows_selected_year || 0,
+            state_procurements_2026_estimated: stateProcurements?.primary_licitacoes?.estimated_value?.sum ?? null,
+            state_procurements_2026_homologated: stateProcurements?.primary_licitacoes?.homologated_value?.sum ?? null,
             as_of: meta.asOf,
           };
           fs.writeFileSync('cities/salvador/data/validation/web_build.json', JSON.stringify(payload, null, 2) + '\n');
