@@ -165,14 +165,12 @@ def _summarize_member(zf: zipfile.ZipFile, member: str, *, target_year: int) -> 
 
     rows = 0
     selected_rows = 0
+    rows_with_contract_id = 0
     years: Counter[int] = Counter()
-    statuses: Counter[str] = Counter()
-    agencies: dict[str, dict[str, float]] = defaultdict(lambda: {"rows": 0.0, "value": 0.0})
-    suppliers: dict[str, dict[str, Any]] = {}
     instruments: dict[str, dict[str, Any]] = {}
-    processes: Counter[str] = Counter()
-    total_value = 0.0
-    numeric_value_rows = 0
+    unique_processes: set[str] = set()
+    raw_value_sum = 0.0
+    raw_numeric_value_rows = 0
 
     encoding = "utf-8" if spec["encoding"] == "utf-8-replace" else spec["encoding"]
     with zf.open(member, "r") as raw:
@@ -186,49 +184,50 @@ def _summarize_member(zf: zipfile.ZipFile, member: str, *, target_year: int) -> 
             if row_year != target_year:
                 continue
             selected_rows += 1
-            value = _number(row.get(value_field)) if value_field else None
-            if value is not None:
-                total_value += value
-                numeric_value_rows += 1
-            if status_field:
-                status = str(row.get(status_field) or "").strip()
-                if status:
-                    statuses[status[:160]] += 1
-            agency = str(row.get(agency_field) or "Não informado").strip() if agency_field else "Não informado"
-            agency = agency or "Não informado"
-            agencies[agency]["rows"] += 1
-            agencies[agency]["value"] += value or 0.0
 
             contract_id = normalize_identifier(row.get(contract_field)) if contract_field else None
             process_id = normalize_identifier(row.get(process_field)) if process_field else None
+            value = _number(row.get(value_field)) if value_field else None
+            if value is not None:
+                value = round(value, 2)
+                raw_value_sum += value
+                raw_numeric_value_rows += 1
             if process_id:
-                processes[process_id] += 1
-            if contract_id:
-                current = instruments.setdefault(contract_id, {
-                    "rows": 0,
-                    "value": 0.0,
-                    "process_ids": set(),
-                    "agencies": set(),
-                })
-                current["rows"] += 1
-                current["value"] += value or 0.0
-                if process_id:
-                    current["process_ids"].add(process_id)
-                if agency != "Não informado":
-                    current["agencies"].add(agency)
+                unique_processes.add(process_id)
+            if not contract_id:
+                continue
 
+            rows_with_contract_id += 1
+            agency = str(row.get(agency_field) or "").strip() if agency_field else ""
+            status = str(row.get(status_field) or "").strip() if status_field else ""
+            supplier_name = str(row.get(supplier_field) or "").strip() if supplier_field else ""
             doc_kind, cnpj = _document_kind(row.get(supplier_doc_field)) if supplier_doc_field else (None, None)
+
+            current = instruments.setdefault(contract_id, {
+                "rows": 0,
+                "values": set(),
+                "process_ids": set(),
+                "agencies": set(),
+                "statuses": set(),
+                "cnpjs": set(),
+                "supplier_names": defaultdict(Counter),
+                "has_private_person_document": False,
+            })
+            current["rows"] += 1
+            if value is not None:
+                current["values"].add(value)
+            if process_id:
+                current["process_ids"].add(process_id)
+            if agency:
+                current["agencies"].add(agency)
+            if status:
+                current["statuses"].add(status[:160])
             if cnpj:
-                supplier_name = str(row.get(supplier_field) or "Não informado").strip() if supplier_field else "Não informado"
-                key = cnpj
-                current = suppliers.setdefault(key, {"cnpj": cnpj, "name": supplier_name or "Não informado", "rows": 0, "value": 0.0, "contracts": set()})
-                current["rows"] += 1
-                current["value"] += value or 0.0
-                if contract_id:
-                    current["contracts"].add(contract_id)
+                current["cnpjs"].add(cnpj)
+                if supplier_name:
+                    current["supplier_names"][cnpj][supplier_name] += 1
             elif doc_kind == "cpf":
-                # Pessoa física pode existir na fonte, mas não é republicada nesta camada.
-                pass
+                current["has_private_person_document"] = True
 
     classification = _classify_table(member, headers)
     score = 0
@@ -240,23 +239,74 @@ def _summarize_member(zf: zipfile.ZipFile, member: str, *, target_year: int) -> 
     if agency_field: score += 4
     if selected_rows == 0: score -= 20
 
+    unique_instruments = len(instruments)
+    single_value_instruments = 0
+    conflicting_value_instruments = 0
+    without_value_instruments = 0
+    deduplicated_value_sum = 0.0
+    unambiguous_agencies: dict[str, dict[str, float]] = defaultdict(lambda: {"contracts": 0.0, "value": 0.0})
+    unambiguous_suppliers: dict[str, dict[str, Any]] = {}
+    status_instruments: Counter[str] = Counter()
+    instruments_with_multiple_agencies = 0
+    instruments_with_multiple_cnpjs = 0
+
+    for contract_id, values in instruments.items():
+        value_set: set[float] = values["values"]
+        if len(value_set) == 1:
+            resolved_value = next(iter(value_set))
+            single_value_instruments += 1
+            deduplicated_value_sum += resolved_value
+        elif len(value_set) > 1:
+            resolved_value = None
+            conflicting_value_instruments += 1
+        else:
+            resolved_value = None
+            without_value_instruments += 1
+
+        for status in values["statuses"]:
+            status_instruments[status] += 1
+
+        agencies = values["agencies"]
+        if len(agencies) == 1:
+            agency = next(iter(agencies))
+            unambiguous_agencies[agency]["contracts"] += 1
+            if resolved_value is not None:
+                unambiguous_agencies[agency]["value"] += resolved_value
+        elif len(agencies) > 1:
+            instruments_with_multiple_agencies += 1
+
+        cnpjs = values["cnpjs"]
+        if len(cnpjs) == 1:
+            cnpj = next(iter(cnpjs))
+            names = values["supplier_names"].get(cnpj) or Counter()
+            name = names.most_common(1)[0][0] if names else "Não informado"
+            current = unambiguous_suppliers.setdefault(cnpj, {
+                "cnpj": cnpj,
+                "name": name,
+                "contracts": 0,
+                "value": 0.0,
+            })
+            current["contracts"] += 1
+            if resolved_value is not None:
+                current["value"] += resolved_value
+        elif len(cnpjs) > 1:
+            instruments_with_multiple_cnpjs += 1
+
     top_agencies = [
-        {"name": name, "rows": int(values["rows"]), "value": round(values["value"], 2)}
-        for name, values in sorted(agencies.items(), key=lambda item: (item[1]["value"], item[1]["rows"]), reverse=True)[:60]
+        {"name": name, "contracts": int(values["contracts"]), "value": round(values["value"], 2)}
+        for name, values in sorted(
+            unambiguous_agencies.items(),
+            key=lambda item: (item[1]["value"], item[1]["contracts"]),
+            reverse=True,
+        )[:60]
     ]
     top_suppliers = [
-        {"cnpj": values["cnpj"], "name": values["name"], "rows": values["rows"], "contracts": len(values["contracts"]), "value": round(values["value"], 2)}
-        for _, values in sorted(suppliers.items(), key=lambda item: (item[1]["value"], item[1]["rows"]), reverse=True)[:100]
-    ]
-    instrument_index = [
-        {
-            "instrument_id": instrument_id,
-            "rows": values["rows"],
-            "value": round(values["value"], 2),
-            "process_ids": sorted(values["process_ids"]),
-            "agencies": sorted(values["agencies"]),
-        }
-        for instrument_id, values in sorted(instruments.items())
+        {"cnpj": values["cnpj"], "name": values["name"], "contracts": values["contracts"], "value": round(values["value"], 2)}
+        for _, values in sorted(
+            unambiguous_suppliers.items(),
+            key=lambda item: (item[1]["value"], item[1]["contracts"]),
+            reverse=True,
+        )[:100]
     ]
 
     privacy_fields = [header for header in headers if any(token in _norm(header) for token in ("CPF", "CNPJ", "CREDOR", "FORNECEDOR", "CONTRATADA"))]
@@ -265,6 +315,7 @@ def _summarize_member(zf: zipfile.ZipFile, member: str, *, target_year: int) -> 
         "classification": classification,
         "rows": rows,
         "selected_rows": selected_rows,
+        "rows_with_contract_id": rows_with_contract_id,
         "score": score,
         "schema": {
             "delimiter": spec["delimiter"],
@@ -286,12 +337,33 @@ def _summarize_member(zf: zipfile.ZipFile, member: str, *, target_year: int) -> 
             "privacy_sensitive_columns_present": privacy_fields,
         },
         "years": {str(year): count for year, count in sorted(years.items())},
-        "contract_value": {"field": value_field, "sum": round(total_value, 2), "numeric_rows": numeric_value_rows} if value_field else None,
-        "top_statuses": [{"name": name, "rows": count} for name, count in statuses.most_common(40)],
+        "unique_instruments": unique_instruments,
+        "unique_process_keys": len(unique_processes),
+        "instrument_keys": sorted(instruments),
+        "deduplication": {
+            "grain": "normalized_official_instrument_id",
+            "raw_relation_rows": selected_rows,
+            "rows_with_instrument_id": rows_with_contract_id,
+            "unique_instruments": unique_instruments,
+            "instruments_with_single_value": single_value_instruments,
+            "instruments_with_conflicting_values": conflicting_value_instruments,
+            "instruments_without_value": without_value_instruments,
+            "instruments_with_multiple_agencies": instruments_with_multiple_agencies,
+            "instruments_with_multiple_cnpjs": instruments_with_multiple_cnpjs,
+            "value_policy": "O valor de um instrumento só entra no total consolidado quando todas as linhas desse mesmo identificador oficial publicam o mesmo valor monetário. Valores conflitantes ficam fora da soma.",
+        },
+        "contract_value": {
+            "field": value_field,
+            "deduplicated_sum": round(deduplicated_value_sum, 2),
+            "instruments_in_sum": single_value_instruments,
+            "conflicting_instruments_excluded": conflicting_value_instruments,
+            "without_value_excluded": without_value_instruments,
+            "raw_relation_sum_diagnostic_only": round(raw_value_sum, 2),
+            "raw_numeric_relation_rows": raw_numeric_value_rows,
+        } if value_field else None,
+        "top_statuses": [{"name": name, "instruments": count} for name, count in status_instruments.most_common(40)],
         "top_agencies": top_agencies,
         "top_suppliers_cnpj_only": top_suppliers,
-        "instrument_index": instrument_index,
-        "process_ids": [{"process_id": key, "rows": count} for key, count in processes.most_common()],
     }
 
 
@@ -319,10 +391,10 @@ def summarize_sefaz_contracts_zip(path: Path, *, target_year: int) -> dict[str, 
     candidates = [
         table for table in tables
         if table["classification"] == "contratos"
-        and table["selected_rows"] > 0
+        and table["unique_instruments"] > 0
         and table["schema"]["detected_fields"]["contract"]
     ]
-    primary = max(candidates, key=lambda table: (table["score"], table["selected_rows"]), default=None)
+    primary = max(candidates, key=lambda table: (table["score"], table["unique_instruments"]), default=None)
     if primary is None:
         raise BahiaOpenDataError("Nenhuma tabela principal de contratos com identificador oficial e recorte 2026 foi identificada")
 
@@ -343,15 +415,18 @@ def summarize_sefaz_contracts_zip(path: Path, *, target_year: int) -> dict[str, 
                 "classification": table["classification"],
                 "rows": table["rows"],
                 "selected_rows": table["selected_rows"],
+                "rows_with_contract_id": table["rows_with_contract_id"],
+                "unique_instruments": table["unique_instruments"],
                 "score": table["score"],
                 "schema": table["schema"],
                 "years": table["years"],
+                "deduplication": table["deduplication"],
                 "contract_value": table["contract_value"],
             }
             for table in tables
         ],
         "table_errors": errors,
-        "interpretation": "A contagem e os valores anuais vêm somente da tabela principal identificada por esquema e identificador oficial de contrato. Aditivos e tabelas relacionadas não são somados como novos contratos.",
+        "interpretation": "A quantidade contratual usa identificadores oficiais únicos, não o número de linhas da view relacional. O valor consolidado conta cada instrumento uma única vez e exclui instrumentos com valores conflitantes. Aditivos e tabelas relacionadas não são somados como novos contratos.",
         "identity_rule": "Vínculos usam apenas identificadores oficiais normalizados por remoção de pontuação/espaço e capitalização. Não há correspondência aproximada por nome, fornecedor ou objeto.",
         "privacy_note": "CNPJ empresarial pode aparecer em agregações. CPF e documentos com 11 dígitos não são republicados nesta camada.",
     }
