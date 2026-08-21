@@ -24,6 +24,12 @@ from transparencia.collectors.bahia_open_data import (  # noqa: E402
 )
 
 
+def read_json(path: Path, fallback: Any = None) -> Any:
+    if not path.exists():
+        return fallback
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -44,6 +50,10 @@ def main() -> int:
     out_root = out_root.resolve()
     out_root.mkdir(parents=True, exist_ok=True)
 
+    existing_coverage = read_json(out_root / "coverage.json", {}) or {}
+    existing_manifest = read_json(out_root / "manifest.json", {"entries": []}) or {"entries": []}
+    existing_latest = read_json(region_root / "data" / "state_transparency" / "latest.json", {}) or {}
+
     coverage: dict[str, Any] = {
         "generated_at": date.today().isoformat(),
         "ckan": {},
@@ -51,13 +61,17 @@ def main() -> int:
         "status": "partial",
         "collection_mode": "metadata_only" if args.skip_tce_large else "full",
     }
+    for key in ("sefaz_data", "sefaz_data_summary"):
+        if key in existing_coverage:
+            coverage[key] = existing_coverage[key]
+
     manifest: list[dict[str, Any]] = []
     catalog_rows = []
 
     headers = {
         "Accept": "application/json,text/csv,*/*",
         "Accept-Encoding": "identity",
-        "User-Agent": "Mozilla/5.0 transparencia-municipal/0.5",
+        "User-Agent": "Mozilla/5.0 transparencia-municipal/0.6",
     }
 
     for source in reference["sources"]:
@@ -173,23 +187,38 @@ def main() -> int:
     coverage["note"] = (
         "A fase de metadados pode ficar completa mesmo sem baixar os arquivos grandes do TCE. "
         "A cobertura plena da rotina exige os metadados CKAN e os três conjuntos automatizados do TCE. "
-        "Fallback TLS do CKAN, quando necessário, fica registrado e nunca é silencioso."
+        "Dados SEFAZ já processados são preservados entre reexecuções. Fallback TLS do CKAN, quando necessário, "
+        "fica registrado e nunca é silencioso."
     )
     write_json(out_root / "coverage.json", coverage)
-    write_json(out_root / "manifest.json", {"hash_algorithm": "SHA-256", "entries": manifest})
-    write_json(region_root / "data" / "state_transparency" / "latest.json", {
+
+    new_ids = {entry.get("source_id") for entry in manifest}
+    preserved_entries = [
+        entry for entry in (existing_manifest.get("entries") or [])
+        if entry.get("source_id") not in new_ids
+    ]
+    write_json(out_root / "manifest.json", {"hash_algorithm": "SHA-256", "entries": preserved_entries + manifest})
+
+    latest_payload = {
         "snapshot": out_root.name,
         "path": str(out_root.relative_to(ROOT.resolve())),
         "status": coverage["status"],
         "collection_mode": coverage["collection_mode"],
         "summary": coverage["summary"],
-    })
+    }
+    if coverage.get("sefaz_data_summary"):
+        latest_payload["sefaz_data"] = coverage["sefaz_data_summary"]
+    elif existing_latest.get("sefaz_data"):
+        latest_payload["sefaz_data"] = existing_latest["sefaz_data"]
+    write_json(region_root / "data" / "state_transparency" / "latest.json", latest_payload)
+
     print(json.dumps({
         "snapshot": str(out_root),
         "status": coverage["status"],
         "mode": coverage["collection_mode"],
         "ckan_collected": processed,
         "tce_processed": tce_processed,
+        "sefaz_data_processed": (coverage.get("sefaz_data_summary") or {}).get("processed", 0),
     }, ensure_ascii=False))
     return 0
 
