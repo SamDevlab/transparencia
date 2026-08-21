@@ -2,82 +2,352 @@
   "observed_at": "2026-08-21",
   "rows": [
     {
+      "ckan": {
+        "id": "1b6b2933-b13b-4754-a910-105683a4edff",
+        "metadata_created": "2022-06-22T00:31:54.892886",
+        "metadata_modified": "2026-08-20T10:05:01.540752",
+        "name": "receitas",
+        "notes": "Receitas públicas previstas, atualizadas e arrecadadas pelos diversos órgãos e entidades do \r\n de todos os poderes do estado da Bahia, inclusive órgãos autônomos,  Defensoria Pública e Ministério Públicos.\r\n\r\n\r\n\r\nFonte: FIPLAN - Sistema Integrado de Planejamento, Contabilidade e Finanças do Estado da Bahia/Secretaria da Fazenda do Estado da Bahia \r\n\r\nAtualização: Diária, com dados do dia anterior.",
+        "organization": "SEFAZ ",
+        "resources": [
+          {
+            "format": "CSV",
+            "hash": "",
+            "id": "70483fa8-362c-40c3-9389-67bff289fee5",
+            "last_modified": "2026-08-20T10:05:01",
+            "metadata_modified": "2026-08-20T10:05:01.546035",
+            "mimetype": "text/csv",
+            "name": "Receitas.csv",
+            "size": 189198575,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/1b6b2933-b13b-4754-a910-105683a4edff/resource/70483fa8-362c-40c3-9389-67bff289fee5/download/receitas.csv"
+          },
+          {
+            "format": "PDF",
+            "hash": "",
+            "id": "3267c2c0-aa98-48f4-bc20-3e37cacfc85c",
+            "last_modified": "2025-07-21T13:44:32.217260",
+            "metadata_modified": "2025-07-21T13:44:32.234085",
+            "mimetype": "application/pdf",
+            "name": "Dicionario_Dados_Receitas.pdf",
+            "size": 162383,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/1b6b2933-b13b-4754-a910-105683a4edff/resource/3267c2c0-aa98-48f4-bc20-3e37cacfc85c/download/dicionario_dados_receitas.pdf"
+          }
+        ],
+        "title": "Receitas"
+      },
       "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=receitas",
       "coverage": "Receitas previstas, atualizadas e arrecadadas dos poderes e órgãos abrangidos pelo FIPLAN.",
       "dataset": "receitas",
       "dataset_url": "https://dados.ba.gov.br/dataset/receitas",
-      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
       "frequency": "Diária, com dados do dia anterior",
       "id": "sefaz_receitas",
       "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
-      "status": "unavailable",
+      "status": "metadata_collected",
       "system": "FIPLAN",
-      "title": "Receitas"
+      "title": "Receitas",
+      "transport": {
+        "fallback_reason": "certificate_chain_error",
+        "tls_verified": false,
+        "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
+      }
     },
     {
+      "ckan": {
+        "id": "518569da-ccaa-4621-b8d2-e7424ec3f1ea",
+        "metadata_created": "2022-06-22T00:39:51.625635",
+        "metadata_modified": "2026-08-20T10:13:17.591983",
+        "name": "despesas",
+        "notes": "Despesas realizadas pelos diversos órgãos e entidades de todos os poderes do estado da Bahia, inclusive órgãos autônomos, Defensoria Pública e Ministério Públicos.\r\n\r\nFonte: FIPLAN - Sistema Integrado de Planejamento, Contabilidade e Finanças do Estado da Bahia/Secretaria da Fazenda do Estado da Bahia\r\n\r\nAtualização: Diária, com dados do dia anterior.",
+        "organization": "SEFAZ ",
+        "resources": [
+          {
+            "format": "PNG",
+            "hash": "",
+            "id": "925dbbc3-ac6f-403f-8039-4a49a8355683",
+            "last_modified": "2024-05-13T17:50:46.368296",
+            "metadata_modified": "2024-05-13T17:50:46.380611",
+            "mimetype": "image/png",
+            "name": "Despesas_Relacionamento_Views .png",
+            "size": 60768,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/518569da-ccaa-4621-b8d2-e7424ec3f1ea/resource/925dbbc3-ac6f-403f-8039-4a49a8355683/download/despesas_relacionamento_views-.png"
+          },
+          {
+            "format": "ZIP",
+            "hash": "",
+            "id": "6356ec2d-6bc0-476e-bfd5-7cdc78864d55",
+            "last_modified": "2026-08-20T10:13:17",
+            "metadata_modified": "2026-08-20T10:13:17.597377",
+            "mimetype": "application/zip",
+            "name": "Despesas.zip",
+            "size": 221670223,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/518569da-ccaa-4621-b8d2-e7424ec3f1ea/resource/6356ec2d-6bc0-476e-bfd5-7cdc78864d55/download/despesas.zip"
+          },
+          {
+            "format": "PDF",
+            "hash": "",
+            "id": "1b818c86-c78e-4e97-af83-0b322325ef60",
+            "last_modified": "2025-07-21T13:56:33.525037",
+            "metadata_modified": "2025-07-21T13:56:33.536758",
+            "mimetype": "application/pdf",
+            "name": "Dicionario_Dados_Despesas.pdf",
+            "size": 184764,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/518569da-ccaa-4621-b8d2-e7424ec3f1ea/resource/1b818c86-c78e-4e97-af83-0b322325ef60/download/dicionario_dados_despesas.pdf"
+          }
+        ],
+        "title": "Despesas"
+      },
       "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=despesas",
       "coverage": "Despesas realizadas pelos órgãos e entidades abrangidos pelo FIPLAN.",
       "dataset": "despesas",
       "dataset_url": "https://dados.ba.gov.br/dataset/despesas",
-      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
       "frequency": "Diária, com dados do dia anterior",
       "id": "sefaz_despesas",
       "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
-      "status": "unavailable",
+      "status": "metadata_collected",
       "system": "FIPLAN",
-      "title": "Despesas"
+      "title": "Despesas",
+      "transport": {
+        "fallback_reason": "certificate_chain_error",
+        "tls_verified": false,
+        "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
+      }
     },
     {
+      "ckan": {
+        "id": "7c78e7bf-f753-4fff-87b4-5d6950ba18a8",
+        "metadata_created": "2022-06-22T00:48:53.904950",
+        "metadata_modified": "2026-08-20T11:10:40.356019",
+        "name": "pagamentos",
+        "notes": "Pagamentos  efetuados pelos diversos órgãos e entidades de todos os poderes do estado da Bahia, Defensoria Pública e Ministério Público, que utilizam o sistema FIPLAN  \r\n\r\nFonte: FIPLAN - Sistema Integrado de Planejamento, Contabilidade e Finanças do Estado da Bahia/Secretaria da Fazenda do Estado da Bahia\r\n\r\nAtualização: Diária, com dados do dia anterior.",
+        "organization": "SEFAZ ",
+        "resources": [
+          {
+            "format": "ZIP",
+            "hash": "",
+            "id": "ddcdc6ad-5d11-44de-b395-86bff8901325",
+            "last_modified": "2026-08-20T11:10:40",
+            "metadata_modified": "2026-08-20T11:10:40.360384",
+            "mimetype": "application/zip",
+            "name": "Pagamentos_Historico.zip",
+            "size": 381955070,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/7c78e7bf-f753-4fff-87b4-5d6950ba18a8/resource/ddcdc6ad-5d11-44de-b395-86bff8901325/download/pagamentos_historico.zip"
+          },
+          {
+            "format": "JPEG",
+            "hash": "",
+            "id": "a6057612-aa05-4965-b23a-01c84f204635",
+            "last_modified": "2024-07-18T14:45:03.593729",
+            "metadata_modified": "2024-07-18T14:45:03.617875",
+            "mimetype": "image/jpeg",
+            "name": "Painel de Pagamentos - Relacionamentos 1.jpg",
+            "size": 40546,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/7c78e7bf-f753-4fff-87b4-5d6950ba18a8/resource/a6057612-aa05-4965-b23a-01c84f204635/download/painel-de-pagamentos-relacionamentos-1.jpg"
+          },
+          {
+            "format": "JPEG",
+            "hash": "",
+            "id": "96e0d062-3f39-4422-90a4-334e7225857d",
+            "last_modified": "2024-07-18T14:45:19.657773",
+            "metadata_modified": "2024-07-18T14:45:19.682891",
+            "mimetype": "image/jpeg",
+            "name": "Painel de Pagamentos - Relacionamentos 2.jpg",
+            "size": 47591,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/7c78e7bf-f753-4fff-87b4-5d6950ba18a8/resource/96e0d062-3f39-4422-90a4-334e7225857d/download/painel-de-pagamentos-relacionamentos-2.jpg"
+          },
+          {
+            "format": "ZIP",
+            "hash": "",
+            "id": "2319e322-587b-4cea-b6e5-e184ebf040ef",
+            "last_modified": "2026-08-20T10:36:46",
+            "metadata_modified": "2026-08-20T10:36:46.521726",
+            "mimetype": "application/zip",
+            "name": "Pagamentos.zip",
+            "size": 498799120,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/7c78e7bf-f753-4fff-87b4-5d6950ba18a8/resource/2319e322-587b-4cea-b6e5-e184ebf040ef/download/pagamentos.zip"
+          }
+        ],
+        "title": "Pagamentos"
+      },
       "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=pagamentos",
       "coverage": "Pagamentos efetuados pelos órgãos e entidades que utilizam o FIPLAN.",
       "dataset": "pagamentos",
       "dataset_url": "https://dados.ba.gov.br/dataset/pagamentos",
-      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
       "frequency": "Diária, com dados do dia anterior",
       "id": "sefaz_pagamentos",
       "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
-      "status": "unavailable",
+      "status": "metadata_collected",
       "system": "FIPLAN",
-      "title": "Pagamentos"
+      "title": "Pagamentos",
+      "transport": {
+        "fallback_reason": "certificate_chain_error",
+        "tls_verified": false,
+        "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
+      }
     },
     {
+      "ckan": {
+        "id": "edbe8b9a-c363-457e-8b06-4e1c1f693cb8",
+        "metadata_created": "2022-06-22T00:33:28.764365",
+        "metadata_modified": "2026-08-20T10:29:25.390665",
+        "name": "contratos",
+        "notes": "Execução orçamentária e financeira de  contratos de bens  e/ou serviços do poder executivo do Estado da Bahia.\r\n\r\nFonte: FIPLAN - Sistema Integrado de Planejamento, Contabilidade e Finanças do Estado da Bahia/Secretaria da Fazenda do Estado da Bahia\r\n\r\nAtualização: Diária, com dados do dia anterior.",
+        "organization": "SEFAZ ",
+        "resources": [
+          {
+            "format": "ZIP",
+            "hash": "",
+            "id": "d13f3bbc-ed6b-4070-8828-fb218a625c0d",
+            "last_modified": "2026-08-20T10:29:24",
+            "metadata_modified": "2026-08-20T10:29:25.394015",
+            "mimetype": "application/zip",
+            "name": "Contratos.zip",
+            "size": 673108405,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/edbe8b9a-c363-457e-8b06-4e1c1f693cb8/resource/d13f3bbc-ed6b-4070-8828-fb218a625c0d/download/contratos.zip"
+          },
+          {
+            "format": "PNG",
+            "hash": "",
+            "id": "e0d8305b-08d8-42ad-a228-b2440b6ef377",
+            "last_modified": "2024-11-28T19:55:10.971599",
+            "metadata_modified": "2024-11-28T19:55:10.982118",
+            "mimetype": "image/png",
+            "name": "Contratos_Relacionamento_Views.png",
+            "size": 42006,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/edbe8b9a-c363-457e-8b06-4e1c1f693cb8/resource/e0d8305b-08d8-42ad-a228-b2440b6ef377/download/contratos_relacionamento_views.png"
+          }
+        ],
+        "title": "Contratos"
+      },
       "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=contratos",
       "coverage": "Execução orçamentária e financeira de contratos de bens e serviços do Poder Executivo estadual.",
       "dataset": "contratos",
       "dataset_url": "https://dados.ba.gov.br/dataset/contratos",
-      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
       "frequency": "Diária, com dados do dia anterior",
       "id": "sefaz_contratos",
       "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
-      "status": "unavailable",
+      "status": "metadata_collected",
       "system": "FIPLAN",
-      "title": "Contratos"
+      "title": "Contratos",
+      "transport": {
+        "fallback_reason": "certificate_chain_error",
+        "tls_verified": false,
+        "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
+      }
     },
     {
+      "ckan": {
+        "id": "36c792f9-1999-4f21-a669-752a178b06b7",
+        "metadata_created": "2025-06-16T12:51:54.066885",
+        "metadata_modified": "2026-08-20T11:13:12.732126",
+        "name": "licitacoes",
+        "notes": "Licitações: modalidade, homologações, situação, itens licitados, valores, participantes, dentre outros  do poder executivo estadual .\r\n\r\nFonte: Sistema Integrado de Material, Patrimônio e Serviços - SIMPAS/SAEB\r\n\r\nAtualização: Diária, com dados do dia anterior.",
+        "organization": "SEFAZ ",
+        "resources": [
+          {
+            "format": "ZIP",
+            "hash": "",
+            "id": "c5040c7d-4375-459e-93b0-beca841f63b4",
+            "last_modified": "2026-08-20T11:13:12",
+            "metadata_modified": "2026-08-20T11:13:12.737411",
+            "mimetype": "application/zip",
+            "name": "Licitacoes.zip",
+            "size": 130216796,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/36c792f9-1999-4f21-a669-752a178b06b7/resource/c5040c7d-4375-459e-93b0-beca841f63b4/download/licitacoes.zip"
+          },
+          {
+            "format": "PNG",
+            "hash": "",
+            "id": "97cdb39b-07cc-4952-94f0-9364b2e435a3",
+            "last_modified": "2025-06-18T14:30:51.350292",
+            "metadata_modified": "2025-06-18T14:30:51.361350",
+            "mimetype": "image/png",
+            "name": "Licitações_Relacionamento_Views.png",
+            "size": 35394,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/36c792f9-1999-4f21-a669-752a178b06b7/resource/97cdb39b-07cc-4952-94f0-9364b2e435a3/download/licitacoes_relacionamento_views.png"
+          }
+        ],
+        "title": "Licitações"
+      },
       "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=licitacoes",
       "coverage": "Modalidades, homologações, situação, itens, valores e participantes das licitações do Poder Executivo estadual.",
       "dataset": "licitacoes",
       "dataset_url": "https://dados.ba.gov.br/dataset/licitacoes",
-      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
       "frequency": "Conforme publicação do conjunto",
       "id": "sefaz_licitacoes",
       "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
-      "status": "unavailable",
+      "status": "metadata_collected",
       "system": "SIMPA/Sistema estadual de materiais e patrimônio",
-      "title": "Licitações"
+      "title": "Licitações",
+      "transport": {
+        "fallback_reason": "certificate_chain_error",
+        "tls_verified": false,
+        "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
+      }
     },
     {
+      "ckan": {
+        "id": "5de7650e-6ec8-47e4-b7d3-5843a25bcf4d",
+        "metadata_created": "2022-06-22T00:35:37.483363",
+        "metadata_modified": "2026-08-20T10:08:32.444922",
+        "name": "diarias",
+        "notes": "Concessão e prestação de contas de diárias efetuados pelo Poder Executivo,  destinados a atender despesas com \r\nhospedagem e alimentação de servidores, agentes públicos e colaboradores eventuais, nas viagens e deslocamentos para fora da sede onde têm exercício.\r\n\r\nFonte: FIPLAN - Sistema Integrado de Planejamento, Contabilidade e Finanças do Estado da Bahia/Secretaria da Fazenda do Estado da Bahia \r\n\r\nAtualização: Diária, com dados do dia anterior.",
+        "organization": "SEFAZ ",
+        "resources": [
+          {
+            "format": "ZIP",
+            "hash": "",
+            "id": "d2022079-6ca2-49bc-b36e-98363a6470f5",
+            "last_modified": "2026-08-20T10:08:32",
+            "metadata_modified": "2026-08-20T10:08:32.452003",
+            "mimetype": "application/zip",
+            "name": "Diarias.zip",
+            "size": 106743402,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/5de7650e-6ec8-47e4-b7d3-5843a25bcf4d/resource/d2022079-6ca2-49bc-b36e-98363a6470f5/download/diarias.zip"
+          },
+          {
+            "format": "PNG",
+            "hash": "",
+            "id": "f510ffa8-2c71-4398-839b-2cbcb4c4d167",
+            "last_modified": "2024-10-10T15:04:45.432536",
+            "metadata_modified": "2024-10-10T15:04:45.443236",
+            "mimetype": "image/png",
+            "name": "Diarias_Relacionamento_Views.png",
+            "size": 83903,
+            "state": "active",
+            "url": "https://dados.ba.gov.br/dataset/5de7650e-6ec8-47e4-b7d3-5843a25bcf4d/resource/f510ffa8-2c71-4398-839b-2cbcb4c4d167/download/diarias_relacionamento_views.png"
+          }
+        ],
+        "title": "Diárias"
+      },
       "ckan_api": "https://dados.ba.gov.br/api/3/action/package_show?id=diarias",
       "coverage": "Concessão e prestação de contas de diárias do Poder Executivo.",
       "dataset": "diarias",
       "dataset_url": "https://dados.ba.gov.br/dataset/diarias",
-      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
       "frequency": "Diária, com dados do dia anterior",
       "id": "sefaz_diarias",
       "publisher": "SEFAZ/AGE - Portal Dados Abertos da Bahia",
-      "status": "unavailable",
+      "status": "metadata_collected",
       "system": "FIPLAN",
-      "title": "Diárias"
+      "title": "Diárias",
+      "transport": {
+        "fallback_reason": "certificate_chain_error",
+        "tls_verified": false,
+        "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
+      }
     }
   ]
 }

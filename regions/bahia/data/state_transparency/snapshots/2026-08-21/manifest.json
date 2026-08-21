@@ -1,4 +1,71 @@
 {
-  "entries": [],
+  "entries": [
+    {
+      "bytes": 3176,
+      "file": "ckan_receitas.json",
+      "sha256": "2980e1f2b890169ea186a3e11e4d40bd821b2d855f12660e43dd03176a3ec639",
+      "source_id": "sefaz_receitas",
+      "transport": {
+        "fallback_reason": "certificate_chain_error",
+        "tls_verified": false,
+        "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
+      }
+    },
+    {
+      "bytes": 3785,
+      "file": "ckan_despesas.json",
+      "sha256": "0a4e7be3fa4f94fcef9f52784f8a6042bb6e49f119dedd5de66e782a98de3fea",
+      "source_id": "sefaz_despesas",
+      "transport": {
+        "fallback_reason": "certificate_chain_error",
+        "tls_verified": false,
+        "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
+      }
+    },
+    {
+      "bytes": 4364,
+      "file": "ckan_pagamentos.json",
+      "sha256": "df7715444accd844eb62e74e0f658118c6eb0032258a4d2373366497c93f42d8",
+      "source_id": "sefaz_pagamentos",
+      "transport": {
+        "fallback_reason": "certificate_chain_error",
+        "tls_verified": false,
+        "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
+      }
+    },
+    {
+      "bytes": 3193,
+      "file": "ckan_contratos.json",
+      "sha256": "ff9d72f107590177179125b709c2e544fb203afd26d9f75bdcf0574b5f3e0fd3",
+      "source_id": "sefaz_contratos",
+      "transport": {
+        "fallback_reason": "certificate_chain_error",
+        "tls_verified": false,
+        "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
+      }
+    },
+    {
+      "bytes": 2882,
+      "file": "ckan_licitacoes.json",
+      "sha256": "ac69b17929be2bcb558a5fe2e3140f583f93046fa6c9b6d9414be9dd4a10eefc",
+      "source_id": "sefaz_licitacoes",
+      "transport": {
+        "fallback_reason": "certificate_chain_error",
+        "tls_verified": false,
+        "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
+      }
+    },
+    {
+      "bytes": 2986,
+      "file": "ckan_diarias.json",
+      "sha256": "098ad69bc86d8eaacb96ca8539a22668d84d04fa1e53dfea29226a50fdaccf45",
+      "source_id": "sefaz_diarias",
+      "transport": {
+        "fallback_reason": "certificate_chain_error",
+        "tls_verified": false,
+        "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
+      }
+    }
+  ],
   "hash_algorithm": "SHA-256"
 }

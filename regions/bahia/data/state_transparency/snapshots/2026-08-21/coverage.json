@@ -1,54 +1,66 @@
 {
   "ckan": {
     "contratos": {
-      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
-      "error_type": "ConnectError",
-      "status": "unavailable"
+      "fallback_reason": "certificate_chain_error",
+      "metadata_modified": "2026-08-20T10:29:25.390665",
+      "resources": 2,
+      "status": "metadata_collected",
+      "tls_verified": false,
+      "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
     },
     "despesas": {
-      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
-      "error_type": "ConnectError",
-      "status": "unavailable"
+      "fallback_reason": "certificate_chain_error",
+      "metadata_modified": "2026-08-20T10:13:17.591983",
+      "resources": 3,
+      "status": "metadata_collected",
+      "tls_verified": false,
+      "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
     },
     "diarias": {
-      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
-      "error_type": "ConnectError",
-      "status": "unavailable"
+      "fallback_reason": "certificate_chain_error",
+      "metadata_modified": "2026-08-20T10:08:32.444922",
+      "resources": 2,
+      "status": "metadata_collected",
+      "tls_verified": false,
+      "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
     },
     "licitacoes": {
-      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
-      "error_type": "ConnectError",
-      "status": "unavailable"
+      "fallback_reason": "certificate_chain_error",
+      "metadata_modified": "2026-08-20T11:13:12.732126",
+      "resources": 2,
+      "status": "metadata_collected",
+      "tls_verified": false,
+      "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
     },
     "pagamentos": {
-      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
-      "error_type": "ConnectError",
-      "status": "unavailable"
+      "fallback_reason": "certificate_chain_error",
+      "metadata_modified": "2026-08-20T11:10:40.356019",
+      "resources": 4,
+      "status": "metadata_collected",
+      "tls_verified": false,
+      "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
     },
     "receitas": {
-      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)",
-      "error_type": "ConnectError",
-      "status": "unavailable"
+      "fallback_reason": "certificate_chain_error",
+      "metadata_modified": "2026-08-20T10:05:01.540752",
+      "resources": 2,
+      "status": "metadata_collected",
+      "tls_verified": false,
+      "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
     }
   },
+  "collection_mode": "metadata_only",
   "generated_at": "2026-08-21",
-  "note": "Completo para a rotina definida significa metadados CKAN consultados e, quando habilitado, os três arquivos automatizados do TCE processados. Não significa completude de toda a transparência estadual.",
-  "status": "partial",
+  "note": "A fase de metadados pode ficar completa mesmo sem baixar os arquivos grandes do TCE. A cobertura plena da rotina exige os metadados CKAN e os três conjuntos automatizados do TCE. Fallback TLS do CKAN, quando necessário, fica registrado e nunca é silencioso.",
+  "status": "complete_for_metadata_collection",
+  "summary": {
+    "ckan_datasets_collected": 6,
+    "ckan_datasets_expected": 6,
+    "tce_datasets_expected": 0,
+    "tce_datasets_processed": 0
+  },
   "tce": {
-    "contracts": {
-      "error": "timed out",
-      "error_type": "ConnectTimeout",
-      "status": "unavailable"
-    },
-    "expenses": {
-      "error": "timed out",
-      "error_type": "ConnectTimeout",
-      "status": "unavailable"
-    },
-    "procurements": {
-      "error": "timed out",
-      "error_type": "ConnectTimeout",
-      "status": "unavailable"
-    }
+    "note": "Fase rápida: arquivos grandes do TCE serão tentados na fase de enriquecimento.",
+    "status": "not_run"
   }
 }
