@@ -1,0 +1,50 @@
+{
+  "api_base": "https://apitmptransparencia.salvador.ba.gov.br/api",
+  "city": {
+    "ibge_code": "2927408",
+    "municipality_cnpj": "13927801000149",
+    "name": "Salvador",
+    "slug": "salvador",
+    "uf": "BA"
+  },
+  "contracts_totalizer": {
+    "Empenhado no Período": "3.495.140.624,16",
+    "Liquidado no período": "3.207.594.548,00",
+    "Pago no período": "3.094.592.738,99",
+    "Valor Contratual (Atualizado)": "34.152.591.134,84"
+  },
+  "coverage": {
+    "contract_unit": "official API contract/execution aggregate by management unit for unfiltered period",
+    "expense_creditor": "official API aggregate by creditor for unfiltered period; not individual payment records",
+    "expense_function": "official API aggregate by function for unfiltered period",
+    "revenue_detail": "official API response for unfiltered period"
+  },
+  "expense_totalizer": {
+    "Empenhado": "8.625.528.756,54",
+    "Liquidado": "8.012.568.292,02",
+    "Pago": "7.704.625.210,00"
+  },
+  "period_end": "2026-08-21",
+  "period_start": "2026-01-01",
+  "public_portal": "https://transparencia.salvador.ba.gov.br/",
+  "record_counts": {
+    "contract_units": 45,
+    "expense_creditors": 5592,
+    "expense_functions": 22,
+    "revenue_detail": 2110
+  },
+  "revenue_totalizer": {
+    "Previsto": "14.986.132.378,00",
+    "Realizado": "9.287.129.100,45"
+  },
+  "snapshot_sha256": {
+    "contract_units": "c7b175d875f63b570bc7e6195777207a5ddd161e075904db8d3b17685c61da20",
+    "contracts_totalizer": "5db65b30cfeeb478ec272f74a41a36c78ec06af00c33299d2baa5e940a83adb4",
+    "expense_creditors": "c33b3717d951888bae6a46b493ada7374b70eeed3e4efc9103a0c10b1de6f137",
+    "expense_functions": "daf1ecfc6eee8ca472435bb5661823023cabcdbdb4796592a084c231513ac590",
+    "expense_totalizer": "57b8d58cef64e1cd8d9ad8d3f70545243f5defc11c2a620ab66d0e49768d33a5",
+    "revenue_detail": "0cac89b098d5270367977cba4e0ef89a2031de17e408f69e2675e9cb829fe084",
+    "revenue_totalizer": "fa838abe0d4473e19f0857bbe2b7e5ecc8ec01967c28ac3b5a9dacdbf48dd865"
+  },
+  "source_system": "SALVADOR_TRANSPARENCIA_API"
+}
