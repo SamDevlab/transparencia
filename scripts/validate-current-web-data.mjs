@@ -37,12 +37,37 @@ for (const row of contracts.rows ?? []) {
     throw new Error(`contrato municipal ${row.id} usa método de fornecedor não exato`);
   }
 }
-if ((suppliers.rows ?? []).some((supplier) => digits(supplier.documento).length !== 14)) {
-  throw new Error("diretório público contém fornecedor sem CNPJ empresarial estruturado");
+for (const supplier of suppliers.rows ?? []) {
+  if (digits(supplier.documento).length !== 14) {
+    throw new Error(`diretório público contém fornecedor sem CNPJ empresarial estruturado: ${supplier.id}`);
+  }
+  if (Number(supplier.quantidadeContratos) !== (supplier.contratos ?? []).length) {
+    throw new Error(`contagem de contratos diverge no fornecedor ${supplier.id}`);
+  }
 }
 if (meta.supplierPrivacyModel !== "business_cnpj_only") {
   throw new Error("modelo de privacidade de fornecedores ausente");
 }
+
+if (meta.pncpComplementaryAsOf) {
+  if (contracts.complementary?.asOf !== meta.pncpComplementaryAsOf) {
+    throw new Error("data do PNCP complementar diverge entre contratos e meta");
+  }
+  if (contracts.complementary?.status !== meta.pncpComplementaryStatus) {
+    throw new Error("status do PNCP complementar diverge entre contratos e meta");
+  }
+  if (Number(contracts.complementary?.currentSnapshotRows ?? 0) !== Number(meta.pncpComplementaryCurrentRows ?? 0)) {
+    throw new Error("contagem do snapshot PNCP complementar diverge entre contratos e meta");
+  }
+  if (meta.dataFreshness?.pncpComplementary?.asOf !== meta.pncpComplementaryAsOf) {
+    throw new Error("freshness por fonte do PNCP complementar ausente/divergente");
+  }
+  const latest = transparency.latestSourceAsOf ?? meta.latestSourceAsOf;
+  if (!latest || String(latest) < String(meta.pncpComplementaryAsOf)) {
+    throw new Error("latestSourceAsOf não inclui a fonte PNCP mais recente");
+  }
+}
+
 if (acquisitions.summary?.complete_for_filter !== true || !(acquisitions.rows?.length > 0)) {
   throw new Error("aquisições municipais atuais não estão completas para o filtro");
 }
@@ -97,7 +122,7 @@ console.log(JSON.stringify({
   ok: true,
   contracts: { sourceRows: contracts.sourceRows, publishedRows: contracts.rows.length, structuredSupplierLinks: contracts.structuredSupplierLinks ?? 0, asOf: contracts.periodEnd },
   acquisitions: { records: acquisitions.rows.length, asOf: acquisitions.summary?.period_end },
-  suppliers: { businessCnpjOnly: true, records: suppliers.rows?.length ?? 0 },
+  suppliers: { businessCnpjOnly: true, records: suppliers.rows?.length ?? 0, complementaryBusinesses: meta.pncpComplementaryBusinessSuppliers ?? 0 },
   links: linkSummary,
   cms: { records: ledger.records, pages: ledger.pagesWithRecords, asOf: ledger.asOf },
   cmsAuxiliary: {
@@ -105,6 +130,12 @@ console.log(JSON.stringify({
     travelRecords: auxiliary.travel?.records,
     documents: auxiliary.documents?.records,
     visibleCertames: auxiliary.certames?.recordsVisible,
+  },
+  pncpComplementary: {
+    asOf: meta.pncpComplementaryAsOf ?? null,
+    status: meta.pncpComplementaryStatus ?? null,
+    rows: meta.pncpComplementaryCurrentRows ?? null,
+    agencyDiscoveryComplete: meta.pncpComplementaryAgencyDiscoveryComplete ?? null,
   },
   latestSourceAsOf: transparency.latestSourceAsOf ?? meta.latestSourceAsOf ?? null,
 }, null, 2));
