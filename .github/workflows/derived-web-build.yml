@@ -1,0 +1,79 @@
+name: Validação das camadas derivadas
+
+on:
+  push:
+    branches: [city/salvador]
+    paths:
+      - "scripts/overlay-current-municipal-data.mjs"
+      - "scripts/overlay-pncp-complementary-current.mjs"
+      - "scripts/sanitize-public-suppliers.mjs"
+      - "scripts/enrich-municipal-suppliers.mjs"
+      - "scripts/fix-municipal-freshness.mjs"
+      - "scripts/build-municipal-links.mjs"
+      - "scripts/overlay-cms-current.mjs"
+      - "scripts/overlay-cms-auxiliary-current.mjs"
+      - "scripts/overlay-transparency-current.mjs"
+      - "scripts/validate-current-web-data.mjs"
+      - ".github/workflows/derived-web-build.yml"
+  pull_request:
+    paths:
+      - "scripts/overlay-current-municipal-data.mjs"
+      - "scripts/overlay-pncp-complementary-current.mjs"
+      - "scripts/sanitize-public-suppliers.mjs"
+      - "scripts/enrich-municipal-suppliers.mjs"
+      - "scripts/fix-municipal-freshness.mjs"
+      - "scripts/build-municipal-links.mjs"
+      - "scripts/overlay-cms-current.mjs"
+      - "scripts/overlay-cms-auxiliary-current.mjs"
+      - "scripts/overlay-transparency-current.mjs"
+      - "scripts/validate-current-web-data.mjs"
+      - ".github/workflows/derived-web-build.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: derived-web-build-city-salvador
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - name: Build and validate all derived layers
+        run: npm run build
+      - name: Assert derived artifacts
+        run: |
+          for file in contracts suppliers acquisitions processes finance camara municipal-links transparency meta; do
+            test -s "public/data/${file}.json"
+          done
+          node - <<'NODE'
+          const contracts = require('./public/data/contracts.json');
+          const acquisitions = require('./public/data/acquisitions.json');
+          const links = require('./public/data/municipal-links.json');
+          const camara = require('./public/data/camara.json');
+          const transparency = require('./public/data/transparency.json');
+          const meta = require('./public/data/meta.json');
+
+          if (contracts.sourceSystem !== 'SALVADOR_TRANSPARENCIA_API_CONTRATOS' || contracts.completeForFilter !== true) throw new Error('contratos municipais atuais não promovidos');
+          if (acquisitions.summary?.complete_for_filter !== true) throw new Error('aquisições municipais atuais incompletas');
+          if (!(links.summary?.processesWithExactContracts > 0)) throw new Error('relações municipais exatas ausentes');
+          if (camara.commitmentLedger?.completeForDefaultPublicView !== true) throw new Error('ledger atual da Câmara ausente/incompleto');
+          if (transparency.freshnessModel !== 'per_source') throw new Error('modelo de freshness por fonte ausente');
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(meta.latestSourceAsOf || '')) throw new Error('latestSourceAsOf inválido');
+          console.log({
+            contracts: contracts.rows.length,
+            acquisitions: acquisitions.rows.length,
+            exactProcesses: links.summary.processesWithExactContracts,
+            cmsCommitments: camara.commitmentLedger.records,
+            latestSourceAsOf: meta.latestSourceAsOf,
+            pncpComplementaryStatus: meta.pncpComplementaryStatus || null,
+            pncpComplementaryCurrentRows: meta.pncpComplementaryCurrentRows ?? null,
+          });
+          NODE
