@@ -1,0 +1,40 @@
+{
+  "api_endpoint": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/gridDetalhada",
+  "budget_exhausted": false,
+  "complete_for_filter": true,
+  "coverage_note": "Complete only for the official municipal contract grid and the requested date filter: every adaptive interval reconciled explicit source-reported page and record totals.",
+  "http_attempts": 487,
+  "initial_window_days": 366,
+  "logical_page_requests": 481,
+  "max_runtime_seconds": 720,
+  "max_windows": 16,
+  "page_workers": 6,
+  "period_end": "2026-08-21",
+  "period_start": "2026-01-01",
+  "records_unique": 3199,
+  "request_body_shape": [
+    "dataInicio",
+    "dataFim",
+    "agrupamentos",
+    "filtros"
+  ],
+  "runtime_seconds": 148.17,
+  "semantics_note": "The date interval is passed exactly as ISO dates accepted by the source. Source rows are preserved without renaming unknown fields. The internal deduplication key is not an official identifier.",
+  "source_system": "SALVADOR_TRANSPARENCIA_API_CONTRATOS",
+  "source_url": "https://transparencia.salvador.ba.gov.br/",
+  "windows": [
+    {
+      "completed": true,
+      "end": "2026-08-21",
+      "error": null,
+      "http_attempts": 487,
+      "pages_collected": 481,
+      "pagination_metadata_complete": true,
+      "records_received": 4807,
+      "reported_pages": 481,
+      "reported_total": 4807,
+      "start": "2026-01-01",
+      "status": 200
+    }
+  ]
+}

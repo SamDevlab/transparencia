@@ -1,0 +1,33 @@
+{
+  "budget_exhausted": false,
+  "collection": "success",
+  "complete_for_filter": true,
+  "coverage_note": "Complete only for the official municipal contract grid and the requested date filter: every adaptive interval reconciled explicit source-reported page and record totals.",
+  "duplicate_rows_removed": 1608,
+  "http_attempts": 487,
+  "logical_page_requests": 481,
+  "observed_at": "2026-08-21T23:27:45.140894-03:00",
+  "page_workers": 6,
+  "period_end": "2026-08-21",
+  "period_start": "2026-01-01",
+  "records_received_across_windows": 4807,
+  "records_unique": 3199,
+  "runtime_seconds": 148.17,
+  "tested_commit": "9d13f80030b63ebb9049316d55ba271178134467",
+  "tests": "success",
+  "windows": [
+    {
+      "completed": true,
+      "end": "2026-08-21",
+      "error": null,
+      "http_attempts": 487,
+      "pages_collected": 481,
+      "pagination_metadata_complete": true,
+      "records_received": 4807,
+      "reported_pages": 481,
+      "reported_total": 4807,
+      "start": "2026-01-01",
+      "status": 200
+    }
+  ]
+}
