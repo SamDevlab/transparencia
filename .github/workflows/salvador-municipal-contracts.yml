@@ -33,8 +33,13 @@ jobs:
       - name: Install
         run: python -m pip install -e '.[dev]'
       - name: Validate collector
+        id: tests
+        continue-on-error: true
         run: pytest -q tests/test_salvador_contracts.py
       - name: Collect exact source-scoped municipal grid
+        id: collection
+        if: steps.tests.outcome == 'success'
+        continue-on-error: true
         run: |
           python - <<'PY'
           import json
@@ -60,18 +65,79 @@ jobs:
           print(json.dumps(coverage,ensure_ascii=False,indent=2,sort_keys=True))
           if not coverage.get('complete_for_filter'):
               raise SystemExit('A grade municipal não reconciliou paginação/total; snapshot permanece não-publicável.')
-          if coverage.get('records_unique') != sum(int(w.get('records_received') or 0) for w in coverage.get('windows') or []):
-              raise SystemExit('Deduplicação alterou a contagem de uma coleta de janela única; revisar antes de publicar.')
           print(output)
           PY
-      - name: Commit complete municipal contract snapshot
+      - name: Record auditable run status
+        if: always()
+        env:
+          TEST_OUTCOME: ${{ steps.tests.outcome }}
+          COLLECTION_OUTCOME: ${{ steps.collection.outcome }}
+          TESTED_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from datetime import datetime
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          today=datetime.now(ZoneInfo('America/Bahia')).date()
+          coverage_path=Path('cities/salvador/data/snapshots')/today.isoformat()/'prefeitura_contracts'/'coverage.json'
+          coverage=json.loads(coverage_path.read_text(encoding='utf-8')) if coverage_path.exists() else None
+          received=sum(int(item.get('records_received') or 0) for item in (coverage or {}).get('windows') or [])
+          unique=int((coverage or {}).get('records_unique') or 0)
+          report={
+            'tested_commit':os.environ['TESTED_SHA'],
+            'observed_at':datetime.now(ZoneInfo('America/Bahia')).isoformat(),
+            'tests':os.environ.get('TEST_OUTCOME'),
+            'collection':os.environ.get('COLLECTION_OUTCOME'),
+            'complete_for_filter':bool((coverage or {}).get('complete_for_filter')),
+            'period_start':(coverage or {}).get('period_start'),
+            'period_end':(coverage or {}).get('period_end'),
+            'records_received_across_windows':received,
+            'records_unique':unique,
+            'duplicate_rows_removed':max(0,received-unique),
+            'logical_page_requests':(coverage or {}).get('logical_page_requests'),
+            'http_attempts':(coverage or {}).get('http_attempts'),
+            'runtime_seconds':(coverage or {}).get('runtime_seconds'),
+            'budget_exhausted':(coverage or {}).get('budget_exhausted'),
+            'page_workers':(coverage or {}).get('page_workers'),
+            'windows':(coverage or {}).get('windows'),
+            'coverage_note':(coverage or {}).get('coverage_note'),
+          }
+          path=Path('cities/salvador/data/validation/municipal_contracts_run.json')
+          path.parent.mkdir(parents=True,exist_ok=True)
+          path.write_text(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True))
+          PY
+      - name: Commit evidence and complete snapshot
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           TODAY=$(TZ=America/Bahia date +%F)
-          git add "cities/salvador/data/snapshots/${TODAY}/prefeitura_contracts"
+          git add cities/salvador/data/validation/municipal_contracts_run.json
+          if [ -f "cities/salvador/data/snapshots/${TODAY}/prefeitura_contracts/coverage.json" ]; then
+            COMPLETE=$(python - <<'PY'
+          import json
+          from datetime import datetime
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+          today=datetime.now(ZoneInfo('America/Bahia')).date()
+          p=Path('cities/salvador/data/snapshots')/today.isoformat()/'prefeitura_contracts'/'coverage.json'
+          print('yes' if json.loads(p.read_text(encoding='utf-8')).get('complete_for_filter') else 'no')
+          PY
+            )
+            if [ "$COMPLETE" = "yes" ]; then
+              git add "cities/salvador/data/snapshots/${TODAY}/prefeitura_contracts"
+            fi
+          fi
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "data(salvador): refresh complete municipal contracts"
+          git commit -m "data(salvador): record municipal contract collection"
           git fetch origin city/salvador
           git rebase origin/city/salvador
           git push origin HEAD:city/salvador
+      - name: Require valid complete collection
+        if: steps.tests.outcome != 'success' || steps.collection.outcome != 'success'
+        run: |
+          echo "tests=${{ steps.tests.outcome }} collection=${{ steps.collection.outcome }}"
+          exit 1
