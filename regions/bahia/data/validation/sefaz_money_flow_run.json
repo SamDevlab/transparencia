@@ -1,11 +1,12 @@
 {
-  "tested_commit": "3dc5a82ef3053a40af1eac2c241d27e98ac29cbc",
+  "tested_commit": "fb7836ba677d5719ece933e223f2ac1eb2bf79a6",
   "tests": "success",
-  "collector": "cancelled",
-  "workflow_finished_at": "2026-08-22T02:08:03.317440+00:00",
+  "collector": "success",
+  "workflow_finished_at": "2026-08-22T02:13:31.145762+00:00",
   "latest": {
     "collection_mode": "metadata_and_priority_data",
     "money_flow": {
+      "contract_profiles_matched": 160,
       "instruments_end_to_end": 160,
       "selected_year": 2026,
       "status": "processed"
@@ -38,6 +39,8 @@
     }
   },
   "summary": {
+    "contract_profiles_matched": 160,
+    "contract_profiles_requested": 160,
     "contract_unique_instruments": 59350,
     "instruments_contract_to_payment": 49614,
     "instruments_end_to_end": 160,
@@ -53,9 +56,13 @@
     "procurement_unique_instruments": 347
   },
   "identity_rule": "Todos os vínculos exigem igualdade do identificador oficial após remover apenas pontuação/espaços e padronizar maiúsculas. Nome, objeto, fornecedor e similaridade textual nunca criam vínculo.",
+  "contract_profile_identity_rule": "Perfis são recuperados somente pelo mesmo identificador oficial normalizado do instrumento. Nenhuma aproximação textual é usada.",
+  "contract_profile_ambiguity_rule": "Órgão e objeto só são publicados como valor único quando todas as linhas do instrumento concordam; divergências permanecem explícitas. Fornecedor só é publicado quando existe um único CNPJ empresarial.",
   "test_log_tail": [
-    "...                                                                      [100%]",
-    "3 passed in 0.07s"
+    ".....                                                                    [100%]",
+    "5 passed in 0.12s"
   ],
-  "collector_log_tail": []
+  "collector_log_tail": [
+    "{\"status\": \"processed\", \"procurement_processes_selected\": 2093, \"procurement_instrument_exact_links\": 347, \"procurement_unique_instruments\": 347, \"contract_unique_instruments\": 59350, \"payment_rows_selected\": 602157, \"payment_unique_instruments\": 62747, \"payment_rows_with_instrument\": 316503, \"payment_value_with_instrument\": 16632589155.28, \"instruments_procurement_to_contract\": 260, \"instruments_contract_to_payment\": 49614, \"payment_value_linked_to_contracts\": 12141424041.86, \"instruments_end_to_end\": 160, \"payment_value_end_to_end\": 30661050.15, \"contract_profiles_requested\": 160, \"contract_profiles_matched\": 160}"
+  ]
 }

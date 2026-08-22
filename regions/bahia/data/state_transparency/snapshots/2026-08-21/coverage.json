@@ -52,6 +52,8 @@
   "collection_mode": "metadata_and_priority_data",
   "generated_at": "2026-08-21",
   "money_flow": {
+    "contract_profiles_matched": 160,
+    "contract_profiles_requested": 160,
     "contract_unique_instruments": 59350,
     "identity": "exact_official_identifiers_only",
     "instruments_contract_to_payment": 49614,

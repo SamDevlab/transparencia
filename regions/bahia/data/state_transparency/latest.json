@@ -1,6 +1,7 @@
 {
   "collection_mode": "metadata_and_priority_data",
   "money_flow": {
+    "contract_profiles_matched": 160,
     "instruments_end_to_end": 160,
     "selected_year": 2026,
     "status": "processed"
