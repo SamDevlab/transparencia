@@ -30,7 +30,7 @@ on:
       - ".github/workflows/derived-web-build.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: derived-web-build-city-salvador
@@ -42,6 +42,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -67,13 +70,85 @@ jobs:
           if (camara.commitmentLedger?.completeForDefaultPublicView !== true) throw new Error('ledger atual da Câmara ausente/incompleto');
           if (transparency.freshnessModel !== 'per_source') throw new Error('modelo de freshness por fonte ausente');
           if (!/^\d{4}-\d{2}-\d{2}$/.test(meta.latestSourceAsOf || '')) throw new Error('latestSourceAsOf inválido');
+          if (meta.pncpComplementaryAsOf === '2026-08-22') {
+            if (meta.pncpComplementaryStatus !== 'complete_for_supplied_agencies_and_filter') throw new Error('PNCP 22/08 presente sem completude do CNPJ fornecido');
+            if (meta.pncpComplementaryCurrentRows !== 41) throw new Error(`PNCP atual esperado=41, recebido=${meta.pncpComplementaryCurrentRows}`);
+            if (meta.pncpComplementaryAgencyDiscoveryComplete !== false) throw new Error('PNCP escopado foi tratado como descoberta completa de CNPJs');
+          }
           console.log({
             contracts: contracts.rows.length,
             acquisitions: acquisitions.rows.length,
             exactProcesses: links.summary.processesWithExactContracts,
             cmsCommitments: camara.commitmentLedger.records,
             latestSourceAsOf: meta.latestSourceAsOf,
+            pncpComplementaryAsOf: meta.pncpComplementaryAsOf || null,
             pncpComplementaryStatus: meta.pncpComplementaryStatus || null,
             pncpComplementaryCurrentRows: meta.pncpComplementaryCurrentRows ?? null,
           });
           NODE
+      - name: Persist successful closure report
+        if: github.event_name == 'push'
+        env:
+          TESTED_SHA: ${{ github.sha }}
+        run: |
+          mkdir -p cities/salvador/data/validation
+          node - <<'NODE'
+          const fs = require('fs');
+          const contracts = require('./public/data/contracts.json');
+          const acquisitions = require('./public/data/acquisitions.json');
+          const suppliers = require('./public/data/suppliers.json');
+          const links = require('./public/data/municipal-links.json');
+          const camara = require('./public/data/camara.json');
+          const transparency = require('./public/data/transparency.json');
+          const meta = require('./public/data/meta.json');
+          const enriched = (contracts.rows || []).filter((row) => row.supplierEvidence && /^\d{14}$/.test(String(row.documentoFornecedor || ''))).length;
+          const payload = {
+            passed: true,
+            tested_commit: process.env.TESTED_SHA,
+            node: process.version,
+            next: require('./node_modules/next/package.json').version,
+            react: require('./node_modules/react/package.json').version,
+            freshness_model: transparency.freshnessModel,
+            latest_source_as_of: meta.latestSourceAsOf || null,
+            municipal_contracts: {
+              complete_for_filter: contracts.completeForFilter === true,
+              source_rows: contracts.sourceRows ?? null,
+              published_rows: contracts.rows?.length || 0,
+              period_end: contracts.periodEnd || null,
+              supplier_enriched_rows: enriched,
+            },
+            acquisitions: {
+              complete_for_filter: acquisitions.summary?.complete_for_filter === true,
+              rows: acquisitions.rows?.length || 0,
+              period_end: acquisitions.summary?.period_end || null,
+            },
+            exact_links: links.summary || null,
+            suppliers: {
+              public_businesses: suppliers.rows?.length || 0,
+              rule: suppliers.privacyRule || suppliers.coverageNote || null,
+            },
+            cms: {
+              commitments_complete: camara.commitmentLedger?.completeForDefaultPublicView === true,
+              commitments: camara.commitmentLedger?.records || 0,
+              as_of: camara.commitmentLedger?.asOf || null,
+              auxiliary: camara.auxiliary || null,
+            },
+            pncp_complementary: {
+              as_of: meta.pncpComplementaryAsOf || null,
+              status: meta.pncpComplementaryStatus || null,
+              collection_mode: meta.pncpComplementaryCollectionMode || null,
+              current_rows: meta.pncpComplementaryCurrentRows ?? null,
+              agency_cnpj_count: meta.pncpComplementaryAgencyCnpjs ?? null,
+              agency_discovery_complete: meta.pncpComplementaryAgencyDiscoveryComplete ?? null,
+            },
+          };
+          fs.writeFileSync('cities/salvador/data/validation/derived_web_build.json', JSON.stringify(payload, null, 2) + '\n');
+          console.log(JSON.stringify(payload, null, 2));
+          NODE
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/validation/derived_web_build.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "ci(web): persist derived-layer validation [skip ci]"
+          git pull --rebase origin city/salvador
+          git push origin HEAD:city/salvador
