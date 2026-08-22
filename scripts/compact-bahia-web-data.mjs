@@ -145,6 +145,8 @@ if (sefaz.moneyFlow) {
     source: flow.source,
     summary: flow.summary,
     identity_rule: flow.identity_rule,
+    contract_profile_identity_rule: flow.contract_profile_identity_rule,
+    contract_profile_ambiguity_rule: flow.contract_profile_ambiguity_rule,
     interpretation: flow.interpretation,
     privacy_rule: flow.privacy_rule,
     top_end_to_end: Array.isArray(flow.top_end_to_end) ? flow.top_end_to_end : [],
