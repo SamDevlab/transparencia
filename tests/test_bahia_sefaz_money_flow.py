@@ -61,6 +61,7 @@ def test_payment_index_keeps_only_administrative_aggregates(tmp_path: Path):
     assert "Empresa A" not in serialized
     assert "12345678901" not in serialized
     assert "12345678000100" not in serialized
+    assert "CPF" not in str(result["instrument_index"])
 
 
 def test_builds_end_to_end_only_with_exact_official_instrument_ids(tmp_path: Path):
@@ -84,3 +85,5 @@ def test_builds_end_to_end_only_with_exact_official_instrument_ids(tmp_path: Pat
     assert summary["payment_value_linked_to_contracts"] == 350.0
     assert summary["payment_value_end_to_end"] == 350.0
     assert [row["instrument_id"] for row in result["top_end_to_end"]] == ["0022026", "0012026"]
+    assert "identificador oficial" in result["identity_rule"]
+    assert "aproximação" in result["identity_rule"]
