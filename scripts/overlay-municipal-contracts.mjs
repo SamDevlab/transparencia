@@ -91,9 +91,10 @@ const rows = readJsonl(municipal.jsonl).map((entry, index) => {
     objeto: row.dsObjeto ?? null,
     valorInicial: parseBrl(row.vlOriginal),
     valorGlobal: parseBrl(row.vlAtualizado),
-    fornecedor: row.nmCredor ?? null,
+    fornecedor: null,
     documentoFornecedor: null,
     tipoFornecedor: null,
+    credorOmitidoPorPrivacidade: Boolean(row.nmCredor),
     orgao: row.sgOrgao ?? null,
     unidade: row.dsUnidadeGestora ?? row.sgUnidadeGestora ?? null,
     codigoUnidade: row.cdUnidadeGestora ?? null,
@@ -122,6 +123,7 @@ const deduplication = {
   rule: "A visualização consolida apenas linhas cujos campos de origem são idênticos quando se ignora o UUID técnico 'id' da API. A contagem bruta informada pela Prefeitura permanece preservada separadamente.",
   technicalIdIsOfficialIdentifier: false,
 };
+const privacyRule = "O campo bruto nmCredor não é republicado na grade municipal porque a fonte mistura empresas e pessoas físicas e pode embutir documentos em texto livre. Fornecedores só serão ligados publicamente quando houver identificação estruturada e segura em fonte oficial complementar.";
 
 const output = {
   asOf: municipal.coverage.period_end || municipal.date,
@@ -133,6 +135,7 @@ const output = {
   sourceRows,
   publishedRows: rows.length,
   deduplication,
+  privacyRule,
   coverageNote: municipal.coverage.coverage_note,
   rows,
   complementary: {
@@ -157,4 +160,4 @@ meta.contractsPrimaryRows = rows.length;
 meta.pncpContractsComplementary = output.complementary.rows.length;
 fs.writeFileSync(metaFile, JSON.stringify(meta), "utf8");
 
-console.log(`Contratos municipais publicados: ${rows.length} registros de exibição a partir de ${sourceRows} linhas da fonte (${output.periodStart} → ${output.periodEnd}); ${collapsedRows} linhas substantivamente repetidas consolidadas.`);
+console.log(`Contratos municipais publicados: ${rows.length} registros de exibição a partir de ${sourceRows} linhas da fonte (${output.periodStart} → ${output.periodEnd}); ${collapsedRows} linhas substantivamente repetidas consolidadas. Credores brutos omitidos por privacidade.`);
