@@ -16,8 +16,8 @@
     ],
     "expected": 5,
     "last_run_datasets": [
-      "receitas",
-      "licitacoes"
+      "despesas",
+      "pagamentos"
     ],
     "last_run_processed": 2,
     "processed": 5,

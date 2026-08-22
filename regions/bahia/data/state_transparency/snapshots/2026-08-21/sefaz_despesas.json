@@ -1,9 +1,9 @@
 {
   "dataset": "despesas",
   "evidence": {
-    "bytes": 221670223,
+    "bytes": 221710553,
     "content_type": "application/zip",
-    "sha256": "381a12450a88ebe20559751258db8e67d23b8c30a83ed87261749ee02014eb5c",
+    "sha256": "310680d44b1de7169e1f7a0a6c15e39086a606c59e7c38aa897ce0e40f7015f5",
     "status_code": 200,
     "url": "https://dados.ba.gov.br/dataset/518569da-ccaa-4621-b8d2-e7424ec3f1ea/resource/6356ec2d-6bc0-476e-bfd5-7cdc78864d55/download/despesas.zip"
   },
@@ -24,14 +24,14 @@
       "invalid_tabular_members": 1,
       "members": 3,
       "processed_tabular_members": 2,
-      "uncompressed_bytes": 2648754586
+      "uncompressed_bytes": 2649331188
     },
     "dataset": "despesas",
     "interpretation": "Somente a tabela principal identificada pelo esquema e pelo recorte temporal alimenta os totais anuais. Views anuais podem usar o ano explícito no nome do arquivo. Empenho, liquidação e pagamento permanecem separados. Membros inválidos são registrados, não somados.",
     "primary_table": {
       "member": "VW_PAINEL_DESPESA.csv",
       "member_year": null,
-      "rows": 2216886,
+      "rows": 2217276,
       "schema": {
         "delimiter": ";",
         "detected_fields": {
@@ -115,311 +115,311 @@
         "privacy_sensitive_columns_present": []
       },
       "score": 78,
-      "selected_rows": 111942,
+      "selected_rows": 112332,
       "stage_totals": {
         "committed": {
-          "numeric_rows": 111942,
-          "sum": 56828961047.83
+          "numeric_rows": 112332,
+          "sum": 57479155186.71
         },
         "liquidated": {
-          "numeric_rows": 111942,
-          "sum": 48561808563.31
+          "numeric_rows": 112332,
+          "sum": 48696741029.27
         },
         "paid": {
-          "numeric_rows": 111942,
-          "sum": 48021950710.15
+          "numeric_rows": 112332,
+          "sum": 48238309474.09
         }
       },
       "top_agencies": {
         "committed": [
           {
-            "committed": 11125481324.57,
+            "committed": 11288955589.27,
             "name": "Secretaria da Educação"
           },
           {
-            "committed": 10503655876.42,
+            "committed": 10516051147.22,
             "name": "Secretaria da Administração"
           },
           {
-            "committed": 9589033167.28,
+            "committed": 9627078995.05,
             "name": "Secretaria da Saúde"
           },
           {
-            "committed": 6942289143.51,
+            "committed": 6972747217.94,
             "name": "Secretaria da Segurança Pública"
           },
           {
-            "committed": 3564654026.99,
+            "committed": 3576906464.77,
             "name": "Encargos Gerais do Estado"
           },
           {
-            "committed": 2656413931.26,
+            "committed": 2960460392.07,
             "name": "Tribunal de Justiça"
           },
           {
-            "committed": 2232651837.21,
+            "committed": 2237349772.03,
             "name": "Secretaria de Desenvolvimento Urbano"
           },
           {
-            "committed": 1421222309.58,
+            "committed": 1447434818.71,
             "name": "Secretaria de Infraestrutura"
           },
           {
-            "committed": 1070937581.21,
+            "committed": 1082677491.24,
             "name": "Secretaria da Fazenda"
           },
           {
-            "committed": 922878005.44,
+            "committed": 922913005.44,
             "name": "Assembleia Legislativa da Bahia"
           },
           {
-            "committed": 907754279.72,
+            "committed": 908148078.53,
             "name": "Ministério Público"
           },
           {
-            "committed": 677747931.53,
+            "committed": 692528850.17,
             "name": "Secretaria de Administração Penitenciária e Ressocialização"
           },
           {
-            "committed": 667110842.8,
+            "committed": 666789165.59,
             "name": "Secretaria de Turismo"
           },
           {
-            "committed": 510783724.63,
+            "committed": 514841118.95,
             "name": "Secretaria de Desenvolvimento Rural"
           },
           {
-            "committed": 427388080.32,
+            "committed": 432438330.62,
             "name": "Secretaria de Cultura"
           },
           {
-            "committed": 361655211.18,
+            "committed": 364202685.32,
             "name": "Secretaria de Infraestrutura Hídrica e Saneamento"
           },
           {
-            "committed": 360124262.49,
+            "committed": 360233161.05,
             "name": "Defensoria Pública"
           },
           {
-            "committed": 357104157.97,
+            "committed": 358763320.91,
             "name": "Secretaria do Trabalho, Emprego, Renda e Esporte"
           },
           {
-            "committed": 261318200.09,
+            "committed": 261358209.14,
             "name": "Tribunal de Contas do Estado"
           },
           {
-            "committed": 239229816.91,
+            "committed": 242701922.24,
             "name": "Procuradoria Geral do Estado"
           },
           {
-            "committed": 231979738.08,
+            "committed": 232492330.18,
             "name": "Secretaria da Agricultura, Pecuária, Irrigação, Pesca e Aquicultura"
           },
           {
-            "committed": 210073486.95,
-            "name": "Secretaria de Justiça e Direitos Humanos"
-          },
-          {
-            "committed": 209136159.36,
+            "committed": 212186313.07,
             "name": "Secretaria do Meio Ambiente"
           },
           {
-            "committed": 197317376.66,
+            "committed": 210871209.06,
+            "name": "Secretaria de Justiça e Direitos Humanos"
+          },
+          {
+            "committed": 197321358.73,
             "name": "Tribunal de Contas dos Municípios"
           },
           {
-            "committed": 193270280.99,
+            "committed": 195737790.71,
             "name": "Secretaria de Desenvolvimento Econômico"
           },
           {
-            "committed": 191587612.88,
+            "committed": 193652201.78,
             "name": "Secretaria de Comunicação Social"
           },
           {
-            "committed": 183499112.15,
+            "committed": 185874941.03,
             "name": "Secretaria de Assistência e Desenvolvimento Social"
           },
           {
-            "committed": 128538647.29,
+            "committed": 128840058.9,
             "name": "Casa Militar do Governador"
           },
           {
-            "committed": 127545489.91,
+            "committed": 127985350.37,
             "name": "Secretaria de Ciência, Tecnologia e Inovação"
           },
           {
-            "committed": 113706589.82,
+            "committed": 114600285.33,
             "name": "Casa Civil"
           },
           {
-            "committed": 99907183.34,
+            "committed": 100931218.33,
             "name": "Secretaria do Planejamento"
           },
           {
-            "committed": 51338518.61,
+            "committed": 51632150.82,
             "name": "Gabinete do Governador"
           },
           {
-            "committed": 27165477.47,
+            "committed": 27372772.56,
             "name": "Secretaria de Relações Institucionais"
           },
           {
-            "committed": 22935531.42,
+            "committed": 23128438.97,
             "name": "Secretaria de Promoção da Igualdade Racial e dos Povos e Comunidades Tradicionais"
           },
           {
-            "committed": 18532983.73,
+            "committed": 18785072.85,
             "name": "Secretaria de Políticas para as Mulheres"
           },
           {
-            "committed": 11778238.74,
+            "committed": 11914434.62,
             "name": "Secretaria Extraordinária do Sistema Viário Oeste Ponte Salvador-Itaparica"
           },
           {
-            "committed": 11214909.32,
+            "committed": 11249523.14,
             "name": "Gabinete do Vice Governador"
           }
         ],
         "liquidated": [
           {
-            "liquidated": 10350714744.63,
+            "liquidated": 10353710100.02,
             "name": "Secretaria da Administração"
           },
           {
-            "liquidated": 8508722051.21,
+            "liquidated": 8546091623.94,
             "name": "Secretaria da Saúde"
           },
           {
-            "liquidated": 8244141003.99,
+            "liquidated": 8256153072.71,
             "name": "Secretaria da Educação"
           },
           {
-            "liquidated": 4798986007.42,
+            "liquidated": 4804887654.14,
             "name": "Secretaria da Segurança Pública"
           },
           {
-            "liquidated": 3564390344.13,
+            "liquidated": 3576598635.18,
             "name": "Encargos Gerais do Estado"
           },
           {
-            "liquidated": 2479770750.85,
+            "liquidated": 2483036638.55,
             "name": "Tribunal de Justiça"
           },
           {
-            "liquidated": 2218633371.86,
+            "liquidated": 2222467513.02,
             "name": "Secretaria de Desenvolvimento Urbano"
           },
           {
-            "liquidated": 1233059983.93,
+            "liquidated": 1256348244.04,
             "name": "Secretaria de Infraestrutura"
           },
           {
-            "liquidated": 877008988.83,
+            "liquidated": 878136920.81,
             "name": "Ministério Público"
           },
           {
-            "liquidated": 709771990.8,
+            "liquidated": 711100350.45,
             "name": "Secretaria da Fazenda"
           },
           {
-            "liquidated": 702165162.98,
+            "liquidated": 702339486.48,
             "name": "Assembleia Legislativa da Bahia"
           },
           {
-            "liquidated": 590073026.87,
+            "liquidated": 604224761.1,
             "name": "Secretaria de Administração Penitenciária e Ressocialização"
           },
           {
-            "liquidated": 587617658.22,
+            "liquidated": 590254781.62,
             "name": "Secretaria de Turismo"
           },
           {
-            "liquidated": 468446803.66,
+            "liquidated": 471328340.23,
             "name": "Secretaria de Desenvolvimento Rural"
           },
           {
-            "liquidated": 363414002.92,
+            "liquidated": 365772294.13,
             "name": "Secretaria de Cultura"
           },
           {
-            "liquidated": 334006633.02,
+            "liquidated": 334169018.24,
             "name": "Secretaria de Infraestrutura Hídrica e Saneamento"
           },
           {
-            "liquidated": 309185554.8,
+            "liquidated": 309805898.32,
             "name": "Defensoria Pública"
           },
           {
-            "liquidated": 300959862.31,
+            "liquidated": 303190733.41,
             "name": "Secretaria do Trabalho, Emprego, Renda e Esporte"
           },
           {
-            "liquidated": 187202556.71,
+            "liquidated": 187240702.36,
             "name": "Tribunal de Contas do Estado"
           },
           {
-            "liquidated": 181149375.0,
+            "liquidated": 181740172.02,
             "name": "Secretaria de Comunicação Social"
           },
           {
-            "liquidated": 172646080.12,
+            "liquidated": 172673634.13,
             "name": "Secretaria de Justiça e Direitos Humanos"
           },
           {
-            "liquidated": 163246391.3,
+            "liquidated": 163389251.37,
             "name": "Procuradoria Geral do Estado"
           },
           {
-            "liquidated": 158972818.82,
+            "liquidated": 160822117.23,
             "name": "Secretaria de Desenvolvimento Econômico"
           },
           {
-            "liquidated": 157130778.39,
+            "liquidated": 157336730.76,
             "name": "Secretaria da Agricultura, Pecuária, Irrigação, Pesca e Aquicultura"
           },
           {
-            "liquidated": 152130113.39,
+            "liquidated": 152250698.28,
             "name": "Secretaria do Meio Ambiente"
           },
           {
-            "liquidated": 149853535.67,
+            "liquidated": 151467591.75,
             "name": "Secretaria de Assistência e Desenvolvimento Social"
           },
           {
-            "liquidated": 136139520.5,
+            "liquidated": 136307202.7,
             "name": "Tribunal de Contas dos Municípios"
           },
           {
-            "liquidated": 107192992.06,
+            "liquidated": 107415142.91,
             "name": "Secretaria de Ciência, Tecnologia e Inovação"
           },
           {
-            "liquidated": 101848942.04,
+            "liquidated": 102160137.25,
             "name": "Casa Militar do Governador"
           },
           {
-            "liquidated": 80621568.41,
+            "liquidated": 81154154.25,
             "name": "Casa Civil"
           },
           {
-            "liquidated": 64402962.81,
+            "liquidated": 64459917.82,
             "name": "Secretaria do Planejamento"
           },
           {
-            "liquidated": 39071915.38,
+            "liquidated": 39202884.48,
             "name": "Gabinete do Governador"
           },
           {
-            "liquidated": 20865329.27,
+            "liquidated": 21003547.55,
             "name": "Secretaria de Relações Institucionais"
           },
           {
-            "liquidated": 16527234.29,
+            "liquidated": 16716978.54,
             "name": "Secretaria de Promoção da Igualdade Racial e dos Povos e Comunidades Tradicionais"
           },
           {
-            "liquidated": 14431589.05,
+            "liquidated": 14471277.46,
             "name": "Secretaria de Políticas para as Mulheres"
           },
           {
@@ -427,114 +427,114 @@
             "name": "Secretaria Extraordinária do Sistema Viário Oeste Ponte Salvador-Itaparica"
           },
           {
-            "liquidated": 7619961.83,
+            "liquidated": 7625866.18,
             "name": "Gabinete do Vice Governador"
           }
         ],
         "paid": [
           {
             "name": "Secretaria da Administração",
-            "paid": 10344752807.56
+            "paid": 10347638692.51
           },
           {
             "name": "Secretaria da Saúde",
-            "paid": 8320052257.93
+            "paid": 8431190925.78
           },
           {
             "name": "Secretaria da Educação",
-            "paid": 8137115048.06
+            "paid": 8146416571.25
           },
           {
             "name": "Secretaria da Segurança Pública",
-            "paid": 4726392762.56
+            "paid": 4729751435.73
           },
           {
             "name": "Encargos Gerais do Estado",
-            "paid": 3526830107.92
+            "paid": 3538716458.2
           },
           {
             "name": "Tribunal de Justiça",
-            "paid": 2471360061.78
+            "paid": 2476318411.11
           },
           {
             "name": "Secretaria de Desenvolvimento Urbano",
-            "paid": 2196003237.71
+            "paid": 2196022996.85
           },
           {
             "name": "Secretaria de Infraestrutura",
-            "paid": 1202280395.13
+            "paid": 1237287580.26
           },
           {
             "name": "Ministério Público",
-            "paid": 875286778.61
+            "paid": 876467667.77
           },
           {
             "name": "Secretaria da Fazenda",
-            "paid": 703260055.06
+            "paid": 703831106.21
           },
           {
             "name": "Assembleia Legislativa da Bahia",
-            "paid": 697898670.02
+            "paid": 698418592.34
           },
           {
             "name": "Secretaria de Administração Penitenciária e Ressocialização",
-            "paid": 585138576.49
+            "paid": 599234602.98
           },
           {
             "name": "Secretaria de Turismo",
-            "paid": 577530104.27
+            "paid": 584366614.52
           },
           {
             "name": "Secretaria de Desenvolvimento Rural",
-            "paid": 461267962.01
+            "paid": 462389012.78
           },
           {
             "name": "Secretaria de Cultura",
-            "paid": 360850587.88
+            "paid": 363087500.65
           },
           {
             "name": "Secretaria de Infraestrutura Hídrica e Saneamento",
-            "paid": 323770075.3
+            "paid": 324184095.7
           },
           {
             "name": "Defensoria Pública",
-            "paid": 308236906.62
+            "paid": 309187632.09
           },
           {
             "name": "Secretaria do Trabalho, Emprego, Renda e Esporte",
-            "paid": 298346132.33
+            "paid": 301617149.79
           },
           {
             "name": "Tribunal de Contas do Estado",
-            "paid": 186699998.0
+            "paid": 187222209.93
           },
           {
             "name": "Secretaria de Comunicação Social",
-            "paid": 180697044.41
+            "paid": 180756431.17
           },
           {
             "name": "Secretaria de Justiça e Direitos Humanos",
-            "paid": 171709300.55
+            "paid": 171738006.89
           },
           {
             "name": "Procuradoria Geral do Estado",
-            "paid": 161656052.66
+            "paid": 162146188.88
           },
           {
             "name": "Secretaria de Desenvolvimento Econômico",
-            "paid": 157866543.89
+            "paid": 159858044.38
           },
           {
             "name": "Secretaria da Agricultura, Pecuária, Irrigação, Pesca e Aquicultura",
-            "paid": 154633097.12
+            "paid": 154710827.54
           },
           {
             "name": "Secretaria do Meio Ambiente",
-            "paid": 151226783.89
+            "paid": 151465973.99
           },
           {
             "name": "Secretaria de Assistência e Desenvolvimento Social",
-            "paid": 147027590.97
+            "paid": 148931666.79
           },
           {
             "name": "Tribunal de Contas dos Municípios",
@@ -542,35 +542,35 @@
           },
           {
             "name": "Secretaria de Ciência, Tecnologia e Inovação",
-            "paid": 106594980.61
+            "paid": 106631941.13
           },
           {
             "name": "Casa Militar do Governador",
-            "paid": 101694431.63
+            "paid": 101993947.73
           },
           {
             "name": "Casa Civil",
-            "paid": 80038974.99
+            "paid": 80567286.03
           },
           {
             "name": "Secretaria do Planejamento",
-            "paid": 63302009.02
+            "paid": 63500806.54
           },
           {
             "name": "Gabinete do Governador",
-            "paid": 38647080.13
+            "paid": 38747835.38
           },
           {
             "name": "Secretaria de Relações Institucionais",
-            "paid": 20838568.85
+            "paid": 20851709.09
           },
           {
             "name": "Secretaria de Promoção da Igualdade Racial e dos Povos e Comunidades Tradicionais",
-            "paid": 16373995.19
+            "paid": 16466983.92
           },
           {
             "name": "Secretaria de Políticas para as Mulheres",
-            "paid": 14253444.79
+            "paid": 14268377.62
           },
           {
             "name": "Secretaria Extraordinária do Sistema Viário Oeste Ponte Salvador-Itaparica",
@@ -578,18 +578,18 @@
           },
           {
             "name": "Gabinete do Vice Governador",
-            "paid": 7496231.79
+            "paid": 7502136.14
           }
         ]
       },
       "top_functions": {
         "committed": [
           {
-            "committed": 11125107532.65,
+            "committed": 11288581797.35,
             "name": "Educação"
           },
           {
-            "committed": 11071176731.72,
+            "committed": 11111801005.97,
             "name": "Saúde"
           },
           {
@@ -597,87 +597,87 @@
             "name": "Previdência Social"
           },
           {
-            "committed": 7097774216.42,
+            "committed": 7128252290.85,
             "name": "Segurança Pública"
           },
           {
-            "committed": 3792730175.97,
+            "committed": 3805157748.44,
             "name": "Encargos Especiais"
           },
           {
-            "committed": 2656413931.26,
+            "committed": 2960460392.07,
             "name": "Judiciária"
           },
           {
-            "committed": 2003626620.29,
+            "committed": 2027917461.94,
             "name": "Administração"
           },
           {
-            "committed": 1956339479.0,
+            "committed": 1959661013.92,
             "name": "Urbanismo"
           },
           {
-            "committed": 1506887698.01,
+            "committed": 1510862500.71,
             "name": "Essencial à Justiça"
           },
           {
-            "committed": 1414775607.09,
+            "committed": 1441124312.1,
             "name": "Transporte"
           },
           {
-            "committed": 1301561370.97,
+            "committed": 1301640362.09,
             "name": "Legislativa"
           },
           {
-            "committed": 918824883.34,
+            "committed": 934848520.76,
             "name": "Direitos da Cidadania"
           },
           {
-            "committed": 735025472.83,
+            "committed": 739596309.25,
             "name": "Agricultura"
           },
           {
-            "committed": 730016913.32,
+            "committed": 729725474.96,
             "name": "Comércio e Serviços"
           },
           {
-            "committed": 446661611.01,
+            "committed": 449209085.15,
             "name": "Saneamento"
           },
           {
-            "committed": 426789010.22,
+            "committed": 431839260.52,
             "name": "Cultura"
           },
           {
-            "committed": 249605280.29,
+            "committed": 250098059.48,
             "name": "Desporto e Lazer"
           },
           {
-            "committed": 208913046.65,
+            "committed": 211963200.36,
             "name": "Gestão Ambiental"
           },
           {
-            "committed": 191582612.88,
+            "committed": 193647201.78,
             "name": "Comunicações"
           },
           {
-            "committed": 185035152.7,
+            "committed": 187411557.51,
             "name": "Assistência Social"
           },
           {
-            "committed": 143659155.05,
+            "committed": 144825538.8,
             "name": "Trabalho"
           },
           {
-            "committed": 140607583.0,
+            "committed": 142922112.22,
             "name": "Indústria"
           },
           {
-            "committed": 121759143.91,
+            "committed": 122199004.37,
             "name": "Ciência e Tecnologia"
           },
           {
-            "committed": 114477953.93,
+            "committed": 115801960.79,
             "name": "Habitação"
           },
           {
@@ -685,196 +685,196 @@
             "name": "Energia"
           },
           {
-            "committed": 6675470.18,
+            "committed": 6674620.18,
             "name": "Organização Agrária"
           }
         ],
         "liquidated": [
           {
-            "liquidated": 9988335698.6,
+            "liquidated": 10027018283.94,
             "name": "Saúde"
+          },
+          {
+            "liquidated": 8256066867.85,
+            "name": "Educação"
           },
           {
             "liquidated": 8254362724.95,
             "name": "Previdência Social"
           },
           {
-            "liquidated": 8244054799.13,
-            "name": "Educação"
-          },
-          {
-            "liquidated": 4978262148.59,
+            "liquidated": 4984492553.8,
             "name": "Segurança Pública"
           },
           {
-            "liquidated": 3750578552.61,
+            "liquidated": 3762977403.98,
             "name": "Encargos Especiais"
           },
           {
-            "liquidated": 2479770750.85,
+            "liquidated": 2483036638.55,
             "name": "Judiciária"
           },
           {
-            "liquidated": 1943628165.32,
+            "liquidated": 1947342461.83,
             "name": "Urbanismo"
           },
           {
-            "liquidated": 1387432556.29,
+            "liquidated": 1391276308.68,
             "name": "Administração"
           },
           {
-            "liquidated": 1349233930.52,
+            "liquidated": 1351125066.09,
             "name": "Essencial à Justiça"
           },
           {
-            "liquidated": 1227399114.35,
+            "liquidated": 1248906939.04,
             "name": "Transporte"
           },
           {
-            "liquidated": 963941310.66,
+            "liquidated": 964306055.39,
             "name": "Legislativa"
           },
           {
-            "liquidated": 787958842.0,
+            "liquidated": 802367562.9,
             "name": "Direitos da Cidadania"
           },
           {
-            "liquidated": 648398624.14,
+            "liquidated": 651473267.4,
             "name": "Comércio e Serviços"
           },
           {
-            "liquidated": 620143951.04,
+            "liquidated": 623176756.26,
             "name": "Agricultura"
           },
           {
-            "liquidated": 419022132.85,
+            "liquidated": 419184518.07,
             "name": "Saneamento"
           },
           {
-            "liquidated": 362850100.1,
+            "liquidated": 365208391.31,
             "name": "Cultura"
           },
           {
-            "liquidated": 222603096.26,
+            "liquidated": 224682426.01,
             "name": "Desporto e Lazer"
           },
           {
-            "liquidated": 181149375.0,
+            "liquidated": 181740172.02,
             "name": "Comunicações"
           },
           {
-            "liquidated": 151919397.75,
-            "name": "Gestão Ambiental"
-          },
-          {
-            "liquidated": 150836098.65,
+            "liquidated": 152464174.07,
             "name": "Assistência Social"
           },
           {
-            "liquidated": 113202030.23,
+            "liquidated": 152039963.63,
+            "name": "Gestão Ambiental"
+          },
+          {
+            "liquidated": 113269481.84,
             "name": "Habitação"
           },
           {
-            "liquidated": 108517404.52,
+            "liquidated": 109806441.42,
             "name": "Indústria"
           },
           {
-            "liquidated": 107377291.18,
+            "liquidated": 107528832.53,
             "name": "Trabalho"
           },
           {
-            "liquidated": 101416646.06,
+            "liquidated": 101638796.91,
             "name": "Ciência e Tecnologia"
           },
           {
-            "liquidated": 14978744.31,
+            "liquidated": 16759179.73,
             "name": "Energia"
           },
           {
-            "liquidated": 4435077.35,
+            "liquidated": 4489761.07,
             "name": "Organização Agrária"
           }
         ],
         "paid": [
           {
             "name": "Saúde",
-            "paid": 9798706352.04
+            "paid": 9910806263.17
           },
           {
             "name": "Previdência Social",
-            "paid": 8253350967.29
+            "paid": 8253350996.01
           },
           {
             "name": "Educação",
-            "paid": 8137035550.33
+            "paid": 8146337073.52
           },
           {
             "name": "Segurança Pública",
-            "paid": 4904732807.39
+            "paid": 4908179124.59
           },
           {
             "name": "Encargos Especiais",
-            "paid": 3710866612.08
+            "paid": 3723564497.5
           },
           {
             "name": "Judiciária",
-            "paid": 2471360061.78
+            "paid": 2476318411.11
           },
           {
             "name": "Urbanismo",
-            "paid": 1925676599.54
+            "paid": 1925702611.92
           },
           {
             "name": "Administração",
-            "paid": 1374470091.47
+            "paid": 1378023256.35
           },
           {
             "name": "Essencial à Justiça",
-            "paid": 1344972733.48
+            "paid": 1347594484.33
           },
           {
             "name": "Transporte",
-            "paid": 1196333645.89
+            "paid": 1230737646.14
           },
           {
             "name": "Legislativa",
-            "paid": 961171242.17
+            "paid": 962152704.1
           },
           {
             "name": "Direitos da Cidadania",
-            "paid": 781756228.69
+            "paid": 795988883.08
           },
           {
             "name": "Comércio e Serviços",
-            "paid": 638204625.67
+            "paid": 645508427.32
           },
           {
             "name": "Agricultura",
-            "paid": 611118290.91
+            "paid": 611649168.35
           },
           {
             "name": "Saneamento",
-            "paid": 407722200.09
+            "paid": 408136220.49
           },
           {
             "name": "Cultura",
-            "paid": 360306239.42
+            "paid": 362523597.83
           },
           {
             "name": "Desporto e Lazer",
-            "paid": 222321207.9
+            "paid": 224066157.15
           },
           {
             "name": "Comunicações",
-            "paid": 180697044.41
+            "paid": 180756431.17
           },
           {
             "name": "Gestão Ambiental",
-            "paid": 151016068.25
+            "paid": 151255239.34
           },
           {
             "name": "Assistência Social",
-            "paid": 148010079.96
+            "paid": 149915435.47
           },
           {
             "name": "Habitação",
@@ -882,23 +882,23 @@
           },
           {
             "name": "Indústria",
-            "paid": 107517574.11
+            "paid": 108919041.55
           },
           {
             "name": "Trabalho",
-            "paid": 105453845.62
+            "paid": 106979913.83
           },
           {
             "name": "Ciência e Tecnologia",
-            "paid": 100818634.61
+            "paid": 100855595.13
           },
           {
             "name": "Energia",
-            "paid": 14346154.55
+            "paid": 14949339.43
           },
           {
             "name": "Organização Agrária",
-            "paid": 4399015.6
+            "paid": 4452118.31
           }
         ]
       },
@@ -916,7 +916,7 @@
         "2023": 170714,
         "2024": 178178,
         "2025": 180079,
-        "2026": 111942
+        "2026": 112332
       }
     },
     "privacy_note": "Nenhuma linha bruta, CPF/CNPJ ou nome de credor é republicado. Agregações públicas são limitadas a órgãos e funções.",
@@ -932,7 +932,7 @@
       {
         "member": "VW_PAINEL_DESPESA.csv",
         "member_year": null,
-        "rows": 2216886,
+        "rows": 2217276,
         "schema": {
           "delimiter": ";",
           "detected_fields": {
@@ -1016,19 +1016,19 @@
           "privacy_sensitive_columns_present": []
         },
         "score": 78,
-        "selected_rows": 111942,
+        "selected_rows": 112332,
         "stage_totals": {
           "committed": {
-            "numeric_rows": 111942,
-            "sum": 56828961047.83
+            "numeric_rows": 112332,
+            "sum": 57479155186.71
           },
           "liquidated": {
-            "numeric_rows": 111942,
-            "sum": 48561808563.31
+            "numeric_rows": 112332,
+            "sum": 48696741029.27
           },
           "paid": {
-            "numeric_rows": 111942,
-            "sum": 48021950710.15
+            "numeric_rows": 112332,
+            "sum": 48238309474.09
           }
         },
         "years": {
@@ -1045,13 +1045,13 @@
           "2023": 170714,
           "2024": 178178,
           "2025": 180079,
-          "2026": 111942
+          "2026": 112332
         }
       },
       {
         "member": "VW_PROCESSO_SEI.csv",
         "member_year": null,
-        "rows": 1088119,
+        "rows": 1088665,
         "schema": {
           "delimiter": ";",
           "detected_fields": {
@@ -1084,7 +1084,7 @@
           ]
         },
         "score": 12,
-        "selected_rows": 112457,
+        "selected_rows": 113003,
         "stage_totals": {},
         "years": {
           "2019": 90897,
@@ -1094,7 +1094,7 @@
           "2023": 176750,
           "2024": 190820,
           "2025": 164617,
-          "2026": 112457
+          "2026": 113003
         }
       }
     ]
@@ -1103,14 +1103,17 @@
     "attempts": [
       {
         "attempt": 1,
-        "bytes": 221670223,
+        "bytes": 221710553,
         "mode": "whole",
         "status": "success"
       }
     ],
     "download_mode": "whole_with_retries",
-    "expected_size": 221670223,
+    "effective_size": 221710553,
     "fallback_reason": "certificate_chain_error",
+    "metadata_expected_size": 221670223,
+    "metadata_size_mismatch": true,
+    "remote_size": 221710553,
     "tls_verified": false,
     "transport_note": "O recurso foi baixado do mesmo host oficial dados.ba.gov.br sem validação TLS porque o runner não conseguiu validar a cadeia de certificados; a condição foi registrada."
   }

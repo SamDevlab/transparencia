@@ -1,32 +1,6 @@
 {
   "entries": [
     {
-      "bytes": 221670223,
-      "content_type": "application/zip",
-      "declared_size": 221670223,
-      "download_mode": "whole_with_retries",
-      "resource_id": "6356ec2d-6bc0-476e-bfd5-7cdc78864d55",
-      "resource_last_modified": "2026-08-20T10:13:17",
-      "resource_name": "Despesas.zip",
-      "sha256": "381a12450a88ebe20559751258db8e67d23b8c30a83ed87261749ee02014eb5c",
-      "source_id": "sefaz_despesas_data",
-      "tls_verified": false,
-      "url": "https://dados.ba.gov.br/dataset/518569da-ccaa-4621-b8d2-e7424ec3f1ea/resource/6356ec2d-6bc0-476e-bfd5-7cdc78864d55/download/despesas.zip"
-    },
-    {
-      "bytes": 498799120,
-      "content_type": "application/zip",
-      "declared_size": 498799120,
-      "download_mode": "http_range",
-      "resource_id": "2319e322-587b-4cea-b6e5-e184ebf040ef",
-      "resource_last_modified": "2026-08-20T10:36:46",
-      "resource_name": "Pagamentos.zip",
-      "sha256": "a0e8309602145a0c7b311a979863e4a7dc175fc450d967d417d921aab7a60996",
-      "source_id": "sefaz_pagamentos_data",
-      "tls_verified": false,
-      "url": "https://dados.ba.gov.br/dataset/7c78e7bf-f753-4fff-87b4-5d6950ba18a8/resource/2319e322-587b-4cea-b6e5-e184ebf040ef/download/pagamentos.zip"
-    },
-    {
       "bytes": 673108405,
       "content_type": "application/zip",
       "declared_size": 673108405,
@@ -130,6 +104,32 @@
       "source_id": "sefaz_licitacoes_data",
       "tls_verified": false,
       "url": "https://dados.ba.gov.br/dataset/36c792f9-1999-4f21-a669-752a178b06b7/resource/c5040c7d-4375-459e-93b0-beca841f63b4/download/licitacoes.zip"
+    },
+    {
+      "bytes": 221710553,
+      "content_type": "application/zip",
+      "declared_size": 221670223,
+      "download_mode": "whole_with_retries",
+      "resource_id": "6356ec2d-6bc0-476e-bfd5-7cdc78864d55",
+      "resource_last_modified": "2026-08-20T10:13:17",
+      "resource_name": "Despesas.zip",
+      "sha256": "310680d44b1de7169e1f7a0a6c15e39086a606c59e7c38aa897ce0e40f7015f5",
+      "source_id": "sefaz_despesas_data",
+      "tls_verified": false,
+      "url": "https://dados.ba.gov.br/dataset/518569da-ccaa-4621-b8d2-e7424ec3f1ea/resource/6356ec2d-6bc0-476e-bfd5-7cdc78864d55/download/despesas.zip"
+    },
+    {
+      "bytes": 500638146,
+      "content_type": "application/zip",
+      "declared_size": 498799120,
+      "download_mode": "http_range",
+      "resource_id": "2319e322-587b-4cea-b6e5-e184ebf040ef",
+      "resource_last_modified": "2026-08-20T10:36:46",
+      "resource_name": "Pagamentos.zip",
+      "sha256": "491983c6842efdbc4822956afbf828120e118188e334f8b8227c983d08ade3eb",
+      "source_id": "sefaz_pagamentos_data",
+      "tls_verified": false,
+      "url": "https://dados.ba.gov.br/dataset/7c78e7bf-f753-4fff-87b4-5d6950ba18a8/resource/2319e322-587b-4cea-b6e5-e184ebf040ef/download/pagamentos.zip"
     }
   ],
   "hash_algorithm": "SHA-256"

@@ -101,16 +101,16 @@
       "unique_instruments": 59350
     },
     "despesas": {
-      "bytes": 221670223,
+      "bytes": 221710553,
       "declared_size": 221670223,
       "download_mode": "whole_with_retries",
       "output": "sefaz_despesas.json",
       "resource_id": "6356ec2d-6bc0-476e-bfd5-7cdc78864d55",
       "resource_last_modified": "2026-08-20T10:13:17",
       "resource_name": "Despesas.zip",
-      "rows": 2216886,
+      "rows": 2217276,
       "selected_year": 2026,
-      "sha256": "381a12450a88ebe20559751258db8e67d23b8c30a83ed87261749ee02014eb5c",
+      "sha256": "310680d44b1de7169e1f7a0a6c15e39086a606c59e7c38aa897ce0e40f7015f5",
       "status": "processed",
       "tls_verified": false
     },
@@ -129,16 +129,16 @@
       "tls_verified": false
     },
     "pagamentos": {
-      "bytes": 498799120,
+      "bytes": 500638146,
       "declared_size": 498799120,
       "download_mode": "http_range",
       "output": "sefaz_pagamentos.json",
       "resource_id": "2319e322-587b-4cea-b6e5-e184ebf040ef",
       "resource_last_modified": "2026-08-20T10:36:46",
       "resource_name": "Pagamentos.zip",
-      "rows": 3470605,
+      "rows": 3474508,
       "selected_year": 2026,
-      "sha256": "a0e8309602145a0c7b311a979863e4a7dc175fc450d967d417d921aab7a60996",
+      "sha256": "491983c6842efdbc4822956afbf828120e118188e334f8b8227c983d08ade3eb",
       "status": "processed",
       "tls_verified": false
     },
@@ -167,8 +167,8 @@
     ],
     "expected": 5,
     "last_run_datasets": [
-      "receitas",
-      "licitacoes"
+      "despesas",
+      "pagamentos"
     ],
     "last_run_processed": 2,
     "processed": 5,

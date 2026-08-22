@@ -1,9 +1,9 @@
 {
   "dataset": "pagamentos",
   "evidence": {
-    "bytes": 498799120,
+    "bytes": 500638146,
     "content_type": "application/zip",
-    "sha256": "a0e8309602145a0c7b311a979863e4a7dc175fc450d967d417d921aab7a60996",
+    "sha256": "491983c6842efdbc4822956afbf828120e118188e334f8b8227c983d08ade3eb",
     "status_code": 206,
     "url": "https://dados.ba.gov.br/dataset/7c78e7bf-f753-4fff-87b4-5d6950ba18a8/resource/2319e322-587b-4cea-b6e5-e184ebf040ef/download/pagamentos.zip"
   },
@@ -24,14 +24,14 @@
       "invalid_tabular_members": 0,
       "members": 5,
       "processed_tabular_members": 5,
-      "uncompressed_bytes": 3779959899
+      "uncompressed_bytes": 3784178698
     },
     "dataset": "pagamentos",
     "interpretation": "O total publicado usa apenas o campo de pagamento identificado na tabela principal com escopo temporal verificável. Views anuais podem usar o ano explícito no nome do arquivo. Outros campos monetários permanecem rotulados pelo nome original e membros inválidos são registrados, não somados.",
     "primary_table": {
       "member": "VW_PAINEL_PAGAMENTO_NOTA_ORDEM_BANCARIA.csv",
       "member_year": null,
-      "rows": 3470605,
+      "rows": 3474508,
       "schema": {
         "delimiter": ";",
         "detected_fields": {
@@ -99,55 +99,55 @@
         ]
       },
       "score": 28,
-      "selected_rows": 598254,
+      "selected_rows": 602157,
       "top_agencies": [
         {
           "name": "Executivo",
-          "value": 44925486421.53
+          "value": 45010802383.87
         },
         {
           "name": "Judiciário",
-          "value": 2525917511.62
+          "value": 2527599343.03
         },
         {
           "name": "Legislativo",
-          "value": 1061543545.57
+          "value": 1062868873.86
         },
         {
           "name": "Ministério Público",
-          "value": 870872665.17
+          "value": 871297011.39
         },
         {
           "name": "Defensoria Pública",
-          "value": 311766959.82
+          "value": 311898314.59
         }
       ],
       "value_field_sums": {
         "Valor do Pagamento": {
-          "numeric_rows": 598254,
-          "sum": 49695587103.71
+          "numeric_rows": 602157,
+          "sum": 49784465926.75
         }
       },
       "years": {
         "2023": 881844,
         "2024": 997656,
         "2025": 992851,
-        "2026": 598254
+        "2026": 602157
       }
     },
     "privacy_note": "Nenhuma linha bruta, CPF/CNPJ, favorecido ou credor é republicado. Agregações públicas são limitadas a órgãos.",
     "selected_year": 2026,
     "selected_year_payment": {
-      "numeric_rows": 598254,
+      "numeric_rows": 602157,
       "source_field": "Valor do Pagamento",
-      "sum": 49695587103.71
+      "sum": 49784465926.75
     },
     "table_errors": [],
     "tables": [
       {
         "member": "VW_PAINEL_PAGAMENTO_EMPENHO.csv",
         "member_year": null,
-        "rows": 1938917,
+        "rows": 1941071,
         "schema": {
           "delimiter": ";",
           "detected_fields": {
@@ -170,7 +170,7 @@
           "privacy_sensitive_columns_present": []
         },
         "score": 12,
-        "selected_rows": 301565,
+        "selected_rows": 303719,
         "value_field_sums": {},
         "years": {
           "2015": 27,
@@ -184,13 +184,13 @@
           "2023": 528769,
           "2024": 555732,
           "2025": 534350,
-          "2026": 301565
+          "2026": 303719
         }
       },
       {
         "member": "VW_PAINEL_PAGAMENTO_LIQUIDACAO.csv",
         "member_year": null,
-        "rows": 2197753,
+        "rows": 2200134,
         "schema": {
           "delimiter": ";",
           "detected_fields": {
@@ -212,7 +212,7 @@
           "privacy_sensitive_columns_present": []
         },
         "score": 12,
-        "selected_rows": 348856,
+        "selected_rows": 351231,
         "value_field_sums": {},
         "years": {
           "1900": 5,
@@ -258,7 +258,7 @@
           "2023": 596075,
           "2024": 626521,
           "2025": 604073,
-          "2026": 348856,
+          "2026": 351231,
           "2034": 1,
           "2040": 1,
           "2042": 4,
@@ -275,7 +275,7 @@
       {
         "member": "VW_PAINEL_PAGAMENTO_LIQUIDACAO_SUB_ELEMENTO.csv",
         "member_year": null,
-        "rows": 2202660,
+        "rows": 2205045,
         "schema": {
           "delimiter": ";",
           "detected_fields": {
@@ -297,7 +297,7 @@
           "privacy_sensitive_columns_present": []
         },
         "score": 12,
-        "selected_rows": 351782,
+        "selected_rows": 354167,
         "value_field_sums": {},
         "years": {
           "2015": 2,
@@ -311,13 +311,13 @@
           "2023": 601984,
           "2024": 633433,
           "2025": 608598,
-          "2026": 351782
+          "2026": 354167
         }
       },
       {
         "member": "VW_PAINEL_PAGAMENTO_NOTA_ORDEM_BANCARIA.csv",
         "member_year": null,
-        "rows": 3470605,
+        "rows": 3474508,
         "schema": {
           "delimiter": ";",
           "detected_fields": {
@@ -385,24 +385,24 @@
           ]
         },
         "score": 28,
-        "selected_rows": 598254,
+        "selected_rows": 602157,
         "value_field_sums": {
           "Valor do Pagamento": {
-            "numeric_rows": 598254,
-            "sum": 49695587103.71
+            "numeric_rows": 602157,
+            "sum": 49784465926.75
           }
         },
         "years": {
           "2023": 881844,
           "2024": 997656,
           "2025": 992851,
-          "2026": 598254
+          "2026": 602157
         }
       },
       {
         "member": "VW_PAINEL_PAGAMENTO_PROCESSO_SEI.csv",
         "member_year": null,
-        "rows": 584669,
+        "rows": 585360,
         "schema": {
           "delimiter": ";",
           "detected_fields": {
@@ -429,8 +429,10 @@
   },
   "transport": {
     "download_mode": "http_range",
-    "expected_size": 498799120,
+    "effective_size": 500638146,
     "fallback_reason": "certificate_chain_error",
+    "metadata_expected_size": 498799120,
+    "metadata_size_mismatch": true,
     "range_attempts": [
       {
         "attempt": 1,
@@ -608,12 +610,13 @@
       },
       {
         "attempt": 1,
-        "bytes": 12259856,
-        "range": "486539264-498799119",
+        "bytes": 14098882,
+        "range": "486539264-500638145",
         "status": "success"
       }
     ],
     "range_chunk_bytes": 16777216,
+    "remote_size": 500638146,
     "tls_verified": false,
     "transport_note": "O recurso foi baixado do mesmo host oficial dados.ba.gov.br sem validação TLS porque o runner não conseguiu validar a cadeia de certificados; a condição foi registrada."
   }
