@@ -56,12 +56,7 @@ export default function RootLayout({ children }) {
           <div className="shell rodape-enxuto">
             <div><strong>Transparência Salvador</strong><p>Projeto independente de organização de dados públicos e inteligência econômica. Sem fonte, sem fato.</p></div>
             <div className="rodape-links">
-              <Link href="/financas">Finanças</Link>
-              <Link href="/contratos">Contratos</Link>
-              <Link href="/fornecedores">Fornecedores</Link>
-              <Link href="/orgaos">Órgãos</Link>
-              <Link href="/analises">Análises</Link>
-              <Link href="/bahia/transparencia">Transparência Bahia</Link>
+              <Link href="/bahia/transparencia">Transparência da Bahia</Link>
               <Link href="/transparencia">Cobertura dos dados</Link>
               <Link href="/metodologia">Metodologia</Link>
             </div>
