@@ -26,6 +26,7 @@ const acquisitions = readJson("acquisitions.json");
 const finance = readJson("finance.json");
 const contracts = readJson("contracts.json");
 const links = readJson("municipal-links.json");
+const camara = readJson("camara.json");
 const datasets = Array.isArray(transparency.datasets) ? transparency.datasets : [];
 
 const acqSummary = acquisitions.summary ?? {};
@@ -80,11 +81,28 @@ replaceDataset(datasets, {
   asOf: [linkSummary.acquisitionsAsOf, linkSummary.contractsAsOf].filter(Boolean).sort().at(-1) ?? null,
 });
 
+const cms = camara.commitmentLedger;
+if (cms) {
+  replaceDataset(datasets, {
+    id: "cms",
+    title: "Empenhos da Câmara Municipal",
+    status: cms.completeForDefaultPublicView === true ? "complete_for_filter" : "partial",
+    statusLabel: cms.completeForDefaultPublicView === true ? "Completo para a visão pública padrão" : "Parcial",
+    detail: `${cms.records ?? 0} empenhos em ${cms.pagesWithRecords ?? 0} páginas. Parser completo=${cms.parserCompleteForVisibleRecords === true ? "sim" : "não"}; fonte esgotada=${cms.sourceExhausted === true ? "sim" : "não"}. São empenhos, não liquidações nem pagamentos, e o resumo público não republica nomes de credores nem CPF.`,
+    source: "Câmara Municipal de Salvador",
+    href: "/camara",
+    asOf: cms.asOf ?? null,
+  });
+}
+
 transparency.asOf = meta.asOf ?? transparency.asOf ?? null;
-transparency.latestSourceAsOf = meta.latestSourceAsOf ?? null;
+transparency.latestSourceAsOf = [meta.latestSourceAsOf, meta.cmsCommitmentsAsOf].filter(Boolean).sort().at(-1) ?? null;
 transparency.freshnessModel = "per_source";
-transparency.dataFreshness = meta.dataFreshness ?? null;
+transparency.dataFreshness = {
+  ...(meta.dataFreshness ?? {}),
+  ...(cms ? { cmsCommitments: { asOf: cms.asOf ?? null, source: "CMS_EMPENHOS" } } : {}),
+};
 transparency.datasets = datasets;
 
 writeJson("transparency.json", transparency);
-console.log(`Cobertura pública reconciliada: ${datasets.length} conjuntos; fonte municipal mais recente=${meta.latestSourceAsOf ?? "n/a"}.`);
+console.log(`Cobertura pública reconciliada: ${datasets.length} conjuntos; fonte mais recente=${transparency.latestSourceAsOf ?? "n/a"}.`);
