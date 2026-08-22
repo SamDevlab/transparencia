@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "tested_commit": "87c362923020077c1e287c676e9c5b96a7057cc5",
+  "node": "v22.23.2",
+  "next": "16.2.12",
+  "react": "19.2.8",
+  "freshness_model": "per_source",
+  "latest_source_as_of": "2026-08-21",
+  "municipal_contracts": {
+    "complete_for_filter": true,
+    "source_rows": 4807,
+    "published_rows": 3199,
+    "period_end": "2026-08-21",
+    "supplier_enriched_rows": 0
+  },
+  "acquisitions": {
+    "complete_for_filter": true,
+    "rows": 2401,
+    "period_end": "2026-08-21"
+  },
+  "exact_links": {
+    "processesTotal": 2401,
+    "processesWithExactContracts": 875,
+    "exactPairs": 1078,
+    "contractsPrimaryRows": 3199,
+    "uniqueContractsLinked": 1057,
+    "processCoverageRatio": 0.36443148688046645,
+    "contractCoverageRatio": 0.3304157549234136,
+    "acquisitionsAsOf": "2026-08-21",
+    "contractsAsOf": "2026-08-21"
+  },
+  "suppliers": {
+    "public_businesses": 18,
+    "rule": "Diretório público restrito a fornecedores empresariais com CNPJ estruturado. Relações com contratos municipais exigem evidência documental exata; fornecedores PNCP não ligados permanecem marcados como complementares."
+  },
+  "cms": {
+    "commitments_complete": true,
+    "commitments": 1414,
+    "as_of": "2026-08-21",
+    "auxiliary": {
+      "asOf": "2026-08-21",
+      "travel": {
+        "status": "complete_for_filter",
+        "complete": true,
+        "records": 159,
+        "pages": 36,
+        "totalValue": 278826.3200000001,
+        "recordsWithProcessNumber": 63,
+        "publicDetailRule": "A camada pública exibe apenas contagem e valor agregado dos registros de viagem. Nomes de usuários, justificativas e demais campos pessoais/textuais permanecem na evidência preservada e não são republicados neste resumo."
+      },
+      "documents": {
+        "status": "complete_for_filter",
+        "complete": true,
+        "records": 1994,
+        "sections": {
+          "execucao_orcamentaria_financeira": {
+            "complete": true,
+            "pages_collected": 44,
+            "stopped_status": null
+          },
+          "prestacao_contas": {
+            "complete": true,
+            "pages_collected": 66,
+            "stopped_status": null
+          }
+        },
+        "publicDetailRule": "O portal publica a cobertura e as contagens do catálogo; os documentos continuam acessíveis nas páginas oficiais da Câmara."
+      },
+      "certames": {
+        "status": "partial",
+        "complete": false,
+        "recordsVisible": 10,
+        "coverage": "server_visible_page_only",
+        "rows": [
+          {
+            "modality": "Dispensa Eletrônica",
+            "noticeNumber": "17/2026",
+            "scheduledAtText": "25/06/2026 08:00",
+            "updatedAtText": "06/08/2026 11:25",
+            "object": "REGISTRO DE PREÇOS visando a aquisição de cafeteiras industriais, carrinhos de transporte de garrafas térmicas, recipientes térmicos, coadores e colheres para servir, incluindo a entrega, para suprir a necessidade das copas e dos eventos internos e externos realizados pela Câmara Municipal de Salvador, a fim de dar suporte as reuniões que acontecem nesta Casa Legislativa, além das unidades administrativas, servidores, gabinetes, prestadores de serviços e visitantes da CMS.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Pregão Eletrônico",
+            "noticeNumber": "23/2026",
+            "scheduledAtText": "19/08/2026 11:00",
+            "updatedAtText": "05/08/2026 22:56",
+            "object": "Contratação de pessoa jurídica especializada na prestação dos serviços de gerenciamento informatizado com o fornecimento contínuo de combustíveis automotivos, gasolina comum e/ou aditivada, etanol, óleo diesel, óleo diesel s-10 e arla destinados ao abastecimento da frota oficial da Câmara Municipal de Salvador.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Pregão Eletrônico",
+            "noticeNumber": "20/2026",
+            "scheduledAtText": "19/08/2026 10:00",
+            "updatedAtText": "05/08/2026 22:55",
+            "object": "Contratação de empresa especializada na manutenção preventiva e corretiva, com fornecimento de peças, assim como o serviço de movimentação (desinstalação, remoção e reinstalação) dos equipamentos odontológicos no Gabinete Odontológico da Câmara Municipal de Salvador.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Pregão Eletrônico",
+            "noticeNumber": "25/2026",
+            "scheduledAtText": "18/08/2026 10:00",
+            "updatedAtText": "03/08/2026 10:11",
+            "object": "Contratação de empresa especializada para a prestação de Serviços de telefonia móvel pessoal (SMP), com VOZ e DADOS com tecnologia 5G/4G/GSM (Sistema Global para Comunicações Móveis) ou de tecnologia superior, com o fornecimento de 130 chips por um período de 30 meses e o fornecimento de 75 smartphones em comodato.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Dispensa Eletrônica",
+            "noticeNumber": "16/2026",
+            "scheduledAtText": "01/06/2026 08:00",
+            "updatedAtText": "27/07/2026 10:02",
+            "object": "Aquisição de mobiliário destinado à ambientação e estruturação dos programas institucionais a serem produzidos pela TV Câmara de Salvador",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Pregão Eletrônico",
+            "noticeNumber": "19/2026",
+            "scheduledAtText": "07/08/2026 10:00",
+            "updatedAtText": "24/07/2026 16:30",
+            "object": "Aquisição de materiais odontológicos de consumo, materiais odontológicos restauradores dentários, brocas, instrumentais odontológicos, equipamentos odontológicos e acessórios para equipamentos odontológicos e periféricos, para o atendimento dos vereadores, servidores e dependentes no Gabinete Odontológico da Câmara Municipal de Salvador.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Pregão Eletrônico",
+            "noticeNumber": "90002/2026",
+            "scheduledAtText": "17/06/2026 10:00",
+            "updatedAtText": "19/06/2026 10:16",
+            "object": "REGISTRO DE PREÇOS visando a contratação de serviços de manutenção preventiva e corretiva de aparelhos de ar-condicionado, incluindo o fornecimento de materiais e peças — com peças extraordinárias pagas à parte —, além de serviço de “movimentação”, que reúne os subserviços de instalação, desinstalação e realocação destes aparelhos de climatização.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Dispensa Eletrônica",
+            "noticeNumber": "13/2026",
+            "scheduledAtText": "18/05/2026 08:00",
+            "updatedAtText": "03/06/2026 15:13",
+            "object": "REGISTRO DE PREÇOS para aquisição de materiais de consumo - Equipamentos de Proteção Individual – EPIs -para o atendimento odontológico dos vereadores, servidores e respectivos dependentes no Gabinete Odontológico da Câmara Municipal de Salvador.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Pregão Eletrônico",
+            "noticeNumber": "90004/2026",
+            "scheduledAtText": "05/05/2026 10:00",
+            "updatedAtText": "28/05/2026 13:43",
+            "object": "Contratação de instituição financeira autorizada a funcionar pelo Banco Central do Brasil, para a prestação, em caráter exclusivo, de serviços bancários destinados ao processamento, gerenciamento e efetivação do pagamento da folha de remuneração, proventos, subsídios, benefícios e demais créditos de natureza remuneratória e serviços bancários destinados ao pagamento de fornecedores da Câmara Municipal de Salvador – CMS.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Dispensa Eletrônica",
+            "noticeNumber": "10/2026",
+            "scheduledAtText": "29/04/2026 08:00",
+            "updatedAtText": "27/05/2026 12:02",
+            "object": "Aquisição de material permanente (livros) visando complementar e atualizar o acervo da Biblioteca Professor Jorge Portugal, pertencente ao Centro de Cultura Vereador Manuel Querino, da Câmara Municipal de Salvador, BA, bem como auxiliar no gerenciamento das demandas informacionais contidas na Biblioteca.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          }
+        ],
+        "coverageRule": "Somente a página atualmente visível no servidor foi normalizada. A ausência de um certame nesta lista não significa inexistência no catálogo da Câmara."
+      }
+    }
+  },
+  "pncp_complementary": {
+    "as_of": "2026-08-22",
+    "status": "complete_for_supplied_agencies_and_filter",
+    "collection_mode": "bounded_official_municipality_cnpj",
+    "current_rows": 41,
+    "agency_cnpj_count": 1,
+    "agency_discovery_complete": false
+  }
+}
