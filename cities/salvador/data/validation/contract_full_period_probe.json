@@ -1,0 +1,27 @@
+{
+  "bytes": 7717,
+  "elapsed_seconds": 2.7,
+  "endpoint": "/contratos/gridDetalhada?pagina=1",
+  "first_row_contract_id": "2026CT004867",
+  "observed_at_date": "2026-08-22",
+  "paginacao": {
+    "paginaAtual": 1,
+    "paginas": 481,
+    "tamanho": 10,
+    "total": 4807,
+    "totalPagina": 10
+  },
+  "records_on_first_page": 10,
+  "request_body": {
+    "agrupamentos": [],
+    "dataFim": "2026-08-21",
+    "dataInicio": "2026-01-01",
+    "filtros": []
+  },
+  "sha256": "33972df7677bba09d8598f2c54b760e3c7a6d8201b148b953a917926b3b0b4a7",
+  "status": 200,
+  "totalizadores": {
+    "Atualizado": "33.925.490.031,29",
+    "Original": "13.983.925.005,32"
+  }
+}
