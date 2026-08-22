@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import re
 import tempfile
 import time
 from pathlib import Path
@@ -28,6 +29,32 @@ def _sha256(path: Path) -> str:
                 break
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _probe_remote_size(client: httpx.Client, url: str) -> int | None:
+    """Obtém o tamanho atual sem baixar o corpo inteiro.
+
+    O CKAN pode atualizar o arquivo antes do metadado do snapshot. A resposta Range
+    é usada apenas para ler cabeçalhos; se o host ignorar Range, o corpo não é lido.
+    """
+    try:
+        with client.stream(
+            "GET",
+            url,
+            headers={"Range": "bytes=0-0", "Accept-Encoding": "identity"},
+        ) as response:
+            if response.status_code == 206:
+                content_range = response.headers.get("content-range", "")
+                match = re.search(r"/(\d+)\s*$", content_range)
+                if match:
+                    return int(match.group(1))
+            if response.status_code == 200:
+                content_length = response.headers.get("content-length")
+                if content_length and content_length.isdigit():
+                    return int(content_length)
+    except httpx.HTTPError:
+        return None
+    return None
 
 
 def _whole_download(
@@ -71,7 +98,7 @@ def _range_download(
     if expected_size <= 0:
         raise BahiaOpenDataError("Tamanho esperado inválido para download por faixas")
     if expected_size > max_bytes:
-        raise BahiaOpenDataError(f"Arquivo declarado com {expected_size} bytes excede limite de {max_bytes}")
+        raise BahiaOpenDataError(f"Arquivo atual com {expected_size} bytes excede limite de {max_bytes}")
 
     handle = tempfile.NamedTemporaryFile(prefix="bahia-sefaz-range-", suffix=".bin", delete=False)
     path = Path(handle.name)
@@ -94,9 +121,15 @@ def _range_download(
                             f"Servidor não aceitou faixa bytes={start}-{end}: HTTP {response.status_code}"
                         )
                     content_range = response.headers.get("content-range", "")
-                    if not content_range.lower().startswith(f"bytes {start}-{end}/".lower()):
+                    match = re.fullmatch(rf"bytes\s+{start}-{end}/(\d+)", content_range.strip(), flags=re.IGNORECASE)
+                    if not match:
                         raise BahiaOpenDataError(
                             f"Content-Range inesperado para {start}-{end}: {content_range or 'ausente'}"
+                        )
+                    reported_total = int(match.group(1))
+                    if reported_total != expected_size:
+                        raise BahiaOpenDataError(
+                            f"Arquivo mudou durante o download: tamanho atual {reported_total}, esperado {expected_size}"
                         )
                     data = response.content
                     if len(data) != expected_chunk:
@@ -159,37 +192,47 @@ def _download_with_client(
     range_threshold: int,
     chunk_size: int,
 ) -> tuple[Path, DownloadEvidence, dict[str, Any]]:
-    if expected_size and expected_size >= range_threshold:
+    remote_size = _probe_remote_size(client, url)
+    effective_size = remote_size or expected_size
+    if effective_size and effective_size > max_bytes:
+        raise BahiaOpenDataError(f"Arquivo atual com {effective_size} bytes excede limite de {max_bytes}")
+
+    size_context = {
+        "metadata_expected_size": expected_size,
+        "remote_size": remote_size,
+        "effective_size": effective_size,
+        "metadata_size_mismatch": bool(remote_size and expected_size and remote_size != expected_size),
+    }
+
+    if effective_size and effective_size >= range_threshold:
         try:
             path, evidence, history = _range_download(
                 client,
                 url,
-                expected_size=expected_size,
+                expected_size=effective_size,
                 max_bytes=max_bytes,
                 chunk_size=chunk_size,
             )
             return path, evidence, {
                 "download_mode": "http_range",
-                "expected_size": expected_size,
                 "range_chunk_bytes": chunk_size,
                 "range_attempts": history,
+                **size_context,
             }
         except BahiaOpenDataError as exc:
-            # Se o servidor simplesmente não implementar Range, ainda permitimos a
-            # estratégia tradicional com retentativas. Falhas de faixa após suporte
-            # confirmado continuam visíveis no histórico do erro do download inteiro.
             if "não aceitou faixa" not in str(exc):
                 raise
+
     path, evidence, history = _whole_download(client, url, max_bytes=max_bytes)
-    if expected_size and evidence.bytes != expected_size:
+    if effective_size and evidence.bytes != effective_size:
         path.unlink(missing_ok=True)
         raise BahiaOpenDataError(
-            f"Download completo com tamanho divergente: {evidence.bytes} != {expected_size}"
+            f"Download completo com tamanho divergente: {evidence.bytes} != {effective_size}"
         )
     return path, evidence, {
         "download_mode": "whole_with_retries",
-        "expected_size": expected_size,
         "attempts": history,
+        **size_context,
     }
 
 
@@ -202,10 +245,11 @@ def download_ckan_resource_resilient(
     range_threshold: int = 250_000_000,
     chunk_size: int = 16 * 1024 * 1024,
 ) -> tuple[Path, DownloadEvidence, dict[str, Any]]:
-    """Baixa recurso grande do CKAN estadual com verificação de tamanho e retomada.
+    """Baixa recurso estadual com retomada e verificação do tamanho atual.
 
-    O modo por faixas é preferido para arquivos grandes. O fallback TLS é permitido
-    apenas para o mesmo host oficial `dados.ba.gov.br` e sempre fica registrado.
+    O tamanho publicado no CKAN é evidência de metadado, mas pode ficar defasado em
+    relação ao arquivo de atualização diária. O downloader consulta o tamanho atual
+    no mesmo host antes da transferência e registra qualquer divergência.
     """
     parts = urlsplit(url)
     if parts.scheme != "https" or parts.hostname != OFFICIAL_DATA_HOST:
