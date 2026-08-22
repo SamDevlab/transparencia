@@ -49,25 +49,48 @@ jobs:
           out = Path('cities/salvador/data/snapshots') / today.isoformat() / 'pncp_complementary'
           procurement_dir = out / 'procurements'
           contract_dir = out / 'contracts'
+          out.mkdir(parents=True, exist_ok=True)
           city = load_city(root, 'salvador').config
 
-          procurement_path = pncp.collect(city, start, today, procurement_dir, scope='municipal', sleep_seconds=0.10)
-          procurement_cov = json.loads((procurement_dir/'coverage.json').read_text(encoding='utf-8'))
-          cnpjs = set(pncp_contracts.agency_cnpjs_from_procurements([procurement_path]))
+          errors = []
+          procurement_path = None
+          procurement_cov = None
+          contract_path = None
+          contract_cov = None
+          cnpjs = set()
+
+          try:
+              procurement_path = pncp.collect(city, start, today, procurement_dir, scope='municipal', sleep_seconds=0.10)
+              coverage_path = procurement_dir/'coverage.json'
+              procurement_cov = json.loads(coverage_path.read_text(encoding='utf-8')) if coverage_path.exists() else None
+          except Exception as exc:
+              errors.append({'step':'procurements','type':type(exc).__name__,'error':str(exc)})
+
+          if procurement_path and procurement_path.exists():
+              cnpjs.update(pncp_contracts.agency_cnpjs_from_procurements([procurement_path]))
           if city.municipality_cnpj:
               cnpjs.add(city.municipality_cnpj)
 
-          contract_path = None
-          contract_cov = None
           if cnpjs:
-              contract_path = pncp_contracts.collect(
-                  city, start, today, contract_dir,
-                  agency_cnpjs=cnpjs,
-                  scope='municipal',
-                  sleep_seconds=0.10,
-                  max_attempts=4,
-              )
-              contract_cov = json.loads((contract_dir/'coverage.json').read_text(encoding='utf-8'))
+              try:
+                  contract_path = pncp_contracts.collect(
+                      city, start, today, contract_dir,
+                      agency_cnpjs=cnpjs,
+                      scope='municipal',
+                      sleep_seconds=0.10,
+                      max_attempts=4,
+                  )
+                  coverage_path = contract_dir/'coverage.json'
+                  contract_cov = json.loads(coverage_path.read_text(encoding='utf-8')) if coverage_path.exists() else None
+              except Exception as exc:
+                  errors.append({'step':'contracts','type':type(exc).__name__,'error':str(exc)})
+
+          procurement_records = 0
+          if procurement_path and procurement_path.exists():
+              procurement_records = sum(1 for line in procurement_path.read_text(encoding='utf-8').splitlines() if line.strip())
+          contract_records = 0
+          if contract_path and contract_path.exists():
+              contract_records = sum(1 for line in contract_path.read_text(encoding='utf-8').splitlines() if line.strip())
 
           summary = {
               'observed_at_date': today.isoformat(),
@@ -75,27 +98,31 @@ jobs:
               'period_end': today.isoformat(),
               'role': 'complementary_only',
               'procurements': {
-                  'complete': bool(procurement_cov.get('complete')),
-                  'records': procurement_cov.get('records'),
-                  'stopped_status': procurement_cov.get('stopped_status'),
+                  'ran': procurement_path is not None,
+                  'complete': bool((procurement_cov or {}).get('complete')),
+                  'records': (procurement_cov or {}).get('records', procurement_records),
+                  'stopped_status': (procurement_cov or {}).get('stopped_status'),
               },
               'agency_cnpjs_discovered': len(cnpjs),
               'contracts': {
-                  'ran': contract_cov is not None,
+                  'ran': contract_path is not None,
                   'complete_for_supplied_agencies_and_filter': bool((contract_cov or {}).get('complete_for_supplied_agencies_and_filter')),
-                  'records': (contract_cov or {}).get('records_after_salvador_scope_filter'),
+                  'records': (contract_cov or {}).get('records_after_salvador_scope_filter', contract_records),
                   'errors': len((contract_cov or {}).get('errors') or []),
               },
-              'coverage_rule': 'PNCP remains complementary. A complete contract query is complete only for explicitly supplied agency CNPJs; the CNPJ discovery set is only as complete as the upstream procurement collection.',
+              'errors': errors,
+              'coverage_rule': 'PNCP remains complementary. Missing/failed PNCP queries never remove or invalidate the independently collected municipal data. Complete contract coverage applies only to explicitly supplied agency CNPJs, whose discovery is only as complete as the upstream PNCP procurement collection.',
           }
           (out/'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True)+'\n', encoding='utf-8')
           print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True))
           PY
-      - name: Commit complementary PNCP snapshot even when source-scoped coverage is partial
+      - name: Commit complementary PNCP evidence even when the external source failed
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           TODAY=$(TZ=America/Bahia date +%F)
+          if [ ! -d "cities/salvador/data/snapshots/${TODAY}/pncp_complementary" ]; then exit 0; fi
           git add "cities/salvador/data/snapshots/${TODAY}/pncp_complementary"
           if git diff --cached --quiet; then echo 'No PNCP changes'; exit 0; fi
           git commit -m "data(salvador): refresh complementary PNCP evidence"
