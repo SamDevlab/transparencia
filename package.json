@@ -4,9 +4,9 @@
   "private": true,
   "description": "Transparência pública e inteligência econômica de Salvador e Bahia com fontes auditáveis.",
   "scripts": {
-    "predev": "node scripts/build-web-data.mjs && node scripts/sanitize-public-suppliers.mjs && node scripts/overlay-municipal-contracts.mjs && node scripts/overlay-current-municipal-data.mjs && node scripts/fix-municipal-freshness.mjs && node scripts/build-municipal-links.mjs && node scripts/overlay-cms-current.mjs && node scripts/build-economy-web-data.mjs && node scripts/build-bahia-regional-data.mjs && node scripts/compact-bahia-web-data.mjs && node scripts/overlay-transparency-current.mjs",
+    "predev": "node scripts/build-web-data.mjs && node scripts/overlay-municipal-contracts.mjs && node scripts/overlay-current-municipal-data.mjs && node scripts/sanitize-public-suppliers.mjs && node scripts/fix-municipal-freshness.mjs && node scripts/build-municipal-links.mjs && node scripts/overlay-cms-current.mjs && node scripts/build-economy-web-data.mjs && node scripts/build-bahia-regional-data.mjs && node scripts/compact-bahia-web-data.mjs && node scripts/overlay-transparency-current.mjs",
     "dev": "next dev",
-    "prebuild": "node scripts/build-web-data.mjs && node scripts/sanitize-public-suppliers.mjs && node scripts/overlay-municipal-contracts.mjs && node scripts/overlay-current-municipal-data.mjs && node scripts/fix-municipal-freshness.mjs && node scripts/build-municipal-links.mjs && node scripts/overlay-cms-current.mjs && node scripts/build-economy-web-data.mjs && node scripts/build-bahia-regional-data.mjs && node scripts/compact-bahia-web-data.mjs && node scripts/overlay-transparency-current.mjs",
+    "prebuild": "node scripts/build-web-data.mjs && node scripts/overlay-municipal-contracts.mjs && node scripts/overlay-current-municipal-data.mjs && node scripts/sanitize-public-suppliers.mjs && node scripts/fix-municipal-freshness.mjs && node scripts/build-municipal-links.mjs && node scripts/overlay-cms-current.mjs && node scripts/build-economy-web-data.mjs && node scripts/build-bahia-regional-data.mjs && node scripts/compact-bahia-web-data.mjs && node scripts/overlay-transparency-current.mjs",
     "build": "next build && node scripts/validate-current-web-data.mjs",
     "start": "next start"
   },
