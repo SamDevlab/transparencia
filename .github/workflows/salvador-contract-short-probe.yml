@@ -1,4 +1,4 @@
-name: salvador-contract-short-probe
+name: salvador-contract-endpoint-probe
 
 on:
   workflow_dispatch:
@@ -10,10 +10,14 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: salvador-contract-endpoint-probe
+  cancel-in-progress: true
+
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
@@ -23,10 +27,11 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install httpx
-      - name: Probe exact official contract payloads
+      - name: Probe current official contract endpoints with frontend filter shape
         run: |
           python - <<'PY'
-          import hashlib, json
+          import hashlib, json, time
+          from datetime import date, timedelta
           from pathlib import Path
           import httpx
 
@@ -35,70 +40,80 @@ jobs:
             'accept':'application/json, text/plain, */*',
             'origin':'https://transparencia.salvador.ba.gov.br',
             'referer':'https://transparencia.salvador.ba.gov.br/',
-            'user-agent':'municipal-transparency-research/0.3 (+public-data-audit)'
+            'user-agent':'municipal-transparency-research/0.4 (+public-data-audit)'
           }
-          cases=[]
-          for start,end,label in [
-            ('2026-08-17','2026-08-17','one_day'),
-            ('2026-08-01','2026-08-17','august_partial'),
-            ('2026-01-01','2026-01-31','january'),
-          ]:
-            body={'dataInicio':start,'dataFim':end}
-            for path in ('/contratos/gridDetalhada?pagina=1','/contratos/gridDetalhadaDocumento?pagina=1'):
-              cases.append((f'{label}:{path}',path,body))
-          out={}
-          with httpx.Client(headers=headers,follow_redirects=True,timeout=90) as client:
-            for label,path,body in cases:
+          today=date.today()
+          target=today-timedelta(days=1)
+          body={
+            'dataInicio':target.isoformat(),
+            'dataFim':target.isoformat(),
+            'agrupamentos':[],
+            'filtros':[],
+          }
+          endpoints=[
+            '/contratos/gridDetalhada?pagina=1',
+            '/contratos/gridDetalhadaDocumento?pagina=1',
+          ]
+          out={
+            'observed_at_date':today.isoformat(),
+            'target_date':target.isoformat(),
+            'request_body':body,
+            'frontend_evidence':{
+              'bundle_route':'/contratos/gridDetalhadaDocumento?pagina=',
+              'bundle_snapshot':'cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/lazy_chunks/contract_call_raw_contexts.json',
+            },
+            'probes':{},
+          }
+          with httpx.Client(headers=headers,follow_redirects=True,timeout=httpx.Timeout(35.0,connect=15.0)) as client:
+            for endpoint in endpoints:
+              started=time.monotonic()
               try:
-                r=client.post(BASE+path,json=body); raw=r.content
+                response=client.post(BASE+endpoint,json=body)
+                raw=response.content
                 item={
-                  'request_body':body,
-                  'status':r.status_code,
-                  'final_url':str(r.url),
+                  'status':response.status_code,
+                  'elapsed_seconds':round(time.monotonic()-started,3),
+                  'final_url':str(response.url),
                   'bytes':len(raw),
-                  'content_type':r.headers.get('content-type'),
+                  'content_type':response.headers.get('content-type'),
                   'sha256':hashlib.sha256(raw).hexdigest(),
                 }
                 try:
-                  j=r.json(); item['type']=type(j).__name__
-                  if isinstance(j,dict):
-                    item['top_level_keys']=sorted(j.keys())
-                    for key in ('paginacao','totalizadores','total','paginas','pagina','quantidadeRegistros'):
-                      if key in j: item[key]=j[key]
-                    for key in ('dados','valor','items','registros','content'):
-                      if isinstance(j.get(key),list):
-                        item['list_key']=key; item['count']=len(j[key]); item['first_rows']=j[key][:5]; break
-                  elif isinstance(j,list):
-                    item['count']=len(j); item['first_rows']=j[:5]
-                  item['json_preview']=json.dumps(j,ensure_ascii=False)[:40000]
-                except Exception:
-                  item['text_preview']=r.text[:12000]
-                out[label]=item
+                  payload=response.json() if raw.strip() else None
+                  item['json_type']=type(payload).__name__ if payload is not None else None
+                  if isinstance(payload,dict):
+                    item['top_level_keys']=sorted(payload.keys())
+                    item['paginacao']=payload.get('paginacao')
+                    for key in ('dados','data','content','items','registros'):
+                      if isinstance(payload.get(key),list):
+                        item['records_key']=key
+                        item['records_count']=len(payload[key])
+                        item['first_row_keys']=sorted(payload[key][0].keys()) if payload[key] and isinstance(payload[key][0],dict) else []
+                        break
+                  elif isinstance(payload,list):
+                    item['records_count']=len(payload)
+                    item['first_row_keys']=sorted(payload[0].keys()) if payload and isinstance(payload[0],dict) else []
+                except Exception as exc:
+                  item['json_error']=f'{type(exc).__name__}: {exc}'
+                  item['text_preview']=response.text[:1000]
+                out['probes'][endpoint]=item
               except Exception as exc:
-                out[label]={'request_body':body,'error':f'{type(exc).__name__}: {exc}'}
-            try:
-              r=client.get(BASE+'/FiscaisContratos/downloadcsv'); raw=r.content
-              out['fiscais_csv']={
-                'status':r.status_code,'final_url':str(r.url),'bytes':len(raw),
-                'content_type':r.headers.get('content-type'),
-                'content_disposition':r.headers.get('content-disposition'),
-                'sha256':hashlib.sha256(raw).hexdigest(),
-                'text_preview':r.text[:12000],
-              }
-            except Exception as exc:
-              out['fiscais_csv']={'error':f'{type(exc).__name__}: {exc}'}
-          p=Path('cities/salvador/data/snapshots/2026-08-17/prefeitura_api/contract_short_probe.json')
-          p.parent.mkdir(parents=True,exist_ok=True)
-          p.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
-          print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)[:60000])
+                out['probes'][endpoint]={
+                  'elapsed_seconds':round(time.monotonic()-started,3),
+                  'error':f'{type(exc).__name__}: {exc}',
+                }
+          path=Path('cities/salvador/data/validation/contract_endpoint_probe.json')
+          path.parent.mkdir(parents=True,exist_ok=True)
+          path.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
+          print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True))
           PY
-      - name: Commit probe
+      - name: Commit endpoint evidence
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cities/salvador/data/snapshots/2026-08-17/prefeitura_api/contract_short_probe.json
+          git add cities/salvador/data/validation/contract_endpoint_probe.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "data(salvador): probe exact contract payloads"
+          git commit -m "data(salvador): validate current contract endpoint"
           git fetch origin city/salvador
           git rebase origin/city/salvador
           git push origin HEAD:city/salvador
