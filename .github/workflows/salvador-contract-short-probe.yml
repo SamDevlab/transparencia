@@ -27,7 +27,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install httpx
-      - name: Probe current official contract endpoints with frontend filter shape
+      - name: Validate contract endpoint date semantics
         run: |
           python - <<'PY'
           import hashlib, json, time
@@ -36,6 +36,7 @@ jobs:
           import httpx
 
           BASE='https://apitmptransparencia.salvador.ba.gov.br/api'
+          ENDPOINT='/contratos/gridDetalhada?pagina=1'
           headers={
             'accept':'application/json, text/plain, */*',
             'origin':'https://transparencia.salvador.ba.gov.br',
@@ -43,66 +44,52 @@ jobs:
             'user-agent':'municipal-transparency-research/0.4 (+public-data-audit)'
           }
           today=date.today()
-          target=today-timedelta(days=1)
-          body={
-            'dataInicio':target.isoformat(),
-            'dataFim':target.isoformat(),
-            'agrupamentos':[],
-            'filtros':[],
+          recent=today-timedelta(days=1)
+          january=date(today.year,1,15)
+          cases={
+            'recent_iso': {'dataInicio':recent.isoformat(),'dataFim':recent.isoformat(),'agrupamentos':[],'filtros':[]},
+            'january_iso': {'dataInicio':january.isoformat(),'dataFim':january.isoformat(),'agrupamentos':[],'filtros':[]},
+            'recent_br': {'dataInicio':recent.strftime('%d/%m/%Y'),'dataFim':recent.strftime('%d/%m/%Y'),'agrupamentos':[],'filtros':[]},
+            'no_dates': {'agrupamentos':[],'filtros':[]},
           }
-          endpoints=[
-            '/contratos/gridDetalhada?pagina=1',
-            '/contratos/gridDetalhadaDocumento?pagina=1',
-          ]
+          safe_fields=(
+            'id','nuContratoOriginal','nuContratoSigef','nuProcesso','sgOrgao','cdUnidadeGestora',
+            'dtAssinatura','dtInicioVigencia','dtTerminoVigenciaAtualizado','vlOriginal','vlAtualizado','dsSituacao'
+          )
           out={
             'observed_at_date':today.isoformat(),
-            'target_date':target.isoformat(),
-            'request_body':body,
-            'frontend_evidence':{
-              'bundle_route':'/contratos/gridDetalhadaDocumento?pagina=',
-              'bundle_snapshot':'cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/lazy_chunks/contract_call_raw_contexts.json',
-            },
-            'probes':{},
+            'endpoint':ENDPOINT,
+            'frontend_route_also_observed':'/contratos/gridDetalhadaDocumento?pagina=',
+            'cases':{},
           }
           with httpx.Client(headers=headers,follow_redirects=True,timeout=httpx.Timeout(35.0,connect=15.0)) as client:
-            for endpoint in endpoints:
+            for label,body in cases.items():
               started=time.monotonic()
               try:
-                response=client.post(BASE+endpoint,json=body)
+                response=client.post(BASE+ENDPOINT,json=body)
                 raw=response.content
                 item={
+                  'request_body':body,
                   'status':response.status_code,
                   'elapsed_seconds':round(time.monotonic()-started,3),
-                  'final_url':str(response.url),
                   'bytes':len(raw),
-                  'content_type':response.headers.get('content-type'),
                   'sha256':hashlib.sha256(raw).hexdigest(),
                 }
-                try:
-                  payload=response.json() if raw.strip() else None
-                  item['json_type']=type(payload).__name__ if payload is not None else None
-                  if isinstance(payload,dict):
-                    item['top_level_keys']=sorted(payload.keys())
-                    item['paginacao']=payload.get('paginacao')
-                    for key in ('dados','data','content','items','registros'):
-                      if isinstance(payload.get(key),list):
-                        item['records_key']=key
-                        item['records_count']=len(payload[key])
-                        item['first_row_keys']=sorted(payload[key][0].keys()) if payload[key] and isinstance(payload[key][0],dict) else []
-                        break
-                  elif isinstance(payload,list):
-                    item['records_count']=len(payload)
-                    item['first_row_keys']=sorted(payload[0].keys()) if payload and isinstance(payload[0],dict) else []
-                except Exception as exc:
-                  item['json_error']=f'{type(exc).__name__}: {exc}'
-                  item['text_preview']=response.text[:1000]
-                out['probes'][endpoint]=item
+                payload=response.json() if raw.strip() else None
+                if isinstance(payload,dict):
+                  pagination=payload.get('paginacao') or {}
+                  rows=payload.get('dados') or []
+                  item['paginacao']={k:pagination.get(k) for k in ('paginaAtual','paginas','tamanho','total','totalPagina')}
+                  item['safe_first_rows']=[{k:row.get(k) for k in safe_fields if k in row} for row in rows[:3] if isinstance(row,dict)]
+                  item['totalizadores']=payload.get('totalizadores')
+                out['cases'][label]=item
               except Exception as exc:
-                out['probes'][endpoint]={
+                out['cases'][label]={
+                  'request_body':body,
                   'elapsed_seconds':round(time.monotonic()-started,3),
                   'error':f'{type(exc).__name__}: {exc}',
                 }
-          path=Path('cities/salvador/data/validation/contract_endpoint_probe.json')
+          path=Path('cities/salvador/data/validation/contract_date_semantics_probe.json')
           path.parent.mkdir(parents=True,exist_ok=True)
           path.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
           print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True))
@@ -111,9 +98,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cities/salvador/data/validation/contract_endpoint_probe.json
+          git add cities/salvador/data/validation/contract_date_semantics_probe.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "data(salvador): validate current contract endpoint"
+          git commit -m "data(salvador): validate contract date semantics"
           git fetch origin city/salvador
           git rebase origin/city/salvador
           git push origin HEAD:city/salvador
