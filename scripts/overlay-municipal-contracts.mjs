@@ -3,7 +3,9 @@ import path from "node:path";
 
 const root = process.cwd();
 const snapshotsRoot = path.join(root, "cities", "salvador", "data", "snapshots");
-const publicFile = path.join(root, "public", "data", "contracts.json");
+const publicRoot = path.join(root, "public", "data");
+const publicFile = path.join(publicRoot, "contracts.json");
+const metaFile = path.join(publicRoot, "meta.json");
 
 function readJson(file, fallback = null) {
   if (!fs.existsSync(file)) return fallback;
@@ -68,6 +70,10 @@ if (!fs.existsSync(publicFile)) process.exit(0);
 
 const municipal = latestCompleteMunicipalContracts();
 if (!municipal) {
+  const meta = readJson(metaFile, {});
+  meta.municipalContractsAvailable = false;
+  meta.contractsPrimarySource = "PNCP";
+  if (fs.existsSync(metaFile)) fs.writeFileSync(metaFile, JSON.stringify(meta), "utf8");
   console.log("Contratos municipais: nenhuma grade detalhada completa; mantendo PNCP como camada principal.");
   process.exit(0);
 }
@@ -122,4 +128,15 @@ const output = {
 };
 
 fs.writeFileSync(publicFile, JSON.stringify(output), "utf8");
+
+const meta = readJson(metaFile, {});
+meta.municipalContractsAvailable = true;
+meta.municipalContracts = rows.length;
+meta.municipalContractsPeriodStart = output.periodStart;
+meta.municipalContractsPeriodEnd = output.periodEnd;
+meta.contractsPrimarySource = output.source;
+meta.contractsPrimaryRows = rows.length;
+meta.pncpContractsComplementary = output.complementary.rows.length;
+fs.writeFileSync(metaFile, JSON.stringify(meta), "utf8");
+
 console.log(`Contratos municipais publicados: ${rows.length} registros (${output.periodStart} → ${output.periodEnd}).`);
