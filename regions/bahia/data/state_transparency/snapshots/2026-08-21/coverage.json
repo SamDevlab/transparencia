@@ -49,7 +49,7 @@
       "transport_note": "O runner não conseguiu validar a cadeia de certificados do host oficial; a consulta foi repetida no mesmo domínio oficial sem verificação TLS e essa condição foi registrada."
     }
   },
-  "collection_mode": "metadata_only",
+  "collection_mode": "metadata_and_priority_data",
   "generated_at": "2026-08-21",
   "money_flow": {
     "contract_unique_instruments": 59350,
@@ -70,7 +70,7 @@
     "selected_year": 2026,
     "status": "processed"
   },
-  "note": "A fase de metadados pode ficar completa mesmo sem baixar os arquivos grandes do TCE. A cobertura plena da rotina exige os metadados CKAN e os três conjuntos automatizados do TCE. Dados SEFAZ já processados são preservados entre reexecuções. Fallback TLS do CKAN, quando necessário, fica registrado e nunca é silencioso.",
+  "note": "As cinco bases prioritárias da SEFAZ/BA estão processadas e auditáveis: receitas, licitações, despesas, pagamentos e contratos. O fio do dinheiro por identificadores oficiais também está processado. TCE/BA permanece como fonte complementar com cobertura independente; sua indisponibilidade não rebaixa nem zera os dados SEFAZ.",
   "sefaz_data": {
     "contratos": {
       "bytes": 673108405,
@@ -174,7 +174,7 @@
     "processed": 5,
     "reference_year": 2026
   },
-  "status": "complete_for_metadata_collection",
+  "status": "complete_for_defined_collection",
   "summary": {
     "ckan_datasets_collected": 6,
     "ckan_datasets_expected": 6,

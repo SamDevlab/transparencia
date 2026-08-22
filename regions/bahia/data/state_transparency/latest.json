@@ -1,5 +1,5 @@
 {
-  "collection_mode": "metadata_only",
+  "collection_mode": "metadata_and_priority_data",
   "money_flow": {
     "instruments_end_to_end": 160,
     "selected_year": 2026,
@@ -24,7 +24,7 @@
     "reference_year": 2026
   },
   "snapshot": "2026-08-21",
-  "status": "complete_for_metadata_collection",
+  "status": "complete_for_defined_collection",
   "summary": {
     "ckan_datasets_collected": 6,
     "ckan_datasets_expected": 6,
