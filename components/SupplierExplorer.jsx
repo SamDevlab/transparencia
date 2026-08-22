@@ -32,7 +32,7 @@ export default function SupplierExplorer() {
     const min = Number(minContratos || 1);
     return dados.rows
       .filter((row) => row.quantidadeContratos >= min)
-      .filter((row) => !termo || normalizar(`${row.nome} ${row.documento} ${row.unidades.map((u) => u.nome).join(" ")}`).includes(termo))
+      .filter((row) => !termo || normalizar(`${row.nome} ${row.documento} ${(row.unidades ?? []).map((u) => u.nome).join(" ")}`).includes(termo))
       .slice()
       .sort((a, b) => ordem === "contratos" ? b.quantidadeContratos - a.quantidadeContratos : Number(b.valorGlobal) - Number(a.valorGlobal));
   }, [dados, busca, minContratos, ordem]);
@@ -54,22 +54,22 @@ export default function SupplierExplorer() {
           <option value="contratos">Mais contratos</option>
         </select>
       </div>
-      <div className="results-line"><span><strong>{resultados.length}</strong> fornecedores no recorte PNCP publicado</span><span>Fonte complementar aos dados municipais</span></div>
+      <div className="results-line"><span><strong>{resultados.length}</strong> empresas com CNPJ no recorte publicado</span><span>Prefeitura + evidência PNCP complementar quando reconciliada</span></div>
       <div className="fornecedores-grid">
         {resultados.map((row) => (
           <Link className="fornecedor-card" href={`/fornecedores/${encodeURIComponent(row.id)}`} key={row.id}>
-            <span className="badge">{row.tipo || "Fornecedor"}</span>
+            <span className="badge">CNPJ</span>
             <h3>{row.nome}</h3>
-            <p className="mono">{row.documento || "Documento não informado"}</p>
+            <p className="mono">{row.documento}</p>
             <div className="fornecedor-metricas">
               <span><b>{row.quantidadeContratos}</b> contrato(s)</span>
-              <span><b>{brl(row.valorGlobal)}</b> valor global</span>
+              <span><b>{brl(row.valorGlobal)}</b> valor contratual</span>
             </div>
-            <small>{row.unidades[0]?.nome || "Unidade não informada"}</small>
+            <small>{row.unidades?.[0]?.nome || "Unidade não informada"}</small>
           </Link>
         ))}
       </div>
-      {resultados.length === 0 && <div className="card empty">Nenhum fornecedor corresponde aos filtros.</div>}
+      {resultados.length === 0 && <div className="card empty">Nenhuma empresa corresponde aos filtros.</div>}
     </div>
   );
 }
