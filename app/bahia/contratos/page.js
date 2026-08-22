@@ -55,7 +55,11 @@ export default function BahiaContratosPage() {
           <div className="card stat accent"><span className="stat-label">Ponta a ponta</span><div><span className="stat-value">{integer(flow.instruments_end_to_end)}</span><div className="stat-meta">presentes nas três etapas</div></div></div>
           <div className="card stat blue"><span className="stat-label">Pagamentos vinculados</span><div><span className="stat-value">{brl(flow.payment_value_end_to_end, { compact: true })}</span><div className="stat-meta">somente instrumentos ponta a ponta</div></div></div>
         </div>
-        {topFlow.length > 0 && <div className="section-subblock"><h3>Cadeias completas com maior valor pago</h3><div className="compact-list">{topFlow.slice(0, 12).map((item) => <Link className="compact-row clicavel" href={`/bahia/contratos/${encodeURIComponent(item.instrument_id)}`} key={item.instrument_id}><div><strong>Instrumento {item.instrument_id}</strong><span>{integer(item.procurement_process_ids?.length ?? 0)} processo(s) · {integer(item.payment_ids)} pagamento(s)</span></div><div><strong>{brl(item.payment_value)}</strong><span>abrir perfil →</span></div></Link>)}</div></div>}
+        {topFlow.length > 0 && <div className="section-subblock"><h3>Cadeias completas com maior valor pago</h3><div className="compact-list">{topFlow.slice(0, 12).map((item) => {
+          const profile = item.contract_profile;
+          const context = [profile?.agency, profile?.supplier?.name].filter(Boolean).join(" · ");
+          return <Link className="compact-row clicavel" href={`/bahia/contratos/${encodeURIComponent(item.instrument_id)}`} key={item.instrument_id}><div><strong>Instrumento {item.instrument_id}</strong><span>{context ? `${context} · ` : ""}{integer(item.procurement_process_ids?.length ?? 0)} processo(s) · {integer(item.payment_ids)} pagamento(s)</span></div><div><strong>{brl(item.payment_value)}</strong><span>abrir perfil →</span></div></Link>;
+        })}</div></div>}
       </> : <div className="notice warn"><span>!</span><div><strong>Cruzamento em processamento.</strong> A página mantém contratos disponíveis, mas não mostra contagem de vínculos até licitações e pagamentos serem reconciliados por chave oficial.</div></div>}
     </div></section>
 
