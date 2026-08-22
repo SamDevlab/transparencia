@@ -1,0 +1,429 @@
+{
+  "display_deduplication_assessment": "safe_for_presentation_only_if_technical_uuid_is_not_an_official_identifier",
+  "duplicate_groups_spanning_multiple_pages": 723,
+  "duplicate_groups_with_multiple_technical_ids": 723,
+  "duplicate_groups_with_one_or_missing_technical_id": 0,
+  "exact_duplicate_rows_including_technical_id": 0,
+  "max_substantive_multiplicity": 22,
+  "methodology": [
+    "The substantive key hashes every source field except the API technical field 'id'.",
+    "No supplier/object/name similarity is used to merge records.",
+    "The raw source row count is preserved even when a compact public view consolidates substantively identical rows."
+  ],
+  "pages_scanned": 481,
+  "pagination_integrity_assessment": "no_repeated_technical_ids_detected",
+  "period_end": "2026-08-21",
+  "period_start": "2026-01-01",
+  "rows_repeated_with_identical_technical_id": 0,
+  "snapshot": "2026-08-21",
+  "source_reported_pages": 481,
+  "source_reported_rows": 4807,
+  "source_rows_scanned": 4807,
+  "substantive_duplicate_groups": 723,
+  "substantive_duplicate_rows": 1608,
+  "technical_ids_repeated_across_source_rows": 0,
+  "top_duplicate_groups": [
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG FME - Fundo Municipal de Educação",
+        "dtAssinatura": "17/03/2026",
+        "nmCredor": "DIANA BARBOSA OLIVEIRA",
+        "nuContratoOriginal": "1222026",
+        "nuContratoSigef": "2026CT001851",
+        "nuProcesso": "2093312025",
+        "sgOrgao": "SMED",
+        "vlAtualizado": "331.668,69"
+      },
+      "pages": 22,
+      "rows": 22,
+      "technical_ids": 22
+    },
+    {
+      "example": {
+        "dsSituacao": "Ajustar Cronograma",
+        "dsUnidadeGestora": "UG FME - Fundo Municipal de Educação",
+        "dtAssinatura": "17/03/2026",
+        "nmCredor": "EDEN GABRIEL BARBOSA BOMFIM",
+        "nuContratoOriginal": "1262026",
+        "nuContratoSigef": "2026CT001855",
+        "nuProcesso": "2093312025",
+        "sgOrgao": "SMED",
+        "vlAtualizado": "1.003.487,94"
+      },
+      "pages": 22,
+      "rows": 22,
+      "technical_ids": 22
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG FME - Fundo Municipal de Educação",
+        "dtAssinatura": "17/03/2026",
+        "nmCredor": "CRECHE ESCOLA ABC SALVADOR LTDA",
+        "nuContratoOriginal": "1022026",
+        "nuContratoSigef": "2026CT001836",
+        "nuProcesso": "2093312025",
+        "sgOrgao": "SMED",
+        "vlAtualizado": "716.326,30"
+      },
+      "pages": 22,
+      "rows": 22,
+      "technical_ids": 22
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG FME - Fundo Municipal de Educação",
+        "dtAssinatura": "17/03/2026",
+        "nmCredor": "COLEGIO PATRICIA LIMA LTDA",
+        "nuContratoOriginal": "0982026",
+        "nuContratoSigef": "2026CT001835",
+        "nuProcesso": "2093312025",
+        "sgOrgao": "SMED",
+        "vlAtualizado": "1.108.958,54"
+      },
+      "pages": 22,
+      "rows": 22,
+      "technical_ids": 22
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG FME - Fundo Municipal de Educação",
+        "dtAssinatura": "17/03/2026",
+        "nmCredor": "ANA CELIA DE OLIVEIRA SILVA",
+        "nuContratoOriginal": "0162026",
+        "nuContratoSigef": "2026CT001837",
+        "nuProcesso": "2093312025",
+        "sgOrgao": "SMED",
+        "vlAtualizado": "1.025.360,14"
+      },
+      "pages": 20,
+      "rows": 20,
+      "technical_ids": 20
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG FME - Fundo Municipal de Educação",
+        "dtAssinatura": "17/03/2026",
+        "nmCredor": "CRECHE ESCOLA PINGO DE GENTE LTDA",
+        "nuContratoOriginal": "1092026",
+        "nuContratoSigef": "2026CT001844",
+        "nuProcesso": "2093312025",
+        "sgOrgao": "SMED",
+        "vlAtualizado": "1.033.421,22"
+      },
+      "pages": 20,
+      "rows": 20,
+      "technical_ids": 20
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG FME - Fundo Municipal de Educação",
+        "dtAssinatura": "17/03/2026",
+        "nmCredor": "45.900.813 JUCILEIDE SANTOS DOS SANTOS",
+        "nuContratoOriginal": "0082026",
+        "nuContratoSigef": "2026CT001817",
+        "nuProcesso": "2093312025",
+        "sgOrgao": "SMED",
+        "vlAtualizado": "787.603,92"
+      },
+      "pages": 20,
+      "rows": 20,
+      "technical_ids": 20
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG FME - Fundo Municipal de Educação",
+        "dtAssinatura": "17/03/2026",
+        "nmCredor": "EDNA PORTO DE OLIVEIRA LTDA",
+        "nuContratoOriginal": "1292026",
+        "nuContratoSigef": "2026CT001859",
+        "nuProcesso": "2093312025",
+        "sgOrgao": "SMED",
+        "vlAtualizado": "1.005.392,39"
+      },
+      "pages": 20,
+      "rows": 20,
+      "technical_ids": 20
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG FME - Fundo Municipal de Educação",
+        "dtAssinatura": "17/03/2026",
+        "nmCredor": "DIRLENE L. CORREIA",
+        "nuContratoOriginal": "1242026",
+        "nuContratoSigef": "2026CT001853",
+        "nuProcesso": "2093312025",
+        "sgOrgao": "SMED",
+        "vlAtualizado": "648.716,06"
+      },
+      "pages": 20,
+      "rows": 20,
+      "technical_ids": 20
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG FME - Fundo Municipal de Educação",
+        "dtAssinatura": "17/03/2026",
+        "nmCredor": "CRECHE ESCOLA FERREIRA SANTOS LTDA",
+        "nuContratoOriginal": "1062026",
+        "nuContratoSigef": "2026CT001841",
+        "nuProcesso": "2093312025",
+        "sgOrgao": "SMED",
+        "vlAtualizado": "481.755,40"
+      },
+      "pages": 20,
+      "rows": 20,
+      "technical_ids": 20
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "27/01/2026",
+        "nmCredor": "DIORAMA PRODUCOES ARTISTICAS E ENTRETENIMENTOS LTDA",
+        "nuContratoOriginal": "1532026",
+        "nuContratoSigef": "2026CT000061",
+        "nuProcesso": "0139272026",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "260.000,00"
+      },
+      "pages": 10,
+      "rows": 10,
+      "technical_ids": 10
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "27/01/2026",
+        "nmCredor": "BUMERANGUE AGENCIA PROMOCIONAL LTDA",
+        "nuContratoOriginal": "1552026",
+        "nuContratoSigef": "2026CT000064",
+        "nuProcesso": "0138382026",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "40.000,00"
+      },
+      "pages": 10,
+      "rows": 10,
+      "technical_ids": 10
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "12/02/2026",
+        "nmCredor": "27.465.072 RAFAEL LEMOS GOES",
+        "nuContratoOriginal": "5762026",
+        "nuContratoSigef": "2026CT000874",
+        "nuProcesso": "0315572026",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "100.000,00"
+      },
+      "pages": 9,
+      "rows": 9,
+      "technical_ids": 9
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "12/02/2026",
+        "nmCredor": "ISADORA SOTO SANTANA 86036142536",
+        "nuContratoOriginal": "5342026",
+        "nuContratoSigef": "2026CT000831",
+        "nuProcesso": "0313322026",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "70.000,00"
+      },
+      "pages": 9,
+      "rows": 9,
+      "technical_ids": 9
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "12/02/2026",
+        "nmCredor": "FLORES DO MAR EVENTOS LTDA",
+        "nuContratoOriginal": "5892026",
+        "nuContratoSigef": "2026CT000870",
+        "nuProcesso": "0315932026",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "52.000,00"
+      },
+      "pages": 9,
+      "rows": 9,
+      "technical_ids": 9
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "12/02/2026",
+        "nmCredor": "ZONA GLOBAL EVENTOS LTDA",
+        "nuContratoOriginal": "5292026",
+        "nuContratoSigef": "2026CT000863",
+        "nuProcesso": "0231712026",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "110.000,00"
+      },
+      "pages": 9,
+      "rows": 9,
+      "technical_ids": 9
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "26/01/2026",
+        "nmCredor": "TAMY PRODUCOES ARTISTICAS E SERVICOS LTDA",
+        "nuContratoOriginal": "602026",
+        "nuContratoSigef": "2026CT000218",
+        "nuProcesso": "1625532025",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "27.500,00"
+      },
+      "pages": 9,
+      "rows": 9,
+      "technical_ids": 9
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "26/01/2026",
+        "nmCredor": "WILSON SENA MILITAO LTDA",
+        "nuContratoOriginal": "1152026",
+        "nuContratoSigef": "2026CT000174",
+        "nuProcesso": "1625532025",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "27.500,00"
+      },
+      "pages": 9,
+      "rows": 9,
+      "technical_ids": 9
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "26/01/2026",
+        "nmCredor": "32.814.850 VIVIANE GUIMARAES TRIPODI",
+        "nuContratoOriginal": "1142026",
+        "nuContratoSigef": "2026CT000239",
+        "nuProcesso": "1625532025",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "27.500,00"
+      },
+      "pages": 9,
+      "rows": 9,
+      "technical_ids": 9
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "26/01/2026",
+        "nmCredor": "MAFUA PRODUCOES E EVENTOS LTDA",
+        "nuContratoOriginal": "952026",
+        "nuContratoSigef": "2026CT000222",
+        "nuProcesso": "1625532025",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "27.500,00"
+      },
+      "pages": 9,
+      "rows": 9,
+      "technical_ids": 9
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "26/01/2026",
+        "nmCredor": "ISR PRODUCOES E EVENTOS LTDA",
+        "nuContratoOriginal": "552026",
+        "nuContratoSigef": "2026CT000215",
+        "nuProcesso": "1625532025",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "27.500,00"
+      },
+      "pages": 9,
+      "rows": 9,
+      "technical_ids": 9
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "26/01/2026",
+        "nmCredor": "TK ENTRETENIMENTO MUSICAL LTDA",
+        "nuContratoOriginal": "1122026",
+        "nuContratoSigef": "2026CT000237",
+        "nuProcesso": "1625532025",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "27.500,00"
+      },
+      "pages": 9,
+      "rows": 9,
+      "technical_ids": 9
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG SALTUR - Empresa Salvador Turismo",
+        "dtAssinatura": "26/01/2026",
+        "nmCredor": "CABORONGA EVENTOS E PRODUCOES LTDA",
+        "nuContratoOriginal": "962026",
+        "nuContratoSigef": "2026CT000224",
+        "nuProcesso": "1625532025",
+        "sgOrgao": "SECULT",
+        "vlAtualizado": "27.500,00"
+      },
+      "pages": 9,
+      "rows": 9,
+      "technical_ids": 9
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG FME - Fundo Municipal de Educação",
+        "dtAssinatura": "20/03/2026",
+        "nmCredor": "ELIENE SOUZA SANTOS DE OLIVEIRA",
+        "nuContratoOriginal": "1402026",
+        "nuContratoSigef": "2026CT002242",
+        "nuProcesso": "0631352026",
+        "sgOrgao": "SMED",
+        "vlAtualizado": "1.345.023,00"
+      },
+      "pages": 8,
+      "rows": 8,
+      "technical_ids": 8
+    },
+    {
+      "example": {
+        "dsSituacao": "Em Execução",
+        "dsUnidadeGestora": "UG FME - Fundo Municipal de Educação",
+        "dtAssinatura": "01/04/2026",
+        "nmCredor": "CENTRO EDUCACIONAL VITORIA LTDA",
+        "nuContratoOriginal": "0762026",
+        "nuContratoSigef": "2026CT002378",
+        "nuProcesso": "0631352026",
+        "sgOrgao": "SMED",
+        "vlAtualizado": "672.048,35"
+      },
+      "pages": 8,
+      "rows": 8,
+      "technical_ids": 8
+    }
+  ],
+  "unique_substantive_rows_ignoring_technical_id": 3199,
+  "unique_technical_ids": 4807
+}
