@@ -1,7 +1,9 @@
-name: salvador-finance-snapshot
+name: Finanças municipais Salvador
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "45 11 * * 1-5"
   push:
     branches: [city/salvador]
     paths:
@@ -12,10 +14,14 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: salvador-finance-snapshot
+  cancel-in-progress: true
+
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,26 +31,31 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -e '.[dev]'
+      - name: Validate project tests
+        run: pytest -q
       - name: Collect and normalize official Prefeitura finance data
         run: |
           python - <<'PY'
-          from datetime import date
+          from datetime import date, datetime
           import json
           import sqlite3
           from pathlib import Path
+          from zoneinfo import ZoneInfo
 
           from transparencia.collectors.salvador_portal import collect
           from transparencia.config import load_city
           from transparencia.db import build
           from transparencia.ingest import ingest_events
 
+          today = datetime.now(ZoneInfo('America/Bahia')).date()
+          start = date(today.year, 1, 1)
           root = Path('.')
           ws = load_city(root, 'salvador')
-          out = Path('cities/salvador/data/snapshots/2026-08-17/prefeitura_finance')
-          outputs = collect(ws.config, date(2026,1,1), date(2026,8,17), out)
+          out = Path('cities/salvador/data/snapshots') / today.isoformat() / 'prefeitura_finance'
+          outputs = collect(ws.config, start, today, out)
 
           # SQLite is derived/rebuildable and intentionally remains ignored by Git.
-          db = Path('cities/salvador/data/derived/salvador-2026-08-17.sqlite')
+          db = Path('cities/salvador/data/derived') / f'salvador-{today.isoformat()}.sqlite'
           build(db, ws)
           ingest_events(db, revenue_jsonl=[outputs['revenue_events']])
 
@@ -56,35 +67,41 @@ jobs:
           revenue.sort(key=lambda r: (r.get('collected_value') or 0), reverse=True)
 
           summary = json.loads(outputs['summary'].read_text(encoding='utf-8'))
+          required = ['contract_units', 'expense_creditors', 'expense_functions', 'revenue_detail']
+          if not all(int(summary.get('record_counts', {}).get(key) or 0) > 0 for key in required):
+              raise SystemExit('One or more required municipal finance datasets are empty')
+          if summary.get('period_start') != start.isoformat() or summary.get('period_end') != today.isoformat():
+              raise SystemExit('Finance summary period diverges from requested interval')
+
           analysis = {
-            'period_start':'2026-01-01',
-            'period_end':'2026-08-17',
-            'source':'official Salvador transparency API',
-            'source_url':'https://transparencia.salvador.ba.gov.br/',
-            'methodology_warning':'Rankings are descriptive aggregates from the official portal. High values do not by themselves indicate fraud, corruption, overpricing, favoritism or any other irregularity.',
-            'record_counts':summary['record_counts'],
-            'revenue_totalizer':summary['revenue_totalizer'],
-            'expense_totalizer':summary['expense_totalizer'],
-            'contracts_totalizer':summary['contracts_totalizer'],
-            'top_paid_creditors':creditors[:100],
-            'top_paid_functions':functions,
-            'top_collected_revenue_lines':revenue[:100],
+            'period_start': start.isoformat(),
+            'period_end': today.isoformat(),
+            'source': 'official Salvador transparency API',
+            'source_url': 'https://transparencia.salvador.ba.gov.br/',
+            'methodology_warning': 'Rankings are descriptive aggregates from the official portal. High values do not by themselves indicate fraud, corruption, overpricing, favoritism or any other irregularity.',
+            'record_counts': summary['record_counts'],
+            'revenue_totalizer': summary['revenue_totalizer'],
+            'expense_totalizer': summary['expense_totalizer'],
+            'contracts_totalizer': summary['contracts_totalizer'],
+            'top_paid_creditors': creditors[:100],
+            'top_paid_functions': functions,
+            'top_collected_revenue_lines': revenue[:100],
           }
           (out/'analysis.json').write_text(json.dumps(analysis, ensure_ascii=False, indent=2, sort_keys=True)+'\n', encoding='utf-8')
 
-          conn=sqlite3.connect(db)
-          counts={name:conn.execute(f'select count(*) from {name}').fetchone()[0] for name in ['cities','sources','officials','fiscal_observations','legislative_observations','procurements','revenue_events']}
+          conn = sqlite3.connect(db)
+          counts = {name: conn.execute(f'select count(*) from {name}').fetchone()[0] for name in ['cities','sources','officials','fiscal_observations','legislative_observations','procurements','revenue_events']}
           conn.close()
-          print(json.dumps({'outputs':{k:str(v) for k,v in outputs.items()},'db':str(db),'db_counts':counts,'analysis':analysis},ensure_ascii=False,indent=2)[:60000])
+          print(json.dumps({'outputs': {k: str(v) for k, v in outputs.items()}, 'db': str(db), 'db_counts': counts, 'analysis': analysis}, ensure_ascii=False, indent=2)[:60000])
           PY
-      - run: pytest -q
       - name: Commit verified finance snapshot
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cities/salvador/data/snapshots/2026-08-17/prefeitura_finance
-          if git diff --cached --quiet; then echo 'No snapshot changes'; exit 0; fi
-          git commit -m "data(salvador): preserve 2026 municipal finance snapshot"
+          TODAY=$(TZ=America/Bahia date +%F)
+          git add "cities/salvador/data/snapshots/${TODAY}/prefeitura_finance"
+          if git diff --cached --quiet; then echo 'No finance snapshot changes'; exit 0; fi
+          git commit -m "data(salvador): refresh municipal finance snapshot"
           git fetch origin city/salvador
           git rebase origin/city/salvador
           git push origin HEAD:city/salvador
