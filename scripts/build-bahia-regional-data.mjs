@@ -58,7 +58,6 @@ function normalizeStateProcurements(payload) {
     acc[table.classification] = (acc[table.classification] ?? 0) + 1;
     return acc;
   }, {});
-
   const primary = tables.find((table) => table.classification === "licitacoes" && table?.schema?.detected_fields?.year);
   if (primary) {
     copy.summary.primary_licitacoes = {
@@ -79,7 +78,7 @@ function normalizeStateProcurements(payload) {
   copy.summary.year_filterable_tables = filterable.length;
   copy.summary.year_unfilterable_tables = unfilterable.length;
   copy.summary.unfilterable_related_rows = unfilterable.reduce((sum, table) => sum + Number(table.rows || 0), 0);
-  copy.summary.interpretation = "A quantidade anual vem somente da tabela principal com campo de ano/data. Itens, fornecedores e instrumentos sem referência temporal suficiente permanecem auxiliares e não são contados como licitações do ano.";
+  copy.summary.interpretation = "A quantidade anual vem somente da tabela principal com campo temporal. Tabelas auxiliares não são contadas como novas licitações.";
   return copy;
 }
 
@@ -98,7 +97,7 @@ economy.interstate = {
 };
 economy.coverage = economy.coverage ?? {};
 economy.coverage.interstate_dependency = interstate
-  ? { status: "historical_baseline_normalized", source: "SEI - cadeia regional de valor e Matriz de Insumo-Produto da Bahia", reference_years: [2017, 2012], note: "Linha de base histórica normalizada; não é um indicador corrente de 2026." }
+  ? { status: "historical_baseline_normalized", source: "SEI Bahia", reference_years: [2017, 2012], note: "Linha de base histórica; não é um indicador corrente de 2026." }
   : economy.coverage.interstate_dependency;
 writeJson(economyPath, economy);
 
@@ -117,13 +116,16 @@ const stateProcurements = normalizeStateProcurements(rawStateProcurements);
 const stateExpenses = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_despesas.json")) : null;
 const statePayments = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_pagamentos.json")) : null;
 const stateContracts = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_contratos.json")) : null;
-const stateProcurementContractLinks = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_licitacoes_contratos_links.json")) : null;
+const stateMoneyFlow = stateSnapshot ? readJson(path.join(stateSnapshot, "sefaz_money_flow.json")) : null;
 const tceExpenses = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_expenses.json")) : null;
 const tceContracts = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_contracts.json")) : null;
 const tceProcurements = stateSnapshot ? readJson(path.join(stateSnapshot, "tce_procurements.json")) : null;
 
 const ckanSummary = stateCoverage.summary ?? { ckan_datasets_collected: 0, ckan_datasets_expected: 6, tce_datasets_processed: 0, tce_datasets_expected: 3 };
 const sefazSummary = stateCoverage.sefaz_data_summary ?? { processed: 0, expected: 5, datasets: ["receitas", "licitacoes", "despesas", "pagamentos", "contratos"], reference_year: 2026 };
+const contractPrimary = stateContracts?.summary?.primary_table;
+const contractDedup = contractPrimary?.deduplication;
+const contractValue = contractPrimary?.contract_value;
 
 const bahiaTransparency = {
   available: Boolean(stateSnapshot),
@@ -141,11 +143,11 @@ const bahiaTransparency = {
     expenses: stateExpenses,
     payments: statePayments,
     contracts: stateContracts,
-    procurementContractLinks: stateProcurementContractLinks,
+    moneyFlow: stateMoneyFlow,
   },
   tce: { expenses: tceExpenses, contracts: tceContracts, procurements: tceProcurements },
   mappedSources: stateCatalog.sources?.length ?? 0,
-  privacyNote: "Arquivos brutos grandes são processados temporariamente e não são republicados pelo projeto. CPF não é republicado; CNPJ empresarial pode aparecer em agregações de contratos.",
+  privacyNote: "Arquivos brutos grandes são processados temporariamente. CPF não é republicado; CNPJ empresarial pode aparecer apenas em agregações de contratos.",
 };
 writeJson(path.join(outputRoot, "bahia-transparency.json"), bahiaTransparency);
 
@@ -158,8 +160,8 @@ transparency.datasets.push({
   status: stateSnapshot ? stateCoverage.status : "sources_mapped",
   statusLabel: stateSnapshot ? stateStatusLabel(stateCoverage.status) : "Fontes oficiais mapeadas",
   detail: stateSnapshot
-    ? `${ckanSummary.ckan_datasets_collected ?? 0}/${ckanSummary.ckan_datasets_expected ?? 6} catálogos SEFAZ/CKAN coletados; ${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 5} conjuntos estaduais prioritários processados; arquivos TCE permanecem com cobertura separada.`
-    : "Receitas, despesas, pagamentos, contratos, licitações, diárias e bases TCE já têm fontes oficiais catalogadas.",
+    ? `${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 5} bases prioritárias SEFAZ processadas. TCE permanece como fonte complementar com cobertura própria.`
+    : "Receitas, despesas, pagamentos, contratos e licitações têm fontes estaduais catalogadas.",
   source: "SEFAZ/AGE Bahia + TCE/BA",
   href: "/bahia/transparencia",
 });
@@ -168,7 +170,7 @@ transparency.datasets.push({
   title: "Dependência interestadual da Bahia",
   status: interstate ? "historical_baseline_normalized" : "source_mapped_not_normalized",
   statusLabel: interstate ? "Linha de base histórica normalizada" : "Fonte mapeada",
-  detail: interstate ? "Estrutura interestadual baseada na matriz de 2017 e setores-chave da MIP Bahia 2012; anos de referência ficam visíveis na interface." : "A fonte SEI está mapeada, mas ainda não foi normalizada.",
+  detail: interstate ? "Matriz interestadual de 2017 e setores-chave da MIP Bahia 2012, com anos de referência visíveis." : "A fonte SEI está mapeada, mas ainda não foi normalizada.",
   source: "SEI Bahia",
   href: "/economia/oportunidades",
 });
@@ -187,28 +189,30 @@ meta.stateCkanExpected = ckanSummary.ckan_datasets_expected ?? 6;
 meta.stateSefazDataProcessed = sefazSummary.processed ?? 0;
 meta.stateSefazDataExpected = sefazSummary.expected ?? 5;
 meta.stateRevenueRows = stateRevenues?.summary?.rows ?? 0;
-meta.stateProcurementRelatedRows = stateProcurements?.summary?.total_rows_across_related_tables ?? 0;
+meta.stateRevenueRealized2026 = stateRevenues?.summary?.selected_year_totals?.realized ?? null;
 meta.stateProcurements2026 = stateProcurements?.summary?.primary_licitacoes?.rows_selected_year ?? 0;
-meta.stateExpenseRows = stateExpenses?.summary?.primary_table?.rows ?? 0;
+meta.stateProcurementEstimated2026 = stateProcurements?.summary?.primary_licitacoes?.estimated_value?.sum ?? null;
+meta.stateProcurementHomologated2026 = stateProcurements?.summary?.primary_licitacoes?.homologated_value?.sum ?? null;
 meta.stateExpenseRows2026 = stateExpenses?.summary?.primary_table?.selected_rows ?? 0;
 meta.stateExpenseCommitted2026 = stateExpenses?.summary?.primary_table?.stage_totals?.committed?.sum ?? null;
 meta.stateExpenseLiquidated2026 = stateExpenses?.summary?.primary_table?.stage_totals?.liquidated?.sum ?? null;
 meta.stateExpensePaid2026 = stateExpenses?.summary?.primary_table?.stage_totals?.paid?.sum ?? null;
-meta.statePaymentRows = statePayments?.summary?.primary_table?.rows ?? 0;
 meta.statePaymentRows2026 = statePayments?.summary?.primary_table?.selected_rows ?? 0;
 meta.statePayments2026 = statePayments?.summary?.selected_year_payment?.sum ?? null;
 meta.statePaymentSourceField = statePayments?.summary?.selected_year_payment?.source_field ?? null;
-meta.stateContractRows = stateContracts?.summary?.primary_table?.rows ?? 0;
-meta.stateContracts2026 = stateContracts?.summary?.primary_table?.selected_rows ?? 0;
-meta.stateContractValue2026 = stateContracts?.summary?.primary_table?.contract_value?.sum ?? null;
-meta.stateContractValueField = stateContracts?.summary?.primary_table?.contract_value?.field ?? null;
-meta.stateContractInstrumentKeys2026 = stateContracts?.summary?.primary_table?.instrument_index?.length ?? 0;
-meta.stateContractProcessKeys2026 = stateContracts?.summary?.primary_table?.process_ids?.length ?? 0;
-meta.stateContractCnpjSuppliersPublished = stateContracts?.summary?.primary_table?.top_suppliers_cnpj_only?.length ?? 0;
-meta.stateProcurementContractExactLinks = stateProcurementContractLinks?.summary?.exact_link_count ?? 0;
-meta.stateProcurementProcessesWithContracts = stateProcurementContractLinks?.summary?.processes_with_instruments ?? 0;
+meta.stateContractRelationRows2026 = contractPrimary?.selected_rows ?? 0;
+meta.stateContractUniqueInstruments2026 = contractPrimary?.unique_instruments ?? contractDedup?.unique_instruments ?? 0;
+meta.stateContractValue2026 = contractValue?.deduplicated_sum ?? null;
+meta.stateContractValueField = contractValue?.field ?? null;
+meta.stateContractProcessKeys2026 = contractPrimary?.unique_process_keys ?? 0;
+meta.stateContractCnpjSuppliersPublished = contractPrimary?.top_suppliers_cnpj_only?.length ?? 0;
+meta.stateMoneyFlowAvailable = Boolean(stateMoneyFlow?.summary);
+meta.stateProcurementContractExactLinks = stateMoneyFlow?.summary?.instruments_procurement_to_contract ?? 0;
+meta.stateContractPaymentExactLinks = stateMoneyFlow?.summary?.instruments_contract_to_payment ?? 0;
+meta.stateEndToEndInstruments = stateMoneyFlow?.summary?.instruments_end_to_end ?? 0;
+meta.stateEndToEndPaymentValue = stateMoneyFlow?.summary?.payment_value_end_to_end ?? null;
 meta.stateTceProcessed = ckanSummary.tce_datasets_processed ?? 0;
 meta.stateTransparencyMappedSources = stateCatalog.sources?.length ?? 0;
 writeJson(metaPath, meta);
 
-console.log(`Bahia regional: interestadual=${interstate ? "linha de base normalizada" : "pendente"}; transparência estadual=${stateSnapshot ? stateCoverage.status : "fontes mapeadas"}; SEFAZ=${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 5}; licitações2026=${meta.stateProcurements2026}; despesas2026=${meta.stateExpenseRows2026}; pagamentos2026=${meta.statePaymentRows2026}; contratos2026=${meta.stateContracts2026}; vínculos=${meta.stateProcurementContractExactLinks}`);
+console.log(`Bahia regional: SEFAZ=${sefazSummary.processed ?? 0}/${sefazSummary.expected ?? 5}; licitações=${meta.stateProcurements2026}; instrumentos=${meta.stateContractUniqueInstruments2026}; fio=${meta.stateEndToEndInstruments}`);
