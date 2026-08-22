@@ -95,12 +95,47 @@ if (cms) {
   });
 }
 
+const aux = camara.auxiliary;
+if (aux) {
+  replaceDataset(datasets, {
+    id: "cms_viagens",
+    title: "Despesas de viagem da Câmara",
+    status: aux.travel?.complete ? "complete_for_filter" : "partial",
+    statusLabel: aux.travel?.complete ? "Completo para a rota publicada" : "Parcial",
+    detail: `${aux.travel?.records ?? 0} registros em ${aux.travel?.pages ?? 0} páginas. A camada pública exibe somente contagem e valor agregado; nomes, justificativas e demais textos pessoais não são republicados no resumo.`,
+    source: "Câmara Municipal de Salvador",
+    href: "/camara",
+    asOf: aux.asOf ?? null,
+  });
+  replaceDataset(datasets, {
+    id: "cms_documentos",
+    title: "Documentos de transparência da Câmara",
+    status: aux.documents?.complete ? "complete_for_filter" : "partial",
+    statusLabel: aux.documents?.complete ? "Catálogo coletado" : "Parcial",
+    detail: `${aux.documents?.records ?? 0} links documentais preservados nas seções configuradas de prestação de contas e execução orçamentária/financeira.`,
+    source: "Câmara Municipal de Salvador",
+    href: "/camara",
+    asOf: aux.asOf ?? null,
+  });
+  replaceDataset(datasets, {
+    id: "cms_certames",
+    title: "Certames da Câmara",
+    status: "partial",
+    statusLabel: "Página visível apenas",
+    detail: `${aux.certames?.recordsVisible ?? 0} itens da página atualmente visível. A paginação integral do catálogo ainda não foi provada e ausência nesta lista não significa inexistência.`,
+    source: "Câmara Municipal de Salvador",
+    href: "/camara",
+    asOf: aux.asOf ?? null,
+  });
+}
+
 transparency.asOf = meta.asOf ?? transparency.asOf ?? null;
-transparency.latestSourceAsOf = [meta.latestSourceAsOf, meta.cmsCommitmentsAsOf].filter(Boolean).sort().at(-1) ?? null;
+transparency.latestSourceAsOf = [meta.latestSourceAsOf, meta.cmsCommitmentsAsOf, meta.cmsAuxiliaryAsOf].filter(Boolean).sort().at(-1) ?? null;
 transparency.freshnessModel = "per_source";
 transparency.dataFreshness = {
   ...(meta.dataFreshness ?? {}),
   ...(cms ? { cmsCommitments: { asOf: cms.asOf ?? null, source: "CMS_EMPENHOS" } } : {}),
+  ...(aux ? { cmsAuxiliary: { asOf: aux.asOf ?? null, source: "CMS" } } : {}),
 };
 transparency.datasets = datasets;
 
