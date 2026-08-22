@@ -1,10 +1,15 @@
 {
-  "tested_commit": "be02334a3bed53b7e22496bca45b317158b20fbb",
-  "tests": "failure",
-  "collector": "skipped",
-  "workflow_finished_at": "2026-08-22T00:04:51.042627+00:00",
+  "tested_commit": "3ff24b7428f4fe727055f69d5ae9f0aed7c32674",
+  "tests": "success",
+  "collector": "success",
+  "workflow_finished_at": "2026-08-22T00:08:12.065843+00:00",
   "latest": {
     "collection_mode": "metadata_only",
+    "money_flow": {
+      "instruments_end_to_end": 160,
+      "selected_year": 2026,
+      "status": "processed"
+    },
     "path": "regions/bahia/data/state_transparency/snapshots/2026-08-21",
     "sefaz_data": {
       "datasets": [
@@ -32,44 +37,27 @@
       "tce_datasets_processed": 0
     }
   },
-  "summary": null,
-  "identity_rule": null,
+  "summary": {
+    "contract_unique_instruments": 59350,
+    "instruments_contract_to_payment": 49614,
+    "instruments_end_to_end": 160,
+    "instruments_procurement_to_contract": 260,
+    "payment_rows_selected": 602157,
+    "payment_rows_with_instrument": 316503,
+    "payment_unique_instruments": 62747,
+    "payment_value_end_to_end": 30661050.15,
+    "payment_value_linked_to_contracts": 12141424041.86,
+    "payment_value_with_instrument": 16632589155.28,
+    "procurement_instrument_exact_links": 347,
+    "procurement_processes_selected": 2093,
+    "procurement_unique_instruments": 347
+  },
+  "identity_rule": "Todos os vínculos exigem igualdade do identificador oficial após remover apenas pontuação/espaços e padronizar maiúsculas. Nome, objeto, fornecedor e similaridade textual nunca criam vínculo.",
   "test_log_tail": [
-    ".F.                                                                      [100%]",
-    "=================================== FAILURES ===================================",
-    "________ test_builds_end_to_end_only_with_exact_official_instrument_ids ________",
-    "",
-    "tmp_path = PosixPath('/tmp/pytest-of-runner/pytest-0/test_builds_end_to_end_only_wi0')",
-    "",
-    "    def test_builds_end_to_end_only_with_exact_official_instrument_ids(tmp_path: Path):",
-    "        payments = tmp_path / \"pagamentos.zip\"",
-    "        procurement = tmp_path / \"licitacoes.zip\"",
-    "        _payments_zip(payments)",
-    "        _procurement_zip(procurement)",
-    "    ",
-    "        result = build_exact_money_flow(",
-    "            procurement,",
-    "            payments,",
-    "            [\"001/2026\", \"002-2026\", \"999/2026\"],",
-    "            target_year=2026,",
-    "        )",
-    "        summary = result[\"summary\"]",
-    "        assert summary[\"procurement_instrument_exact_links\"] == 3",
-    "        assert summary[\"contract_unique_instruments\"] == 3",
-    "        assert summary[\"instruments_procurement_to_contract\"] == 2",
-    "        assert summary[\"instruments_contract_to_payment\"] == 2",
-    "        assert summary[\"instruments_end_to_end\"] == 2",
-    "        assert summary[\"payment_value_linked_to_contracts\"] == 350.0",
-    "        assert summary[\"payment_value_end_to_end\"] == 350.0",
-    "        assert [row[\"instrument_id\"] for row in result[\"top_end_to_end\"]] == [\"0022026\", \"0012026\"]",
-    "        assert \"identificador oficial\" in result[\"identity_rule\"]",
-    ">       assert \"aproximação\" in result[\"identity_rule\"]",
-    "E       AssertionError: assert 'aproximação' in 'Todos os vínculos exigem igualdade do identificador oficial após remover apenas pontuação/espaços e padronizar maiúsculas. Nome, objeto, fornecedor e similaridade textual nunca criam vínculo.'",
-    "",
-    "tests/test_bahia_sefaz_money_flow.py:89: AssertionError",
-    "=========================== short test summary info ============================",
-    "FAILED tests/test_bahia_sefaz_money_flow.py::test_builds_end_to_end_only_with_exact_official_instrument_ids - AssertionError: assert 'aproximação' in 'Todos os vínculos exigem igualdade do identificador oficial após remover apenas pontuação/espaços e padronizar maiúsculas. Nome, objeto, fornecedor e similaridade textual nunca criam vínculo.'",
-    "1 failed, 2 passed in 0.08s"
+    "...                                                                      [100%]",
+    "3 passed in 0.09s"
   ],
-  "collector_log_tail": []
+  "collector_log_tail": [
+    "{\"status\": \"processed\", \"procurement_processes_selected\": 2093, \"procurement_instrument_exact_links\": 347, \"procurement_unique_instruments\": 347, \"contract_unique_instruments\": 59350, \"payment_rows_selected\": 602157, \"payment_unique_instruments\": 62747, \"payment_rows_with_instrument\": 316503, \"payment_value_with_instrument\": 16632589155.28, \"instruments_procurement_to_contract\": 260, \"instruments_contract_to_payment\": 49614, \"payment_value_linked_to_contracts\": 12141424041.86, \"instruments_end_to_end\": 160, \"payment_value_end_to_end\": 30661050.15}"
+  ]
 }

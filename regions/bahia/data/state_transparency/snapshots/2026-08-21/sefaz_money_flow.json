@@ -1,0 +1,1816 @@
+{
+  "coverage": {
+    "contracts": "Instrumentos presentes no recorte contratual validado da SEFAZ/FIPLAN.",
+    "payments": "Pagamentos com Data do Pagamento no ano e num_instrumento_formatado preenchido.",
+    "procurement": "Processos de aquisição do ano ligados a instrumentos pela tabela oficial VW_PROC_AQUISICAO_ITEM_INSTRUMENTO."
+  },
+  "identity_rule": "Todos os vínculos exigem igualdade do identificador oficial após remover apenas pontuação/espaços e padronizar maiúsculas. Nome, objeto, fornecedor e similaridade textual nunca criam vínculo.",
+  "interpretation": "O fluxo mede correspondências documentais entre bases. Não significa que o valor contratual seja igual ao valor pago no ano, nem que todo instrumento relacionado ao recorte tenha sido celebrado no próprio ano.",
+  "privacy_rule": "O índice público contém somente identificadores administrativos, contagens e valores agregados por instrumento. Nomes de recebedores, CPF e CNPJ da base de pagamentos não são republicados.",
+  "resources": {
+    "contratos": {
+      "instrument_keys_used": 59350,
+      "resource_name": "Contratos.zip",
+      "sha256": "8a435709f2999c9edfeb5c7cbf17f2d191728b9651970647130698b198143247"
+    },
+    "licitacoes": {
+      "bytes": 133298244,
+      "download_mode": "whole_with_retries",
+      "id": "c5040c7d-4375-459e-93b0-beca841f63b4",
+      "last_modified": "2026-08-20T11:13:12",
+      "name": "Licitacoes.zip",
+      "sha256": "543d62a83f606fa4b706bb601efffde7f0ba8a87a3dd4bfb3af7917ade07a99f",
+      "tls_verified": false,
+      "url": "https://dados.ba.gov.br/dataset/36c792f9-1999-4f21-a669-752a178b06b7/resource/c5040c7d-4375-459e-93b0-beca841f63b4/download/licitacoes.zip"
+    },
+    "pagamentos": {
+      "bytes": 500638146,
+      "download_mode": "http_range",
+      "id": "2319e322-587b-4cea-b6e5-e184ebf040ef",
+      "last_modified": "2026-08-20T10:36:46",
+      "name": "Pagamentos.zip",
+      "sha256": "491983c6842efdbc4822956afbf828120e118188e334f8b8227c983d08ade3eb",
+      "tls_verified": false,
+      "url": "https://dados.ba.gov.br/dataset/7c78e7bf-f753-4fff-87b4-5d6950ba18a8/resource/2319e322-587b-4cea-b6e5-e184ebf040ef/download/pagamentos.zip"
+    }
+  },
+  "selected_year": 2026,
+  "source": "SEFAZ/AGE Bahia - SIMPAS/FIPLAN",
+  "summary": {
+    "contract_unique_instruments": 59350,
+    "instruments_contract_to_payment": 49614,
+    "instruments_end_to_end": 160,
+    "instruments_procurement_to_contract": 260,
+    "payment_rows_selected": 602157,
+    "payment_rows_with_instrument": 316503,
+    "payment_unique_instruments": 62747,
+    "payment_value_end_to_end": 30661050.15,
+    "payment_value_linked_to_contracts": 12141424041.86,
+    "payment_value_with_instrument": 16632589155.28,
+    "procurement_instrument_exact_links": 347,
+    "procurement_processes_selected": 2093,
+    "procurement_unique_instruments": 347
+  },
+  "top_end_to_end": [
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1960100832600023562",
+      "liquidation_ids": 2,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 11200115.53,
+      "procurement_process_ids": [
+        "19004CP0012026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1110100012600007151",
+      "liquidation_ids": 2,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 7785015.0,
+      "procurement_process_ids": [
+        "11004PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300132600001062",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 1895000.0,
+      "procurement_process_ids": [
+        "20607PE0122026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080200062600001226",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 1855000.0,
+      "procurement_process_ids": [
+        "20047PE0082026"
+      ]
+    },
+    {
+      "commitment_ids": 5,
+      "instrument_id": "1960100852600001555",
+      "liquidation_ids": 14,
+      "payment_ids": 28,
+      "payment_rows": 28,
+      "payment_value": 1272682.94,
+      "procurement_process_ids": [
+        "19150PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "1960100772600015708",
+      "liquidation_ids": 3,
+      "payment_ids": 6,
+      "payment_rows": 6,
+      "payment_value": 894941.0,
+      "procurement_process_ids": [
+        "19138PE0072026"
+      ]
+    },
+    {
+      "commitment_ids": 4,
+      "instrument_id": "2010100042600000679",
+      "liquidation_ids": 4,
+      "payment_ids": 18,
+      "payment_rows": 18,
+      "payment_value": 436579.84,
+      "procurement_process_ids": [
+        "20004PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1310100032600000768",
+      "liquidation_ids": 2,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 382800.0,
+      "procurement_process_ids": [
+        "13003PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101132600001311",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 270100.2,
+      "procurement_process_ids": [
+        "20789PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 4,
+      "instrument_id": "1960100852600002063",
+      "liquidation_ids": 4,
+      "payment_ids": 8,
+      "payment_rows": 8,
+      "payment_value": 245232.0,
+      "procurement_process_ids": [
+        "19150PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1960100852600003221",
+      "liquidation_ids": 4,
+      "payment_ids": 7,
+      "payment_rows": 7,
+      "payment_value": 232612.03,
+      "procurement_process_ids": [
+        "19150PE0082026"
+      ]
+    },
+    {
+      "commitment_ids": 4,
+      "instrument_id": "1960100542600013697",
+      "liquidation_ids": 4,
+      "payment_ids": 8,
+      "payment_rows": 8,
+      "payment_value": 225888.0,
+      "procurement_process_ids": [
+        "19085PE0092026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100972600007767",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 213570.0,
+      "procurement_process_ids": [
+        "19183PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1130400012600001490",
+      "liquidation_ids": 2,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 179179.48,
+      "procurement_process_ids": [
+        "11640PE0172026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "1120100012600000701",
+      "liquidation_ids": 3,
+      "payment_ids": 9,
+      "payment_rows": 9,
+      "payment_value": 172863.66,
+      "procurement_process_ids": [
+        "11700PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000054",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 128128.0,
+      "procurement_process_ids": [
+        "20273PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080100272600000897",
+      "liquidation_ids": 1,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 119890.0,
+      "procurement_process_ids": [
+        "20085PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "2080101192600000157",
+      "liquidation_ids": 2,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 112433.7,
+      "procurement_process_ids": [
+        "20801PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100852600003647",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 112000.0,
+      "procurement_process_ids": [
+        "19150PE0092026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1310100032600000611",
+      "liquidation_ids": 2,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 101395.91,
+      "procurement_process_ids": [
+        "13003PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1310100032600001012",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 93500.0,
+      "procurement_process_ids": [
+        "13003PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "2080101132600001354",
+      "liquidation_ids": 3,
+      "payment_ids": 6,
+      "payment_rows": 6,
+      "payment_value": 83434.72,
+      "procurement_process_ids": [
+        "20789PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1960100472600011576",
+      "liquidation_ids": 2,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 82680.0,
+      "procurement_process_ids": [
+        "19076PE0242026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100852600002039",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 77000.0,
+      "procurement_process_ids": [
+        "19150PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "3820100012600002445",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 76389.9,
+      "procurement_process_ids": [
+        "44001PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080100852600001099",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 75940.56,
+      "procurement_process_ids": [
+        "20213PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "3210100012600001243",
+      "liquidation_ids": 1,
+      "payment_ids": 5,
+      "payment_rows": 5,
+      "payment_value": 73450.64,
+      "procurement_process_ids": [
+        "32004PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080100952600000722",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 69441.6,
+      "procurement_process_ids": [
+        "20223PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1960100472600014109",
+      "liquidation_ids": 2,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 66750.0,
+      "procurement_process_ids": [
+        "19076PE0112026"
+      ]
+    },
+    {
+      "commitment_ids": 7,
+      "instrument_id": "2080100732600000083",
+      "liquidation_ids": 7,
+      "payment_ids": 7,
+      "payment_rows": 7,
+      "payment_value": 65946.4,
+      "procurement_process_ids": [
+        "20504PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 4,
+      "instrument_id": "2080200062600000475",
+      "liquidation_ids": 6,
+      "payment_ids": 8,
+      "payment_rows": 8,
+      "payment_value": 64156.22,
+      "procurement_process_ids": [
+        "20047PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100472600017272",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 62400.0,
+      "procurement_process_ids": [
+        "19076PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "2080101012600000561",
+      "liquidation_ids": 3,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 61064.5,
+      "procurement_process_ids": [
+        "20229PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100542600016173",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 59880.0,
+      "procurement_process_ids": [
+        "19085PE0162026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101192600000165",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 57788.0,
+      "procurement_process_ids": [
+        "20801PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100472600016561",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 56025.0,
+      "procurement_process_ids": [
+        "19076PE0302026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101132600001346",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 55448.4,
+      "procurement_process_ids": [
+        "20789PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080100972600000727",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 50760.0,
+      "procurement_process_ids": [
+        "20225PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1050100012600001223",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 48262.5,
+      "procurement_process_ids": [
+        "10910PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "2080101102600000100",
+      "liquidation_ids": 2,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 48014.12,
+      "procurement_process_ids": [
+        "20273PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2060300012600000401",
+      "liquidation_ids": 1,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 44988.8,
+      "procurement_process_ids": [
+        "20004PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2010200012600002983",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 39900.0,
+      "procurement_process_ids": [
+        "20007PE0112026"
+      ]
+    },
+    {
+      "commitment_ids": 13,
+      "instrument_id": "2080300132600001100",
+      "liquidation_ids": 13,
+      "payment_ids": 13,
+      "payment_rows": 13,
+      "payment_value": 39853.05,
+      "procurement_process_ids": [
+        "20607PE0152026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2230100012600000601",
+      "liquidation_ids": 4,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 36984.0,
+      "procurement_process_ids": [
+        "22600PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "1920100012600000853",
+      "liquidation_ids": 3,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 36356.73,
+      "procurement_process_ids": [
+        "19700PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1030100012600001513",
+      "liquidation_ids": 1,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 35808.46,
+      "procurement_process_ids": [
+        "10610PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101122600000431",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 35597.55,
+      "procurement_process_ids": [
+        "20790PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300212600000981",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 34743.0,
+      "procurement_process_ids": [
+        "20786PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 5,
+      "instrument_id": "2080100732600000105",
+      "liquidation_ids": 5,
+      "payment_ids": 5,
+      "payment_rows": 5,
+      "payment_value": 32951.1,
+      "procurement_process_ids": [
+        "20504PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080100732600000601",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 30971.85,
+      "procurement_process_ids": [
+        "20504PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 4,
+      "instrument_id": "2080100952600000390",
+      "liquidation_ids": 4,
+      "payment_ids": 16,
+      "payment_rows": 16,
+      "payment_value": 30843.26,
+      "procurement_process_ids": [
+        "20223PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080200062600001498",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 29250.0,
+      "procurement_process_ids": [
+        "20047PE0092026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "2080101102600000208",
+      "liquidation_ids": 2,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 28651.56,
+      "procurement_process_ids": [
+        "20273PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1050100012600001215",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 27573.0,
+      "procurement_process_ids": [
+        "10910PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2010200012600001170",
+      "liquidation_ids": 3,
+      "payment_ids": 6,
+      "payment_rows": 6,
+      "payment_value": 27467.1,
+      "procurement_process_ids": [
+        "20007PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 4,
+      "instrument_id": "2080101102600000097",
+      "liquidation_ids": 4,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 26666.2,
+      "procurement_process_ids": [
+        "20273PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2060300012600000398",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 25499.84,
+      "procurement_process_ids": [
+        "20004PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 4,
+      "instrument_id": "1960100472600009016",
+      "liquidation_ids": 4,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 25040.0,
+      "procurement_process_ids": [
+        "19076PE0072026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300212600000645",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 24800.0,
+      "procurement_process_ids": [
+        "20786PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1130300012600000881",
+      "liquidation_ids": 2,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 24414.46,
+      "procurement_process_ids": [
+        "11630PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 5,
+      "instrument_id": "2080100372600001229",
+      "liquidation_ids": 5,
+      "payment_ids": 10,
+      "payment_rows": 10,
+      "payment_value": 23823.5,
+      "procurement_process_ids": [
+        "20100PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101132600001176",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 23136.1,
+      "procurement_process_ids": [
+        "20789PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2230100012600001304",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 22708.32,
+      "procurement_process_ids": [
+        "22600PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300112600001645",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 22000.0,
+      "procurement_process_ids": [
+        "20605PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000089",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 21896.85,
+      "procurement_process_ids": [
+        "20273PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101192600000203",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 21383.2,
+      "procurement_process_ids": [
+        "20801PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2010200012600001766",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 21168.0,
+      "procurement_process_ids": [
+        "20007PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 4,
+      "instrument_id": "1920100012600000373",
+      "liquidation_ids": 4,
+      "payment_ids": 12,
+      "payment_rows": 12,
+      "payment_value": 20447.7,
+      "procurement_process_ids": [
+        "19700PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000232",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 19437.09,
+      "procurement_process_ids": [
+        "20273PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100432600003353",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 18998.76,
+      "procurement_process_ids": [
+        "19068PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000151",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 18960.8,
+      "procurement_process_ids": [
+        "20273PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "3820100012600001856",
+      "liquidation_ids": 2,
+      "payment_ids": 6,
+      "payment_rows": 6,
+      "payment_value": 18786.16,
+      "procurement_process_ids": [
+        "44001PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "2080101102600000216",
+      "liquidation_ids": 2,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 18415.8,
+      "procurement_process_ids": [
+        "20273PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1130100082600000567",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 18359.44,
+      "procurement_process_ids": [
+        "11233PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1050100012600001231",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 18193.5,
+      "procurement_process_ids": [
+        "10910PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "2080100722600001368",
+      "liquidation_ids": 2,
+      "payment_ids": 8,
+      "payment_rows": 8,
+      "payment_value": 17726.08,
+      "procurement_process_ids": [
+        "20155PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000062",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 17184.96,
+      "procurement_process_ids": [
+        "20273PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 6,
+      "instrument_id": "2080100732600000091",
+      "liquidation_ids": 6,
+      "payment_ids": 6,
+      "payment_rows": 6,
+      "payment_value": 17083.3,
+      "procurement_process_ids": [
+        "20504PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101192600000246",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 16399.5,
+      "procurement_process_ids": [
+        "20801PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "2080101102600000186",
+      "liquidation_ids": 2,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 15674.24,
+      "procurement_process_ids": [
+        "20273PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100542600017269",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 15136.0,
+      "procurement_process_ids": [
+        "19085PE0182026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "2080100722600001015",
+      "liquidation_ids": 2,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 14876.16,
+      "procurement_process_ids": [
+        "20155PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "2080101102600000240",
+      "liquidation_ids": 3,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 14554.8,
+      "procurement_process_ids": [
+        "20273PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "2410100012600000173",
+      "liquidation_ids": 3,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 14439.99,
+      "procurement_process_ids": [
+        "24004PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "2410100012600000122",
+      "liquidation_ids": 3,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 13980.0,
+      "procurement_process_ids": [
+        "24004PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000259",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 12636.0,
+      "procurement_process_ids": [
+        "20273PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000135",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 12015.6,
+      "procurement_process_ids": [
+        "20273PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "1960100472600013201",
+      "liquidation_ids": 3,
+      "payment_ids": 6,
+      "payment_rows": 6,
+      "payment_value": 11124.0,
+      "procurement_process_ids": [
+        "19076PE0162026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100832600030259",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 10864.47,
+      "procurement_process_ids": [
+        "19148PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2010100042600000385",
+      "liquidation_ids": 5,
+      "payment_ids": 8,
+      "payment_rows": 8,
+      "payment_value": 10850.0,
+      "procurement_process_ids": [
+        "20004PE0102026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000224",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 10670.4,
+      "procurement_process_ids": [
+        "20273PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080200062600001471",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 10400.0,
+      "procurement_process_ids": [
+        "20047PE0112026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2010200012600001804",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 10000.0,
+      "procurement_process_ids": [
+        "20007PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "2080100742600000986",
+      "liquidation_ids": 3,
+      "payment_ids": 6,
+      "payment_rows": 6,
+      "payment_value": 9876.9,
+      "procurement_process_ids": [
+        "20231PE0082026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1130100052600000840",
+      "liquidation_ids": 2,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 9775.24,
+      "procurement_process_ids": [
+        "11230PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100852600003231",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 9727.72,
+      "procurement_process_ids": [
+        "19150PE0082026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100472600015164",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 9600.0,
+      "procurement_process_ids": [
+        "19076PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100482600014890",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 9520.0,
+      "procurement_process_ids": [
+        "19077PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 4,
+      "instrument_id": "1960100432600002225",
+      "liquidation_ids": 4,
+      "payment_ids": 8,
+      "payment_rows": 8,
+      "payment_value": 9066.0,
+      "procurement_process_ids": [
+        "19068PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300212600000610",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 8999.98,
+      "procurement_process_ids": [
+        "20786PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300212600000599",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 8899.96,
+      "procurement_process_ids": [
+        "20786PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "2080100732600000555",
+      "liquidation_ids": 3,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 8401.68,
+      "procurement_process_ids": [
+        "20504PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101192600000211",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 8311.46,
+      "procurement_process_ids": [
+        "20801PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080100732600000611",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 8000.0,
+      "procurement_process_ids": [
+        "20504PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080100732600000652",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 7661.7,
+      "procurement_process_ids": [
+        "20504PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1960100512600004238",
+      "liquidation_ids": 2,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 7455.6,
+      "procurement_process_ids": [
+        "19081PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300112600001637",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 6759.9,
+      "procurement_process_ids": [
+        "20605PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100772600017840",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 6665.0,
+      "procurement_process_ids": [
+        "19138PE0092026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100512600004246",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 6602.28,
+      "procurement_process_ids": [
+        "19081PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1960100472600010881",
+      "liquidation_ids": 2,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 6591.6,
+      "procurement_process_ids": [
+        "19076PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300212600000602",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 6379.9,
+      "procurement_process_ids": [
+        "20786PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "1960100482600014882",
+      "liquidation_ids": 3,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 6300.0,
+      "procurement_process_ids": [
+        "19077PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1130300012600000555",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 6247.11,
+      "procurement_process_ids": [
+        "11630PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100392600003407",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 5897.5,
+      "procurement_process_ids": [
+        "19048PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1130100382600000523",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 5810.15,
+      "procurement_process_ids": [
+        "11255PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1130400012600003019",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 5650.0,
+      "procurement_process_ids": [
+        "11640PE0272026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000283",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 5584.32,
+      "procurement_process_ids": [
+        "20273PE0072026"
+      ]
+    },
+    {
+      "commitment_ids": 4,
+      "instrument_id": "2080100192600000240",
+      "liquidation_ids": 4,
+      "payment_ids": 8,
+      "payment_rows": 8,
+      "payment_value": 5520.26,
+      "procurement_process_ids": [
+        "20071PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1310100032600001020",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 5500.0,
+      "procurement_process_ids": [
+        "13003PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2010200012600001731",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 5441.7,
+      "procurement_process_ids": [
+        "20007PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000331",
+      "liquidation_ids": 1,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 5424.0,
+      "procurement_process_ids": [
+        "20273PE0082026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1920100012600001361",
+      "liquidation_ids": 3,
+      "payment_ids": 5,
+      "payment_rows": 5,
+      "payment_value": 5270.76,
+      "procurement_process_ids": [
+        "19700PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1960100482600008580",
+      "liquidation_ids": 2,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 5250.0,
+      "procurement_process_ids": [
+        "19077PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080100732600000644",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 5100.0,
+      "procurement_process_ids": [
+        "20504PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300212600000580",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 4590.3,
+      "procurement_process_ids": [
+        "20786PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300212600000637",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 4411.6,
+      "procurement_process_ids": [
+        "20786PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2010200012600002762",
+      "liquidation_ids": 1,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 4375.0,
+      "procurement_process_ids": [
+        "20007PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "2080101102600000143",
+      "liquidation_ids": 2,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 3948.0,
+      "procurement_process_ids": [
+        "20273PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 4,
+      "instrument_id": "1920100012600001371",
+      "liquidation_ids": 4,
+      "payment_ids": 4,
+      "payment_rows": 4,
+      "payment_value": 3801.6,
+      "procurement_process_ids": [
+        "19700PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300212600000629",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 3688.4,
+      "procurement_process_ids": [
+        "20786PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "3310100012600000611",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 3612.84,
+      "procurement_process_ids": [
+        "33003PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000291",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 3585.6,
+      "procurement_process_ids": [
+        "20273PE0072026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080100732600000636",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 3578.27,
+      "procurement_process_ids": [
+        "20504PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 3,
+      "instrument_id": "2080101102600000305",
+      "liquidation_ids": 3,
+      "payment_ids": 3,
+      "payment_rows": 3,
+      "payment_value": 3465.6,
+      "procurement_process_ids": [
+        "20273PE0072026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100762600002382",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 3290.0,
+      "procurement_process_ids": [
+        "19134PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000267",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 3226.08,
+      "procurement_process_ids": [
+        "20273PE0072026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000275",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 3064.32,
+      "procurement_process_ids": [
+        "20273PE0072026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100472600007811",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 2995.0,
+      "procurement_process_ids": [
+        "19076PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "3820100012600003220",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 2801.88,
+      "procurement_process_ids": [
+        "44001PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300212600000971",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 2750.0,
+      "procurement_process_ids": [
+        "20786PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2010200012600001782",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 2674.5,
+      "procurement_process_ids": [
+        "20007PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101192600000262",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 2603.28,
+      "procurement_process_ids": [
+        "20801PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1130300012600002833",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 2580.0,
+      "procurement_process_ids": [
+        "11630PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100482600014904",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 2300.0,
+      "procurement_process_ids": [
+        "19077PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 2,
+      "instrument_id": "1960100472600013218",
+      "liquidation_ids": 2,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 1906.5,
+      "procurement_process_ids": [
+        "19076PE0162026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300112600001556",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 1730.0,
+      "procurement_process_ids": [
+        "20605PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1130100082600000575",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 1641.8,
+      "procurement_process_ids": [
+        "11233PE0012026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "3820100012600002437",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 1639.5,
+      "procurement_process_ids": [
+        "44001PE0022026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101102600000178",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 1591.8,
+      "procurement_process_ids": [
+        "20273PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1130400012600001891",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 1567.8,
+      "procurement_process_ids": [
+        "11640PE0182026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100472600014214",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 1421.75,
+      "procurement_process_ids": [
+        "19076PE0202026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101192600000191",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 1254.0,
+      "procurement_process_ids": [
+        "20801PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101192600000254",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 1100.0,
+      "procurement_process_ids": [
+        "20801PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080101192600000181",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 964.0,
+      "procurement_process_ids": [
+        "20801PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100472600018211",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 820.2,
+      "procurement_process_ids": [
+        "19076PE0322026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "2080300132600000813",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 567.72,
+      "procurement_process_ids": [
+        "20607PE0042026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1130100052600000859",
+      "liquidation_ids": 1,
+      "payment_ids": 2,
+      "payment_rows": 2,
+      "payment_value": 298.5,
+      "procurement_process_ids": [
+        "11230PE0032026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100512600006087",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 189.6,
+      "procurement_process_ids": [
+        "19081PE0052026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1960100472600018228",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 144.46,
+      "procurement_process_ids": [
+        "19076PE0322026"
+      ]
+    },
+    {
+      "commitment_ids": 1,
+      "instrument_id": "1130100082600000931",
+      "liquidation_ids": 1,
+      "payment_ids": 1,
+      "payment_rows": 1,
+      "payment_value": 129.0,
+      "procurement_process_ids": [
+        "11233PE0072026"
+      ]
+    }
+  ]
+}

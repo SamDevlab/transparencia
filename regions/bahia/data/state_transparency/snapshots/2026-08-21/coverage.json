@@ -51,6 +51,25 @@
   },
   "collection_mode": "metadata_only",
   "generated_at": "2026-08-21",
+  "money_flow": {
+    "contract_unique_instruments": 59350,
+    "identity": "exact_official_identifiers_only",
+    "instruments_contract_to_payment": 49614,
+    "instruments_end_to_end": 160,
+    "instruments_procurement_to_contract": 260,
+    "output": "sefaz_money_flow.json",
+    "payment_rows_selected": 602157,
+    "payment_rows_with_instrument": 316503,
+    "payment_unique_instruments": 62747,
+    "payment_value_end_to_end": 30661050.15,
+    "payment_value_linked_to_contracts": 12141424041.86,
+    "payment_value_with_instrument": 16632589155.28,
+    "procurement_instrument_exact_links": 347,
+    "procurement_processes_selected": 2093,
+    "procurement_unique_instruments": 347,
+    "selected_year": 2026,
+    "status": "processed"
+  },
   "note": "A fase de metadados pode ficar completa mesmo sem baixar os arquivos grandes do TCE. A cobertura plena da rotina exige os metadados CKAN e os três conjuntos automatizados do TCE. Dados SEFAZ já processados são preservados entre reexecuções. Fallback TLS do CKAN, quando necessário, fica registrado e nunca é silencioso.",
   "sefaz_data": {
     "contratos": {
