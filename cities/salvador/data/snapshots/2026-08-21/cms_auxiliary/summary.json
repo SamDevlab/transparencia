@@ -1,0 +1,30 @@
+{
+  "certames": {
+    "complete": false,
+    "coverage": "server_visible_page_only",
+    "records": 10
+  },
+  "documents": {
+    "complete": true,
+    "records": 1994,
+    "sections": {
+      "execucao_orcamentaria_financeira": {
+        "complete": true,
+        "pages_collected": 44,
+        "stopped_status": null
+      },
+      "prestacao_contas": {
+        "complete": true,
+        "pages_collected": 66,
+        "stopped_status": null
+      }
+    }
+  },
+  "observed_at_date": "2026-08-21",
+  "travel": {
+    "complete": true,
+    "pages_collected": 36,
+    "records": 159,
+    "stopped_status": null
+  }
+}

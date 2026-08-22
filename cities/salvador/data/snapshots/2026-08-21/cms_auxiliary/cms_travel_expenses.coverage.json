@@ -1,0 +1,7 @@
+{
+  "complete": true,
+  "note": "complete=false means pagination was stopped by the source; collected rows remain valid snapshots.",
+  "pages_collected": 36,
+  "records": 159,
+  "stopped_status": null
+}
