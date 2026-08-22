@@ -4,10 +4,12 @@ on:
   push:
     branches: [city/salvador]
     paths:
+      - "package.json"
       - "scripts/overlay-current-municipal-data.mjs"
       - "scripts/overlay-pncp-complementary-current.mjs"
       - "scripts/sanitize-public-suppliers.mjs"
       - "scripts/enrich-municipal-suppliers.mjs"
+      - "scripts/aggregate-complementary-pncp-suppliers.mjs"
       - "scripts/fix-municipal-freshness.mjs"
       - "scripts/build-municipal-links.mjs"
       - "scripts/overlay-cms-current.mjs"
@@ -17,10 +19,12 @@ on:
       - ".github/workflows/derived-web-build.yml"
   pull_request:
     paths:
+      - "package.json"
       - "scripts/overlay-current-municipal-data.mjs"
       - "scripts/overlay-pncp-complementary-current.mjs"
       - "scripts/sanitize-public-suppliers.mjs"
       - "scripts/enrich-municipal-suppliers.mjs"
+      - "scripts/aggregate-complementary-pncp-suppliers.mjs"
       - "scripts/fix-municipal-freshness.mjs"
       - "scripts/build-municipal-links.mjs"
       - "scripts/overlay-cms-current.mjs"
@@ -58,6 +62,7 @@ jobs:
           done
           node - <<'NODE'
           const contracts = require('./public/data/contracts.json');
+          const suppliers = require('./public/data/suppliers.json');
           const acquisitions = require('./public/data/acquisitions.json');
           const links = require('./public/data/municipal-links.json');
           const camara = require('./public/data/camara.json');
@@ -70,6 +75,12 @@ jobs:
           if (camara.commitmentLedger?.completeForDefaultPublicView !== true) throw new Error('ledger atual da Câmara ausente/incompleto');
           if (transparency.freshnessModel !== 'per_source') throw new Error('modelo de freshness por fonte ausente');
           if (!/^\d{4}-\d{2}-\d{2}$/.test(meta.latestSourceAsOf || '')) throw new Error('latestSourceAsOf inválido');
+
+          for (const supplier of suppliers.rows || []) {
+            if (!/^\d{14}$/.test(String(supplier.documento || ''))) throw new Error(`fornecedor público sem CNPJ empresarial: ${supplier.id}`);
+            if (supplier.quantidadeContratos !== (supplier.contratos || []).length) throw new Error(`contagem divergente no fornecedor ${supplier.id}`);
+          }
+
           if (meta.pncpComplementaryAsOf === '2026-08-22') {
             if (meta.pncpComplementaryStatus !== 'complete_for_supplied_agencies_and_filter') throw new Error('PNCP 22/08 presente sem completude do CNPJ fornecido');
             if (meta.pncpComplementaryCurrentRows !== 41) throw new Error(`PNCP atual esperado=41, recebido=${meta.pncpComplementaryCurrentRows}`);
@@ -78,6 +89,8 @@ jobs:
           console.log({
             contracts: contracts.rows.length,
             acquisitions: acquisitions.rows.length,
+            suppliers: suppliers.rows.length,
+            complementaryBusinessSuppliers: meta.pncpComplementaryBusinessSuppliers ?? null,
             exactProcesses: links.summary.processesWithExactContracts,
             cmsCommitments: camara.commitmentLedger.records,
             latestSourceAsOf: meta.latestSourceAsOf,
@@ -125,7 +138,9 @@ jobs:
             exact_links: links.summary || null,
             suppliers: {
               public_businesses: suppliers.rows?.length || 0,
-              rule: suppliers.privacyRule || suppliers.coverageNote || null,
+              complementary_businesses: meta.pncpComplementaryBusinessSuppliers ?? null,
+              rule: suppliers.coverageNote || null,
+              freshness: suppliers.dataFreshness || null,
             },
             cms: {
               commitments_complete: camara.commitmentLedger?.completeForDefaultPublicView === true,
