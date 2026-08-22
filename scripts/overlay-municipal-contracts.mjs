@@ -110,6 +110,19 @@ const rows = readJsonl(municipal.jsonl).map((entry, index) => {
 
 rows.sort((a, b) => Number(b.valorGlobal ?? 0) - Number(a.valorGlobal ?? 0));
 
+const sourceRows = (municipal.coverage.windows ?? []).reduce(
+  (sum, window) => sum + Number(window.records_received ?? 0),
+  0,
+);
+const collapsedRows = Math.max(0, sourceRows - rows.length);
+const deduplication = {
+  sourceRows,
+  publishedRows: rows.length,
+  collapsedRows,
+  rule: "A visualização consolida apenas linhas cujos campos de origem são idênticos quando se ignora o UUID técnico 'id' da API. A contagem bruta informada pela Prefeitura permanece preservada separadamente.",
+  technicalIdIsOfficialIdentifier: false,
+};
+
 const output = {
   asOf: municipal.coverage.period_end || municipal.date,
   source: "Prefeitura de Salvador",
@@ -117,6 +130,9 @@ const output = {
   completeForFilter: true,
   periodStart: municipal.coverage.period_start,
   periodEnd: municipal.coverage.period_end,
+  sourceRows,
+  publishedRows: rows.length,
+  deduplication,
   coverageNote: municipal.coverage.coverage_note,
   rows,
   complementary: {
@@ -132,6 +148,8 @@ fs.writeFileSync(publicFile, JSON.stringify(output), "utf8");
 const meta = readJson(metaFile, {});
 meta.municipalContractsAvailable = true;
 meta.municipalContracts = rows.length;
+meta.municipalContractSourceRows = sourceRows;
+meta.municipalContractCollapsedRows = collapsedRows;
 meta.municipalContractsPeriodStart = output.periodStart;
 meta.municipalContractsPeriodEnd = output.periodEnd;
 meta.contractsPrimarySource = output.source;
@@ -139,4 +157,4 @@ meta.contractsPrimaryRows = rows.length;
 meta.pncpContractsComplementary = output.complementary.rows.length;
 fs.writeFileSync(metaFile, JSON.stringify(meta), "utf8");
 
-console.log(`Contratos municipais publicados: ${rows.length} registros (${output.periodStart} → ${output.periodEnd}).`);
+console.log(`Contratos municipais publicados: ${rows.length} registros de exibição a partir de ${sourceRows} linhas da fonte (${output.periodStart} → ${output.periodEnd}); ${collapsedRows} linhas substantivamente repetidas consolidadas.`);
