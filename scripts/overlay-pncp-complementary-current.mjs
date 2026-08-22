@@ -100,6 +100,16 @@ meta.pncpComplementaryCollectionMode = contracts.complementary.collectionMode;
 meta.pncpComplementaryCurrentRows = mapped.length;
 meta.pncpComplementaryAgencyCnpjs = agencyCnpjCount;
 meta.pncpComplementaryAgencyDiscoveryComplete = discoveryComplete;
+meta.dataFreshness ??= {};
+meta.dataFreshness.pncpComplementary = {
+  asOf: current.date,
+  status: contracts.complementary.status,
+  collectionMode: contracts.complementary.collectionMode,
+  agencyCnpjCount,
+  agencyCnpjDiscoveryComplete: discoveryComplete,
+};
+const candidateDates = [meta.latestSourceAsOf, current.date].filter((value) => /^\d{4}-\d{2}-\d{2}$/.test(String(value || ""))).sort();
+meta.latestSourceAsOf = candidateDates.at(-1) ?? meta.latestSourceAsOf ?? null;
 writeJson("meta.json", meta);
 
-console.log(`PNCP complementar ${current.date}: ${mapped.length} contratos no snapshot atual; status=${contracts.complementary.status}; CNPJs fornecidos=${agencyCnpjCount}; descoberta completa=${discoveryComplete}.`);
+console.log(`PNCP complementar ${current.date}: ${mapped.length} contratos no snapshot atual; status=${contracts.complementary.status}; CNPJs fornecidos=${agencyCnpjCount}; descoberta completa=${discoveryComplete}; fonte mais recente=${meta.latestSourceAsOf}.`);
