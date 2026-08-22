@@ -166,6 +166,22 @@ def _fetch_page(
     return last_response, max_attempts
 
 
+def _unattempted_window(window: Window, error: str) -> dict:
+    return {
+        "start": window.start.isoformat(),
+        "end": window.end.isoformat(),
+        "completed": False,
+        "status": None,
+        "pages_collected": 0,
+        "records_received": 0,
+        "reported_pages": None,
+        "reported_total": None,
+        "pagination_metadata_complete": False,
+        "http_attempts": 0,
+        "error": error,
+    }
+
+
 def collect(
     city: CityConfig,
     start: date,
@@ -174,17 +190,18 @@ def collect(
     *,
     timeout_seconds: float = 30.0,
     initial_window_days: int = 31,
-    max_windows: int = 256,
+    max_windows: int = 64,
     max_pages_per_window: int = 2000,
     max_attempts: int = 2,
+    max_runtime_seconds: float = 600.0,
 ) -> Path:
     """Collect the official municipal detailed contract grid without inventing completeness.
 
     The official frontend uses POST /contratos/gridDetalhada?pagina=N with a JSON filter object.
     The endpoint has shown severe latency, so the collector starts with bounded windows and bisects
     incomplete intervals. A window is complete only when source-reported page and record totals are
-    present and reconciled. Missing metadata, timeout, pagination drift or page-limit exhaustion keeps
-    coverage partial; successful responses remain preserved as evidence.
+    present and reconciled. Missing metadata, timeout, pagination drift, execution-budget exhaustion
+    or page-limit exhaustion keeps coverage partial; successful responses remain preserved as evidence.
     """
     if end < start:
         raise ValueError("end anterior a start")
@@ -192,6 +209,8 @@ def collect(
         raise ValueError("max_windows deve ser >= 1")
     if max_attempts < 1:
         raise ValueError("max_attempts deve ser >= 1")
+    if max_runtime_seconds <= 0:
+        raise ValueError("max_runtime_seconds deve ser > 0")
 
     out_dir.mkdir(parents=True, exist_ok=True)
     output = out_dir / f"municipal_contract_grid_{start.isoformat()}_{end.isoformat()}.jsonl"
@@ -203,10 +222,21 @@ def collect(
     seen: dict[str, dict] = {}
     logical_request_count = 0
     http_attempt_count = 0
+    started_at = time.monotonic()
+    budget_exhausted = False
 
     with httpx.Client(headers=_headers(), follow_redirects=True, timeout=timeout_seconds) as client:
         while queue:
             window = queue.pop(0)
+            if time.monotonic() - started_at >= max_runtime_seconds:
+                terminal_windows.append(_unattempted_window(window, "CollectorBudgetExceededBeforeRequest"))
+                terminal_windows.extend(
+                    _unattempted_window(pending, "CollectorBudgetExceededBeforeRequest") for pending in queue
+                )
+                queue.clear()
+                budget_exhausted = True
+                break
+
             body = _request_body(window)
             page = 1
             window_rows = 0
@@ -218,6 +248,11 @@ def collect(
             status: int | None = None
 
             while page <= max_pages_per_window:
+                if time.monotonic() - started_at >= max_runtime_seconds:
+                    error = "CollectorBudgetExceeded"
+                    budget_exhausted = True
+                    break
+
                 logical_request_count += 1
                 url = f"{API_BASE}{ENDPOINT}?pagina={page}"
                 # Wide windows should split quickly on timeout; single-day windows get the configured retry budget.
@@ -259,14 +294,13 @@ def collect(
                 if page == 1:
                     reported_pages = current_pages
                     reported_total = current_total
-                else:
-                    if current_pages != reported_pages or current_total != reported_total:
-                        error = (
-                            "PaginationChanged: "
-                            f"expected pages/total {reported_pages}/{reported_total}, "
-                            f"got {current_pages}/{current_total} on page {page}"
-                        )
-                        break
+                elif current_pages != reported_pages or current_total != reported_total:
+                    error = (
+                        "PaginationChanged: "
+                        f"expected pages/total {reported_pages}/{reported_total}, "
+                        f"got {current_pages}/{current_total} on page {page}"
+                    )
+                    break
 
                 window_pages += 1
                 window_rows += len(rows)
@@ -308,7 +342,11 @@ def collect(
                 reported_total=reported_total,
             )
 
-            if not completed and len(terminal_windows) + len(queue) + 2 <= max_windows:
+            if (
+                not completed
+                and not budget_exhausted
+                and len(terminal_windows) + len(queue) + 2 <= max_windows
+            ):
                 parts = _split(window)
                 if parts:
                     queue[0:0] = list(parts)
@@ -328,6 +366,13 @@ def collect(
                 "error": error,
             })
 
+            if budget_exhausted:
+                terminal_windows.extend(
+                    _unattempted_window(pending, "CollectorBudgetExceededBeforeRequest") for pending in queue
+                )
+                queue.clear()
+
+    runtime_seconds = round(time.monotonic() - started_at, 3)
     with output.open("w", encoding="utf-8") as handle:
         for row in seen.values():
             handle.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
@@ -342,14 +387,18 @@ def collect(
         "records_unique": len(seen),
         "logical_page_requests": logical_request_count,
         "http_attempts": http_attempt_count,
+        "runtime_seconds": runtime_seconds,
+        "max_runtime_seconds": max_runtime_seconds,
+        "budget_exhausted": budget_exhausted,
         "initial_window_days": initial_window_days,
+        "max_windows": max_windows,
         "request_body_shape": ["dataInicio", "dataFim", "agrupamentos", "filtros"],
         "windows": terminal_windows,
         "complete_for_filter": complete,
         "coverage_note": (
             "Complete only for the official municipal contract grid and the requested date filter: every adaptive interval reconciled explicit source-reported page and record totals."
             if complete else
-            "Partial: at least one adaptive interval did not reconcile explicit source pagination/count metadata. Successful source responses are preserved; timeout, missing metadata and failed intervals are never converted to zero."
+            "Partial: at least one adaptive interval did not reconcile explicit source pagination/count metadata. Successful source responses are preserved; timeout, missing metadata, execution-budget exhaustion and failed intervals are never converted to zero."
         ),
         "semantics_note": "source_record is preserved without renaming unknown municipal fields. The internal source_record_key is not an official identifier.",
     }
