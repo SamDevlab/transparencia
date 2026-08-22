@@ -4,9 +4,9 @@
   "private": true,
   "description": "Transparência pública e inteligência econômica de Salvador e Bahia com fontes auditáveis.",
   "scripts": {
-    "predev": "node scripts/build-web-data.mjs && node scripts/overlay-municipal-contracts.mjs && node scripts/build-economy-web-data.mjs && node scripts/build-bahia-regional-data.mjs && node scripts/compact-bahia-web-data.mjs",
+    "predev": "node scripts/build-web-data.mjs && node scripts/overlay-municipal-contracts.mjs && node scripts/overlay-current-municipal-data.mjs && node scripts/build-economy-web-data.mjs && node scripts/build-bahia-regional-data.mjs && node scripts/compact-bahia-web-data.mjs",
     "dev": "next dev",
-    "prebuild": "node scripts/build-web-data.mjs && node scripts/overlay-municipal-contracts.mjs && node scripts/build-economy-web-data.mjs && node scripts/build-bahia-regional-data.mjs && node scripts/compact-bahia-web-data.mjs",
+    "prebuild": "node scripts/build-web-data.mjs && node scripts/overlay-municipal-contracts.mjs && node scripts/overlay-current-municipal-data.mjs && node scripts/build-economy-web-data.mjs && node scripts/build-bahia-regional-data.mjs && node scripts/compact-bahia-web-data.mjs",
     "build": "next build",
     "start": "next start"
   },
