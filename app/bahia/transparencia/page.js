@@ -41,8 +41,8 @@ export default function BahiaTransparenciaPage() {
       <h1>Transparência estadual, sem excesso de informação.</h1>
       <p>Receitas, execução da despesa, compras, contratos e pagamentos em uma única visão. Cada número mantém o conceito publicado pela fonte e os detalhes técnicos ficam disponíveis sem ocupar a leitura principal.</p>
       <div className="kicker-row">
-        <span className="badge green">{integer(sefazProcessed)}/{integer(sefazExpected)} bases SEFAZ processadas</span>
-        <span className="badge">snapshot {data.snapshot || "não disponível"}</span>
+        <span className="badge green">{integer(sefazProcessed)}/{integer(sefazExpected)} bases prioritárias processadas</span>
+        <span className="badge">coleta {data.snapshot || "não disponível"}</span>
         {flow && <span className="badge green">fio do dinheiro por chaves exatas</span>}
       </div>
     </div></section>
@@ -67,22 +67,21 @@ export default function BahiaTransparenciaPage() {
     </div></section>
 
     {primaryExpense?.top_agencies?.paid?.length > 0 && <section className="section"><div className="shell">
-      <div className="section-head enxuto"><div><span className="eyebrow">Execução</span><h2>Maiores valores pagos por órgão</h2></div><p>Agregação do campo <code>{primaryExpense.schema?.detected_fields?.stages?.paid || "VAL_PAGO"}</code> da base de despesas.</p></div>
+      <div className="section-head enxuto"><div><span className="eyebrow">Execução</span><h2>Maiores valores pagos por órgão</h2></div><p>Agregação do campo oficial de pagamento da base de despesas.</p></div>
       <div className="compact-list">{primaryExpense.top_agencies.paid.slice(0, 8).map((item) => <div className="compact-row" key={item.name}><strong>{item.name}</strong><strong>{brl(item.paid)}</strong></div>)}</div>
     </div></section>}
 
     <section className="section"><div className="shell grid grid-2">
-      <div className="card panel"><div className="panel-title"><h3>Estágios contábeis</h3><span>não são equivalentes</span></div><div className="compact-list">
-        <div className="compact-row"><strong>Empenhado</strong><span>{primaryExpense?.stage_totals?.committed?.sum != null ? brl(primaryExpense.stage_totals.committed.sum) : "—"}</span></div>
-        <div className="compact-row"><strong>Liquidado</strong><span>{primaryExpense?.stage_totals?.liquidated?.sum != null ? brl(primaryExpense.stage_totals.liquidated.sum) : "—"}</span></div>
-        <div className="compact-row"><strong>Pago na base de despesas</strong><span>{primaryExpense?.stage_totals?.paid?.sum != null ? brl(primaryExpense.stage_totals.paid.sum) : "—"}</span></div>
-        <div className="compact-row"><strong>Valor do Pagamento</strong><span>{annualPayment?.sum != null ? brl(annualPayment.sum) : "—"}</span></div>
-      </div><p className="muted">Os dois últimos vêm de bases diferentes e não são igualados automaticamente.</p></div>
+      <div className="card panel"><div className="panel-title"><h3>Como ler a execução</h3><span>conceitos diferentes</span></div><div className="compact-list">
+        <div className="compact-row"><strong>Empenhado</strong><span>reserva/compromisso orçamentário</span></div>
+        <div className="compact-row"><strong>Liquidado</strong><span>obrigação reconhecida após verificação</span></div>
+        <div className="compact-row"><strong>Pago</strong><span>saída registrada conforme a base</span></div>
+      </div><p className="muted">O campo pago da base de despesas e o “Valor do Pagamento” da base específica permanecem separados até reconciliação por identificadores oficiais.</p></div>
       <div className="card panel"><div className="panel-title"><h3>Cobertura</h3><span>estado da coleta</span></div><div className="compact-list">
-        <div className="compact-row"><strong>SEFAZ prioritária</strong><span>{integer(sefazProcessed)}/{integer(sefazExpected)}</span></div>
-        <div className="compact-row"><strong>Catálogos CKAN</strong><span>{integer(data.summary?.ckan_datasets_collected ?? 0)}/{integer(data.summary?.ckan_datasets_expected ?? 6)}</span></div>
-        <div className="compact-row"><strong>TCE/BA</strong><span>{integer(data.summary?.tce_datasets_processed ?? 0)} conjunto(s) processado(s)</span></div>
-      </div><p className="muted">Indisponibilidade do TCE permanece explícita e nunca é convertida em zero.</p></div>
+        <div className="compact-row"><strong>Bases estaduais prioritárias</strong><span>{integer(sefazProcessed)}/{integer(sefazExpected)}</span></div>
+        <div className="compact-row"><strong>Fontes estaduais catalogadas</strong><span>{integer(data.summary?.ckan_datasets_collected ?? 0)}/{integer(data.summary?.ckan_datasets_expected ?? 6)}</span></div>
+        <div className="compact-row"><strong>Fonte complementar TCE/BA</strong><span>{(data.summary?.tce_datasets_processed ?? 0) > 0 ? `${integer(data.summary.tce_datasets_processed)} processada(s)` : "indisponível nesta coleta"}</span></div>
+      </div><p className="muted">Indisponibilidade de uma fonte permanece explícita e nunca é convertida em zero.</p></div>
     </div></section>
 
     <section className="section compacto"><div className="shell"><details className="card panel"><summary><strong>Fontes, arquivos e detalhes técnicos</strong></summary><div className="section-subblock">
