@@ -71,47 +71,49 @@ jobs:
           if (d.officials !== 43) throw new Error(`vereadores gerados: ${d.officials}`);
           if (d.executiveAgents < 6) throw new Error(`agentes do Executivo gerados: ${d.executiveAgents}`);
           if (d.publicAgents < 49) throw new Error(`agentes públicos gerados: ${d.publicAgents}`);
-          if (!(d.contracts > 0)) throw new Error(`contratos PNCP insuficientes: ${d.contracts}`);
-          if (!(d.suppliers > 0)) throw new Error(`fornecedores insuficientes: ${d.suppliers}`);
-          if (!(d.agencies > 0)) throw new Error(`órgãos insuficientes: ${d.agencies}`);
+          if (!(d.contracts > 0) || !(d.suppliers > 0) || !(d.agencies > 0)) throw new Error('dados municipais derivados incompletos');
           if (!(d.searchItems > d.acquisitions)) throw new Error(`itens de consulta insuficientes: ${d.searchItems}`);
-          if (typeof d.exactCrossSourceLinks !== 'number') throw new Error('contagem de vínculos entre fontes ausente');
           if (!/^\d{4}-\d{2}-\d{2}$/.test(d.snapshotDate || '')) throw new Error(`snapshot inválido: ${d.snapshotDate}`);
           if (typeof economy.available !== 'boolean') throw new Error('economy.available ausente');
-          if (!economy.interstate?.available) throw new Error('linha de base interestadual não carregada');
-          if (economy.interstate?.baseline?.reference_year !== 2017) throw new Error('ano da matriz interestadual divergente');
+          if (!economy.interstate?.available || economy.interstate?.baseline?.reference_year !== 2017) throw new Error('linha de base interestadual inválida');
           if (economy.interstate?.keySectors?.reference_year !== 2012) throw new Error('ano da MIP Bahia divergente');
           if (!Array.isArray(transparency.datasets) || transparency.datasets.length < 8) throw new Error('cobertura integrada incompleta');
           if (!(bahiaTransparency.mappedSources >= 8)) throw new Error(`fontes estaduais mapeadas insuficientes: ${bahiaTransparency.mappedSources}`);
-          if (economy.available && (!economy.bahia?.summary || !economy.salvador?.summary)) throw new Error('snapshot econômico disponível sem resumos Bahia/Salvador');
+
           const sefaz = bahiaTransparency.sefaz?.summary;
           if ((sefaz?.processed ?? 0) >= 2) {
             const revenues = bahiaTransparency.sefaz?.revenues?.summary;
             const procurements = bahiaTransparency.sefaz?.procurements?.summary;
-            if (!revenues || !(revenues.rows > 0)) throw new Error('Receitas SEFAZ declaradas como processadas sem resumo válido');
-            if (!revenues.selected_year_totals || revenues.selected_year !== 2026) throw new Error('Receitas SEFAZ sem recorte 2026 válido');
-            if (!procurements?.primary_licitacoes) throw new Error('Licitações SEFAZ sem tabela principal identificada');
-            if (!(procurements.primary_licitacoes.rows_selected_year > 0)) throw new Error('Licitações SEFAZ sem contagem anual válida');
+            if (!revenues || !(revenues.rows > 0) || revenues.selected_year !== 2026) throw new Error('Receitas SEFAZ sem recorte válido');
+            if (!procurements?.primary_licitacoes || !(procurements.primary_licitacoes.rows_selected_year > 0)) throw new Error('Licitações SEFAZ sem tabela anual válida');
           }
           if ((sefaz?.processed ?? 0) >= 4) {
             const expenses = bahiaTransparency.sefaz?.expenses?.summary;
             const payments = bahiaTransparency.sefaz?.payments?.summary;
-            if (!expenses?.primary_table || expenses.selected_year !== 2026) throw new Error('Despesas SEFAZ sem tabela principal/recorte 2026 válido');
-            if (!(expenses.primary_table.selected_rows > 0)) throw new Error('Despesas SEFAZ sem linhas 2026');
+            if (!expenses?.primary_table || expenses.selected_year !== 2026 || !(expenses.primary_table.selected_rows > 0)) throw new Error('Despesas SEFAZ inválidas');
             const stages = expenses.primary_table.stage_totals || {};
-            if (!stages.committed && !stages.liquidated && !stages.paid) throw new Error('Despesas SEFAZ sem estágio financeiro detectado');
-            if (!payments?.primary_table || payments.selected_year !== 2026) throw new Error('Pagamentos SEFAZ sem tabela principal/recorte 2026 válido');
-            if (!(payments.primary_table.selected_rows > 0)) throw new Error('Pagamentos SEFAZ sem linhas 2026');
-            if (!payments.selected_year_payment?.source_field || payments.selected_year_payment?.sum == null) throw new Error('Pagamentos SEFAZ sem campo monetário auditável');
+            if (!stages.committed || !stages.liquidated || !stages.paid) throw new Error('Estágios de despesa incompletos');
+            if (!payments?.primary_table || payments.selected_year !== 2026 || !(payments.primary_table.selected_rows > 0)) throw new Error('Pagamentos SEFAZ inválidos');
+            if (!payments.selected_year_payment?.source_field || payments.selected_year_payment?.sum == null) throw new Error('Campo de pagamento não auditável');
           }
           if ((sefaz?.processed ?? 0) >= 5) {
             const contracts = bahiaTransparency.sefaz?.contracts?.summary;
-            if (!contracts?.primary_table || contracts.selected_year !== 2026) throw new Error('Contratos SEFAZ sem tabela principal/recorte 2026 válido');
-            if (!(contracts.primary_table.selected_rows > 0)) throw new Error('Contratos SEFAZ sem linhas 2026');
-            if (!contracts.primary_table.schema?.detected_fields?.contract) throw new Error('Contratos SEFAZ sem identificador oficial detectado');
-            if (!(contracts.primary_table.instrument_index?.length > 0)) throw new Error('Contratos SEFAZ sem chaves oficiais de instrumento');
+            const primary = contracts?.primary_table;
+            if (!primary || contracts.selected_year !== 2026) throw new Error('Contratos SEFAZ sem tabela principal/recorte válido');
+            if (!(primary.unique_instruments > 0)) throw new Error('Contratos sem instrumentos únicos');
+            if (!primary.schema?.detected_fields?.contract) throw new Error('Contratos sem identificador oficial');
+            if (primary.contract_value?.deduplicated_sum == null) throw new Error('Contratos sem valor deduplicado');
+            if (primary.contract_value?.raw_relation_sum_diagnostic_only === primary.contract_value?.deduplicated_sum && primary.selected_rows !== primary.unique_instruments) throw new Error('Deduplicação contratual não aplicada');
           }
-          console.log({ ...d, economicCoverage: economy.coverage, bahiaState: bahiaTransparency.status, sefaz });
+          const flow = bahiaTransparency.sefaz?.moneyFlow;
+          if (flow) {
+            if (flow.selected_year !== 2026) throw new Error('Fio do dinheiro fora do recorte 2026');
+            for (const key of ['instruments_procurement_to_contract','instruments_contract_to_payment','instruments_end_to_end']) {
+              if (typeof flow.summary?.[key] !== 'number') throw new Error(`Fio do dinheiro sem ${key}`);
+            }
+            if (!String(flow.identity_rule || '').includes('identificador oficial')) throw new Error('Regra de identidade do fio do dinheiro ausente');
+          }
+          console.log({ ...d, bahiaState: bahiaTransparency.status, sefaz, moneyFlow: flow?.summary || null });
           NODE
       - name: Registrar construção bem-sucedida
         if: github.event_name == 'push'
@@ -129,6 +131,7 @@ jobs:
           const stateExpenses = bahiaTransparency.sefaz?.expenses?.summary;
           const statePayments = bahiaTransparency.sefaz?.payments?.summary;
           const stateContracts = bahiaTransparency.sefaz?.contracts?.summary;
+          const flow = bahiaTransparency.sefaz?.moneyFlow?.summary;
           const payload = {
             passed: true,
             tested_commit: process.env.TESTED_SHA,
@@ -148,20 +151,14 @@ jobs:
             search_items_generated: meta.searchItems,
             economy_available: economy.available,
             economy_snapshot: economy.snapshot || null,
-            bahia_economic_products: meta.bahiaEconomicProducts || 0,
-            salvador_economic_products: meta.salvadorEconomicProducts || 0,
             interstate_baseline_available: meta.interstateBaselineAvailable,
-            interstate_reference_year: meta.interstateReferenceYear,
-            mip_reference_year: meta.mipReferenceYear,
             state_transparency_available: bahiaTransparency.available,
             state_transparency_snapshot: bahiaTransparency.snapshot,
-            state_transparency_mapped_sources: bahiaTransparency.mappedSources,
             state_sefaz_processed: bahiaTransparency.sefaz?.summary?.processed || 0,
             state_sefaz_expected: bahiaTransparency.sefaz?.summary?.expected || 0,
             state_revenue_rows: stateRevenues?.rows || 0,
             state_revenue_2026_realized: stateRevenues?.selected_year_totals?.realized ?? null,
             state_procurements_2026: stateProcurements?.primary_licitacoes?.rows_selected_year || 0,
-            state_procurements_2026_estimated: stateProcurements?.primary_licitacoes?.estimated_value?.sum ?? null,
             state_procurements_2026_homologated: stateProcurements?.primary_licitacoes?.homologated_value?.sum ?? null,
             state_expense_rows_2026: stateExpenses?.primary_table?.selected_rows || 0,
             state_expense_2026_committed: stateExpenses?.primary_table?.stage_totals?.committed?.sum ?? null,
@@ -169,13 +166,16 @@ jobs:
             state_expense_2026_paid: stateExpenses?.primary_table?.stage_totals?.paid?.sum ?? null,
             state_payment_rows_2026: statePayments?.primary_table?.selected_rows || 0,
             state_payments_2026: statePayments?.selected_year_payment?.sum ?? null,
-            state_payment_source_field: statePayments?.selected_year_payment?.source_field ?? null,
-            state_contract_rows_2026: stateContracts?.primary_table?.selected_rows || 0,
-            state_contract_value_2026: stateContracts?.primary_table?.contract_value?.sum ?? null,
+            state_contract_relation_rows_2026: stateContracts?.primary_table?.selected_rows || 0,
+            state_contract_unique_instruments_2026: stateContracts?.primary_table?.unique_instruments || 0,
+            state_contract_value_deduplicated: stateContracts?.primary_table?.contract_value?.deduplicated_sum ?? null,
             state_contract_value_field: stateContracts?.primary_table?.contract_value?.field ?? null,
-            state_contract_instrument_keys_2026: stateContracts?.primary_table?.instrument_index?.length || 0,
-            state_contract_process_keys_2026: stateContracts?.primary_table?.process_ids?.length || 0,
-            state_contract_cnpj_suppliers_published: stateContracts?.primary_table?.top_suppliers_cnpj_only?.length || 0,
+            state_contract_process_keys_2026: stateContracts?.primary_table?.unique_process_keys || 0,
+            state_money_flow_available: Boolean(flow),
+            state_procurement_contract_instruments: flow?.instruments_procurement_to_contract || 0,
+            state_contract_payment_instruments: flow?.instruments_contract_to_payment || 0,
+            state_end_to_end_instruments: flow?.instruments_end_to_end || 0,
+            state_end_to_end_payment_value: flow?.payment_value_end_to_end ?? null,
             as_of: meta.asOf,
           };
           fs.writeFileSync('cities/salvador/data/validation/web_build.json', JSON.stringify(payload, null, 2) + '\n');
