@@ -1,11 +1,11 @@
 {
   "passed": true,
-  "tested_commit": "42187a6ff7b923fe5c0c28d489e4b1cee9461648",
+  "tested_commit": "eace3aaaf2c5e711f1a65dc0622d9219c257bdbc",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
   "freshness_model": "per_source",
-  "latest_source_as_of": "2026-08-21",
+  "latest_source_as_of": "2026-08-22",
   "municipal_contracts": {
     "complete_for_filter": true,
     "source_rows": 4807,
