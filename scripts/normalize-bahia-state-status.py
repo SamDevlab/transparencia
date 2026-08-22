@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+# Normalização leve: apenas metadados de cobertura; não baixa bases públicas novamente.
 import json
 from pathlib import Path
 
