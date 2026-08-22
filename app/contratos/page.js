@@ -12,6 +12,8 @@ export default function ContratosPage() {
   const liquidated = parseBrlText(totals["Liquidado no período"]);
   const paid = parseBrlText(totals["Pago no período"]);
   const topContracts = contracts.rows.slice().sort((a, b) => Number(b.valorGlobal || 0) - Number(a.valorGlobal || 0)).slice(0, 20);
+  const municipalPrimary = contracts.sourceSystem === "SALVADOR_TRANSPARENCIA_API_CONTRATOS";
+  const complementaryCount = contracts.complementary?.rows?.length ?? 0;
 
   return (
     <>
@@ -19,8 +21,15 @@ export default function ContratosPage() {
         <div className="shell">
           <span className="eyebrow">Contratos</span>
           <h1>Execução municipal e contratos individualizados, sem misturar as fontes.</h1>
-          <p>A Prefeitura fornece os totais e a execução agregada por unidade. O PNCP complementa a consulta com contratos individualizados, fornecedor, processo, valor e vigência.</p>
-          <div className="kicker-row"><span className="badge green">totais municipais coletados</span><span className="badge">{integer(contracts.rows.length)} contratos PNCP preservados</span><span className="badge yellow">grade municipal detalhada parcial</span></div>
+          <p>{municipalPrimary
+            ? "A grade detalhada oficial da Prefeitura é a fonte principal dos contratos individualizados neste recorte. O PNCP permanece preservado como fonte complementar para reconciliação e campos que a base municipal não publica."
+            : "A Prefeitura fornece os totais e a execução agregada por unidade. Enquanto a grade municipal detalhada não satisfaz os controles de completude, o PNCP complementa a consulta com contratos individualizados."}</p>
+          <div className="kicker-row">
+            <span className="badge green">totais municipais coletados</span>
+            <span className={`badge ${municipalPrimary ? "green" : "yellow"}`}>{municipalPrimary ? `${integer(contracts.rows.length)} contratos municipais no filtro` : "grade municipal detalhada parcial"}</span>
+            {!municipalPrimary && <span className="badge">{integer(contracts.rows.length)} contratos PNCP preservados</span>}
+            {municipalPrimary && complementaryCount > 0 && <span className="badge">{integer(complementaryCount)} contratos PNCP complementares</span>}
+          </div>
         </div>
       </section>
 
@@ -28,10 +37,12 @@ export default function ContratosPage() {
 
       <section className="section">
         <div className="shell">
-          <div className="notice warn" style={{ marginBottom: 20 }}><span>!</span><div><strong>Duas coberturas diferentes:</strong> a grade individual da API municipal apresentou tempo de resposta esgotado e permanece parcial. Os contratos individualizados abaixo vêm do PNCP e são uma fonte complementar; eles não substituem silenciosamente a base municipal.</div></div>
-          <div className="section-head enxuto"><div><span className="eyebrow">Contratos individualizados</span><h2>Maiores valores encontrados no PNCP</h2></div><Link className="button" href="/fornecedores">Explorar fornecedores →</Link></div>
-          <div className="card table-card"><div className="table-wrap"><table><thead><tr><th>Contrato</th><th>Processo</th><th>Fornecedor</th><th>Unidade</th><th>Objeto</th><th>Valor global</th><th>Vigência</th></tr></thead><tbody>{topContracts.map((row) => <tr key={row.id}><td><a href={row.fonte} target="_blank" rel="noreferrer"><strong>{row.numero || "—"}</strong> ↗</a></td><td className="mono">{row.processo || "—"}</td><td>{row.documentoFornecedor ? <Link href={`/fornecedores/${encodeURIComponent(row.documentoFornecedor)}`}><strong>{row.fornecedor || "—"}</strong><div className="muted mono">{row.documentoFornecedor}</div></Link> : (row.fornecedor || "—")}</td><td>{row.unidade || "—"}</td><td className="object-cell">{row.objeto || "—"}</td><td><strong className="mono">{brl(row.valorGlobal)}</strong></td><td>{dateBR(row.vigenciaInicio)} → {dateBR(row.vigenciaFim)}</td></tr>)}</tbody></table></div></div>
-          <div className="results-line"><span>{contracts.coverageNote}</span><a href="https://pncp.gov.br/" target="_blank" rel="noreferrer">Abrir Portal Nacional de Contratações Públicas ↗</a></div>
+          {municipalPrimary
+            ? <div className="notice" style={{ marginBottom: 20 }}><span>✓</span><div><strong>Grade municipal detalhada reconciliada com a própria paginação da fonte.</strong> {contracts.coverageNote} O PNCP continua separado como fonte complementar; ausência ou diferença entre as bases não é tratada automaticamente como erro.</div></div>
+            : <div className="notice warn" style={{ marginBottom: 20 }}><span>!</span><div><strong>Duas coberturas diferentes:</strong> a grade individual da API municipal ainda não satisfaz os controles de completude do snapshot publicado. Os contratos individualizados abaixo vêm do PNCP e não substituem silenciosamente a base municipal.</div></div>}
+          <div className="section-head enxuto"><div><span className="eyebrow">Contratos individualizados</span><h2>{municipalPrimary ? "Maiores valores na grade oficial da Prefeitura" : "Maiores valores encontrados no PNCP"}</h2></div>{!municipalPrimary && <Link className="button" href="/fornecedores">Explorar fornecedores →</Link>}</div>
+          <div className="card table-card"><div className="table-wrap"><table><thead><tr><th>Contrato</th><th>Processo</th><th>Fornecedor</th><th>Unidade</th><th>Objeto</th><th>Valor atualizado/global</th><th>Vigência</th></tr></thead><tbody>{topContracts.map((row) => <tr key={row.id}><td><a href={row.fonte} target="_blank" rel="noreferrer"><strong>{row.numero || row.numeroSigef || "—"}</strong> ↗</a>{row.situacao && <div className="muted">{row.situacao}</div>}</td><td className="mono">{row.processo || "—"}</td><td>{row.documentoFornecedor ? <Link href={`/fornecedores/${encodeURIComponent(row.documentoFornecedor)}`}><strong>{row.fornecedor || "—"}</strong><div className="muted mono">{row.documentoFornecedor}</div></Link> : (row.fornecedor || "—")}</td><td>{row.unidade || row.orgao || "—"}</td><td className="object-cell">{row.objeto || "—"}</td><td><strong className="mono">{row.valorGlobal != null ? brl(row.valorGlobal) : "—"}</strong></td><td>{dateBR(row.vigenciaInicio)} → {dateBR(row.vigenciaFim)}</td></tr>)}</tbody></table></div></div>
+          <div className="results-line"><span>{contracts.coverageNote}</span><a href={municipalPrimary ? "https://transparencia.salvador.ba.gov.br/" : "https://pncp.gov.br/"} target="_blank" rel="noreferrer">Abrir {municipalPrimary ? "Transparência Salvador" : "Portal Nacional de Contratações Públicas"} ↗</a></div>
         </div>
       </section>
 
