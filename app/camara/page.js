@@ -33,6 +33,7 @@ export default function CamaraPage() {
   const sessions = data.legislative.find((row) => row.metric === "sessoes_realizadas");
   const bills = data.legislative.find((row) => row.metric === "projetos_lei_vereadores_mesa_apresentados");
   const cmsFiscal = data.fiscal.filter((row) => row.entity === "Câmara Municipal de Salvador");
+  const ledger = data.commitmentLedger;
 
   return (
     <>
@@ -40,7 +41,7 @@ export default function CamaraPage() {
         <div className="shell">
           <span className="eyebrow">Poder Legislativo</span>
           <h1>Câmara Municipal de Salvador.</h1>
-          <p>Atividade legislativa e prestação de contas institucional. Vereadores, funções da Mesa Diretora e contatos ficam reunidos na página de agentes públicos.</p>
+          <p>Atividade legislativa e prestação de contas institucional. Vereadores, funções da Mesa Diretora e contatos ficam reunidos na página de agentes públicos. Dados contábeis institucionais não são automaticamente atribuídos a vereadores.</p>
           <div className="hero-actions"><Link className="button primary" href="/agentes?busca=">Ver vereadores e contatos →</Link></div>
         </div>
       </section>
@@ -53,9 +54,26 @@ export default function CamaraPage() {
         </div>
       </section>
 
+      {ledger && <section className="section">
+        <div className="shell">
+          <div className="section-head enxuto"><div><span className="eyebrow">Empenhos atuais</span><h2>Ledger público da Câmara, preservando a etapa contábil.</h2></div><p>Observado em {ledger.asOf}. {ledger.completeForDefaultPublicView ? "A visão pública padrão foi percorrida até o esgotamento da fonte." : "A cobertura permanece parcial."}</p></div>
+          <div className="grid grid-4">
+            <div className="card stat accent"><span className="stat-label">Empenhos normalizados</span><div><span className="stat-value">{integer(ledger.records)}</span><div className="stat-meta">{integer(ledger.pagesWithRecords)} páginas com registros</div></div></div>
+            <div className="card stat"><span className="stat-label">Valor empenhado no ledger</span><div><span className="stat-value">{brl(ledger.totalCommitted, { compact: true })}</span><div className="stat-meta">soma dos registros classificados como empenho</div></div></div>
+            <div className="card stat"><span className="stat-label">Verba compensatória</span><div><span className="stat-value">{brl(ledger.parliamentaryCompensatoryAllowance?.committedValue ?? 0, { compact: true })}</span><div className="stat-meta">{integer(ledger.parliamentaryCompensatoryAllowance?.records ?? 0)} empenho(s) identificados pelo texto da fonte</div></div></div>
+            <div className="card stat"><span className="stat-label">Relacionados a diárias/viagem</span><div><span className="stat-value">{brl(ledger.travelRelated?.committedValue ?? 0, { compact: true })}</span><div className="stat-meta">{integer(ledger.travelRelated?.records ?? 0)} empenho(s) sinalizados</div></div></div>
+          </div>
+          <div className="grid grid-2" style={{ marginTop: 18 }}>
+            <div className="notice"><span>✓</span><div><strong>{ledger.completeForDefaultPublicView ? "Cobertura completa para a visão pública padrão." : "Cobertura parcial."}</strong> {ledger.coverageNote}</div></div>
+            <div className="notice"><span>i</span><div><strong>Contabilidade e privacidade:</strong> {ledger.accountingRule} {ledger.privacyRule}</div></div>
+          </div>
+          <div className="results-line"><span>Parser de registros visíveis: {ledger.parserCompleteForVisibleRecords ? "completo" : "incompleto"} · fonte esgotada: {ledger.sourceExhausted ? "sim" : "não"}</span><a href={ledger.sourceUrl} target="_blank" rel="noreferrer">Abrir ledger oficial ↗</a></div>
+        </div>
+      </section>}
+
       <section className="section">
         <div className="shell">
-          <div className="section-head enxuto"><div><span className="eyebrow">Prestação de contas</span><h2>Valores institucionais da Câmara</h2></div><p>Competência 11/2025. Cada cartão abre o documento oficial correspondente.</p></div>
+          <div className="section-head enxuto"><div><span className="eyebrow">Prestação de contas histórica</span><h2>Valores institucionais da Câmara</h2></div><p>Competência 11/2025. Cada cartão abre o documento oficial correspondente.</p></div>
           <div className="grid grid-3">
             {cmsFiscal.map((row) => (
               <a className="card stat" href={row.source_url} target="_blank" rel="noreferrer" key={row.metric}>
@@ -64,7 +82,7 @@ export default function CamaraPage() {
               </a>
             ))}
           </div>
-          <div className="notice warn" style={{ marginTop: 18 }}><span>!</span><div>Os <strong>R$ 55.800,00 em diárias</strong> são um total institucional da Câmara. O sistema não distribui esse valor entre vereadores sem documento nominal.</div></div>
+          <div className="notice warn" style={{ marginTop: 18 }}><span>!</span><div>Os <strong>R$ 55.800,00 em diárias</strong> do documento histórico são um total institucional da Câmara. O sistema não distribui esse valor entre vereadores sem documento nominal.</div></div>
         </div>
       </section>
     </>
