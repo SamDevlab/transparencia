@@ -17,7 +17,7 @@ concurrency:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 4
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,7 +27,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install httpx
-      - name: Validate contract endpoint date semantics
+      - name: Validate full-period contract query
         run: |
           python - <<'PY'
           import hashlib, json, time
@@ -44,52 +44,33 @@ jobs:
             'user-agent':'municipal-transparency-research/0.4 (+public-data-audit)'
           }
           today=date.today()
-          recent=today-timedelta(days=1)
-          january=date(today.year,1,15)
-          cases={
-            'recent_iso': {'dataInicio':recent.isoformat(),'dataFim':recent.isoformat(),'agrupamentos':[],'filtros':[]},
-            'january_iso': {'dataInicio':january.isoformat(),'dataFim':january.isoformat(),'agrupamentos':[],'filtros':[]},
-            'recent_br': {'dataInicio':recent.strftime('%d/%m/%Y'),'dataFim':recent.strftime('%d/%m/%Y'),'agrupamentos':[],'filtros':[]},
-            'no_dates': {'agrupamentos':[],'filtros':[]},
-          }
-          safe_fields=(
-            'id','nuContratoOriginal','nuContratoSigef','nuProcesso','sgOrgao','cdUnidadeGestora',
-            'dtAssinatura','dtInicioVigencia','dtTerminoVigenciaAtualizado','vlOriginal','vlAtualizado','dsSituacao'
-          )
-          out={
-            'observed_at_date':today.isoformat(),
-            'endpoint':ENDPOINT,
-            'frontend_route_also_observed':'/contratos/gridDetalhadaDocumento?pagina=',
-            'cases':{},
-          }
-          with httpx.Client(headers=headers,follow_redirects=True,timeout=httpx.Timeout(35.0,connect=15.0)) as client:
-            for label,body in cases.items():
-              started=time.monotonic()
-              try:
-                response=client.post(BASE+ENDPOINT,json=body)
-                raw=response.content
-                item={
-                  'request_body':body,
-                  'status':response.status_code,
-                  'elapsed_seconds':round(time.monotonic()-started,3),
-                  'bytes':len(raw),
-                  'sha256':hashlib.sha256(raw).hexdigest(),
-                }
-                payload=response.json() if raw.strip() else None
-                if isinstance(payload,dict):
-                  pagination=payload.get('paginacao') or {}
-                  rows=payload.get('dados') or []
-                  item['paginacao']={k:pagination.get(k) for k in ('paginaAtual','paginas','tamanho','total','totalPagina')}
-                  item['safe_first_rows']=[{k:row.get(k) for k in safe_fields if k in row} for row in rows[:3] if isinstance(row,dict)]
-                  item['totalizadores']=payload.get('totalizadores')
-                out['cases'][label]=item
-              except Exception as exc:
-                out['cases'][label]={
-                  'request_body':body,
-                  'elapsed_seconds':round(time.monotonic()-started,3),
-                  'error':f'{type(exc).__name__}: {exc}',
-                }
-          path=Path('cities/salvador/data/validation/contract_date_semantics_probe.json')
+          end=today-timedelta(days=1)
+          start=date(end.year,1,1)
+          body={'dataInicio':start.isoformat(),'dataFim':end.isoformat(),'agrupamentos':[],'filtros':[]}
+          out={'observed_at_date':today.isoformat(),'endpoint':ENDPOINT,'request_body':body}
+          started=time.monotonic()
+          try:
+            with httpx.Client(headers=headers,follow_redirects=True,timeout=httpx.Timeout(45.0,connect=15.0)) as client:
+              response=client.post(BASE+ENDPOINT,json=body)
+            raw=response.content
+            out.update({
+              'status':response.status_code,
+              'elapsed_seconds':round(time.monotonic()-started,3),
+              'bytes':len(raw),
+              'sha256':hashlib.sha256(raw).hexdigest(),
+            })
+            payload=response.json() if raw.strip() else None
+            if isinstance(payload,dict):
+              pagination=payload.get('paginacao') or {}
+              out['paginacao']={k:pagination.get(k) for k in ('paginaAtual','paginas','tamanho','total','totalPagina')}
+              out['totalizadores']=payload.get('totalizadores')
+              rows=payload.get('dados') or []
+              out['records_on_first_page']=len(rows)
+              out['first_row_contract_id']=rows[0].get('nuContratoSigef') if rows and isinstance(rows[0],dict) else None
+          except Exception as exc:
+            out['elapsed_seconds']=round(time.monotonic()-started,3)
+            out['error']=f'{type(exc).__name__}: {exc}'
+          path=Path('cities/salvador/data/validation/contract_full_period_probe.json')
           path.parent.mkdir(parents=True,exist_ok=True)
           path.write_text(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True)+'\n',encoding='utf-8')
           print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True))
@@ -98,9 +79,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cities/salvador/data/validation/contract_date_semantics_probe.json
+          git add cities/salvador/data/validation/contract_full_period_probe.json
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "data(salvador): validate contract date semantics"
+          git commit -m "data(salvador): validate full-period contract query"
           git fetch origin city/salvador
           git rebase origin/city/salvador
           git push origin HEAD:city/salvador
