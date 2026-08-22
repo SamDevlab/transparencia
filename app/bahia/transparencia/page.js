@@ -1,88 +1,103 @@
+import Link from "next/link";
 import { brl, integer, loadWebData } from "../../../lib/web-data";
 
 export const metadata = { title: "Transparência estadual da Bahia" };
-
-function statusLabel(value) {
-  return {
-    metadata_collected: "metadados coletados",
-    processed: "processado",
-    mapped: "fonte mapeada",
-    unavailable: "indisponível nesta coleta",
-    not_run: "não executado nesta etapa",
-    sources_mapped: "fontes mapeadas",
-    partial: "parcial",
-    partial_with_verified_sources: "parcial com fontes verificadas",
-    complete_for_metadata_collection: "catálogo atualizado",
-    complete_for_defined_collection: "rotina processada",
-  }[value] ?? value ?? "não informado";
-}
-
-function tone(value) {
-  if (["metadata_collected", "processed", "complete_for_metadata_collection", "complete_for_defined_collection"].includes(value)) return "green";
-  if (["mapped", "sources_mapped", "partial", "partial_with_verified_sources", "not_run"].includes(value)) return "yellow";
-  if (value === "unavailable") return "red";
-  return "";
-}
-
-function datePt(value) {
-  if (!value) return "—";
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? String(value) : new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeStyle: "short", timeZone: "America/Bahia" }).format(date);
-}
 
 function shortHash(value) {
   return value ? `${String(value).slice(0, 12)}…` : "—";
 }
 
+function datePt(value) {
+  if (!value) return "não informada";
+  const date = new Date(value);
+  return Number.isNaN(date.getTime())
+    ? String(value)
+    : new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeZone: "America/Bahia" }).format(date);
+}
+
 export default function BahiaTransparenciaPage() {
   const data = loadWebData("bahia-transparency.json");
-  const tceExpenseTotals = data.tce?.expenses?.summary?.totals;
-  const summary = data.summary ?? {};
-  const revenues = data.sefaz?.revenues;
-  const revenueSummary = revenues?.summary;
+  const revenue = data.sefaz?.revenues;
+  const revenueSummary = revenue?.summary;
   const revenueTotals = revenueSummary?.selected_year_totals;
-  const procurements = data.sefaz?.procurements;
-  const procurementSummary = procurements?.summary;
+  const procurement = data.sefaz?.procurements;
+  const procurementSummary = procurement?.summary;
   const primaryProcurement = procurementSummary?.primary_licitacoes;
   const expenses = data.sefaz?.expenses;
-  const expenseSummary = expenses?.summary;
-  const primaryExpense = expenseSummary?.primary_table;
+  const primaryExpense = expenses?.summary?.primary_table;
   const payments = data.sefaz?.payments;
-  const paymentSummary = payments?.summary;
-  const primaryPayment = paymentSummary?.primary_table;
-  const annualPayment = paymentSummary?.selected_year_payment;
-  const paymentGroupingField = primaryPayment?.schema?.detected_fields?.agency;
+  const annualPayment = payments?.summary?.selected_year_payment;
+  const contracts = data.sefaz?.contracts;
+  const primaryContract = contracts?.summary?.primary_table;
+  const contractValue = primaryContract?.contract_value;
+  const moneyFlow = data.sefaz?.moneyFlow;
+  const flow = moneyFlow?.summary;
   const sefazProcessed = data.sefaz?.summary?.processed ?? 0;
-  const sefazExpected = data.sefaz?.summary?.expected ?? 4;
+  const sefazExpected = data.sefaz?.summary?.expected ?? 5;
 
   return <>
-    <section className="page-hero"><div className="shell"><span className="eyebrow">Estado da Bahia</span><h1>Transparência estadual com cobertura visível.</h1><p>Esta área acompanha fontes estaduais separadamente da Prefeitura de Salvador. Catálogo, arquivo processado e fonte indisponível são estados diferentes — e ficam visíveis.</p><div className="kicker-row"><span className={`badge ${data.available ? "green" : "yellow"}`}>{data.available ? `snapshot ${data.snapshot}` : "primeiro snapshot em coleta"}</span><span className={`badge ${tone(data.status)}`}>{data.statusLabel || statusLabel(data.status)}</span><span className="badge">{integer(summary.ckan_datasets_collected ?? 0)}/{integer(summary.ckan_datasets_expected ?? 6)} catálogos SEFAZ</span><span className={`badge ${sefazProcessed === sefazExpected ? "green" : "yellow"}`}>{integer(sefazProcessed)}/{integer(sefazExpected)} bases prioritárias processadas</span></div></div></section>
+    <section className="page-hero"><div className="shell">
+      <span className="eyebrow">Estado da Bahia</span>
+      <h1>Transparência estadual, sem excesso de informação.</h1>
+      <p>Receitas, execução da despesa, compras, contratos e pagamentos em uma única visão. Cada número mantém o conceito publicado pela fonte e os detalhes técnicos ficam disponíveis sem ocupar a leitura principal.</p>
+      <div className="kicker-row">
+        <span className="badge green">{integer(sefazProcessed)}/{integer(sefazExpected)} bases SEFAZ processadas</span>
+        <span className="badge">snapshot {data.snapshot || "não disponível"}</span>
+        {flow && <span className="badge green">fio do dinheiro por chaves exatas</span>}
+      </div>
+    </div></section>
 
-    {data.available && <section className="section compacto"><div className="shell grid grid-3"><div className="card stat accent"><span className="stat-label">Catálogos SEFAZ/CKAN</span><div><span className="stat-value">{integer(summary.ckan_datasets_collected)}/{integer(summary.ckan_datasets_expected)}</span><div className="stat-meta">fontes consultadas nesta coleta</div></div></div><div className="card stat"><span className="stat-label">Bases SEFAZ processadas</span><div><span className="stat-value">{integer(sefazProcessed)}/{integer(sefazExpected)}</span><div className="stat-meta">Receitas · Licitações · Despesas · Pagamentos</div></div></div><div className="card stat blue"><span className="stat-label">Conjuntos TCE processados</span><div><span className="stat-value">{integer(summary.tce_datasets_processed)}</span><div className="stat-meta">enriquecimento separado; indisponibilidade não vira zero</div></div></div></div></section>}
+    <section className="section compacto"><div className="shell">
+      <div className="section-head enxuto"><div><span className="eyebrow">Visão geral</span><h2>Os números que importam primeiro</h2></div><p>Valores do recorte de 2026 nas respectivas bases oficiais.</p></div>
+      <div className="grid grid-4">
+        <div className="card stat accent"><span className="stat-label">Receita arrecadada</span><div><span className="stat-value">{revenueTotals?.realized != null ? brl(revenueTotals.realized, { compact: true }) : "—"}</span><div className="stat-meta">base de receitas</div></div></div>
+        <div className="card stat"><span className="stat-label">Despesa empenhada</span><div><span className="stat-value">{primaryExpense?.stage_totals?.committed?.sum != null ? brl(primaryExpense.stage_totals.committed.sum, { compact: true }) : "—"}</span><div className="stat-meta">compromisso orçamentário</div></div></div>
+        <div className="card stat"><span className="stat-label">Despesa liquidada</span><div><span className="stat-value">{primaryExpense?.stage_totals?.liquidated?.sum != null ? brl(primaryExpense.stage_totals.liquidated.sum, { compact: true }) : "—"}</span><div className="stat-meta">despesa reconhecida</div></div></div>
+        <div className="card stat blue"><span className="stat-label">Valor do Pagamento</span><div><span className="stat-value">{annualPayment?.sum != null ? brl(annualPayment.sum, { compact: true }) : "—"}</span><div className="stat-meta">base específica de pagamentos</div></div></div>
+      </div>
+    </div></section>
 
-    {revenueSummary && <section className="section"><div className="shell"><div className="section-head enxuto"><div><span className="eyebrow">SEFAZ / FIPLAN</span><h2>Receitas estaduais {revenueSummary.selected_year || ""}</h2></div><p>Previsão, valor atualizado e arrecadação permanecem separados. Os números são somas dos campos identificados no arquivo oficial.</p></div><div className="grid grid-4"><div className="card stat"><span className="stat-label">Linhas no arquivo histórico</span><div><span className="stat-value">{integer(revenueSummary.rows)}</span><div className="stat-meta">arquivo oficial processado</div></div></div>{revenueSummary.schema?.detected_fields?.forecast && <div className="card stat"><span className="stat-label">Previsão 2026</span><div><span className="stat-value">{brl(revenueTotals?.forecast, { compact: true })}</span><div className="stat-meta">{revenueSummary.schema.detected_fields.forecast}</div></div></div>}{revenueSummary.schema?.detected_fields?.updated && <div className="card stat"><span className="stat-label">Atualizada 2026</span><div><span className="stat-value">{brl(revenueTotals?.updated, { compact: true })}</span><div className="stat-meta">{revenueSummary.schema.detected_fields.updated}</div></div></div>}{revenueSummary.schema?.detected_fields?.realized && <div className="card stat accent"><span className="stat-label">Arrecadada 2026</span><div><span className="stat-value">{brl(revenueTotals?.realized, { compact: true })}</span><div className="stat-meta">{revenueSummary.schema.detected_fields.realized}</div></div></div>}</div><div className="results-line"><span>SHA-256 do arquivo original: <code>{shortHash(revenues.evidence?.sha256)}</code></span><span>Atualização da fonte: {revenues.resource?.last_modified || "não informada"}</span></div>{revenueSummary.top_agencies_by_realized?.length > 0 && <div className="section-subblock"><h3>Maiores valores arrecadados por órgão no recorte</h3><div className="compact-list">{revenueSummary.top_agencies_by_realized.slice(0, 10).map((item) => <div className="compact-row" key={item.name}><div><strong>{item.name}</strong><span>{integer(item.rows)} registro(s)</span></div><strong>{brl(item.realized)}</strong></div>)}</div></div>}</div></section>}
+    <section className="section"><div className="shell">
+      <div className="section-head enxuto"><div><span className="eyebrow">Compras públicas</span><h2>Da licitação ao contrato</h2></div><p>Licitação, instrumento e pagamento conservam suas próprias granularidades. O sistema só cria vínculo quando existe identificador oficial compatível.</p></div>
+      <div className="grid grid-3">
+        <Link className="coverage-card clicavel" href="/bahia/contratos"><header><strong>Licitações / aquisições</strong><span className="badge green">processado</span></header><p><strong>{integer(primaryProcurement?.rows_selected_year ?? 0)}</strong> processos/aquisições no recorte de 2026.</p><div className="source-foot"><span>Homologado: {primaryProcurement?.homologated_value?.sum != null ? brl(primaryProcurement.homologated_value.sum, { compact: true }) : "—"}</span><span>Ver relações →</span></div></Link>
+        <Link className="coverage-card clicavel" href="/bahia/contratos"><header><strong>Instrumentos contratuais</strong><span className="badge green">deduplicado</span></header><p><strong>{integer(primaryContract?.unique_instruments ?? 0)}</strong> instrumentos únicos relacionados ao recorte da fonte.</p><div className="source-foot"><span>Valor consolidado: {contractValue?.deduplicated_sum != null ? brl(contractValue.deduplicated_sum, { compact: true }) : "—"}</span><span>Ver contratos →</span></div></Link>
+        <Link className="coverage-card clicavel" href="/bahia/contratos"><header><strong>Fio do dinheiro</strong><span className={`badge ${flow ? "green" : "yellow"}`}>{flow ? "vínculo exato" : "em processamento"}</span></header><p>{flow ? <><strong>{integer(flow.instruments_end_to_end)}</strong> instrumento(s) encontrados nas três etapas por identificador oficial.</> : "O cruzamento processo → instrumento → pagamento está sendo construído sem aproximação textual."}</p><div className="source-foot"><span>{flow?.payment_value_end_to_end != null ? `Pagamentos vinculados: ${brl(flow.payment_value_end_to_end, { compact: true })}` : "Sem número inferido"}</span><span>Detalhar →</span></div></Link>
+      </div>
+    </div></section>
 
-    {procurementSummary && <section className="section"><div className="shell"><div className="section-head enxuto"><div><span className="eyebrow">SEFAZ / SIMPAS</span><h2>Licitações estaduais {procurementSummary.selected_year || ""}</h2></div><p>A quantidade anual vem somente da tabela principal que possui campo temporal. Itens, fornecedores e instrumentos são tabelas auxiliares e nunca entram nesse número.</p></div>{primaryProcurement ? <div className="grid grid-4"><div className="card stat accent"><span className="stat-label">Processos/aquisições em 2026</span><div><span className="stat-value">{integer(primaryProcurement.rows_selected_year)}</span><div className="stat-meta">tabela principal {primaryProcurement.member}</div></div></div><div className="card stat"><span className="stat-label">Valor estimado</span><div><span className="stat-value">{primaryProcurement.estimated_value ? brl(primaryProcurement.estimated_value.sum, { compact: true }) : "—"}</span><div className="stat-meta">{primaryProcurement.estimated_value?.field || "campo não identificado"}</div></div></div><div className="card stat"><span className="stat-label">Valor homologado</span><div><span className="stat-value">{primaryProcurement.homologated_value ? brl(primaryProcurement.homologated_value.sum, { compact: true }) : "—"}</span><div className="stat-meta">{primaryProcurement.homologated_value?.field || "campo não identificado"}</div></div></div><div className="card stat blue"><span className="stat-label">Linhas auxiliares históricas</span><div><span className="stat-value">{integer(procurementSummary.total_rows_across_related_tables - primaryProcurement.rows_all_years)}</span><div className="stat-meta">itens, fornecedores e vínculos; não são licitações adicionais</div></div></div></div> : <div className="notice warn"><span>!</span><div>A tabela principal de licitações não foi identificada nesta versão do arquivo. Nenhuma quantidade anual será inferida.</div></div>}<div className="coverage-grid source-coverage-grid">{(procurementSummary.tables ?? []).slice(0, 12).map((table) => <article className="coverage-card source-card" key={table.member}><header><strong>{table.member}</strong><span className={`badge ${table.classification === "licitacoes" ? "green" : ""}`}>{String(table.classification || "tabela relacionada").replaceAll("_", " ")}</span></header><p>{integer(table.rows)} linhas na tabela. {table.selected_rows == null ? "Esta tabela não possui campo temporal suficiente para ser filtrada como 2026." : `${integer(table.selected_rows)} linha(s) pertencem ao recorte de 2026.`}</p>{table.top_modalities?.length > 0 && <p className="muted">Modalidades: {table.top_modalities.slice(0, 4).map((item) => `${item.name} (${integer(item.rows)})`).join(" · ")}</p>}{table.top_statuses?.length > 0 && table.classification === "licitacoes" && <p className="muted">Situações: {table.top_statuses.slice(0, 4).map((item) => `${item.name} (${integer(item.rows)})`).join(" · ")}</p>}<div className="source-foot"><span>{table.schema?.headers?.length ?? 0} colunas</span><span>{table.schema?.privacy_sensitive_columns_present?.length ? "contém colunas sensíveis; linhas não republicadas" : "sem coluna sensível detectada"}</span></div></article>)}</div><div className="results-line"><span>SHA-256 do ZIP original: <code>{shortHash(procurements.evidence?.sha256)}</code></span><span>Atualização da fonte: {procurements.resource?.last_modified || "não informada"}</span></div></div></section>}
+    {primaryExpense?.top_agencies?.paid?.length > 0 && <section className="section"><div className="shell">
+      <div className="section-head enxuto"><div><span className="eyebrow">Execução</span><h2>Maiores valores pagos por órgão</h2></div><p>Agregação do campo <code>{primaryExpense.schema?.detected_fields?.stages?.paid || "VAL_PAGO"}</code> da base de despesas.</p></div>
+      <div className="compact-list">{primaryExpense.top_agencies.paid.slice(0, 8).map((item) => <div className="compact-row" key={item.name}><strong>{item.name}</strong><strong>{brl(item.paid)}</strong></div>)}</div>
+    </div></section>}
 
-    {primaryExpense && <section className="section"><div className="shell"><div className="section-head enxuto"><div><span className="eyebrow">SEFAZ / FIPLAN</span><h2>Despesas estaduais {expenseSummary.selected_year || ""}</h2></div><p>Os estágios contábeis são exibidos separadamente e vêm apenas da tabela principal identificada no arquivo oficial. Tabelas auxiliares não são somadas.</p></div><div className="grid grid-4"><div className="card stat"><span className="stat-label">Registros no recorte</span><div><span className="stat-value">{integer(primaryExpense.selected_rows)}</span><div className="stat-meta">{primaryExpense.member}</div></div></div>{primaryExpense.stage_totals?.committed && <div className="card stat"><span className="stat-label">Empenhado</span><div><span className="stat-value">{brl(primaryExpense.stage_totals.committed.sum, { compact: true })}</span><div className="stat-meta">{primaryExpense.schema?.detected_fields?.stages?.committed}</div></div></div>}{primaryExpense.stage_totals?.liquidated && <div className="card stat"><span className="stat-label">Liquidado</span><div><span className="stat-value">{brl(primaryExpense.stage_totals.liquidated.sum, { compact: true })}</span><div className="stat-meta">{primaryExpense.schema?.detected_fields?.stages?.liquidated}</div></div></div>}{primaryExpense.stage_totals?.paid && <div className="card stat accent"><span className="stat-label">Pago na base de despesas</span><div><span className="stat-value">{brl(primaryExpense.stage_totals.paid.sum, { compact: true })}</span><div className="stat-meta">{primaryExpense.schema?.detected_fields?.stages?.paid}</div></div></div>}</div><div className="results-line"><span>SHA-256 do ZIP: <code>{shortHash(expenses.evidence?.sha256)}</code></span><span>Atualização da fonte: {expenses.resource?.last_modified || "não informada"}</span></div>{primaryExpense.top_agencies?.paid?.length > 0 && <div className="section-subblock"><h3>Maiores valores pagos por órgão nesta tabela</h3><div className="compact-list">{primaryExpense.top_agencies.paid.slice(0, 10).map((item) => <div className="compact-row" key={item.name}><strong>{item.name}</strong><strong>{brl(item.paid)}</strong></div>)}</div></div>}</div></section>}
+    <section className="section"><div className="shell grid grid-2">
+      <div className="card panel"><div className="panel-title"><h3>Estágios contábeis</h3><span>não são equivalentes</span></div><div className="compact-list">
+        <div className="compact-row"><strong>Empenhado</strong><span>{primaryExpense?.stage_totals?.committed?.sum != null ? brl(primaryExpense.stage_totals.committed.sum) : "—"}</span></div>
+        <div className="compact-row"><strong>Liquidado</strong><span>{primaryExpense?.stage_totals?.liquidated?.sum != null ? brl(primaryExpense.stage_totals.liquidated.sum) : "—"}</span></div>
+        <div className="compact-row"><strong>Pago na base de despesas</strong><span>{primaryExpense?.stage_totals?.paid?.sum != null ? brl(primaryExpense.stage_totals.paid.sum) : "—"}</span></div>
+        <div className="compact-row"><strong>Valor do Pagamento</strong><span>{annualPayment?.sum != null ? brl(annualPayment.sum) : "—"}</span></div>
+      </div><p className="muted">Os dois últimos vêm de bases diferentes e não são igualados automaticamente.</p></div>
+      <div className="card panel"><div className="panel-title"><h3>Cobertura</h3><span>estado da coleta</span></div><div className="compact-list">
+        <div className="compact-row"><strong>SEFAZ prioritária</strong><span>{integer(sefazProcessed)}/{integer(sefazExpected)}</span></div>
+        <div className="compact-row"><strong>Catálogos CKAN</strong><span>{integer(data.summary?.ckan_datasets_collected ?? 0)}/{integer(data.summary?.ckan_datasets_expected ?? 6)}</span></div>
+        <div className="compact-row"><strong>TCE/BA</strong><span>{integer(data.summary?.tce_datasets_processed ?? 0)} conjunto(s) processado(s)</span></div>
+      </div><p className="muted">Indisponibilidade do TCE permanece explícita e nunca é convertida em zero.</p></div>
+    </div></section>
 
-    {primaryPayment && <section className="section"><div className="shell"><div className="section-head enxuto"><div><span className="eyebrow">SEFAZ / FIPLAN</span><h2>Pagamentos estaduais {paymentSummary.selected_year || ""}</h2></div><p>Esta é a base específica de pagamentos. Ela permanece separada do campo “pago” da base de despesas até existir reconciliação por identificadores oficiais. O agrupamento abaixo usa exatamente o campo identificado na fonte.</p></div><div className="grid grid-3"><div className="card stat"><span className="stat-label">Registros no recorte</span><div><span className="stat-value">{integer(primaryPayment.selected_rows)}</span><div className="stat-meta">{primaryPayment.member}</div></div></div><div className="card stat accent"><span className="stat-label">Total do campo de pagamento</span><div><span className="stat-value">{annualPayment?.sum != null ? brl(annualPayment.sum, { compact: true }) : "—"}</span><div className="stat-meta">{annualPayment?.source_field || "campo não identificado"}</div></div></div><div className="card stat blue"><span className="stat-label">Linhas monetárias válidas</span><div><span className="stat-value">{integer(annualPayment?.numeric_rows ?? 0)}</span><div className="stat-meta">somente na tabela principal</div></div></div></div><div className="results-line"><span>SHA-256 do ZIP: <code>{shortHash(payments.evidence?.sha256)}</code></span><span>Atualização da fonte: {payments.resource?.last_modified || "não informada"}</span></div>{primaryPayment.top_agencies?.length > 0 && <div className="section-subblock"><h3>Maiores valores por {paymentGroupingField || "agrupamento publicado"} no campo selecionado</h3><div className="compact-list">{primaryPayment.top_agencies.slice(0, 10).map((item) => <div className="compact-row" key={item.name}><strong>{item.name}</strong><strong>{brl(item.value)}</strong></div>)}</div></div>}</div></section>}
-
-    {!primaryExpense && data.coverage?.sefaz_data?.despesas?.status === "unavailable" && <section className="section compacto"><div className="shell"><div className="notice warn"><span>!</span><div><strong>Despesas estaduais indisponíveis nesta coleta.</strong> O erro está registrado na cobertura e não é apresentado como R$ 0.</div></div></div></section>}
-    {!primaryPayment && data.coverage?.sefaz_data?.pagamentos?.status === "unavailable" && <section className="section compacto"><div className="shell"><div className="notice warn"><span>!</span><div><strong>Pagamentos estaduais indisponíveis nesta coleta.</strong> O erro está registrado na cobertura e não é apresentado como R$ 0.</div></div></div></section>}
-
-    {tceExpenseTotals && <section className="section compacto"><div className="shell"><div className="section-head enxuto"><div><span className="eyebrow">TCE/BA</span><h2>Execução detalhada processada</h2></div><p>Os estágios permanecem separados.</p></div><div className="grid grid-4"><div className="card stat"><span className="stat-label">Linhas processadas</span><div><span className="stat-value">{integer(tceExpenseTotals.rows)}</span><div className="stat-meta">arquivo anual do TCE</div></div></div><div className="card stat accent"><span className="stat-label">Valor empenhado</span><div><span className="stat-value">{brl(tceExpenseTotals.committed, { compact: true })}</span><div className="stat-meta">soma do campo de empenho</div></div></div><div className="card stat"><span className="stat-label">Pagamento com retenções</span><div><span className="stat-value">{brl(tceExpenseTotals.gross_paid, { compact: true })}</span><div className="stat-meta">campo publicado pelo TCE</div></div></div><div className="card stat blue"><span className="stat-label">Pagamento líquido</span><div><span className="stat-value">{brl(tceExpenseTotals.net_paid, { compact: true })}</span><div className="stat-meta">ao credor</div></div></div></div></div></section>}
-
-    <section className="section"><div className="shell"><div className="section-head enxuto"><div><span className="eyebrow">Catálogo estadual</span><h2>O que está sob acompanhamento</h2></div><p>“Metadados coletados” confirma catálogo e recursos; “processado” significa que o arquivo de dados passou pelo pipeline.</p></div><div className="coverage-grid source-coverage-grid">{(data.sources ?? []).map((item) => {
-      const current = item.status || "mapped";
-      const resources = item.ckan?.resources ?? [];
-      const coverage = data.coverage?.ckan?.[item.dataset];
-      const tlsFallback = item.transport?.tls_verified === false;
-      return <article className="coverage-card source-card" key={item.id}><header><strong>{item.title}</strong><span className={`badge ${tone(current)}`}>{statusLabel(current)}</span></header><p>{item.coverage || item.ckan?.notes || "Fonte oficial estadual."}</p>{item.ckan?.metadata_modified && <p className="muted">Metadados atualizados em {datePt(item.ckan.metadata_modified)}.</p>}{tlsFallback && <div className="notice warn" style={{marginTop:"0.7rem"}}><span>!</span><div>O runner não validou a cadeia TLS do portal. A consulta foi repetida no <strong>mesmo domínio oficial</strong> e o fallback ficou registrado.</div></div>}{resources.length > 0 && <details style={{marginTop:"0.8rem"}}><summary>Ver {integer(resources.length)} recurso(s) publicados</summary><div className="compact-list" style={{marginTop:"0.6rem"}}>{resources.map((resource) => <a className="compact-row" href={resource.url} target="_blank" rel="noreferrer" key={resource.id || resource.url}><div><strong>{resource.name || "Recurso oficial"}</strong><span>{resource.format || resource.mimetype || "formato não informado"}</span></div><span>abrir ↗</span></a>)}</div></details>}<div className="source-foot"><span>{item.publisher || item.ckan?.organization}</span>{coverage?.metadata_modified && <span>{datePt(coverage.metadata_modified)}</span>}<a href={item.dataset_url || item.documentation_url || item.access_url} target="_blank" rel="noreferrer">Abrir fonte ↗</a></div></article>;
-    })}</div></div></section>
-
-    <section className="section"><div className="shell grid grid-2"><div className="card panel"><div className="panel-title"><h3>Contratos do TCE/BA</h3><span>{statusLabel(data.coverage?.tce?.contracts?.status || data.coverage?.tce?.status)}</span></div>{data.tce?.contracts ? <><p><strong>{integer(data.tce.contracts.summary?.rows)}</strong> linhas processadas na fonte.</p><p className="muted">Valor declarado somado: {brl(data.tce.contracts.summary?.declared_value_sum)}</p></> : <p className="muted">O arquivo ainda não foi processado nesta publicação. A ausência não é interpretada como zero contratos.</p>}</div><div className="card panel"><div className="panel-title"><h3>Licitações do TCE/BA</h3><span>{statusLabel(data.coverage?.tce?.procurements?.status || data.coverage?.tce?.status)}</span></div>{data.tce?.procurements ? <><p><strong>{integer(data.tce.procurements.summary?.rows)}</strong> linhas processadas na fonte.</p><p className="muted">Valor declarado somado: {brl(data.tce.procurements.summary?.declared_value_sum)}</p></> : <p className="muted">O arquivo ainda não foi processado nesta publicação. A ausência não é interpretada como zero procedimentos.</p>}</div></div></section>
-
-    <section className="section compacto"><div className="shell"><div className="notice warn"><span>!</span><div><strong>Privacidade e rastreabilidade:</strong> arquivos grandes são baixados temporariamente para cálculo de resumo e SHA-256. O projeto não republica linhas brutas com CPF/CNPJ, nomes de credores, favorecidos ou participantes nesta camada.</div></div></div></section>
+    <section className="section compacto"><div className="shell"><details className="card panel"><summary><strong>Fontes, arquivos e detalhes técnicos</strong></summary><div className="section-subblock">
+      <p className="muted">Informações de auditoria ficam aqui para não competir com os dados principais.</p>
+      <div className="compact-list">
+        {[
+          ["Receitas", revenue],
+          ["Licitações", procurement],
+          ["Despesas", expenses],
+          ["Pagamentos", payments],
+          ["Contratos", contracts],
+        ].map(([label, item]) => <div className="compact-row" key={label}><div><strong>{label}</strong><span>{item?.resource?.name || "arquivo não disponível"} · atualização {datePt(item?.resource?.last_modified)}</span></div><span>SHA-256 {shortHash(item?.evidence?.sha256)}</span></div>)}
+      </div>
+      <p className="muted">Arquivos brutos grandes são processados temporariamente. CPF e nomes de recebedores não são republicados nesta camada agregada.</p>
+      <div className="hero-actions"><Link className="button" href="/metodologia">Ver metodologia completa</Link></div>
+    </div></details></div></section>
   </>;
 }
