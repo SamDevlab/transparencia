@@ -1,0 +1,91 @@
+name: Fontes auxiliares da Câmara de Salvador
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "50 12 * * 2,5"
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-cms-auxiliary.yml
+      - src/transparencia/collectors/cms.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: salvador-cms-auxiliary
+  cancel-in-progress: true
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e '.[dev]'
+      - name: Validate project tests
+        run: pytest -q
+      - name: Collect Câmara auxiliary public sources
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import datetime
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+          from transparencia.collectors import cms
+
+          today = datetime.now(ZoneInfo('America/Bahia')).date()
+          out = Path('cities/salvador/data/snapshots') / today.isoformat() / 'cms_auxiliary'
+          out.mkdir(parents=True, exist_ok=True)
+
+          travel = cms.collect_travel(out)
+          documents = cms.collect_document_catalog(out)
+          certames = cms.collect_certames_visible(out)
+
+          travel_cov = json.loads((out/'cms_travel_expenses.coverage.json').read_text(encoding='utf-8'))
+          documents_cov = json.loads((out/'cms_documents.coverage.json').read_text(encoding='utf-8'))
+          sections = documents_cov.get('sections') or {}
+          result = {
+            'observed_at_date': today.isoformat(),
+            'travel': {
+              'records': travel_cov.get('records'),
+              'pages_collected': travel_cov.get('pages_collected'),
+              'complete': bool(travel_cov.get('complete')),
+              'stopped_status': travel_cov.get('stopped_status'),
+            },
+            'documents': {
+              'records': documents_cov.get('records'),
+              'sections': sections,
+              'complete': bool(sections) and all(bool(item.get('complete')) for item in sections.values()),
+            },
+            'certames': {
+              'records': sum(1 for line in certames.read_text(encoding='utf-8').splitlines() if line.strip()),
+              'coverage': 'server_visible_page_only',
+              'complete': False,
+            },
+          }
+          (out/'summary.json').write_text(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True)+'\n', encoding='utf-8')
+          print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+
+          # Rate limiting or a source stop remains partial, never an inferred zero.
+          if travel_cov.get('records') is None or documents_cov.get('records') is None:
+              raise SystemExit('Auxiliary coverage metadata missing')
+          PY
+      - name: Commit source-scoped auxiliary snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          TODAY=$(TZ=America/Bahia date +%F)
+          git add "cities/salvador/data/snapshots/${TODAY}/cms_auxiliary"
+          if git diff --cached --quiet; then echo 'No CMS auxiliary changes'; exit 0; fi
+          git commit -m "data(salvador): refresh Câmara auxiliary sources"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
