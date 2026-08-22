@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "tested_commit": "87c362923020077c1e287c676e9c5b96a7057cc5",
+  "tested_commit": "42187a6ff7b923fe5c0c28d489e4b1cee9461648",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
@@ -31,7 +31,12 @@
   },
   "suppliers": {
     "public_businesses": 18,
-    "rule": "Diretório público restrito a fornecedores empresariais com CNPJ estruturado. Relações com contratos municipais exigem evidência documental exata; fornecedores PNCP não ligados permanecem marcados como complementares."
+    "complementary_businesses": 18,
+    "rule": "Diretório público restrito a empresas com CNPJ estruturado. Fornecedores ligados a contrato municipal exigem evidência documental exata; empresas somente do PNCP complementar são agregadas por CNPJ sem inferência textual.",
+    "freshness": {
+      "municipalContracts": "2026-08-21",
+      "pncpComplementary": "2026-08-22"
+    }
   },
   "cms": {
     "commitments_complete": true,
