@@ -34,6 +34,7 @@ export default function CamaraPage() {
   const bills = data.legislative.find((row) => row.metric === "projetos_lei_vereadores_mesa_apresentados");
   const cmsFiscal = data.fiscal.filter((row) => row.entity === "Câmara Municipal de Salvador");
   const ledger = data.commitmentLedger;
+  const auxiliary = data.auxiliary;
 
   return (
     <>
@@ -68,6 +69,18 @@ export default function CamaraPage() {
             <div className="notice"><span>i</span><div><strong>Contabilidade e privacidade:</strong> {ledger.accountingRule} {ledger.privacyRule}</div></div>
           </div>
           <div className="results-line"><span>Parser de registros visíveis: {ledger.parserCompleteForVisibleRecords ? "completo" : "incompleto"} · fonte esgotada: {ledger.sourceExhausted ? "sim" : "não"}</span><a href={ledger.sourceUrl} target="_blank" rel="noreferrer">Abrir ledger oficial ↗</a></div>
+        </div>
+      </section>}
+
+      {auxiliary && <section className="section">
+        <div className="shell">
+          <div className="section-head enxuto"><div><span className="eyebrow">Fontes auxiliares</span><h2>Viagens, documentos e certames com cobertura separada.</h2></div><p>Observado em {auxiliary.asOf}. Cada fonte mantém seu próprio status.</p></div>
+          <div className="grid grid-3">
+            <div className="card panel"><div className="panel-title"><h3>Despesas de viagem</h3><span>{auxiliary.travel?.complete ? "completo para a rota" : "parcial"}</span></div><div className="stat-value mono" style={{ fontSize: 28 }}>{brl(auxiliary.travel?.totalValue ?? 0)}</div><p>{integer(auxiliary.travel?.records ?? 0)} registros em {integer(auxiliary.travel?.pages ?? 0)} páginas. {integer(auxiliary.travel?.recordsWithProcessNumber ?? 0)} trazem número de processo.</p><p className="muted">{auxiliary.travel?.publicDetailRule}</p><a className="button" href="https://www.cms.ba.gov.br/transparencia/despesas-viagem" target="_blank" rel="noreferrer">Abrir fonte →</a></div>
+            <div className="card panel"><div className="panel-title"><h3>Documentos de transparência</h3><span>{auxiliary.documents?.complete ? "catálogo coletado" : "parcial"}</span></div><div className="stat-value mono" style={{ fontSize: 28 }}>{integer(auxiliary.documents?.records ?? 0)}</div><p>links de prestação de contas e execução orçamentária/financeira preservados.</p><p className="muted">{auxiliary.documents?.publicDetailRule}</p><a className="button" href="https://www.cms.ba.gov.br/transparencia" target="_blank" rel="noreferrer">Abrir transparência da Câmara →</a></div>
+            <div className="card panel"><div className="panel-title"><h3>Certames</h3><span>parcial</span></div><div className="stat-value mono" style={{ fontSize: 28 }}>{integer(auxiliary.certames?.recordsVisible ?? 0)}</div><p>itens normalizados apenas da página atualmente visível no servidor.</p><p className="muted">{auxiliary.certames?.coverageRule}</p><a className="button" href="https://cmsalvador.sys.inf.br/ca/licitacao/" target="_blank" rel="noreferrer">Abrir certames →</a></div>
+          </div>
+          {auxiliary.certames?.rows?.length > 0 && <div className="card table-card" style={{ marginTop: 18 }}><div className="table-wrap"><table><thead><tr><th>Modalidade</th><th>Número</th><th>Objeto</th><th>Status visível</th></tr></thead><tbody>{auxiliary.certames.rows.map((row, index) => <tr key={`${row.noticeNumber}-${index}`}><td>{row.modality || "—"}</td><td className="mono">{row.noticeNumber || "—"}</td><td className="object-cell">{row.object || "—"}</td><td>{row.latestStatusText || "—"}</td></tr>)}</tbody></table></div></div>}
         </div>
       </section>}
 
