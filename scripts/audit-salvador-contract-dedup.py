@@ -33,18 +33,18 @@ def response_files(raw_dir: Path):
         candidates = [p for p in page_dir.glob("*.json") if p.name != "manifest.json"]
         if not candidates:
             continue
-        # persist_snapshot stores a single body JSON per request directory.
         yield page_dir.name, sorted(candidates)[-1]
 
 
 def safe_example(row: dict) -> dict:
+    # Do not copy supplier/creditor names or document-like free text into the audit report.
+    # The report is about duplicate mechanics, not people.
     keys = [
         "nuContratoSigef",
         "nuContratoOriginal",
         "nuProcesso",
         "sgOrgao",
-        "dsUnidadeGestora",
-        "nmCredor",
+        "cdUnidadeGestora",
         "vlAtualizado",
         "dtAssinatura",
         "dsSituacao",
@@ -121,6 +121,7 @@ def main() -> None:
             if same_technical_id_repeated
             else "no_repeated_technical_ids_detected"
         ),
+        "privacy_rule": "Duplicate diagnostics publish only administrative contract/process/unit fields, counts and values; supplier/creditor names and document-like free text are omitted.",
         "methodology": [
             "The substantive key hashes every source field except the API technical field 'id'.",
             "No supplier/object/name similarity is used to merge records.",
