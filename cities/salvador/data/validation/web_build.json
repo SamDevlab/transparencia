@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "tested_commit": "d140b3a60e2299c108474698bfb0ad70e12954af",
+  "tested_commit": "41ac4e4232c175e79d568d8cee8de22207487c2d",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
@@ -19,7 +19,7 @@
   "councilors_generated": 43,
   "executive_agents_generated": 6,
   "public_agents_generated": 49,
-  "search_items_generated": 4255,
+  "search_items_generated": 7442,
   "economy_available": true,
   "economy_snapshot": "2026-08-21",
   "interstate_baseline_available": true,
