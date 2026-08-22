@@ -1,0 +1,102 @@
+{
+  "frontend_evidence": {
+    "bundle_route": "/contratos/gridDetalhadaDocumento?pagina=",
+    "bundle_snapshot": "cities/salvador/data/snapshots/2026-08-17/discovery/prefeitura_portal/lazy_chunks/contract_call_raw_contexts.json"
+  },
+  "observed_at_date": "2026-08-22",
+  "probes": {
+    "/contratos/gridDetalhada?pagina=1": {
+      "bytes": 7717,
+      "content_type": "application/json; charset=utf-8",
+      "elapsed_seconds": 2.461,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/gridDetalhada?pagina=1",
+      "first_row_keys": [
+        "cdUnidadeGestora",
+        "dsObjeto",
+        "dsSituacao",
+        "dsUnidadeGestora",
+        "dtAssinatura",
+        "dtInicioVigencia",
+        "dtTerminoVigenciaAtualizado",
+        "id",
+        "nmCredor",
+        "nuContratoOriginal",
+        "nuContratoSigef",
+        "nuProcesso",
+        "percentualExecutado",
+        "sgOrgao",
+        "sgUnidadeGestora",
+        "vlAtualizado",
+        "vlOriginal"
+      ],
+      "json_type": "dict",
+      "paginacao": {
+        "paginaAtual": 1,
+        "paginas": 308,
+        "tamanho": 10,
+        "total": 3072,
+        "totalPagina": 10
+      },
+      "records_count": 10,
+      "records_key": "dados",
+      "sha256": "c82992da9b711341547ded3ef304aff70f588a00fae3a81055e8f8017cd91dc4",
+      "status": 200,
+      "top_level_keys": [
+        "dados",
+        "paginacao",
+        "totalizadores",
+        "totalizadoresOP"
+      ]
+    },
+    "/contratos/gridDetalhadaDocumento?pagina=1": {
+      "bytes": 7717,
+      "content_type": "application/json; charset=utf-8",
+      "elapsed_seconds": 1.949,
+      "final_url": "https://apitmptransparencia.salvador.ba.gov.br/api/contratos/gridDetalhadaDocumento?pagina=1",
+      "first_row_keys": [
+        "cdUnidadeGestora",
+        "dsObjeto",
+        "dsSituacao",
+        "dsUnidadeGestora",
+        "dtAssinatura",
+        "dtInicioVigencia",
+        "dtTerminoVigenciaAtualizado",
+        "id",
+        "nmCredor",
+        "nuContratoOriginal",
+        "nuContratoSigef",
+        "nuProcesso",
+        "percentualExecutado",
+        "sgOrgao",
+        "sgUnidadeGestora",
+        "vlAtualizado",
+        "vlOriginal"
+      ],
+      "json_type": "dict",
+      "paginacao": {
+        "paginaAtual": 1,
+        "paginas": 308,
+        "tamanho": 10,
+        "total": 3072,
+        "totalPagina": 10
+      },
+      "records_count": 10,
+      "records_key": "dados",
+      "sha256": "13762fa4143e551f8c327e45991aa2910e29fa3aad4227100be8e8ce5bbc8d6a",
+      "status": 200,
+      "top_level_keys": [
+        "dados",
+        "paginacao",
+        "totalizadores",
+        "totalizadoresOP"
+      ]
+    }
+  },
+  "request_body": {
+    "agrupamentos": [],
+    "dataFim": "2026-08-21",
+    "dataInicio": "2026-08-21",
+    "filtros": []
+  },
+  "target_date": "2026-08-21"
+}
