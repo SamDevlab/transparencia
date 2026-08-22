@@ -36,7 +36,7 @@ function latestPncp() {
 
 const current = latestPncp();
 if (!current) {
-  console.log("PNCP complementar: nenhum snapshot source-scoped atual; mantendo complemento existente.");
+  console.log("PNCP complementar: nenhum snapshot escopado atual; mantendo complemento existente.");
   process.exit(0);
 }
 
@@ -68,24 +68,38 @@ const mapped = sourceRows.map((row, index) => ({
   sourceSystem: "PNCP",
 }));
 
+const suppliedCnpjs = Array.isArray(current.summary.agency_cnpjs_supplied)
+  ? current.summary.agency_cnpjs_supplied
+  : [];
+const legacyDiscovered = Number(current.summary.agency_cnpjs_discovered ?? 0);
+const agencyCnpjCount = suppliedCnpjs.length || legacyDiscovered;
+const discoveryComplete = current.summary.agency_cnpj_discovery_complete === true;
+const currentComplete = current.summary.contracts?.complete_for_supplied_agencies_and_filter === true;
+const previousRows = contracts.complementary?.rows ?? [];
+
 contracts.complementary = {
   source: "PNCP",
   asOf: current.date,
-  status: current.summary.contracts?.complete_for_supplied_agencies_and_filter ? "complete_for_supplied_agencies_and_filter" : "partial",
-  upstreamProcurementsComplete: current.summary.procurements?.complete === true,
-  agencyCnpjsDiscovered: current.summary.agency_cnpjs_discovered ?? 0,
+  status: currentComplete ? "complete_for_supplied_agencies_and_filter" : "partial",
+  collectionMode: current.summary.collection_mode ?? "legacy_discovery",
+  agencyCnpjs: suppliedCnpjs,
+  agencyCnpjCount,
+  agencyCnpjDiscoveryComplete: discoveryComplete,
   coverageNote: current.summary.coverage_rule ?? null,
   errors: current.summary.errors ?? [],
-  rows: mapped.length ? mapped : (contracts.complementary?.rows ?? []),
+  rows: mapped.length ? mapped : previousRows,
   currentSnapshotRows: mapped.length,
+  retainedPreviousRows: mapped.length === 0 ? previousRows.length : 0,
 };
 writeJson("contracts.json", contracts);
 
 const meta = readJson(path.join(publicRoot, "meta.json"), {});
 meta.pncpComplementaryAsOf = current.date;
 meta.pncpComplementaryStatus = contracts.complementary.status;
+meta.pncpComplementaryCollectionMode = contracts.complementary.collectionMode;
 meta.pncpComplementaryCurrentRows = mapped.length;
-meta.pncpComplementaryAgencyCnpjs = contracts.complementary.agencyCnpjsDiscovered;
+meta.pncpComplementaryAgencyCnpjs = agencyCnpjCount;
+meta.pncpComplementaryAgencyDiscoveryComplete = discoveryComplete;
 writeJson("meta.json", meta);
 
-console.log(`PNCP complementar ${current.date}: ${mapped.length} contratos no snapshot atual; status=${contracts.complementary.status}; CNPJs consultados/descobertos=${contracts.complementary.agencyCnpjsDiscovered}.`);
+console.log(`PNCP complementar ${current.date}: ${mapped.length} contratos no snapshot atual; status=${contracts.complementary.status}; CNPJs fornecidos=${agencyCnpjCount}; descoberta completa=${discoveryComplete}.`);
