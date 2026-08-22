@@ -27,8 +27,15 @@ if (contracts.sourceSystem !== "SALVADOR_TRANSPARENCIA_API_CONTRATOS" || contrac
 if (!(Number(contracts.sourceRows) >= Number(contracts.rows?.length || 0)) || !(contracts.rows?.length > 0)) {
   throw new Error("contagens da grade municipal de contratos inválidas");
 }
-if (contracts.rows.some((row) => row.fornecedor || row.documentoFornecedor)) {
-  throw new Error("grade municipal republicou credor/fornecedor não estruturado");
+for (const row of contracts.rows ?? []) {
+  const hasSupplier = Boolean(row.fornecedor || row.documentoFornecedor);
+  if (!hasSupplier) continue;
+  if (digits(row.documentoFornecedor).length !== 14 || !row.fornecedor || !row.supplierEvidence?.method) {
+    throw new Error(`contrato municipal ${row.id} publicou fornecedor sem CNPJ empresarial e evidência documental`);
+  }
+  if (!String(row.supplierEvidence?.method).startsWith("exact_")) {
+    throw new Error(`contrato municipal ${row.id} usa método de fornecedor não exato`);
+  }
 }
 if ((suppliers.rows ?? []).some((supplier) => digits(supplier.documento).length !== 14)) {
   throw new Error("diretório público contém fornecedor sem CNPJ empresarial estruturado");
@@ -88,7 +95,7 @@ if (byId.get("cms_certames")?.status !== "partial") throw new Error("cobertura p
 
 console.log(JSON.stringify({
   ok: true,
-  contracts: { sourceRows: contracts.sourceRows, publishedRows: contracts.rows.length, asOf: contracts.periodEnd },
+  contracts: { sourceRows: contracts.sourceRows, publishedRows: contracts.rows.length, structuredSupplierLinks: contracts.structuredSupplierLinks ?? 0, asOf: contracts.periodEnd },
   acquisitions: { records: acquisitions.rows.length, asOf: acquisitions.summary?.period_end },
   suppliers: { businessCnpjOnly: true, records: suppliers.rows?.length ?? 0 },
   links: linkSummary,
