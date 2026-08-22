@@ -13,6 +13,7 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
+from transparencia.collectors.bahia_sefaz_contract_profiles import extract_contract_profiles  # noqa: E402
 from transparencia.collectors.bahia_sefaz_download import download_ckan_resource_resilient  # noqa: E402
 from transparencia.collectors.bahia_sefaz_money_flow import build_exact_money_flow  # noqa: E402
 
@@ -49,6 +50,19 @@ def expected_size(resource: dict[str, Any]) -> int | None:
         return None
 
 
+def resource_evidence(resource: dict[str, Any], evidence: Any, transport: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "id": resource.get("id"),
+        "name": resource.get("name"),
+        "last_modified": resource.get("last_modified"),
+        "url": resource.get("url"),
+        "sha256": evidence.sha256,
+        "bytes": evidence.bytes,
+        "download_mode": transport.get("download_mode"),
+        "tls_verified": transport.get("tls_verified"),
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Gera o fio exato licitação → contrato → pagamento da Bahia")
     parser.add_argument("--year", type=int, default=date.today().year)
@@ -71,6 +85,7 @@ def main() -> int:
 
     procurement_resource = choose_zip(catalog, "licitacoes", "Licitacoes.zip")
     payments_resource = choose_zip(catalog, "pagamentos", "Pagamentos.zip")
+    contracts_resource = choose_zip(catalog, "contratos", "Contratos.zip")
     headers = {
         "Accept": "application/zip,application/octet-stream,*/*",
         "Accept-Encoding": "identity",
@@ -79,6 +94,7 @@ def main() -> int:
 
     procurement_path: Path | None = None
     payments_path: Path | None = None
+    contracts_path: Path | None = None
     try:
         procurement_path, procurement_evidence, procurement_transport = download_ckan_resource_resilient(
             procurement_resource["url"],
@@ -90,48 +106,52 @@ def main() -> int:
             expected_size=expected_size(payments_resource),
             headers=headers,
         )
+        contracts_path, contracts_evidence, contracts_transport = download_ckan_resource_resilient(
+            contracts_resource["url"],
+            expected_size=expected_size(contracts_resource),
+            headers=headers,
+        )
+
         flow = build_exact_money_flow(
             procurement_path,
             payments_path,
             contract_keys,
             target_year=args.year,
         )
+        end_to_end_ids = [row["instrument_id"] for row in flow["top_end_to_end"]]
+        profile_result = extract_contract_profiles(
+            contracts_path,
+            target_year=args.year,
+            instrument_ids=end_to_end_ids,
+            member=primary_contracts.get("member"),
+        )
+        profiles = profile_result.get("profiles") or {}
+        for row in flow["top_end_to_end"]:
+            row["contract_profile"] = profiles.get(row["instrument_id"])
+
+        flow["summary"]["contract_profiles_requested"] = profile_result.get("requested_instruments", 0)
+        flow["summary"]["contract_profiles_matched"] = profile_result.get("matched_instruments", 0)
+        flow["coverage"]["contract_profiles"] = (
+            "Órgão, fornecedor empresarial, objeto, situação, modalidade e valor são extraídos apenas para "
+            "instrumentos ponta a ponta e somente pelo mesmo identificador oficial. Campos ambíguos não são resolvidos por aproximação."
+        )
+
         payload = {
             "source": "SEFAZ/AGE Bahia - SIMPAS/FIPLAN",
             "selected_year": args.year,
             "resources": {
-                "licitacoes": {
-                    "id": procurement_resource.get("id"),
-                    "name": procurement_resource.get("name"),
-                    "last_modified": procurement_resource.get("last_modified"),
-                    "url": procurement_resource.get("url"),
-                    "sha256": procurement_evidence.sha256,
-                    "bytes": procurement_evidence.bytes,
-                    "download_mode": procurement_transport.get("download_mode"),
-                    "tls_verified": procurement_transport.get("tls_verified"),
-                },
-                "pagamentos": {
-                    "id": payments_resource.get("id"),
-                    "name": payments_resource.get("name"),
-                    "last_modified": payments_resource.get("last_modified"),
-                    "url": payments_resource.get("url"),
-                    "sha256": payments_evidence.sha256,
-                    "bytes": payments_evidence.bytes,
-                    "download_mode": payments_transport.get("download_mode"),
-                    "tls_verified": payments_transport.get("tls_verified"),
-                },
-                "contratos": {
-                    "sha256": contracts.get("evidence", {}).get("sha256"),
-                    "resource_name": contracts.get("resource", {}).get("name"),
-                    "instrument_keys_used": len(contract_keys),
-                },
+                "licitacoes": resource_evidence(procurement_resource, procurement_evidence, procurement_transport),
+                "pagamentos": resource_evidence(payments_resource, payments_evidence, payments_transport),
+                "contratos": resource_evidence(contracts_resource, contracts_evidence, contracts_transport),
             },
             "summary": flow["summary"],
             "top_end_to_end": flow["top_end_to_end"],
             "coverage": flow["coverage"],
             "identity_rule": flow["identity_rule"],
+            "contract_profile_identity_rule": profile_result.get("identity_rule"),
+            "contract_profile_ambiguity_rule": profile_result.get("ambiguity_rule"),
             "interpretation": flow["interpretation"],
-            "privacy_rule": flow["privacy_rule"],
+            "privacy_rule": f"{flow['privacy_rule']} {profile_result.get('privacy_rule', '')}".strip(),
         }
         output = snapshot / "sefaz_money_flow.json"
         write_json(output, payload)
@@ -149,15 +169,15 @@ def main() -> int:
             "status": "processed",
             "selected_year": args.year,
             "instruments_end_to_end": flow["summary"]["instruments_end_to_end"],
+            "contract_profiles_matched": flow["summary"]["contract_profiles_matched"],
         }
         write_json(latest_path, latest)
         print(json.dumps({"status": "processed", **flow["summary"]}, ensure_ascii=False))
         return 0
     finally:
-        if procurement_path and procurement_path.exists():
-            procurement_path.unlink(missing_ok=True)
-        if payments_path and payments_path.exists():
-            payments_path.unlink(missing_ok=True)
+        for path in (procurement_path, payments_path, contracts_path):
+            if path and path.exists():
+                path.unlink(missing_ok=True)
 
 
 if __name__ == "__main__":
