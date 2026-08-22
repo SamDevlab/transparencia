@@ -1,0 +1,184 @@
+{
+  "cases": {
+    "january_iso": {
+      "bytes": 7841,
+      "elapsed_seconds": 1.713,
+      "paginacao": {
+        "paginaAtual": 1,
+        "paginas": 248,
+        "tamanho": 10,
+        "total": 2478,
+        "totalPagina": 10
+      },
+      "request_body": {
+        "agrupamentos": [],
+        "dataFim": "2026-01-15",
+        "dataInicio": "2026-01-15",
+        "filtros": []
+      },
+      "safe_first_rows": [
+        {
+          "cdUnidadeGestora": "547002",
+          "dsSituacao": "Em Execução",
+          "dtAssinatura": "14/01/2026",
+          "dtInicioVigencia": "14/01/2026",
+          "dtTerminoVigenciaAtualizado": "12/07/2026",
+          "id": "e73ad458-a416-4f59-8e48-8be3930ad479",
+          "nuContratoOriginal": "0072026",
+          "nuContratoSigef": "2026CT000246",
+          "nuProcesso": "1625592025",
+          "sgOrgao": "SECULT",
+          "vlAtualizado": "16.500,00",
+          "vlOriginal": "16.500,00"
+        },
+        {
+          "cdUnidadeGestora": "547002",
+          "dsSituacao": "Em Execução",
+          "dtAssinatura": "14/01/2026",
+          "dtInicioVigencia": "14/01/2026",
+          "dtTerminoVigenciaAtualizado": "12/07/2026",
+          "id": "44ba84bf-fd2d-44f6-b3e6-072d859e43f1",
+          "nuContratoOriginal": "0632026",
+          "nuContratoSigef": "2026CT000033",
+          "nuProcesso": "0000022026",
+          "sgOrgao": "SECULT",
+          "vlAtualizado": "6.000,00",
+          "vlOriginal": "6.000,00"
+        },
+        {
+          "cdUnidadeGestora": "547002",
+          "dsSituacao": "Em Execução",
+          "dtAssinatura": "01/02/2026",
+          "dtInicioVigencia": "14/01/2026",
+          "dtTerminoVigenciaAtualizado": "12/07/2026",
+          "id": "4b0f3f49-cc55-41bd-acaa-0315668adc26",
+          "nuContratoOriginal": "322026",
+          "nuContratoSigef": "2026CT000186",
+          "nuProcesso": "1625592025",
+          "sgOrgao": "SECULT",
+          "vlAtualizado": "16.500,00",
+          "vlOriginal": "16.500,00"
+        }
+      ],
+      "sha256": "88a800f173ad1e322ca74f4701a6a578355f32887cf89712e483e27e307a4858",
+      "status": 200,
+      "totalizadores": {
+        "Atualizado": "31.324.805.668,75",
+        "Original": "11.400.775.317,00"
+      }
+    },
+    "no_dates": {
+      "bytes": 208,
+      "elapsed_seconds": 0.255,
+      "paginacao": {
+        "paginaAtual": 1,
+        "paginas": 0,
+        "tamanho": 10,
+        "total": 0,
+        "totalPagina": 0
+      },
+      "request_body": {
+        "agrupamentos": [],
+        "filtros": []
+      },
+      "safe_first_rows": [],
+      "sha256": "b2ee3d1f3444b70b238de5dca77f5cb08861dc6d9bee3af744e4eba05f2305a2",
+      "status": 200,
+      "totalizadores": {
+        "Atualizado": "0,00",
+        "Original": "0,00"
+      }
+    },
+    "recent_br": {
+      "bytes": 312,
+      "elapsed_seconds": 0.149,
+      "paginacao": {
+        "paginaAtual": null,
+        "paginas": null,
+        "tamanho": null,
+        "total": null,
+        "totalPagina": null
+      },
+      "request_body": {
+        "agrupamentos": [],
+        "dataFim": "21/08/2026",
+        "dataInicio": "21/08/2026",
+        "filtros": []
+      },
+      "safe_first_rows": [],
+      "sha256": "f8dcc953d6a9ca979653329852628f50ab38349d270b663f324c6ca5d4226237",
+      "status": 400,
+      "totalizadores": null
+    },
+    "recent_iso": {
+      "bytes": 7717,
+      "elapsed_seconds": 1.614,
+      "paginacao": {
+        "paginaAtual": 1,
+        "paginas": 308,
+        "tamanho": 10,
+        "total": 3072,
+        "totalPagina": 10
+      },
+      "request_body": {
+        "agrupamentos": [],
+        "dataFim": "2026-08-21",
+        "dataInicio": "2026-08-21",
+        "filtros": []
+      },
+      "safe_first_rows": [
+        {
+          "cdUnidadeGestora": "547002",
+          "dsSituacao": "Em Execução",
+          "dtAssinatura": "19/08/2026",
+          "dtInicioVigencia": "19/08/2026",
+          "dtTerminoVigenciaAtualizado": "19/09/2026",
+          "id": "c26245b0-3d20-4139-b7c3-b3e1faaff7df",
+          "nuContratoOriginal": "14662026",
+          "nuContratoSigef": "2026CT004867",
+          "nuProcesso": "1853152026",
+          "sgOrgao": "SECULT",
+          "vlAtualizado": "48.700,00",
+          "vlOriginal": "48.700,00"
+        },
+        {
+          "cdUnidadeGestora": "616002",
+          "dsSituacao": "Em Execução",
+          "dtAssinatura": "19/08/2026",
+          "dtInicioVigencia": "19/08/2026",
+          "dtTerminoVigenciaAtualizado": "16/12/2026",
+          "id": "864cdf95-4002-4858-bc4c-734c4737a51e",
+          "nuContratoOriginal": "0102026",
+          "nuContratoSigef": "2026CT004856",
+          "nuProcesso": "0559922026",
+          "sgOrgao": "SEINFRA",
+          "vlAtualizado": "2.506.412,84",
+          "vlOriginal": "2.506.412,84"
+        },
+        {
+          "cdUnidadeGestora": "547002",
+          "dsSituacao": "Em Execução",
+          "dtAssinatura": "14/08/2026",
+          "dtInicioVigencia": "14/08/2026",
+          "dtTerminoVigenciaAtualizado": "09/02/2027",
+          "id": "1889c56b-8a7d-4591-a80a-046921da27ff",
+          "nuContratoOriginal": "14502026",
+          "nuContratoSigef": "2026CT004836",
+          "nuProcesso": "0002402026",
+          "sgOrgao": "SECULT",
+          "vlAtualizado": "40.000,00",
+          "vlOriginal": "40.000,00"
+        }
+      ],
+      "sha256": "9e448bb490456527e1d71f2e1ef8613ce0e61847f9b3bd77ec72ee280f0248e9",
+      "status": 200,
+      "totalizadores": {
+        "Atualizado": "30.318.841.643,70",
+        "Original": "11.958.861.517,49"
+      }
+    }
+  },
+  "endpoint": "/contratos/gridDetalhada?pagina=1",
+  "frontend_route_also_observed": "/contratos/gridDetalhadaDocumento?pagina=",
+  "observed_at_date": "2026-08-22"
+}
