@@ -1,0 +1,88 @@
+{
+  "agency_cnpjs": [
+    "13927801000149"
+  ],
+  "complete_for_supplied_agencies_and_filter": true,
+  "coverage_note": "Complete only for the explicitly supplied agency CNPJs, PNCP contract endpoint, requested date interval and municipal scope filter. The supplied CNPJ set itself may be incomplete if upstream procurement discovery was partial.",
+  "errors": [],
+  "period_end": "2026-08-22",
+  "period_start": "2026-01-01",
+  "queries": [
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 8,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 1,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 4,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 3,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 7,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 10,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 8,
+      "window_end": "2026-08-22",
+      "window_start": "2026-07-30"
+    }
+  ],
+  "records_after_salvador_scope_filter": 41,
+  "scope": "municipal",
+  "source_system": "PNCP",
+  "source_url": "https://pncp.gov.br/api/consulta/v1/contratos"
+}

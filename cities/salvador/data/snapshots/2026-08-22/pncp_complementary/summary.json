@@ -1,0 +1,19 @@
+{
+  "agency_cnpj_discovery_complete": false,
+  "agency_cnpjs_supplied": [
+    "13927801000149"
+  ],
+  "collection_mode": "bounded_official_municipality_cnpj",
+  "contracts": {
+    "complete_for_supplied_agencies_and_filter": true,
+    "query_errors": 0,
+    "ran": true,
+    "records": 41
+  },
+  "coverage_rule": "PNCP is complementary only. This bounded run queries the official municipality CNPJ from city configuration and can be complete only for that supplied CNPJ and date filter. It does not claim that the municipality CNPJ represents every municipal entity CNPJ. Missing PNCP coverage never removes or invalidates the independently collected Salvador contract grid.",
+  "errors": [],
+  "observed_at_date": "2026-08-22",
+  "period_end": "2026-08-22",
+  "period_start": "2026-01-01",
+  "role": "complementary_only"
+}
