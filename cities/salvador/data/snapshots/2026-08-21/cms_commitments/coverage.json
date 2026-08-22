@@ -1,0 +1,1508 @@
+{
+  "accounting_note": "Every normalized expense event has stage=commitment. No commitment is re-labelled as liquidation or payment.",
+  "complete": true,
+  "coverage_note": "Complete for the default public ScriptCase commitment view: navigation reached source exhaustion and every visible commitment identifier on every collected page was normalized. This does not assert completeness for hidden historical filters or other CMS accounting systems.",
+  "coverage_scope": "default public ScriptCase commitment ledger view in the observed session",
+  "expense_events_emitted": 1414,
+  "pages": [
+    {
+      "first_commitment": "2026NE000615",
+      "last_commitment": "2026NE000606",
+      "new_records": 10,
+      "page": 1,
+      "records_parsed": 10,
+      "sha256": "b93f5cb02faf1de7f05e804b379f14f16b4df028a9b842f0db6ed533de01133a",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000605",
+      "last_commitment": "2026NE000594",
+      "new_records": 10,
+      "page": 2,
+      "records_parsed": 10,
+      "sha256": "91d5d188c50584357b065712a2ffc3d0f0c82b9f85703688a604850e662fd541",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000592",
+      "last_commitment": "2026NE000583",
+      "new_records": 10,
+      "page": 3,
+      "records_parsed": 10,
+      "sha256": "e90220e16c753910e086b3f89d1a8a8b2c219aaf78f5ba2b37106866f92f2790",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000582",
+      "last_commitment": "2026NE000573",
+      "new_records": 10,
+      "page": 4,
+      "records_parsed": 10,
+      "sha256": "2aac996caa065059c630808a31cb86d81f67afd5b4d5f794d79eb81be25e4716",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000572",
+      "last_commitment": "2026NE000563",
+      "new_records": 10,
+      "page": 5,
+      "records_parsed": 10,
+      "sha256": "3e2fbdcf0f6f5156391acc8cd3963f935a3cc3c6924967866617882653aedf42",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000562",
+      "last_commitment": "2026NE000545",
+      "new_records": 10,
+      "page": 6,
+      "records_parsed": 10,
+      "sha256": "f71ecf2b4d094fd85abf942cb9967fef6986b47f7a9ba22e42e9668ce56c9cc5",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000544",
+      "last_commitment": "2026NE000535",
+      "new_records": 10,
+      "page": 7,
+      "records_parsed": 10,
+      "sha256": "cecc9487f2c1a9d4145ca73cd612fdb430ddfdb41ed2f728ad5c1c159dc678eb",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000534",
+      "last_commitment": "2026NE000524",
+      "new_records": 10,
+      "page": 8,
+      "records_parsed": 10,
+      "sha256": "4f1f58db5fcb878f8b3449a0d9641a4263327c567248911de197c150961c410f",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000523",
+      "last_commitment": "2026NE000512",
+      "new_records": 10,
+      "page": 9,
+      "records_parsed": 10,
+      "sha256": "edef97d623858ce068e73f5b19e9ca9662ecac875f3c4018bac98e3719aae8bd",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000511",
+      "last_commitment": "2026NE000501",
+      "new_records": 10,
+      "page": 10,
+      "records_parsed": 10,
+      "sha256": "5b16b05d5ca67ba052fb90c25ada0a026f1382f88f8549660f3c6246754089fb",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000500",
+      "last_commitment": "2026NE000488",
+      "new_records": 10,
+      "page": 11,
+      "records_parsed": 10,
+      "sha256": "be1f9136ee1506a6c6c8bf7f69d6873cdcd199e3f311c94a8cf06a921d3dae3c",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000487",
+      "last_commitment": "2026NE000476",
+      "new_records": 10,
+      "page": 12,
+      "records_parsed": 10,
+      "sha256": "df214c4e461b06661b98030a42c10777fa4bf095fcfa8937c20b02ac88bc5882",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000474",
+      "last_commitment": "2026NE000465",
+      "new_records": 10,
+      "page": 13,
+      "records_parsed": 10,
+      "sha256": "284f2364d8376fbe79f74a72935f5f3ce47e8b33fbba5fee38cf0f0da7ebec1d",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000464",
+      "last_commitment": "2026NE000456",
+      "new_records": 10,
+      "page": 14,
+      "records_parsed": 10,
+      "sha256": "f0693fd9ddb6f193bae53876e4ff73679c8cd6f0481317451450327d87585cd3",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000455",
+      "last_commitment": "2026NE000446",
+      "new_records": 10,
+      "page": 15,
+      "records_parsed": 10,
+      "sha256": "8e0f452f03031df142d824f088fac6246ce9f793133f4c6967e5a8116cf692ad",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000445",
+      "last_commitment": "2026NE000436",
+      "new_records": 10,
+      "page": 16,
+      "records_parsed": 10,
+      "sha256": "4295411c2770e8ea6c0c75fa817e87e1491580d5010487a97271300444a19b00",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000435",
+      "last_commitment": "2026NE000427",
+      "new_records": 10,
+      "page": 17,
+      "records_parsed": 10,
+      "sha256": "5c924f5c9be311a1ac6fa5d7425eb2c53c3e2f840b19ac7027522bcf6314cfc1",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000426",
+      "last_commitment": "2026NE000416",
+      "new_records": 10,
+      "page": 18,
+      "records_parsed": 10,
+      "sha256": "a910af36d0ce41574efad0623f3cb128a8b6f96681bd75b2ee228289dd101fa6",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000415",
+      "last_commitment": "2026NE000406",
+      "new_records": 10,
+      "page": 19,
+      "records_parsed": 10,
+      "sha256": "44e7be5931ee7d6b24a32dcf8b5132b41f6a7081f818c2b8fec1ca5eb7b4d1cf",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000405",
+      "last_commitment": "2026NE000394",
+      "new_records": 10,
+      "page": 20,
+      "records_parsed": 10,
+      "sha256": "ff38ff587efe86d669a0e147d956d303003ade0686524bc45f5ea2dd7dc9ae41",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000393",
+      "last_commitment": "2026NE000384",
+      "new_records": 10,
+      "page": 21,
+      "records_parsed": 10,
+      "sha256": "13e52d5d737de2a2d1f056355344bfca1309fc2f8cdbb7ef4337c68f215dfe74",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000383",
+      "last_commitment": "2026NE000374",
+      "new_records": 10,
+      "page": 22,
+      "records_parsed": 10,
+      "sha256": "ec81b95ad104a627cb326133759ed8712dfafee7aa3e8909f9961eda4ed60380",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000372",
+      "last_commitment": "2026NE000363",
+      "new_records": 10,
+      "page": 23,
+      "records_parsed": 10,
+      "sha256": "3d5293b5c64f767274d0c4d2336d35b05fa02fe977c1442489b7410c6048bb72",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000362",
+      "last_commitment": "2026NE000353",
+      "new_records": 10,
+      "page": 24,
+      "records_parsed": 10,
+      "sha256": "f69147ea9e196f217124f2b349ae5432cbf9b683a09d3769e8eeb18535647a31",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000352",
+      "last_commitment": "2026NE000343",
+      "new_records": 10,
+      "page": 25,
+      "records_parsed": 10,
+      "sha256": "30f9aa4237e4f671cd3c373861133f8b64e0e9bdac625097a148f3e8759461cc",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000342",
+      "last_commitment": "2026NE000332",
+      "new_records": 10,
+      "page": 26,
+      "records_parsed": 10,
+      "sha256": "3ed83ce39fbc1a57723663cd719d7bb89127a71b484bc0e8163a54125b3305d1",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000331",
+      "last_commitment": "2026NE000321",
+      "new_records": 10,
+      "page": 27,
+      "records_parsed": 10,
+      "sha256": "89e37fdf95649b65eb62178534b04ddcd62874d186a57cf4b5b0bba06c55b0a9",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000320",
+      "last_commitment": "2026NE000313",
+      "new_records": 10,
+      "page": 28,
+      "records_parsed": 10,
+      "sha256": "329e012a0f498b02426cfab33f9f48982b1b511063fc0c1f653e3ddd2371cc83",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000310",
+      "last_commitment": "2026NE000301",
+      "new_records": 10,
+      "page": 29,
+      "records_parsed": 10,
+      "sha256": "76d7f8593526fd1f787d445ed91975d58f54127a031bcda4db2501ecd098cbfd",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000300",
+      "last_commitment": "2026NE000290",
+      "new_records": 10,
+      "page": 30,
+      "records_parsed": 10,
+      "sha256": "688b47a08e5e9754c34409ccd73b6a0dfd6b6e50c738774567008a06d60be4f7",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000289",
+      "last_commitment": "2026NE000279",
+      "new_records": 10,
+      "page": 31,
+      "records_parsed": 10,
+      "sha256": "3118294ef7b3478caa616b4afc528b849198e1c84272467861fbb9df3a45f55e",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000278",
+      "last_commitment": "2026NE000269",
+      "new_records": 10,
+      "page": 32,
+      "records_parsed": 10,
+      "sha256": "caf129b25d7b9471918e26fe0a23ded3bc30633920cdf2eb1ead1536bc8df585",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000268",
+      "last_commitment": "2026NE000260",
+      "new_records": 10,
+      "page": 33,
+      "records_parsed": 10,
+      "sha256": "c85a7b46a6ab20084e9af78b1a37422522acfe942ab9626affe1d01259cbdf70",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000259",
+      "last_commitment": "2026NE000249",
+      "new_records": 10,
+      "page": 34,
+      "records_parsed": 10,
+      "sha256": "4b3c74bfd4f6dddfc9cb3494531f1d7c0b58f32eaeb15036f3a7dfc4e5bc98bc",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000246",
+      "last_commitment": "2026NE000248",
+      "new_records": 10,
+      "page": 35,
+      "records_parsed": 10,
+      "sha256": "272a2b57805bc2e14676c983e2bb6eac99f72fc3aaf5d75e652d34c84c6c9196",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000247",
+      "last_commitment": "2026NE000227",
+      "new_records": 10,
+      "page": 36,
+      "records_parsed": 10,
+      "sha256": "f9e8390968b1597a24f29ce55fedb63655d9a568a2f325e35eea3f1566cfd92a",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000226",
+      "last_commitment": "2026NE000215",
+      "new_records": 10,
+      "page": 37,
+      "records_parsed": 10,
+      "sha256": "cb4ac5b3c13be2416cf67ae9aa085e13a8ad0c0ab66ac6e9d111102663519828",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000213",
+      "last_commitment": "2026NE000204",
+      "new_records": 10,
+      "page": 38,
+      "records_parsed": 10,
+      "sha256": "c5000e1039b3e622b18303dc4f00505029ffbfbe6234e8b32e2bf406f1f17c9e",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000203",
+      "last_commitment": "2026NE000193",
+      "new_records": 10,
+      "page": 39,
+      "records_parsed": 10,
+      "sha256": "39a45eb57d86c0467882dc2f74955c416dea0f3ecbe252edfa16b01834082a2e",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000192",
+      "last_commitment": "2026NE000183",
+      "new_records": 10,
+      "page": 40,
+      "records_parsed": 10,
+      "sha256": "6877c73f864d2fa1e22e62e2ad70d27c08c7460133fa698ca89a0e1c6cde1896",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000182",
+      "last_commitment": "2026NE000173",
+      "new_records": 10,
+      "page": 41,
+      "records_parsed": 10,
+      "sha256": "a319afaec16601ee75ddda66ba7daa8529546e9e7b23b66b6df74d41230c0889",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000172",
+      "last_commitment": "2026NE000163",
+      "new_records": 10,
+      "page": 42,
+      "records_parsed": 10,
+      "sha256": "99f3b1f561cd64607b8f4b97a42caa417529994a5ac0315f7c2808a0260d34f7",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000162",
+      "last_commitment": "2026NE000150",
+      "new_records": 10,
+      "page": 43,
+      "records_parsed": 10,
+      "sha256": "704d2b595f29b2bec018b22d5cf64d58be39e3122eace6921c0e2f96d33599a0",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000151",
+      "last_commitment": "2026NE000141",
+      "new_records": 10,
+      "page": 44,
+      "records_parsed": 10,
+      "sha256": "eec89ee091f0242997ab1091fe00b3fbe1c4c4e9183c737ccbfca9bae7a95cf2",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000140",
+      "last_commitment": "2026NE000124",
+      "new_records": 10,
+      "page": 45,
+      "records_parsed": 10,
+      "sha256": "659e4f2ac44e9fa094888c8119c4525c12075f490473e3f0fed03ddf2a86e7c3",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000123",
+      "last_commitment": "2026NE000112",
+      "new_records": 10,
+      "page": 46,
+      "records_parsed": 10,
+      "sha256": "a9071650d5e01589184736dad7676f878815c1d35c83b2d5c5a2b67581a8cb00",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000110",
+      "last_commitment": "2026NE000101",
+      "new_records": 10,
+      "page": 47,
+      "records_parsed": 10,
+      "sha256": "02f2e30571805c05f06fa87713e50d475b39f4450e24f25565f5c46a45b4848b",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000100",
+      "last_commitment": "2026NE000092",
+      "new_records": 10,
+      "page": 48,
+      "records_parsed": 10,
+      "sha256": "c175fea5406069d11920635cc76cd39ffbc11b923c18fcf9b66740bf9ec5d595",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000091",
+      "last_commitment": "2026NE000071",
+      "new_records": 10,
+      "page": 49,
+      "records_parsed": 10,
+      "sha256": "15f4df41f71f1ef82831f639662e8f6be5db9d78e656f82d5facbd1878fb2f4f",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000070",
+      "last_commitment": "2026NE000059",
+      "new_records": 10,
+      "page": 50,
+      "records_parsed": 10,
+      "sha256": "e0d9e404ce3bd2585c5a9bb8cd004f469d1892f2bfb9ccad7701c3d92cebc74f",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000058",
+      "last_commitment": "2026NE000049",
+      "new_records": 10,
+      "page": 51,
+      "records_parsed": 10,
+      "sha256": "c25bf6d1aed0cd91084709935b6572d1727511a42fb6774cb6e061580053c6c6",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000048",
+      "last_commitment": "2026NE000039",
+      "new_records": 10,
+      "page": 52,
+      "records_parsed": 10,
+      "sha256": "f60e5a1b5acdc5cb1ce0456d7a461c350899e3bb63392dba967c80aedac0cd0f",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000038",
+      "last_commitment": "2026NE000029",
+      "new_records": 10,
+      "page": 53,
+      "records_parsed": 10,
+      "sha256": "e1f391051a150b66fe6b6d03e35cc1f7806f7f6d538d63501fed3dc53fe7718e",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000028",
+      "last_commitment": "2026NE000079",
+      "new_records": 10,
+      "page": 54,
+      "records_parsed": 10,
+      "sha256": "c95dc8401c5abbe5e3800afdc9e8b6cc72073b91d92c7e58a965c2e3d81fa2ba",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000126",
+      "last_commitment": "2026NE000011",
+      "new_records": 10,
+      "page": 55,
+      "records_parsed": 10,
+      "sha256": "f0168db2747ed745ade2d4e5cd9c92b778117060c4171cd6b461ffa621d3e476",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000010",
+      "last_commitment": "2026NE000134",
+      "new_records": 10,
+      "page": 56,
+      "records_parsed": 10,
+      "sha256": "cdfd366ad59388e1ab45aa0d6ebe1ca17e50485647ded63ad84685a451a70b0e",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2026NE000085",
+      "last_commitment": "2025NE001020",
+      "new_records": 10,
+      "page": 57,
+      "records_parsed": 10,
+      "sha256": "4edf3790f5dfc1af4e32e9d17af2956a4c985e1fb507f6dd0c095a27b0ca2b37",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE001012",
+      "last_commitment": "2025NE000983",
+      "new_records": 10,
+      "page": 58,
+      "records_parsed": 10,
+      "sha256": "333ee2023fcaca1fb892888192b05fd7abc4ce2b916f8cd4e095888a07b0b1e7",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000982",
+      "last_commitment": "2025NE000944",
+      "new_records": 10,
+      "page": 59,
+      "records_parsed": 10,
+      "sha256": "90e630a31914a0235fa00bc9a9d24801344b962f82f103a1d2210c7eee432e5c",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000943",
+      "last_commitment": "2025NE000933",
+      "new_records": 10,
+      "page": 60,
+      "records_parsed": 10,
+      "sha256": "c03a97bb4ecd32392bc2ce90479e2e91023ec8c41b35b40e692b03f045f4600a",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000932",
+      "last_commitment": "2025NE000951",
+      "new_records": 10,
+      "page": 61,
+      "records_parsed": 10,
+      "sha256": "08bbac8b733aa808ca625277a3157bfe648fed9b2dc4b925528db33f1b08b9b3",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000950",
+      "last_commitment": "2025NE000907",
+      "new_records": 10,
+      "page": 62,
+      "records_parsed": 10,
+      "sha256": "0e4d1a0d0261274aef289174c445c067c8726f958281e074fa21ecc29f8034aa",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000906",
+      "last_commitment": "2025NE000884",
+      "new_records": 10,
+      "page": 63,
+      "records_parsed": 10,
+      "sha256": "bfcf09fd9c61290dae5e5a90a55884fda870feb2d79d6b2d58ae2d7b12e348d5",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000883",
+      "last_commitment": "2025NE000875",
+      "new_records": 9,
+      "page": 64,
+      "records_parsed": 9,
+      "sha256": "5d84284720328750e5045bd494efd5aab832428c17dbc26ddb6bcc3ba0d32d46",
+      "status_code": 200,
+      "visible_records": 9
+    },
+    {
+      "first_commitment": "2025NE000873",
+      "last_commitment": "2025NE000864",
+      "new_records": 10,
+      "page": 65,
+      "records_parsed": 10,
+      "sha256": "e0a66bb4389b40562247dcd0e89acbe608544fab4520596b5369ff2ef7e497c3",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000863",
+      "last_commitment": "2025NE000853",
+      "new_records": 10,
+      "page": 66,
+      "records_parsed": 10,
+      "sha256": "4500cbbc06f70ce461e7478df17904981edab8d41173df1d87624787d6705054",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000852",
+      "last_commitment": "2025NE000843",
+      "new_records": 10,
+      "page": 67,
+      "records_parsed": 10,
+      "sha256": "8bbfb4d94652ea75eca021d19e749b1dfff8b2e9be002eba2229cc9f69524fc4",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE00838",
+      "last_commitment": "2025NE000831",
+      "new_records": 10,
+      "page": 68,
+      "records_parsed": 10,
+      "sha256": "e5ec7e0905deabea94b3aa7b5595b9ea2c9544858c3a9aeb0aa9db0af30598ec",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000830",
+      "last_commitment": "2025NE812",
+      "new_records": 10,
+      "page": 69,
+      "records_parsed": 10,
+      "sha256": "6b8e26bc41d2ae934da63a36e524947b6090d5dd7ce6f3a69b07b76b20f67c00",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000816",
+      "last_commitment": "2025NE000807",
+      "new_records": 10,
+      "page": 70,
+      "records_parsed": 10,
+      "sha256": "354ef00f5e3d40cb68147570e1286f13328c385d4e792e0edf1eda6328e222a6",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000806",
+      "last_commitment": "2025NE000793",
+      "new_records": 10,
+      "page": 71,
+      "records_parsed": 10,
+      "sha256": "7a6c8667d60b3c7a741b43ff2475b11c3a8604f76e1dab2154783dbbf1b9a393",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000792",
+      "last_commitment": "2025NE000782",
+      "new_records": 10,
+      "page": 72,
+      "records_parsed": 10,
+      "sha256": "37f336daef1219f967a33faee291efa84d37d113eed7f886d129eb69517ffffd",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000778",
+      "last_commitment": "2025NE000768",
+      "new_records": 10,
+      "page": 73,
+      "records_parsed": 10,
+      "sha256": "b714fdb96199b4adc40e03019ef37cb1ee95798469355a2332f1c2468aedd562",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000767",
+      "last_commitment": "2025NE000760",
+      "new_records": 10,
+      "page": 74,
+      "records_parsed": 10,
+      "sha256": "26c75707511b4e2d7c4f579a90888e859028da101210ee8893d73e4a1ff5027c",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000759",
+      "last_commitment": "2025NE000746",
+      "new_records": 10,
+      "page": 75,
+      "records_parsed": 10,
+      "sha256": "fc0f9aabae3e8ec68634876074ef36f9fd75845af76dd6d0d734cd6dc3fe5557",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000745",
+      "last_commitment": "2025NE000738",
+      "new_records": 8,
+      "page": 76,
+      "records_parsed": 8,
+      "sha256": "decd1bc9e990dca74365e4f8a888e4d50aff3476caed69af8f0bfc52e5a3f82b",
+      "status_code": 200,
+      "visible_records": 8
+    },
+    {
+      "first_commitment": "2025NE000737",
+      "last_commitment": "2025NE000729",
+      "new_records": 9,
+      "page": 77,
+      "records_parsed": 9,
+      "sha256": "061514baeb022cbaf5e3ee6bbf54fc34de6e81200cfe07e5151f4f533cea55bd",
+      "status_code": 200,
+      "visible_records": 9
+    },
+    {
+      "first_commitment": "2025NE000728",
+      "last_commitment": "2025NE000720",
+      "new_records": 9,
+      "page": 78,
+      "records_parsed": 9,
+      "sha256": "057cd2156dcf4ab6fe02e705d8a571b45cd0ba0d2ee6c2270c531ba888f80fd6",
+      "status_code": 200,
+      "visible_records": 9
+    },
+    {
+      "first_commitment": "2025NE000719",
+      "last_commitment": "2025NE000710",
+      "new_records": 10,
+      "page": 79,
+      "records_parsed": 10,
+      "sha256": "9b4c49e49f7162604991290aa4e6e4d987ece5d0be408ea0a26722698d96834e",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000709",
+      "last_commitment": "2025NE000703",
+      "new_records": 7,
+      "page": 80,
+      "records_parsed": 7,
+      "sha256": "d44425255efad00e195457687347753a4803465807991aa00f5610a60df2d71b",
+      "status_code": 200,
+      "visible_records": 7
+    },
+    {
+      "first_commitment": "2025NE000702",
+      "last_commitment": "2025NE000695",
+      "new_records": 10,
+      "page": 81,
+      "records_parsed": 10,
+      "sha256": "be03c0d9c25ceabce468e05242736a4d7b84ca79c6ef1a8901a70b0f46688d91",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000694",
+      "last_commitment": "2025NE000684",
+      "new_records": 8,
+      "page": 82,
+      "records_parsed": 8,
+      "sha256": "ad50d2ef883e35b2ef98040f34f0c3d978bb667bfcb2d69adb47c47a7b6fb65c",
+      "status_code": 200,
+      "visible_records": 8
+    },
+    {
+      "first_commitment": "2025NE000683",
+      "last_commitment": "2025NE000672",
+      "new_records": 8,
+      "page": 83,
+      "records_parsed": 8,
+      "sha256": "8530070577a1945d6f9aa2f5efa5a3526d1dd3c92ab295fb16eae14a6d4c39e7",
+      "status_code": 200,
+      "visible_records": 8
+    },
+    {
+      "first_commitment": "2025NE000673",
+      "last_commitment": "2025NE000661",
+      "new_records": 10,
+      "page": 84,
+      "records_parsed": 10,
+      "sha256": "0c1f8ec6ad541f87587469df4cbf3f39ee673a3079950be670c4b26c2ea88a49",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000660",
+      "last_commitment": "2025NE000651",
+      "new_records": 10,
+      "page": 85,
+      "records_parsed": 10,
+      "sha256": "aead76d571a0a0658cb317e21acf0ae7fba44bcc12277a71b6a1403c85ebd95e",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000650",
+      "last_commitment": "2025NE000644",
+      "new_records": 8,
+      "page": 86,
+      "records_parsed": 8,
+      "sha256": "373e8a9116dee9dc7bef69798e1f1896140cfe728487f8158d17225503e02a8d",
+      "status_code": 200,
+      "visible_records": 8
+    },
+    {
+      "first_commitment": "2025NE000643",
+      "last_commitment": "2025NE000633",
+      "new_records": 10,
+      "page": 87,
+      "records_parsed": 10,
+      "sha256": "2499c431123250b6e53ff93b8f999f658825f43c5020b1531e1bde316bb3b634",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000632",
+      "last_commitment": "2025NE000622",
+      "new_records": 10,
+      "page": 88,
+      "records_parsed": 10,
+      "sha256": "c8e6600d2922e1ed61050f6eb63a2d43bbb7e230d2c38a8129eba815574624c5",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000621",
+      "last_commitment": "2025NE000612",
+      "new_records": 10,
+      "page": 89,
+      "records_parsed": 10,
+      "sha256": "406f50739d00c54725090414461b16dfbffca0ff696fd36e290b5889bd864fbe",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000611",
+      "last_commitment": "2025NE000608",
+      "new_records": 5,
+      "page": 90,
+      "records_parsed": 5,
+      "sha256": "a9cb81869e7ebf2c7683266cc137111c2f4823f94b6fed2158e11e2675841cf7",
+      "status_code": 200,
+      "visible_records": 5
+    },
+    {
+      "first_commitment": "2025NE000606",
+      "last_commitment": "2025NE000598",
+      "new_records": 8,
+      "page": 91,
+      "records_parsed": 8,
+      "sha256": "6916af5dc70525d9df07c1a071fd2b63ecc16001473ec015db1501d447444b82",
+      "status_code": 200,
+      "visible_records": 8
+    },
+    {
+      "first_commitment": "2025NE000596",
+      "last_commitment": "2025NE000591",
+      "new_records": 6,
+      "page": 92,
+      "records_parsed": 6,
+      "sha256": "90ad461d90c25c86c2276a9791f10a14e4722a3ad8eab0c110467a37d9bf1d30",
+      "status_code": 200,
+      "visible_records": 6
+    },
+    {
+      "first_commitment": "2025NE000590",
+      "last_commitment": "2025NE000581",
+      "new_records": 10,
+      "page": 93,
+      "records_parsed": 10,
+      "sha256": "39721b19e3bd100ff2931553950e982d0116e721b28fa1f823c8cad45a2b616c",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000580",
+      "last_commitment": "2025NE000571",
+      "new_records": 10,
+      "page": 94,
+      "records_parsed": 10,
+      "sha256": "f3d4922ac5ce8b9808fb7d0d1a0ec9d38d1b6af77b8e5033c50e1900d47aea01",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000570",
+      "last_commitment": "2025NE000562",
+      "new_records": 9,
+      "page": 95,
+      "records_parsed": 9,
+      "sha256": "3ba83ffe01a89fcbb51dedd88e52bc27dfc1be0986ea11a29088bf5c2a5d4e28",
+      "status_code": 200,
+      "visible_records": 9
+    },
+    {
+      "first_commitment": "2025NE000561",
+      "last_commitment": "2025NE000552",
+      "new_records": 10,
+      "page": 96,
+      "records_parsed": 10,
+      "sha256": "832439ca1bd99e5792cdcd438083e2245cc9cae3baf9b50f08fd6cc938d80389",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000551",
+      "last_commitment": "2025NE000542",
+      "new_records": 10,
+      "page": 97,
+      "records_parsed": 10,
+      "sha256": "46ec5395390485897c788ff0d1181521b784148026f447f40844c72298949c8c",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000541",
+      "last_commitment": "2025NE000532",
+      "new_records": 9,
+      "page": 98,
+      "records_parsed": 9,
+      "sha256": "f8c8b96824b4a3640b65a93a4a6e369bd71732a84d609dd4b48318af0bc4ff95",
+      "status_code": 200,
+      "visible_records": 9
+    },
+    {
+      "first_commitment": "2025NE000531",
+      "last_commitment": "2025NE000516",
+      "new_records": 10,
+      "page": 99,
+      "records_parsed": 10,
+      "sha256": "5b524cf360c6bc5f246407632f49fb0297363faa2f9064835002c06cb079cad1",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000515",
+      "last_commitment": "2025NE000506",
+      "new_records": 10,
+      "page": 100,
+      "records_parsed": 10,
+      "sha256": "ea09529c7fec05f931f3607c381a8f7b5d314d2d8cc57015548de9ca38d2598e",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000505",
+      "last_commitment": "2025NE000496",
+      "new_records": 10,
+      "page": 101,
+      "records_parsed": 10,
+      "sha256": "e0c44ef5cd7c22ed4a0762abf16e9f437734d69022e527c1c47c423a98b874a1",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000495",
+      "last_commitment": "2025NE000488",
+      "new_records": 7,
+      "page": 102,
+      "records_parsed": 7,
+      "sha256": "b4ced8151b9920a5c339204d4614b6dbf42f99b9199c8ae9306bde8929c6c306",
+      "status_code": 200,
+      "visible_records": 7
+    },
+    {
+      "first_commitment": "2025NE000485",
+      "last_commitment": "2025NE000477",
+      "new_records": 9,
+      "page": 103,
+      "records_parsed": 9,
+      "sha256": "5a0f328319c94731e4a535925098b077946a6cacc13720760a4cdafd2d00d4d4",
+      "status_code": 200,
+      "visible_records": 9
+    },
+    {
+      "first_commitment": "2025NE000476",
+      "last_commitment": "2025NE000468",
+      "new_records": 9,
+      "page": 104,
+      "records_parsed": 9,
+      "sha256": "464aa1855eaf4f01675eb3688ccf9cdd58fc63c982a7d28f2cf741707ed25dfa",
+      "status_code": 200,
+      "visible_records": 9
+    },
+    {
+      "first_commitment": "2025NE000467",
+      "last_commitment": "2025NE000458",
+      "new_records": 10,
+      "page": 105,
+      "records_parsed": 10,
+      "sha256": "6cc576d8bbf602eaf2623209962c2284c2aa558429f63df77c3ea49034ec687c",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000457",
+      "last_commitment": "2025NE000449",
+      "new_records": 9,
+      "page": 106,
+      "records_parsed": 9,
+      "sha256": "7cccbfe7e144874a23dab3bc42dba02439b26f3f44b302bba086740942ad2d14",
+      "status_code": 200,
+      "visible_records": 9
+    },
+    {
+      "first_commitment": "2025NE000448",
+      "last_commitment": "2025NE000442",
+      "new_records": 7,
+      "page": 107,
+      "records_parsed": 7,
+      "sha256": "7f8b3e703fda3a27a80d030920f009e92f3b6ccbf973cbe0324329496e109f07",
+      "status_code": 200,
+      "visible_records": 7
+    },
+    {
+      "first_commitment": "2025NE000441",
+      "last_commitment": "2025NE000431",
+      "new_records": 10,
+      "page": 108,
+      "records_parsed": 10,
+      "sha256": "102108264a95752d982e19d0cfdc7d989cabcd5b9003aca76ae7577732e1c2ce",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000430",
+      "last_commitment": "2025NE000422",
+      "new_records": 8,
+      "page": 109,
+      "records_parsed": 8,
+      "sha256": "e8e211a997e2320abf29dadd01951d39820ca23bcb4771aa3628d384eb2058d7",
+      "status_code": 200,
+      "visible_records": 8
+    },
+    {
+      "first_commitment": "2025NE000420",
+      "last_commitment": "2025NE000414",
+      "new_records": 7,
+      "page": 110,
+      "records_parsed": 7,
+      "sha256": "e9a18a03b5eeeee7691ef9ef0efc32025da0d2f716a36643658ad65db6669f07",
+      "status_code": 200,
+      "visible_records": 7
+    },
+    {
+      "first_commitment": "2025NE000413",
+      "last_commitment": "2025NE000407",
+      "new_records": 7,
+      "page": 111,
+      "records_parsed": 7,
+      "sha256": "e1901317a1bcda63680b62771f5e353bd4dfb8c12c4f74cb494aec7ce0d9e234",
+      "status_code": 200,
+      "visible_records": 7
+    },
+    {
+      "first_commitment": "2025NE000406",
+      "last_commitment": "2025NE000397",
+      "new_records": 10,
+      "page": 112,
+      "records_parsed": 10,
+      "sha256": "a1f7d52efe0b23b8cc5e727138451a5cc6b222d1474a9c0d8e380f355de9503c",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000395",
+      "last_commitment": "2025NE000386",
+      "new_records": 10,
+      "page": 113,
+      "records_parsed": 10,
+      "sha256": "fff6b33d74641b4d227d2aa758930258a875ae7f3dcd09d586c3d8c773845cb4",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000385",
+      "last_commitment": "2025NE000378",
+      "new_records": 8,
+      "page": 114,
+      "records_parsed": 8,
+      "sha256": "990668142ac1465b08b4982fc37d3ec6a12f03d519973333ef263cf70d76d6da",
+      "status_code": 200,
+      "visible_records": 8
+    },
+    {
+      "first_commitment": "2025NE000377",
+      "last_commitment": "2025NE000368",
+      "new_records": 10,
+      "page": 115,
+      "records_parsed": 10,
+      "sha256": "7bebd356a3d5694a98fbecc539ac148f59217961e2da9d96fc2ee035405e79dc",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000367",
+      "last_commitment": "2025NE000358",
+      "new_records": 10,
+      "page": 116,
+      "records_parsed": 10,
+      "sha256": "58a72ee59b898dd5f9a010e2e44bbf12f0771ecdd2f042100188cebe09964053",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000357",
+      "last_commitment": "2025NE000348",
+      "new_records": 10,
+      "page": 117,
+      "records_parsed": 10,
+      "sha256": "336a2311fc81b1d3a49c9a24fcd216e8e3ebf4bda08910ebf5bdab8f7a25ef2b",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000347",
+      "last_commitment": "2025NE000337",
+      "new_records": 10,
+      "page": 118,
+      "records_parsed": 10,
+      "sha256": "cd3d0613bea66b1ad6c8fd79cb1a62a8f89f182853956458ebd1c3c7cf020afa",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000336",
+      "last_commitment": "2025NE000327",
+      "new_records": 8,
+      "page": 119,
+      "records_parsed": 8,
+      "sha256": "fc40b41f2ce3956e07d76658dfd02dd369e4af88821aa3422f7b4ac4043073a3",
+      "status_code": 200,
+      "visible_records": 8
+    },
+    {
+      "first_commitment": "2025NE000326",
+      "last_commitment": "2025NE000318",
+      "new_records": 7,
+      "page": 120,
+      "records_parsed": 7,
+      "sha256": "a8f98105a5a7449abd5b7d53cc5194ef39fa0bac674b22a218723b9d9ac5020c",
+      "status_code": 200,
+      "visible_records": 7
+    },
+    {
+      "first_commitment": "2025NE000317",
+      "last_commitment": "2025NE000308",
+      "new_records": 10,
+      "page": 121,
+      "records_parsed": 10,
+      "sha256": "60788f8601f2e1567d1a9f3fbb54c21e5de30e86899a79d51a62e2886b2d5c2b",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000307",
+      "last_commitment": "2025NE000298",
+      "new_records": 10,
+      "page": 122,
+      "records_parsed": 10,
+      "sha256": "20cbbfc629bb9445dd3e5ba69e9545de01ed17b5aa8e6879b9b5cb4a6adc0f82",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000297",
+      "last_commitment": "2025NE000288",
+      "new_records": 10,
+      "page": 123,
+      "records_parsed": 10,
+      "sha256": "072d0e7edfc275589d1436932eee7a7c9011ad284ed8d70b41034a3ce834eb00",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000287",
+      "last_commitment": "2025NE000278",
+      "new_records": 10,
+      "page": 124,
+      "records_parsed": 10,
+      "sha256": "0d9f4e2be7da4c076646ac485e791ce3ed15a38be4b437fcbf309460b221ede4",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000261",
+      "last_commitment": "2025NE000270",
+      "new_records": 10,
+      "page": 125,
+      "records_parsed": 10,
+      "sha256": "dcb16080e139ec5deac1503bda5eb26d4e56a0f9f60485c5e8ec45ad7d6b07ab",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000269",
+      "last_commitment": "2025NE000258",
+      "new_records": 10,
+      "page": 126,
+      "records_parsed": 10,
+      "sha256": "7345b0372c43a32c9cf7862758f52937a20802951dd5e2820a8fa2d6ed8a814c",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000257",
+      "last_commitment": "2025NE000246",
+      "new_records": 10,
+      "page": 127,
+      "records_parsed": 10,
+      "sha256": "8cc06456f5b1c72abfd5f57dc294e5abbf699ccd898d625dcaf2868569fa4ae8",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000245",
+      "last_commitment": "2025NE000237",
+      "new_records": 9,
+      "page": 128,
+      "records_parsed": 9,
+      "sha256": "011b0f6db863b5c06ac7b5f5ba61ca5542e41546597d644818d62dad00d894a7",
+      "status_code": 200,
+      "visible_records": 9
+    },
+    {
+      "first_commitment": "2025NE000236",
+      "last_commitment": "2025NE000228",
+      "new_records": 10,
+      "page": 129,
+      "records_parsed": 10,
+      "sha256": "47246fec40baf0e5b2073d1d7906076fd1fed4518c586c24b06b5a57f35af0af",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000227",
+      "last_commitment": "2025NE000218",
+      "new_records": 10,
+      "page": 130,
+      "records_parsed": 10,
+      "sha256": "4a2cd1203afbc571f749d3e1a490c740a8a3b5296439efd6f2bc9235d670b325",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000217",
+      "last_commitment": "2025NE000207",
+      "new_records": 10,
+      "page": 131,
+      "records_parsed": 10,
+      "sha256": "096a25677a9e6430bd623311231f574795dc1bc543baa4569d5e4d377c4fd161",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000206",
+      "last_commitment": "2025NE000196",
+      "new_records": 9,
+      "page": 132,
+      "records_parsed": 9,
+      "sha256": "1a869c909c5365be152a034c52fb7964a75e629ccc59de2188c795cb8c2be1e9",
+      "status_code": 200,
+      "visible_records": 9
+    },
+    {
+      "first_commitment": "2025NE000195",
+      "last_commitment": "2025NE000185",
+      "new_records": 10,
+      "page": 133,
+      "records_parsed": 10,
+      "sha256": "d5cebba3fc221da9cbbd1946fcaad824ae90b6bd41fde8f07b25178ac7bf436a",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000180",
+      "last_commitment": "2025NE000174",
+      "new_records": 10,
+      "page": 134,
+      "records_parsed": 10,
+      "sha256": "e7bee3401b8ac820f521607e5ff19cb67917995ca30e6e703c4b1efb5358dd45",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000173",
+      "last_commitment": "2025NE000163",
+      "new_records": 10,
+      "page": 135,
+      "records_parsed": 10,
+      "sha256": "4a94fda7153765c987096be125d970788ac7ddce1dd6d66dcb13ab4dfcb66b85",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000162",
+      "last_commitment": "2025NE000153",
+      "new_records": 10,
+      "page": 136,
+      "records_parsed": 10,
+      "sha256": "3c3fb6c8ef8094e9c627f0e05a85cbc8d59b0144e72ab301563cabb9fc3456f8",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000152",
+      "last_commitment": "2025NE000142",
+      "new_records": 10,
+      "page": 137,
+      "records_parsed": 10,
+      "sha256": "be867c8d2cfdf3a368a14ddb10c06ab30a3ddae0851f6402c4d775dc2e3ac380",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000138",
+      "last_commitment": "2025NE000140",
+      "new_records": 9,
+      "page": 138,
+      "records_parsed": 9,
+      "sha256": "43fc18875557172243adae7cb1ce846a3068ce4386da88643957848f19055642",
+      "status_code": 200,
+      "visible_records": 9
+    },
+    {
+      "first_commitment": "2025NE000131",
+      "last_commitment": "2025NE000128",
+      "new_records": 4,
+      "page": 139,
+      "records_parsed": 4,
+      "sha256": "a69e5c7b85703701a8470d68296ce3e37e29e3ac1ae65aad73d4b9a00c45a50a",
+      "status_code": 200,
+      "visible_records": 4
+    },
+    {
+      "first_commitment": "2025NE000127",
+      "last_commitment": "2025NE000119",
+      "new_records": 9,
+      "page": 140,
+      "records_parsed": 9,
+      "sha256": "7d001d92544d2096af5d58c2cea72248dba5dae9b94ab435a387332f3fe918e3",
+      "status_code": 200,
+      "visible_records": 9
+    },
+    {
+      "first_commitment": "2025NE000117",
+      "last_commitment": "2025NE000104",
+      "new_records": 10,
+      "page": 141,
+      "records_parsed": 10,
+      "sha256": "47a4b2a5530190be35cdedda7b493e00dd8a3f5e3656d92c0b1822b1ffb41090",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000100",
+      "last_commitment": "2025NE000097",
+      "new_records": 7,
+      "page": 142,
+      "records_parsed": 7,
+      "sha256": "907457f13728269ce669a9489f72549c43e722cf26cc3430deff6b815cac2147",
+      "status_code": 200,
+      "visible_records": 7
+    },
+    {
+      "first_commitment": "2025NE000081",
+      "last_commitment": "2025NE000069",
+      "new_records": 10,
+      "page": 143,
+      "records_parsed": 10,
+      "sha256": "aad8e992a0cee3a576f883ac8dd13ab90d5730b2291e797aeb5f1a07facd37b4",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000068",
+      "last_commitment": "2025NE000058",
+      "new_records": 10,
+      "page": 144,
+      "records_parsed": 10,
+      "sha256": "83319d79f27dd8b0740e8d940a895fe71eaa66c52ea56f6b584b283f3aa9b6e1",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000057",
+      "last_commitment": "2025NE000048",
+      "new_records": 10,
+      "page": 145,
+      "records_parsed": 10,
+      "sha256": "b52a0f05ef37ef695e27cdb8d9d624fd8ca1cb0366625c7bbf3897d39fd9027f",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000047",
+      "last_commitment": "2025NE000038",
+      "new_records": 10,
+      "page": 146,
+      "records_parsed": 10,
+      "sha256": "673497fbd5448855a56d6255b91b91159ce7cddb486977009d400372b0d11f0e",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000037",
+      "last_commitment": "2025NE000022",
+      "new_records": 10,
+      "page": 147,
+      "records_parsed": 10,
+      "sha256": "96ce7227e98d788f08027c24500229949785db26b549bcafb9423329b84267b5",
+      "status_code": 200,
+      "visible_records": 10
+    },
+    {
+      "first_commitment": "2025NE000021",
+      "last_commitment": "2025NE000090",
+      "new_records": 8,
+      "page": 148,
+      "records_parsed": 8,
+      "sha256": "63a6a859a9526782a4d706fd4a9dba1f69ad31cbfd638c368e3ccf2aa2bffc64",
+      "status_code": 200,
+      "visible_records": 8
+    },
+    {
+      "first_commitment": null,
+      "last_commitment": null,
+      "new_records": 0,
+      "page": 149,
+      "records_parsed": 0,
+      "sha256": "acb33fabc4b5480abad08eb1fa0e054ddf8580130d4fa1a51ec720500ecaa1cd",
+      "status_code": 200,
+      "visible_records": 0
+    }
+  ],
+  "pages_with_records": 148,
+  "parse_gaps": [],
+  "parser_complete_for_visible_records": true,
+  "privacy_note": "Individual CPF values displayed by the source are masked in normalized output; CNPJ values are retained.",
+  "records_parsed": 1414,
+  "source_exhausted": true,
+  "source_url": "https://cmsalvador.sys.inf.br/ca/gridRegistroEmpenho/",
+  "stopped_error": null,
+  "termination_reason": "source_returned_empty_page"
+}
