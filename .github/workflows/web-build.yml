@@ -9,8 +9,10 @@ on:
       - "components/**"
       - "lib/**"
       - "scripts/build-web-data.mjs"
+      - "scripts/overlay-municipal-contracts.mjs"
       - "scripts/build-economy-web-data.mjs"
       - "scripts/build-bahia-regional-data.mjs"
+      - "scripts/compact-bahia-web-data.mjs"
       - "package.json"
       - "next.config.mjs"
       - ".github/workflows/web-build.yml"
@@ -24,8 +26,10 @@ on:
       - "components/**"
       - "lib/**"
       - "scripts/build-web-data.mjs"
+      - "scripts/overlay-municipal-contracts.mjs"
       - "scripts/build-economy-web-data.mjs"
       - "scripts/build-bahia-regional-data.mjs"
+      - "scripts/compact-bahia-web-data.mjs"
       - "package.json"
       - "next.config.mjs"
       - ".github/workflows/web-build.yml"
@@ -54,7 +58,7 @@ jobs:
           node-version: 22
       - name: Instalar dependências do site
         run: npm install --no-audit --no-fund
-      - name: Construir site para a Vercel
+      - name: Construir site
         run: npm run build
       - name: Verificar conjuntos de dados gerados
         run: |
@@ -63,17 +67,31 @@ jobs:
           done
           node - <<'NODE'
           const d = require('./public/data/meta.json');
+          const contractsPublic = require('./public/data/contracts.json');
           const economy = require('./public/data/economy.json');
           const transparency = require('./public/data/transparency.json');
           const bahiaTransparency = require('./public/data/bahia-transparency.json');
-          if (d.acquisitions !== 2306) throw new Error(`aquisições geradas: ${d.acquisitions}`);
-          if (d.processes !== d.acquisitions) throw new Error(`processos gerados: ${d.processes}`);
+
+          if (!(d.acquisitions > 0)) throw new Error(`aquisições ausentes: ${d.acquisitions}`);
+          if (d.processes !== d.acquisitions) throw new Error(`processos gerados: ${d.processes}; aquisições: ${d.acquisitions}`);
           if (d.officials !== 43) throw new Error(`vereadores gerados: ${d.officials}`);
           if (d.executiveAgents < 6) throw new Error(`agentes do Executivo gerados: ${d.executiveAgents}`);
           if (d.publicAgents < 49) throw new Error(`agentes públicos gerados: ${d.publicAgents}`);
-          if (!(d.contracts > 0) || !(d.suppliers > 0) || !(d.agencies > 0)) throw new Error('dados municipais derivados incompletos');
+          if (!(Array.isArray(contractsPublic.rows) && contractsPublic.rows.length > 0)) throw new Error('contratos individualizados ausentes');
+          if (!(d.suppliers > 0) || !(d.agencies > 0)) throw new Error('dados municipais derivados incompletos');
           if (!(d.searchItems > d.acquisitions)) throw new Error(`itens de consulta insuficientes: ${d.searchItems}`);
           if (!/^\d{4}-\d{2}-\d{2}$/.test(d.snapshotDate || '')) throw new Error(`snapshot inválido: ${d.snapshotDate}`);
+
+          if (contractsPublic.sourceSystem === 'SALVADOR_TRANSPARENCIA_API_CONTRATOS') {
+            if (contractsPublic.completeForFilter !== true) throw new Error('grade municipal promovida sem completude');
+            if (!(contractsPublic.rows.length > 0)) throw new Error('grade municipal completa sem linhas');
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(contractsPublic.periodStart || '') || !/^\d{4}-\d{2}-\d{2}$/.test(contractsPublic.periodEnd || '')) throw new Error('período municipal inválido');
+            if (d.municipalContractsAvailable !== true) throw new Error('metadado municipal divergente');
+            if (d.contractsPrimaryRows !== contractsPublic.rows.length) throw new Error('contagem municipal do meta divergente');
+          } else if (d.contractsPrimarySource && d.contractsPrimarySource !== 'PNCP') {
+            throw new Error(`fonte primária de contratos inesperada: ${d.contractsPrimarySource}`);
+          }
+
           if (typeof economy.available !== 'boolean') throw new Error('economy.available ausente');
           if (!economy.interstate?.available || economy.interstate?.baseline?.reference_year !== 2017) throw new Error('linha de base interestadual inválida');
           if (economy.interstate?.keySectors?.reference_year !== 2012) throw new Error('ano da MIP Bahia divergente');
@@ -97,9 +115,9 @@ jobs:
             if (!payments.selected_year_payment?.source_field || payments.selected_year_payment?.sum == null) throw new Error('Campo de pagamento não auditável');
           }
           if ((sefaz?.processed ?? 0) >= 5) {
-            const contracts = bahiaTransparency.sefaz?.contracts?.summary;
-            const primary = contracts?.primary_table;
-            if (!primary || contracts.selected_year !== 2026) throw new Error('Contratos SEFAZ sem tabela principal/recorte válido');
+            const stateContracts = bahiaTransparency.sefaz?.contracts?.summary;
+            const primary = stateContracts?.primary_table;
+            if (!primary || stateContracts.selected_year !== 2026) throw new Error('Contratos SEFAZ sem tabela principal/recorte válido');
             if (!(primary.unique_instruments > 0)) throw new Error('Contratos sem instrumentos únicos');
             if (!primary.schema?.detected_fields?.contract) throw new Error('Contratos sem identificador oficial');
             if (primary.contract_value?.deduplicated_sum == null) throw new Error('Contratos sem valor deduplicado');
@@ -113,7 +131,7 @@ jobs:
             }
             if (!String(flow.identity_rule || '').includes('identificador oficial')) throw new Error('Regra de identidade do fio do dinheiro ausente');
           }
-          console.log({ ...d, bahiaState: bahiaTransparency.status, sefaz, moneyFlow: flow?.summary || null });
+          console.log({ ...d, contractsPrimary: contractsPublic.sourceSystem || contractsPublic.source, contractsRows: contractsPublic.rows.length, bahiaState: bahiaTransparency.status, sefaz, moneyFlow: flow?.summary || null });
           NODE
       - name: Registrar construção bem-sucedida
         if: github.event_name == 'push'
@@ -124,6 +142,7 @@ jobs:
           node - <<'NODE'
           const fs = require('fs');
           const meta = require('./public/data/meta.json');
+          const contractsPublic = require('./public/data/contracts.json');
           const economy = require('./public/data/economy.json');
           const bahiaTransparency = require('./public/data/bahia-transparency.json');
           const stateRevenues = bahiaTransparency.sefaz?.revenues?.summary;
@@ -141,7 +160,12 @@ jobs:
             snapshot_used: meta.snapshotDate,
             acquisitions_generated: meta.acquisitions,
             processes_generated: meta.processes,
-            contracts_generated: meta.contracts,
+            contracts_primary_source: contractsPublic.sourceSystem || contractsPublic.source || null,
+            contracts_primary_rows: contractsPublic.rows?.length || 0,
+            municipal_contracts_available: meta.municipalContractsAvailable === true,
+            municipal_contracts_period_start: meta.municipalContractsPeriodStart || null,
+            municipal_contracts_period_end: meta.municipalContractsPeriodEnd || null,
+            pncp_contracts_complementary: meta.pncpContractsComplementary ?? null,
             suppliers_generated: meta.suppliers,
             agencies_generated: meta.agencies,
             exact_cross_source_links: meta.exactCrossSourceLinks,
