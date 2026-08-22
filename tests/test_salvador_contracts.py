@@ -18,9 +18,12 @@ def test_contract_payload_helpers_do_not_invent_field_semantics():
     assert _pages(payload) == 3
 
 
-def test_contract_internal_key_is_deterministic_not_source_id():
-    row = {"b": 2, "a": 1}
-    assert _stable_record_key(row) == _stable_record_key({"a": 1, "b": 2})
+def test_contract_internal_key_is_deterministic_and_ignores_technical_id():
+    row = {"id": "uuid-a", "nuContratoSigef": "2026CT000001", "vlAtualizado": "10,00"}
+    same_source_row = {"vlAtualizado": "10,00", "nuContratoSigef": "2026CT000001", "id": "uuid-b"}
+    different_value = {"id": "uuid-c", "nuContratoSigef": "2026CT000001", "vlAtualizado": "12,00"}
+    assert _stable_record_key(row) == _stable_record_key(same_source_row)
+    assert _stable_record_key(row) != _stable_record_key(different_value)
 
 
 def test_contract_request_body_matches_official_generic_filter_shape():
