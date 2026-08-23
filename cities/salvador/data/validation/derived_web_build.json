@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "tested_commit": "a92d0edb92c9e296037dabfb9437555ccb2c28bc",
+  "tested_commit": "e03f1a3fec8e345754e2bcabeb05bf42e47b1369",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
@@ -20,14 +20,24 @@
   },
   "exact_links": {
     "processesTotal": 2401,
-    "processesWithExactContracts": 875,
-    "exactPairs": 1078,
+    "processesWithExactContracts": 904,
+    "processesWithPrimaryExactContracts": 875,
+    "processesWithPncpComplementaryExactContracts": 55,
+    "exactPairs": 1137,
+    "primaryExactPairs": 1078,
+    "pncpComplementaryExactPairs": 59,
     "contractsPrimaryRows": 3199,
-    "uniqueContractsLinked": 1057,
-    "processCoverageRatio": 0.36443148688046645,
-    "contractCoverageRatio": 0.3304157549234136,
+    "contractsComplementaryRows": 396,
+    "uniqueContractsLinked": 1116,
+    "uniquePrimaryContractsLinked": 1057,
+    "uniquePncpComplementaryContractsLinked": 59,
+    "processCoverageRatio": 0.3765097875885048,
+    "contractCoverageRatio": 0.3104311543810848,
+    "primaryContractCoverageRatio": 0.3304157549234136,
+    "pncpComplementaryContractCoverageRatio": 0.14898989898989898,
     "acquisitionsAsOf": "2026-08-21",
-    "contractsAsOf": "2026-08-21"
+    "contractsAsOf": "2026-08-21",
+    "pncpComplementaryAsOf": "2026-08-23"
   },
   "suppliers": {
     "public_businesses": 272,
