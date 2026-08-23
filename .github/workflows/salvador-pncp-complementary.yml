@@ -8,6 +8,7 @@ on:
     branches: [city/salvador]
     paths:
       - .github/workflows/salvador-pncp-complementary.yml
+      - scripts/run-salvador-pncp-complementary.py
       - src/transparencia/collectors/pncp.py
       - src/transparencia/collectors/pncp_contracts.py
       - cities/salvador/city.json
@@ -22,7 +23,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,230 +35,24 @@ jobs:
       - run: python -m pip install -e '.[dev]'
       - name: Validate PNCP collectors
         run: pytest -q tests/test_pncp.py tests/test_pncp_contracts.py
-      - name: Discover municipal agencies and collect complementary PNCP contracts
-        run: |
-          python - <<'PY'
-          import json
-          from datetime import date, datetime
-          from pathlib import Path
-          from zoneinfo import ZoneInfo
-
-          from transparencia.collectors import pncp, pncp_contracts
-          from transparencia.config import load_city
-
-          now = datetime.now(ZoneInfo('America/Bahia'))
-          today = now.date()
-          start = date(today.year, 1, 1)
-          root = Path('.')
-          snapshots_root = Path('cities/salvador/data/snapshots')
-          out = snapshots_root / today.isoformat() / 'pncp_complementary'
-          procurement_dir = out / 'procurements'
-          contract_dir = out / 'contracts'
-          out.mkdir(parents=True, exist_ok=True)
-
-          def normalize_cnpjs(values):
-              result = set()
-              for value in values or []:
-                  digits = ''.join(ch for ch in str(value or '') if ch.isdigit())
-                  if len(digits) == 14:
-                      result.add(digits)
-              return result
-
-          baseline_summary = {}
-          baseline_summary_path = out / 'summary.json'
-          if baseline_summary_path.exists():
-              baseline_summary = json.loads(baseline_summary_path.read_text(encoding='utf-8'))
-
-          # Keep only canonical normalized/coverage files in memory. Raw manifests and
-          # response snapshots from a failed attempt remain append-only evidence.
-          baseline_files = {}
-          if out.exists():
-              for candidate in out.rglob('*'):
-                  if not candidate.is_file():
-                      continue
-                  if (
-                      candidate.name in {'summary.json', 'coverage.json'}
-                      or candidate.name.startswith('contratacoes_')
-                      or candidate.name.startswith('contratos_')
-                  ):
-                      baseline_files[candidate.relative_to(out)] = candidate.read_bytes()
-
-          known_cnpjs = set()
-          prior_summaries = sorted(
-              p for p in snapshots_root.glob('*/pncp_complementary/summary.json')
-              if p.parent.parent.name < today.isoformat()
-          )
-          if prior_summaries:
-              prior_summary = json.loads(prior_summaries[-1].read_text(encoding='utf-8'))
-              known_cnpjs.update(normalize_cnpjs(prior_summary.get('agency_cnpjs_supplied')))
-          known_cnpjs.update(normalize_cnpjs(baseline_summary.get('agency_cnpjs_supplied')))
-
-          city = load_city(root, 'salvador').config
-          municipal_cnpj = ''.join(ch for ch in str(city.municipality_cnpj or '') if ch.isdigit())
-          errors = []
-          procurement_path = None
-          procurement_cov = {}
-          contract_path = None
-          contract_cov = {}
-          discovered_cnpjs = set()
-          agency_cnpjs = set(known_cnpjs)
-
-          try:
-              procurement_path = pncp.collect(
-                  city,
-                  start,
-                  today,
-                  procurement_dir,
-                  scope='municipal',
-                  page_size=50,
-                  sleep_seconds=0.5,
-              )
-              coverage_path = procurement_dir / 'coverage.json'
-              if coverage_path.exists():
-                  procurement_cov = json.loads(coverage_path.read_text(encoding='utf-8'))
-              discovered_cnpjs.update(
-                  pncp_contracts.agency_cnpjs_from_procurements([procurement_path])
-              )
-              agency_cnpjs.update(discovered_cnpjs)
-          except Exception as exc:
-              errors.append({'step': 'agency_discovery', 'type': type(exc).__name__, 'error': str(exc)})
-
-          if len(municipal_cnpj) == 14:
-              agency_cnpjs.add(municipal_cnpj)
-          else:
-              errors.append({
-                  'step': 'configuration',
-                  'type': 'MissingMunicipalityCNPJ',
-                  'error': 'city.municipality_cnpj is not a 14-digit CNPJ',
-              })
-
-          supplied_cnpjs = sorted(agency_cnpjs)
-          if supplied_cnpjs:
-              try:
-                  contract_path = pncp_contracts.collect(
-                      city,
-                      start,
-                      today,
-                      contract_dir,
-                      agency_cnpjs=supplied_cnpjs,
-                      scope='municipal',
-                      page_size=500,
-                      window_days=366,
-                      sleep_seconds=2.0,
-                      max_attempts=5,
-                  )
-                  coverage_path = contract_dir / 'coverage.json'
-                  if coverage_path.exists():
-                      contract_cov = json.loads(coverage_path.read_text(encoding='utf-8'))
-              except Exception as exc:
-                  errors.append({'step': 'contracts', 'type': type(exc).__name__, 'error': str(exc)})
-          else:
-              errors.append({
-                  'step': 'contracts',
-                  'type': 'MissingAgencyCNPJ',
-                  'error': 'no valid municipal agency CNPJ was available for PNCP contract collection',
-              })
-
-          contract_records = 0
-          if contract_path and contract_path.exists():
-              contract_records = sum(1 for line in contract_path.read_text(encoding='utf-8').splitlines() if line.strip())
-
-          discovery_complete = bool(procurement_cov.get('complete'))
-          contracts_complete_for_supplied = bool(
-              contract_cov.get('complete_for_supplied_agencies_and_filter')
-          )
-          retained_cnpjs = sorted((known_cnpjs - discovered_cnpjs) - ({municipal_cnpj} if len(municipal_cnpj) == 14 else set()))
-
-          summary = {
-              'observed_at_date': today.isoformat(),
-              'period_start': start.isoformat(),
-              'period_end': today.isoformat(),
-              'role': 'complementary_only',
-              'collection_mode': 'pncp_municipal_procurement_discovery_plus_retained_and_configured_cnpj',
-              'agency_cnpjs_supplied': supplied_cnpjs,
-              'agency_cnpjs_discovered_from_procurements': sorted(discovered_cnpjs),
-              'agency_cnpjs_retained_from_history': retained_cnpjs,
-              'agency_cnpj_discovery_complete': discovery_complete,
-              'procurements': {
-                  'ran': procurement_path is not None,
-                  'complete_for_municipal_filter': discovery_complete,
-                  'records': procurement_cov.get('records', 0),
-                  'stopped_status': procurement_cov.get('stopped_status'),
-                  'adaptive_splits': len(procurement_cov.get('adaptive_splits') or []),
-                  'terminal_failures': len(procurement_cov.get('terminal_failures') or []),
-              },
-              'contracts': {
-                  'ran': contract_path is not None,
-                  'complete_for_supplied_agencies_and_filter': contracts_complete_for_supplied,
-                  'complete_for_discovered_municipal_agencies_and_filter': (
-                      discovery_complete and contracts_complete_for_supplied
-                  ),
-                  'records': contract_cov.get('records_after_salvador_scope_filter', contract_records),
-                  'query_errors': len(contract_cov.get('errors') or []),
-              },
-              'errors': errors,
-              'coverage_rule': (
-                  'PNCP is complementary only. Agency CNPJs are discovered from PNCP municipal procurements for Salvador; previously validated agency CNPJs are retained across retries, and the configured municipality CNPJ is always added when valid. '
-                  'Municipal-agency discovery is complete only when every modality/date segment reaches a normal source end, including any adaptively split recovery segments. '
-                  'Contract coverage is complete only for the explicitly supplied CNPJ set when every CNPJ/date contract query reaches a normal source end. '
-                  'Partial PNCP coverage never removes or invalidates the independently collected Salvador contract grid.'
-              ),
-          }
-          (out / 'summary.json').write_text(
-              json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True) + '\n',
-              encoding='utf-8',
-          )
-
-          def quality(value):
-              contracts = value.get('contracts') or {}
-              procurements = value.get('procurements') or {}
-              return (
-                  1 if contracts.get('complete_for_supplied_agencies_and_filter') else 0,
-                  1 if value.get('agency_cnpj_discovery_complete') else 0,
-                  len(value.get('agency_cnpjs_supplied') or []),
-                  int(contracts.get('records') or 0),
-                  int(procurements.get('records') or 0),
-              )
-
-          candidate_score = quality(summary)
-          baseline_score = quality(baseline_summary) if baseline_summary else None
-          promoted = True
-          reason = 'no_same_day_baseline' if not baseline_summary else 'candidate_not_regressive'
-          if baseline_summary and candidate_score < baseline_score:
-              promoted = False
-              reason = 'candidate_regressed_against_same_day_baseline'
-              for relative, data in baseline_files.items():
-                  destination = out / relative
-                  destination.parent.mkdir(parents=True, exist_ok=True)
-                  destination.write_bytes(data)
-
-          attempt_report = {
-              'observed_at': now.isoformat(),
-              'candidate_score': list(candidate_score),
-              'baseline_score': list(baseline_score) if baseline_score is not None else None,
-              'promoted_to_canonical': promoted,
-              'reason': reason,
-              'candidate_summary': summary,
-          }
-          validation_path = Path('cities/salvador/data/validation/pncp_complementary_last_attempt.json')
-          validation_path.parent.mkdir(parents=True, exist_ok=True)
-          validation_path.write_text(
-              json.dumps(attempt_report, ensure_ascii=False, indent=2, sort_keys=True) + '\n',
-              encoding='utf-8',
-          )
-          print(json.dumps(attempt_report, ensure_ascii=False, indent=2, sort_keys=True))
-          PY
+      - name: Validate staged runner syntax
+        run: python -m py_compile scripts/run-salvador-pncp-complementary.py
+      - name: Collect, validate and atomically promote PNCP evidence
+        run: python scripts/run-salvador-pncp-complementary.py
       - name: Commit complementary PNCP evidence
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           TODAY=$(TZ=America/Bahia date +%F)
-          if [ ! -d "cities/salvador/data/snapshots/${TODAY}/pncp_complementary" ]; then exit 0; fi
-          git add "cities/salvador/data/snapshots/${TODAY}/pncp_complementary"
-          if [ -f "cities/salvador/data/validation/pncp_complementary_last_attempt.json" ]; then
-            git add "cities/salvador/data/validation/pncp_complementary_last_attempt.json"
+          if [ -d "cities/salvador/data/snapshots/${TODAY}/pncp_complementary" ]; then
+            git add "cities/salvador/data/snapshots/${TODAY}/pncp_complementary"
           fi
+          for report in \
+            cities/salvador/data/validation/pncp_complementary_last_attempt.json \
+            cities/salvador/data/validation/pncp_complementary_reconciliation.json; do
+            if [ -f "$report" ]; then git add "$report"; fi
+          done
           if git diff --cached --quiet; then echo 'No PNCP changes'; exit 0; fi
           git commit -m "data(salvador): refresh complementary PNCP evidence"
           git fetch origin city/salvador
