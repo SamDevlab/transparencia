@@ -22,7 +22,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
         with:
@@ -70,7 +70,7 @@ jobs:
                   procurement_dir,
                   scope='municipal',
                   page_size=50,
-                  sleep_seconds=0.25,
+                  sleep_seconds=0.5,
               )
               coverage_path = procurement_dir / 'coverage.json'
               if coverage_path.exists():
@@ -100,8 +100,8 @@ jobs:
                       contract_dir,
                       agency_cnpjs=supplied_cnpjs,
                       scope='municipal',
-                      sleep_seconds=1.0,
-                      max_attempts=4,
+                      sleep_seconds=2.0,
+                      max_attempts=5,
                   )
                   coverage_path = contract_dir / 'coverage.json'
                   if coverage_path.exists():
