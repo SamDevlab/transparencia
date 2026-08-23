@@ -17,6 +17,7 @@ on:
       - "scripts/overlay-transparency-current.mjs"
       - "scripts/validate-current-web-data.mjs"
       - "cities/salvador/data/snapshots/**/pncp_complementary/**"
+      - "cities/salvador/data/snapshots/**/cms_auxiliary/**"
       - ".github/workflows/derived-web-build.yml"
   pull_request:
     paths:
@@ -33,6 +34,7 @@ on:
       - "scripts/overlay-transparency-current.mjs"
       - "scripts/validate-current-web-data.mjs"
       - "cities/salvador/data/snapshots/**/pncp_complementary/**"
+      - "cities/salvador/data/snapshots/**/cms_auxiliary/**"
       - ".github/workflows/derived-web-build.yml"
 
 permissions:
@@ -83,6 +85,11 @@ jobs:
             if (supplier.quantidadeContratos !== (supplier.contratos || []).length) throw new Error(`contagem divergente no fornecedor ${supplier.id}`);
           }
 
+          if (camara.auxiliary?.certames?.complete === true) {
+            if (camara.auxiliary.certames.records !== camara.auxiliary.certames.serverReportedTotal) throw new Error('certames completos com contagem divergente do total do servidor');
+            if (camara.auxiliary.certames.reachedServerEnd !== true) throw new Error('certames completos sem prova de fim da paginação');
+          }
+
           if (meta.pncpComplementaryAsOf === '2026-08-22') {
             if (meta.pncpComplementaryStatus !== 'complete_for_supplied_agencies_and_filter') throw new Error('PNCP 22/08 presente sem completude do CNPJ fornecido');
             if (meta.pncpComplementaryCurrentRows !== 41) throw new Error(`PNCP atual esperado=41, recebido=${meta.pncpComplementaryCurrentRows}`);
@@ -95,6 +102,8 @@ jobs:
             complementaryBusinessSuppliers: meta.pncpComplementaryBusinessSuppliers ?? null,
             exactProcesses: links.summary.processesWithExactContracts,
             cmsCommitments: camara.commitmentLedger.records,
+            cmsCertames: camara.auxiliary?.certames?.records ?? null,
+            cmsCertamesStatus: camara.auxiliary?.certames?.status ?? null,
             latestSourceAsOf: meta.latestSourceAsOf,
             pncpComplementaryAsOf: meta.pncpComplementaryAsOf || null,
             pncpComplementaryStatus: meta.pncpComplementaryStatus || null,
