@@ -1,0 +1,96 @@
+name: Auditoria rápida das camadas derivadas
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - ".github/workflows/salvador-derived-integrity-fast.yml"
+      - "scripts/build-municipal-links.mjs"
+      - "scripts/overlay-cms-auxiliary-current.mjs"
+      - "scripts/overlay-pncp-complementary-current.mjs"
+      - "cities/salvador/data/snapshots/**/cms_auxiliary/**"
+      - "cities/salvador/data/snapshots/**/pncp_complementary/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: salvador-derived-integrity-fast
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Rebuild deterministic public derivations
+        run: npm run prebuild
+      - name: Assert and persist fast integrity report
+        env:
+          TESTED_SHA: ${{ github.sha }}
+        run: |
+          mkdir -p cities/salvador/data/validation
+          node - <<'NODE'
+          const fs = require('fs');
+          const links = require('./public/data/municipal-links.json');
+          const camara = require('./public/data/camara.json');
+          const meta = require('./public/data/meta.json');
+          const certames = camara.auxiliary?.certames || {};
+          const summary = links.summary || {};
+
+          if (certames.complete !== true || certames.status !== 'complete_for_filter') {
+            throw new Error(`certames não completos: ${certames.records}/${certames.serverReportedTotal}`);
+          }
+          if (certames.records !== certames.serverReportedTotal || certames.reachedServerEnd !== true) {
+            throw new Error('certames sem igualdade com total do servidor ou sem prova de fim');
+          }
+          if (certames.records !== 188) throw new Error(`total atual de certames inesperado: ${certames.records}`);
+          if (summary.pncpProcurementRows !== 1052) throw new Error(`contratações PNCP esperadas=1052, recebido=${summary.pncpProcurementRows}`);
+          if (!links.identityRule?.includes('numeroControlePncpCompra')) throw new Error('regra documental PNCP de dois saltos ausente');
+          if ((summary.processesWithExactContracts || 0) < (summary.processesWithDirectExactContracts || 0)) {
+            throw new Error('cadeia exata reduziu cobertura de processos');
+          }
+          if ((summary.exactPairs || 0) < (summary.directExactPairs || 0)) {
+            throw new Error('cadeia exata reduziu pares documentais');
+          }
+
+          const payload = {
+            passed: true,
+            tested_commit: process.env.TESTED_SHA,
+            generated_at: new Date().toISOString(),
+            cms_certames: {
+              status: certames.status,
+              records: certames.records,
+              server_reported_total: certames.serverReportedTotal,
+              pages: certames.pages,
+              reached_server_end: certames.reachedServerEnd,
+            },
+            exact_links: summary,
+            pncp_status: meta.pncpComplementaryStatus || null,
+            rules: {
+              identity: links.identityRule,
+              accounting: links.accountingRule,
+              source_observation: links.sourceObservationRule,
+            },
+          };
+          fs.writeFileSync('cities/salvador/data/validation/fast_integrity.json', JSON.stringify(payload, null, 2) + '\n');
+          console.log(JSON.stringify(payload, null, 2));
+          NODE
+      - name: Commit audit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cities/salvador/data/validation/fast_integrity.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "ci(web): persist fast derived integrity [skip ci]"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
