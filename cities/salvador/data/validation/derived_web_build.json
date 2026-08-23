@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "tested_commit": "5f7dbffbd2b01870e4349707a5416805802a3b23",
+  "tested_commit": "f57f4fb96d48451cd5da9a32a177bcb635c2ff4a",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
@@ -84,7 +84,10 @@
       "certames": {
         "status": "partial",
         "complete": false,
-        "recordsVisible": 10,
+        "records": 10,
+        "serverReportedTotal": null,
+        "pages": 0,
+        "reachedServerEnd": false,
         "coverage": "server_visible_page_only",
         "rows": [
           {
@@ -178,7 +181,7 @@
             "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
           }
         ],
-        "coverageRule": "Somente a página atualmente visível no servidor foi normalizada. A ausência de um certame nesta lista não significa inexistência no catálogo da Câmara."
+        "coverageRule": "A cobertura permanece parcial porque a sessão, paginação, transporte ou parser não comprovou simultaneamente o fim do catálogo e igualdade com o total informado pelo servidor. Ausência não significa inexistência."
       }
     }
   },
