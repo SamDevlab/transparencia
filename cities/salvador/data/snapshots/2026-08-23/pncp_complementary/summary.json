@@ -1,8 +1,59 @@
 {
   "agency_cnpj_discovery_complete": false,
-  "agency_cnpjs_discovered_from_procurements": [],
+  "agency_cnpjs_discovered_from_procurements": [
+    "09075910000108",
+    "10603491000119",
+    "10635089000116",
+    "11020634000122",
+    "13927801000300",
+    "13927801000491",
+    "13927801000572",
+    "13927801000653",
+    "13927801000815",
+    "13927801001030",
+    "13927801001110",
+    "13927801001706",
+    "13927801002001",
+    "13927801002354",
+    "13927801002605",
+    "13927801002869",
+    "13927801002940",
+    "13927801003083",
+    "13927801003164",
+    "13927801003245",
+    "13927801003326",
+    "13927801003407",
+    "13927801003598",
+    "14674402000186",
+    "34283754000118"
+  ],
   "agency_cnpjs_supplied": [
-    "13927801000149"
+    "09075910000108",
+    "10603491000119",
+    "10635089000116",
+    "11020634000122",
+    "13927801000149",
+    "13927801000300",
+    "13927801000491",
+    "13927801000572",
+    "13927801000653",
+    "13927801000815",
+    "13927801001030",
+    "13927801001110",
+    "13927801001706",
+    "13927801002001",
+    "13927801002354",
+    "13927801002605",
+    "13927801002869",
+    "13927801002940",
+    "13927801003083",
+    "13927801003164",
+    "13927801003245",
+    "13927801003326",
+    "13927801003407",
+    "13927801003598",
+    "14674402000186",
+    "34283754000118"
   ],
   "collection_mode": "pncp_municipal_procurement_discovery_plus_configured_cnpj",
   "contracts": {
@@ -10,24 +61,18 @@
     "complete_for_supplied_agencies_and_filter": true,
     "query_errors": 0,
     "ran": true,
-    "records": 41
+    "records": 396
   },
   "coverage_rule": "PNCP is complementary only. Agency CNPJs are discovered from PNCP municipal procurements for Salvador and the configured municipality CNPJ is always added when valid. Municipal-agency coverage is complete only when upstream procurement discovery completes and every supplied CNPJ/date contract query reaches a normal source end. Partial PNCP coverage never removes or invalidates the independently collected Salvador contract grid.",
-  "errors": [
-    {
-      "error": "Client error '400 ' for url 'https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20260101&dataFinal=20260130&codigoModalidadeContratacao=1&uf=BA&codigoMunicipioIbge=2927408&pagina=1&tamanhoPagina=500'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400",
-      "step": "agency_discovery",
-      "type": "HTTPStatusError"
-    }
-  ],
+  "errors": [],
   "observed_at_date": "2026-08-23",
   "period_end": "2026-08-23",
   "period_start": "2026-01-01",
   "procurements": {
     "complete_for_municipal_filter": false,
-    "ran": false,
-    "records": 0,
-    "stopped_status": null
+    "ran": true,
+    "records": 739,
+    "stopped_status": 500
   },
   "role": "complementary_only"
 }

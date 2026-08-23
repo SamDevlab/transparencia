@@ -1,6 +1,31 @@
 {
   "agency_cnpjs": [
-    "13927801000149"
+    "09075910000108",
+    "10603491000119",
+    "10635089000116",
+    "11020634000122",
+    "13927801000149",
+    "13927801000300",
+    "13927801000491",
+    "13927801000572",
+    "13927801000653",
+    "13927801000815",
+    "13927801001030",
+    "13927801001110",
+    "13927801001706",
+    "13927801002001",
+    "13927801002354",
+    "13927801002605",
+    "13927801002869",
+    "13927801002940",
+    "13927801003083",
+    "13927801003164",
+    "13927801003245",
+    "13927801003326",
+    "13927801003407",
+    "13927801003598",
+    "14674402000186",
+    "34283754000118"
   ],
   "complete_for_supplied_agencies_and_filter": true,
   "coverage_note": "Complete only for the explicitly supplied agency CNPJs, PNCP contract endpoint, requested date interval and municipal scope filter. The supplied CNPJ set itself may be incomplete if upstream procurement discovery was partial.",
@@ -10,6 +35,42 @@
   "period_start": "2026-01-01",
   "queries": [
     {
+      "cnpj_orgao": "09075910000108",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 4,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "10603491000119",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 9,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "10635089000116",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 10,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "11020634000122",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
       "cnpj_orgao": "13927801000149",
       "complete": true,
       "error": null,
@@ -17,9 +78,198 @@
       "records_received_before_scope_filter": 41,
       "window_end": "2026-08-23",
       "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 105,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 50,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 22,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801001030",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 10,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 34,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002354",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 15,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 9,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 3,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 7,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003164",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 10,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 16,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003326",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 7,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 14,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 11,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "34283754000118",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 28,
+      "window_end": "2026-08-23",
+      "window_start": "2026-01-01"
     }
   ],
-  "records_after_salvador_scope_filter": 41,
+  "records_after_salvador_scope_filter": 396,
   "scope": "municipal",
   "source_system": "PNCP",
   "source_url": "https://pncp.gov.br/api/consulta/v1/contratos",
