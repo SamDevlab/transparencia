@@ -1,11 +1,11 @@
 {
   "passed": true,
-  "tested_commit": "eace3aaaf2c5e711f1a65dc0622d9219c257bdbc",
+  "tested_commit": "2c444422fc3f963487661af7791e116854475879",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
   "freshness_model": "per_source",
-  "latest_source_as_of": "2026-08-22",
+  "latest_source_as_of": "2026-08-23",
   "municipal_contracts": {
     "complete_for_filter": true,
     "source_rows": 4807,
@@ -30,12 +30,12 @@
     "contractsAsOf": "2026-08-21"
   },
   "suppliers": {
-    "public_businesses": 18,
-    "complementary_businesses": 18,
+    "public_businesses": 11,
+    "complementary_businesses": 11,
     "rule": "Diretório público restrito a empresas com CNPJ estruturado. Fornecedores ligados a contrato municipal exigem evidência documental exata; empresas somente do PNCP complementar são agregadas por CNPJ sem inferência textual.",
     "freshness": {
       "municipalContracts": "2026-08-21",
-      "pncpComplementary": "2026-08-22"
+      "pncpComplementary": "2026-08-23"
     }
   },
   "cms": {
@@ -173,11 +173,11 @@
     }
   },
   "pncp_complementary": {
-    "as_of": "2026-08-22",
-    "status": "complete_for_supplied_agencies_and_filter",
-    "collection_mode": "bounded_official_municipality_cnpj",
-    "current_rows": 41,
-    "agency_cnpj_count": 1,
+    "as_of": "2026-08-23",
+    "status": "partial",
+    "collection_mode": "pncp_municipal_procurement_discovery_plus_configured_cnpj",
+    "current_rows": 22,
+    "agency_cnpj_count": 19,
     "agency_discovery_complete": false
   }
 }
