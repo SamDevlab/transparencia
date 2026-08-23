@@ -1,5 +1,8 @@
 from datetime import date
 
+import httpx
+
+from transparencia.collectors import pncp
 from transparencia.collectors.pncp import Window, bisect_window, date_windows, in_scope, normalize_record, parse_active_modality_ids
 from transparencia.config import CityConfig
 
@@ -27,6 +30,25 @@ def test_bisect_window_halves_without_overlap():
 
 def test_bisect_single_day_returns_none():
     assert bisect_window(Window(date(2026,6,15), date(2026,6,15))) is None
+
+
+def test_get_with_backoff_retries_transport_timeout(monkeypatch):
+    class FakeClient:
+        def __init__(self):
+            self.calls = 0
+
+        def get(self, url, params=None):
+            self.calls += 1
+            request = httpx.Request("GET", url, params=params)
+            if self.calls == 1:
+                raise httpx.ReadTimeout("temporary timeout", request=request)
+            return httpx.Response(200, request=request, json={"ok": True})
+
+    client = FakeClient()
+    monkeypatch.setattr(pncp.time, "sleep", lambda _: None)
+    response = pncp._get_with_backoff(client, "https://example.test", max_retries=1)
+    assert response.status_code == 200
+    assert client.calls == 2
 
 
 def test_scope_uses_configured_city_not_hardcoded_name():
