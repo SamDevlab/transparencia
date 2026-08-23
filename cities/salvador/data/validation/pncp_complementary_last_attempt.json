@@ -1,0 +1,106 @@
+{
+  "baseline_score": [
+    1,
+    0,
+    26,
+    396,
+    739
+  ],
+  "candidate_score": [
+    1,
+    0,
+    26,
+    396,
+    0
+  ],
+  "candidate_summary": {
+    "agency_cnpj_discovery_complete": false,
+    "agency_cnpjs_discovered_from_procurements": [],
+    "agency_cnpjs_retained_from_history": [
+      "09075910000108",
+      "10603491000119",
+      "10635089000116",
+      "11020634000122",
+      "13927801000300",
+      "13927801000491",
+      "13927801000572",
+      "13927801000653",
+      "13927801000815",
+      "13927801001030",
+      "13927801001110",
+      "13927801001706",
+      "13927801002001",
+      "13927801002354",
+      "13927801002605",
+      "13927801002869",
+      "13927801002940",
+      "13927801003083",
+      "13927801003164",
+      "13927801003245",
+      "13927801003326",
+      "13927801003407",
+      "13927801003598",
+      "14674402000186",
+      "34283754000118"
+    ],
+    "agency_cnpjs_supplied": [
+      "09075910000108",
+      "10603491000119",
+      "10635089000116",
+      "11020634000122",
+      "13927801000149",
+      "13927801000300",
+      "13927801000491",
+      "13927801000572",
+      "13927801000653",
+      "13927801000815",
+      "13927801001030",
+      "13927801001110",
+      "13927801001706",
+      "13927801002001",
+      "13927801002354",
+      "13927801002605",
+      "13927801002869",
+      "13927801002940",
+      "13927801003083",
+      "13927801003164",
+      "13927801003245",
+      "13927801003326",
+      "13927801003407",
+      "13927801003598",
+      "14674402000186",
+      "34283754000118"
+    ],
+    "collection_mode": "pncp_municipal_procurement_discovery_plus_retained_and_configured_cnpj",
+    "contracts": {
+      "complete_for_discovered_municipal_agencies_and_filter": false,
+      "complete_for_supplied_agencies_and_filter": true,
+      "query_errors": 0,
+      "ran": true,
+      "records": 396
+    },
+    "coverage_rule": "PNCP is complementary only. Agency CNPJs are discovered from PNCP municipal procurements for Salvador; previously validated agency CNPJs are retained across retries, and the configured municipality CNPJ is always added when valid. Municipal-agency discovery is complete only when every modality/date segment reaches a normal source end, including any adaptively split recovery segments. Contract coverage is complete only for the explicitly supplied CNPJ set when every CNPJ/date contract query reaches a normal source end. Partial PNCP coverage never removes or invalidates the independently collected Salvador contract grid.",
+    "errors": [
+      {
+        "error": "The read operation timed out",
+        "step": "agency_discovery",
+        "type": "ReadTimeout"
+      }
+    ],
+    "observed_at_date": "2026-08-23",
+    "period_end": "2026-08-23",
+    "period_start": "2026-01-01",
+    "procurements": {
+      "adaptive_splits": 0,
+      "complete_for_municipal_filter": false,
+      "ran": false,
+      "records": 0,
+      "stopped_status": null,
+      "terminal_failures": 0
+    },
+    "role": "complementary_only"
+  },
+  "observed_at": "2026-08-23T12:28:11.237351-03:00",
+  "promoted_to_canonical": false,
+  "reason": "candidate_regressed_against_same_day_baseline"
+}
