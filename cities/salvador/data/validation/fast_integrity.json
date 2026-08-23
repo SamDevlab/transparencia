@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "tested_commit": "9081f67fbabfff8b69f381f5b0e5118d7f2c364a",
+  "generated_at": "2026-08-23T20:43:19.640Z",
+  "cms_certames": {
+    "status": "complete_for_filter",
+    "records": 188,
+    "server_reported_total": 188,
+    "pages": 19,
+    "reached_server_end": true
+  },
+  "exact_links": {
+    "processesTotal": 2401,
+    "processesWithExactContracts": 912,
+    "processesWithDirectExactContracts": 904,
+    "processesWithPrimaryExactContracts": 875,
+    "processesWithPncpComplementaryExactContracts": 64,
+    "processesWithPncpProcurementControlLinks": 56,
+    "processesNewlyLinkedByPncpProcurementControl": 8,
+    "exactPairs": 1152,
+    "directExactPairs": 1137,
+    "primaryExactPairs": 1078,
+    "pncpComplementaryExactPairs": 74,
+    "pncpProcurementControlExactPairs": 65,
+    "pncpProcurementControlIncrementalPairs": 15,
+    "pncpProcurementControlIncrementalContracts": 15,
+    "pncpProcurementRows": 1052,
+    "pncpProcurementAsOf": "2026-08-23",
+    "contractsPrimaryRows": 3199,
+    "contractsComplementaryRows": 396,
+    "uniqueContractsLinked": 1131,
+    "uniquePrimaryContractsLinked": 1057,
+    "uniquePncpComplementaryContractsLinked": 74,
+    "processCoverageRatio": 0.3798417326114119,
+    "contractCoverageRatio": 0.3146036161335188,
+    "primaryContractCoverageRatio": 0.3304157549234136,
+    "pncpComplementaryContractCoverageRatio": 0.18686868686868688,
+    "acquisitionsAsOf": "2026-08-21",
+    "contractsAsOf": "2026-08-21",
+    "pncpComplementaryAsOf": "2026-08-23"
+  },
+  "pncp_status": "complete_for_discovered_municipal_agencies_and_filter",
+  "rules": {
+    "identity": "O vínculo exige igualdade de identificadores oficiais após remover apenas formatação documental. O caminho direto compara o número oficial do processo; o caminho PNCP de dois saltos exige processo municipal = process_number da contratação PNCP e numeroControlePNCP da contratação = numeroControlePncpCompra do contrato. Objeto, fornecedor, órgão, valor, data e similaridade textual nunca criam relação.",
+    "accounting": "A relação aquisição → contrato é documental. Ela não liga automaticamente contrato a empenho, liquidação ou pagamento municipal; os totais financeiros agregados permanecem separados.",
+    "source_observation": "Prefeitura e PNCP permanecem observações documentais separadas. Registros das duas fontes não são fundidos por semelhança e seus valores não são somados entre si; cada observação mantém sua fonte, identificador e método de vínculo."
+  }
+}
