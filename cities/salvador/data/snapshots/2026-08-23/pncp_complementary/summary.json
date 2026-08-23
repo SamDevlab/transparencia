@@ -1,5 +1,5 @@
 {
-  "agency_cnpj_discovery_complete": false,
+  "agency_cnpj_discovery_complete": true,
   "agency_cnpjs_discovered_from_procurements": [
     "09075910000108",
     "10603491000119",
@@ -27,6 +27,7 @@
     "14674402000186",
     "34283754000118"
   ],
+  "agency_cnpjs_retained_from_history": [],
   "agency_cnpjs_supplied": [
     "09075910000108",
     "10603491000119",
@@ -55,24 +56,31 @@
     "14674402000186",
     "34283754000118"
   ],
-  "collection_mode": "pncp_municipal_procurement_discovery_plus_configured_cnpj",
+  "collection_mode": "pncp_reconciled_complete_discovery_and_exact_contract_scope",
   "contracts": {
-    "complete_for_discovered_municipal_agencies_and_filter": false,
+    "complete_for_discovered_municipal_agencies_and_filter": true,
     "complete_for_supplied_agencies_and_filter": true,
     "query_errors": 0,
     "ran": true,
     "records": 396
   },
-  "coverage_rule": "PNCP is complementary only. Agency CNPJs are discovered from PNCP municipal procurements for Salvador and the configured municipality CNPJ is always added when valid. Municipal-agency coverage is complete only when upstream procurement discovery completes and every supplied CNPJ/date contract query reaches a normal source end. Partial PNCP coverage never removes or invalidates the independently collected Salvador contract grid.",
+  "coverage_rule": "PNCP is complementary only. Agency CNPJs are discovered from PNCP municipal procurements for Salvador; previously validated agency CNPJs may be retained across retries, and the configured municipality CNPJ is added when valid. Municipal-agency discovery is complete only when every modality/date segment reaches a normal source end, including adaptively split recovery segments. Contract coverage is complete only for the explicitly supplied CNPJ set when every CNPJ/date contract query reaches a normal source end. No timeout, HTTP error or missing query is interpreted as zero records.",
   "errors": [],
   "observed_at_date": "2026-08-23",
   "period_end": "2026-08-23",
   "period_start": "2026-01-01",
   "procurements": {
-    "complete_for_municipal_filter": false,
+    "adaptive_splits": 0,
+    "complete_for_municipal_filter": true,
     "ran": true,
-    "records": 739,
-    "stopped_status": 500
+    "records": 1052,
+    "stopped_status": null,
+    "terminal_failures": 0
+  },
+  "reconciliation": {
+    "method": "exact_cnpj_set_and_normalized_row_count_consistency",
+    "no_fuzzy_identity_matching": true,
+    "procurement_and_contract_scope_match": true
   },
   "role": "complementary_only"
 }
