@@ -36,9 +36,20 @@ if (!current) {
 }
 
 const travelRows = readJsonl(path.join(current.dir, "cms_travel_expenses.jsonl"));
-const certameRows = readJsonl(path.join(current.dir, "cms_certames_visible.jsonl"));
+const certameFile = fs.existsSync(path.join(current.dir, "cms_certames.jsonl"))
+  ? path.join(current.dir, "cms_certames.jsonl")
+  : path.join(current.dir, "cms_certames_visible.jsonl");
+const certameRows = readJsonl(certameFile);
 const totalTravel = travelRows.reduce((sum, row) => sum + Number(row.value_brl ?? 0), 0);
 const travelWithProcess = travelRows.filter((row) => row.process_number).length;
+const certameSummary = current.summary.certames ?? {};
+const certamesComplete = certameSummary.complete === true
+  && Number(certameSummary.records ?? certameRows.length) === Number(certameSummary.server_reported_total ?? -1)
+  && certameSummary.reached_server_end === true;
+const certameCount = Number(certameSummary.records ?? certameRows.length);
+const certameExpected = Number.isFinite(Number(certameSummary.server_reported_total))
+  ? Number(certameSummary.server_reported_total)
+  : null;
 
 const auxiliary = {
   asOf: current.date,
@@ -59,10 +70,13 @@ const auxiliary = {
     publicDetailRule: "O portal publica a cobertura e as contagens do catálogo; os documentos continuam acessíveis nas páginas oficiais da Câmara.",
   },
   certames: {
-    status: "partial",
-    complete: false,
-    recordsVisible: Number(current.summary.certames?.records ?? certameRows.length),
-    coverage: "server_visible_page_only",
+    status: certamesComplete ? "complete_for_filter" : "partial",
+    complete: certamesComplete,
+    records: certameCount,
+    serverReportedTotal: certameExpected,
+    pages: Number(certameSummary.pages_collected ?? 0),
+    reachedServerEnd: certameSummary.reached_server_end === true,
+    coverage: certameSummary.coverage ?? (certamesComplete ? "scriptcase_full_catalogue" : "server_visible_page_only"),
     rows: certameRows.slice(0, 20).map((row) => ({
       modality: row.modality_name ?? null,
       noticeNumber: row.notice_number ?? null,
@@ -72,7 +86,9 @@ const auxiliary = {
       latestStatusText: row.latest_status_text ?? null,
       sourceUrl: row.source_url ?? null,
     })),
-    coverageRule: "Somente a página atualmente visível no servidor foi normalizada. A ausência de um certame nesta lista não significa inexistência no catálogo da Câmara.",
+    coverageRule: certamesComplete
+      ? "O catálogo foi paginado pela própria sessão ScriptCase até o fim declarado pelo servidor; completude exige que a quantidade de linhas normalizadas seja exatamente igual ao total informado pela fonte."
+      : "A cobertura permanece parcial porque a sessão, paginação, transporte ou parser não comprovou simultaneamente o fim do catálogo e igualdade com o total informado pelo servidor. Ausência não significa inexistência.",
   },
 };
 
@@ -87,7 +103,11 @@ const meta = readJson(path.join(publicRoot, "meta.json"), {});
 meta.cmsAuxiliaryAsOf = current.date;
 meta.cmsTravelRecords = auxiliary.travel.records;
 meta.cmsDocumentsRecords = auxiliary.documents.records;
-meta.cmsVisibleCertames = auxiliary.certames.recordsVisible;
+meta.cmsCertamesRecords = auxiliary.certames.records;
+meta.cmsCertamesStatus = auxiliary.certames.status;
+meta.cmsCertamesServerReportedTotal = auxiliary.certames.serverReportedTotal;
+// Backward-compatible field retained until downstream consumers migrate.
+meta.cmsVisibleCertames = auxiliary.certames.records;
 writeJson("meta.json", meta);
 
-console.log(`Câmara auxiliar ${current.date}: viagens=${auxiliary.travel.records}, documentos=${auxiliary.documents.records}, certames visíveis=${auxiliary.certames.recordsVisible}.`);
+console.log(`Câmara auxiliar ${current.date}: viagens=${auxiliary.travel.records}, documentos=${auxiliary.documents.records}, certames=${auxiliary.certames.records}/${auxiliary.certames.serverReportedTotal ?? "?"}, status=${auxiliary.certames.status}.`);
