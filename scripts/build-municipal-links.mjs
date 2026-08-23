@@ -3,11 +3,17 @@ import path from "node:path";
 
 const root = process.cwd();
 const publicRoot = path.join(root, "public", "data");
+const snapshotsRoot = path.join(root, "cities", "salvador", "data", "snapshots");
 
 function readJson(name, fallback = {}) {
   const file = path.join(publicRoot, name);
   if (!fs.existsSync(file)) return fallback;
   return JSON.parse(fs.readFileSync(file, "utf8"));
+}
+
+function readJsonl(file) {
+  if (!file || !fs.existsSync(file)) return [];
+  return fs.readFileSync(file, "utf8").split(/\r?\n/).filter(Boolean).map((line) => JSON.parse(line));
 }
 
 function writeJson(name, payload) {
@@ -21,6 +27,25 @@ function normalizeReference(value) {
     .toUpperCase()
     .replace(/[^A-Z0-9]+/g, "")
     .trim();
+}
+
+function latestPncpProcurementFile() {
+  if (!fs.existsSync(snapshotsRoot)) return null;
+  const dates = fs.readdirSync(snapshotsRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(entry.name))
+    .map((entry) => entry.name)
+    .sort()
+    .reverse();
+  for (const date of dates) {
+    const dir = path.join(snapshotsRoot, date, "pncp_complementary", "procurements");
+    if (!fs.existsSync(dir)) continue;
+    const files = fs.readdirSync(dir)
+      .filter((name) => /^contratacoes_municipal_.*\.jsonl$/.test(name))
+      .sort();
+    const file = files.at(-1);
+    if (file) return { date, file: path.join(dir, file) };
+  }
+  return null;
 }
 
 function sourceObservationKey(contract) {
@@ -39,7 +64,7 @@ function contractEvents(contract) {
   ].filter(Boolean);
 }
 
-function compactContract(contract) {
+function compactContract(contract, linkMethods = contract.linkMethods ?? []) {
   return {
     id: contract.id,
     numero: contract.numero ?? null,
@@ -59,8 +84,16 @@ function compactContract(contract) {
     situacao: contract.situacao ?? null,
     sourceSystem: contract.sourceSystem ?? null,
     sourceLayer: contract.sourceLayer ?? contract._relationLayer ?? null,
+    linkMethods: [...new Set(linkMethods)].sort(),
     fonte: contract.fonte ?? null,
   };
+}
+
+function addRelation(target, contract, method) {
+  const key = sourceObservationKey(contract);
+  const existing = target.get(key) ?? { contract, methods: new Set() };
+  existing.methods.add(method);
+  target.set(key, existing);
 }
 
 const processes = readJson("processes.json", { rows: [] });
@@ -88,9 +121,69 @@ for (const contract of [...primaryContracts, ...complementaryContracts]) {
   contractsByProcess.set(processKey, current);
 }
 
+// Exact two-hop PNCP documentary path:
+// municipal process number == PNCP procurement process_number
+// PNCP procurement numeroControlePNCP == PNCP contract numeroControlePncpCompra.
+// No object, supplier, value, date or textual similarity participates in this relation.
+const pncpProcurementSource = latestPncpProcurementFile();
+const pncpProcurements = readJsonl(pncpProcurementSource?.file);
+const procurementControlsByProcess = new Map();
+for (const procurement of pncpProcurements) {
+  const processKey = normalizeReference(procurement.process_number);
+  const controlKey = normalizeReference(procurement.pncp_control_number);
+  if (!processKey || !controlKey) continue;
+  const controls = procurementControlsByProcess.get(processKey) ?? new Set();
+  controls.add(controlKey);
+  procurementControlsByProcess.set(processKey, controls);
+}
+
+const pncpContractsByProcurementControl = new Map();
+for (const contract of complementaryContracts) {
+  const controlKey = normalizeReference(contract.controleContratacao);
+  if (!controlKey) continue;
+  const current = pncpContractsByProcurementControl.get(controlKey) ?? new Map();
+  current.set(sourceObservationKey(contract), contract);
+  pncpContractsByProcurementControl.set(controlKey, current);
+}
+
+let processesWithDirectExactContracts = 0;
+let directExactPairs = 0;
+let processesWithPncpProcurementControlLinks = 0;
+let pncpProcurementControlExactPairs = 0;
+let processesNewlyLinkedByPncpProcurementControl = 0;
+let pncpProcurementControlIncrementalPairs = 0;
+const pncpProcurementControlIncrementalContracts = new Set();
+
 const updatedProcesses = (processes.rows ?? []).map((process) => {
   const processKey = normalizeReference(process.processo);
-  const exactContracts = processKey ? [...(contractsByProcess.get(processKey)?.values() ?? [])] : [];
+  const relations = new Map();
+  const direct = processKey ? [...(contractsByProcess.get(processKey)?.values() ?? [])] : [];
+  if (direct.length) processesWithDirectExactContracts += 1;
+  directExactPairs += direct.length;
+  for (const contract of direct) addRelation(relations, contract, "exact_process_number");
+
+  let twoHopPairsForProcess = 0;
+  const controls = processKey ? procurementControlsByProcess.get(processKey) ?? new Set() : new Set();
+  for (const controlKey of controls) {
+    const matches = pncpContractsByProcurementControl.get(controlKey);
+    if (!matches) continue;
+    for (const contract of matches.values()) {
+      const key = sourceObservationKey(contract);
+      const existed = relations.has(key);
+      addRelation(relations, contract, "pncp_procurement_control_chain");
+      twoHopPairsForProcess += 1;
+      pncpProcurementControlExactPairs += 1;
+      if (!existed) {
+        pncpProcurementControlIncrementalPairs += 1;
+        pncpProcurementControlIncrementalContracts.add(key);
+      }
+    }
+  }
+  if (twoHopPairsForProcess > 0) processesWithPncpProcurementControlLinks += 1;
+  if (!direct.length && relations.size > 0) processesNewlyLinkedByPncpProcurementControl += 1;
+
+  const exactRelations = [...relations.values()];
+  const exactContracts = exactRelations.map(({ contract, methods }) => ({ ...contract, linkMethods: [...methods] }));
   const primaryExact = exactContracts.filter((contract) => contract._relationLayer === "municipal_primary");
   const pncpExact = exactContracts.filter((contract) => contract._relationLayer === "pncp_complementary");
   const timeline = [
@@ -100,9 +193,9 @@ const updatedProcesses = (processes.rows ?? []).map((process) => {
   ].filter(Boolean).sort((a, b) => String(a.data).localeCompare(String(b.data)));
   return {
     ...process,
-    contratosExatos: exactContracts.map(compactContract),
-    contratosExatosMunicipais: primaryExact.map(compactContract),
-    contratosPncpComplementaresExatos: pncpExact.map(compactContract),
+    contratosExatos: exactContracts.map((contract) => compactContract(contract, contract.linkMethods)),
+    contratosExatosMunicipais: primaryExact.map((contract) => compactContract(contract, contract.linkMethods)),
+    contratosPncpComplementaresExatos: pncpExact.map((contract) => compactContract(contract, contract.linkMethods)),
     linhaDoTempo: timeline,
   };
 });
@@ -139,7 +232,7 @@ for (const process of updatedProcesses) {
       primaryExactPairs += 1;
       uniquePrimary.set(key, contract);
     }
-    return compactContract(contract);
+    return compactContract(contract, contract.linkMethods);
   });
   links.push({
     processId: process.id,
@@ -162,11 +255,20 @@ const totalContractObservations = primaryContracts.length + complementaryContrac
 const summary = {
   processesTotal: updatedProcesses.length,
   processesWithExactContracts: links.length,
+  processesWithDirectExactContracts,
   processesWithPrimaryExactContracts,
   processesWithPncpComplementaryExactContracts,
+  processesWithPncpProcurementControlLinks,
+  processesNewlyLinkedByPncpProcurementControl,
   exactPairs,
+  directExactPairs,
   primaryExactPairs,
   pncpComplementaryExactPairs: pncpExactPairs,
+  pncpProcurementControlExactPairs,
+  pncpProcurementControlIncrementalPairs,
+  pncpProcurementControlIncrementalContracts: pncpProcurementControlIncrementalContracts.size,
+  pncpProcurementRows: pncpProcurements.length,
+  pncpProcurementAsOf: pncpProcurementSource?.date ?? null,
   contractsPrimaryRows: primaryContracts.length,
   contractsComplementaryRows: complementaryContracts.length,
   uniqueContractsLinked: uniqueObservations.size,
@@ -183,8 +285,8 @@ const summary = {
 
 const payload = {
   summary,
-  identityRule: "O vínculo exige igualdade do número oficial do processo após remover apenas formatação documental. Objeto, fornecedor, órgão e similaridade textual nunca criam relação.",
-  sourceObservationRule: "Prefeitura e PNCP permanecem observações documentais separadas. Registros das duas fontes não são fundidos por semelhança e seus valores não são somados entre si; cada observação mantém sua fonte e identificador.",
+  identityRule: "O vínculo exige igualdade de identificadores oficiais após remover apenas formatação documental. O caminho direto compara o número oficial do processo; o caminho PNCP de dois saltos exige processo municipal = process_number da contratação PNCP e numeroControlePNCP da contratação = numeroControlePncpCompra do contrato. Objeto, fornecedor, órgão, valor, data e similaridade textual nunca criam relação.",
+  sourceObservationRule: "Prefeitura e PNCP permanecem observações documentais separadas. Registros das duas fontes não são fundidos por semelhança e seus valores não são somados entre si; cada observação mantém sua fonte, identificador e método de vínculo.",
   accountingRule: "A relação aquisição → contrato é documental. Ela não liga automaticamente contrato a empenho, liquidação ou pagamento municipal; os totais financeiros agregados permanecem separados.",
   privacyRule: contracts.privacyRule ?? "Dados pessoais não estruturados não são usados para criar vínculos.",
   links,
@@ -199,14 +301,18 @@ money.municipalDocumentaryAccountingRule = payload.accountingRule;
 writeJson("money.json", money);
 
 meta.municipalProcessesWithExactContracts = summary.processesWithExactContracts;
+meta.municipalProcessesWithDirectExactContracts = summary.processesWithDirectExactContracts;
 meta.municipalProcessesWithPrimaryExactContracts = summary.processesWithPrimaryExactContracts;
 meta.municipalProcessesWithExactPncpComplementaryContracts = summary.processesWithPncpComplementaryExactContracts;
+meta.municipalProcessesWithPncpProcurementControlLinks = summary.processesWithPncpProcurementControlLinks;
+meta.municipalProcessesNewlyLinkedByPncpProcurementControl = summary.processesNewlyLinkedByPncpProcurementControl;
 meta.municipalUniqueContractsLinked = summary.uniqueContractsLinked;
 meta.municipalUniquePrimaryContractsLinked = summary.uniquePrimaryContractsLinked;
 meta.pncpComplementaryUniqueContractsLinked = summary.uniquePncpComplementaryContractsLinked;
 meta.municipalExactProcessContractPairs = summary.exactPairs;
 meta.municipalPrimaryExactProcessContractPairs = summary.primaryExactPairs;
 meta.pncpComplementaryExactProcessContractPairs = summary.pncpComplementaryExactPairs;
+meta.pncpProcurementControlIncrementalPairs = summary.pncpProcurementControlIncrementalPairs;
 writeJson("meta.json", meta);
 
-console.log(`Vínculos exatos: ${summary.processesWithExactContracts} processos; ${summary.primaryExactPairs} observações municipais e ${summary.pncpComplementaryExactPairs} observações PNCP. Nenhum valor foi somado entre fontes.`);
+console.log(`Vínculos exatos: ${summary.processesWithExactContracts} processos; ${summary.primaryExactPairs} observações municipais e ${summary.pncpComplementaryExactPairs} observações PNCP. Cadeia PNCP adicionou ${summary.processesNewlyLinkedByPncpProcurementControl} processos e ${summary.pncpProcurementControlIncrementalPairs} pares líquidos. Nenhum valor foi somado entre fontes.`);
