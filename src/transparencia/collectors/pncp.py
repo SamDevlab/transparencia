@@ -16,6 +16,7 @@ from ..provenance import persist_snapshot
 PNCP_ENDPOINT = "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao"
 PNCP_MODALITIES_ENDPOINT = "https://pncp.gov.br/api/pncp/v1/modalidades"
 RETRYABLE = {429, 500, 502, 503, 504}
+SPLITTABLE_SERVER_ERRORS = {500, 502, 503, 504}
 
 
 def _get_with_backoff(client: httpx.Client, url: str, *, params: dict | None = None, max_retries: int = 4) -> httpx.Response:
@@ -84,6 +85,15 @@ def date_windows(start: date, end: date, max_days: int = 30) -> Iterable[Window]
         cursor = stop + timedelta(days=1)
 
 
+def bisect_window(window: Window) -> tuple[Window, Window] | None:
+    """Split a failing date window without overlap; a one-day window cannot be split."""
+    if window.start >= window.end:
+        return None
+    span_days = (window.end - window.start).days
+    midpoint = window.start + timedelta(days=span_days // 2)
+    return Window(window.start, midpoint), Window(midpoint + timedelta(days=1), window.end)
+
+
 def _party(record: dict) -> tuple[str | None, str | None]:
     org = record.get("orgaoEntidade") or {}
     return org.get("esferaId"), org.get("poderId")
@@ -141,14 +151,34 @@ def normalize_record(r: dict, city: CityConfig, observed_at: str, snapshot_sha25
     }
 
 
-def _write_coverage(out_dir: Path, *, complete: bool, records: int, stopped_url: str | None = None, stopped_status: int | None = None) -> None:
+def _write_coverage(
+    out_dir: Path,
+    *,
+    complete: bool,
+    records: int,
+    stopped_url: str | None = None,
+    stopped_status: int | None = None,
+    adaptive_splits: list[dict] | None = None,
+    terminal_failures: list[dict] | None = None,
+) -> None:
+    splits = adaptive_splits or []
+    failures = terminal_failures or []
+    note = (
+        "complete=true means all modality/date segments reached a normal source end. "
+        "Transient PNCP server errors may have been recovered by splitting only the failing date window."
+        if complete else
+        "complete=false means at least one terminal source segment did not reach a normal end; "
+        "persisted records remain valid but missing coverage is not interpreted as zero."
+    )
     (out_dir / "coverage.json").write_text(json.dumps({
         "complete": complete,
         "records": records,
         "stopped_url": stopped_url,
         "stopped_status": stopped_status,
-        "note": "complete=false means the public source stopped the collection; persisted records remain valid but coverage is partial.",
-    }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        "adaptive_splits": splits,
+        "terminal_failures": failures,
+        "note": note,
+    }, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, scope: str = "executivo",
@@ -156,52 +186,125 @@ def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, scope: s
     out_dir.mkdir(parents=True, exist_ok=True)
     output = out_dir / f"contratacoes_{scope}_{start.isoformat()}_{end.isoformat()}.jsonl"
     seen: set[str] = set()
-    headers = {"User-Agent": "transparencia-municipal/0.2", "Accept": "application/json"}
+    adaptive_splits: list[dict] = []
+    terminal_failures: list[dict] = []
+    stop_requested = False
+    headers = {"User-Agent": "transparencia-municipal/0.3 (+public-data-audit)", "Accept": "application/json"}
+
     with httpx.Client(headers=headers, follow_redirects=True, timeout=60.0) as client, output.open("w", encoding="utf-8") as sink:
         modality_ids = discover_modality_ids(client, out_dir)
+
+        def collect_window(modality_id: int, window: Window) -> bool:
+            nonlocal stop_requested
+            page = 1
+            while True:
+                params = {
+                    "dataInicial": window.start.strftime("%Y%m%d"),
+                    "dataFinal": window.end.strftime("%Y%m%d"),
+                    "codigoModalidadeContratacao": modality_id,
+                    "uf": city.uf,
+                    "codigoMunicipioIbge": city.ibge_code,
+                    "pagina": page,
+                    "tamanhoPagina": page_size,
+                }
+                url = PNCP_ENDPOINT + "?" + urlencode(params)
+                response = _get_with_backoff(client, PNCP_ENDPOINT, params=params)
+                if response.status_code in RETRYABLE:
+                    persist_snapshot(
+                        out_dir=out_dir / "snapshots",
+                        source_id="pncp_consulta_limitada",
+                        requested_url=url,
+                        final_url=str(response.url),
+                        status_code=response.status_code,
+                        content_type=response.headers.get("content-type", ""),
+                        body=response.content,
+                    )
+                    split = bisect_window(window) if response.status_code in SPLITTABLE_SERVER_ERRORS else None
+                    if split is not None:
+                        left, right = split
+                        event = {
+                            "modality_id": modality_id,
+                            "failed_page": page,
+                            "status": response.status_code,
+                            "window_start": window.start.isoformat(),
+                            "window_end": window.end.isoformat(),
+                            "left_start": left.start.isoformat(),
+                            "left_end": left.end.isoformat(),
+                            "right_start": right.start.isoformat(),
+                            "right_end": right.end.isoformat(),
+                            "recovered": None,
+                        }
+                        adaptive_splits.append(event)
+                        left_ok = collect_window(modality_id, left)
+                        if stop_requested:
+                            event["recovered"] = False
+                            return False
+                        right_ok = collect_window(modality_id, right)
+                        event["recovered"] = bool(left_ok and right_ok)
+                        return bool(left_ok and right_ok)
+
+                    failure = {
+                        "modality_id": modality_id,
+                        "page": page,
+                        "status": response.status_code,
+                        "url": url,
+                        "window_start": window.start.isoformat(),
+                        "window_end": window.end.isoformat(),
+                    }
+                    terminal_failures.append(failure)
+                    if response.status_code == 429:
+                        stop_requested = True
+                    return False
+
+                response.raise_for_status()
+                meta = persist_snapshot(
+                    out_dir=out_dir / "snapshots",
+                    source_id="pncp_consulta",
+                    requested_url=url,
+                    final_url=str(response.url),
+                    status_code=response.status_code,
+                    content_type=response.headers.get("content-type", "application/json"),
+                    body=response.content,
+                )
+                payload = {} if response.status_code == 204 or not response.content.strip() else response.json()
+                records = payload.get("data") or payload.get("content") or []
+                for raw in records:
+                    if not in_scope(raw, city, scope):
+                        continue
+                    row = normalize_record(raw, city, meta.collected_at, meta.sha256)
+                    key = row.get("pncp_control_number") or json.dumps(row, sort_keys=True, ensure_ascii=False)
+                    if key not in seen:
+                        seen.add(key)
+                        sink.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
+
+                total_pages = payload.get("totalPaginas") or payload.get("totalPages")
+                if not records or (isinstance(total_pages, int) and page >= total_pages):
+                    return True
+                if payload.get("paginasRestantes") == 0 or len(records) < page_size:
+                    return True
+                page += 1
+                time.sleep(sleep_seconds)
+
+        complete = True
         for window in date_windows(start, end):
             for modality_id in modality_ids:
-                page = 1
-                while True:
-                    params = {
-                        "dataInicial": window.start.strftime("%Y%m%d"),
-                        "dataFinal": window.end.strftime("%Y%m%d"),
-                        "codigoModalidadeContratacao": modality_id,
-                        "uf": city.uf,
-                        "codigoMunicipioIbge": city.ibge_code,
-                        "pagina": page,
-                        "tamanhoPagina": page_size,
-                    }
-                    url = PNCP_ENDPOINT + "?" + urlencode(params)
-                    response = _get_with_backoff(client, PNCP_ENDPOINT, params=params)
-                    if response.status_code in RETRYABLE:
-                        persist_snapshot(out_dir=out_dir / "snapshots", source_id="pncp_consulta_limitada",
-                                         requested_url=url, final_url=str(response.url), status_code=response.status_code,
-                                         content_type=response.headers.get("content-type", ""), body=response.content)
-                        _write_coverage(out_dir, complete=False, records=len(seen), stopped_url=url, stopped_status=response.status_code)
-                        return output
-                    response.raise_for_status()
-                    meta = persist_snapshot(out_dir=out_dir / "snapshots", source_id="pncp_consulta",
-                                            requested_url=url, final_url=str(response.url),
-                                            status_code=response.status_code,
-                                            content_type=response.headers.get("content-type", "application/json"),
-                                            body=response.content)
-                    payload = {} if response.status_code == 204 or not response.content.strip() else response.json()
-                    records = payload.get("data") or payload.get("content") or []
-                    for raw in records:
-                        if not in_scope(raw, city, scope):
-                            continue
-                        row = normalize_record(raw, city, meta.collected_at, meta.sha256)
-                        key = row.get("pncp_control_number") or json.dumps(row, sort_keys=True, ensure_ascii=False)
-                        if key not in seen:
-                            seen.add(key)
-                            sink.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
-                    total_pages = payload.get("totalPaginas") or payload.get("totalPages")
-                    if not records or (isinstance(total_pages, int) and page >= total_pages):
-                        break
-                    if payload.get("paginasRestantes") == 0 or len(records) < page_size:
-                        break
-                    page += 1
-                    time.sleep(sleep_seconds)
-    _write_coverage(out_dir, complete=True, records=len(seen))
+                if stop_requested:
+                    complete = False
+                    break
+                if not collect_window(modality_id, window):
+                    complete = False
+            if stop_requested:
+                break
+
+    final_complete = complete and not terminal_failures and not stop_requested
+    last_failure = terminal_failures[-1] if terminal_failures else None
+    _write_coverage(
+        out_dir,
+        complete=final_complete,
+        records=len(seen),
+        stopped_url=last_failure.get("url") if last_failure else None,
+        stopped_status=last_failure.get("status") if last_failure else None,
+        adaptive_splits=adaptive_splits,
+        terminal_failures=terminal_failures,
+    )
     return output
