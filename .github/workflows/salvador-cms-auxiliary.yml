@@ -9,6 +9,7 @@ on:
     paths:
       - .github/workflows/salvador-cms-auxiliary.yml
       - src/transparencia/collectors/cms.py
+      - src/transparencia/collectors/cms_certames.py
 
 permissions:
   contents: write
@@ -40,6 +41,7 @@ jobs:
           from pathlib import Path
           from zoneinfo import ZoneInfo
           from transparencia.collectors import cms
+          from transparencia.collectors import cms_certames
 
           today = datetime.now(ZoneInfo('America/Bahia')).date()
           out = Path('cities/salvador/data/snapshots') / today.isoformat() / 'cms_auxiliary'
@@ -47,10 +49,11 @@ jobs:
 
           travel = cms.collect_travel(out)
           documents = cms.collect_document_catalog(out)
-          certames = cms.collect_certames_visible(out)
+          certames = cms_certames.collect_certames(out)
 
           travel_cov = json.loads((out/'cms_travel_expenses.coverage.json').read_text(encoding='utf-8'))
           documents_cov = json.loads((out/'cms_documents.coverage.json').read_text(encoding='utf-8'))
+          certames_cov = json.loads((out/'cms_certames.coverage.json').read_text(encoding='utf-8'))
           sections = documents_cov.get('sections') or {}
           result = {
             'observed_at_date': today.isoformat(),
@@ -66,16 +69,22 @@ jobs:
               'complete': bool(sections) and all(bool(item.get('complete')) for item in sections.values()),
             },
             'certames': {
-              'records': sum(1 for line in certames.read_text(encoding='utf-8').splitlines() if line.strip()),
-              'coverage': 'server_visible_page_only',
-              'complete': False,
+              'records': certames_cov.get('records'),
+              'server_reported_total': certames_cov.get('server_reported_total'),
+              'pages_collected': certames_cov.get('pages_collected'),
+              'reached_server_end': bool(certames_cov.get('reached_server_end')),
+              'complete': bool(certames_cov.get('complete')),
+              'stopped_status': certames_cov.get('stopped_status'),
+              'error': certames_cov.get('error'),
+              'coverage': 'scriptcase_full_catalogue' if certames_cov.get('complete') else 'scriptcase_partial_catalogue',
             },
           }
           (out/'summary.json').write_text(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True)+'\n', encoding='utf-8')
           print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
 
-          # Rate limiting or a source stop remains partial, never an inferred zero.
-          if travel_cov.get('records') is None or documents_cov.get('records') is None:
+          # Missing metadata is a collector failure. A source-side stop remains
+          # partial and is still committed as evidence instead of becoming zero.
+          if travel_cov.get('records') is None or documents_cov.get('records') is None or certames_cov.get('records') is None:
               raise SystemExit('Auxiliary coverage metadata missing')
           PY
       - name: Commit source-scoped auxiliary snapshot
