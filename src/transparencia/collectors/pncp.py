@@ -22,7 +22,13 @@ SPLITTABLE_SERVER_ERRORS = {500, 502, 503, 504}
 def _get_with_backoff(client: httpx.Client, url: str, *, params: dict | None = None, max_retries: int = 4) -> httpx.Response:
     response: httpx.Response | None = None
     for attempt in range(max_retries + 1):
-        response = client.get(url, params=params)
+        try:
+            response = client.get(url, params=params)
+        except httpx.RequestError:
+            if attempt >= max_retries:
+                raise
+            time.sleep(min(2 ** (attempt + 1), 20))
+            continue
         if response.status_code not in RETRYABLE:
             return response
         if attempt >= max_retries:
