@@ -41,7 +41,10 @@ const contractsFreshness = meta.municipalContractsAvailable
       source: contracts.sourceSystem ?? contracts.source ?? "PNCP",
     };
 
+// Preserve freshness records produced by earlier source-specific overlays. This script
+// normalizes municipal freshness, but must not erase PNCP/Câmara/Bahia source state.
 const freshness = {
+  ...(meta.dataFreshness ?? {}),
   baseSnapshot: { asOf: baseAsOf, source: "snapshot_base" },
   finance: financeFreshness,
   acquisitions: acquisitionsFreshness,
@@ -56,7 +59,10 @@ meta.dataFreshness = freshness;
 for (const payload of [money, search, analysis]) {
   payload.asOf = baseAsOf;
   payload.freshnessModel = "per_source";
-  payload.dataFreshness = freshness;
+  payload.dataFreshness = {
+    ...(payload.dataFreshness ?? {}),
+    ...freshness,
+  };
 }
 
 // Comparisons are rebuilt solely from the current municipal acquisitions overlay.
