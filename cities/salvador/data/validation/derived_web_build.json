@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "tested_commit": "3b1a8fe456f6a95e5acfaf586fa35043d76c3c0c",
+  "tested_commit": "5f7dbffbd2b01870e4349707a5416805802a3b23",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
@@ -184,10 +184,10 @@
   },
   "pncp_complementary": {
     "as_of": "2026-08-23",
-    "status": "complete_for_supplied_agencies_and_filter",
-    "collection_mode": "pncp_municipal_procurement_discovery_plus_configured_cnpj",
+    "status": "complete_for_discovered_municipal_agencies_and_filter",
+    "collection_mode": "pncp_reconciled_complete_discovery_and_exact_contract_scope",
     "current_rows": 396,
     "agency_cnpj_count": 26,
-    "agency_discovery_complete": false
+    "agency_discovery_complete": true
   }
 }
