@@ -4,7 +4,7 @@ Data de referência desta revisão: **23/08/2026**
 
 ## Estado atual
 
-**STATUS: OPERACIONAL, COM COBERTURA DECLARADA POR FONTE.**
+**STATUS: OPERACIONAL, COM COBERTURA DECLARADA POR FONTE E DEPLOY FUNCIONAL.**
 
 A engenharia principal está implementada: coletores, preservação de evidência, cobertura explícita, reconciliação determinística, banco reconstruível, frontend derivado, testes e workflows. Isso não significa que todas as fontes externas estejam completas em todos os períodos.
 
@@ -20,20 +20,29 @@ Este arquivo é a referência humana de status. Para uma execução específica,
 - **PNCP:** fonte complementar para contratações, contratos e CNPJ estruturado; nunca substitui a grade municipal quando sua cobertura é menor.
 - **Reconciliação:** relações entre município e PNCP usam identificadores exatos normalizados. Ambiguidade permanece explícita.
 - **Privacidade:** a camada pública de fornecedores exige CNPJ empresarial estruturado; CPF individual não vira cadastro público de fornecedor.
+- **Frontend/deploy:** o build derivado voltou a passar e o deploy Vercel da branch `city/salvador` está funcional após correção do modelo de freshness por fonte.
 
-## PNCP complementar — situação corrigida
+## PNCP complementar — estado atual
 
-O snapshot de **22/08/2026** comprovou uma coleta de contratos bem-sucedida para o CNPJ municipal configurado e registrou **41 contratos**, mas marcou corretamente `agency_cnpj_discovery_complete=false`. Portanto, aquele resultado é completo apenas para o conjunto de CNPJs fornecido ao coletor, não para todas as entidades municipais.
+O snapshot de **22/08/2026** registrou **41 contratos** para o CNPJ municipal configurado, mas sem descoberta completa de todas as entidades municipais.
 
-Em **23/08/2026**, o workflow `.github/workflows/salvador-pncp-complementary.yml` foi corrigido para:
+A execução ampliada de **23/08/2026** descobriu **18 CNPJs em contratações PNCP**, além do CNPJ municipal principal, totalizando **19 CNPJs consultados**. A execução permaneceu corretamente marcada como `partial`:
 
-1. coletar primeiro as contratações PNCP de Salvador com `scope=municipal`;
-2. extrair os CNPJs dos órgãos encontrados por meio de `agency_cnpjs_from_procurements`;
-3. adicionar o CNPJ municipal configurado como fallback/âncora;
-4. consultar contratos para todo o conjunto descoberto;
-5. declarar separadamente a completude da descoberta de órgãos e a completude das consultas de contratos.
+- contratações municipais PNCP observadas: **249**;
+- descoberta de órgãos: **incompleta**, interrompida por HTTP 500 da fonte;
+- contratos observados na execução ampliada: **22**;
+- consultas de contratos com erro: **133**, majoritariamente por HTTP 429 e alguns HTTP 500;
+- cobertura municipal completa: **não declarada**.
 
-A regra permanece conservadora: uma descoberta PNCP parcial pode fornecer contratos válidos, mas **não** autoriza afirmar cobertura municipal completa.
+O coletor e o workflow foram endurecidos em 23/08/2026 para reduzir pressão sobre a API: pacing entre requisições, respeito a `Retry-After`, mais tentativas e cadência menor no workflow.
+
+A camada web também foi corrigida para que um snapshot PNCP parcial **não substitua silenciosamente** um conjunto publicado anterior. O snapshot parcial continua visível como evidência e freshness, mas promoção de novas linhas exige que as consultas do conjunto fornecido terminem normalmente.
+
+## Correção de build/deploy
+
+O deploy falhava porque `scripts/fix-municipal-freshness.mjs` reconstruía `meta.dataFreshness` depois do overlay PNCP e removia `pncpComplementary`. A validação final detectava a divergência e encerrava `npm run build`.
+
+A correção passou a preservar freshness produzido por overlays anteriores. O workflow de validação da camada derivada registrou `passed=true` para o commit corrigido, com `latest_source_as_of=2026-08-23`, e os deploys posteriores voltaram ao estado `READY`.
 
 ## Cobertura e evidência
 
@@ -54,16 +63,17 @@ Estados de cobertura usados pelo projeto:
 
 ## Próxima prioridade
 
-A prioridade imediata é validar a execução ampliada do PNCP e medir quantos CNPJs municipais são descobertos e quantos contratos adicionais aparecem em relação ao run limitado ao CNPJ principal.
+A principal pendência técnica interna foi resolvida. A pendência atual depende da estabilidade do PNCP: novas execuções devem tentar completar a descoberta e as consultas dos 19 CNPJs sem transformar HTTP 429/500 em ausência de dados.
 
-Depois disso, a sequência recomendada é:
+Enquanto o PNCP permanecer parcial:
 
-1. promover a evidência PNCP ampliada para a camada web somente se as invariantes de cobertura e privacidade passarem;
-2. revisar os vínculos `aquisição municipal ↔ contrato municipal/PNCP` sem fuzzy matching;
-3. consolidar métricas de fornecedores apenas onde houver CNPJ estruturado;
-4. continuar reduzindo documentação duplicada, mantendo este arquivo como status canônico.
+1. manter a grade municipal de contratos como fonte primária;
+2. manter o PNCP apenas como complemento explicitamente parcial;
+3. revisar vínculos `aquisição municipal ↔ contrato municipal/PNCP` somente por identificadores exatos;
+4. consolidar métricas públicas de fornecedores apenas com CNPJ empresarial estruturado;
+5. promover novas linhas PNCP apenas quando os gates de cobertura e privacidade passarem.
 
-## Validação local
+## Validação
 
 ```bash
 python -m pip install -e '.[dev]'
