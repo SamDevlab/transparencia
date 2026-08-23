@@ -75,7 +75,17 @@ const legacyDiscovered = Number(current.summary.agency_cnpjs_discovered ?? 0);
 const agencyCnpjCount = suppliedCnpjs.length || legacyDiscovered;
 const discoveryComplete = current.summary.agency_cnpj_discovery_complete === true;
 const currentComplete = current.summary.contracts?.complete_for_supplied_agencies_and_filter === true;
-const previousRows = contracts.complementary?.rows ?? [];
+const previousComplementary = contracts.complementary ?? {};
+const previousRows = previousComplementary.rows ?? [];
+const previousPublishedAsOf = previousComplementary.publishedRowsAsOf ?? previousComplementary.asOf ?? null;
+
+// A partial observation is valuable evidence, but it must not silently replace a
+// previously published contract set. Promote new rows only when every supplied
+// CNPJ/date query reached a normal source end. Otherwise retain the last published
+// rows and expose the partial observation separately in metadata.
+const promoteCurrentRows = currentComplete && mapped.length > 0;
+const publishedRows = promoteCurrentRows ? mapped : previousRows;
+const publishedRowsAsOf = promoteCurrentRows ? current.date : previousPublishedAsOf;
 
 contracts.complementary = {
   source: "PNCP",
@@ -87,9 +97,11 @@ contracts.complementary = {
   agencyCnpjDiscoveryComplete: discoveryComplete,
   coverageNote: current.summary.coverage_rule ?? null,
   errors: current.summary.errors ?? [],
-  rows: mapped.length ? mapped : previousRows,
+  rows: publishedRows,
+  publishedRowsAsOf,
   currentSnapshotRows: mapped.length,
-  retainedPreviousRows: mapped.length === 0 ? previousRows.length : 0,
+  currentSnapshotPromoted: promoteCurrentRows,
+  retainedPreviousRows: promoteCurrentRows ? 0 : previousRows.length,
 };
 writeJson("contracts.json", contracts);
 
@@ -98,6 +110,9 @@ meta.pncpComplementaryAsOf = current.date;
 meta.pncpComplementaryStatus = contracts.complementary.status;
 meta.pncpComplementaryCollectionMode = contracts.complementary.collectionMode;
 meta.pncpComplementaryCurrentRows = mapped.length;
+meta.pncpComplementaryPublishedRows = publishedRows.length;
+meta.pncpComplementaryPublishedRowsAsOf = publishedRowsAsOf;
+meta.pncpComplementaryCurrentSnapshotPromoted = promoteCurrentRows;
 meta.pncpComplementaryAgencyCnpjs = agencyCnpjCount;
 meta.pncpComplementaryAgencyDiscoveryComplete = discoveryComplete;
 meta.dataFreshness ??= {};
@@ -107,9 +122,13 @@ meta.dataFreshness.pncpComplementary = {
   collectionMode: contracts.complementary.collectionMode,
   agencyCnpjCount,
   agencyCnpjDiscoveryComplete: discoveryComplete,
+  currentSnapshotRows: mapped.length,
+  currentSnapshotPromoted: promoteCurrentRows,
+  publishedRows: publishedRows.length,
+  publishedRowsAsOf,
 };
 const candidateDates = [meta.latestSourceAsOf, current.date].filter((value) => /^\d{4}-\d{2}-\d{2}$/.test(String(value || ""))).sort();
 meta.latestSourceAsOf = candidateDates.at(-1) ?? meta.latestSourceAsOf ?? null;
 writeJson("meta.json", meta);
 
-console.log(`PNCP complementar ${current.date}: ${mapped.length} contratos no snapshot atual; status=${contracts.complementary.status}; CNPJs fornecidos=${agencyCnpjCount}; descoberta completa=${discoveryComplete}; fonte mais recente=${meta.latestSourceAsOf}.`);
+console.log(`PNCP complementar ${current.date}: observados=${mapped.length}; publicados=${publishedRows.length}; promovido=${promoteCurrentRows}; status=${contracts.complementary.status}; CNPJs fornecidos=${agencyCnpjCount}; descoberta completa=${discoveryComplete}; fonte mais recente=${meta.latestSourceAsOf}.`);
