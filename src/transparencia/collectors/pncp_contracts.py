@@ -126,10 +126,16 @@ def collect(
     agency_cnpjs: Iterable[str],
     scope: str = "executivo",
     page_size: int = 100,
+    window_days: int = 30,
     sleep_seconds: float = 0.25,
     max_attempts: int = 3,
 ) -> Path:
     """Collect PNCP contracts for explicitly supplied agency CNPJs with auditable coverage."""
+    if window_days < 1:
+        raise ValueError("window_days deve ser >= 1")
+    if page_size < 1 or page_size > 500:
+        raise ValueError("page_size deve estar entre 1 e 500")
+
     out_dir.mkdir(parents=True, exist_ok=True)
     output = out_dir / f"contratos_{scope}_{start.isoformat()}_{end.isoformat()}.jsonl"
     cnpjs = tuple(sorted({"".join(ch for ch in c if ch.isdigit()) for c in agency_cnpjs if c}))
@@ -144,7 +150,7 @@ def collect(
 
     with httpx.Client(headers=headers, follow_redirects=True, timeout=60.0) as client, output.open("w", encoding="utf-8") as sink:
         for cnpj in cnpjs:
-            for window in date_windows(start, end):
+            for window in date_windows(start, end, max_days=window_days):
                 page = 1
                 pages_collected = 0
                 records_received = 0
@@ -164,7 +170,7 @@ def collect(
                         try:
                             response = client.get(PNCP_CONTRACTS_ENDPOINT, params=params)
                             # Pace every request, not only multi-page queries. With many agency
-                            # CNPJs the first page of each date window is otherwise a burst.
+                            # CNPJs the first page of each query is otherwise a burst.
                             if sleep_seconds > 0:
                                 time.sleep(sleep_seconds)
                             if response.status_code in RETRYABLE and attempt < max_attempts:
@@ -236,6 +242,8 @@ def collect(
         "period_start": start.isoformat(),
         "period_end": end.isoformat(),
         "agency_cnpjs": list(cnpjs),
+        "page_size": page_size,
+        "window_days": window_days,
         "records_after_salvador_scope_filter": len(seen),
         "complete_for_supplied_agencies_and_filter": complete,
         "queries": queries,
