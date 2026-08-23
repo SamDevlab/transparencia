@@ -1,0 +1,35 @@
+{
+  "certames": {
+    "complete": true,
+    "coverage": "scriptcase_full_catalogue",
+    "error": null,
+    "pages_collected": 19,
+    "reached_server_end": true,
+    "records": 188,
+    "server_reported_total": 188,
+    "stopped_status": null
+  },
+  "documents": {
+    "complete": true,
+    "records": 1994,
+    "sections": {
+      "execucao_orcamentaria_financeira": {
+        "complete": true,
+        "pages_collected": 44,
+        "stopped_status": null
+      },
+      "prestacao_contas": {
+        "complete": true,
+        "pages_collected": 66,
+        "stopped_status": null
+      }
+    }
+  },
+  "observed_at_date": "2026-08-23",
+  "travel": {
+    "complete": true,
+    "pages_collected": 36,
+    "records": 159,
+    "stopped_status": null
+  }
+}
