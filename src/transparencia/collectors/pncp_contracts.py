@@ -14,6 +14,7 @@ from ..provenance import persist_snapshot
 from .pncp import date_windows
 
 PNCP_CONTRACTS_ENDPOINT = "https://pncp.gov.br/api/consulta/v1/contratos"
+RETRYABLE = {429, 500, 502, 503, 504}
 
 
 def agency_cnpjs_from_procurements(paths: Iterable[Path]) -> tuple[str, ...]:
@@ -37,6 +38,15 @@ def _org(record: dict) -> dict:
 
 def _unit(record: dict) -> dict:
     return record.get("unidadeOrgao") or record.get("unidadeExecutora") or {}
+
+
+def _retry_delay(response: httpx.Response | None, attempt: int) -> float:
+    retry_after = response.headers.get("retry-after") if response is not None else None
+    try:
+        delay = float(retry_after) if retry_after else min(2 ** attempt, 20)
+    except (TypeError, ValueError):
+        delay = min(2 ** attempt, 20)
+    return max(1.0, min(delay, 30.0))
 
 
 def in_scope(record: dict, city: CityConfig, scope: str) -> bool:
@@ -149,12 +159,16 @@ def collect(
                         "tamanhoPagina": page_size,
                     }
                     request_url = PNCP_CONTRACTS_ENDPOINT + "?" + urlencode(params)
-                    response = None
+                    response: httpx.Response | None = None
                     for attempt in range(1, max_attempts + 1):
                         try:
                             response = client.get(PNCP_CONTRACTS_ENDPOINT, params=params)
-                            if response.status_code in {429, 500, 502, 503, 504} and attempt < max_attempts:
-                                time.sleep(min(2 ** attempt, 12))
+                            # Pace every request, not only multi-page queries. With many agency
+                            # CNPJs the first page of each date window is otherwise a burst.
+                            if sleep_seconds > 0:
+                                time.sleep(sleep_seconds)
+                            if response.status_code in RETRYABLE and attempt < max_attempts:
+                                time.sleep(_retry_delay(response, attempt))
                                 continue
                             response.raise_for_status()
                             break
@@ -162,7 +176,7 @@ def collect(
                             if attempt >= max_attempts:
                                 query_error = f"{type(exc).__name__}: {exc}"
                             else:
-                                time.sleep(min(2 ** attempt, 12))
+                                time.sleep(_retry_delay(response, attempt))
                     if query_error or response is None:
                         break
 
@@ -200,7 +214,6 @@ def collect(
                         query_complete = True
                         break
                     page += 1
-                    time.sleep(sleep_seconds)
 
                 item = {
                     "cnpj_orgao": cnpj,
