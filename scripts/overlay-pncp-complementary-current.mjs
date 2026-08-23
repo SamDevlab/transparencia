@@ -75,14 +75,23 @@ const legacyDiscovered = Number(current.summary.agency_cnpjs_discovered ?? 0);
 const agencyCnpjCount = suppliedCnpjs.length || legacyDiscovered;
 const discoveryComplete = current.summary.agency_cnpj_discovery_complete === true;
 const currentComplete = current.summary.contracts?.complete_for_supplied_agencies_and_filter === true;
+const discoveredScopeComplete = discoveryComplete
+  && current.summary.contracts?.complete_for_discovered_municipal_agencies_and_filter === true
+  && current.summary.reconciliation?.procurement_and_contract_scope_match === true;
+const currentStatus = discoveredScopeComplete
+  ? "complete_for_discovered_municipal_agencies_and_filter"
+  : currentComplete
+    ? "complete_for_supplied_agencies_and_filter"
+    : "partial";
 const previousComplementary = contracts.complementary ?? {};
 const previousRows = previousComplementary.rows ?? [];
 const previousPublishedAsOf = previousComplementary.publishedRowsAsOf ?? previousComplementary.asOf ?? null;
 
 // A partial observation is valuable evidence, but it must not silently replace a
 // previously published contract set. Promote new rows only when every supplied
-// CNPJ/date query reached a normal source end. Otherwise retain the last published
-// rows and expose the partial observation separately in metadata.
+// CNPJ/date query reached a normal source end. A stronger status is exposed only
+// when discovery itself is complete and the procurement/contract CNPJ scopes were
+// reconciled exactly, with no fuzzy identity matching.
 const promoteCurrentRows = currentComplete && mapped.length > 0;
 const publishedRows = promoteCurrentRows ? mapped : previousRows;
 const publishedRowsAsOf = promoteCurrentRows ? current.date : previousPublishedAsOf;
@@ -90,11 +99,12 @@ const publishedRowsAsOf = promoteCurrentRows ? current.date : previousPublishedA
 contracts.complementary = {
   source: "PNCP",
   asOf: current.date,
-  status: currentComplete ? "complete_for_supplied_agencies_and_filter" : "partial",
+  status: currentStatus,
   collectionMode: current.summary.collection_mode ?? "legacy_discovery",
   agencyCnpjs: suppliedCnpjs,
   agencyCnpjCount,
   agencyCnpjDiscoveryComplete: discoveryComplete,
+  procurementAndContractScopeMatch: current.summary.reconciliation?.procurement_and_contract_scope_match === true,
   coverageNote: current.summary.coverage_rule ?? null,
   errors: current.summary.errors ?? [],
   rows: publishedRows,
@@ -115,6 +125,7 @@ meta.pncpComplementaryPublishedRowsAsOf = publishedRowsAsOf;
 meta.pncpComplementaryCurrentSnapshotPromoted = promoteCurrentRows;
 meta.pncpComplementaryAgencyCnpjs = agencyCnpjCount;
 meta.pncpComplementaryAgencyDiscoveryComplete = discoveryComplete;
+meta.pncpComplementaryProcurementAndContractScopeMatch = contracts.complementary.procurementAndContractScopeMatch;
 meta.dataFreshness ??= {};
 meta.dataFreshness.pncpComplementary = {
   asOf: current.date,
@@ -122,6 +133,7 @@ meta.dataFreshness.pncpComplementary = {
   collectionMode: contracts.complementary.collectionMode,
   agencyCnpjCount,
   agencyCnpjDiscoveryComplete: discoveryComplete,
+  procurementAndContractScopeMatch: contracts.complementary.procurementAndContractScopeMatch,
   currentSnapshotRows: mapped.length,
   currentSnapshotPromoted: promoteCurrentRows,
   publishedRows: publishedRows.length,
@@ -131,4 +143,4 @@ const candidateDates = [meta.latestSourceAsOf, current.date].filter((value) => /
 meta.latestSourceAsOf = candidateDates.at(-1) ?? meta.latestSourceAsOf ?? null;
 writeJson("meta.json", meta);
 
-console.log(`PNCP complementar ${current.date}: observados=${mapped.length}; publicados=${publishedRows.length}; promovido=${promoteCurrentRows}; status=${contracts.complementary.status}; CNPJs fornecidos=${agencyCnpjCount}; descoberta completa=${discoveryComplete}; fonte mais recente=${meta.latestSourceAsOf}.`);
+console.log(`PNCP complementar ${current.date}: observados=${mapped.length}; publicados=${publishedRows.length}; promovido=${promoteCurrentRows}; status=${contracts.complementary.status}; CNPJs fornecidos=${agencyCnpjCount}; descoberta completa=${discoveryComplete}; escopo reconciliado=${contracts.complementary.procurementAndContractScopeMatch}; fonte mais recente=${meta.latestSourceAsOf}.`);
