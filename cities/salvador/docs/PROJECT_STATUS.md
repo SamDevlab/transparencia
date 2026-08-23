@@ -1,124 +1,82 @@
 # Status do projeto — Salvador/BA
 
-Data de referência: **17/08/2026**
+Data de referência desta revisão: **23/08/2026**
 
-## Resultado
+## Estado atual
 
-**STATUS TÉCNICO: COMPLETO**
+**STATUS: OPERACIONAL, COM COBERTURA DECLARADA POR FONTE.**
 
-O projeto possui pipeline de produção, manifesto de cobertura, coletores específicos por fonte, reconciliação exata, banco SQLite reconstruível, testes, workflows e documentação de limitações. “Completo” aqui significa que a engenharia necessária para coletar e representar honestamente as fontes está implementada; não significa que uma fonte pública indisponível passe a ser considerada completa.
+A engenharia principal está implementada: coletores, preservação de evidência, cobertura explícita, reconciliação determinística, banco reconstruível, frontend derivado, testes e workflows. Isso não significa que todas as fontes externas estejam completas em todos os períodos.
 
-O estado machine-readable está em:
+Este arquivo é a referência humana de status. Para uma execução específica, prevalecem os `coverage.json`, `summary.json` e relatórios versionados no snapshot correspondente.
+
+## O que está consolidado
+
+- **Prefeitura — finanças:** coleta oficial preservando receita e os estágios da despesa sem tratar empenho, liquidação e pagamento como equivalentes.
+- **Prefeitura — aquisições:** paginação oficial com controles de contagem e cobertura do filtro consultado.
+- **Prefeitura — contratos:** grade municipal individualizada coletada separadamente; timeout ou intervalo incompleto permanece `partial`.
+- **Câmara — empenhos:** navegação ScriptCase real com comparação entre identificadores visíveis e registros normalizados antes de declarar completude.
+- **Câmara — fontes auxiliares:** viagens, documentos e certames possuem cobertura própria e não são promovidos silenciosamente a outra categoria contábil.
+- **PNCP:** fonte complementar para contratações, contratos e CNPJ estruturado; nunca substitui a grade municipal quando sua cobertura é menor.
+- **Reconciliação:** relações entre município e PNCP usam identificadores exatos normalizados. Ambiguidade permanece explícita.
+- **Privacidade:** a camada pública de fornecedores exige CNPJ empresarial estruturado; CPF individual não vira cadastro público de fornecedor.
+
+## PNCP complementar — situação corrigida
+
+O snapshot de **22/08/2026** comprovou uma coleta de contratos bem-sucedida para o CNPJ municipal configurado e registrou **41 contratos**, mas marcou corretamente `agency_cnpj_discovery_complete=false`. Portanto, aquele resultado é completo apenas para o conjunto de CNPJs fornecido ao coletor, não para todas as entidades municipais.
+
+Em **23/08/2026**, o workflow `.github/workflows/salvador-pncp-complementary.yml` foi corrigido para:
+
+1. coletar primeiro as contratações PNCP de Salvador com `scope=municipal`;
+2. extrair os CNPJs dos órgãos encontrados por meio de `agency_cnpjs_from_procurements`;
+3. adicionar o CNPJ municipal configurado como fallback/âncora;
+4. consultar contratos para todo o conjunto descoberto;
+5. declarar separadamente a completude da descoberta de órgãos e a completude das consultas de contratos.
+
+A regra permanece conservadora: uma descoberta PNCP parcial pode fornecer contratos válidos, mas **não** autoriza afirmar cobertura municipal completa.
+
+## Cobertura e evidência
+
+Snapshots ficam em:
 
 ```text
-cities/salvador/data/final/2026-08-17/FINAL_STATUS.json
+cities/salvador/data/snapshots/YYYY-MM-DD/
 ```
 
-## Validação
+Resultados históricos validados continuam preservados; não se apagam respostas brutas apenas para “limpar” o repositório. A limpeza documental remove duplicação e informação obsoleta, mas mantém rastreabilidade e evidência.
 
-A validação final versionada em `data/validation/final_validation.json` registrou:
+Estados de cobertura usados pelo projeto:
 
-- `pytest`: **33 passed**;
-- `compileall`: **PASS**;
-- CLI `collect-salvador`: **PASS**;
-- teste ao vivo da primeira página do sistema de empenhos da CMS: HTTP 200, **10 identificadores visíveis, 10 normalizados, 0 faltantes, 0 extras**.
+- `complete_for_filter` / `complete=true`: a própria fonte e o filtro consultado chegaram a um fim comprovado;
+- `partial` / `complete=false`: há registros válidos, porém a fonte ou a execução não permite provar cobertura total;
+- `unavailable`: a tentativa falhou sem cobertura suficiente;
+- `not_run`: a etapa foi desabilitada explicitamente.
 
-## Cobertura factual consolidada
+## Próxima prioridade
 
-### Prefeitura — finanças
+A prioridade imediata é validar a execução ampliada do PNCP e medir quantos CNPJs municipais são descobertos e quantos contratos adicionais aparecem em relação ao run limitado ao CNPJ principal.
 
-O adaptador utiliza a API consumida pelo próprio Portal da Transparência. O snapshot de 01/01/2026 a 17/08/2026 preserva totalizadores e detalhamentos de receita, despesa por função/credor e execução contratual agregada, com proveniência e SHA-256.
+Depois disso, a sequência recomendada é:
 
-Credor agregado **não** é tratado como pagamento individual. Empenhado, liquidado e pago permanecem estágios separados.
+1. promover a evidência PNCP ampliada para a camada web somente se as invariantes de cobertura e privacidade passarem;
+2. revisar os vínculos `aquisição municipal ↔ contrato municipal/PNCP` sem fuzzy matching;
+3. consolidar métricas de fornecedores apenas onde houver CNPJ estruturado;
+4. continuar reduzindo documentação duplicada, mantendo este arquivo como status canônico.
 
-### Prefeitura — aquisições
-
-A coleta de 01/01/2026 a 17/08/2026 fechou a paginação informada pela própria API:
-
-- **2.306 registros recebidos / 2.306 reportados**;
-- **231 páginas coletadas / 231 reportadas**;
-- zero colisões da chave interna determinística;
-- valor total reportado pela API: **R$ 3.566.352.927,80**.
-
-Este é `complete_for_filter` da API municipal para aquele intervalo. Não é uma afirmação sobre qualquer outro sistema externo.
-
-### Prefeitura — contratos individualizados
-
-O frontend oficial confirma a grade `POST /contratos/gridDetalhada?pagina=N` e rotas de detalhe, aditivo, empenho, liquidação e pagamento. As sondas da grade detalhada apresentaram timeout; `GET /FiscaisContratos/downloadcsv` retornou HTTP 405.
-
-O coletor `salvador_contracts.py` resolve isso sem falsificar dados: tenta a consulta oficial, subdivide o período quando necessário, preserva respostas bem-sucedidas e registra intervalos que falharam como `partial`. Timeout nunca vira “zero contratos”.
-
-### PNCP — contratações e contratos
-
-O PNCP permanece fonte complementar de reconciliação. Contratações são filtradas por município, esfera e poder; contratos são consultados para CNPJs de órgãos descobertos nas próprias contratações, além do CNPJ configurado quando aplicável.
-
-Um run de contratos só pode receber `complete_for_filter` se as consultas dos CNPJs fornecidos fecharem normalmente **e** a descoberta upstream usada para formar o conjunto de CNPJs também estiver comprovadamente completa. Isso evita declarar uma lista de fornecedores completa a partir de um conjunto incompleto de órgãos.
-
-### Câmara — empenhos
-
-A paginação real do ScriptCase foi comprovada: a aplicação mantém sessão e navega pelo formulário F3 com `nmgp_opcao=avanca`. O projeto não usa `?page=N` como substituto inventado.
-
-O coletor atual:
-
-1. preserva cada resposta bruta com SHA-256;
-2. conta todos os números de empenho visíveis em cada página;
-3. normaliza cada empenho em bloco independente;
-4. compara visíveis × normalizados;
-5. navega até a própria aplicação atingir o fim/repetição;
-6. só marca `complete=true` se **a fonte foi exaurida e não houve lacuna de parsing**.
-
-Um snapshot antigo que havia sido marcado como completo foi posteriormente identificado como subnormalizado. A reivindicação foi retirada, o arquivo normalizado antigo foi removido e os HTMLs brutos foram mantidos como evidência. Isso é comportamento intencional do projeto: erro descoberto corrige a cobertura em vez de ser escondido.
-
-Os empenhos emitidos pelo coletor entram no modelo reutilizável como `stage=commitment`. Eles não são convertidos em pagamento.
-
-## Identidade política
-
-O vínculo entre credor e vereador exige:
-
-- nome oficial exato após normalização; ou
-- alias explicitamente documentado por fonte oficial.
-
-Similaridade de nome não cria vínculo. O caso `Carlos da Silva Muniz → Carlos Muniz` possui alias documentado; outros nomes permanecem sem match quando a evidência não basta.
-
-Na camada normalizada, CPF individual é mascarado. CNPJ de fornecedor é preservado.
-
-## Reconciliação
-
-A reconciliação municipal × PNCP usa identificadores exatos normalizados, como processo/aviso/ano/CNPJ quando disponíveis. O sistema retorna:
-
-- `exact_match`;
-- `multiple_candidates`;
-- `unmatched`.
-
-Não existe fuzzy matching de objeto, fornecedor ou pessoa promovido automaticamente a fato.
-
-## Definição operacional de “concluído”
-
-O projeto é considerado tecnicamente concluído porque:
-
-- há um comando único de produção;
-- todas as fontes configuradas geram estado de cobertura explícito;
-- falha externa é representada, não escondida;
-- aquisições municipais possuem verificação de contagem/paginação;
-- finanças preservam estágio contábil;
-- contratos têm fontes municipal e PNCP separadas;
-- Câmara possui navegação ScriptCase real e gate de parser;
-- identidades possuem regra probatória;
-- há banco SQLite reconstruível;
-- há reconciliação determinística;
-- há testes e validação ao vivo;
-- limitações conhecidas estão documentadas.
-
-## Execução
+## Validação local
 
 ```bash
 python -m pip install -e '.[dev]'
 pytest -q
-
-transparencia --repo-root . --city salvador collect-salvador \
-  --start 2026-01-01 \
-  --end 2026-08-17 \
-  --out cities/salvador/data/snapshots/2026-08-17/production
+npm run build
 ```
 
-Cada run gera `project_report.json` e `project_coverage.json`. Estes dois arquivos — e não a ausência/presença de uma pasta isolada — são a referência para determinar o que a fonte comprovou naquele run.
+Para validar especificamente PNCP:
+
+```bash
+pytest -q tests/test_pncp.py tests/test_pncp_contracts.py
+```
+
+## Critério de qualidade
+
+O projeto pode estar operacional mesmo quando uma fonte está parcial. O que não é aceitável é transformar falta de evidência em completude, inferir pagamentos a partir de contratos, inferir identidade por similaridade ou esconder falhas de coleta.
