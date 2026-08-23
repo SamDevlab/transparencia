@@ -1,7 +1,7 @@
 {
   "complete": false,
-  "records": 249,
-  "stopped_url": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20260131&dataFinal=20260301&codigoModalidadeContratacao=9&uf=BA&codigoMunicipioIbge=2927408&pagina=12&tamanhoPagina=50",
+  "records": 739,
+  "stopped_url": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20260531&dataFinal=20260629&codigoModalidadeContratacao=8&uf=BA&codigoMunicipioIbge=2927408&pagina=20&tamanhoPagina=50",
   "stopped_status": 500,
   "note": "complete=false means the public source stopped the collection; persisted records remain valid but coverage is partial."
 }

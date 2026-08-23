@@ -1,0 +1,1 @@
+{"timestamp":"2026-08-23T14:01:07.105+00:00","status":500,"error":"Internal Server Error","message":"Failed to obtain JDBC Connection; nested exception is java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 30000ms.","path":"/pncp-consulta/v1/contratacoes/publicacao"}
