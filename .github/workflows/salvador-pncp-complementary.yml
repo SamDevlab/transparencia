@@ -69,7 +69,7 @@ jobs:
                   today,
                   procurement_dir,
                   scope='municipal',
-                  page_size=50,
+                  page_size=500,
                   sleep_seconds=0.5,
               )
               coverage_path = procurement_dir / 'coverage.json'
