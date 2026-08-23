@@ -58,7 +58,7 @@ function compactContract(contract) {
     vigenciaFim: contract.vigenciaFim ?? null,
     situacao: contract.situacao ?? null,
     sourceSystem: contract.sourceSystem ?? null,
-    sourceLayer: contract._relationLayer ?? null,
+    sourceLayer: contract.sourceLayer ?? contract._relationLayer ?? null,
     fonte: contract.fonte ?? null,
   };
 }
