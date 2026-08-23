@@ -34,7 +34,7 @@ export default function BahiaContratosPage() {
     <section className="page-hero"><div className="shell">
       <span className="eyebrow">Estado da Bahia · SEFAZ/FIPLAN</span>
       <h1>Contratos e caminho do dinheiro</h1>
-      <p>A base é consolidada por identificador oficial de instrumento. Linhas repetidas da view, aditivos e relações auxiliares não viram novos contratos.</p>
+      <p>A base é consolidada por identificador oficial de instrumento. Linhas repetidas da tabela de origem, aditivos e relações auxiliares não viram novos contratos.</p>
       <div className="hero-actions"><Link className="button" href="/bahia/transparencia">← Visão estadual</Link></div>
       <div className="kicker-row"><span className="badge green">{integer(primary.unique_instruments)} instrumentos únicos</span><span className="badge">recorte relacionado a 2026</span>{flow && <span className="badge green">{integer(flow.instruments_end_to_end)} vínculos de ponta a ponta</span>}</div>
     </div></section>
