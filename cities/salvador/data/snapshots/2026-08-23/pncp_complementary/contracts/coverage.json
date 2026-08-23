@@ -1,0 +1,2600 @@
+{
+  "agency_cnpjs": [
+    "10635089000116",
+    "11020634000122",
+    "13927801000149",
+    "13927801000300",
+    "13927801000491",
+    "13927801000572",
+    "13927801000653",
+    "13927801000815",
+    "13927801001110",
+    "13927801001706",
+    "13927801002001",
+    "13927801002605",
+    "13927801002869",
+    "13927801002940",
+    "13927801003083",
+    "13927801003245",
+    "13927801003407",
+    "13927801003598",
+    "14674402000186"
+  ],
+  "complete_for_supplied_agencies_and_filter": false,
+  "coverage_note": "Partial: at least one PNCP CNPJ/date query did not reach a normal source end. Persisted contract rows remain valid; missing queries are not interpreted as zero.",
+  "errors": [
+    {
+      "cnpj_orgao": "10635089000116",
+      "complete": false,
+      "error": "HTTPStatusError: Server error '500 ' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=10635089000116&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801000149&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801000149&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801000149&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801000149&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    }
+  ],
+  "period_end": "2026-08-23",
+  "period_start": "2026-01-01",
+  "queries": [
+    {
+      "cnpj_orgao": "10635089000116",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 1,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "10635089000116",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "10635089000116",
+      "complete": false,
+      "error": "HTTPStatusError: Server error '500 ' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=10635089000116&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "10635089000116",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 1,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "10635089000116",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 2,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "10635089000116",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 1,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "10635089000116",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 1,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "10635089000116",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 3,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "11020634000122",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "11020634000122",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "11020634000122",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "11020634000122",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "11020634000122",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "11020634000122",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "11020634000122",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "11020634000122",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 8,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 1,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": true,
+      "error": null,
+      "pages_collected": 1,
+      "records_received_before_scope_filter": 4,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801000149&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801000149&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801000149&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000149",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801000149&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000300",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801000300&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000491",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801000491&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000572",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801000572&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000653",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801000653&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801000815",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801000815&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801001110",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801001110&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801001706",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801001706&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801002001",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801002001&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801002605",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801002605&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801002869",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801002869&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801002940",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801002940&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801003083",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801003083&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801003245",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801003245&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801003407",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801003407&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "13927801003598",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=13927801003598&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20260130&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-01-30",
+      "window_start": "2026-01-01"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260131&dataFinal=20260301&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-01",
+      "window_start": "2026-01-31"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260302&dataFinal=20260331&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-03-31",
+      "window_start": "2026-03-02"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260401&dataFinal=20260430&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-04-30",
+      "window_start": "2026-04-01"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260501&dataFinal=20260530&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-05-30",
+      "window_start": "2026-05-01"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260531&dataFinal=20260629&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-06-29",
+      "window_start": "2026-05-31"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260630&dataFinal=20260729&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-07-29",
+      "window_start": "2026-06-30"
+    },
+    {
+      "cnpj_orgao": "14674402000186",
+      "complete": false,
+      "error": "HTTPStatusError: Client error '429 Too Many Requests' for url 'https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260730&dataFinal=20260823&cnpjOrgao=14674402000186&pagina=1&tamanhoPagina=100'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "pages_collected": 0,
+      "records_received_before_scope_filter": 0,
+      "window_end": "2026-08-23",
+      "window_start": "2026-07-30"
+    }
+  ],
+  "records_after_salvador_scope_filter": 22,
+  "scope": "municipal",
+  "source_system": "PNCP",
+  "source_url": "https://pncp.gov.br/api/consulta/v1/contratos"
+}
