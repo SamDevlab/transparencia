@@ -1,139 +1,81 @@
 # Status do projeto — Salvador/BA
 
-Data de referência desta revisão: **23/08/2026**
+Data de referência: **23/08/2026**
 
 ## Estado atual
 
-**STATUS: OPERACIONAL, COM PNCP MUNICIPAL RECONCILIADO, COBERTURA DECLARADA POR FONTE E DEPLOY FUNCIONAL.**
+**STATUS: OPERACIONAL, COM COBERTURA PRINCIPAL AUDITÁVEL E DEPLOY FUNCIONAL.**
 
-A engenharia principal está implementada: coletores, preservação de evidência, cobertura explícita, reconciliação determinística, banco reconstruível, frontend derivado, testes e workflows. Com a reconciliação PNCP concluída para o período atual, a principal pendência de cobertura deixou de ser a descoberta de órgãos e passou a ser ampliar fontes ainda explicitamente parciais, principalmente certames da Câmara e vínculos documentais exatos.
+A engenharia principal está implementada: coletores, evidência bruta, hashes/proveniência, cobertura explícita, reconciliação determinística, banco reconstruível, camada web, testes e workflows. Para uma execução específica, os `coverage.json`, `summary.json` e relatórios versionados prevalecem sobre este resumo humano.
 
-Este arquivo é a referência humana de status. Para uma execução específica, prevalecem os `coverage.json`, `summary.json` e relatórios versionados no snapshot correspondente.
+## Cobertura consolidada
 
-## O que está consolidado
+### Prefeitura de Salvador
 
-- **Prefeitura — finanças:** coleta oficial preservando receita e os estágios da despesa sem tratar empenho, liquidação e pagamento como equivalentes.
-- **Prefeitura — aquisições:** paginação oficial com controles de contagem e cobertura do filtro consultado.
-- **Prefeitura — contratos:** grade municipal individualizada coletada separadamente; timeout ou intervalo incompleto permanece `partial`.
-- **Câmara — empenhos:** navegação ScriptCase real com comparação entre identificadores visíveis e registros normalizados antes de declarar completude.
-- **Câmara — fontes auxiliares:** viagens, documentos e certames possuem cobertura própria e não são promovidos silenciosamente a outra categoria contábil.
-- **PNCP:** fonte complementar para contratações, contratos e CNPJ estruturado; nunca substitui a grade municipal como fonte primária.
-- **Reconciliação PNCP:** descoberta municipal e escopo contratual atual foram reconciliados por conjunto exato de CNPJs, sem fuzzy matching.
-- **Reconciliação documental:** relações aquisição ↔ contrato usam identificadores oficiais normalizados e exatos. Ambiguidade permanece explícita.
-- **Privacidade:** a camada pública de fornecedores exige CNPJ empresarial estruturado; CPF individual não vira cadastro público de fornecedor.
-- **Frontend/deploy:** build derivado e deploy Vercel da branch `city/salvador` estão funcionais, com freshness declarado por fonte.
+- **Finanças:** receita e estágios da despesa permanecem separados; empenho, liquidação e pagamento não são tratados como equivalentes.
+- **Aquisições:** **2.401** registros na camada derivada atual, com cobertura completa para o filtro publicado.
+- **Contratos:** **4.807** linhas na fonte municipal atual e **3.199** linhas publicadas após normalização/gates, com cobertura completa para o filtro.
+- A grade municipal continua sendo a fonte primária para contratos; contrato nunca é promovido a pagamento.
 
-## PNCP complementar — estado atual
+### PNCP complementar
 
-O snapshot canônico de **23/08/2026** está reconciliado e registra:
+Snapshot canônico de **23/08/2026**:
 
-- **1.052 contratações municipais PNCP** com `complete_for_municipal_filter=true`;
-- **25 CNPJs descobertos diretamente** nas contratações, mais o CNPJ municipal principal configurado;
+- **1.052 contratações municipais PNCP**;
+- **25 CNPJs descobertos diretamente**, mais o CNPJ municipal principal;
 - **26 CNPJs** no escopo contratual reconciliado;
-- **396 contratos PNCP** após o filtro municipal;
-- **0 erros nas consultas de contratos**;
+- **396 contratos PNCP**;
+- **0 erros** nas consultas de contratos;
 - `agency_cnpj_discovery_complete=true`;
-- `complete_for_supplied_agencies_and_filter=true`;
 - `complete_for_discovered_municipal_agencies_and_filter=true`;
 - `procurement_and_contract_scope_match=true`;
-- método de reconciliação `exact_cnpj_set_and_normalized_row_count_consistency`;
-- nenhuma inferência fuzzy de identidade.
+- reconciliação por conjunto exato de CNPJs, sem fuzzy matching.
 
-Portanto, para o período e filtros declarados no snapshot, a descoberta de CNPJs municipais chegou a um fim comprovado e o conjunto contratual corresponde exatamente ao escopo reconciliado. O PNCP continua sendo **fonte complementar**: essa completude não transforma contrato em pagamento, não substitui a grade municipal como fonte contábil primária e não autoriza somar valores de fontes sobrepostas.
+A completude vale para o período/filtros declarados. O PNCP continua complementar e seus valores não são somados automaticamente à grade municipal.
 
-O coletor permanece endurecido para:
+### Câmara Municipal de Salvador
 
-1. respeitar `Retry-After` e aplicar backoff em 429/5xx;
-2. consultar contratos em janela anual por CNPJ, reduzindo pressão de requisições;
-3. dividir adaptativamente janelas de descoberta que falhem por erro de servidor;
-4. repetir falhas de transporte como `ReadTimeout`;
-5. coletar em staging isolado antes da promoção;
-6. validar contagens, escopo e cobertura antes de promover o pacote;
-7. preservar tentativas e evidência bruta;
-8. impedir que uma execução pior ou inconsistente sobrescreva um snapshot canônico mais forte.
+- **1.414 empenhos**: cobertura completa para a visão pública padrão.
+- **159 viagens**: fonte auxiliar, com publicação pública apenas agregada.
+- **1.994 documentos**: seções auxiliares coletadas com cobertura declarada por seção.
+- **188 certames de 188 informados pelo servidor**: cobertura completa do catálogo observado em 23/08/2026.
+- A paginação de certames percorreu **19 páginas**, alcançou a janela final **181–188**, terminou sem erro e só recebeu `complete=true` porque o número de linhas distintas coincidiu exatamente com o total declarado pela própria fonte.
 
-## Camada web e validação derivada
+O coletor de certames usa a sessão ScriptCase e o opcode oficial da própria interface (`nmgp_opcao=avanca`). Falha HTTP, sessão quebrada, parser incompleto ou divergência de contagem rebaixa a cobertura para `partial`; nunca vira zero.
 
-A camada web mantém a grade municipal de contratos como fonte primária e o PNCP como complemento. O overlay atual expõe o nível mais forte de completude apenas quando a descoberta está completa, os contratos estão completos para o conjunto descoberto e a reconciliação de CNPJs é exata.
+## Reconciliação documental
 
-A validação derivada mais recente passou (`passed=true`) e registra:
+A última validação derivada versionada antes da nova cadeia PNCP registrou:
 
-- **3.199 contratos municipais publicados** a partir de 4.807 linhas de fonte, com cobertura municipal declarada completa para o filtro;
-- **2.401 aquisições municipais** com cobertura completa para o filtro;
-- **396 contratos PNCP complementares**;
-- **26 CNPJs** no escopo PNCP reconciliado;
-- `agency_discovery_complete=true`;
-- status PNCP `complete_for_discovered_municipal_agencies_and_filter`;
-- **272 fornecedores empresariais públicos**, todos sujeitos à regra de CNPJ estruturado;
-- **247 fornecedores empresariais provenientes da camada PNCP complementar**;
-- **904 processos** com pelo menos um vínculo contratual exato;
-- **1.137 pares exatos** aquisição/processo ↔ contrato;
+- **904 de 2.401 processos** com pelo menos um contrato ligado por identificador oficial exato;
+- **1.137 pares exatos** processo ↔ contrato;
 - **1.078 pares municipais primários**;
-- **59 pares PNCP complementares exatos**, distribuídos por 55 processos;
-- freshness PNCP em **23/08/2026**.
+- **59 pares PNCP complementares**, distribuídos por 55 processos.
 
-Os vínculos entre fontes não usam similaridade textual. Contratos PNCP ligados ao mesmo processo são identificados como camada complementar e não são somados automaticamente aos valores da grade municipal.
+A implementação atual também suporta uma segunda rota PNCP estritamente documental:
 
-## Câmara Municipal — estado atual
+1. número oficial do processo municipal = `process_number` da contratação PNCP;
+2. `numeroControlePNCP` da contratação = `numeroControlePncpCompra` do contrato PNCP.
 
-A camada atual registra:
+Essa cadeia não usa objeto, fornecedor, órgão, valor, data ou similaridade textual. Os contratos encontrados pelos dois caminhos são deduplicados como observação, mas preservam os métodos de prova (`linkMethods`). Os números incrementais dessa nova rota só devem substituir o baseline acima após nova validação derivada versionada.
 
-- **1.414 empenhos** com cobertura completa para a visão pública padrão;
-- **159 viagens** na fonte auxiliar, publicadas apenas em métricas agregadas;
-- **1.994 documentos** nas seções auxiliares coletadas, com cobertura declarada por seção;
-- **certames ainda `partial`**: apenas a página atualmente visível no servidor foi normalizada, com **10 registros visíveis** no relatório atual.
+## Privacidade e interpretação
 
-A ausência de um certame nessa lista não é interpretada como inexistência no catálogo da Câmara.
+- Diretório público de fornecedores exige **CNPJ empresarial estruturado**; CPF individual não vira identidade pública de fornecedor.
+- Relação aquisição → contrato é documental e não implica pagamento.
+- Observações Prefeitura/PNCP permanecem fontes distintas e não são fundidas por semelhança.
+- Sinais de concentração, mudança ou anomalia são evidência para revisão, não acusações automáticas.
 
-## Correções de build/deploy
+## Resiliência e validação
 
-A cadeia de build já foi corrigida para preservar `dataFreshness.pncpComplementary` depois dos overlays. O workflow de validação derivada também é disparado por mudanças em `cities/salvador/data/snapshots/**/pncp_complementary/**`.
+PNCP usa retry/backoff, `Retry-After`, divisão adaptativa de janelas, retry de `ReadTimeout`, staging e promoção atômica com gate anti-regressão.
 
-Em 23/08/2026, o overlay PNCP foi atualizado para publicar o status `complete_for_discovered_municipal_agencies_and_filter` somente quando os três gates são verdadeiros:
+A validação derivada é acionada por mudanças relevantes de código e pelos snapshots de `pncp_complementary` e `cms_auxiliary`. Quando certames são marcados completos, o build exige simultaneamente:
 
-1. descoberta de órgãos completa;
-2. contratos completos para os órgãos descobertos;
-3. escopo de CNPJs de contratações e contratos reconciliado exatamente.
+1. `records == serverReportedTotal`;
+2. `reachedServerEnd == true`.
 
-O build derivado passou após essa alteração e o deploy correspondente no Vercel ficou `READY`.
-
-## Cobertura e evidência
-
-Snapshots ficam em:
-
-```text
-cities/salvador/data/snapshots/YYYY-MM-DD/
-```
-
-Resultados históricos validados continuam preservados; não se apagam respostas brutas apenas para “limpar” o repositório. A limpeza documental remove duplicação e informação obsoleta, mas mantém rastreabilidade e evidência.
-
-Estados de cobertura usados pelo projeto:
-
-- `complete_for_filter` / `complete=true`: a própria fonte e o filtro consultado chegaram a um fim comprovado;
-- `complete_for_discovered_municipal_agencies_and_filter`: descoberta municipal concluída e contratos completos para o conjunto exato de CNPJs descobertos/reconciliados;
-- `partial` / `complete=false`: há registros válidos, porém a fonte ou a execução não permite provar cobertura total;
-- `unavailable`: a tentativa falhou sem cobertura suficiente;
-- `not_run`: a etapa foi desabilitada explicitamente.
-
-## Próximas prioridades
-
-### 1. Ampliar certames da Câmara
-
-A principal cobertura externa ainda explicitamente parcial é o catálogo de certames da Câmara. O próximo trabalho deve identificar a paginação/consulta real do servidor e coletar todas as páginas ou filtros comprovadamente acessíveis, mantendo `partial` caso a fonte não permita demonstrar o fim do catálogo.
-
-### 2. Aumentar vínculos documentais exatos
-
-Dos 2.401 processos de aquisição atuais, 904 possuem pelo menos um contrato ligado por identificador oficial exato. O objetivo é aumentar essa cobertura procurando outros identificadores oficiais estruturados disponíveis nas fontes, sem fuzzy matching e sem inferir relação por nome, objeto, fornecedor ou semelhança textual.
-
-### 3. Evoluir análises públicas
-
-Com a base principal estabilizada, evoluir os painéis de gastos, órgãos, fornecedores, séries históricas, comparação temporal e sinais de auditoria. Qualquer sinal de concentração, mudança ou anomalia deve ser apresentado como evidência para revisão, nunca como acusação automática.
-
-### 4. Manter atualização contínua
-
-Executar as coletas recorrentes preservando freshness por fonte, evidência bruta, hashes, coverage e gates anti-regressão. Uma fonte parcial em uma nova execução não deve rebaixar silenciosamente uma evidência histórica mais forte.
-
-## Validação
+Comandos principais:
 
 ```bash
 python -m pip install -e '.[dev]'
@@ -141,12 +83,19 @@ pytest -q
 npm run build
 ```
 
-Para validar especificamente PNCP:
+PNCP especificamente:
 
 ```bash
 pytest -q tests/test_pncp.py tests/test_pncp_contracts.py
 ```
 
+## Próximas prioridades
+
+1. **Aumentar vínculos documentais exatos** somente onde existirem outros identificadores oficiais estruturados; nunca usar fuzzy matching para criar vínculo oficial.
+2. **Evoluir análises públicas** de gastos, órgãos, fornecedores, séries históricas, comparação temporal e sinais auditáveis.
+3. **Manter atualização contínua** com freshness por fonte, evidência bruta, coverage e gates anti-regressão.
+4. **Expandir o modelo para outras cidades** sem misturar lógica específica de Salvador ao núcleo reutilizável.
+
 ## Critério de qualidade
 
-O projeto pode estar operacional mesmo quando uma fonte está parcial. O que não é aceitável é transformar falta de evidência em completude, inferir pagamentos a partir de contratos, inferir identidade por similaridade, somar fontes sobrepostas sem prova ou esconder falhas de coleta.
+O projeto pode estar operacional mesmo quando uma fonte futura estiver parcial. O que não é aceitável é transformar falta de evidência em completude, inferir pagamento a partir de contrato, inferir identidade/relação por similaridade, somar fontes sobrepostas sem prova ou esconder falhas de coleta.
