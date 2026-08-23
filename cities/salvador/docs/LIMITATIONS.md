@@ -1,18 +1,49 @@
-# Limitações conhecidas
+# Limitações conhecidas — Salvador/BA
 
-Estas limitações fazem parte do modelo de dados. Uma fonte indisponível ou incompleta nunca é convertida em “zero registros”. O estado do run deve ser lido em `project_coverage.json`.
+Este documento registra **limitações duráveis do modelo e das fontes**. Estado atual, contagens e próximos passos ficam somente em [`PROJECT_STATUS.md`](PROJECT_STATUS.md); detalhes de cada execução ficam nos respectivos `coverage.json`, `summary.json` e snapshots.
 
-1. **Portal atual de Salvador é uma aplicação JavaScript.** O projeto já mapeou e utiliza a API consumida pelo frontend oficial (`apitmptransparencia.salvador.ba.gov.br/api`) para receita, despesa e aquisições. A existência de uma rota no bundle JavaScript não prova, por si só, que ela responderá a uma consulta automatizada.
-2. **Grade detalhada municipal de contratos apresenta indisponibilidade/latência.** O frontend oficial confirma `POST /contratos/gridDetalhada?pagina=N` e rotas de detalhe/aditivo/empenho/liquidação/pagamento. Sondas da grade detalhada retornaram timeout; o coletor de produção usa janelas adaptativas e registra intervalos falhos como `partial`, preservando respostas bem-sucedidas. Não se interpreta timeout como ausência de contrato.
-3. **Endpoint de fiscais de contratos precisa respeitar o método real do frontend.** Uma sonda `GET /FiscaisContratos/downloadcsv` retornou HTTP 405. O projeto não trata isso como CSV disponível nem inventa outro método sem evidência da chamada oficial.
-4. **Portal legado usa formulários ASP.NET.** Consultas históricas podem exigir POST com estado (`__VIEWSTATE` etc.). O legado permanece fonte complementar; os coletores novos priorizam APIs/downloads atuais cuja chamada foi observada no frontend oficial.
-5. **PNCP não é sinônimo de 100% do histórico municipal.** A consulta é pública e é uma importante fonte de reconciliação, mas a cobertura depende da alimentação pelos órgãos. `complete_for_filter` no PNCP significa somente que as consultas executadas terminaram normalmente; não substitui o Portal municipal, Câmara ou sistemas setoriais.
-6. **CNPJ matriz não basta.** O Município usa CNPJ matriz em vários contextos, mas fundos/entidades podem possuir CNPJs próprios. A coleta de contratos PNCP usa os CNPJs descobertos na própria coleta de contratações e explicita quando o conjunto upstream não foi comprovadamente completo.
-7. **Câmara Municipal usa ScriptCase com sessão.** A paginação real foi comprovada por POST do formulário F3 com `nmgp_opcao=avanca`; `?page=N` não é prova de paginação. O coletor mantém uma única sessão, preserva cada página com SHA-256 e só marca a visão padrão como completa quando a navegação chega ao fim **e** todos os identificadores de empenho visíveis foram normalizados.
-8. **Visão padrão da Câmara não equivale a todos os possíveis filtros históricos.** Mesmo que a paginação da visão padrão seja exaurida, `complete_for_filter` é limitado àquela visão/sessão. Outros filtros ou sistemas contábeis da CMS podem conter registros adicionais.
-9. **Estágio contábil é obrigatório.** Um registro da relação de empenhos é armazenado como `stage=commitment`; não é chamado de liquidação ou pagamento sem fonte específica desses estágios.
-10. **Gasto nominal não implica identidade política.** Credor é associado a vereador somente por nome oficial exato normalizado ou alias documentado em fonte oficial. Similaridade de nomes não cria vínculo. CPF exibido pela fonte é mascarado na camada normalizada; CNPJ de fornecedor é preservado.
-11. **Notícias oficiais são evidência secundária dentro do próprio órgão.** São úteis para contexto e valores reportados, mas demonstrativos contábeis, leis, empenhos e registros de pagamento têm precedência quando disponíveis.
-12. **Valores arredondados permanecem arredondados.** Uma fonte que informa “R$ 14,96 bilhões” não é convertida em uma quantidade com centavos fictícios.
-13. **Lista de vereadores e licenças exige contexto temporal.** A página geral da CMS pode listar titulares e substitutos; situação de exercício em uma data deve ser validada por atos de licença/posse. O cadastro de nomes não é usado sozinho para inferir presença no mandato em cada dia.
-14. **Sinais de auditoria não são acusações.** Valor alto, concentração de fornecedor, dispensa e inexigibilidade podem orientar revisão documental, mas não constituem prova de desperdício, favorecimento ou ilícito.
+## 1. Cobertura depende da fonte e do filtro
+
+Uma coleta completa significa apenas que a fonte consultada chegou a um fim comprovado para aquele filtro e período. Indisponibilidade, timeout, rate limit ou falha de parsing nunca são convertidos em “zero registros”.
+
+## 2. Portal municipal e contratos
+
+O Portal da Transparência de Salvador usa uma aplicação JavaScript e APIs consumidas pelo frontend oficial. A existência de uma rota no código do frontend não garante disponibilidade operacional.
+
+A grade municipal de contratos pode apresentar alta latência. O coletor usa janelas adaptativas, preserva respostas bem-sucedidas e mantém intervalos falhos como `partial`.
+
+## 3. PNCP é complementar
+
+O PNCP não representa automaticamente 100% do histórico municipal. A cobertura depende da alimentação realizada pelos órgãos e dos CNPJs municipais descobertos.
+
+O CNPJ principal do Município não deve ser tratado como sinônimo de todas as entidades, fundos ou unidades com personalidade própria. Contratos PNCP só podem ser considerados completos para o município quando a descoberta upstream dos órgãos também estiver comprovadamente completa.
+
+## 4. Câmara Municipal
+
+O sistema financeiro público da CMS usa ScriptCase e navegação com sessão. A coleta precisa reproduzir a paginação real do formulário; parâmetros de paginação presumidos não são aceitos como evidência.
+
+Mesmo quando a visão consultada é exaurida, a completude vale somente para aquela visão/filtro. Outros filtros ou sistemas podem conter registros adicionais.
+
+## 5. Semântica contábil
+
+Dotação, empenho, liquidação e pagamento são estágios distintos. Um registro de empenho permanece `stage=commitment` até existir fonte específica que comprove outro estágio.
+
+Valor contratual, valor empenhado e valor efetivamente pago também não são tratados como equivalentes.
+
+## 6. Identidade e privacidade
+
+Credor não é associado a agente político por similaridade de nome. O vínculo exige nome oficial exato normalizado ou alias documentado por fonte oficial.
+
+CPF individual é mascarado na camada normalizada. A camada pública de fornecedores exige CNPJ empresarial estruturado.
+
+A composição política também é temporal: uma lista geral de vereadores não basta para inferir exercício do mandato em uma data sem atos oficiais quando houver licença, suplência ou posse.
+
+## 7. Hierarquia de evidência
+
+Documentos contábeis, leis, empenhos, contratos e registros oficiais têm precedência sobre notícias institucionais quando ambos existem. Notícias podem fornecer contexto, mas não substituem a fonte primária.
+
+Valores publicados de forma arredondada permanecem arredondados; o projeto não cria precisão fictícia.
+
+## 8. Sinais de auditoria não são acusações
+
+Valor alto, concentração de fornecedor, dispensa ou inexigibilidade podem orientar investigação documental, mas não constituem prova de desperdício, favorecimento ou ilícito.
