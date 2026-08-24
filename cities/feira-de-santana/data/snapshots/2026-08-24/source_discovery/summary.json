@@ -10,7 +10,7 @@
     "content_type": "text/html",
     "final_url": "https://diariooficial.feiradesantana.ba.gov.br/",
     "ok": true,
-    "sha256": "fd314bab1ab10385cd00565c2d898d2f6d63bc1846c7baf54dac50401644f787",
+    "sha256": "23ebe4512d85e31d5a081cacd26cc15fd1cee36d7e898e83839342ad3ece3c06",
     "source_id": "diario_oficial",
     "status": 200,
     "url": "https://diariooficial.feiradesantana.ba.gov.br/"
@@ -26,11 +26,11 @@
     "url": "https://www.feiradesantana.ba.gov.br/"
   },
   {
-    "bytes": 252880,
+    "bytes": 252879,
     "content_type": "text/html; charset=UTF-8",
     "final_url": "https://www.feiradesantana.ba.leg.br/",
     "ok": true,
-    "sha256": "ad1caf1150bbb581201bad06c3807eaea618c576e2b1db059ce5f80c473c84ec",
+    "sha256": "314999c52052fd909a38fc2be32912c1f795542a8be00fd4fe86b0ec2af02eab",
     "source_id": "camara_institucional",
     "status": 200,
     "url": "https://www.feiradesantana.ba.leg.br/"
@@ -42,13 +42,9 @@
     "url": "https://transparencia.feiradesantana.ba.leg.br/adm/upload/contaspublicas/index.php?view=o-portal"
   },
   {
-    "bytes": 317496,
-    "content_type": "text/html; charset=utf-8",
-    "final_url": "https://www.gov.br/pncp/pt-br",
-    "ok": true,
-    "sha256": "e3bd938eba103e9c7ac1f7e5aa3e34a6f9d82f87a14327c54612cad04345bfec",
+    "error": "RuntimeError: falha ao coletar https://pncp.gov.br/: Server disconnected without sending a response.",
+    "ok": false,
     "source_id": "pncp",
-    "status": 200,
     "url": "https://pncp.gov.br/"
   },
   {

@@ -3,8 +3,8 @@
   "counts_by_status": {
     "complete_for_filter": 0,
     "not_run": 0,
-    "partial": 4,
-    "unavailable": 3
+    "partial": 3,
+    "unavailable": 4
   },
   "entries": [
     {
@@ -86,7 +86,7 @@
       "dataset": "source_entrypoint",
       "evidence_path": "cities/feira-de-santana/data/snapshots/2026-08-24/source_discovery/raw/pncp",
       "filter_description": "entry point availability only",
-      "note": "Official entry point fetched and archived; dataset pagination/completeness not tested.",
+      "note": "Entry point could not be fetched in this bounded run: RuntimeError: falha ao coletar https://pncp.gov.br/: Server disconnected without sending a response.",
       "pages": null,
       "period_end": "2026-08-24",
       "period_start": "2026-08-24",
@@ -95,7 +95,7 @@
       "reported_total": null,
       "source_system": "pncp",
       "source_url": "https://pncp.gov.br/",
-      "status": "partial"
+      "status": "unavailable"
     },
     {
       "dataset": "source_entrypoint",
@@ -113,7 +113,7 @@
       "status": "unavailable"
     }
   ],
-  "generated_at": "2026-08-24T03:08:53.199988+00:00",
+  "generated_at": "2026-08-24T03:17:11.622908+00:00",
   "latest_source_as_of": "2026-08-24",
   "methodology_note": "Coverage is source-and-filter specific. A complete_for_filter entry proves only that the collector reconciled the source-reported records/pages for the stated scope. It does not prove that no record exists in another municipal, legislative, state, federal or sectoral system.",
   "period_end": "2026-08-24",
