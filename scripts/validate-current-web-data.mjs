@@ -101,8 +101,18 @@ if (auxiliary.travel?.complete !== true || !(auxiliary.travel?.records > 0) || !
 if (auxiliary.documents?.complete !== true || !(auxiliary.documents?.records > 0)) {
   throw new Error("catálogo documental da Câmara inconsistente");
 }
-if (auxiliary.certames?.complete !== false || auxiliary.certames?.status !== "partial") {
-  throw new Error("certames da Câmara não permanecem explicitamente parciais");
+const certames = auxiliary.certames;
+if (!certames) throw new Error("cobertura de certames da Câmara ausente");
+if (certames.complete === true) {
+  if (certames.status !== "complete_for_filter") throw new Error("certames completos sem status complete_for_filter");
+  if (!(Number(certames.records) > 0) || Number(certames.records) !== Number(certames.serverReportedTotal)) {
+    throw new Error("certames completos sem reconciliação exata com o total informado pelo servidor");
+  }
+  if (certames.reachedServerEnd !== true || !(Number(certames.pages) > 0)) {
+    throw new Error("certames completos sem prova de fim da paginação");
+  }
+} else if (certames.status !== "partial") {
+  throw new Error("certames não completos precisam permanecer explicitamente parciais");
 }
 if (!String(auxiliary.travel?.publicDetailRule || "").includes("não são republicados")) {
   throw new Error("regra pública de privacidade das viagens ausente");
@@ -116,7 +126,10 @@ if (byId.get("salvador_contratos")?.status !== "complete_for_filter") throw new 
 if (byId.get("cms")?.status !== "complete_for_filter") throw new Error("cobertura pública ainda chama o ledger atual da Câmara de parcial");
 if (byId.get("cms_viagens")?.status !== "complete_for_filter") throw new Error("cobertura pública de viagens diverge da coleta completa");
 if (byId.get("cms_documentos")?.status !== "complete_for_filter") throw new Error("cobertura pública de documentos diverge da coleta completa");
-if (byId.get("cms_certames")?.status !== "partial") throw new Error("cobertura pública de certames não está parcial");
+const expectedCertameStatus = certames.complete === true ? "complete_for_filter" : "partial";
+if (byId.get("cms_certames")?.status !== expectedCertameStatus) {
+  throw new Error(`cobertura pública de certames diverge da coleta: esperado=${expectedCertameStatus}`);
+}
 
 console.log(JSON.stringify({
   ok: true,
@@ -129,7 +142,10 @@ console.log(JSON.stringify({
     asOf: auxiliary.asOf,
     travelRecords: auxiliary.travel?.records,
     documents: auxiliary.documents?.records,
-    visibleCertames: auxiliary.certames?.recordsVisible,
+    certames: certames.records,
+    certamesServerTotal: certames.serverReportedTotal,
+    certamesPages: certames.pages,
+    certamesComplete: certames.complete,
   },
   pncpComplementary: {
     asOf: meta.pncpComplementaryAsOf ?? null,
