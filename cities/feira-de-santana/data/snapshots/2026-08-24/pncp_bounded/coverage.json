@@ -1,9 +1,9 @@
 {
   "city_slug": "feira-de-santana",
   "counts_by_status": {
-    "complete_for_filter": 1,
+    "complete_for_filter": 2,
     "not_run": 0,
-    "partial": 1,
+    "partial": 0,
     "unavailable": 0
   },
   "entries": [
@@ -26,7 +26,7 @@
       "dataset": "pncp_contracts",
       "evidence_path": "cities/feira-de-santana/data/snapshots/2026-08-24/pncp_bounded/contracts",
       "filter_description": "CNPJs supplied/observed=5, 2026-08-01 a 2026-08-24",
-      "note": "Collected for the official municipality CNPJ plus CNPJs observed in the bounded PNCP procurements. Kept partial because entity discovery is not municipality-wide and source-reported contract pagination/count proof is not yet persisted.",
+      "note": "Complete only for the supplied CNPJs and stated date/scope after exact PNCP pagination/count reconciliation. Entity discovery remains incomplete municipality-wide.",
       "pages": null,
       "period_end": "2026-08-24",
       "period_start": "2026-08-01",
@@ -35,10 +35,10 @@
       "reported_total": null,
       "source_system": "PNCP",
       "source_url": "https://pncp.gov.br/",
-      "status": "partial"
+      "status": "complete_for_filter"
     }
   ],
-  "generated_at": "2026-08-24T03:06:56.301208+00:00",
+  "generated_at": "2026-08-24T03:10:14.124260+00:00",
   "latest_source_as_of": "2026-08-24",
   "methodology_note": "Coverage is source-and-filter specific. A complete_for_filter entry proves only that the collector reconciled the source-reported records/pages for the stated scope. It does not prove that no record exists in another municipal, legislative, state, federal or sectoral system.",
   "period_end": "2026-08-24",
