@@ -1,0 +1,166 @@
+name: Prova contrato → execução financeira Salvador
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/salvador]
+    paths:
+      - .github/workflows/salvador-contract-finance-link-probe.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: salvador-contract-finance-link-probe
+  cancel-in-progress: true
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/salvador
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx
+      - name: Probe structured finance identifiers
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from datetime import datetime
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          import httpx
+
+          BASE = 'https://apitmptransparencia.salvador.ba.gov.br/api'
+          today = datetime.now(ZoneInfo('America/Bahia')).date()
+          out = Path('cities/salvador/data/snapshots') / today.isoformat() / 'contract_finance_probe'
+          out.mkdir(parents=True, exist_ok=True)
+          headers = {
+              'accept': 'application/json, text/plain, */*',
+              'origin': 'https://transparencia.salvador.ba.gov.br',
+              'referer': 'https://transparencia.salvador.ba.gov.br/',
+              'user-agent': 'municipal-transparency-research/0.1 (+public-data-audit)',
+          }
+          payload = {
+              'dataInicio': f'{today.year}-01-01',
+              'dataFim': today.isoformat(),
+              'agrupamentos': [],
+              'filtros': [],
+          }
+
+          interesting = ('contrat', 'empenh', 'process', 'unidade', 'gestora', 'credor', 'liquid', 'pag')
+
+          def key_inventory(value, path='$', found=None):
+              if found is None:
+                  found = {}
+              if isinstance(value, dict):
+                  for key, child in value.items():
+                      low = str(key).lower()
+                      if any(token in low for token in interesting):
+                          found.setdefault(key, set()).add(path)
+                      key_inventory(child, f'{path}.{key}', found)
+              elif isinstance(value, list):
+                  for child in value[:100]:
+                      key_inventory(child, f'{path}[]', found)
+              return {key: sorted(paths) for key, paths in sorted(found.items())}
+
+          result = {
+              'observed_at_date': today.isoformat(),
+              'period_start': payload['dataInicio'],
+              'period_end': payload['dataFim'],
+              'rule': 'This probe only inventories structured official identifiers. Supplier/name/object similarity is never accepted as a contract-payment link.',
+              'endpoints': {},
+          }
+
+          with httpx.Client(headers=headers, follow_redirects=True, timeout=60.0) as client:
+              for endpoint in ['/filtro/despesa/filtros', '/filtro/despesa/agrupar']:
+                  try:
+                      response = client.get(BASE + endpoint)
+                      body = response.content
+                      item = {
+                          'status': response.status_code,
+                          'bytes': len(body),
+                          'sha256': hashlib.sha256(body).hexdigest(),
+                      }
+                      if response.status_code == 200:
+                          data = response.json()
+                          rows = data if isinstance(data, list) else []
+                          item['items'] = [
+                              {
+                                  'atributo': row.get('atributo'),
+                                  'descricao': row.get('descricao'),
+                                  'nomeTabela': row.get('nomeTabela'),
+                                  'temAnoReferencia': row.get('temAnoReferencia'),
+                              }
+                              for row in rows if isinstance(row, dict)
+                          ]
+                          item['identifier_candidates'] = [
+                              row for row in item['items']
+                              if any(token in ' '.join(str(row.get(k) or '') for k in ('atributo','descricao','nomeTabela')).lower() for token in interesting)
+                          ]
+                      result['endpoints'][endpoint] = item
+                  except Exception as exc:
+                      result['endpoints'][endpoint] = {'error': f'{type(exc).__name__}: {exc}'}
+
+              for endpoint in ['/despesa/gridresumida', '/despesa/gridDetalhada']:
+                  try:
+                      response = client.post(BASE + endpoint, json=payload)
+                      body = response.content
+                      item = {
+                          'status': response.status_code,
+                          'bytes': len(body),
+                          'sha256': hashlib.sha256(body).hexdigest(),
+                      }
+                      if response.status_code == 200:
+                          data = response.json()
+                          item['top_level_keys'] = sorted(data.keys()) if isinstance(data, dict) else None
+                          item['structured_identifier_keys'] = key_inventory(data)
+                          if isinstance(data, dict):
+                              for candidate in ('dados', 'data', 'items', 'registros'):
+                                  rows = data.get(candidate)
+                                  if isinstance(rows, list):
+                                      item['row_container'] = candidate
+                                      item['row_count'] = len(rows)
+                                      item['first_row_keys'] = sorted(rows[0].keys()) if rows and isinstance(rows[0], dict) else []
+                                      break
+                              item['paginacao'] = data.get('paginacao')
+                              item['totalizadores_present'] = isinstance(data.get('totalizadores'), dict)
+                      else:
+                          item['text_preview'] = response.text[:1000]
+                      result['endpoints'][endpoint] = item
+                  except Exception as exc:
+                      result['endpoints'][endpoint] = {'error': f'{type(exc).__name__}: {exc}'}
+
+          grid = result['endpoints'].get('/despesa/gridresumida') or {}
+          keys = {str(k).lower() for k in (grid.get('structured_identifier_keys') or {}).keys()}
+          result['assessment'] = {
+              'grid_resumida_accessible': grid.get('status') == 200,
+              'has_contract_identifier_field': any('contrat' in key for key in keys),
+              'has_commitment_identifier_field': any('empenh' in key for key in keys),
+              'has_process_identifier_field': any('process' in key for key in keys),
+              'has_management_unit_field': any(('unidade' in key or 'gestora' in key) for key in keys),
+              'can_claim_contract_to_payment_link': False,
+              'claim_rule': 'Only set true in a future collector after the same official contract identifier is carried into an official expenditure/commitment record and its related liquidation/payment endpoints. This probe never promotes a link by itself.',
+          }
+
+          (out / 'summary.json').write_text(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
+          PY
+      - name: Commit probe evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          TODAY=$(TZ=America/Bahia date +%F)
+          git add "cities/salvador/data/snapshots/${TODAY}/contract_finance_probe"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(salvador): probe contract-finance identifiers"
+          git fetch origin city/salvador
+          git rebase origin/city/salvador
+          git push origin HEAD:city/salvador
