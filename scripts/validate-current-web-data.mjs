@@ -20,6 +20,8 @@ const municipalLinks = read("municipal-links.json");
 const camara = read("camara.json");
 const suppliers = read("suppliers.json");
 const transparency = read("transparency.json");
+const contractChanges = read("contract-changes.json");
+const contractFinance = read("contract-finance-status.json");
 
 if (contracts.sourceSystem !== "SALVADOR_TRANSPARENCIA_API_CONTRATOS" || contracts.completeForFilter !== true) {
   throw new Error("grade municipal de contratos completa não foi promovida");
@@ -85,6 +87,38 @@ if (!String(municipalLinks.accountingRule || "").includes("não liga automaticam
   throw new Error("limite contábil municipal ausente");
 }
 
+const comparableSnapshots = contractChanges.snapshotsCompared ?? [];
+if (!String(contractChanges.identityRule || "").includes("cdUnidadeGestora + nuContratoSigef")) {
+  throw new Error("histórico contratual sem identidade oficial exata");
+}
+if (comparableSnapshots.length < 2) {
+  if (contractChanges.status !== "insufficient_comparable_history" || (contractChanges.events?.length ?? 0) !== 0) {
+    throw new Error("histórico contratual inventou mudanças sem dois snapshots comparáveis");
+  }
+} else if (contractChanges.status !== "history_available") {
+  throw new Error("histórico contratual não foi promovido apesar de dois snapshots comparáveis");
+}
+for (const event of contractChanges.events ?? []) {
+  if (!event.identity?.cdUnidadeGestora || !event.identity?.nuContratoSigef) {
+    throw new Error("evento histórico sem identificador contratual exato");
+  }
+  if (event.type === "field_changed" && !["vlAtualizado", "dtTerminoVigenciaAtualizado", "dsSituacao", "percentualExecutado"].includes(event.field)) {
+    throw new Error(`campo histórico não autorizado: ${event.field}`);
+  }
+}
+if (contractFinance.status === "blocked_upstream") {
+  if (contractFinance.blocker !== "official_contract_finance_endpoints_http_500") {
+    throw new Error("bloqueio financeiro upstream sem causa auditável");
+  }
+  if (contractFinance.commitmentsProven || contractFinance.liquidationsProven || contractFinance.paymentsProven) {
+    throw new Error("execução financeira marcada como bloqueada e simultaneamente comprovada");
+  }
+} else if (contractFinance.status === "available_for_exact_collection") {
+  if (!(contractFinance.commitmentsProven || contractFinance.liquidationsProven || contractFinance.paymentsProven)) {
+    throw new Error("execução financeira promovida sem nenhuma relação oficial comprovada");
+  }
+}
+
 const ledger = camara.commitmentLedger;
 if (!ledger || ledger.completeForDefaultPublicView !== true) throw new Error("ledger atual da Câmara não foi promovido como completo para a visão pública padrão");
 if (!(ledger.records > 0) || !(ledger.pagesWithRecords > 0) || ledger.parserCompleteForVisibleRecords !== true || ledger.sourceExhausted !== true) {
@@ -137,6 +171,8 @@ console.log(JSON.stringify({
   acquisitions: { records: acquisitions.rows.length, asOf: acquisitions.summary?.period_end },
   suppliers: { businessCnpjOnly: true, records: suppliers.rows?.length ?? 0, complementaryBusinesses: meta.pncpComplementaryBusinessSuppliers ?? 0 },
   links: linkSummary,
+  contractHistory: contractChanges.summary,
+  contractFinance,
   cms: { records: ledger.records, pages: ledger.pagesWithRecords, asOf: ledger.asOf },
   cmsAuxiliary: {
     asOf: auxiliary.asOf,
