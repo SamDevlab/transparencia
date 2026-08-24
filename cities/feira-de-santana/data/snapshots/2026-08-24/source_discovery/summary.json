@@ -1,0 +1,60 @@
+[
+  {
+    "error": "RuntimeError: falha ao coletar https://transparencia.feiradesantana.ba.gov.br/: timed out",
+    "ok": false,
+    "source_id": "portal_transparencia_executivo",
+    "url": "https://transparencia.feiradesantana.ba.gov.br/"
+  },
+  {
+    "bytes": 134693,
+    "content_type": "text/html",
+    "final_url": "https://diariooficial.feiradesantana.ba.gov.br/",
+    "ok": true,
+    "sha256": "fd314bab1ab10385cd00565c2d898d2f6d63bc1846c7baf54dac50401644f787",
+    "source_id": "diario_oficial",
+    "status": 200,
+    "url": "https://diariooficial.feiradesantana.ba.gov.br/"
+  },
+  {
+    "bytes": 51932,
+    "content_type": "text/html",
+    "final_url": "https://www.feiradesantana.ba.gov.br/",
+    "ok": true,
+    "sha256": "b324281274afb26c2fdd6f0d16f24026560330dc154e5329b985fd3adf5cdacf",
+    "source_id": "portal_institucional",
+    "status": 200,
+    "url": "https://www.feiradesantana.ba.gov.br/"
+  },
+  {
+    "bytes": 252880,
+    "content_type": "text/html; charset=UTF-8",
+    "final_url": "https://www.feiradesantana.ba.leg.br/",
+    "ok": true,
+    "sha256": "ad1caf1150bbb581201bad06c3807eaea618c576e2b1db059ce5f80c473c84ec",
+    "source_id": "camara_institucional",
+    "status": 200,
+    "url": "https://www.feiradesantana.ba.leg.br/"
+  },
+  {
+    "error": "RuntimeError: falha ao coletar https://transparencia.feiradesantana.ba.leg.br/adm/upload/contaspublicas/index.php?view=o-portal: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'transparencia.feiradesantana.ba.leg.br'. (_ssl.c:1010)",
+    "ok": false,
+    "source_id": "camara_transparencia",
+    "url": "https://transparencia.feiradesantana.ba.leg.br/adm/upload/contaspublicas/index.php?view=o-portal"
+  },
+  {
+    "bytes": 317496,
+    "content_type": "text/html; charset=utf-8",
+    "final_url": "https://www.gov.br/pncp/pt-br",
+    "ok": true,
+    "sha256": "e3bd938eba103e9c7ac1f7e5aa3e34a6f9d82f87a14327c54612cad04345bfec",
+    "source_id": "pncp",
+    "status": 200,
+    "url": "https://pncp.gov.br/"
+  },
+  {
+    "error": "RuntimeError: falha ao coletar https://www.ibge.gov.br/cidades-e-estados/ba/feira-de-santana.html: Client error '403 Forbidden' for url 'https://www.ibge.gov.br/cidades-e-estados/ba/feira-de-santana.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
+    "ok": false,
+    "source_id": "ibge",
+    "url": "https://www.ibge.gov.br/cidades-e-estados/ba/feira-de-santana.html"
+  }
+]
