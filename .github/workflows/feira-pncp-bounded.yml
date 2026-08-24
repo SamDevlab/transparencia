@@ -86,6 +86,7 @@ jobs:
 
           contract_status = 'unavailable'
           contract_records = None
+          contract_coverage = {}
           agency_scope = set(observed_cnpjs)
           if ws.config.municipality_cnpj:
               agency_scope.add(ws.config.municipality_cnpj)
@@ -99,19 +100,25 @@ jobs:
                   agency_cnpjs=agency_scope,
                   scope='executivo',
               )
-              contract_records = sum(1 for line in contract_path.read_text(encoding='utf-8').splitlines() if line.strip())
-              # The current generic contract collector reaches natural pagination end but
-              # does not yet persist enough source-reported page/total metadata to promote
-              # this layer to complete_for_filter. Keep it explicitly partial.
-              contract_status = 'partial'
+              contract_coverage_path = out / 'contracts' / 'coverage.json'
+              contract_coverage = json.loads(contract_coverage_path.read_text(encoding='utf-8')) if contract_coverage_path.exists() else {}
+              file_records = sum(1 for line in contract_path.read_text(encoding='utf-8').splitlines() if line.strip())
+              contract_records = int(contract_coverage.get('records_unique_in_scope', file_records))
+              if contract_records != file_records:
+                  raise ValueError(f'contract record count mismatch: coverage={contract_records} file={file_records}')
+              contract_status = (
+                  'complete_for_filter'
+                  if contract_coverage.get('complete_for_supplied_agencies_and_filter') is True
+                  else 'partial'
+              )
               summary['contracts'] = {
                   'ok': True,
                   'path': str(contract_path.relative_to(root)),
                   'records': contract_records,
                   'agency_cnpj_scope': agency_scope,
                   'agency_discovery_complete': False,
-                  'agency_discovery_rule': 'official municipality CNPJ plus business CNPJs observed in the bounded PNCP procurement rows; not a municipality-wide entity registry',
-                  'coverage_limitation': 'pagination metadata is not yet persisted by the generic PNCP contract collector',
+                  'agency_discovery_rule': 'official municipality CNPJ plus CNPJs observed in the bounded PNCP procurement rows; not a municipality-wide entity registry',
+                  'coverage': contract_coverage,
               }
           except Exception as exc:
               summary['contracts'] = {
@@ -153,7 +160,9 @@ jobs:
               evidence_path=str((out / 'contracts').relative_to(root)),
               filter_description=f'CNPJs supplied/observed={len(agency_scope)}, {start.isoformat()} a {today.isoformat()}',
               note=(
-                  'Collected for the official municipality CNPJ plus CNPJs observed in the bounded PNCP procurements. Kept partial because entity discovery is not municipality-wide and source-reported contract pagination/count proof is not yet persisted.'
+                  'Complete only for the supplied CNPJs and stated date/scope after exact PNCP pagination/count reconciliation. Entity discovery remains incomplete municipality-wide.'
+                  if contract_status == 'complete_for_filter'
+                  else 'Contracts remain partial for the supplied/observed CNPJ set; entity discovery is also not municipality-wide.'
                   if contract_status == 'partial'
                   else 'PNCP contract collection unavailable in this bounded run.'
               ),
