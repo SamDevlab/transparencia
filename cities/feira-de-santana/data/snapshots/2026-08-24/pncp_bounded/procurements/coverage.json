@@ -1,0 +1,7 @@
+{
+  "complete": true,
+  "records": 17,
+  "stopped_url": null,
+  "stopped_status": null,
+  "note": "complete=false means the public source stopped the collection; persisted records remain valid but coverage is partial."
+}

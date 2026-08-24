@@ -1,0 +1,46 @@
+{
+  "city_slug": "feira-de-santana",
+  "counts_by_status": {
+    "complete_for_filter": 1,
+    "not_run": 0,
+    "partial": 1,
+    "unavailable": 0
+  },
+  "entries": [
+    {
+      "dataset": "pncp_procurements",
+      "evidence_path": "cities/feira-de-santana/data/snapshots/2026-08-24/pncp_bounded/procurements",
+      "filter_description": "executivo municipal de Feira de Santana, 2026-08-01 a 2026-08-24",
+      "note": "Complete only for the PNCP query domain, active modalities, municipal executive scope and stated date interval.",
+      "pages": null,
+      "period_end": "2026-08-24",
+      "period_start": "2026-08-01",
+      "records": 17,
+      "reported_pages": null,
+      "reported_total": null,
+      "source_system": "PNCP",
+      "source_url": "https://pncp.gov.br/",
+      "status": "complete_for_filter"
+    },
+    {
+      "dataset": "pncp_contracts",
+      "evidence_path": "cities/feira-de-santana/data/snapshots/2026-08-24/pncp_bounded/contracts",
+      "filter_description": "CNPJ institucional 14043574000151, 2026-08-01 a 2026-08-24",
+      "note": "Collected for the supplied institutional CNPJ, but kept partial until the generic contract collector persists source-reported pagination/count proof.",
+      "pages": null,
+      "period_end": "2026-08-24",
+      "period_start": "2026-08-01",
+      "records": 0,
+      "reported_pages": null,
+      "reported_total": null,
+      "source_system": "PNCP",
+      "source_url": "https://pncp.gov.br/",
+      "status": "partial"
+    }
+  ],
+  "generated_at": "2026-08-24T03:03:49.666829+00:00",
+  "latest_source_as_of": "2026-08-24",
+  "methodology_note": "Coverage is source-and-filter specific. A complete_for_filter entry proves only that the collector reconciled the source-reported records/pages for the stated scope. It does not prove that no record exists in another municipal, legislative, state, federal or sectoral system.",
+  "period_end": "2026-08-24",
+  "period_start": "2026-08-01"
+}
