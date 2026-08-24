@@ -1,0 +1,351 @@
+{
+  "assessment": {
+    "can_claim_contract_to_payment_link": false,
+    "claim_rule": "Only set true in a future collector after the same official contract identifier is carried into an official expenditure/commitment record and its related liquidation/payment endpoints. This probe never promotes a link by itself.",
+    "grid_resumida_accessible": true,
+    "has_commitment_identifier_field": true,
+    "has_contract_identifier_field": false,
+    "has_management_unit_field": false,
+    "has_process_identifier_field": false
+  },
+  "endpoints": {
+    "/despesa/gridDetalhada": {
+      "bytes": 99,
+      "first_row_keys": [],
+      "paginacao": null,
+      "row_container": "dados",
+      "row_count": 0,
+      "sha256": "114c5a141f344cbbd30a9531e0b4c661da0573f23fc91202e9cf87fa3989404c",
+      "status": 200,
+      "structured_identifier_keys": {
+        "Empenhado": [
+          "$.totalizadores"
+        ],
+        "Liquidado": [
+          "$.totalizadores"
+        ],
+        "Pago": [
+          "$.totalizadores"
+        ],
+        "paginacao": [
+          "$"
+        ]
+      },
+      "top_level_keys": [
+        "dados",
+        "paginacao",
+        "totalizadores"
+      ],
+      "totalizadores_present": true
+    },
+    "/despesa/gridresumida": {
+      "bytes": 2420,
+      "sha256": "6fe8a3357d2c726bc348e0b4c0afc8aa35b5401449e9c5a8d5843c022e165fbc",
+      "status": 200,
+      "structured_identifier_keys": {
+        "empenhado": [
+          "$[]"
+        ],
+        "liquidado": [
+          "$[]"
+        ],
+        "pago": [
+          "$[]"
+        ]
+      },
+      "top_level_keys": null
+    },
+    "/filtro/despesa/agrupar": {
+      "bytes": 4211,
+      "identifier_candidates": [
+        {
+          "atributo": "CDCREDOR",
+          "descricao": "Credor",
+          "nomeTabela": "CREDOR",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "TIPO",
+          "descricao": "Tipo de Pagamento",
+          "nomeTabela": "TIPOPAGAMENTO",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDUNIDADEGESTORA",
+          "descricao": "Unidade Gestora",
+          "nomeTabela": "UNIDADEGESTORA",
+          "temAnoReferencia": true
+        }
+      ],
+      "items": [
+        {
+          "atributo": "CDACAO",
+          "descricao": "Ação",
+          "nomeTabela": "ACAO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "AAREFERENCIA",
+          "descricao": "Ano",
+          "nomeTabela": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "NUBIMESTRE",
+          "descricao": "Bimestre",
+          "nomeTabela": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDCATEGORIAECONOMICA",
+          "descricao": "Categoria Econômica",
+          "nomeTabela": "CATEGORIAECONOMICA",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDCREDOR",
+          "descricao": "Credor",
+          "nomeTabela": "CREDOR",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDELEMENTODESPESA",
+          "descricao": "Elemento",
+          "nomeTabela": "ELEMENTODESPESA",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDFONTERECURSO",
+          "descricao": "Fonte Recurso",
+          "nomeTabela": "FONTERECURSO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDFUNCAO",
+          "descricao": "Função",
+          "nomeTabela": "FUNCAO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDGRUPODESPESA",
+          "descricao": "Grupo Natureza Despesa",
+          "nomeTabela": "GRUPODESPESA",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDMODALIDADEAPLICACAO",
+          "descricao": "Modalidade Aplicação",
+          "nomeTabela": "MODALIDADEAPLICACAO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDORGAO",
+          "descricao": "Órgão",
+          "nomeTabela": "ORGAO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDPROGRAMA",
+          "descricao": "Programa",
+          "nomeTabela": "PROGRAMA",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "NUQUADRIMESTRE",
+          "descricao": "Quadrimestre",
+          "nomeTabela": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "NUSEMESTRE",
+          "descricao": "Semestre",
+          "nomeTabela": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDSUBACAO",
+          "descricao": "Subação",
+          "nomeTabela": "SUBACAO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDSUBELEMENTODESPESA",
+          "descricao": "Subelemento",
+          "nomeTabela": "SUBELEMENTODESPESA",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDSUBFUNCAO",
+          "descricao": "Subfunção",
+          "nomeTabela": "SUBFUNCAO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "TIPO",
+          "descricao": "Tipo de Pagamento",
+          "nomeTabela": "TIPOPAGAMENTO",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "NUTRIMESTRE",
+          "descricao": "Trimestre",
+          "nomeTabela": null,
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDUNIDADEGESTORA",
+          "descricao": "Unidade Gestora",
+          "nomeTabela": "UNIDADEGESTORA",
+          "temAnoReferencia": true
+        }
+      ],
+      "sha256": "45ad303fa95dd7156494aa082fd84cae46325e509e425c45d80dc4ed867b3461",
+      "status": 200
+    },
+    "/filtro/despesa/filtros": {
+      "bytes": 3933,
+      "identifier_candidates": [
+        {
+          "atributo": "CDCREDOR",
+          "descricao": "Credor",
+          "nomeTabela": "CREDOR",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "NUNOTAEMPENHO",
+          "descricao": "Empenho",
+          "nomeTabela": "EMPENHOS",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "NUPROC",
+          "descricao": "Processo de pagamento",
+          "nomeTabela": "LIQUIDACOES",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "TIPO",
+          "descricao": "Tipo de Pagamento",
+          "nomeTabela": "TIPOPAGAMENTO",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDUNIDADEGESTORA",
+          "descricao": "Unidade Gestora",
+          "nomeTabela": "UNIDADEGESTORA",
+          "temAnoReferencia": true
+        }
+      ],
+      "items": [
+        {
+          "atributo": "CDACAO",
+          "descricao": "Ação",
+          "nomeTabela": "ACAO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDCATEGORIAECONOMICA",
+          "descricao": "Categoria Econômica",
+          "nomeTabela": "CATEGORIAECONOMICA",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDCREDOR",
+          "descricao": "Credor",
+          "nomeTabela": "CREDOR",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDELEMENTODESPESA",
+          "descricao": "Elemento",
+          "nomeTabela": "ELEMENTODESPESA",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "NUNOTAEMPENHO",
+          "descricao": "Empenho",
+          "nomeTabela": "EMPENHOS",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDFONTERECURSO",
+          "descricao": "Fonte Recurso",
+          "nomeTabela": "FONTERECURSO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDFUNCAO",
+          "descricao": "Função",
+          "nomeTabela": "FUNCAO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDGRUPODESPESA",
+          "descricao": "Grupo Natureza Despesa",
+          "nomeTabela": "GRUPODESPESA",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDMODALIDADEAPLICACAO",
+          "descricao": "Modalidade Aplicação",
+          "nomeTabela": "MODALIDADEAPLICACAO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDORGAO",
+          "descricao": "Órgão",
+          "nomeTabela": "ORGAO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "NUPROC",
+          "descricao": "Processo de pagamento",
+          "nomeTabela": "LIQUIDACOES",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDPROGRAMA",
+          "descricao": "Programa",
+          "nomeTabela": "PROGRAMA",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDSUBACAO",
+          "descricao": "Subação",
+          "nomeTabela": "SUBACAO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDSUBELEMENTODESPESA",
+          "descricao": "Subelemento",
+          "nomeTabela": "SUBELEMENTODESPESA",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "CDSUBFUNCAO",
+          "descricao": "Subfunção",
+          "nomeTabela": "SUBFUNCAO",
+          "temAnoReferencia": true
+        },
+        {
+          "atributo": "TIPO",
+          "descricao": "Tipo de Pagamento",
+          "nomeTabela": "TIPOPAGAMENTO",
+          "temAnoReferencia": false
+        },
+        {
+          "atributo": "CDUNIDADEGESTORA",
+          "descricao": "Unidade Gestora",
+          "nomeTabela": "UNIDADEGESTORA",
+          "temAnoReferencia": true
+        }
+      ],
+      "sha256": "e955d15b61cd75a2c1aff248025422b1468996dcff8b6a6f40cb7396b4094156",
+      "status": 200
+    }
+  },
+  "observed_at_date": "2026-08-23",
+  "period_end": "2026-08-23",
+  "period_start": "2026-01-01",
+  "rule": "This probe only inventories structured official identifiers. Supplier/name/object similarity is never accepted as a contract-payment link."
+}
