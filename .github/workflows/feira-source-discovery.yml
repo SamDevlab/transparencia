@@ -6,6 +6,8 @@ on:
     branches: [city/feira-de-santana]
     paths:
       - "cities/feira-de-santana/**"
+      - "src/transparencia/**"
+      - "tests/test_feira_adapter.py"
       - ".github/workflows/feira-source-discovery.yml"
 
 permissions:
