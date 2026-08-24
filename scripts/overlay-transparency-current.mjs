@@ -78,7 +78,7 @@ replaceDataset(datasets, {
   detail: `${linkSummary.exactPairs ?? 0} pares documentais ligam ${linkSummary.processesWithExactContracts ?? 0} processos a ${linkSummary.uniqueContractsLinked ?? 0} contratos únicos. A igualdade do número oficial do processo é a única regra de vínculo; não há fuzzy matching e isso não cria ligação automática com pagamento.`,
   source: "Portal da Transparência de Salvador",
   href: "/relacoes",
-  asOf: [linkSummary.acquisitionsAsOf, linkSummary.contractsAsOf].filter(Boolean).sort().at(-1) ?? null,
+  asOf: [linkSummary.acquisitionsAsOf, linkSummary.contractsAsOf, linkSummary.pncpComplementaryAsOf].filter(Boolean).sort().at(-1) ?? null,
 });
 
 const cms = camara.commitmentLedger;
@@ -117,12 +117,19 @@ if (aux) {
     href: "/camara",
     asOf: aux.asOf ?? null,
   });
+
+  const certamesComplete = aux.certames?.complete === true
+    && Number(aux.certames?.records ?? 0) > 0
+    && Number(aux.certames?.records) === Number(aux.certames?.serverReportedTotal)
+    && aux.certames?.reachedServerEnd === true;
   replaceDataset(datasets, {
     id: "cms_certames",
     title: "Certames da Câmara",
-    status: "partial",
-    statusLabel: "Página visível apenas",
-    detail: `${aux.certames?.recordsVisible ?? 0} itens da página atualmente visível. A paginação integral do catálogo ainda não foi provada e ausência nesta lista não significa inexistência.`,
+    status: certamesComplete ? "complete_for_filter" : "partial",
+    statusLabel: certamesComplete ? "Catálogo completo para o filtro" : "Cobertura parcial",
+    detail: certamesComplete
+      ? `${aux.certames.records} certames normalizados em ${aux.certames.pages ?? 0} páginas. A paginação chegou ao fim declarado e a contagem reconciliou exatamente com o total informado pelo servidor (${aux.certames.serverReportedTotal}).`
+      : `${aux.certames?.records ?? 0} certames normalizados. A cobertura permanece parcial enquanto paginação, total do servidor e fim do catálogo não forem comprovados simultaneamente.`,
     source: "Câmara Municipal de Salvador",
     href: "/camara",
     asOf: aux.asOf ?? null,
