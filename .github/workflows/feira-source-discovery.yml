@@ -1,0 +1,89 @@
+name: Feira de Santana — descoberta de fontes
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [city/feira-de-santana]
+    paths:
+      - "cities/feira-de-santana/**"
+      - ".github/workflows/feira-source-discovery.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feira-source-discovery
+  cancel-in-progress: true
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: city/feira-de-santana
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -e .
+      - name: Preserve verified source entry points
+        run: |
+          TODAY=$(TZ=America/Bahia date +%F)
+          OUT="cities/feira-de-santana/data/snapshots/${TODAY}/source_discovery"
+          mkdir -p "$OUT"
+          python -m transparencia --city feira-de-santana collect-pages --out "$OUT/raw" > "$OUT/summary.json"
+          TODAY="$TODAY" OUT="$OUT" python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          from transparencia.coverage import CoverageEntry, CoverageManifest
+          from transparencia.config import load_city
+
+          today = os.environ['TODAY']
+          out = Path(os.environ['OUT'])
+          rows = json.loads((out / 'summary.json').read_text(encoding='utf-8'))
+          ws = load_city(Path.cwd(), 'feira-de-santana')
+          source_by_id = {row['id']: row for row in ws.sources}
+
+          manifest = CoverageManifest(
+              city_slug='feira-de-santana',
+              period_start=today,
+              period_end=today,
+          )
+          for row in rows:
+              source_id = row.get('source_id') or 'unknown'
+              source = source_by_id.get(source_id, {})
+              ok = row.get('ok') is True
+              manifest.add(CoverageEntry(
+                  dataset='source_entrypoint',
+                  source_system=source_id,
+                  status='partial' if ok else 'unavailable',
+                  period_start=today,
+                  period_end=today,
+                  records=None,
+                  pages=None,
+                  source_url=source.get('url'),
+                  evidence_path=str(out / 'raw' / source_id),
+                  filter_description='entry point availability only',
+                  note=(
+                      'Official entry point fetched and archived; dataset pagination/completeness not tested.'
+                      if ok else
+                      f"Entry point could not be fetched in this run: {row.get('error', 'unknown error')}"
+                  ),
+              ))
+          manifest.write(out / 'coverage.json')
+          print(json.dumps(manifest.to_dict(), ensure_ascii=False, indent=2))
+          PY
+      - name: Commit source evidence
+        run: |
+          TODAY=$(TZ=America/Bahia date +%F)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "cities/feira-de-santana/data/snapshots/${TODAY}/source_discovery"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "data(feira): preserve source discovery ${TODAY} [skip ci]"
+          git pull --rebase origin city/feira-de-santana
+          git push origin HEAD:city/feira-de-santana
