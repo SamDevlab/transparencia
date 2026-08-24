@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "tested_commit": "f57f4fb96d48451cd5da9a32a177bcb635c2ff4a",
+  "tested_commit": "d30a2c90d7b7cf8cf31a79b409ee4f8c9e42d9a5",
   "node": "v22.23.2",
   "next": "16.2.12",
   "react": "19.2.8",
@@ -20,21 +20,30 @@
   },
   "exact_links": {
     "processesTotal": 2401,
-    "processesWithExactContracts": 904,
+    "processesWithExactContracts": 912,
+    "processesWithDirectExactContracts": 904,
     "processesWithPrimaryExactContracts": 875,
-    "processesWithPncpComplementaryExactContracts": 55,
-    "exactPairs": 1137,
+    "processesWithPncpComplementaryExactContracts": 64,
+    "processesWithPncpProcurementControlLinks": 56,
+    "processesNewlyLinkedByPncpProcurementControl": 8,
+    "exactPairs": 1152,
+    "directExactPairs": 1137,
     "primaryExactPairs": 1078,
-    "pncpComplementaryExactPairs": 59,
+    "pncpComplementaryExactPairs": 74,
+    "pncpProcurementControlExactPairs": 65,
+    "pncpProcurementControlIncrementalPairs": 15,
+    "pncpProcurementControlIncrementalContracts": 15,
+    "pncpProcurementRows": 1052,
+    "pncpProcurementAsOf": "2026-08-23",
     "contractsPrimaryRows": 3199,
     "contractsComplementaryRows": 396,
-    "uniqueContractsLinked": 1116,
+    "uniqueContractsLinked": 1131,
     "uniquePrimaryContractsLinked": 1057,
-    "uniquePncpComplementaryContractsLinked": 59,
-    "processCoverageRatio": 0.3765097875885048,
-    "contractCoverageRatio": 0.3104311543810848,
+    "uniquePncpComplementaryContractsLinked": 74,
+    "processCoverageRatio": 0.3798417326114119,
+    "contractCoverageRatio": 0.3146036161335188,
     "primaryContractCoverageRatio": 0.3304157549234136,
-    "pncpComplementaryContractCoverageRatio": 0.14898989898989898,
+    "pncpComplementaryContractCoverageRatio": 0.18686868686868688,
     "acquisitionsAsOf": "2026-08-21",
     "contractsAsOf": "2026-08-21",
     "pncpComplementaryAsOf": "2026-08-23"
@@ -53,7 +62,7 @@
     "commitments": 1414,
     "as_of": "2026-08-21",
     "auxiliary": {
-      "asOf": "2026-08-21",
+      "asOf": "2026-08-23",
       "travel": {
         "status": "complete_for_filter",
         "complete": true,
@@ -82,13 +91,13 @@
         "publicDetailRule": "O portal publica a cobertura e as contagens do catálogo; os documentos continuam acessíveis nas páginas oficiais da Câmara."
       },
       "certames": {
-        "status": "partial",
-        "complete": false,
-        "records": 10,
-        "serverReportedTotal": null,
-        "pages": 0,
-        "reachedServerEnd": false,
-        "coverage": "server_visible_page_only",
+        "status": "complete_for_filter",
+        "complete": true,
+        "records": 188,
+        "serverReportedTotal": 188,
+        "pages": 19,
+        "reachedServerEnd": true,
+        "coverage": "scriptcase_full_catalogue",
         "rows": [
           {
             "modality": "Dispensa Eletrônica",
@@ -179,9 +188,99 @@
             "object": "Aquisição de material permanente (livros) visando complementar e atualizar o acervo da Biblioteca Professor Jorge Portugal, pertencente ao Centro de Cultura Vereador Manuel Querino, da Câmara Municipal de Salvador, BA, bem como auxiliar no gerenciamento das demandas informacionais contidas na Biblioteca.",
             "latestStatusText": "Última Atualização:",
             "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Dispensa Eletrônica",
+            "noticeNumber": "12/2026",
+            "scheduledAtText": "07/05/2026 08:00",
+            "updatedAtText": "12/05/2026 11:00",
+            "object": "REGISTRO DE PREÇOS para aquisição de materiais de consumo - Equipamentos de Proteção Individual – EPIs -para o atendimento odontológico dos vereadores, servidores e respectivos dependentes no Gabinete Odontológico da Câmara Municipal de Salvador.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Pregão Eletrônico",
+            "noticeNumber": "90003/2026",
+            "scheduledAtText": "13/04/2026 10:00",
+            "updatedAtText": "30/04/2026 12:57",
+            "object": "REGISTRO DE PREÇOS visando a contratação de empresa especializada para o fornecimento de copos descartáveis para água e café ao público interno e externo, visando atender às necessidades da Câmara Municipal de Salvador.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Dispensa Eletrônica",
+            "noticeNumber": "5/2026",
+            "scheduledAtText": "13/04/2026 08:00",
+            "updatedAtText": "24/04/2026 09:44",
+            "object": "Aquisição de material permanente (livros) visando complementar e atualizar o acervo da Biblioteca Professor Jorge Portugal, pertencente ao Centro de Cultura Vereador Manuel Querino, da Câmara Municipal de Salvador, BA, bem como auxiliar no gerenciamento das demandas informacionais contidas na Biblioteca.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Pregão Eletrônico",
+            "noticeNumber": "90017/2025",
+            "scheduledAtText": "12/01/2026 10:00",
+            "updatedAtText": "22/04/2026 10:02",
+            "object": "Contratação de empresa especializada para execução de serviços técnicos de tratamento arquivístico que compreendam Higienização, restauração de níveis R1 a R3, organização, fornecimento de meios de acondicionamento e elaboração de instrumentos de destinação de documentos; Descrição arquivística, digitalização e indexação de acervo documental; Fornecimento de licença de uso de Sistema Informatizado de Gestão Documental (GED) com manutenção de 24 meses e cessão do código- fonte após esse período.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Pregão Eletrônico",
+            "noticeNumber": "90012/2025",
+            "scheduledAtText": "18/12/2025 10:00",
+            "updatedAtText": "09/04/2026 11:04",
+            "object": "Contratação de empresa especializada para a prestação de Serviços de telefonia móvel pessoal (SMP), com VOZ e DADOS com tecnologia 5G/4G/GSM (Sistema Global para Comunicações Móveis) ou de tecnologia superior, com o fornecimento de 100 chips por um período de 30 (trinta) meses e com o fornecimento de smartphone em comodato.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Pregão Eletrônico",
+            "noticeNumber": "90001/2026",
+            "scheduledAtText": "09/02/2026 10:00",
+            "updatedAtText": "09/04/2026 10:56",
+            "object": "REGISTRO DE PREÇOS para a Contratação de empresa especializada para o fornecimento de gêneros alimentícios (garrafa de água mineral sem gás de 500 ml, garrafa de água mineral com gás de 500 ml, copo de água mineral sem gás de 200 ml, leite em pó integral e achocolatado) ao público interno e externo, visando atender às necessidades da Câmara Municipal de Salvador.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Dispensa Eletrônica",
+            "noticeNumber": "2/2026",
+            "scheduledAtText": "02/03/2026 10:00",
+            "updatedAtText": "25/03/2026 14:33",
+            "object": "REGISTRO DE PREÇOS para aquisição de materiais de consumo - Equipamentos de Proteção Individual – EPIs - para o atendimento odontológico dos vereadores, servidores e respectivos dependentes no Gabinete Odontológico da Câmara Municipal de Salvador.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Pregão Eletrônico",
+            "noticeNumber": "90014/2025",
+            "scheduledAtText": "25/11/2025 10:00",
+            "updatedAtText": "23/01/2026 09:42",
+            "object": "REGISTRO DE PREÇOS visando a aquisição de materiais de expediente diversos, para atender as necessidades das unidades da Câmara Municipal de Salvador.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Pregão Eletrônico",
+            "noticeNumber": "90016/2025",
+            "scheduledAtText": "04/12/2025 00:00",
+            "updatedAtText": "23/01/2026 09:38",
+            "object": "REGISTRO DE PREÇOS visando à contratação de empresa especializada na prestação de serviços para eventos, incluso: fornecimento de flores, alimentos, bebidas, serviços de buffet, sonorização, locação de toldos, transporte, locação de mobiliários, em atendimento à(s) necessidade(s) da(s) unidade(s) da Câmara Municipal de Salvador.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
+          },
+          {
+            "modality": "Dispensa Eletrônica",
+            "noticeNumber": "1/2026",
+            "scheduledAtText": "12/01/2026 08:00",
+            "updatedAtText": "07/01/2026 11:03",
+            "object": "REGISTRO DE PREÇOS para contratação de empresa especializada na execução de análises laboratoriais física e microbiológica da água utilizada nos equipamentos odontológicos e torneiras dos consultórios odontológicos e expurgo, pertencentes ao Gabinete Odontológico da Câmara Municipal de Salvador.",
+            "latestStatusText": "Última Atualização:",
+            "sourceUrl": "https://cmsalvador.sys.inf.br/ca/licitacao/"
           }
         ],
-        "coverageRule": "A cobertura permanece parcial porque a sessão, paginação, transporte ou parser não comprovou simultaneamente o fim do catálogo e igualdade com o total informado pelo servidor. Ausência não significa inexistência."
+        "coverageRule": "O catálogo foi paginado pela própria sessão ScriptCase até o fim declarado pelo servidor; completude exige que a quantidade de linhas normalizadas seja exatamente igual ao total informado pela fonte."
       }
     }
   },
