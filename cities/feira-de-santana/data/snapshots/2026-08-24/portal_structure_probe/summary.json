@@ -1,0 +1,42 @@
+{
+  "assessment": {
+    "can_claim_dataset_completeness": false,
+    "forms_observed": 0,
+    "next_step": "Use only preserved form/action/script evidence to discover structured requests and pagination. Do not infer endpoints from labels or text.",
+    "route_failures": 5,
+    "routes_attempted": 5,
+    "routes_http_200": 0
+  },
+  "observed_at_date": "2026-08-24",
+  "root_url": "https://transparencia.feiradesantana.ba.gov.br/",
+  "routes": [
+    {
+      "error": "ConnectTimeout: timed out",
+      "name": "root",
+      "url": "https://transparencia.feiradesantana.ba.gov.br/"
+    },
+    {
+      "error": "ConnectTimeout: timed out",
+      "name": "receita",
+      "url": "https://transparencia.feiradesantana.ba.gov.br/index.php?view=receita"
+    },
+    {
+      "error": "ConnectTimeout: timed out",
+      "name": "despesa",
+      "url": "https://transparencia.feiradesantana.ba.gov.br/index.php?view=despesasinfo"
+    },
+    {
+      "error": "ConnectTimeout: timed out",
+      "name": "licitacoes",
+      "url": "https://transparencia.feiradesantana.ba.gov.br/index.php?view=licitacoes"
+    },
+    {
+      "error": "ConnectTimeout: timed out",
+      "name": "contratos",
+      "url": "https://transparencia.feiradesantana.ba.gov.br/index.php?view=contratos"
+    }
+  ],
+  "rule": "Diagnostic structure only. Reachability, forms or route names never imply dataset completeness.",
+  "same_host_discovered_routes": [],
+  "same_host_scripts": []
+}
