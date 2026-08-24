@@ -8,6 +8,7 @@ on:
       - "cities/feira-de-santana/city.json"
       - "src/transparencia/collectors/pncp.py"
       - "src/transparencia/collectors/pncp_contracts.py"
+      - "src/transparencia/reconcile.py"
       - ".github/workflows/feira-pncp-bounded.yml"
 
 permissions:
@@ -171,6 +172,124 @@ jobs:
           (out / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
           print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True))
           print(json.dumps(manifest.to_dict(), ensure_ascii=False, indent=2, sort_keys=True))
+          PY
+      - name: Build exact PNCP procurement-contract relations
+        run: |
+          python - <<'PY'
+          import json
+          from collections import defaultdict
+          from datetime import datetime
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          from transparencia.reconcile import normalize_identifier
+
+          today = datetime.now(ZoneInfo('America/Bahia')).date()
+          start = today.replace(day=1)
+          root = Path.cwd()
+          out = root / 'cities' / 'feira-de-santana' / 'data' / 'snapshots' / today.isoformat() / 'pncp_bounded'
+          proc_path = out / 'procurements' / f'contratacoes_executivo_{start.isoformat()}_{today.isoformat()}.jsonl'
+          contract_path = out / 'contracts' / f'contratos_executivo_{start.isoformat()}_{today.isoformat()}.jsonl'
+          proc_coverage_path = out / 'procurements' / 'coverage.json'
+          contract_coverage_path = out / 'contracts' / 'coverage.json'
+
+          def read_jsonl(path):
+              if not path.exists():
+                  return []
+              return [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
+
+          procurements = read_jsonl(proc_path)
+          contracts = read_jsonl(contract_path)
+          proc_coverage = json.loads(proc_coverage_path.read_text(encoding='utf-8')) if proc_coverage_path.exists() else {}
+          contract_coverage = json.loads(contract_coverage_path.read_text(encoding='utf-8')) if contract_coverage_path.exists() else {}
+
+          contracts_by_procurement = defaultdict(list)
+          contracts_without_control = []
+          for row in contracts:
+              raw_key = row.get('pncp_procurement_control_number') or row.get('procurement_control_number')
+              key = normalize_identifier(raw_key)
+              if not key:
+                  contracts_without_control.append(row.get('pncp_contract_control_number') or row.get('pncp_control_number'))
+                  continue
+              contracts_by_procurement[key].append(row)
+
+          links = []
+          linked_contract_controls = set()
+          unmatched_procurements = []
+          for procurement in procurements:
+              raw_key = procurement.get('pncp_procurement_control_number') or procurement.get('pncp_control_number')
+              key = normalize_identifier(raw_key)
+              matches = contracts_by_procurement.get(key, []) if key else []
+              if not matches:
+                  unmatched_procurements.append(raw_key)
+                  continue
+              contract_items = []
+              for contract in matches:
+                  contract_control = contract.get('pncp_contract_control_number') or contract.get('pncp_control_number')
+                  if contract_control:
+                      linked_contract_controls.add(contract_control)
+                  contract_items.append({
+                      'pncp_contract_control_number': contract_control,
+                      'contract_number': contract.get('contract_number'),
+                      'process_number': contract.get('process_number'),
+                      'agency_document': contract.get('agency_document') or contract.get('agency_cnpj'),
+                      'global_value': contract.get('global_value'),
+                      'signed_at': contract.get('signed_at'),
+                      'source_url': contract.get('source_url'),
+                  })
+              links.append({
+                  'pncp_procurement_control_number': raw_key,
+                  'notice_number': procurement.get('notice_number'),
+                  'process_number': procurement.get('process_number'),
+                  'agency_document': procurement.get('agency_document') or procurement.get('agency_cnpj'),
+                  'estimated_value': procurement.get('estimated_value'),
+                  'published_at': procurement.get('published_at'),
+                  'contracts': contract_items,
+              })
+
+          all_contract_controls = {
+              row.get('pncp_contract_control_number') or row.get('pncp_control_number')
+              for row in contracts
+              if row.get('pncp_contract_control_number') or row.get('pncp_control_number')
+          }
+          unmatched_contracts = sorted(all_contract_controls - linked_contract_controls)
+          exact_pairs = sum(len(item['contracts']) for item in links)
+          input_complete = (
+              proc_coverage.get('complete') is True
+              and contract_coverage.get('complete_for_supplied_agencies_and_filter') is True
+          )
+          payload = {
+              'observed_at_date': today.isoformat(),
+              'period_start': start.isoformat(),
+              'period_end': today.isoformat(),
+              'source_system': 'PNCP',
+              'identity_rule': 'Exact equality of the native PNCP procurement control number after formatting-only normalization: procurement numeroControlePNCP == contract numeroControlePNCPCompra. No name, object, supplier or semantic similarity is used.',
+              'cardinality_rule': 'One procurement may legitimately reference zero, one or multiple contracts; every published pair must share the same native PNCP procurement control number.',
+              'accounting_rule': 'This is procurement-to-contract documentary identity only. It does not establish commitment, liquidation or payment.',
+              'coverage': {
+                  'procurements_complete_for_filter': proc_coverage.get('complete') is True,
+                  'contracts_complete_for_supplied_agencies_and_filter': contract_coverage.get('complete_for_supplied_agencies_and_filter') is True,
+                  'agency_discovery_complete': contract_coverage.get('agency_discovery_complete') is True,
+                  'relations_complete_for_current_input_snapshots': input_complete,
+                  'municipality_wide_complete': False,
+              },
+              'summary': {
+                  'procurements': len(procurements),
+                  'contracts': len(contracts),
+                  'procurements_with_exact_contracts': len(links),
+                  'unique_contracts_linked': len(linked_contract_controls),
+                  'exact_pairs': exact_pairs,
+                  'unmatched_procurements': len(unmatched_procurements),
+                  'unmatched_contracts': len(unmatched_contracts),
+                  'contracts_without_procurement_control': len(contracts_without_control),
+              },
+              'links': links,
+              'unmatched_procurement_control_numbers': sorted(value for value in unmatched_procurements if value),
+              'unmatched_contract_control_numbers': unmatched_contracts,
+              'contracts_without_procurement_control_numbers': sorted(value for value in contracts_without_control if value),
+          }
+          (out / 'pncp-links.json').write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          print(json.dumps(payload['summary'], ensure_ascii=False, indent=2, sort_keys=True))
           PY
       - name: Commit bounded PNCP evidence
         run: |
