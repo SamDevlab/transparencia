@@ -100,6 +100,14 @@ const processes = readJson("processes.json", { rows: [] });
 const contracts = readJson("contracts.json", { rows: [], complementary: { rows: [] } });
 const money = readJson("money.json");
 const meta = readJson("meta.json");
+const analysis = readJson("analysis.json", {
+  notes: "Os pontos abaixo são descritivos e servem para orientar consulta documental. Não constituem acusação ou conclusão de irregularidade.",
+  highValueAcquisitions: [],
+  directAcquisitions: [],
+  repeatSuppliers: [],
+  concentratedSuppliers: [],
+  exactCrossSourceLinks: [],
+});
 
 const primaryContracts = (contracts.rows ?? []).map((contract) => ({
   ...contract,
@@ -234,6 +242,7 @@ for (const process of updatedProcesses) {
     }
     return compactContract(contract, contract.linkMethods);
   });
+  const linkMethods = [...new Set(compactContracts.flatMap((contract) => contract.linkMethods ?? []))].sort();
   links.push({
     processId: process.id,
     processo: process.processo ?? null,
@@ -243,6 +252,7 @@ for (const process of updatedProcesses) {
     objeto: process.objeto ?? null,
     valorAquisicao: process.valor ?? null,
     publicadoEm: process.publicadoEm ?? null,
+    linkMethods,
     contratos: compactContracts,
     contratosMunicipais: compactContracts.filter((contract) => contract.sourceLayer === "municipal_primary"),
     contratosPncpComplementares: compactContracts.filter((contract) => contract.sourceLayer === "pncp_complementary"),
@@ -294,6 +304,13 @@ const payload = {
 
 writeJson("municipal-links.json", payload);
 
+analysis.exactCrossSourceLinks = links;
+analysis.exactLinkSummary = summary;
+analysis.exactLinkIdentityRule = payload.identityRule;
+analysis.exactLinkSourceObservationRule = payload.sourceObservationRule;
+writeJson("analysis.json", analysis);
+
+money.exactCrossSourceLinks = links;
 money.municipalDocumentaryLinks = summary;
 money.municipalDocumentaryIdentityRule = payload.identityRule;
 money.municipalDocumentarySourceObservationRule = payload.sourceObservationRule;
@@ -315,4 +332,4 @@ meta.pncpComplementaryExactProcessContractPairs = summary.pncpComplementaryExact
 meta.pncpProcurementControlIncrementalPairs = summary.pncpProcurementControlIncrementalPairs;
 writeJson("meta.json", meta);
 
-console.log(`Vínculos exatos: ${summary.processesWithExactContracts} processos; ${summary.primaryExactPairs} observações municipais e ${summary.pncpComplementaryExactPairs} observações PNCP. Cadeia PNCP adicionou ${summary.processesNewlyLinkedByPncpProcurementControl} processos e ${summary.pncpProcurementControlIncrementalPairs} pares líquidos. Nenhum valor foi somado entre fontes.`);
+console.log(`Vínculos exatos: ${summary.processesWithExactContracts} processos; ${summary.primaryExactPairs} observações municipais e ${summary.pncpComplementaryExactPairs} observações PNCP. Cadeia PNCP adicionou ${summary.processesNewlyLinkedByPncpProcurementControl} processos e ${summary.pncpProcurementControlIncrementalPairs} pares líquidos. analysis.json e money.json sincronizados com o índice reconciliado.`);
