@@ -20,7 +20,7 @@ concurrency:
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,54 +30,72 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -e .
-      - name: Preserve verified source entry points
+      - name: Preserve verified source entry points with bounded retries
         run: |
-          TODAY=$(TZ=America/Bahia date +%F)
-          OUT="cities/feira-de-santana/data/snapshots/${TODAY}/source_discovery"
-          mkdir -p "$OUT"
-          python -m transparencia --city feira-de-santana collect-pages --out "$OUT/raw" > "$OUT/summary.json"
-          TODAY="$TODAY" OUT="$OUT" python - <<'PY'
+          python - <<'PY'
           import json
-          import os
+          from datetime import datetime
           from pathlib import Path
+          from zoneinfo import ZoneInfo
 
-          from transparencia.coverage import CoverageEntry, CoverageManifest
           from transparencia.config import load_city
+          from transparencia.coverage import CoverageEntry, CoverageManifest
+          from transparencia.http import fetch_and_archive
 
-          today = os.environ['TODAY']
-          out = Path(os.environ['OUT'])
-          rows = json.loads((out / 'summary.json').read_text(encoding='utf-8'))
-          ws = load_city(Path.cwd(), 'feira-de-santana')
-          source_by_id = {row['id']: row for row in ws.sources}
+          today = datetime.now(ZoneInfo('America/Bahia')).date().isoformat()
+          root = Path.cwd()
+          ws = load_city(root, 'feira-de-santana')
+          out = root / 'cities' / 'feira-de-santana' / 'data' / 'snapshots' / today / 'source_discovery'
+          raw = out / 'raw'
+          out.mkdir(parents=True, exist_ok=True)
 
-          manifest = CoverageManifest(
-              city_slug='feira-de-santana',
-              period_start=today,
-              period_end=today,
-          )
-          for row in rows:
-              source_id = row.get('source_id') or 'unknown'
-              source = source_by_id.get(source_id, {})
-              ok = row.get('ok') is True
+          rows = []
+          manifest = CoverageManifest(city_slug=ws.config.slug, period_start=today, period_end=today)
+          for source in ws.sources:
+              source_id = (source.get('id') or '').strip()
+              url = (source.get('url') or '').strip()
+              if not source_id or not url:
+                  continue
+              item = {'source_id': source_id, 'url': url}
+              try:
+                  meta = fetch_and_archive(
+                      url,
+                      source_id=source_id,
+                      out_dir=raw,
+                      timeout=12.0,
+                      attempts=2,
+                  )
+                  item.update({
+                      'ok': True,
+                      'status': meta.status_code,
+                      'final_url': meta.final_url,
+                      'sha256': meta.sha256,
+                      'bytes': meta.byte_count,
+                      'content_type': meta.content_type,
+                  })
+                  status = 'partial'
+                  note = 'Official entry point fetched and archived; dataset pagination/completeness not tested.'
+              except Exception as exc:
+                  item.update({'ok': False, 'error': f'{type(exc).__name__}: {exc}'})
+                  status = 'unavailable'
+                  note = f"Entry point could not be fetched in this bounded run: {item['error']}"
+              rows.append(item)
               manifest.add(CoverageEntry(
                   dataset='source_entrypoint',
                   source_system=source_id,
-                  status='partial' if ok else 'unavailable',
+                  status=status,
                   period_start=today,
                   period_end=today,
-                  records=None,
-                  pages=None,
-                  source_url=source.get('url'),
-                  evidence_path=str(out / 'raw' / source_id),
+                  source_url=url,
+                  evidence_path=str((raw / source_id).relative_to(root)),
                   filter_description='entry point availability only',
-                  note=(
-                      'Official entry point fetched and archived; dataset pagination/completeness not tested.'
-                      if ok else
-                      f"Entry point could not be fetched in this run: {row.get('error', 'unknown error')}"
-                  ),
+                  note=note,
               ))
+
+          (out / 'summary.json').write_text(json.dumps(rows, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
           manifest.write(out / 'coverage.json')
-          print(json.dumps(manifest.to_dict(), ensure_ascii=False, indent=2))
+          print(json.dumps(rows, ensure_ascii=False, indent=2, sort_keys=True))
+          print(json.dumps(manifest.to_dict(), ensure_ascii=False, indent=2, sort_keys=True))
           PY
       - name: Commit source evidence
         run: |
