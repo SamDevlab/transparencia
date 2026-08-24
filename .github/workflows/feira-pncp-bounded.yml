@@ -39,7 +39,10 @@ jobs:
           from zoneinfo import ZoneInfo
 
           from transparencia.collectors.pncp import collect as collect_procurements
-          from transparencia.collectors.pncp_contracts import collect as collect_contracts
+          from transparencia.collectors.pncp_contracts import (
+              agency_cnpjs_from_procurements,
+              collect as collect_contracts,
+          )
           from transparencia.config import load_city
           from transparencia.coverage import CoverageEntry, CoverageManifest
 
@@ -63,29 +66,37 @@ jobs:
 
           proc_status = 'unavailable'
           proc_records = None
+          proc_path = None
           try:
               proc_path = collect_procurements(ws.config, start, today, out / 'procurements', scope='executivo')
               proc_coverage_path = out / 'procurements' / 'coverage.json'
               proc_coverage = json.loads(proc_coverage_path.read_text(encoding='utf-8')) if proc_coverage_path.exists() else {}
               proc_records = int(proc_coverage.get('records') or 0)
               proc_status = 'complete_for_filter' if proc_coverage.get('complete') is True else 'partial'
+              observed_cnpjs = list(agency_cnpjs_from_procurements([proc_path]))
               summary['procurements'] = {
                   'ok': True,
                   'path': str(proc_path.relative_to(root)),
                   'coverage': proc_coverage,
+                  'agency_cnpjs_observed': observed_cnpjs,
               }
           except Exception as exc:
+              observed_cnpjs = []
               summary['procurements'] = {'ok': False, 'error': f'{type(exc).__name__}: {exc}'}
 
           contract_status = 'unavailable'
           contract_records = None
+          agency_scope = set(observed_cnpjs)
+          if ws.config.municipality_cnpj:
+              agency_scope.add(ws.config.municipality_cnpj)
+          agency_scope = sorted(agency_scope)
           try:
               contract_path = collect_contracts(
                   ws.config,
                   start,
                   today,
                   out / 'contracts',
-                  agency_cnpjs=[ws.config.municipality_cnpj] if ws.config.municipality_cnpj else [],
+                  agency_cnpjs=agency_scope,
                   scope='executivo',
               )
               contract_records = sum(1 for line in contract_path.read_text(encoding='utf-8').splitlines() if line.strip())
@@ -97,11 +108,18 @@ jobs:
                   'ok': True,
                   'path': str(contract_path.relative_to(root)),
                   'records': contract_records,
-                  'agency_cnpj_scope': [ws.config.municipality_cnpj],
+                  'agency_cnpj_scope': agency_scope,
+                  'agency_discovery_complete': False,
+                  'agency_discovery_rule': 'official municipality CNPJ plus business CNPJs observed in the bounded PNCP procurement rows; not a municipality-wide entity registry',
                   'coverage_limitation': 'pagination metadata is not yet persisted by the generic PNCP contract collector',
               }
           except Exception as exc:
-              summary['contracts'] = {'ok': False, 'error': f'{type(exc).__name__}: {exc}'}
+              summary['contracts'] = {
+                  'ok': False,
+                  'error': f'{type(exc).__name__}: {exc}',
+                  'agency_cnpj_scope': agency_scope,
+                  'agency_discovery_complete': False,
+              }
 
           manifest = CoverageManifest(
               city_slug=ws.config.slug,
@@ -133,9 +151,9 @@ jobs:
               records=contract_records,
               source_url='https://pncp.gov.br/',
               evidence_path=str((out / 'contracts').relative_to(root)),
-              filter_description=f'CNPJ institucional {ws.config.municipality_cnpj}, {start.isoformat()} a {today.isoformat()}',
+              filter_description=f'CNPJs supplied/observed={len(agency_scope)}, {start.isoformat()} a {today.isoformat()}',
               note=(
-                  'Collected for the supplied institutional CNPJ, but kept partial until the generic contract collector persists source-reported pagination/count proof.'
+                  'Collected for the official municipality CNPJ plus CNPJs observed in the bounded PNCP procurements. Kept partial because entity discovery is not municipality-wide and source-reported contract pagination/count proof is not yet persisted.'
                   if contract_status == 'partial'
                   else 'PNCP contract collection unavailable in this bounded run.'
               ),
