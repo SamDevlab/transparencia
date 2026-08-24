@@ -23,10 +23,12 @@ def test_scope_uses_configured_city_not_hardcoded_name():
     assert in_scope(sample(power="L"), CITY, "legislativo")
 
 
-def test_normalization_keeps_city_and_provenance():
+def test_normalization_keeps_city_provenance_and_canonical_control():
     row = normalize_record(sample(), CITY, "2026-08-17T00:00:00+00:00", "abc")
     assert row["city_slug"] == "teste"
     assert row["snapshot_sha256"] == "abc"
+    assert row["pncp_control_number"] == "x/2026"
+    assert row["pncp_procurement_control_number"] == "x/2026"
 
 
 def test_modalities_discovered_from_payload():
