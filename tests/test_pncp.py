@@ -7,7 +7,16 @@ CITY = CityConfig("teste", "Cidade Teste", "BA", "1234567")
 
 
 def sample(power="E", sphere="M", city="Cidade Teste"):
-    return {"numeroControlePNCP":"x/2026","orgaoEntidade":{"esferaId":sphere,"poderId":power,"razaosocial":"MUNICIPIO"},"unidadeOrgao":{"municipioNome":city,"ufSigla":"BA"}}
+    return {
+        "numeroControlePNCP": "x/2026",
+        "orgaoEntidade": {
+            "cnpj": "12345678000190",
+            "esferaId": sphere,
+            "poderId": power,
+            "razaosocial": "MUNICIPIO",
+        },
+        "unidadeOrgao": {"municipioNome": city, "ufSigla": "BA"},
+    }
 
 
 def test_windows_cover_range_without_overlap():
@@ -29,6 +38,8 @@ def test_normalization_keeps_city_provenance_and_canonical_control():
     assert row["snapshot_sha256"] == "abc"
     assert row["pncp_control_number"] == "x/2026"
     assert row["pncp_procurement_control_number"] == "x/2026"
+    assert row["agency_cnpj"] == "12345678000190"
+    assert row["agency_document"] == "12345678000190"
 
 
 def test_modalities_discovered_from_payload():
