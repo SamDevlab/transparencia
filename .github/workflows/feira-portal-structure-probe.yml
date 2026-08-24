@@ -18,7 +18,7 @@ concurrency:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 6
     steps:
       - uses: actions/checkout@v4
         with:
@@ -75,7 +75,7 @@ jobs:
               'fetched_candidates': [],
           }
 
-          with httpx.Client(headers=headers, follow_redirects=True, timeout=45.0) as client:
+          with httpx.Client(headers=headers, follow_redirects=True, timeout=12.0) as client:
               response = client.get(ROOT_URL)
               body = response.content
               meta = persist_snapshot(
@@ -110,7 +110,7 @@ jobs:
                       candidates.add(absolute)
               report['candidate_routes'] = sorted(candidates)
 
-              for index, url in enumerate(sorted(candidates)[:30], start=1):
+              for index, url in enumerate(sorted(candidates)[:12], start=1):
                   item = {'url': url}
                   try:
                       r = client.get(url)
@@ -142,6 +142,7 @@ jobs:
           report['assessment'] = {
               'root_reachable': report['root'].get('status') == 200,
               'same_host_candidates': len(report['candidate_routes']),
+              'candidates_attempted': len(report['fetched_candidates']),
               'candidate_http_200': len(successful),
               'can_claim_dataset_completeness': False,
               'next_step': 'Inspect preserved candidate routes for structured APIs/forms/pagination before writing dataset collectors.',
