@@ -17,7 +17,7 @@ concurrency:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,11 +27,12 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install httpx
-      - name: Probe structured finance identifiers
+      - name: Probe official contract-related financial endpoints
         run: |
           python - <<'PY'
           import hashlib
           import json
+          import re
           from datetime import datetime
           from pathlib import Path
           from zoneinfo import ZoneInfo
@@ -40,127 +41,191 @@ jobs:
 
           BASE = 'https://apitmptransparencia.salvador.ba.gov.br/api'
           today = datetime.now(ZoneInfo('America/Bahia')).date()
-          out = Path('cities/salvador/data/snapshots') / today.isoformat() / 'contract_finance_probe'
-          out.mkdir(parents=True, exist_ok=True)
+          snapshots = Path('cities/salvador/data/snapshots')
+          out = snapshots / today.isoformat() / 'contract_finance_probe'
+          raw_out = out / 'raw'
+          raw_out.mkdir(parents=True, exist_ok=True)
           headers = {
               'accept': 'application/json, text/plain, */*',
               'origin': 'https://transparencia.salvador.ba.gov.br',
               'referer': 'https://transparencia.salvador.ba.gov.br/',
-              'user-agent': 'municipal-transparency-research/0.1 (+public-data-audit)',
-          }
-          payload = {
-              'dataInicio': f'{today.year}-01-01',
-              'dataFim': today.isoformat(),
-              'agrupamentos': [],
-              'filtros': [],
+              'user-agent': 'municipal-transparency-research/0.2 (+public-data-audit)',
           }
 
-          interesting = ('contrat', 'empenh', 'process', 'unidade', 'gestora', 'credor', 'liquid', 'pag')
+          def pt_number(value):
+              if isinstance(value, (int, float)):
+                  return float(value)
+              text = str(value or '').strip().replace('.', '').replace(',', '.')
+              try:
+                  return float(text)
+              except ValueError:
+                  return 0.0
 
-          def key_inventory(value, path='$', found=None):
+          def rows_from(payload):
+              if isinstance(payload, list):
+                  return [x for x in payload if isinstance(x, dict)]
+              if not isinstance(payload, dict):
+                  return []
+              for key in ('dados', 'data', 'content', 'items', 'registros'):
+                  value = payload.get(key)
+                  if isinstance(value, list):
+                      return [x for x in value if isinstance(x, dict)]
+              return []
+
+          def safe_identity(row):
+              return {
+                  'id': row.get('id'),
+                  'cdUnidadeGestora': row.get('cdUnidadeGestora'),
+                  'nuContratoSigef': row.get('nuContratoSigef'),
+                  'nuContratoOriginal': row.get('nuContratoOriginal'),
+                  'nuProcesso': row.get('nuProcesso'),
+                  'percentualExecutado': row.get('percentualExecutado'),
+              }
+
+          def inventory(payload, path='$', found=None):
               if found is None:
                   found = {}
-              if isinstance(value, dict):
-                  for key, child in value.items():
+              if isinstance(payload, dict):
+                  for key, value in payload.items():
                       low = str(key).lower()
-                      if any(token in low for token in interesting):
+                      if any(token in low for token in ('contrat', 'empenh', 'liquid', 'pag', 'process', 'unidade', 'gestora', 'nota')):
                           found.setdefault(key, set()).add(path)
-                      key_inventory(child, f'{path}.{key}', found)
-              elif isinstance(value, list):
-                  for child in value[:100]:
-                      key_inventory(child, f'{path}[]', found)
+                      inventory(value, f'{path}.{key}', found)
+              elif isinstance(payload, list):
+                  for value in payload[:50]:
+                      inventory(value, f'{path}[]', found)
               return {key: sorted(paths) for key, paths in sorted(found.items())}
+
+          # Pick up to three real source rows, preferring contracts with non-zero execution.
+          candidates = []
+          dates = sorted([p for p in snapshots.iterdir() if p.is_dir() and re.fullmatch(r'\d{4}-\d{2}-\d{2}', p.name)], reverse=True)
+          for date_dir in dates:
+              contract_dir = date_dir / 'prefeitura_contracts'
+              if not contract_dir.exists():
+                  continue
+              files = sorted(contract_dir.glob('municipal_contract_grid_*.jsonl'), reverse=True)
+              if not files:
+                  continue
+              rows = []
+              for line in files[0].read_text(encoding='utf-8').splitlines():
+                  if not line.strip():
+                      continue
+                  item = json.loads(line)
+                  source = item.get('source_record') if isinstance(item, dict) else None
+                  if isinstance(source, dict) and source.get('nuContratoSigef') and source.get('cdUnidadeGestora'):
+                      rows.append(source)
+              rows.sort(key=lambda row: (pt_number(row.get('percentualExecutado')) > 0, pt_number(row.get('percentualExecutado'))), reverse=True)
+              candidates = rows[:3]
+              source_snapshot = date_dir.name
+              break
+          else:
+              raise SystemExit('No municipal contract snapshot found')
 
           result = {
               'observed_at_date': today.isoformat(),
-              'period_start': payload['dataInicio'],
-              'period_end': payload['dataFim'],
-              'rule': 'This probe only inventories structured official identifiers. Supplier/name/object similarity is never accepted as a contract-payment link.',
-              'endpoints': {},
+              'contract_snapshot_used': source_snapshot,
+              'rule': 'Only official structured contract identifiers are used. Supplier/name/object similarity is never accepted as a contract-finance link.',
+              'official_endpoints': [
+                  '/contratos/detalhamentoContrato',
+                  '/contratos/empenhoRelacionado?pagina=1',
+                  '/contratos/liquidacaoRelacionado?pagina=1',
+                  '/contratos/pagamentoRelacionado?pagina=1',
+              ],
+              'samples': [],
           }
 
+          def request_and_record(client, endpoint, payload, sample_no, variant):
+              response = client.post(BASE + endpoint, json=payload)
+              body = response.content
+              sha = hashlib.sha256(body).hexdigest()
+              raw_file = raw_out / f's{sample_no}_{variant}_{endpoint.split("/")[-1].split("?")[0]}_{sha}.json'
+              raw_file.write_bytes(body)
+              item = {
+                  'status': response.status_code,
+                  'bytes': len(body),
+                  'sha256': sha,
+                  'variant': variant,
+              }
+              if response.status_code == 200 and body.strip():
+                  try:
+                      data = response.json()
+                      rows = rows_from(data)
+                      item['response_type'] = type(data).__name__
+                      item['top_level_keys'] = sorted(data.keys()) if isinstance(data, dict) else None
+                      item['row_count'] = len(rows)
+                      item['first_row_keys'] = sorted(rows[0].keys()) if rows else []
+                      item['identifier_keys'] = inventory(data)
+                      item['_data'] = data
+                  except Exception as exc:
+                      item['parse_error'] = f'{type(exc).__name__}: {exc}'
+              else:
+                  item['text_preview'] = response.text[:500]
+              return item
+
           with httpx.Client(headers=headers, follow_redirects=True, timeout=60.0) as client:
-              for endpoint in ['/filtro/despesa/filtros', '/filtro/despesa/agrupar']:
-                  try:
-                      response = client.get(BASE + endpoint)
-                      body = response.content
-                      item = {
-                          'status': response.status_code,
-                          'bytes': len(body),
-                          'sha256': hashlib.sha256(body).hexdigest(),
-                      }
-                      if response.status_code == 200:
-                          data = response.json()
-                          rows = data if isinstance(data, list) else []
-                          item['items'] = [
-                              {
-                                  'atributo': row.get('atributo'),
-                                  'descricao': row.get('descricao'),
-                                  'nomeTabela': row.get('nomeTabela'),
-                                  'temAnoReferencia': row.get('temAnoReferencia'),
-                              }
-                              for row in rows if isinstance(row, dict)
-                          ]
-                          item['identifier_candidates'] = [
-                              row for row in item['items']
-                              if any(token in ' '.join(str(row.get(k) or '') for k in ('atributo','descricao','nomeTabela')).lower() for token in interesting)
-                          ]
-                      result['endpoints'][endpoint] = item
-                  except Exception as exc:
-                      result['endpoints'][endpoint] = {'error': f'{type(exc).__name__}: {exc}'}
+              for index, contract in enumerate(candidates, 1):
+                  sample = {'identity': safe_identity(contract), 'detail': None, 'related': {}}
+                  detail = request_and_record(client, '/contratos/detalhamentoContrato', contract, index, 'source_row')
+                  detail_data = detail.pop('_data', None)
+                  sample['detail'] = detail
 
-              for endpoint in ['/despesa/gridresumida', '/despesa/gridDetalhada']:
-                  try:
-                      response = client.post(BASE + endpoint, json=payload)
-                      body = response.content
-                      item = {
-                          'status': response.status_code,
-                          'bytes': len(body),
-                          'sha256': hashlib.sha256(body).hexdigest(),
-                      }
-                      if response.status_code == 200:
-                          data = response.json()
-                          item['top_level_keys'] = sorted(data.keys()) if isinstance(data, dict) else None
-                          item['structured_identifier_keys'] = key_inventory(data)
-                          if isinstance(data, dict):
-                              for candidate in ('dados', 'data', 'items', 'registros'):
-                                  rows = data.get(candidate)
-                                  if isinstance(rows, list):
-                                      item['row_container'] = candidate
-                                      item['row_count'] = len(rows)
-                                      item['first_row_keys'] = sorted(rows[0].keys()) if rows and isinstance(rows[0], dict) else []
-                                      break
-                              item['paginacao'] = data.get('paginacao')
-                              item['totalizadores_present'] = isinstance(data.get('totalizadores'), dict)
-                      else:
-                          item['text_preview'] = response.text[:1000]
-                      result['endpoints'][endpoint] = item
-                  except Exception as exc:
-                      result['endpoints'][endpoint] = {'error': f'{type(exc).__name__}: {exc}'}
+                  payload_variants = [('source_row', contract)]
+                  if isinstance(detail_data, dict):
+                      payload_variants.append(('detail_object', detail_data))
+                      for key in ('dados', 'data'):
+                          if isinstance(detail_data.get(key), dict):
+                              payload_variants.append((f'detail_{key}', detail_data[key]))
+                  identity_payload = {k: v for k, v in safe_identity(contract).items() if k != 'percentualExecutado' and v is not None}
+                  payload_variants.append(('identity_only', identity_payload))
 
-          grid = result['endpoints'].get('/despesa/gridresumida') or {}
-          keys = {str(k).lower() for k in (grid.get('structured_identifier_keys') or {}).keys()}
+                  for endpoint in (
+                      '/contratos/empenhoRelacionado?pagina=1',
+                      '/contratos/liquidacaoRelacionado?pagina=1',
+                      '/contratos/pagamentoRelacionado?pagina=1',
+                  ):
+                      attempts = []
+                      for variant, payload in payload_variants:
+                          try:
+                              item = request_and_record(client, endpoint, payload, index, variant)
+                              item.pop('_data', None)
+                              attempts.append(item)
+                              # A 200 with rows proves the payload; no need to send broader variants.
+                              if item.get('status') == 200 and item.get('row_count', 0) > 0:
+                                  break
+                          except Exception as exc:
+                              attempts.append({'variant': variant, 'error': f'{type(exc).__name__}: {exc}'})
+                      sample['related'][endpoint] = attempts
+                  result['samples'].append(sample)
+
+          def proven(endpoint):
+              for sample in result['samples']:
+                  for attempt in sample['related'].get(endpoint, []):
+                      if attempt.get('status') == 200 and attempt.get('row_count', 0) > 0:
+                          return True
+              return False
+
           result['assessment'] = {
-              'grid_resumida_accessible': grid.get('status') == 200,
-              'has_contract_identifier_field': any('contrat' in key for key in keys),
-              'has_commitment_identifier_field': any('empenh' in key for key in keys),
-              'has_process_identifier_field': any('process' in key for key in keys),
-              'has_management_unit_field': any(('unidade' in key or 'gestora' in key) for key in keys),
-              'can_claim_contract_to_payment_link': False,
-              'claim_rule': 'Only set true in a future collector after the same official contract identifier is carried into an official expenditure/commitment record and its related liquidation/payment endpoints. This probe never promotes a link by itself.',
+              'detail_endpoint_accessible': any(s.get('detail', {}).get('status') == 200 for s in result['samples']),
+              'commitment_relation_proven': proven('/contratos/empenhoRelacionado?pagina=1'),
+              'liquidation_relation_proven': proven('/contratos/liquidacaoRelacionado?pagina=1'),
+              'payment_relation_proven': proven('/contratos/pagamentoRelacionado?pagina=1'),
+              'can_build_exact_contract_finance_collector': proven('/contratos/empenhoRelacionado?pagina=1') or proven('/contratos/liquidacaoRelacionado?pagina=1') or proven('/contratos/pagamentoRelacionado?pagina=1'),
+              'accounting_rule': 'Commitments, liquidations and payments remain separate official stages; amounts are never substituted for one another.',
           }
 
           (out / 'summary.json').write_text(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
           print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
           PY
       - name: Commit probe evidence
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           TODAY=$(TZ=America/Bahia date +%F)
+          if [ ! -d "cities/salvador/data/snapshots/${TODAY}/contract_finance_probe" ]; then exit 0; fi
           git add "cities/salvador/data/snapshots/${TODAY}/contract_finance_probe"
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "data(salvador): probe contract-finance identifiers"
+          git commit -m "data(salvador): probe direct contract financial relations"
           git fetch origin city/salvador
           git rebase origin/city/salvador
           git push origin HEAD:city/salvador
