@@ -1,10 +1,11 @@
 # Status do projeto — Salvador/BA
 
-Data de referência: **23/08/2026**
+Data desta revisão: **24/08/2026**  
+Dados públicos mais recentes usados nesta revisão: **21–23/08/2026**, conforme freshness de cada fonte.
 
 ## Estado atual
 
-**STATUS: OPERACIONAL, COM COBERTURA PRINCIPAL AUDITÁVEL E DEPLOY FUNCIONAL.**
+**STATUS: OPERACIONAL, COM COBERTURA PRINCIPAL AUDITÁVEL, RECONCILIAÇÃO DOCUMENTAL EXATA E DEPLOY FUNCIONAL.**
 
 A engenharia principal está implementada: coletores, evidência bruta, hashes/proveniência, cobertura explícita, reconciliação determinística, banco reconstruível, camada web, testes e workflows. Para uma execução específica, os `coverage.json`, `summary.json` e relatórios versionados prevalecem sobre este resumo humano.
 
@@ -43,21 +44,48 @@ A completude vale para o período/filtros declarados. O PNCP continua complement
 
 O coletor de certames usa a sessão ScriptCase e o opcode oficial da própria interface (`nmgp_opcao=avanca`). Falha HTTP, sessão quebrada, parser incompleto ou divergência de contagem rebaixa a cobertura para `partial`; nunca vira zero.
 
-## Reconciliação documental
+## Reconciliação documental — baseline validado
 
-A última validação derivada versionada antes da nova cadeia PNCP registrou:
+A auditoria rápida e a validação derivada completa passaram e concordam no mesmo baseline:
 
-- **904 de 2.401 processos** com pelo menos um contrato ligado por identificador oficial exato;
-- **1.137 pares exatos** processo ↔ contrato;
+- **912 de 2.401 processos** com pelo menos um contrato ligado por identificadores oficiais exatos;
+- **904 processos** já eram alcançados pelo vínculo direto por número oficial do processo;
+- **8 processos adicionais** foram ligados exclusivamente pela cadeia documental PNCP;
+- **1.152 pares exatos** processo ↔ contrato;
+- **1.137 pares** já existiam no caminho direto;
+- **15 pares líquidos adicionais** foram acrescentados pela cadeia PNCP;
 - **1.078 pares municipais primários**;
-- **59 pares PNCP complementares**, distribuídos por 55 processos.
+- **74 pares PNCP complementares**;
+- **1.131 observações contratuais únicas vinculadas**;
+- **1.052 contratações PNCP** participaram do índice intermediário de controle oficial.
 
-A implementação atual também suporta uma segunda rota PNCP estritamente documental:
+A segunda rota PNCP é estritamente documental:
 
 1. número oficial do processo municipal = `process_number` da contratação PNCP;
 2. `numeroControlePNCP` da contratação = `numeroControlePncpCompra` do contrato PNCP.
 
-Essa cadeia não usa objeto, fornecedor, órgão, valor, data ou similaridade textual. Os contratos encontrados pelos dois caminhos são deduplicados como observação, mas preservam os métodos de prova (`linkMethods`). Os números incrementais dessa nova rota só devem substituir o baseline acima após nova validação derivada versionada.
+Essa cadeia não usa objeto, fornecedor, órgão, valor, data ou similaridade textual. Os contratos encontrados pelos dois caminhos são deduplicados como observação, mas preservam os métodos de prova (`linkMethods`).
+
+A página `/analises` agora é reconstruída depois da reconciliação e deve permanecer sincronizada com `municipal-links.json`. O build falha se as contagens ou a regra documental da página divergirem do índice oficial derivado.
+
+## Relação contrato → execução financeira
+
+Foi executado um probe dedicado sobre endpoints oficiais de relação contratual:
+
+- `/contratos/detalhamentoContrato`;
+- `/contratos/empenhoRelacionado?pagina=1`;
+- `/contratos/liquidacaoRelacionado?pagina=1`;
+- `/contratos/pagamentoRelacionado?pagina=1`.
+
+Nas amostras preservadas, os endpoints responderam **HTTP 500**. O estado publicado permanece:
+
+- `can_build_exact_contract_finance_collector=false`;
+- `commitment_relation_proven=false`;
+- `liquidation_relation_proven=false`;
+- `payment_relation_proven=false`;
+- blocker: `official_contract_finance_endpoints_http_500`.
+
+Portanto, o projeto **não** infere empenho, liquidação ou pagamento a partir do contrato enquanto a fonte oficial não fornecer uma relação estruturada acessível.
 
 ## Privacidade e interpretação
 
@@ -66,14 +94,32 @@ Essa cadeia não usa objeto, fornecedor, órgão, valor, data ou similaridade te
 - Observações Prefeitura/PNCP permanecem fontes distintas e não são fundidas por semelhança.
 - Sinais de concentração, mudança ou anomalia são evidência para revisão, não acusações automáticas.
 
+## Análises públicas
+
+A aplicação já possui camada de análise descritiva para:
+
+- aquisições de valor elevado;
+- contratações diretas;
+- fornecedores repetidos;
+- concentração por unidade;
+- relações documentais exatas;
+- histórico temporal de contratos quando existem snapshots comparáveis.
+
+A interface deve sempre explicar o método documental de cada vínculo e não apresentar sinais estatísticos como prova de irregularidade.
+
 ## Resiliência e validação
 
 PNCP usa retry/backoff, `Retry-After`, divisão adaptativa de janelas, retry de `ReadTimeout`, staging e promoção atômica com gate anti-regressão.
 
-A validação derivada é acionada por mudanças relevantes de código e pelos snapshots de `pncp_complementary` e `cms_auxiliary`. Quando certames são marcados completos, o build exige simultaneamente:
+A validação derivada exige, entre outros gates:
 
-1. `records == serverReportedTotal`;
-2. `reachedServerEnd == true`.
+1. contratos e aquisições completos para seus filtros declarados;
+2. fornecedores públicos somente com CNPJ empresarial estruturado e evidência exata;
+3. `analysis.json` sincronizado com `municipal-links.json`;
+4. regra PNCP de dois saltos explicitamente publicada na análise;
+5. certames completos somente quando `records == serverReportedTotal` e `reachedServerEnd == true`;
+6. histórico contratual sem inventar eventos quando não existem dois snapshots comparáveis;
+7. execução financeira contratual bloqueada quando os endpoints oficiais não comprovam relação.
 
 Comandos principais:
 
@@ -91,10 +137,10 @@ pytest -q tests/test_pncp.py tests/test_pncp_contracts.py
 
 ## Próximas prioridades
 
-1. **Aumentar vínculos documentais exatos** somente onde existirem outros identificadores oficiais estruturados; nunca usar fuzzy matching para criar vínculo oficial.
-2. **Evoluir análises públicas** de gastos, órgãos, fornecedores, séries históricas, comparação temporal e sinais auditáveis.
+1. **Manter a relação contrato → execução financeira bloqueada** até os endpoints oficiais deixarem de responder 500 ou surgir outra fonte estruturada oficial com identificador exato.
+2. **Evoluir análises públicas e comparação temporal** somente a partir de snapshots comparáveis e métricas descritivas auditáveis.
 3. **Manter atualização contínua** com freshness por fonte, evidência bruta, coverage e gates anti-regressão.
-4. **Expandir o modelo para outras cidades** sem misturar lógica específica de Salvador ao núcleo reutilizável.
+4. **Expandir o modelo para outras cidades** pelo núcleo reutilizável, sem mover lógica específica de Salvador para o core.
 
 ## Critério de qualidade
 
