@@ -1,17 +1,29 @@
 {
   "contracts": {
     "agency_cnpj_scope": [
-      "14043574000151"
+      "02983473000181",
+      "07520940000150",
+      "14043574000151",
+      "40637159000136",
+      "42743658000133"
     ],
+    "agency_discovery_complete": false,
+    "agency_discovery_rule": "official municipality CNPJ plus business CNPJs observed in the bounded PNCP procurement rows; not a municipality-wide entity registry",
     "coverage_limitation": "pagination metadata is not yet persisted by the generic PNCP contract collector",
     "ok": true,
     "path": "cities/feira-de-santana/data/snapshots/2026-08-24/pncp_bounded/contracts/contratos_executivo_2026-08-01_2026-08-24.jsonl",
-    "records": 0
+    "records": 5
   },
   "observed_at_date": "2026-08-24",
   "period_end": "2026-08-24",
   "period_start": "2026-08-01",
   "procurements": {
+    "agency_cnpjs_observed": [
+      "02983473000181",
+      "07520940000150",
+      "40637159000136",
+      "42743658000133"
+    ],
     "coverage": {
       "complete": true,
       "note": "complete=false means the public source stopped the collection; persisted records remain valid but coverage is partial.",
