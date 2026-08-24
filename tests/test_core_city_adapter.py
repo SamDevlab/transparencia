@@ -85,6 +85,26 @@ def test_exact_reconciliation_preserves_ambiguity():
     assert reconcile_exact(local, reference)[0]["status"] == "multiple_candidates"
 
 
+def test_pncp_procurement_control_is_a_direct_exact_identity():
+    procurement = [{
+        "source_system": "PNCP",
+        "source_record_key": "purchase",
+        "pncp_procurement_control_number": "40.637.159/0001-36-1-000124/2026",
+        "process_number": "purchase-process",
+        "object": "coffee",
+    }]
+    contracts = [{
+        "source_record_key": "contract",
+        "pncp_procurement_control_number": "40637159000136-1-000124/2026",
+        "process_number": "different-process",
+        "object": "completely different text",
+    }]
+    result = reconcile_exact(procurement, contracts)[0]
+    assert result["status"] == "exact_match"
+    assert result["reference_record_keys"] == ["contract"]
+    assert {row["name"] for row in result["matched_keys"]} == {"pncp_procurement_control"}
+
+
 def test_history_requires_complete_same_source_and_exact_identity():
     previous = ComparableSnapshot.from_rows(
         source_system="CITY_CONTRACTS",

@@ -48,13 +48,16 @@ def test_contract_scope_and_normalization():
     assert row["global_value"] == 120.0
     assert row["municipality_ibge"] == 2927408
     assert row["source_url"].endswith("/13927801000149/contratos/2026/1")
+    assert row["pncp_contract_control_number"] == "13927801000149-2-000001/2026"
+    assert row["pncp_procurement_control_number"] == "13927801000149-1-000001/2026"
+    assert row["agency_document"] == "13927801000149"
 
 
 def test_agency_cnpjs_from_procurements(tmp_path: Path):
     p = tmp_path / "p.jsonl"
     p.write_text("\n".join([
         json.dumps({"agency_cnpj": "13.927.801/0001-49"}),
-        json.dumps({"agency_cnpj": "13927801000149"}),
+        json.dumps({"agency_document": "13927801000149"}),
         json.dumps({"agency_cnpj": "123"}),
     ]), encoding="utf-8")
     assert agency_cnpjs_from_procurements([p]) == ("13927801000149",)
