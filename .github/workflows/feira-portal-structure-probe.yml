@@ -28,11 +28,10 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -e .
-      - name: Discover same-host transparency routes
+      - name: Probe known official transparency routes
         run: |
           python - <<'PY'
           import json
-          import re
           from datetime import datetime
           from html.parser import HTMLParser
           from pathlib import Path
@@ -44,108 +43,122 @@ jobs:
           from transparencia.provenance import persist_snapshot
 
           ROOT_URL = 'https://transparencia.feiradesantana.ba.gov.br/'
+          ROUTES = [
+              ('root', ROOT_URL),
+              ('receita', ROOT_URL + 'index.php?view=receita'),
+              ('despesa', ROOT_URL + 'index.php?view=despesasinfo'),
+              ('licitacoes', ROOT_URL + 'index.php?view=licitacoes'),
+              ('contratos', ROOT_URL + 'index.php?view=contratos'),
+          ]
           KEYWORDS = ('contrat', 'licit', 'despes', 'receit', 'empenh', 'pagament', 'fornecedor', 'obra', 'diaria')
           today = datetime.now(ZoneInfo('America/Bahia')).date().isoformat()
-          root = Path.cwd()
-          out = root / 'cities' / 'feira-de-santana' / 'data' / 'snapshots' / today / 'portal_structure_probe'
+          repo_root = Path.cwd()
+          out = repo_root / 'cities' / 'feira-de-santana' / 'data' / 'snapshots' / today / 'portal_structure_probe'
           raw = out / 'raw'
           out.mkdir(parents=True, exist_ok=True)
 
-          class LinkParser(HTMLParser):
-              def __init__(self):
+          class StructureParser(HTMLParser):
+              def __init__(self, base_url):
                   super().__init__()
-                  self.urls = set()
+                  self.base_url = base_url
+                  self.links = set()
+                  self.scripts = set()
+                  self.forms = []
+                  self.current_form = None
               def handle_starttag(self, tag, attrs):
                   values = dict(attrs)
-                  for key in ('href', 'src', 'action'):
-                      value = values.get(key)
-                      if value:
-                          self.urls.add(value.strip())
+                  if tag == 'a' and values.get('href'):
+                      self.links.add(urljoin(self.base_url, values['href'].strip()))
+                  if tag == 'script' and values.get('src'):
+                      self.scripts.add(urljoin(self.base_url, values['src'].strip()))
+                  if tag == 'form':
+                      self.current_form = {
+                          'method': str(values.get('method') or 'GET').upper(),
+                          'action': urljoin(self.base_url, values.get('action') or self.base_url),
+                          'inputs': [],
+                      }
+                      self.forms.append(self.current_form)
+                  if tag in {'input', 'select', 'textarea'} and self.current_form is not None:
+                      name = values.get('name')
+                      if name:
+                          self.current_form['inputs'].append(name)
+              def handle_endtag(self, tag):
+                  if tag == 'form':
+                      self.current_form = None
 
           headers = {
-              'User-Agent': 'transparencia-municipal/0.3 (+public-data-audit)',
+              'User-Agent': 'transparencia-municipal/0.4 (+public-data-audit)',
               'Accept': 'text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8',
           }
           report = {
               'observed_at_date': today,
               'root_url': ROOT_URL,
-              'rule': 'Discovery only. A reachable route is not complete_for_filter and does not establish record-level semantics.',
-              'root': {},
-              'candidate_routes': [],
-              'fetched_candidates': [],
+              'rule': 'Diagnostic structure only. Reachability, forms or route names never imply dataset completeness.',
+              'routes': [],
+              'same_host_discovered_routes': [],
+              'same_host_scripts': [],
           }
+          discovered_routes = set()
+          scripts = set()
 
           with httpx.Client(headers=headers, follow_redirects=True, timeout=12.0) as client:
-              response = client.get(ROOT_URL)
-              body = response.content
-              meta = persist_snapshot(
-                  out_dir=raw,
-                  source_id='portal_root',
-                  requested_url=ROOT_URL,
-                  final_url=str(response.url),
-                  status_code=response.status_code,
-                  content_type=response.headers.get('content-type', ''),
-                  body=body,
-              )
-              report['root'] = {
-                  'status': response.status_code,
-                  'final_url': str(response.url),
-                  'content_type': response.headers.get('content-type'),
-                  'bytes': len(body),
-                  'sha256': meta.sha256,
-              }
-              response.raise_for_status()
-
-              parser = LinkParser()
-              parser.feed(response.text)
-              root_host = urlparse(str(response.url)).netloc.casefold()
-              candidates = set()
-              for value in parser.urls:
-                  absolute = urljoin(str(response.url), value)
-                  parsed = urlparse(absolute)
-                  if parsed.scheme not in {'http', 'https'} or parsed.netloc.casefold() != root_host:
-                      continue
-                  haystack = absolute.casefold()
-                  if any(keyword in haystack for keyword in KEYWORDS):
-                      candidates.add(absolute)
-              report['candidate_routes'] = sorted(candidates)
-
-              for index, url in enumerate(sorted(candidates)[:12], start=1):
-                  item = {'url': url}
+              for index, (name, url) in enumerate(ROUTES, start=1):
+                  item = {'name': name, 'url': url}
                   try:
-                      r = client.get(url)
-                      content = r.content
+                      response = client.get(url)
+                      body = response.content
                       snapshot = persist_snapshot(
                           out_dir=raw,
-                          source_id=f'candidate_{index:02d}',
+                          source_id=f'{index:02d}_{name}',
                           requested_url=url,
-                          final_url=str(r.url),
-                          status_code=r.status_code,
-                          content_type=r.headers.get('content-type', ''),
-                          body=content,
+                          final_url=str(response.url),
+                          status_code=response.status_code,
+                          content_type=response.headers.get('content-type', ''),
+                          body=body,
                       )
                       item.update({
-                          'status': r.status_code,
-                          'final_url': str(r.url),
-                          'content_type': r.headers.get('content-type'),
-                          'bytes': len(content),
+                          'status': response.status_code,
+                          'final_url': str(response.url),
+                          'content_type': response.headers.get('content-type'),
+                          'bytes': len(body),
                           'sha256': snapshot.sha256,
                       })
-                      if 'html' in (r.headers.get('content-type') or '').casefold():
-                          text = re.sub(r'\s+', ' ', r.text)
-                          item['mentions'] = sorted({keyword for keyword in KEYWORDS if keyword in text.casefold()})
+                      if response.status_code == 200 and 'html' in (response.headers.get('content-type') or '').casefold():
+                          parser = StructureParser(str(response.url))
+                          parser.feed(response.text)
+                          root_host = urlparse(ROOT_URL).netloc.casefold()
+                          same_host = {
+                              link for link in parser.links
+                              if urlparse(link).scheme in {'http', 'https'}
+                              and urlparse(link).netloc.casefold() == root_host
+                          }
+                          relevant = {
+                              link for link in same_host
+                              if any(keyword in link.casefold() for keyword in KEYWORDS)
+                          }
+                          discovered_routes.update(relevant)
+                          scripts.update(
+                              script for script in parser.scripts
+                              if urlparse(script).netloc.casefold() == root_host
+                          )
+                          item['forms'] = parser.forms
+                          item['form_count'] = len(parser.forms)
+                          item['same_host_relevant_links'] = sorted(relevant)
+                          item['script_sources'] = sorted(parser.scripts)
                   except Exception as exc:
                       item['error'] = f'{type(exc).__name__}: {exc}'
-                  report['fetched_candidates'].append(item)
+                  report['routes'].append(item)
 
-          successful = [row for row in report['fetched_candidates'] if row.get('status') == 200]
+          report['same_host_discovered_routes'] = sorted(discovered_routes)
+          report['same_host_scripts'] = sorted(scripts)
+          ok = [row for row in report['routes'] if row.get('status') == 200]
           report['assessment'] = {
-              'root_reachable': report['root'].get('status') == 200,
-              'same_host_candidates': len(report['candidate_routes']),
-              'candidates_attempted': len(report['fetched_candidates']),
-              'candidate_http_200': len(successful),
+              'routes_attempted': len(report['routes']),
+              'routes_http_200': len(ok),
+              'route_failures': len(report['routes']) - len(ok),
+              'forms_observed': sum(int(row.get('form_count') or 0) for row in report['routes']),
               'can_claim_dataset_completeness': False,
-              'next_step': 'Inspect preserved candidate routes for structured APIs/forms/pagination before writing dataset collectors.',
+              'next_step': 'Use only preserved form/action/script evidence to discover structured requests and pagination. Do not infer endpoints from labels or text.',
           }
           (out / 'summary.json').write_text(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
           print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
