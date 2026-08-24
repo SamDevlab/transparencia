@@ -110,17 +110,23 @@ def in_scope(record: dict, city: CityConfig, scope: str) -> bool:
 def normalize_record(r: dict, city: CityConfig, observed_at: str, snapshot_sha256: str) -> dict:
     org = r.get("orgaoEntidade") or {}
     unit = r.get("unidadeOrgao") or {}
+    procurement_control = r.get("numeroControlePNCP") or r.get("numeroControlePncp")
+    agency_document = org.get("cnpj")
     return {
         "city_slug": city.slug,
         "source_system": "PNCP",
-        "pncp_control_number": r.get("numeroControlePNCP") or r.get("numeroControlePncp"),
+        # Backward-compatible raw-role field.
+        "pncp_control_number": procurement_control,
+        # Canonical cross-layer identity used by the generic reconciler.
+        "pncp_procurement_control_number": procurement_control,
         "process_number": r.get("processo"),
         "notice_number": r.get("numeroCompra"),
         "year": r.get("anoCompra"),
         "modality_id": r.get("modalidadeId"),
         "modality_name": r.get("modalidadeNome"),
         "object": r.get("objetoCompra"),
-        "agency_cnpj": org.get("cnpj"),
+        "agency_cnpj": agency_document,
+        "agency_document": agency_document,
         "agency_name": org.get("razaosocial") or org.get("razaoSocial"),
         "sphere": org.get("esferaId"),
         "power": org.get("poderId"),
@@ -192,7 +198,7 @@ def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, scope: s
                         if not in_scope(raw, city, scope):
                             continue
                         row = normalize_record(raw, city, meta.collected_at, meta.sha256)
-                        key = row.get("pncp_control_number") or json.dumps(row, sort_keys=True, ensure_ascii=False)
+                        key = row.get("pncp_procurement_control_number") or json.dumps(row, sort_keys=True, ensure_ascii=False)
                         if key not in seen:
                             seen.add(key)
                             sink.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")

@@ -26,7 +26,7 @@ def agency_cnpjs_from_procurements(paths: Iterable[Path]) -> tuple[str, ...]:
             if not line.strip():
                 continue
             row = json.loads(line)
-            cnpj = "".join(ch for ch in str(row.get("agency_cnpj") or "") if ch.isdigit())
+            cnpj = "".join(ch for ch in str(row.get("agency_cnpj") or row.get("agency_document") or "") if ch.isdigit())
             if len(cnpj) == 14:
                 values.add(cnpj)
     return tuple(sorted(values))
@@ -65,14 +65,20 @@ def normalize_record(r: dict, city: CityConfig, observed_at: str, snapshot_sha25
     cnpj = org.get("cnpj")
     year = r.get("anoContrato")
     sequence = r.get("sequencialContrato") or r.get("sequencial")
+    contract_control = r.get("numeroControlePNCP") or r.get("numeroControlePncp")
+    procurement_control = r.get("numeroControlePNCPCompra") or r.get("numeroControlePncpCompra")
     detail_url = None
     if cnpj and year and sequence:
         detail_url = f"https://pncp.gov.br/api/pncp/v1/orgaos/{cnpj}/contratos/{year}/{sequence}"
     return {
         "city_slug": city.slug,
         "source_system": "PNCP",
-        "pncp_control_number": r.get("numeroControlePNCP") or r.get("numeroControlePncp"),
-        "procurement_control_number": r.get("numeroControlePNCPCompra") or r.get("numeroControlePncpCompra"),
+        # Backward-compatible fields kept for existing consumers.
+        "pncp_control_number": contract_control,
+        "procurement_control_number": procurement_control,
+        # Canonical identities used by the generic reconciler.
+        "pncp_contract_control_number": contract_control,
+        "pncp_procurement_control_number": procurement_control,
         "contract_number": r.get("numeroContratoEmpenho"),
         "year": year,
         "sequence": sequence,
@@ -81,6 +87,7 @@ def normalize_record(r: dict, city: CityConfig, observed_at: str, snapshot_sha25
         "process_number": r.get("processo"),
         "object": r.get("objetoContrato"),
         "agency_cnpj": cnpj,
+        "agency_document": cnpj,
         "agency_name": org.get("razaoSocial") or org.get("razaosocial") or org.get("nome"),
         "sphere": org.get("esferaId") or org.get("esfera"),
         "power": org.get("poderId") or org.get("poder"),
@@ -312,7 +319,7 @@ def collect(
                             continue
                         row = normalize_record(raw, city, meta.collected_at, meta.sha256)
                         scope_rows += 1
-                        key = row.get("pncp_control_number") or json.dumps(row, sort_keys=True, ensure_ascii=False)
+                        key = row.get("pncp_contract_control_number") or row.get("pncp_control_number") or json.dumps(row, sort_keys=True, ensure_ascii=False)
                         if key in seen:
                             continue
                         seen.add(key)

@@ -36,8 +36,11 @@ def exact_identity_keys(row: dict) -> set[IdentityKey]:
     contract = normalize_identifier(row.get("contract_number"))
     management_unit = normalize_identifier(row.get("management_unit"))
     agency_document = normalize_identifier(row.get("agency_document"))
+    pncp_procurement_control = normalize_identifier(row.get("pncp_procurement_control_number"))
     year = str(row.get("year") or "").strip()
 
+    if pncp_procurement_control:
+        keys.add(IdentityKey("pncp_procurement_control", (pncp_procurement_control,)))
     if process:
         keys.add(IdentityKey("process", (process,)))
         if year:
