@@ -111,6 +111,7 @@ def normalize_record(r: dict, city: CityConfig, observed_at: str, snapshot_sha25
     org = r.get("orgaoEntidade") or {}
     unit = r.get("unidadeOrgao") or {}
     procurement_control = r.get("numeroControlePNCP") or r.get("numeroControlePncp")
+    agency_document = org.get("cnpj")
     return {
         "city_slug": city.slug,
         "source_system": "PNCP",
@@ -124,7 +125,8 @@ def normalize_record(r: dict, city: CityConfig, observed_at: str, snapshot_sha25
         "modality_id": r.get("modalidadeId"),
         "modality_name": r.get("modalidadeNome"),
         "object": r.get("objetoCompra"),
-        "agency_cnpj": org.get("cnpj"),
+        "agency_cnpj": agency_document,
+        "agency_document": agency_document,
         "agency_name": org.get("razaosocial") or org.get("razaoSocial"),
         "sphere": org.get("esferaId"),
         "power": org.get("poderId"),
