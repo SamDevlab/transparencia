@@ -1,0 +1,72 @@
+{
+  "accounting_rule": "This is procurement-to-contract documentary identity only. It does not establish commitment, liquidation or payment.",
+  "cardinality_rule": "One procurement may legitimately reference zero, one or multiple contracts; every published pair must share the same native PNCP procurement control number.",
+  "contracts_without_procurement_control_numbers": [],
+  "coverage": {
+    "agency_discovery_complete": false,
+    "contracts_complete_for_supplied_agencies_and_filter": true,
+    "municipality_wide_complete": false,
+    "procurements_complete_for_filter": true,
+    "relations_complete_for_current_input_snapshots": true
+  },
+  "identity_rule": "Exact equality of the native PNCP procurement control number after formatting-only normalization: procurement numeroControlePNCP == contract numeroControlePNCPCompra. No name, object, supplier or semantic similarity is used.",
+  "links": [
+    {
+      "agency_document": "07520940000150",
+      "contracts": [
+        {
+          "agency_document": "07520940000150",
+          "contract_number": "10-2026-259C",
+          "global_value": 62400.0,
+          "pncp_contract_control_number": "07520940000150-2-000010/2026",
+          "process_number": "389-2026",
+          "signed_at": "2026-08-10",
+          "source_url": "https://pncp.gov.br/api/pncp/v1/orgaos/07520940000150/contratos/2026/10"
+        }
+      ],
+      "estimated_value": 62400.0,
+      "notice_number": "9-2026-259D",
+      "pncp_procurement_control_number": "07520940000150-1-000009/2026",
+      "process_number": "9-2026-259D",
+      "published_at": "2026-08-05T08:35:01"
+    }
+  ],
+  "observed_at_date": "2026-08-24",
+  "period_end": "2026-08-24",
+  "period_start": "2026-08-01",
+  "source_system": "PNCP",
+  "summary": {
+    "contracts": 5,
+    "contracts_without_procurement_control": 0,
+    "exact_pairs": 1,
+    "procurements": 17,
+    "procurements_with_exact_contracts": 1,
+    "unique_contracts_linked": 1,
+    "unmatched_contracts": 4,
+    "unmatched_procurements": 16
+  },
+  "unmatched_contract_control_numbers": [
+    "02983473000181-2-000011/2026",
+    "07520940000150-2-000009/2026",
+    "40637159000136-2-000077/2026",
+    "40637159000136-2-000078/2026"
+  ],
+  "unmatched_procurement_control_numbers": [
+    "02983473000181-1-000014/2026",
+    "40637159000136-1-000124/2026",
+    "40637159000136-1-000125/2026",
+    "40637159000136-1-000127/2026",
+    "40637159000136-1-000128/2026",
+    "40637159000136-1-000129/2026",
+    "40637159000136-1-000130/2026",
+    "40637159000136-1-000131/2026",
+    "40637159000136-1-000132/2026",
+    "40637159000136-1-000133/2026",
+    "40637159000136-1-000134/2026",
+    "40637159000136-1-000135/2026",
+    "40637159000136-1-000136/2026",
+    "40637159000136-1-000137/2026",
+    "42743658000133-1-000006/2026",
+    "42743658000133-1-000007/2026"
+  ]
+}

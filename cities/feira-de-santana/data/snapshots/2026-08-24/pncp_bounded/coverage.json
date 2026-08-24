@@ -38,7 +38,7 @@
       "status": "complete_for_filter"
     }
   ],
-  "generated_at": "2026-08-24T03:17:57.587334+00:00",
+  "generated_at": "2026-08-24T03:20:33.719582+00:00",
   "latest_source_as_of": "2026-08-24",
   "methodology_note": "Coverage is source-and-filter specific. A complete_for_filter entry proves only that the collector reconciled the source-reported records/pages for the stated scope. It does not prove that no record exists in another municipal, legislative, state, federal or sectoral system.",
   "period_end": "2026-08-24",
