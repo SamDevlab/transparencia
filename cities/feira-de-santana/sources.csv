@@ -1,0 +1,8 @@
+id,publisher,scope,authority,url,notes
+portal_transparencia_executivo,Prefeitura Municipal de Feira de Santana,executivo,primary,https://transparencia.feiradesantana.ba.gov.br/,Portal oficial com execução orçamentária; lista Despesa Receita Licitação Dispensas Contratos e outros conjuntos. Completude ainda não provada.
+diario_oficial,Prefeitura Municipal de Feira de Santana,executivo,primary,https://diariooficial.feiradesantana.ba.gov.br/,Diário Oficial Eletrônico oficial; publicações incluem licitações contratos aditivos decretos e outros atos. Não substitui a execução financeira estruturada.
+portal_institucional,Prefeitura Municipal de Feira de Santana,executivo,official_index,https://www.feiradesantana.ba.gov.br/,Portal institucional oficial que referencia Portal Transparência Licitações Diário Oficial e órgãos municipais.
+camara_institucional,Câmara Municipal de Feira de Santana,legislativo,primary,https://www.feiradesantana.ba.leg.br/,Portal oficial da Câmara com acesso à informação e links de transparência.
+camara_transparencia,Câmara Municipal de Feira de Santana,legislativo,primary,https://transparencia.feiradesantana.ba.leg.br/adm/upload/contaspublicas/index.php?view=o-portal,Portal oficial da Câmara para receitas despesas folha licitações contratos e execução orçamentária.
+pncp,Portal Nacional de Contratações Públicas,complementary,federal,https://pncp.gov.br/,Fonte complementar federal. Só poderá ser reconciliada com registros municipais por identificadores oficiais exatos.
+ibge,Instituto Brasileiro de Geografia e Estatística,reference,official,https://www.ibge.gov.br/cidades-e-estados/ba/feira-de-santana.html,Referência oficial do código municipal 2910800.
