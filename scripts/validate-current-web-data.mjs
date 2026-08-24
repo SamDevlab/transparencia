@@ -17,6 +17,7 @@ const meta = read("meta.json");
 const contracts = read("contracts.json");
 const acquisitions = read("acquisitions.json");
 const municipalLinks = read("municipal-links.json");
+const analysis = read("analysis.json");
 const camara = read("camara.json");
 const suppliers = read("suppliers.json");
 const transparency = read("transparency.json");
@@ -85,6 +86,25 @@ if (!String(municipalLinks.identityRule || "").includes("número oficial do proc
 }
 if (!String(municipalLinks.accountingRule || "").includes("não liga automaticamente")) {
   throw new Error("limite contábil municipal ausente");
+}
+if ((analysis.exactCrossSourceLinks?.length ?? 0) !== linkSummary.processesWithExactContracts) {
+  throw new Error("analysis.json está dessincronizado do índice municipal de relações exatas");
+}
+if (Number(analysis.exactLinkSummary?.exactPairs ?? -1) !== Number(linkSummary.exactPairs)) {
+  throw new Error("resumo de relações da página de análises diverge de municipal-links.json");
+}
+if (!String(analysis.exactLinkIdentityRule || "").includes("numeroControlePncpCompra")) {
+  throw new Error("página de análises não expõe a regra documental PNCP de dois saltos");
+}
+for (const row of analysis.exactCrossSourceLinks ?? []) {
+  if (!(row.contratos?.length > 0)) throw new Error(`relação analítica sem contrato: ${row.processId ?? row.processoId}`);
+  const methods = new Set([
+    ...(row.linkMethods ?? []),
+    ...(row.contratos ?? []).flatMap((contract) => contract.linkMethods ?? []),
+  ]);
+  if (!methods.has("exact_process_number") && !methods.has("pncp_procurement_control_chain")) {
+    throw new Error(`relação analítica sem método documental exato: ${row.processId ?? row.processoId}`);
+  }
 }
 
 const comparableSnapshots = contractChanges.snapshotsCompared ?? [];
@@ -171,6 +191,11 @@ console.log(JSON.stringify({
   acquisitions: { records: acquisitions.rows.length, asOf: acquisitions.summary?.period_end },
   suppliers: { businessCnpjOnly: true, records: suppliers.rows?.length ?? 0, complementaryBusinesses: meta.pncpComplementaryBusinessSuppliers ?? 0 },
   links: linkSummary,
+  analysisLinks: {
+    records: analysis.exactCrossSourceLinks?.length ?? 0,
+    exactPairs: analysis.exactLinkSummary?.exactPairs ?? 0,
+    newlyLinkedByPncpControl: analysis.exactLinkSummary?.processesNewlyLinkedByPncpProcurementControl ?? 0,
+  },
   contractHistory: contractChanges.summary,
   contractFinance,
   cms: { records: ledger.records, pages: ledger.pagesWithRecords, asOf: ledger.asOf },
