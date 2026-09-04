@@ -10,6 +10,7 @@ from urllib.parse import urlencode
 import httpx
 
 from ..config import CityConfig
+from ..coverage import CoverageEntry, CoverageManifest
 from ..provenance import persist_snapshot
 from .pncp import date_windows
 
@@ -46,8 +47,8 @@ def in_scope(record: dict, city: CityConfig, scope: str) -> bool:
     sphere = org.get("esferaId") or org.get("esfera")
     power = org.get("poderId") or org.get("poder")
     municipality_name = str(unit.get("municipioNome") or unit.get("nomeMunicipio") or "").strip().casefold()
-    municipality_ibge = str(unit.get("codigoIbge") or unit.get("codigoIbgeMunicipio") or unit.get("municipioId") or "")
-    city_match = municipality_ibge == city.ibge_code or municipality_name == city.name.strip().casefold()
+    municipality_ibge = str(unit.get("codigoIbge") or unit.get("codigoIbgeMunicipio") or unit.get("municipioId") or "").strip()
+    city_match = municipality_ibge == city.ibge_code if municipality_ibge else municipality_name == city.name.strip().casefold()
     if sphere != "M" or not city_match:
         return False
     if scope == "municipal":
@@ -182,6 +183,65 @@ def query_complete(
     if reported_total is not None and source_rows_received != reported_total:
         return False
     return pages_collected > 0
+
+
+def build_coverage_payload(
+    city: CityConfig,
+    start: date,
+    end: date,
+    *,
+    scope: str,
+    cnpjs: tuple[str, ...],
+    queries: list[dict],
+    records_unique_in_scope: int,
+) -> dict:
+    complete = bool(queries) and all(item["completed"] for item in queries)
+    manifest = CoverageManifest(
+        city_slug=city.slug,
+        period_start=start.isoformat(),
+        period_end=end.isoformat(),
+    )
+    for item in queries:
+        status = "complete_for_filter" if item["completed"] else "partial"
+        note = (
+            "Consulta PNCP reconciliada para o CNPJ e janela informados; isso não prova completude "
+            "de todas as entidades municipais."
+            if item["completed"]
+            else "Consulta PNCP parcial ou inconclusiva; não tratar ausência de registros como ausência factual."
+        )
+        manifest.add(CoverageEntry(
+            dataset="contracts",
+            source_system="PNCP",
+            status=status,
+            period_start=item["period_start"],
+            period_end=item["period_end"],
+            records=item["source_rows_received"],
+            pages=item["pages_collected"],
+            reported_total=item["reported_total"],
+            reported_pages=item["reported_pages"],
+            source_url=PNCP_CONTRACTS_ENDPOINT,
+            filter_description=f"cnpjOrgao={item['agency_cnpj']}; scope={scope}",
+            note=note,
+        ))
+
+    payload = manifest.to_dict()
+    payload.update({
+        "manifest_version": 1,
+        "source_system": "PNCP",
+        "api_endpoint": PNCP_CONTRACTS_ENDPOINT,
+        "scope": scope,
+        "agency_cnpjs_supplied": list(cnpjs),
+        "agency_discovery_complete": False,
+        "agency_discovery_note": "The collector proves only the supplied CNPJ set; it does not discover every municipal legal entity.",
+        "complete": complete,
+        "records": records_unique_in_scope,
+        "complete_for_supplied_agencies_and_filter": complete,
+        "records_unique_in_scope": records_unique_in_scope,
+        "source_rows_received": sum(item["source_rows_received"] for item in queries),
+        "queries": queries,
+        "coverage_note": "Complete means every supplied-CNPJ/date-window query reconciled explicit PNCP pagination/count metadata (or an explicit empty response). It is not municipality-wide entity completeness.",
+    })
+    return payload
 
 
 def _get_with_backoff(
@@ -362,22 +422,15 @@ def collect(
                     "error": error,
                 })
 
-    complete = bool(queries) and all(item["completed"] for item in queries)
-    coverage = {
-        "source_system": "PNCP",
-        "api_endpoint": PNCP_CONTRACTS_ENDPOINT,
-        "scope": scope,
-        "period_start": start.isoformat(),
-        "period_end": end.isoformat(),
-        "agency_cnpjs_supplied": list(cnpjs),
-        "agency_discovery_complete": False,
-        "agency_discovery_note": "The collector proves only the supplied CNPJ set; it does not discover every municipal legal entity.",
-        "complete_for_supplied_agencies_and_filter": complete,
-        "records_unique_in_scope": len(seen),
-        "source_rows_received": sum(item["source_rows_received"] for item in queries),
-        "queries": queries,
-        "coverage_note": "Complete means every supplied-CNPJ/date-window query reconciled explicit PNCP pagination/count metadata (or an explicit empty response). It is not municipality-wide entity completeness.",
-    }
+    coverage = build_coverage_payload(
+        city,
+        start,
+        end,
+        scope=scope,
+        cnpjs=cnpjs,
+        queries=queries,
+        records_unique_in_scope=len(seen),
+    )
     (out_dir / "coverage.json").write_text(
         json.dumps(coverage, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
