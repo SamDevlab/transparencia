@@ -11,6 +11,7 @@ from urllib.parse import urlencode
 import httpx
 
 from ..config import CityConfig
+from ..coverage import CoverageEntry, CoverageManifest
 from ..provenance import persist_snapshot
 
 PNCP_ENDPOINT = "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao"
@@ -93,11 +94,27 @@ def _city(record: dict) -> str | None:
     return (record.get("unidadeOrgao") or {}).get("municipioNome")
 
 
+def _city_ibge(record: dict) -> str | None:
+    unit = record.get("unidadeOrgao") or {}
+    value = unit.get("codigoIbge") or unit.get("municipioId")
+    return str(value).strip() if value is not None else None
+
+
 def in_scope(record: dict, city: CityConfig, scope: str) -> bool:
     sphere, power = _party(record)
-    record_city = (_city(record) or "").strip().casefold()
-    if sphere != "M" or record_city != city.name.strip().casefold():
+    if sphere != "M":
         return False
+
+    record_ibge = _city_ibge(record)
+    if record_ibge:
+        if record_ibge != str(city.ibge_code).strip():
+            return False
+    else:
+        # Compatibility fallback for source rows that omit the official municipality id.
+        record_city = (_city(record) or "").strip().casefold()
+        if record_city != city.name.strip().casefold():
+            return False
+
     if scope == "municipal":
         return True
     if scope == "executivo":
@@ -147,14 +164,57 @@ def normalize_record(r: dict, city: CityConfig, observed_at: str, snapshot_sha25
     }
 
 
-def _write_coverage(out_dir: Path, *, complete: bool, records: int, stopped_url: str | None = None, stopped_status: int | None = None) -> None:
-    (out_dir / "coverage.json").write_text(json.dumps({
-        "complete": complete,
-        "records": records,
-        "stopped_url": stopped_url,
-        "stopped_status": stopped_status,
-        "note": "complete=false means the public source stopped the collection; persisted records remain valid but coverage is partial.",
-    }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+def _write_coverage(
+    out_dir: Path,
+    *,
+    city: CityConfig,
+    start: date,
+    end: date,
+    scope: str,
+    complete: bool,
+    records: int,
+    stopped_url: str | None = None,
+    stopped_status: int | None = None,
+) -> None:
+    status = "complete_for_filter" if complete else "partial"
+    note = (
+        f"PNCP publication collector for municipality IBGE {city.ibge_code}, scope={scope}. "
+        "Completeness is limited to the declared PNCP filter and discovered active modalities."
+        if complete
+        else "The public source stopped or throttled collection; persisted observations remain valid but coverage is partial."
+    )
+    manifest = CoverageManifest(
+        city_slug=city.slug,
+        period_start=start.isoformat(),
+        period_end=end.isoformat(),
+    )
+    manifest.add(
+        CoverageEntry(
+            dataset="procurements",
+            source_system="PNCP",
+            status=status,
+            period_start=start.isoformat(),
+            period_end=end.isoformat(),
+            records=records,
+            source_url=stopped_url or PNCP_ENDPOINT,
+            filter_description=f"municipality_ibge={city.ibge_code}; uf={city.uf}; scope={scope}",
+            note=note,
+        )
+    )
+    payload = manifest.to_dict()
+    # Backward-compatible summary fields for existing consumers.
+    payload.update(
+        {
+            "complete": complete,
+            "records": records,
+            "stopped_url": stopped_url,
+            "stopped_status": stopped_status,
+        }
+    )
+    (out_dir / "coverage.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
 
 
 def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, scope: str = "executivo",
@@ -184,7 +244,17 @@ def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, scope: s
                         persist_snapshot(out_dir=out_dir / "snapshots", source_id="pncp_consulta_limitada",
                                          requested_url=url, final_url=str(response.url), status_code=response.status_code,
                                          content_type=response.headers.get("content-type", ""), body=response.content)
-                        _write_coverage(out_dir, complete=False, records=len(seen), stopped_url=url, stopped_status=response.status_code)
+                        _write_coverage(
+                            out_dir,
+                            city=city,
+                            start=start,
+                            end=end,
+                            scope=scope,
+                            complete=False,
+                            records=len(seen),
+                            stopped_url=url,
+                            stopped_status=response.status_code,
+                        )
                         return output
                     response.raise_for_status()
                     meta = persist_snapshot(out_dir=out_dir / "snapshots", source_id="pncp_consulta",
@@ -209,5 +279,13 @@ def collect(city: CityConfig, start: date, end: date, out_dir: Path, *, scope: s
                         break
                     page += 1
                     time.sleep(sleep_seconds)
-    _write_coverage(out_dir, complete=True, records=len(seen))
+    _write_coverage(
+        out_dir,
+        city=city,
+        start=start,
+        end=end,
+        scope=scope,
+        complete=True,
+        records=len(seen),
+    )
     return output
