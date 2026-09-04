@@ -24,3 +24,8 @@ where = ["src"]
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+
+[tool.ruff.lint]
+# Baseline de CI: sintaxe, imports/names e violações essenciais.
+# Regras de modernização/estilo (I/UP/BLE/FURB etc.) ficam para migração dedicada.
+select = ["E4", "E7", "E9", "F"]
