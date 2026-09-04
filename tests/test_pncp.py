@@ -6,7 +6,10 @@ from transparencia.config import CityConfig
 CITY = CityConfig("teste", "Cidade Teste", "BA", "1234567")
 
 
-def sample(power="E", sphere="M", city="Cidade Teste"):
+def sample(power="E", sphere="M", city="Cidade Teste", ibge=None):
+    unit = {"municipioNome": city, "ufSigla": "BA"}
+    if ibge is not None:
+        unit["codigoIbge"] = ibge
     return {
         "numeroControlePNCP": "x/2026",
         "orgaoEntidade": {
@@ -15,7 +18,7 @@ def sample(power="E", sphere="M", city="Cidade Teste"):
             "poderId": power,
             "razaosocial": "MUNICIPIO",
         },
-        "unidadeOrgao": {"municipioNome": city, "ufSigla": "BA"},
+        "unidadeOrgao": unit,
     }
 
 
@@ -30,6 +33,11 @@ def test_scope_uses_configured_city_not_hardcoded_name():
     assert in_scope(sample(), CITY, "executivo")
     assert not in_scope(sample(city="Outra Cidade"), CITY, "executivo")
     assert in_scope(sample(power="L"), CITY, "legislativo")
+
+
+def test_scope_prefers_official_ibge_identity_when_available():
+    assert in_scope(sample(city="Grafia divergente", ibge="1234567"), CITY, "executivo")
+    assert not in_scope(sample(city="Cidade Teste", ibge="7654321"), CITY, "executivo")
 
 
 def test_normalization_keeps_city_provenance_and_canonical_control():
