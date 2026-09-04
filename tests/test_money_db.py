@@ -20,7 +20,7 @@ def _workspace(tmp_path: Path) -> Path:
     )
     (seed / "fiscal_observations.csv").write_text(
         "entity,period,metric,value_brl,reported_value_text,precision,budget_stage,source_url,source_location,observed_at,notes\n"
-        "Prefeitura,2026,receita,0.10,R$ 0,10,exact,arrecadada,https://example.org/fiscal,p.1,2026-09-01T00:00:00Z,\n",
+        'Prefeitura,2026,receita,0.10,"R$ 0,10",exact,arrecadada,https://example.org/fiscal,p.1,2026-09-01T00:00:00Z,\n',
         encoding="utf-8",
     )
     return city
