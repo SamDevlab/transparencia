@@ -7,6 +7,7 @@ from datetime import datetime
 from pathlib import Path
 
 from .config import CityWorkspace
+from .money import money_to_cents
 
 SCHEMA = r"""
 PRAGMA journal_mode=WAL;
@@ -196,6 +197,17 @@ CREATE TABLE IF NOT EXISTS revenue_events (
     snapshot_sha256 TEXT,
     PRIMARY KEY (city_slug, source_system, event_key)
 );
+CREATE TABLE IF NOT EXISTS money_exact (
+    city_slug TEXT NOT NULL,
+    entity_type TEXT NOT NULL,
+    entity_key TEXT NOT NULL,
+    field_name TEXT NOT NULL,
+    currency TEXT NOT NULL DEFAULT 'BRL',
+    value_cents INTEGER NOT NULL,
+    source_value_text TEXT NOT NULL,
+    observed_at TEXT,
+    PRIMARY KEY (city_slug, entity_type, entity_key, field_name, currency)
+);
 """
 
 PROCUREMENT_KEYS = [
@@ -241,6 +253,88 @@ def _is_newer_observation(candidate: object, current: object) -> bool:
     candidate_text = str(candidate or "")
     current_text = str(current or "")
     return bool(candidate_text) and candidate_text > current_text
+
+
+def _entity_key(*parts: object) -> str:
+    return "|".join(str(part or "").strip() for part in parts)
+
+
+def _upsert_exact_money(
+    conn: sqlite3.Connection,
+    *,
+    city_slug: str,
+    entity_type: str,
+    entity_key: str,
+    field_name: str,
+    value: object,
+    observed_at: object,
+) -> None:
+    cents = money_to_cents(value)
+    if cents is None or not entity_key:
+        return
+
+    existing = conn.execute(
+        "SELECT observed_at FROM money_exact "
+        "WHERE city_slug=? AND entity_type=? AND entity_key=? AND field_name=? AND currency='BRL'",
+        (city_slug, entity_type, entity_key, field_name),
+    ).fetchone()
+    if existing is not None and not _is_newer_observation(observed_at, existing[0]):
+        return
+
+    conn.execute(
+        """
+        INSERT INTO money_exact (
+            city_slug, entity_type, entity_key, field_name, currency,
+            value_cents, source_value_text, observed_at
+        ) VALUES (?, ?, ?, ?, 'BRL', ?, ?, ?)
+        ON CONFLICT(city_slug, entity_type, entity_key, field_name, currency)
+        DO UPDATE SET
+            value_cents=excluded.value_cents,
+            source_value_text=excluded.source_value_text,
+            observed_at=excluded.observed_at
+        """,
+        (
+            city_slug,
+            entity_type,
+            entity_key,
+            field_name,
+            cents,
+            str(value).strip(),
+            str(observed_at or "") or None,
+        ),
+    )
+
+
+def _record_procurement_money(conn: sqlite3.Connection, row: dict) -> None:
+    key = str(row.get("pncp_control_number") or "").strip() or _entity_key(
+        row.get("source_system"), row.get("notice_number"), row.get("process_number"), row.get("source_url")
+    )
+    for field_name in ("estimated_value", "homologated_value"):
+        _upsert_exact_money(
+            conn,
+            city_slug=str(row.get("city_slug") or ""),
+            entity_type="procurement",
+            entity_key=key,
+            field_name=field_name,
+            value=row.get(field_name),
+            observed_at=row.get("observed_at"),
+        )
+
+
+def _record_contract_money(conn: sqlite3.Connection, row: dict) -> None:
+    key = str(row.get("pncp_control_number") or "").strip() or _entity_key(
+        row.get("source_system"), row.get("contract_number"), row.get("year"), row.get("source_url")
+    )
+    for field_name in ("initial_value", "global_value", "accumulated_value", "installment_value"):
+        _upsert_exact_money(
+            conn,
+            city_slug=str(row.get("city_slug") or ""),
+            entity_type="contract",
+            entity_key=key,
+            field_name=field_name,
+            value=row.get(field_name),
+            observed_at=row.get("observed_at"),
+        )
 
 
 def _upsert_latest_by_pncp(
@@ -339,6 +433,18 @@ def build(
                     row.get("notes"),
                 ),
             )
+            _upsert_exact_money(
+                conn,
+                city_slug=city.slug,
+                entity_type="fiscal_observation",
+                entity_key=_entity_key(
+                    row.get("entity"), row.get("period"), row.get("metric"),
+                    row.get("source_url"), row.get("source_location"),
+                ),
+                field_name="value_brl",
+                value=row.get("value_brl"),
+                observed_at=row.get("observed_at"),
+            )
         for row in _csv_rows(workspace.seed_dir / "legislative_observations.csv"):
             conn.execute(
                 "INSERT OR REPLACE INTO legislative_observations VALUES (?,?,?,?,?,?,?,?,?,?,?)",
@@ -363,6 +469,7 @@ def build(
                 normalized["year"] = int(normalized["year"])
             if normalized["modality_id"]:
                 normalized["modality_id"] = int(normalized["modality_id"])
+            _record_procurement_money(conn, normalized)
             for money_key in ("estimated_value", "homologated_value"):
                 if normalized[money_key]:
                     normalized[money_key] = float(normalized[money_key])
@@ -373,12 +480,14 @@ def build(
                     continue
                 row = json.loads(line)
                 _upsert_latest_by_pncp(conn, table="procurements", keys=PROCUREMENT_KEYS, row=row)
+                _record_procurement_money(conn, row)
         for path in contract_jsonl or []:
             for line in path.read_text(encoding="utf-8").splitlines():
                 if not line.strip():
                     continue
                 row = json.loads(line)
                 _upsert_latest_by_pncp(conn, table="contracts", keys=CONTRACT_KEYS, row=row)
+                _record_contract_money(conn, row)
                 if row.get("supplier_document"):
                     conn.execute(
                         "INSERT OR IGNORE INTO suppliers VALUES (?,?,?,?,?,?)",
