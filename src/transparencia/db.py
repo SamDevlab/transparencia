@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import json
 import sqlite3
+from datetime import datetime
 from pathlib import Path
 
 from .config import CityWorkspace
@@ -197,6 +198,23 @@ CREATE TABLE IF NOT EXISTS revenue_events (
 );
 """
 
+PROCUREMENT_KEYS = [
+    "city_slug", "source_system", "pncp_control_number", "process_number", "notice_number", "year",
+    "modality_id", "modality_name", "object", "agency_cnpj", "agency_name", "sphere", "power",
+    "unit_code", "unit_name", "municipality_ibge", "municipality_name", "uf", "published_at",
+    "proposal_opening_at", "proposal_closing_at", "estimated_value", "homologated_value", "status_name",
+    "source_url", "observed_at", "snapshot_sha256",
+]
+
+CONTRACT_KEYS = [
+    "city_slug", "source_system", "pncp_control_number", "procurement_control_number", "contract_number",
+    "year", "sequence", "contract_type_id", "contract_type_name", "process_number", "object", "agency_cnpj",
+    "agency_name", "sphere", "power", "unit_code", "unit_name", "municipality_ibge", "municipality_name",
+    "uf", "supplier_type", "supplier_document", "supplier_name", "initial_value", "global_value",
+    "accumulated_value", "installments", "installment_value", "signed_at", "valid_from", "valid_to",
+    "published_at", "updated_at", "source_url", "observed_at", "snapshot_sha256",
+]
+
 
 def _csv_rows(path: Path) -> list[dict[str, str]]:
     if not path.exists():
@@ -205,34 +223,141 @@ def _csv_rows(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
-def build(db_path: Path, workspace: CityWorkspace, pncp_jsonl: list[Path] | None = None, contract_jsonl: list[Path] | None = None) -> None:
+def _parse_observed_at(value: object) -> datetime | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        return datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
+def _is_newer_observation(candidate: object, current: object) -> bool:
+    candidate_dt = _parse_observed_at(candidate)
+    current_dt = _parse_observed_at(current)
+    if candidate_dt is not None and current_dt is not None:
+        return candidate_dt > current_dt
+    candidate_text = str(candidate or "")
+    current_text = str(current or "")
+    return bool(candidate_text) and candidate_text > current_text
+
+
+def _upsert_latest_by_pncp(
+    conn: sqlite3.Connection,
+    *,
+    table: str,
+    keys: list[str],
+    row: dict,
+) -> None:
+    control = row.get("pncp_control_number")
+    city_slug = row.get("city_slug")
+    if not control or not city_slug:
+        conn.execute(
+            f"INSERT OR IGNORE INTO {table} ({','.join(keys)}) VALUES ({','.join('?' for _ in keys)})",
+            [row.get(key) for key in keys],
+        )
+        return
+
+    existing = conn.execute(
+        f"SELECT observed_at FROM {table} WHERE city_slug = ? AND pncp_control_number = ?",
+        (city_slug, control),
+    ).fetchone()
+    if existing is None:
+        conn.execute(
+            f"INSERT INTO {table} ({','.join(keys)}) VALUES ({','.join('?' for _ in keys)})",
+            [row.get(key) for key in keys],
+        )
+        return
+    if not _is_newer_observation(row.get("observed_at"), existing[0]):
+        return
+
+    mutable = [key for key in keys if key not in {"city_slug", "pncp_control_number"}]
+    conn.execute(
+        f"UPDATE {table} SET {','.join(f'{key}=?' for key in mutable)} "
+        "WHERE city_slug = ? AND pncp_control_number = ?",
+        [row.get(key) for key in mutable] + [city_slug, control],
+    )
+
+
+def build(
+    db_path: Path,
+    workspace: CityWorkspace,
+    pncp_jsonl: list[Path] | None = None,
+    contract_jsonl: list[Path] | None = None,
+) -> None:
     db_path.parent.mkdir(parents=True, exist_ok=True)
     city = workspace.config
     conn = sqlite3.connect(db_path)
     try:
         conn.executescript(SCHEMA)
-        conn.execute("INSERT OR REPLACE INTO cities VALUES (?,?,?,?,?)",
-                     (city.slug, city.name, city.uf, city.ibge_code, city.municipality_cnpj))
+        conn.execute(
+            "INSERT OR REPLACE INTO cities VALUES (?,?,?,?,?)",
+            (city.slug, city.name, city.uf, city.ibge_code, city.municipality_cnpj),
+        )
         for source in workspace.sources:
-            conn.execute("INSERT OR REPLACE INTO sources VALUES (?,?,?,?,?,?,?)",
-                         (city.slug, source.get("id"), source.get("publisher"), source.get("scope"),
-                          source.get("authority"), source.get("url"), source.get("notes")))
+            conn.execute(
+                "INSERT OR REPLACE INTO sources VALUES (?,?,?,?,?,?,?)",
+                (
+                    city.slug,
+                    source.get("id"),
+                    source.get("publisher"),
+                    source.get("scope"),
+                    source.get("authority"),
+                    source.get("url"),
+                    source.get("notes"),
+                ),
+            )
         for row in _csv_rows(workspace.seed_dir / "officials.csv"):
-            conn.execute("INSERT OR REPLACE INTO officials VALUES (?,?,?,?,?,?,?)",
-                         (city.slug, row["name"], row["office"], row.get("party"), row.get("legislature"),
-                          row["source_url"], row["observed_at"]))
+            conn.execute(
+                "INSERT OR REPLACE INTO officials VALUES (?,?,?,?,?,?,?)",
+                (
+                    city.slug,
+                    row["name"],
+                    row["office"],
+                    row.get("party"),
+                    row.get("legislature"),
+                    row["source_url"],
+                    row["observed_at"],
+                ),
+            )
         for row in _csv_rows(workspace.seed_dir / "fiscal_observations.csv"):
-            conn.execute("INSERT OR REPLACE INTO fiscal_observations VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
-                         (city.slug, row["entity"], row["period"], row["metric"], float(row["value_brl"]) if row.get("value_brl") else None,
-                          row.get("reported_value_text"), row["precision"], row.get("budget_stage"), row["source_url"],
-                          row.get("source_location"), row["observed_at"], row.get("notes")))
+            conn.execute(
+                "INSERT OR REPLACE INTO fiscal_observations VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+                (
+                    city.slug,
+                    row["entity"],
+                    row["period"],
+                    row["metric"],
+                    float(row["value_brl"]) if row.get("value_brl") else None,
+                    row.get("reported_value_text"),
+                    row["precision"],
+                    row.get("budget_stage"),
+                    row["source_url"],
+                    row.get("source_location"),
+                    row["observed_at"],
+                    row.get("notes"),
+                ),
+            )
         for row in _csv_rows(workspace.seed_dir / "legislative_observations.csv"):
-            conn.execute("INSERT OR REPLACE INTO legislative_observations VALUES (?,?,?,?,?,?,?,?,?,?,?)",
-                         (city.slug, row["entity"], row["period"], row["metric"], float(row["value_numeric"]) if row.get("value_numeric") else None,
-                          row.get("reported_value_text"), row["precision"], row["source_url"], row.get("source_location"), row["observed_at"], row.get("notes")))
-        procurement_keys = ["city_slug","source_system","pncp_control_number","process_number","notice_number","year","modality_id","modality_name","object","agency_cnpj","agency_name","sphere","power","unit_code","unit_name","municipality_ibge","municipality_name","uf","published_at","proposal_opening_at","proposal_closing_at","estimated_value","homologated_value","status_name","source_url","observed_at","snapshot_sha256"]
+            conn.execute(
+                "INSERT OR REPLACE INTO legislative_observations VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+                (
+                    city.slug,
+                    row["entity"],
+                    row["period"],
+                    row["metric"],
+                    float(row["value_numeric"]) if row.get("value_numeric") else None,
+                    row.get("reported_value_text"),
+                    row["precision"],
+                    row["source_url"],
+                    row.get("source_location"),
+                    row["observed_at"],
+                    row.get("notes"),
+                ),
+            )
         for row in _csv_rows(workspace.seed_dir / "procurements.csv"):
-            normalized = {key: row.get(key) or None for key in procurement_keys}
+            normalized = {key: row.get(key) or None for key in PROCUREMENT_KEYS}
             normalized["city_slug"] = city.slug
             if normalized["year"]:
                 normalized["year"] = int(normalized["year"])
@@ -241,24 +366,31 @@ def build(db_path: Path, workspace: CityWorkspace, pncp_jsonl: list[Path] | None
             for money_key in ("estimated_value", "homologated_value"):
                 if normalized[money_key]:
                     normalized[money_key] = float(normalized[money_key])
-            conn.execute(f"INSERT OR IGNORE INTO procurements ({','.join(procurement_keys)}) VALUES ({','.join('?' for _ in procurement_keys)})", [normalized[k] for k in procurement_keys])
+            _upsert_latest_by_pncp(conn, table="procurements", keys=PROCUREMENT_KEYS, row=normalized)
         for path in pncp_jsonl or []:
             for line in path.read_text(encoding="utf-8").splitlines():
                 if not line.strip():
                     continue
                 row = json.loads(line)
-                keys = ["city_slug","source_system","pncp_control_number","process_number","notice_number","year","modality_id","modality_name","object","agency_cnpj","agency_name","sphere","power","unit_code","unit_name","municipality_ibge","municipality_name","uf","published_at","proposal_opening_at","proposal_closing_at","estimated_value","homologated_value","status_name","source_url","observed_at","snapshot_sha256"]
-                conn.execute(f"INSERT OR IGNORE INTO procurements ({','.join(keys)}) VALUES ({','.join('?' for _ in keys)})", [row.get(k) for k in keys])
+                _upsert_latest_by_pncp(conn, table="procurements", keys=PROCUREMENT_KEYS, row=row)
         for path in contract_jsonl or []:
             for line in path.read_text(encoding="utf-8").splitlines():
                 if not line.strip():
                     continue
                 row = json.loads(line)
-                keys = ["city_slug","source_system","pncp_control_number","procurement_control_number","contract_number","year","sequence","contract_type_id","contract_type_name","process_number","object","agency_cnpj","agency_name","sphere","power","unit_code","unit_name","municipality_ibge","municipality_name","uf","supplier_type","supplier_document","supplier_name","initial_value","global_value","accumulated_value","installments","installment_value","signed_at","valid_from","valid_to","published_at","updated_at","source_url","observed_at","snapshot_sha256"]
-                conn.execute(f"INSERT OR IGNORE INTO contracts ({','.join(keys)}) VALUES ({','.join('?' for _ in keys)})", [row.get(k) for k in keys])
+                _upsert_latest_by_pncp(conn, table="contracts", keys=CONTRACT_KEYS, row=row)
                 if row.get("supplier_document"):
-                    conn.execute("INSERT OR IGNORE INTO suppliers VALUES (?,?,?,?,?,?)",
-                                 (city.slug, row.get("supplier_document"), row.get("supplier_type"), row.get("supplier_name"), row.get("source_system") or "PNCP", row.get("observed_at")))
+                    conn.execute(
+                        "INSERT OR IGNORE INTO suppliers VALUES (?,?,?,?,?,?)",
+                        (
+                            city.slug,
+                            row.get("supplier_document"),
+                            row.get("supplier_type"),
+                            row.get("supplier_name"),
+                            row.get("source_system") or "PNCP",
+                            row.get("observed_at"),
+                        ),
+                    )
         conn.commit()
     finally:
         conn.close()
