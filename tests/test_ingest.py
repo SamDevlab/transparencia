@@ -17,7 +17,8 @@ def test_ingest_normalized_financial_events(tmp_path: Path):
     expense.write_text(json.dumps({
         "city_slug": "teste", "source_system": "OFFICIAL", "event_key": "e1", "stage": "pago",
         "supplier_document": "123", "supplier_name": "Fornecedor", "gross_value": 50.0,
-        "source_url": "https://example.org/e", "observed_at": "2026-08-17", "snapshot_sha256": "def",
+        "net_value": 49.99, "source_url": "https://example.org/e", "observed_at": "2026-08-17",
+        "snapshot_sha256": "def",
     }) + "\n", encoding="utf-8")
 
     db = tmp_path / "events.db"
@@ -28,5 +29,16 @@ def test_ingest_normalized_financial_events(tmp_path: Path):
     try:
         assert conn.execute("select nature_code, collected_value from revenue_events").fetchone() == ("1", 80.0)
         assert conn.execute("select stage, supplier_document, gross_value from expense_events").fetchone() == ("pago", "123", 50.0)
+        exact = conn.execute(
+            """
+            select entity_type, entity_key, field_name, value_cents
+            from money_exact
+            order by entity_type, field_name
+            """
+        ).fetchall()
+        assert ("revenue_event", "OFFICIAL|r1", "forecast_value", 10000) in exact
+        assert ("revenue_event", "OFFICIAL|r1", "collected_value", 8000) in exact
+        assert ("expense_event", "OFFICIAL|e1|pago", "gross_value", 5000) in exact
+        assert ("expense_event", "OFFICIAL|e1|pago", "net_value", 4999) in exact
     finally:
         conn.close()
